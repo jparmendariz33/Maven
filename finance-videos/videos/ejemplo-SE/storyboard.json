@@ -1,0 +1,30 @@
+{
+  "ticker": "SE",
+  "title": "Ejemplo: la caída de Sea Limited (oct 2026)",
+  "scenes": [
+    {"type": "hook", "say": "Sea Limited, la dueña de Shopee, perdió casi veinticinco por ciento... en solo siete sesiones. ¿Qué pasó?",
+     "kicker": "NYSE · SE", "title": "Sea Limited", "value": -24.1, "decimals": 1, "unit": "%", "tone": "down",
+     "caption": "en solo 7 sesiones", "question": "¿Qué pasó?", "cue_value": "perdió", "cue_question": "Qué"},
+    {"type": "price", "say": "Hace un año, la acción valía ciento cincuenta y seis dólares. En marzo tocó fondo. En agosto rebotó: casi quince por ciento en un solo día.",
+     "title": "De $156 a $77", "subtitle": "La mitad de su valor en un año",
+     "annotations": [
+       {"date": "2025-11-04", "label": "$156.51", "sub": "nov 2025", "cue": "valía"},
+       {"date": "2026-03-27", "label": "$78.16", "sub": "Piso · 27 mar", "tone": "down", "cue": "marzo"},
+       {"date": "2026-08-11", "label": "+14.6% en 1 día", "sub": "11 ago · resultados", "tone": "up", "cue": "agosto", "dir": -1}
+     ]},
+    {"type": "news", "say": "Pero el veinte de octubre, su CEO, Forrest Li, envió un memo: quiere sacar a bolsa a Monee, su brazo financiero, y lanzar Sea Cloud, inteligencia artificial para empresas.",
+     "kicker": "20 oct · El detonante", "headline": "Memo del CEO Forrest Li a sus empleados", "source": "Reuters",
+     "bullets": [
+       {"text": "Sacar a bolsa a Monee", "sub": "su brazo financiero (fintech)", "cue": "sacar"},
+       {"text": "Lanzar Sea Cloud", "sub": "inteligencia artificial para empresas", "cue": "lanzar"}
+     ]},
+    {"type": "zoom", "say": "Al mercado no le gustó: cayó nueve por ciento ese día.", "sessions": 15,
+     "events": [{"date": "2026-10-20", "label": "−9.09%", "sub": "20 oct · volumen 4.5x", "tone": "down", "cue": "cayó"}]},
+    {"type": "statement", "theme": "sand", "say": "Hoy vale setenta y seis dólares.", "kicker": "Precio actual", "text": "Hoy vale $76.77", "emphasis": "$76.77"},
+    {"type": "bars", "say": "Y aun así, sus ingresos crecen cuarenta y siete por ciento.", "count": 5,
+     "cue_revenue": "ingresos", "cue_net": "crecen", "note": "+47% ingresos 1S 2026", "note_sub": "La empresa sigue creciendo", "cue_note": "cuarenta"},
+    {"type": "catalyst", "say": "El diez de noviembre presenta resultados.", "date": "10 NOV", "label": "Resultados T3 2026", "cue_date": "diez"},
+    {"type": "outro", "say": "¿Rebote... o trampa?", "question_a": "¿Rebote…", "question_b": "o trampa?", "cue_a": "Rebote", "cue_b": "trampa",
+     "sources": "Yahoo Finance · Reuters"}
+  ]
+}

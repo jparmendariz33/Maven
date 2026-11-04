@@ -1,0 +1,29 @@
+{
+  "name": "Costa Studio",
+  "handle": "@jparmendariz",
+  "tagline": "Desde la costa, todo se ve con claridad.",
+  "cta": "Sígueme para el próximo análisis",
+  "disclaimer": "Contenido educativo · No es asesoría financiera",
+  "colors": {
+    "arena": "#EBE6BA",
+    "azul": "#4173D1",
+    "azulClaro": "#C3D8EC",
+    "terracota": "#BB6F58",
+    "musgo": "#7E8C54",
+    "mostaza": "#C7A317",
+    "negro": "#0A0A0A",
+    "blanco": "#FFFFFF",
+    "gris": "#F5F5F5"
+  },
+  "fonts": {
+    "display": "Unbounded (sustituto libre de PP Neue Machina)",
+    "body": "Space Grotesk",
+    "accent": "Instrument Serif Italic (sustituto de Seneca)"
+  },
+  "voice": {
+    "provider": "vidIQ (ElevenLabs)",
+    "voice_id": "onwK4e9ZLuTAKqWW03F9",
+    "voice_name": "Daniel - Steady Broadcaster",
+    "credits_per_1000_chars": 14
+  }
+}
