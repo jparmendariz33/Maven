@@ -1,8 +1,33 @@
-# Plan de acción · Costa Studio (@jparmendariz) · nov 2026 → nov 2027
+# Plan de acción · Costa Studio Finance (@jparmendariz) · nov 2026 → nov 2027
 
 > Canal de YouTube sobre bolsa, inversión y construcción de patrimonio, en español de México.
 > Tagline: *"Desde la costa, todo se ve con claridad."* Contenido educativo, nunca recomendaciones de compra/venta.
 > Este archivo es la fuente de verdad que leen las tareas programadas. Se revisa cada trimestre (ver §7).
+
+## 0. Marca: Costa Studio Finance
+**Costa Studio** es una agencia de influencer marketing. **Costa Studio Finance** es su división de contenido educativo
+sobre finanzas e inversión: un proyecto aparte que aprovecha la marca y el estilo de la casa.
+
+- **Cómo se ve:** el logo de Costa Studio con la palabra **FINANCE** a un lado (en todos los videos, arriba a la izquierda).
+  Al cierre: tagline + @handle + "COSTA STUDIO FINANCE". Misma paleta, tipografías y "mareas" que la agencia.
+- **Nombre del canal sugerido:** "Costa Studio Finance". El handle sigue siendo @jparmendariz por ahora (decisión tuya; opción: @costastudiofinance).
+
+**Lo que se separa**
+- Canal, redes y bio propios: la agencia no se promociona dentro del análisis.
+- Las opiniones financieras son de Costa Studio Finance, nunca de la agencia ni de sus clientes o influencers.
+- **Conflictos de interés** (lista en `plan/clientes-agencia.md`): si una empresa del video es (o fue) cliente de la agencia, o hay relación comercial, se dice
+  en el video y en la descripción, o mejor no se analiza. Nunca se presenta como análisis algo que sea publicidad.
+- Todo patrocinio se marca en YouTube ("incluye promoción pagada") y se menciona en voz.
+- Datos y finanzas de la agencia, aparte de los del canal.
+
+**Lo que se aprovecha (sinergias)**
+- **Patrocinios:** la red de marcas de la agencia (fintechs, casas de bolsa, apps de ahorro, educación financiera) puede
+  patrocinar el canal, siempre declarado y sin cambiar el análisis.
+- **Vitrina:** el canal muestra lo que la agencia sabe producir (formato, estilo, constancia, métricas). Sirve como caso
+  de éxito para clientes de fintech.
+- **Colaboraciones:** invitar a creadores de la red a videos de finanzas personales (no de acciones concretas).
+- **Aprendizaje cruzado:** lo que funcione aquí (ganchos, retención, miniaturas) alimenta la estrategia de la agencia, y al revés.
+- **Pie en las descripciones:** "Costa Studio Finance es la división de finanzas de Costa Studio." + liga a la agencia.
 
 ## 1. La estrategia en una frase
 **Videos largos atemporales cada semana = el motor de ingresos y de horas de reproducción.**

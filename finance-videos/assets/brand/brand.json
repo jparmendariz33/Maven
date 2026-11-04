@@ -1,5 +1,7 @@
 {
-  "name": "Costa Studio",
+  "name": "Costa Studio Finance",
+  "parent": "Costa Studio",
+  "division": "FINANCE",
   "handle": "@jparmendariz",
   "tagline": "Desde la costa, todo se ve con claridad.",
   "cta": "Sígueme para el próximo análisis",

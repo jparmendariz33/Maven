@@ -95,7 +95,10 @@ function chrome(s, t) {
   const th = themeOf(s), col = th === 'blue' ? B.arena : B.negro;
   const lg = logoTint(col); C.save(); C.globalAlpha = .9;
   if (lg) C.drawImage(lg, 60, 150, 102, 90);
-  if (V.brand.handle) txt(V.brand.handle, 180, 205, { f: F.b, w: 500, s: 28, c: col, a: .8 });
+  if (V.brand.division) {   // sub-marca: "COSTA STUDIO" (logo) + "FINANCE"
+    txt(V.brand.division, 180, 192, { f: F.d, w: 800, s: 26, ls: 7, c: col });
+    if (V.brand.handle) txt(V.brand.handle, 180, 230, { f: F.b, w: 500, s: 24, c: col, a: .7 });
+  } else if (V.brand.handle) txt(V.brand.handle, 180, 205, { f: F.b, w: 500, s: 28, c: col, a: .8 });
   C.restore();
 }
 
@@ -362,6 +365,7 @@ R.outro = (s, t) => {
     rr(540 - w / 2, 1060, w, 96, 48); C.fillStyle = ink; C.fill(); txt(label, 540, 1122, { f: F.b, w: 700, s: 40, al: 'center', c: B.azul }); C.restore(); }
   const kd = seg(t, tl + .8, tl + 1.3);
   if (V.brand.handle) txt(V.brand.handle, 540, 1230, { f: F.d, w: 600, s: 40, al: 'center', c: ink, a: kd });
+  if (V.brand.name) txt(V.brand.name.toUpperCase(), 540, 1278, { f: F.d, w: 800, s: 22, ls: 6, al: 'center', c: B.mostaza, a: kd });
   txt(s.sources ? 'Datos: ' + s.sources : 'Datos: Yahoo Finance', 540, 1330, { f: F.b, w: 400, s: 28, al: 'center', c: ink, a: kd * .85 });
   txt(V.brand.disclaimer, 540, 1372, { f: F.b, w: 400, s: 28, al: 'center', c: ink, a: kd * .85 });
 };

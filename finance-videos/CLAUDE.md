@@ -1,4 +1,8 @@
-# finance-videos — shorts de análisis de acciones (estilo Costa Studio)
+# finance-videos — Costa Studio Finance (división de finanzas de Costa Studio)
+
+Costa Studio es una agencia de influencer marketing; **Costa Studio Finance** es su canal de finanzas, aparte pero con la misma
+marca. Firma en pantalla: logo + "FINANCE". Reglas de separación y sinergias: `plan/PLAN.md` §0. Nunca analizar una empresa que
+sea cliente de la agencia sin declararlo.
 
 Para crear un video, sigue la skill **`/short`** (`../.claude/skills/short/SKILL.md`). Resumen del flujo:
 `setup.sh` → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →
