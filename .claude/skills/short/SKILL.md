@@ -135,15 +135,17 @@ Verifica con `ffprobe` (1080x1920, h264 + aac, duración) y revisa 2–3 cuadros
 ## 5. Entregar
 1. Escribe `videos/$ID/youtube.md`: 3 títulos (≤100 caracteres, el gancho en los primeros ~40, con 2–3 hashtags),
    descripción con datos clave, fuentes reales, "Contenido educativo. No es asesoría financiera.", la línea
-   "Costa Studio Finance es la división de finanzas de Costa Studio." y hashtags (si la empresa es cliente de la agencia,
+   "Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio." y hashtags (si la empresa es cliente de la agencia,
    decláralo; ver `plan/PLAN.md` §0);
    recuerda marcar "No es para niños" y "contenido alterado/sintético: voz de IA".
-2. Envía el MP4 con SendUserFile (display render) y dale al usuario el título recomendado.
+2. Envía el MP4 con SendUserFile (display render), dale al usuario el título recomendado y **pega en el chat el guion para leer**
+   (el contenido de `narration.txt`, una escena por párrafo), porque él graba su voz leyéndolo.
 3. Commit y push de `finance-videos/videos/$ID/` (storyboard, data, narration, voice_raw.mp3, mp4, youtube.md) a la rama actual.
 
 ## Estilo (no cambiar sin que el usuario lo pida)
 Marca: **Costa Studio Finance** (división de finanzas de la agencia Costa Studio). `brand.json` → `division: "FINANCE"` dibuja
-la firma logo + FINANCE en cada pantalla y "COSTA STUDIO FINANCE" en el cierre.
+la firma logo + FINANCE + "by JP Armendáriz · @jparmendariz" en cada pantalla y "COSTA STUDIO FINANCE · BY JP ARMENDÁRIZ" en el
+cierre. Todo esto es automático (sale de `brand.json`); no hay que pedirlo. Al entregar, pega siempre el guion para leer en el chat.
 Definido en `finance-videos/assets/brand/brand.json` y `engine/engine.js`: paleta Costa (arena #EBE6BA, azul costa #4173D1,
 terracota #BB6F58 = baja, musgo #7E8C54 = sube, mostaza #C7A317 = acento, negro #0A0A0A); tipografías libres
 Unbounded (títulos y números), Space Grotesk (texto), Instrument Serif itálica (acentos); transiciones de "marea",

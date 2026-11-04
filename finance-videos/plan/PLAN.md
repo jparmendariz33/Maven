@@ -8,9 +8,10 @@
 **Costa Studio** es una agencia de influencer marketing. **Costa Studio Finance** es su división de contenido educativo
 sobre finanzas e inversión: un proyecto aparte que aprovecha la marca y el estilo de la casa.
 
-- **Cómo se ve:** el logo de Costa Studio con la palabra **FINANCE** a un lado (en todos los videos, arriba a la izquierda).
-  Al cierre: tagline + @handle + "COSTA STUDIO FINANCE". Misma paleta, tipografías y "mareas" que la agencia.
-- **Nombre del canal sugerido:** "Costa Studio Finance". El handle sigue siendo @jparmendariz por ahora (decisión tuya; opción: @costastudiofinance).
+- **Nombre completo:** **Costa Studio Finance, by JP Armendáriz.**
+- **Cómo se ve:** el logo de Costa Studio con **FINANCE** a un lado y debajo "by JP Armendáriz · @jparmendariz" (en todos los videos, arriba a la izquierda).
+  Al cierre: tagline + @handle + "COSTA STUDIO FINANCE · BY JP ARMENDÁRIZ". Misma paleta, tipografías y "mareas" que la agencia.
+- **Nombre del canal:** "Costa Studio Finance by JP Armendáriz". El handle sigue siendo @jparmendariz por ahora (decisión tuya; opción: @costastudiofinance).
 
 **Lo que se separa**
 - Canal, redes y bio propios: la agencia no se promociona dentro del análisis.
@@ -27,7 +28,7 @@ sobre finanzas e inversión: un proyecto aparte que aprovecha la marca y el esti
   de éxito para clientes de fintech.
 - **Colaboraciones:** invitar a creadores de la red a videos de finanzas personales (no de acciones concretas).
 - **Aprendizaje cruzado:** lo que funcione aquí (ganchos, retención, miniaturas) alimenta la estrategia de la agencia, y al revés.
-- **Pie en las descripciones:** "Costa Studio Finance es la división de finanzas de Costa Studio." + liga a la agencia.
+- **Pie en las descripciones:** "Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio." + liga a la agencia.
 
 ## 1. La estrategia en una frase
 **Videos largos atemporales cada semana = el motor de ingresos y de horas de reproducción.**

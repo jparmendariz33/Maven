@@ -26,7 +26,7 @@ Fuentes:
 • Precios y métricas: Yahoo Finance (4 nov 2026)
 
 Contenido educativo. No es asesoría financiera.
-Costa Studio Finance es la división de finanzas de Costa Studio.
+Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.
 
 #META #Meta #bolsa #inversiones #acciones #finanzaspersonales #shorts
 
