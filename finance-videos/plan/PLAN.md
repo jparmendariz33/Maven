@@ -32,7 +32,7 @@ Regla de oro: **constancia > perfección.** Si una semana no puedes, se publica 
 |---|---|---|
 | L–V 16:40 | Tarea "Radar de Shorts" | Revisa el cierre del mercado. Si hay algo extraordinario, hace el short completo **sin voz** (subtítulos = teleprompter), lo sube a la rama `costa-studio` y te manda notificación. Si no, no hace nada. |
 | Lunes 19:10 | Tarea "Guion del video largo" | Toma el tema de la semana (§6), investiga y verifica datos, escribe el guion (`finance-videos/largos/<fecha>/guion.md`) + 3 títulos + idea de miniatura. Te notifica. |
-| Lun → jue | **Tú** | Lees el guion en voz alta (celular, cuarto silencioso) y subes el audio a Google Drive, carpeta **`Costa Studio - Voces`**, con nombre `AAAA-MM-DD.m4a` (fecha del domingo de publicación). |
+| Lun → jue | **Tú** | Lees el guion en voz alta (grabadora del celular, cuarto silencioso) y subes el audio desde el navegador: github.com/jparmendariz33/Maven → rama `costa-studio` → `finance-videos/largos/<fecha del domingo>/` → *Add file → Upload files*. |
 | Viernes 18:20 | Tarea "Render del video largo" | Si ya está tu audio: lo limpia, sincroniza los gráficos con tu voz, renderiza el video 16:9 + miniatura + `youtube.md` + el short derivado. Si no está, te recuerda. |
 | Fin de semana | **Tú** | Subes y programas en YouTube Studio (largo el domingo, short derivado el miércoles). Contestas comentarios 10 min. |
 
@@ -129,4 +129,14 @@ Los check-ups pueden reordenar o cambiar temas según qué funcione (búsquedas,
 ## 8. Lo que falta construir (próximo paso)
 - [ ] Motor de video largo 16:9 (mismo estilo Costa: arena, azul costa, mareas) + skill `/largo` (guion → tu voz → render).
 - [ ] Miniaturas 1280x720 automáticas con el mismo estilo.
-- [ ] Carpeta `Costa Studio - Voces` en tu Google Drive.
+- [ ] (Opcional) Dar a las tareas programadas acceso a vidIQ y Google Drive desde claude.ai → Rutinas (hoy corren sin conectores:
+      el check-up te pedirá los números del canal si vidIQ no está disponible).
+
+## 9. Tareas programadas (zona horaria: Ciudad de México)
+| Tarea | Cuándo | ID |
+|---|---|---|
+| Radar de Shorts | L–V 16:40 | trig_01CnUTcJ3bevrqhQoUcnexqW |
+| Guion del video largo | Lunes 19:10 | trig_01PqPWwd22ymEiaN4zJynEAN |
+| Render del video largo | Viernes 18:20 | trig_016NhWWd4V4191XwxQdrZZsk |
+| Check-up trimestral | 4 feb, 4 may, 4 ago · 17:12 | trig_01DUUsYHU5STYp3ERkoYnnkU |
+| Re-plan anual | 4 nov 2027 · 17:12 | trig_012FRZsfmRFvxMPNyMQJTHsq |
