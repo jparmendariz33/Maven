@@ -15,6 +15,7 @@ Para crear un video, sigue la skill **`/short`** (`../.claude/skills/short/SKILL
   `audio/voice_raw.mp3` (la voz pagada: no borrar), `<TICKER>_short.mp4`, `youtube.md`. `build/` y los .wav no se versionan.
 
 ## Reglas
+- Duración objetivo: ~1.5 min (70–95 s, 800–1000 caracteres de guion = 14 créditos), ritmo pausado con aire entre frases.
 - No generar voz sin aprobación del guion (cuesta créditos de vidIQ: 14 por cada 1,000 caracteres; plan de 150/mes,
   se renueva el día 4 de cada mes).
 - Datos siempre verificados; nunca recomendaciones de compra/venta.

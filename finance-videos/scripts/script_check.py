@@ -9,7 +9,8 @@ import sys, os, math
 sys.path.insert(0, os.path.dirname(__file__))
 from common import load, narration, brand
 
-CHARS_PER_SEC = 14.0   # medido con la voz Daniel tras recortar pausas y tempo 1.04x
+CHARS_PER_SEC = 11.1   # medido con la voz Daniel: pausas 0.40/0.75 s, tempo 1.00x (ritmo pausado)
+MIN_S, MAX_S = 70, 95   # video de ~1.5 min
 
 
 def main(vdir):
@@ -22,8 +23,8 @@ def main(vdir):
     print(f'Escenas: {len(sb["scenes"])} | Caracteres: {n} | Duración estimada del video: {est:.0f} s | Costo de voz: {credits} créditos')
     ok = True
     if n > 1000: print('⚠️  Pasa de 1,000 caracteres: costaría el doble. Recorta el guion.'); ok = False
-    if est < 45: print('⚠️  Quedaría de menos de 45 s. Agrega un poco de contenido.'); ok = False
-    if est > 60: print('⚠️  Quedaría de más de 60 s. Recorta el guion.'); ok = False
+    if est < MIN_S: print(f'⚠️  Quedaría de menos de {MIN_S} s. Agrega un poco de contenido.'); ok = False
+    if est > MAX_S: print(f'⚠️  Quedaría de más de {MAX_S} s. Recorta el guion.'); ok = False
     for i, s in enumerate(sb['scenes']):
         if not s.get('say'): print(f'⚠️  La escena {i} ({s["type"]}) no tiene narración.'); ok = False
     print('✅ Guion listo para generar la voz.' if ok else '❌ Ajusta el guion antes de generar la voz.')

@@ -1,6 +1,6 @@
 ---
 name: short
-description: Crea un short vertical de 45–60 s (YouTube Shorts / Reels / TikTok) con el análisis de una acción, en el estilo de marca Costa Studio, con voz en off en español, subtítulos y música. Úsala cuando el usuario diga "/short AAPL", "hazme el short de Tesla", "analiza la acción de X en video", etc.
+description: Crea un video vertical de ~1.5 min (70–95 s) (YouTube Shorts / Reels / TikTok) con el análisis de una acción, en el estilo de marca Costa Studio, con voz en off en español, subtítulos y música. Úsala cuando el usuario diga "/short AAPL", "hazme el short de Tesla", "analiza la acción de X en video", etc.
 argument-hint: "<TICKER o nombre de la empresa> [enfoque opcional]"
 ---
 
@@ -40,7 +40,8 @@ Escribe `videos/$ID/storyboard.json` (esquema abajo). Luego:
 ```bash
 python3 scripts/script_check.py videos/$ID
 ```
-Debe salir ✅: **650–950 caracteres** (≈45–60 s y 14 créditos). Si sale ❌, ajusta y repite.
+Debe salir ✅: **800–1000 caracteres** (≈75–92 s y 14 créditos; pasar de 1000 cuesta el doble). Si sale ❌, ajusta y repite.
+Ritmo pausado: el usuario prefiere ~1.5 min con aire entre frases, no prisa (la voz va a tempo natural 1.00x).
 
 Muéstrale al usuario el guion (la narración por escena) y un resumen de las escenas, y **pide su OK**. No generes la voz
 sin su aprobación (cuesta créditos de vidIQ). Si pide cambios, edita y vuelve a correr `script_check.py`.
@@ -48,14 +49,14 @@ sin su aprobación (cuesta créditos de vidIQ). Si pide cambios, edita y vuelve 
 ### Estructura recomendada (8–10 escenas, una idea por pantalla)
 | # | type | Qué cuenta | ~seg |
 |---|------|-----------|------|
-| 1 | `hook` | El dato que detiene el scroll (el % de la caída/subida) + pregunta | 4–6 |
-| 2 | `company` | Qué hace la empresa en 1 línea + valor de mercado | 4–5 |
-| 3 | `price` | Cómo le fue en 12 meses (2–3 anotaciones) | 6–8 |
-| 4 | `zoom` y/o `news` | El movimiento reciente y su porqué | 6–10 |
-| 5 | `bars` | Ingresos y utilidad neta por trimestre | 5–7 |
-| 6–8 | `metric` ×3 | P/E, PEG, ROE (uno por pantalla, con su regla) | 4–5 c/u |
-| 9 | `catalyst` | Próximos resultados (fecha) | 3–4 |
-| 10 | `outro` | Pregunta final en dos partes | 3–4 |
+| 1 | `hook` | El dato que detiene el scroll (el % de la caída/subida) + pregunta | 5–7 |
+| 2 | `company` | Qué hace la empresa en 1 línea + valor de mercado | 7–9 |
+| 3 | `price` | Cómo le fue en 12 meses (2–3 anotaciones) | 8–10 |
+| 4 | `zoom` y/o `news` | El movimiento reciente y su porqué (con contexto: ¿ya venía cayendo?) | 12–18 |
+| 5 | `bars` | Ingresos y utilidad neta por trimestre, con su porqué | 8–10 |
+| 6–8 | `metric` ×3 | P/E, PEG, ROE (uno por pantalla, con su regla) | 7–8 c/u |
+| 9 | `catalyst` | Próximos resultados (fecha + qué vigilar) | 5–6 |
+| 10 | `outro` | Pregunta final en dos partes | 4–5 |
 Si no hubo un movimiento fuerte reciente, omite `zoom` y usa `news` con el tema más relevante. Usa `statement` para
 frases-puente cortas ("Pero en octubre, todo cambió.").
 
@@ -116,10 +117,10 @@ node scripts/render.js videos/$ID --qa                   # hoja de revisión →
 - `build_timeline.py` debe reportar alineación ≥ 60% y sin cues "no encontrados" (si hay, cambia el cue y repite).
 - **Mira `build/qa.jpg`** (Read). Revisa: textos que se salen o se enciman, etiquetas que chocan, escenas vacías,
   datos correctos. Corrige el storyboard (no hace falta regenerar la voz si no cambias el `say`) y repite.
-- Duración final entre 45 y 60 s.
+- Duración final entre 70 y 95 s (ideal ~90 s).
 ```bash
 .venv/bin/python scripts/make_audio.py videos/$ID        # voz + música + efectos → audio/mix.wav
-node scripts/render.js videos/$ID                        # → videos/$ID/TICKER_short.mp4 (~2 min, en segundo plano)
+node scripts/render.js videos/$ID                        # → videos/$ID/TICKER_short.mp4 (~3 min, en segundo plano)
 ```
 Verifica con `ffprobe` (1080x1920, h264 + aac, duración) y revisa 2–3 cuadros del MP4 final.
 

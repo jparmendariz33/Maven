@@ -12,6 +12,7 @@ import sys, os, json, difflib, re
 sys.path.insert(0, os.path.dirname(__file__))
 from common import load, norm, tokens, brand
 
+MIN_DUR, MAX_DUR = 60.0, 95.0   # video de ~1.5 min
 OFFSET = 0.45   # segundos de silencio antes de que empiece la voz
 TAIL = 2.2      # segundos después de la última palabra
 
@@ -56,8 +57,8 @@ def main(vdir):
     first = {}
     for k, si in enumerate(owner): first.setdefault(si, k)
     voice_end = times[-1][1]
-    duration = round(max(45.0, min(60.0, voice_end + TAIL)), 2)
-    if voice_end + TAIL > 60: print(f'⚠️  La voz termina en {voice_end:.1f}s: el video se recortará a 60 s.')
+    duration = round(max(MIN_DUR, min(MAX_DUR, voice_end + TAIL)), 2)
+    if voice_end + TAIL > MAX_DUR: print(f'⚠️  La voz termina en {voice_end:.1f}s: el video se recortará a {MAX_DUR:.0f} s.')
     scenes = []
     for si, s in enumerate(sb['scenes']):
         t0 = 0.0 if si == 0 else round(times[first[si]][0] - 0.3, 3) if si in first else None

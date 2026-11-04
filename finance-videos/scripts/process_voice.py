@@ -6,18 +6,18 @@ Entrada:  videos/<id>/audio/voice_raw.mp3
 Salida:   videos/<id>/audio/voice.wav      (pausas recortadas, tempo ajustado, volumen normalizado)
           videos/<id>/build/whisper.json   (palabras con tiempos, en segundos de voice.wav)
 
-Reglas: pausas internas máx 0.32 s, pausas entre párrafos 0.55 s, tempo 1.04x
-(se sube hasta 1.10x si la voz pasa de 56 s, para que el video quede en 45–60 s).
-Si aun así queda larga: VOICE_PAUSE=.24 VOICE_PARA=.40 VOICE_MAX_TEMPO=1.14 .venv/bin/python scripts/process_voice.py ...
+Reglas (video de ~1.5 min, ritmo pausado): pausas internas máx 0.40 s, pausas entre párrafos 0.75 s,
+tempo natural 1.00x (se sube hasta 1.04x solo si la voz pasa de 92 s, para que el video quede en 70–95 s).
+Ajustable por entorno: VOICE_PAUSE, VOICE_PARA, VOICE_MAX_TEMPO (p. ej. VOICE_PARA=.9 para más aire entre frases).
 """
 import sys, os, json, subprocess, wave
 import numpy as np
 
 SR = 44100
 # Ajustables por variable de entorno si la voz queda larga (evita regenerarla y gastar créditos)
-PAUSE = float(os.environ.get('VOICE_PAUSE', .32))
-PARA = float(os.environ.get('VOICE_PARA', .55))
-MAX_TEMPO = float(os.environ.get('VOICE_MAX_TEMPO', 1.10))
+PAUSE = float(os.environ.get('VOICE_PAUSE', .40))
+PARA = float(os.environ.get('VOICE_PARA', .75))
+MAX_TEMPO = float(os.environ.get('VOICE_MAX_TEMPO', 1.04))
 
 
 def run(cmd):
@@ -68,7 +68,7 @@ def main(vdir):
     if pos is not None: parts.append(x[int(pos * SR):])
     y = np.concatenate(parts); tight = os.path.join(a, '_tight.wav'); write_wav(tight, y)
     dur = len(y) / SR
-    tempo = min(MAX_TEMPO, max(1.04, dur / 56.0))
+    tempo = min(MAX_TEMPO, max(1.0, dur / 92.0))
     out = os.path.join(a, 'voice.wav')
     run(['ffmpeg', '-loglevel', 'error', '-y', '-i', tight, '-af',
          f'atempo={tempo:.3f},highpass=f=70,acompressor=threshold=-18dB:ratio=3:attack=5:release=80,loudnorm=I=-15:TP=-1.5:LRA=7',
