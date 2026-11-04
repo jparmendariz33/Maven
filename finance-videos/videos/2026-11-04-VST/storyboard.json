@@ -90,20 +90,21 @@
    "source": "Reuters · BofA",
    "bullets": [
     {
+     "text": "Caen las acciones de energía",
+     "sub": "Constellation −5% · GE Vernova −6%",
+     "cue": "arrasaron",
+     "tone": "down"
+    },
+    {
      "text": "Más vigilancia al boom de la IA",
      "sub": "nuevas reglas para centros de datos",
-     "cue": "reglas"
+     "cue": "mercado"
     },
     {
      "text": "Riesgo regulatorio en Texas",
      "sub": "su mercado más importante",
-     "cue": "Texas",
+     "cue": "reglas",
      "tone": "down"
-    },
-    {
-     "text": "También cayeron sus rivales",
-     "sub": "Constellation −5% · GE Vernova −6%",
-     "cue": "intermedias"
     }
    ]
   },
