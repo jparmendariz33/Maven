@@ -1,0 +1,230 @@
+{
+ "ticker": "META",
+ "title": "Meta: de su mejor mes en 13 años a -19% en seis semanas",
+ "scenes": [
+  {
+   "type": "hook",
+   "say": "Meta, la dueña de Facebook e Instagram, perdió 19% en seis semanas, tras su mejor mes en años. ¿Qué pasó?",
+   "kicker": "NASDAQ · META",
+   "title": "Meta Platforms",
+   "value": -19.0,
+   "decimals": 0,
+   "unit": "%",
+   "tone": "down",
+   "caption": "desde su máximo del 24 sep",
+   "question": "¿Qué pasó?",
+   "cue_value": "perdió",
+   "cue_question": "pasó"
+  },
+  {
+   "type": "price",
+   "say": "En septiembre subió 36% gracias a Muse, su nueva app de inteligencia artificial. Tocó 777 dólares.",
+   "title": "De $777 a $630",
+   "subtitle": "−19% desde su máximo",
+   "annotations": [
+    {
+     "date": "2026-09-21",
+     "label": "+11.3% en 1 día",
+     "sub": "21 sep · lanzamiento de Muse",
+     "tone": "up",
+     "cue": "Muse",
+     "dir": -1
+    },
+    {
+     "date": "2026-09-24",
+     "label": "$777.59",
+     "sub": "Máximo · 24 sep",
+     "tone": "up",
+     "cue": "Tocó"
+    }
+   ]
+  },
+  {
+   "type": "zoom",
+   "say": "Ya venía bajando, y tras sus resultados cayó 7% en un día.",
+   "sessions": 15,
+   "events": [
+    {
+     "date": "2026-10-22",
+     "label": "−6.98%",
+     "sub": "22 oct · volumen 2.1x",
+     "tone": "down",
+     "cue": "cayó"
+    }
+   ]
+  },
+  {
+   "type": "news",
+   "say": "Sus ingresos crecieron 26%, pero un cargo legal de casi 10 mil millones recortó la utilidad, y su gasto en centros de datos dejó el flujo de caja en negativo.",
+   "kicker": "21 OCT · RESULTADOS T3",
+   "headline": "Vende más, pero gasta mucho más",
+   "source": "Meta · reporte 10-Q (SEC)",
+   "bullets": [
+    {
+     "text": "Ingresos +26%",
+     "sub": "$64,600 M en el trimestre",
+     "cue": "ingresos",
+     "tone": "up"
+    },
+    {
+     "text": "Cargo legal de $9,890 M",
+     "sub": "acuerdo con fiscales estatales",
+     "cue": "legal",
+     "tone": "down"
+    },
+    {
+     "text": "Flujo de caja libre negativo",
+     "sub": "capex de $34,900 M en 3 meses",
+     "cue": "flujo",
+     "tone": "down"
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "say": "Las ventas suben, pero la utilidad neta lleva dos trimestres cayendo.",
+   "count": 5,
+   "cue_revenue": "ventas",
+   "cue_net": "neta",
+   "note": "+26% ingresos a/a",
+   "note_sub": "Utilidad T3: $9,860 M",
+   "note_tone": "down",
+   "cue_note": "cayendo"
+  },
+  {
+   "type": "metric",
+   "say": "Su P/E es de casi 22: pagas 22 dólares por cada dólar que gana. Menos que el mercado.",
+   "kicker": "Valuación · 1/3",
+   "label": "P/E",
+   "fullname": "Precio / Utilidad",
+   "value": 21.49,
+   "decimals": 1,
+   "suffix": "x",
+   "explain": "Pagas $21.5 por cada $1 de utilidad",
+   "scale": {
+    "min": 0,
+    "max": 60,
+    "bands": [
+     [
+      0,
+      15,
+      "Barata"
+     ],
+     [
+      15,
+      30,
+      "Justa"
+     ],
+     [
+      30,
+      60,
+      "Cara"
+     ]
+    ],
+    "ref": {
+     "value": 25,
+     "label": "S&P 500 ≈ 25x"
+    }
+   },
+   "verdict": "Más barata que el mercado",
+   "verdict_tone": "up",
+   "cue_value": "casi",
+   "cue_explain": "pagas",
+   "cue_gauge": "mercado"
+  },
+  {
+   "type": "metric",
+   "say": "Su PEG, el P/E entre el crecimiento, es menor a 1: suele verse barato.",
+   "kicker": "Valuación · 2/3",
+   "label": "PEG",
+   "fullname": "P/E ÷ crecimiento",
+   "value": 0.81,
+   "decimals": 2,
+   "explain": "Menos de 1 suele verse barato",
+   "scale": {
+    "min": 0,
+    "max": 4,
+    "bands": [
+     [
+      0,
+      1,
+      "Barata"
+     ],
+     [
+      1,
+      2,
+      "Justa"
+     ],
+     [
+      2,
+      4,
+      "Cara"
+     ]
+    ]
+   },
+   "verdict": "Barata vs. su crecimiento",
+   "verdict_tone": "up",
+   "cue_value": "PEG",
+   "cue_explain": "crecimiento",
+   "cue_gauge": "barato"
+  },
+  {
+   "type": "metric",
+   "say": "Y por cada 100 dólares del accionista, genera 32 de utilidad.",
+   "kicker": "Rentabilidad · 3/3",
+   "label": "ROE",
+   "fullname": "Retorno sobre capital",
+   "value": 32.3,
+   "decimals": 1,
+   "suffix": "%",
+   "explain": "$32 de utilidad por cada $100 del accionista",
+   "scale": {
+    "min": 0,
+    "max": 60,
+    "bands": [
+     [
+      0,
+      10,
+      "Bajo",
+      "down"
+     ],
+     [
+      10,
+      20,
+      "Bueno",
+      "accent"
+     ],
+     [
+      20,
+      60,
+      "Excelente",
+      "up"
+     ]
+    ]
+   },
+   "verdict": "Excelente",
+   "verdict_tone": "up",
+   "cue_value": "accionista",
+   "cue_explain": "genera",
+   "cue_gauge": "utilidad"
+  },
+  {
+   "type": "catalyst",
+   "say": "Su próximo reporte, a finales de enero.",
+   "kicker": "Próximo catalizador",
+   "date": "27 ENE",
+   "label": "Resultados T4 2026",
+   "sub": "fecha estimada",
+   "cue_date": "enero"
+  },
+  {
+   "type": "outro",
+   "say": "¿Oportunidad... o señal de alerta?",
+   "question_a": "¿Oportunidad…",
+   "question_b": "o señal de alerta?",
+   "cue_a": "Oportunidad",
+   "cue_b": "alerta",
+   "sources": "Yahoo Finance · Meta (SEC) · Bloomberg Línea"
+  }
+ ]
+}
