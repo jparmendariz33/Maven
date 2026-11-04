@@ -23,19 +23,20 @@
    "subtitle": "−19% desde su máximo",
    "annotations": [
     {
-     "date": "2026-09-21",
-     "label": "+11.3% en 1 día",
-     "sub": "21 sep · lanzamiento de Muse",
+     "date": "2026-08-31",
+     "label": "+36% en sep",
+     "sub": "Muse, su app de IA",
      "tone": "up",
      "cue": "Muse",
-     "dir": -1
+     "dir": 1
     },
     {
      "date": "2026-09-24",
      "label": "$777.59",
      "sub": "Máximo · 24 sep",
      "tone": "up",
-     "cue": "Tocó"
+     "cue": "Tocó",
+     "dir": -1
     }
    ]
   },
@@ -204,7 +205,7 @@
    },
    "verdict": "Excelente",
    "verdict_tone": "up",
-   "cue_value": "accionista",
+   "cue_value": "cada",
    "cue_explain": "genera",
    "cue_gauge": "utilidad"
   },

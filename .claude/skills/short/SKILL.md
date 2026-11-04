@@ -99,6 +99,15 @@ Campos por tipo (todos opcionales salvo `type` y `say`; `theme` puede forzar `"b
 Ejemplo completo: `finance-videos/videos/ejemplo-SE/storyboard.json`.
 
 ## 3. Voz (después del OK)
+**Modo predeterminado desde nov 2026: SIN VOZ.** Juan Pablo graba su propia voz en la app de YouTube Shorts leyendo los
+subtítulos (funcionan como teleprompter). En ese caso NO uses vidIQ; en lugar de los pasos 1–5 y de `process_voice.py`:
+```bash
+python3 scripts/no_voice.py videos/$ID 16     # tiempos estimados a ritmo de lectura (16 caracteres/s ≈ 140 palabras/min)
+```
+y sigue en la sección 4 desde `build_timeline.py` (sin voz el video puede durar hasta 75 s; apunta a 55–65 s).
+`make_audio.py` detecta `audio/NO_VOICE` y deja solo música baja + efectos. Usa voz de IA solo si él lo pide.
+
+Con voz de IA (solo si la pide):
 1. Carga las herramientas: `ToolSearch` con `select:mcp__vidIQ__vidiq_balance,mcp__vidIQ__vidiq_voiceover_generate,mcp__vidIQ__vidiq_job_poll`.
 2. `vidiq_balance` → dile al usuario cuántos créditos tiene y que este video usará 14.
 3. `vidiq_voiceover_generate` con `script` = contenido exacto de `videos/$ID/narration.txt` y

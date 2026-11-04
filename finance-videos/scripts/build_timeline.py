@@ -56,8 +56,10 @@ def main(vdir):
     first = {}
     for k, si in enumerate(owner): first.setdefault(si, k)
     voice_end = times[-1][1]
-    duration = round(max(45.0, min(60.0, voice_end + TAIL)), 2)
-    if voice_end + TAIL > 60: print(f'⚠️  La voz termina en {voice_end:.1f}s: el video se recortará a 60 s.')
+    novoice = os.path.exists(os.path.join(vdir, 'audio', 'NO_VOICE'))
+    MAXD = 75.0 if novoice else 60.0   # sin voz: margen para leer con calma (Shorts admite hasta 3 min)
+    duration = round(max(45.0, min(MAXD, voice_end + TAIL)), 2)
+    if voice_end + TAIL > MAXD: print(f'⚠️  La voz termina en {voice_end:.1f}s: el video se recortará a {MAXD:.0f} s.')
     scenes = []
     for si, s in enumerate(sb['scenes']):
         t0 = 0.0 if si == 0 else round(times[first[si]][0] - 0.3, 3) if si in first else None

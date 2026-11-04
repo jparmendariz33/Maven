@@ -89,12 +89,17 @@ def main(vdir):
             add(mus, thud(.35), k * bar + j * bar / 4)
     fi = int(.4 * SR); mus[:fi] *= np.linspace(0, 1, fi); fo = int(1.2 * SR); mus[-fo:] *= np.linspace(1, 0, fo)
     # voz + ducking
-    w = wave.open(os.path.join(vdir, 'audio', 'voice.wav')); v = np.frombuffer(w.readframes(w.getnframes()), '<i2').astype(float) / 32768; w.close()
-    voice = np.zeros(n); add(voice, v, tl['offset'])
-    e = np.convolve(np.abs(voice), np.ones(int(.15 * SR)) / int(.15 * SR), 'same'); e /= e.max() + 1e-9
-    duck = 1 - .6 * np.clip(e * 4, 0, 1)
+    vp = os.path.join(vdir, 'audio', 'voice.wav')
+    if os.path.exists(os.path.join(vdir, 'audio', 'NO_VOICE')) or not os.path.exists(vp):
+        # sin voz: música más baja y pareja para que tu voz grabada en YouTube encima se oiga clara
+        voice = np.zeros(n); duck = np.full(n, .55); print('modo sin voz: solo música + efectos')
+    else:
+        w = wave.open(vp); v = np.frombuffer(w.readframes(w.getnframes()), '<i2').astype(float) / 32768; w.close()
+        voice = np.zeros(n); add(voice, v, tl['offset'])
+        e = np.convolve(np.abs(voice), np.ones(int(.15 * SR)) / int(.15 * SR), 'same'); e /= e.max() + 1e-9
+        duck = 1 - .6 * np.clip(e * 4, 0, 1)
     mus = mus / (np.abs(mus).max() + 1e-9) * .20 * duck
-    fx = fx / (np.abs(fx).max() + 1e-9) * .34
+    fx = fx / (np.abs(fx).max() + 1e-9) * (.22 if not voice.any() else .34)
     voice = voice / (np.abs(voice).max() + 1e-9) * .92
     mix = np.tanh((voice + mus + fx) * 1.02); mix /= np.abs(mix).max() * 1.06
     pcm = (np.stack([mix, mix], 1) * 32767).astype('<i2')
