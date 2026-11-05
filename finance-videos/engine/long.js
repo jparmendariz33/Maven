@@ -178,7 +178,7 @@ R.bignum = (s, t) => {
   const col = s.tone ? (themeOf(s) === 'blue' && s.tone !== 'accent' ? ink : toneC(s.tone)) : (themeOf(s) === 'blue' ? B.mostaza : B.azul);
   C.save(); C.globalAlpha *= seg(t, tv - .1, tv + .3); scaleAt(L, 600, .95 + .05 * ex(seg(t, tv, tv + .5)));
   txt(str, L, 670, { f: F.d, w: 800, s: fit(str, F.d, 800, 270, CW, 100), c: col }); C.restore();
-  if (s.sub) { const ts = cueT(s, 'cue_sub', 1.6); riseLines(wrap(s.sub, F.b, 500, 44, CW), L, 770, 56, ts, t, { f: F.b, w: 500, s: 44, c: sub2(s) }); }
+  if (s.sub) { const ts = Math.max(cueT(s, 'cue_sub', 1.6), tv + .9); riseLines(wrap(s.sub, F.b, 500, 44, CW), L, 770, 56, ts, t, { f: F.b, w: 500, s: 44, c: sub2(s) }); }
 };
 
 R.list = (s, t) => {
