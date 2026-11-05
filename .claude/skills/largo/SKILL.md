@@ -99,6 +99,16 @@ Verifica con `ffprobe` (1920x1080, h264 + aac, duración 9.5–12.5 min) y mira 
 Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, corre `.venv/bin/python scripts/process_voice.py largos/$D`
 (nota: ajusta tempo solo si hace falta), `build_timeline.py`, `make_audio.py` y `render.js`: los visuales se sincronizan con su voz.
 
+
+### Regla de los números y voz de IA
+- Los tiempos sin voz se calculan por sílabas habladas: `no_voice.py` convierte números, %, $ y montos a palabras ("45" =
+  "cuarenta y cinco"). Si una pantalla tiene muchas cifras, divídela: se dicen más lento de lo que miden.
+- **Solo si JP pide voz de IA** (cuesta créditos de vidIQ; pide su OK con el costo exacto): `python3 scripts/tts_prep.py largos/$D <créditos>`
+  → envía cada pieza de `tts_chunks.json` con la voz Daniel (`onwK4e9ZLuTAKqWW03F9`), primero la pieza 1 como prueba; revisa la
+  pronunciación transcribiendo con whisper; guarda `audio/voice_part1.mp3`, `voice_part2.mp3`…; borra `audio/NO_VOICE`; corre
+  `process_voice.py` (une piezas, sin acelerar), `build_timeline.py`, QA, `make_audio.py`, `render.js`. La voz de IA nunca dice
+  "soy JP": usa "Bienvenido a Costa Studio Finance, de Jota Pe Armendáriz". En `youtube.md`: contenido alterado o sintético = **Sí**.
+
 ## 4. Entregables
 1. `largos/$D/youtube.md`: 3 títulos (la búsqueda objetivo al inicio, ≤ 70 caracteres), descripción (2–3 líneas con la promesa,
    **capítulos** de `capitulos.txt`, fuentes con URL, "Contenido educativo. No es asesoría financiera.",

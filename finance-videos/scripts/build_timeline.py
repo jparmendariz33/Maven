@@ -111,7 +111,7 @@ def main(vdir):
     br = brand(); lp = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'brand', 'logo_mask_small.png')
     if os.path.exists(lp): br['logo_data'] = 'data:image/png;base64,' + base64.b64encode(open(lp, 'rb').read()).decode()
     video = {'duration': duration, 'offset': OFFSET, 'brand': br, 'data': keep, 'scenes': scenes, 'captions': caps,
-             'format': 'long' if LONG else 'short', 'chapters': chapters, 'thumbnail': sb.get('thumbnail', {}), 'slug': sb.get('slug', '')}
+             'format': 'long' if LONG else 'short', 'novoice': novoice, 'chapters': chapters, 'thumbnail': sb.get('thumbnail', {}), 'slug': sb.get('slug', '')}
     os.makedirs(os.path.join(vdir, 'build'), exist_ok=True)
     open(os.path.join(vdir, 'build', 'video.js'), 'w').write('window.VIDEO=' + json.dumps(video, ensure_ascii=False) + ';')
     json.dump({'duration': duration, 'offset': OFFSET, 'scenes': scenes, 'format': 'long' if LONG else 'short', 'chapters': chapters, 'slug': sb.get('slug', '')},

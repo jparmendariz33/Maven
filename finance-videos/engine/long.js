@@ -456,7 +456,8 @@ function teleprompter(t) {
   let x = 960 - total / 2; const y = TP_Y + 62;
   c.forEach((w, i) => { const on = t >= w[0] - .04, cur = on && t < w[1] + .06;
     txt(w[2], x, y, { f: F.b, w: 700, s: S_, c: cur ? B.mostaza : on ? B.arena : 'rgba(235,230,186,.55)' }); x += ws[i] + gap; });
-  if (nx) { const nl = nx.map(w => w[2]).join(' '); txt(nl, 960, TP_Y + 106, { f: F.b, w: 500, s: fit(nl, F.b, 500, 30, CW - 120, 18), al: 'center', c: 'rgba(235,230,186,.5)' }); }
+  // con voz real (novoice === false) se muestra solo el subtítulo, sin la siguiente frase
+  if (nx && V.novoice !== false) { const nl = nx.map(w => w[2]).join(' '); txt(nl, 960, TP_Y + 106, { f: F.b, w: 500, s: fit(nl, F.b, 500, 30, CW - 120, 18), al: 'center', c: 'rgba(235,230,186,.5)' }); }
   X.restore();
 }
 

@@ -116,6 +116,11 @@ Con voz de IA (solo si la pide):
 5. Descarga: `curl -sS -o videos/$ID/audio/voice_raw.mp3 "<audioUrl>"` (crea la carpeta `audio`).
 Si vidIQ no está conectado o no hay créditos, avísale al usuario y detente (no inventes otra voz sin preguntar).
 
+
+**Regla de los números:** los tiempos se calculan por sílabas habladas (los números se convierten a palabras: "45" =
+"cuarenta y cinco"). Lo hace `no_voice.py`; para voz de IA usa `python3 scripts/tts_prep.py videos/$ID <créditos>` y envía
+el texto de `tts_chunks.json` (números ya en palabras), no `narration.txt`. Ver "Regla de los números" en `finance-videos/CLAUDE.md`.
+
 ## 4. Sincronizar, revisar y renderizar
 ```bash
 .venv/bin/python scripts/process_voice.py videos/$ID     # recorta pausas, tempo, normaliza, tiempos por palabra
