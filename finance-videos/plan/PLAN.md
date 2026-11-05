@@ -104,20 +104,32 @@ en horizontal 1920x1080, con la firma **COSTA STUDIO FINANCE · by JP Armendári
 | oct 2027 (Q4) | 50 | 210 | 1,000 | 4,000 | **Solicitar YPP**; primer patrocinio |
 | nov 2027 | 55 | 220 | 1,100+ | 4,300+ | Re-plan anual |
 
-## 6. Calendario de videos largos (55 semanas)
-**Detalle semana por semana en [`calendario-largos.md`](calendario-largos.md)**: título, búsqueda objetivo, gancho, capítulos,
-visuales, short derivado y datos a verificar. Resumen:
+## 6. Calendario de videos largos (55 semanas) y rotación
+Detalle completo semana por semana en [`calendario-largos.md`](calendario-largos.md).
 
-| Semanas | Fechas | Bloque | Videos |
-|---|---|---|---|
-| 1–10 | 15 nov 2026 → 17 ene 2027 | Empezar desde cero | acción, interés compuesto, CETES vs. bolsa, aguinaldo, ETFs, invertir desde México, lecciones 2026, plan 2027, 50/30/20, promediar costos |
-| 11–24 | 24 ene → 25 abr 2027 | Leer empresas | reporte trimestral, dividendos, P/E, estado de resultados, **Nvidia**, flujo libre, ROE/moats, PEG, **Walmex**, deuda, impuestos (abril), recompras, **Apple**, DCF |
-| 25–38 | 2 may → 1 ago 2027 | Estrategia y psicología | sesgos, PTU (mayo), pasiva vs. activa, **Berkshire**, valor vs. crecimiento, caídas de 20%, diversificación, tasas, **Costco**, tipo de cambio, portafolio simple, rebalancear, **Amazon**, 10 errores |
-| 39–46 | 8 ago → 26 sep 2027 | Patrimonio en México | $2,000 al mes, AFORE, PPR, **FEMSA**, bienes raíces vs. bolsa, FIBRAS, inflación, **Microsoft** |
-| 47–55 | 3 oct → 28 nov 2027 | Historia y criterio | puntocom, 2008, cripto vs. bolsa, **Alphabet**, noticias sin pánico, **Visa/Mastercard**, **Tesla**, mi sistema en 1 página, un año en la costa |
+**Rotación fija de 5 semanas, repetida 11 veces**, para tener siempre defensa, medio y ataque:
+| Semana del ciclo | Pilar | Rol |
+|---|---|---|
+| 1 | 🛡️ Empezar desde cero | Defensa: bases que todos buscan |
+| 2 | ⚔️ Leer empresas | Ataque: métricas con empresas reales |
+| 3 | 🧠 Psicología del dinero, serie *Tu cerebro y tu dinero* (Behavioral Finance: Kahneman, Tversky, Thaler, Shiller…) | Medio: lo que distingue al canal |
+| 4 | 🛡️ Patrimonio en México | Defensa: CETES, AFORE, impuestos |
+| 5 | 🎯 Historia y criterio | Medio/ataque: crisis y burbujas |
 
-Los análisis a fondo caen cerca de la temporada de resultados de cada empresa. Los temas de México siguen el calendario
-del bolsillo: aguinaldo (dic), propósitos (ene), declaración anual (abr), PTU (may).
+Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan 2027 (3 ene), impuestos (25 abr), PTU (23 may).
+
+## 6b. Lo que asegura la monetización (además de los números)
+1. **Política de contenido no auténtico de YouTube:** los canales hechos en serie con plantilla pueden ser rechazados del YPP.
+   Por eso: tu voz siempre; en cada guion al menos un ejemplo o reflexión personal tuya (sin recomendar); variedad de pantallas;
+   y, recomendado, 10–15 s a cámara al inicio del largo (grabas con el celular y lo pegas al inicio en CapCut).
+2. **Embudo Shorts → largos:** las vistas de Shorts no suman horas. Cada short lleva "Video relacionado" → un largo; cada largo,
+   pantalla final + tarjeta → otro largo del mismo pilar; comentario fijado con pregunta.
+3. **Canal configurado** (kit en `canal/`): verificación con teléfono, banner, descripción, plantilla de descripción, 5 listas por pilar.
+4. **Colchón:** siempre 1–2 largos listos por adelantado.
+5. **Miniaturas** automáticas + "Probar y comparar" de YouTube.
+6. **Costo cero:** nada de vidIQ ni servicios de pago. Búsquedas con el autocompletado de YouTube; voz tuya; CapCut gratis.
+   (Recomendación opcional: micrófono de solapa ~$300–600 MXN.)
+7. **Medición:** cada domingo mándame una captura de YouTube Studio → Analytics (o pégala en `plan/metricas.md`).
 
 ## 7. Revisiones
 - **Check-ups trimestrales** (4 feb, 4 may y 4 ago 2027, 17:12): analíticas del canal vs. §5, ajustes al calendario y formato.
@@ -125,10 +137,12 @@ del bolsillo: aguinaldo (dic), propósitos (ene), declaración anual (abr), PTU 
 - **Re-plan anual** (4 nov 2027): balance del año y plan 2027–2028 con nuevas tareas programadas.
 
 ## 8. Pendientes
-- [ ] Motor de video largo 16:9 + skill `/largo` (en construcción; listo antes del lunes 9 nov, cuando se produce la semana 1).
-- [ ] Miniaturas 1280x720 automáticas.
-- [ ] Llenar `clientes-agencia.md`.
-- [ ] (Opcional) Dar a las tareas acceso a vidIQ desde claude.ai → Rutinas para que el check-up lea las analíticas solo.
+- [x] Calendario de 55 semanas con rotación y búsquedas validadas.
+- [ ] Motor de video largo 16:9 + miniaturas + skill `/largo` (en construcción).
+- [ ] Videos 1 y 2 (15 y 22 nov) como colchón.
+- [ ] Kit del canal (`canal/`).
+- [ ] Llenar `clientes-agencia.md` (tú).
+- [ ] Verificar el canal con tu teléfono en YouTube Studio (tú, 2 min).
 
 ## 9. Tareas programadas (zona horaria: Ciudad de México)
 | Tarea | Cuándo | ID |
