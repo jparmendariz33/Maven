@@ -19,7 +19,6 @@ def main(vdir, cps=14.0):
     t, words = 0.0, []
     for si, s in enumerate(sb['scenes']):
         if si: t += SCENE_PAUSE
-        if s.get('adlib'): t += float(s.get('adlib_secs', 15)); continue   # "Tu turno": tiempo para hablar libre
         for w in tokens(s.get('say', '')):
             d = max(.18, (len(w) + 1) / cps)
             words.append([round(t, 3), round(t + d, 3), w]); t += d

@@ -12,11 +12,11 @@ De cada $100 que le pagas a Apple, ¿cuánto se queda de ganancia? Aprende a lee
 
 ⏱️ Capítulos
 0:00 Introducción
-1:01 Ingresos
-2:30 Margen bruto
-3:52 Gastos de operación
-5:21 Utilidad neta y por acción
-7:19 Lo que no te dice
+1:05 Ingresos
+2:34 Margen bruto
+3:55 Gastos de operación
+5:27 Utilidad neta y por acción
+7:24 Lo que no te dice
 
 📊 Datos clave (Apple, año fiscal 2026, terminado el 26 sep 2026)
 • Ventas: $478,834 M (+15%) · Margen bruto: 48.8% (productos 39%, servicios 76%)
@@ -40,8 +40,10 @@ Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa St
 - **Comentario fijado:** "¿Qué empresa quieres que leamos así? 👇"
 - Etiquetas: cómo leer un estado de resultados, estado de resultados, Apple, margen bruto, utilidad neta, análisis fundamental
 
-## Cómo grabar tu voz
-Igual que el video 1: CapCut → importa el MP4 → Audio → Grabar → lee el teleprompter; en "TU TURNO" habla libre.
+## Cómo grabar tu voz (≈10 min)
+CapCut (gratis) → Nuevo proyecto → importa el MP4 → **Audio → Grabar** → lee el teleprompter de abajo de principio a fin
+(la palabra que toca se ilumina en mostaza; abajo ves la siguiente frase). Todo está escrito: también tu presentación y la
+pregunta a la audiencia. Baja la música original a ~30% → Exportar 1080p.
 
 ## Guion para leer
 De cada 100 dólares que le pagas a Apple por un iPhone, una Mac o una suscripción, la empresa se queda con casi 28 de ganancia. ¿Cómo lo sé? Con una sola hoja.
@@ -52,7 +54,7 @@ Vamos a ver cuatro niveles: los ingresos, el margen bruto, los gastos de operaci
 
 ¿Por qué Apple? Porque hoy vale más de 5 billones de dólares en la bolsa, es de las empresas más valiosas del mundo, y su estado de resultados es de los más claros para aprender.
 
-> 🎙️ **TU TURNO (12 s, con tus palabras):** Cuenta en 2 frases si alguna vez viste uno (en el trabajo, en la escuela) y qué te pareció.
+Soy JP Armendáriz, esto es Costa Studio Finance, y antes de empezar, una pregunta: ¿alguna vez has leído un estado de resultados? Si te suena a cosa de contadores, tranquilo: en unos minutos lo vas a leer sin problema.
 
 
 ### Capítulo 1: Ingresos
@@ -103,7 +105,7 @@ De cada 100 dólares, quedan 33. Eso se llama margen de operación, y sirve much
 
 Y mira esto: las ventas de Apple crecieron 15%, pero la utilidad de operación creció 19%. Cuando las ventas suben más rápido que los gastos, la utilidad crece todavía más. A eso se le llama apalancamiento operativo.
 
-> 🎙️ **TU TURNO (12 s, con tus palabras):** Di qué empresa que usas a diario crees que tiene márgenes altos, y por qué.
+Ahora piénsalo tú: de las empresas que usas todos los días, ¿cuál crees que se queda con más dinero de cada 100 que vende? ¿Tu banco, tu supermercado, tu app favorita? Escríbelo en los comentarios.
 
 
 ### Capítulo 4: Utilidad neta y por acción

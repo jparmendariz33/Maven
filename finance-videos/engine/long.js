@@ -434,7 +434,7 @@ R.outro = (s, t) => {
   txt(V.brand.disclaimer, 960, 866, { f: F.b, w: 400, s: 24, al: 'center', c: ink, a: kd * .85 });
 };
 
-R.personal = (s, t) => {   // "Tu turno": JP habla con sus palabras (anti contenido en serie)
+R.personal = (s, t) => {   // pantalla en primera persona (presentación de JP o pregunta a la audiencia); se narra como las demás
   const ink = B.arena; kicker(s.kicker || 'En primera persona', L, 330, s.t0 + .1, t, ink);
   const ls = wrap(s.title || '', F.s, 400, 120, CW); riseLines(ls, L, 470, 128, s.t0 + .2, t, { f: F.s, w: 400, s: 120, c: ink });
   if (s.sub) rise(s.sub, L, 470 + ls.length * 128, seg(t, s.t0 + .7, s.t0 + 1.3), { f: F.b, w: 500, s: 44, c: B.mostaza });
@@ -442,14 +442,6 @@ R.personal = (s, t) => {   // "Tu turno": JP habla con sus palabras (anti conten
 
 // ---------------- teleprompter ----------------
 function teleprompter(t) {
-  const sc = V.scenes.find(x => t >= x.t0 && t < x.t1);
-  if (sc && sc.adlib) {   // indicación para hablar libre, con cuenta regresiva
-    const left = Math.max(0, Math.ceil(sc.t1 - .3 - t)), a = seg(t, sc.t0 + .1, sc.t0 + .5);
-    X.save(); X.globalAlpha = a; rr(L, TP_Y, CW, TP_H, 30); C.fillStyle = 'rgba(199,163,23,.95)'; C.fill();
-    txt('TU TURNO · ' + left + ' s', L + 40, TP_Y + 48, { f: F.d, w: 800, s: 24, ls: 4, c: B.negro });
-    txt(sc.adlib, L + 40, TP_Y + 96, { f: F.b, w: 700, s: fit(sc.adlib, F.b, 700, 36, CW - 80, 20), c: B.negro });
-    X.restore(); return;
-  }
   const CAPS = V.captions || []; let ci = -1;
   for (let i = 0; i < CAPS.length; i++) if (t >= CAPS[i][0][0] - .45) ci = i;   // aparece ~0.45 s antes para leer con calma
   if (ci < 0) return;

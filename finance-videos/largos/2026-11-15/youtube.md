@@ -12,11 +12,11 @@ Archivos: `que-es-una-accion_largo.mp4` · `miniatura.jpg` · Lista: **Empezar d
 
 ⏱️ Capítulos
 0:00 Introducción
-1:01 Qué es una acción
-2:48 Por qué sube y baja
-4:26 Corto vs. largo plazo
-5:51 Cómo se gana dinero
-7:12 El error al empezar
+0:59 Qué es una acción
+2:46 Por qué sube y baja
+4:24 Corto vs. largo plazo
+5:50 Cómo se gana dinero
+7:11 El error al empezar
 
 📊 Datos clave
 • $10,000 en Apple en enero de 2009 ≈ $1.08 millones hoy (×108, sin dividendos).
@@ -40,9 +40,9 @@ Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa St
 - Etiquetas: qué es una acción, cómo invertir, bolsa de valores, acciones para principiantes, invertir desde cero, S&P 500
 
 ## Cómo grabar tu voz (≈10 min)
-CapCut (gratis) → Nuevo proyecto → importa el MP4 → **Audio → Grabar** → lee el teleprompter de abajo
-(la palabra que toca se ilumina en mostaza; abajo ves la siguiente frase). En los recuadros mostaza **"TU TURNO"**
-habla libre con tus palabras (tienes una cuenta regresiva). Baja la música original a ~30% → Exportar 1080p.
+CapCut (gratis) → Nuevo proyecto → importa el MP4 → **Audio → Grabar** → lee el teleprompter de abajo de principio a fin
+(la palabra que toca se ilumina en mostaza; abajo ves la siguiente frase). Todo está escrito: también tu presentación y la
+pregunta a la audiencia. Baja la música original a ~30% → Exportar 1080p.
 
 ## Guion para leer
 Si en enero de 2009 hubieras puesto 10,000 dólares en acciones de Apple, hoy tendrías más de 1 millón de dólares. Más de 100 veces tu dinero. ¿Fue suerte?
@@ -53,7 +53,7 @@ En los próximos 10 minutos vas a entender qué es una acción, por qué sube y 
 
 ¿Y por qué te debería importar? Porque si tienes una AFORE, lo más probable es que una parte de tu ahorro para el retiro ya esté invertida en acciones. Ya eres dueño, aunque no lo sepas.
 
-> 🎙️ **TU TURNO (15 s, con tus palabras):** Preséntate en 2–3 frases: quién eres y por qué te interesa invertir.
+Hola, soy JP Armendáriz y esto es Costa Studio Finance. Aquí te explico, con datos reales y sin rollos, cómo funciona la bolsa y qué hacer con tu dinero. Cada domingo, un video nuevo.
 
 
 ### Capítulo 1: Qué es una acción
@@ -116,7 +116,7 @@ Quien vendió en pleno pánico convirtió una caída temporal en una pérdida pe
 
 ¿Qué significa esto para ti? Que el plazo lo cambia todo. Si vas a necesitar el dinero en un año, la bolsa no es el lugar: puede caer 30%. Si es para dentro de 10 o 20 años, el tiempo juega a tu favor.
 
-> 🎙️ **TU TURNO (12 s, con tus palabras):** Cuenta en 2 frases cómo te sentirías (o cómo te sentiste) viendo tu dinero caer.
+Ahora piénsalo tú. Si mañana tu inversión cayera 30%, ¿qué harías? ¿Venderías para no perder más, o te quedarías? No hay respuesta fácil. Cuéntamela en los comentarios.
 
 
 ### Capítulo 4: Cómo se gana dinero

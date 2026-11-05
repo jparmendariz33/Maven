@@ -6,6 +6,8 @@ Vamos a ver cuatro niveles: los ingresos, el margen bruto, los gastos de operaci
 
 ¿Por qué Apple? Porque hoy vale más de 5 billones de dólares en la bolsa, es de las empresas más valiosas del mundo, y su estado de resultados es de los más claros para aprender.
 
+Soy JP Armendáriz, esto es Costa Studio Finance, y antes de empezar, una pregunta: ¿alguna vez has leído un estado de resultados? Si te suena a cosa de contadores, tranquilo: en unos minutos lo vas a leer sin problema.
+
 Empecemos por arriba, por la primera línea de la hoja: los ingresos.
 
 Un detalle antes de los números. Cada empresa elige cuándo cierra su año. El de Apple, su año fiscal, termina en septiembre, no en diciembre. Por eso su año 2026 va de octubre de 2025 a septiembre de 2026.
@@ -45,6 +47,8 @@ Al margen bruto le restas esos gastos y obtienes la utilidad de operación: 158,
 De cada 100 dólares, quedan 33. Eso se llama margen de operación, y sirve muchísimo para comparar negocios. Un supermercado, por ejemplo, suele tener márgenes de un solo dígito.
 
 Y mira esto: las ventas de Apple crecieron 15%, pero la utilidad de operación creció 19%. Cuando las ventas suben más rápido que los gastos, la utilidad crece todavía más. A eso se le llama apalancamiento operativo.
+
+Ahora piénsalo tú: de las empresas que usas todos los días, ¿cuál crees que se queda con más dinero de cada 100 que vende? ¿Tu banco, tu supermercado, tu app favorita? Escríbelo en los comentarios.
 
 Y llegamos al final de la hoja, a la línea más famosa: la utilidad neta.
 

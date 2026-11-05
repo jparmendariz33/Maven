@@ -120,8 +120,8 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 
 ## 6b. Lo que asegura la monetización (además de los números)
 1. **Política de contenido no auténtico de YouTube:** los canales hechos en serie con plantilla pueden ser rechazados del YPP.
-   Por eso: tu voz siempre; en cada guion al menos un ejemplo o reflexión personal tuya (sin recomendar); variedad de pantallas;
-   y, recomendado, 10–15 s a cámara al inicio del largo (grabas con el celular y lo pegas al inicio en CapCut).
+   Por eso: tu voz siempre; guiones originales; en cada largo una presentación tuya y una pregunta a la audiencia (todo escrito,
+   tú solo lo lees); variedad de pantallas. Opcional: 10–15 s a cámara al inicio del largo (lo pegas en CapCut).
 2. **Embudo Shorts → largos:** las vistas de Shorts no suman horas. Cada short lleva "Video relacionado" → un largo; cada largo,
    pantalla final + tarjeta → otro largo del mismo pilar; comentario fijado con pregunta.
 3. **Canal configurado** (kit en `canal/`): verificación con teléfono, banner, descripción, plantilla de descripción, 5 listas por pilar.
@@ -138,7 +138,7 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 
 ## 8. Pendientes
 - [x] Calendario de 55 semanas con rotación y búsquedas validadas (gratis).
-- [x] Motor de video largo 16:9 con teleprompter, "Tu turno", capítulos y miniaturas + skill `/largo`.
+- [x] Motor de video largo 16:9 con teleprompter, capítulos y miniaturas + skill `/largo`.
 - [x] Videos 1 (15 nov) y 2 (22 nov) + sus shorts derivados (11 y 18 nov): colchón de 2 semanas.
 - [x] Kit del canal en `canal/` (banner, foto de perfil, textos, listas, plantilla).
 - [ ] **Tú:** verificar el canal con tu teléfono y configurarlo con `canal/configuracion.md` (~45 min, una vez).

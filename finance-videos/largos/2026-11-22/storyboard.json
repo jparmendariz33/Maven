@@ -85,11 +85,9 @@
   },
   {
    "type": "personal",
-   "kicker": "Tu turno",
+   "kicker": "Costa Studio Finance",
    "title": "¿Alguna vez has leído un estado de resultados?",
-   "adlib": "Cuenta en 2 frases si alguna vez viste uno (en el trabajo, en la escuela) y qué te pareció.",
-   "adlib_secs": 12,
-   "say": ""
+   "say": "Soy JP Armendáriz, esto es Costa Studio Finance, y antes de empezar, una pregunta: ¿alguna vez has leído un estado de resultados? Si te suena a cosa de contadores, tranquilo: en unos minutos lo vas a leer sin problema."
   },
   {
    "type": "chapter",
@@ -389,11 +387,9 @@
   },
   {
    "type": "personal",
-   "kicker": "Tu turno",
+   "kicker": "Pregúntate",
    "title": "¿Qué negocio crees que gana más por cada $100?",
-   "adlib": "Di qué empresa que usas a diario crees que tiene márgenes altos, y por qué.",
-   "adlib_secs": 12,
-   "say": ""
+   "say": "Ahora piénsalo tú: de las empresas que usas todos los días, ¿cuál crees que se queda con más dinero de cada 100 que vende? ¿Tu banco, tu supermercado, tu app favorita? Escríbelo en los comentarios."
   },
   {
    "type": "chapter",

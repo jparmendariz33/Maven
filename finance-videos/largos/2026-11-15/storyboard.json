@@ -72,10 +72,8 @@
    "type": "personal",
    "kicker": "Costa Studio Finance",
    "title": "Hola, soy JP Armendáriz.",
-   "sub": "Desde la costa, todo se ve con claridad.",
-   "adlib": "Preséntate en 2–3 frases: quién eres y por qué te interesa invertir.",
-   "adlib_secs": 15,
-   "say": ""
+   "say": "Hola, soy JP Armendáriz y esto es Costa Studio Finance. Aquí te explico, con datos reales y sin rollos, cómo funciona la bolsa y qué hacer con tu dinero. Cada domingo, un video nuevo.",
+   "sub": "Desde la costa, todo se ve con claridad."
   },
   {
    "type": "chapter",
@@ -2239,11 +2237,9 @@
   },
   {
    "type": "personal",
-   "kicker": "Tu turno",
+   "kicker": "Pregúntate",
    "title": "¿Y tú qué harías si tu inversión cae 30%?",
-   "adlib": "Cuenta en 2 frases cómo te sentirías (o cómo te sentiste) viendo tu dinero caer.",
-   "adlib_secs": 12,
-   "say": ""
+   "say": "Ahora piénsalo tú. Si mañana tu inversión cayera 30%, ¿qué harías? ¿Venderías para no perder más, o te quedarías? No hay respuesta fácil. Cuéntamela en los comentarios."
   },
   {
    "type": "chapter",

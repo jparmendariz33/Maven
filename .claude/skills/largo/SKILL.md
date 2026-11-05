@@ -35,7 +35,7 @@ Si `largos/$D/*_largo.mp4` ya existe, no lo rehagas.
 ```
 Ejemplo completo y probado: `largos/2026-11-15/storyboard.json` (úsalo como plantilla de ritmo y estilo).
 
-**Estructura (PLAN §4):** gancho (≤30 s) → qué vas a aprender → **"Tu turno" de presentación** → 4–5 capítulos (cada uno abre con
+**Estructura (PLAN §4):** gancho (≤30 s) → qué vas a aprender → **presentación de JP** (escena `personal`) → 4–5 capítulos (cada uno abre con
 escena `chapter`) → error común / mito → resumen en 3 puntos (`list`) → `outro` con pregunta y el tema de la próxima semana.
 
 **Reglas de escritura** (voz de JP): español de México, tuteo, frases cortas, tono sereno, números con dígitos ("26%", "10,000 dólares"),
@@ -43,16 +43,21 @@ decimales solo en pantalla. Una idea por pantalla: cada `say` ≤ 45 palabras (�
 Nunca recomendar comprar/vender; cerrar siempre con "contenido educativo, no asesoría financiera". Los `cue` son palabras del `say`
 de esa misma escena (evita números como cue si puedes).
 
-**Anti "contenido no auténtico" (obligatorio):** al menos **2 escenas `personal`** por video: la presentación (15 s) y una a mitad
-del video (10–15 s) con una pregunta que JP contesta con sus palabras. **Nunca inventes anécdotas de JP**: la escena `personal`
-lleva `"say": ""` y una indicación en `adlib` (lo que se muestra en el teleprompter). Varía los tipos de escena entre semanas.
+**Todo se lee tal cual (regla de JP):** el video se sube como está, con la voz de JP encima. Por eso NO hay pantallas de
+"habla libre", indicaciones ni temporizadores: **cada escena lleva su texto completo en `say`** y lo que se ve en pantalla es parte del
+video para la audiencia. Incluye siempre:
+- Una escena `personal` de presentación al inicio, por ejemplo: "Soy JP Armendáriz y esto es Costa Studio Finance…" (varía la frase).
+- Una escena `personal` a mitad del video con una **pregunta a la audiencia** ("Ahora piénsalo tú: …") que invite a comentar.
+- **Nunca inventes datos personales de JP** (edad, experiencias, cuánto invierte, anécdotas). Usa solo lo que sabemos: su nombre, que
+  hace Costa Studio Finance (división de finanzas de la agencia Costa Studio) y que comparte lo que aprende sobre inversiones.
+- Protección contra la política de contenido no auténtico: su voz real, guiones originales y variedad de pantallas entre semanas.
 
 ### Tipos de escena (motor `engine/long.js`, 1920x1080)
 Comunes: `kicker`, `title`, `subtitle`, `theme` ("blue" | "sand" | "white"), `say`, `cue*`.
 - `hook` (azul): `title`, `value` (número o texto), `prefix`, `unit`, `decimals`, `signed`, `tone`, `caption`, `question`, `cue_value`, `cue_question`.
 - `statement` (azul por defecto): `text`, `emphasis` (palabra(s) en serif mostaza), `sub`, `size`.
 - `chapter` (azul): `number`, `title`, `sub`, `chapter_name` (texto del capítulo de YouTube).
-- `personal` (azul): `title`, `sub`, `adlib` (indicación para JP), `adlib_secs` (10–15), `"say": ""`.
+- `personal` (azul): `kicker`, `title` (frase grande en serif), `sub`, `say` (texto completo que JP lee). Sin `adlib`.
 - `bignum`: `label`, `value`, `prefix`, `suffix`, `decimals`, `signed`, `tone`, `sub`, `cue_value`, `cue_sub`.
 - `list`: `items` [{`text`, `sub`, `tone`, `cue`}] (≤ 4 en una columna; 5–8 en dos).
 - `compare`: `items` [{`label`, `value`, `sub`, `tone`, `highlight`, `cue`}] (2–3 tarjetas).
@@ -99,11 +104,11 @@ Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, cor
    **capítulos** de `capitulos.txt`, fuentes con URL, "Contenido educativo. No es asesoría financiera.",
    "Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.", 3–5 hashtags), lista de reproducción del
    pilar, comentario fijado (la pregunta del outro), pantalla final (video sugerido del mismo pilar) y el **guion para leer** completo
-   (`narration.txt`, marcando dónde va cada "Tu turno").
+   (`python3 scripts/guion_lectura.py largos/$D`).
 2. **Short derivado** (miércoles): `videos/<miércoles>-<SLUG>/` con la skill `/short` en modo sin voz (30–50 s, la idea más poderosa,
    sin ticker si es educativo: storyboard con `"slug"`, `hook` (con `kicker` y `title` propios), `statement`, `catalyst` ("DOM 15" · video completo) y `outro`; ejemplo: `videos/2026-11-11-ACCION/`. El `outro` lleva
    "Video completo el domingo en el canal"). En su `youtube.md`, recuerda enlazar el largo con "Video relacionado".
 3. Commit + push a la rama `costa-studio` (sin `build/` ni .wav).
 4. Mensaje a JP: tema, duración, título recomendado, rutas (MP4, miniatura, short) y recordatorio:
-   "Graba tu voz con CapCut (importa el MP4 → Audio → Grabar → lee el teleprompter; en 'Tu turno' habla libre) y prográmalo
+   "Graba tu voz con CapCut (importa el MP4 → Audio → Grabar → lee el teleprompter de principio a fin) y prográmalo
    para el domingo 10:00. El short derivado, el miércoles 19:00 con 'Video relacionado' → este largo."

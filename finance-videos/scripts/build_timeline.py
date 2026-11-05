@@ -66,7 +66,7 @@ def main(vdir):
     for si, s in enumerate(sb['scenes']):
         if si == 0: t0 = 0.0
         elif si in first: t0 = round(times[first[si]][0] - 0.3, 3)
-        else:   # escena sin narración (p. ej. "Tu turno"): empieza al terminar la frase anterior
+        else:   # escena sin narración: empieza al terminar la frase anterior
             prev = [times[k][1] for k, o in enumerate(owner) if o < si]; t0 = round((prev[-1] if prev else 0) + .35, 3)
         s = json.loads(json.dumps(s)); s['t0'] = t0; scenes.append(s)
     for i, s in enumerate(scenes):
