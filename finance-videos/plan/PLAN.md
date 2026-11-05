@@ -81,7 +81,7 @@ en horizontal 1920x1080, con la firma **COSTA STUDIO FINANCE · by JP Armendári
    gráfico → "lo que esto significa para ti".
 4. **Error común / mito** (≈1 min).
 5. **Cierre:** resumen en 3 puntos + pregunta para comentarios + "Desde la costa, todo se ve con claridad." + CTA.
-- 1,300–1,600 palabras (≈ 140 palabras/min). Frases cortas, tuteo, números con dígitos, cero sensacionalismo.
+- 1,150–1,400 palabras (≈ 120 palabras/min: ritmo cómodo para leer en voz alta). Frases cortas, tuteo, números con dígitos, cero sensacionalismo.
 - Pantallas: ~60–90 por video (una cada 6–10 s). Tipos: gancho, capítulo, frase, cifra grande, lista, comparación, barras,
   línea/precio, medidor (P/E, PEG, ROE), fórmula, línea de tiempo, cita, cierre.
 - Título con la búsqueda objetivo al inicio; capítulos con tiempos en la descripción; miniatura con máx. 4 palabras.

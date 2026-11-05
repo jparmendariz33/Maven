@@ -18,12 +18,12 @@ def main(vdir):
     open(os.path.join(vdir, 'narration.txt'), 'w').write(txt)
     if sb.get('format') == 'long':
         words = len(txt.split())
-        est = words / 140 * 60 + len(sb['scenes']) * .5
+        est = words / 120 * 60 + len(sb['scenes']) * .5
         print(txt); print('\n' + '-' * 60)
-        print(f'VIDEO LARGO · Escenas: {len(sb["scenes"])} | Palabras: {words} | Duración estimada: {est / 60:.1f} min (a ~140 palabras/min)')
-        ok = 1250 <= words <= 1700
-        if words < 1250: print('⚠️  Menos de 1,250 palabras: quedaría de menos de 9 min.')
-        if words > 1700: print('⚠️  Más de 1,700 palabras: quedaría de más de 12 min.')
+        print(f'VIDEO LARGO · Escenas: {len(sb["scenes"])} | Palabras: {words} | Duración estimada: {est / 60:.1f} min (a ~120 palabras/min)')
+        ok = 1100 <= words <= 1450
+        if words < 1100: print('⚠️  Menos de 1,100 palabras: quedaría de menos de 9.5 min.')
+        if words > 1450: print('⚠️  Más de 1,450 palabras: quedaría de más de 12.5 min.')
         if sum(1 for s in sb['scenes'] if s['type'] == 'chapter') < 3: print('⚠️  Usa al menos 3 escenas `chapter`.'); ok = False
         for i, s in enumerate(sb['scenes']):
             if s.get('adlib'): print(f'⚠️  Escena {i}: "adlib" ya no se usa; escribe el texto en "say".'); ok = False

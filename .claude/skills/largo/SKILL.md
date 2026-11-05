@@ -39,7 +39,7 @@ Ejemplo completo y probado: `largos/2026-11-15/storyboard.json` (úsalo como pla
 escena `chapter`) → error común / mito → resumen en 3 puntos (`list`) → `outro` con pregunta y el tema de la próxima semana.
 
 **Reglas de escritura** (voz de JP): español de México, tuteo, frases cortas, tono sereno, números con dígitos ("26%", "10,000 dólares"),
-decimales solo en pantalla. Una idea por pantalla: cada `say` ≤ 45 palabras (≈ 6–18 s). Total **1,300–1,600 palabras** (9–11 min).
+decimales solo en pantalla. Una idea por pantalla: cada `say` ≤ 45 palabras (≈ 6–18 s). Total **1,150–1,400 palabras** (10–11.5 min al ritmo de lectura de JP, ~120 palabras/min).
 Nunca recomendar comprar/vender; cerrar siempre con "contenido educativo, no asesoría financiera". Los `cue` son palabras del `say`
 de esa misma escena (evita números como cue si puedes).
 
@@ -83,7 +83,7 @@ python3 scripts/script_check.py largos/$D      # debe salir ✅ (palabras, capí
 
 ## 3. Tiempos, revisión y render (sin voz; JP graba encima)
 ```bash
-python3 scripts/no_voice.py largos/$D 16        # ritmo de lectura ~140 palabras/min
+python3 scripts/no_voice.py largos/$D           # ritmo de lectura ~120 palabras/min, cuenta sílabas reales (números incluidos)
 python3 scripts/build_timeline.py largos/$D     # sin cues "no encontrados"; revisa escenas <3.5 s o >16 s
 node scripts/render.js largos/$D --qa           # build/qa_1.jpg … qa_N.jpg
 ```
@@ -94,7 +94,7 @@ node scripts/render.js largos/$D --thumb        # miniatura.jpg 1280x720 (revís
 .venv/bin/python scripts/make_audio.py largos/$D
 node scripts/render.js largos/$D                # <slug>_largo.mp4 (≈15–20 min, en paralelo; córrelo en segundo plano)
 ```
-Verifica con `ffprobe` (1920x1080, h264 + aac, duración 8–12 min) y mira 3 cuadros del MP4.
+Verifica con `ffprobe` (1920x1080, h264 + aac, duración 9.5–12.5 min) y mira 3 cuadros del MP4.
 
 Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, corre `.venv/bin/python scripts/process_voice.py largos/$D`
 (nota: ajusta tempo solo si hace falta), `build_timeline.py`, `make_audio.py` y `render.js`: los visuales se sincronizan con su voz.

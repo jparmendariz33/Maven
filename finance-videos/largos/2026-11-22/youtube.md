@@ -12,11 +12,11 @@ De cada $100 que le pagas a Apple, ¿cuánto se queda de ganancia? Aprende a lee
 
 ⏱️ Capítulos
 0:00 Introducción
-1:05 Ingresos
-2:34 Margen bruto
-3:55 Gastos de operación
-5:27 Utilidad neta y por acción
-7:24 Lo que no te dice
+1:18 Ingresos
+3:09 Margen bruto
+4:51 Gastos de operación
+6:45 Utilidad neta y por acción
+9:11 Lo que no te dice
 
 📊 Datos clave (Apple, año fiscal 2026, terminado el 26 sep 2026)
 • Ventas: $478,834 M (+15%) · Margen bruto: 48.8% (productos 39%, servicios 76%)
@@ -40,7 +40,7 @@ Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa St
 - **Comentario fijado:** "¿Qué empresa quieres que leamos así? 👇"
 - Etiquetas: cómo leer un estado de resultados, estado de resultados, Apple, margen bruto, utilidad neta, análisis fundamental
 
-## Cómo grabar tu voz (≈10 min)
+## Cómo grabar tu voz (≈11 min)
 CapCut (gratis) → Nuevo proyecto → importa el MP4 → **Audio → Grabar** → lee el teleprompter de abajo de principio a fin
 (la palabra que toca se ilumina en mostaza; abajo ves la siguiente frase). Todo está escrito: también tu presentación y la
 pregunta a la audiencia. Baja la música original a ~30% → Exportar 1080p.

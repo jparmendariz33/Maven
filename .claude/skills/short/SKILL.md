@@ -102,9 +102,9 @@ Ejemplo completo: `finance-videos/videos/ejemplo-SE/storyboard.json`.
 **Modo predeterminado desde nov 2026: SIN VOZ.** Juan Pablo graba su propia voz en la app de YouTube Shorts leyendo los
 subtítulos (funcionan como teleprompter). En ese caso NO uses vidIQ; en lugar de los pasos 1–5 y de `process_voice.py`:
 ```bash
-python3 scripts/no_voice.py videos/$ID 16     # tiempos estimados a ritmo de lectura (16 caracteres/s ≈ 140 palabras/min)
+python3 scripts/no_voice.py videos/$ID        # ritmo de lectura de JP (~120 palabras/min, cuenta sílabas reales)
 ```
-y sigue en la sección 4 desde `build_timeline.py` (sin voz el video puede durar hasta 75 s; apunta a 55–65 s).
+y sigue en la sección 4 desde `build_timeline.py` (sin voz apunta a 100–125 palabras ≈ 55–70 s; máximo 90 s).
 `make_audio.py` detecta `audio/NO_VOICE` y deja solo música baja + efectos. Usa voz de IA solo si él lo pide.
 
 Con voz de IA (solo si la pide):

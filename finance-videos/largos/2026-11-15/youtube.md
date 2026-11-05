@@ -12,11 +12,11 @@ Archivos: `que-es-una-accion_largo.mp4` · `miniatura.jpg` · Lista: **Empezar d
 
 ⏱️ Capítulos
 0:00 Introducción
-0:59 Qué es una acción
-2:46 Por qué sube y baja
-4:24 Corto vs. largo plazo
-5:50 Cómo se gana dinero
-7:11 El error al empezar
+1:12 Qué es una acción
+3:21 Por qué sube y baja
+5:20 Corto vs. largo plazo
+7:18 Cómo se gana dinero
+8:57 El error al empezar
 
 📊 Datos clave
 • $10,000 en Apple en enero de 2009 ≈ $1.08 millones hoy (×108, sin dividendos).
@@ -39,7 +39,7 @@ Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa St
 - **Pantalla final** (últimos 20 s): botón Suscribirse + "Video más reciente". **Comentario fijado:** "¿De qué empresa te gustaría ser dueño y por qué? 👇"
 - Etiquetas: qué es una acción, cómo invertir, bolsa de valores, acciones para principiantes, invertir desde cero, S&P 500
 
-## Cómo grabar tu voz (≈10 min)
+## Cómo grabar tu voz (≈11 min)
 CapCut (gratis) → Nuevo proyecto → importa el MP4 → **Audio → Grabar** → lee el teleprompter de abajo de principio a fin
 (la palabra que toca se ilumina en mostaza; abajo ves la siguiente frase). Todo está escrito: también tu presentación y la
 pregunta a la audiencia. Baja la música original a ~30% → Exportar 1080p.

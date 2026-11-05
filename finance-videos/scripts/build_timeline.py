@@ -58,7 +58,7 @@ def main(vdir):
     for k, si in enumerate(owner): first.setdefault(si, k)
     voice_end = times[-1][1]
     novoice = os.path.exists(os.path.join(vdir, 'audio', 'NO_VOICE'))
-    MAXD = 75.0 if novoice else 60.0   # sin voz: margen para leer con calma (Shorts admite hasta 3 min)
+    MAXD = 90.0 if novoice else 60.0   # sin voz: margen para leer con calma (Shorts admite hasta 3 min)
     if LONG: MAXD = 3600.0              # video largo: sin tope
     duration = round(max(45.0 if not LONG else 5.0, min(MAXD, voice_end + TAIL)), 2)
     if voice_end + TAIL > MAXD: print(f'⚠️  La voz termina en {voice_end:.1f}s: el video se recortará a {MAXD:.0f} s.')
