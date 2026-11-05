@@ -12,11 +12,11 @@ Archivos: `que-es-una-accion-voz_largo.mp4` (listo para subir, ya trae voz y mú
 
 ⏱️ Capítulos
 0:00 Introducción
-1:12 Qué es una acción
-3:21 Por qué sube y baja
-5:20 Corto vs. largo plazo
-7:18 Cómo se gana dinero
-8:57 El error al empezar
+0:55 Qué es una acción
+2:11 Por qué sube y baja
+3:52 Corto vs. largo plazo
+5:36 Cómo se gana dinero
+6:57 El error al empezar
 
 📊 Datos clave
 • $10,000 en Apple en enero de 2009 ≈ $1.08 millones hoy (×108, sin dividendos).
