@@ -52,9 +52,11 @@ async function renderRange(b, vjs, long, f0, f1, out, audio, label, opts) {
 
   if (mode === '--thumb') {
     const pg = await openPage(b, vjs, true);
-    const img = Buffer.from((await pg.evaluate(() => { renderThumb(); return document.getElementById('c').toDataURL('image/png'); })).split(',')[1], 'base64');
+    // variante opcional: node render.js <dir> --thumb <nombre> '<json con campos de thumbnail>'
+    const name = process.argv[4], over = process.argv[5] ? JSON.parse(process.argv[5]) : null;
+    const img = Buffer.from((await pg.evaluate((o) => { if (o) window.VIDEO.thumbnail = o; renderThumb(); return document.getElementById('c').toDataURL('image/png'); }, over)).split(',')[1], 'base64');
     const tmp = path.join(build, 'thumb_full.png'); fs.writeFileSync(tmp, img);
-    const out = path.join(vdir, 'miniatura.jpg');
+    const out = path.join(vdir, name ? `miniatura_${name}.jpg` : 'miniatura.jpg');
     execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-i', tmp, '-vf', 'scale=1280:720:flags=lanczos', '-q:v', '2', out]);
     console.log('miniatura: ' + out); await b.close(); return;
   }

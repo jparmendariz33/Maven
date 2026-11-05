@@ -469,15 +469,15 @@ function renderThumb() {
   const lg = logoTint(ink); if (lg) X.drawImage(lg, 90, 70, 130, 114);
   txt('FINANCE', 240, 128, { f: F.d, w: 800, s: 34, ls: 8, c: ink }); txt(V.brand.byline || '', 240, 168, { f: F.b, w: 500, s: 30, c: ink, a: .75 });
   const lines = (T.lines || [T.text || '']).slice(0, 3), emw = (T.emphasis || '').toLowerCase();
-  const maxW = T.big ? 1060 : 1700;
-  let size = T.size || 150; for (const l of lines) size = Math.min(size, fit(l, F.d, 800, size, maxW, 70));
-  const lh = size * 1.08, y0 = 560 - (lines.length - 1) * lh / 2 + size * .35;
+  const maxW = T.big ? 1060 : 1720;
+  let size = T.size || 190; for (const l of lines) size = Math.min(size, fit(l, F.d, 800, size, maxW, 70));
+  const lh = size * 1.3, y0 = 560 - (lines.length - 1) * lh / 2 + size * .35;
   lines.forEach((l, i) => { const isE = emw && l.toLowerCase().includes(emw);
-    txt(l, 100, y0 + i * lh, { f: isE ? F.s : F.d, w: isE ? 400 : 800, s: isE ? size * 1.2 : size, c: isE ? em : ink }); });
+    txt(l, 100, y0 + i * lh, { f: isE ? F.s : F.d, w: isE ? 400 : 800, s: isE ? size * 1.45 : size, c: isE ? em : ink }); });
   if (T.big) { const col = T.big_tone === 'down' ? B.terracota : T.big_tone === 'up' ? B.musgo : B.mostaza;
     X.save(); X.translate(1530, 560); X.rotate(-.06); rr(-300, -200, 600, 400, 40); X.fillStyle = col; X.fill();
-    txt(T.big, 0, 60, { f: F.d, w: 800, s: fit(T.big, F.d, 800, 200, 540, 60), al: 'center', c: th === 'blue' ? B.negro : B.arena });
-    if (T.big_sub) txt(T.big_sub, 0, 140, { f: F.b, w: 700, s: 40, al: 'center', c: th === 'blue' ? B.negro : B.arena }); X.restore(); }
+    txt(T.big, 0, 60, { f: F.d, w: 800, s: fit(T.big, F.d, 800, 230, 540, 60), al: 'center', c: th === 'blue' ? B.negro : B.arena });
+    if (T.big_sub) txt(T.big_sub, 0, 145, { f: F.b, w: 700, s: fit(T.big_sub, F.b, 700, 46, 540, 26), al: 'center', c: th === 'blue' ? B.negro : B.arena }); X.restore(); }
   X.save(); X.globalAlpha = .05; X.globalCompositeOperation = 'multiply'; X.drawImage(grain, 0, 0, W, H); X.restore();
 }
 
