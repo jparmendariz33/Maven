@@ -16,6 +16,19 @@ def main(vdir):
     sb = load(os.path.join(vdir, 'storyboard.json'))
     txt = narration(sb)
     open(os.path.join(vdir, 'narration.txt'), 'w').write(txt)
+    if sb.get('format') == 'long':
+        words = len(txt.split()); ad = sum(float(s.get('adlib_secs', 15)) for s in sb['scenes'] if s.get('adlib'))
+        est = words / 140 * 60 + len(sb['scenes']) * .5 + ad
+        print(txt); print('\n' + '-' * 60)
+        print(f'VIDEO LARGO · Escenas: {len(sb["scenes"])} | Palabras: {words} | Duración estimada: {est / 60:.1f} min (a ~140 palabras/min, incluye {ad:.0f} s de "Tu turno")')
+        ok = 1250 <= words <= 1700
+        if words < 1250: print('⚠️  Menos de 1,250 palabras: quedaría de menos de 9 min.')
+        if words > 1700: print('⚠️  Más de 1,700 palabras: quedaría de más de 12 min.')
+        if sum(1 for s in sb['scenes'] if s['type'] == 'chapter') < 3: print('⚠️  Usa al menos 3 escenas `chapter`.'); ok = False
+        for i, s in enumerate(sb['scenes']):
+            if not s.get('say') and not s.get('adlib'): print(f'⚠️  La escena {i} ({s["type"]}) no tiene narración.'); ok = False
+            elif s.get('say') and len(s['say'].split()) > 45: print(f'⚠️  Escena {i} ({s["type"]}): {len(s["say"].split())} palabras; divídela (máx. ~45, una idea por pantalla).'); ok = False
+        print('✅ Guion largo listo.' if ok else '❌ Ajusta el guion.'); sys.exit(0 if ok else 1)
     n = len(txt); est = n / CHARS_PER_SEC + 0.45 + 2.0
     credits = math.ceil(n / 1000) * brand()['voice']['credits_per_1000_chars']
     print(txt); print('\n' + '-' * 60)

@@ -4,7 +4,10 @@ Costa Studio es una agencia de influencer marketing; **Costa Studio Finance** es
 marca. Firma en pantalla: logo + "FINANCE". Reglas de separación y sinergias: `plan/PLAN.md` §0. Nunca analizar una empresa que
 sea cliente de la agencia sin declararlo.
 
-Para crear un video, sigue la skill **`/short`** (`../.claude/skills/short/SKILL.md`). Resumen del flujo:
+**Videos largos (16:9, 9–11 min):** skill **`/largo`** (`../.claude/skills/largo/SKILL.md`), motor `engine/long.js`, carpetas
+`largos/<domingo AAAA-MM-DD>/`. Plan, calendario y metas en `plan/`. Costo cero: sin vidIQ; JP pone su voz (modo sin voz por defecto).
+
+Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL.md`). Resumen del flujo:
 `setup.sh` → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →
 `process_voice.py` → `build_timeline.py` → `render.js --qa` (revisar) → `make_audio.py` → `render.js` → youtube.md → commit.
 

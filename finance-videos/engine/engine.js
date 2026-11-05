@@ -135,7 +135,7 @@ R.statement = (s, t) => {
       txt(wd, x, y, { f: isE ? F.s : F.d, w: isE ? 400 : 600, s: isE ? size * 1.25 : size, c: isE ? em : ink }); x += tw(wd + ' ', isE ? F.s : F.d, isE ? 400 : 600, isE ? size * 1.25 : size); });
     C.restore();
   });
-  if (s.sub) rise(s.sub, 90, y0 + lines.length * lh + 50, seg(t, s.t0 + .9, s.t0 + 1.5), { f: F.b, w: 500, s: 44, c: ink, a: .85 });
+  if (s.sub) riseLines(wrap(s.sub, F.b, 500, 44, 820), 90, y0 + lines.length * lh + 50, 56, s.t0 + .9, t, { f: F.b, w: 500, s: 44, c: ink, a: .85 });
 };
 
 R.company = (s, t) => {
@@ -349,15 +349,15 @@ R.catalyst = (s, t) => {
     let size = 200; while (tw(s.date, F.d, 800, size) > 820 && size > 90) size -= 10;
     txt(s.date, 540, 770 + size * .36 + (1 - ex(k)) * 200, { f: F.d, w: 800, s: size, al: 'center', c: ink });
     C.restore(); C.restore(); }
-  if (s.label) rise(s.label, 540, 1040, seg(t, td + .4, td + 1), { f: F.d, w: 600, s: 58, al: 'center', c: ink });
+  if (s.label) rise(s.label, 540, 1040, seg(t, td + .4, td + 1), { f: F.d, w: 600, s: fit(s.label, F.d, 600, 58, 760, 34), al: 'center', c: ink });
   if (s.sub) riseLines(wrap(s.sub, F.b, 500, 42, 860), 540, 1120, 56, td + .7, t, { f: F.b, w: 500, s: 42, al: 'center', c: ink });
 };
 
 R.outro = (s, t) => {
   const ink = B.arena;
   const ta = cueT(s, 'cue_a', .3), tb = cueT(s, 'cue_b', 1.2);
-  rise(s.question_a || '', 540, 640, seg(t, ta - .1, ta + .5), { f: F.s, w: 400, s: 150, al: 'center', c: ink });
-  rise(s.question_b || '', 540, 800, seg(t, tb - .1, tb + .5), { f: F.s, w: 400, s: 150, al: 'center', c: B.mostaza });
+  rise(s.question_a || '', 540, 640, seg(t, ta - .1, ta + .5), { f: F.s, w: 400, s: fit(s.question_a || '', F.s, 400, 150, 780, 70), al: 'center', c: ink });
+  rise(s.question_b || '', 540, 800, seg(t, tb - .1, tb + .5), { f: F.s, w: 400, s: fit(s.question_b || '', F.s, 400, 150, 780, 70), al: 'center', c: B.mostaza });
   const tl = tb + .9;
   if (V.brand.tagline) rise(V.brand.tagline, 540, 960, seg(t, tl, tl + .6), { f: F.s, w: 400, s: 50, al: 'center', c: ink });
   const kc = seg(t, tl + .4, tl + 1);

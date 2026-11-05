@@ -1,0 +1,79 @@
+{
+ "slug": "APPLE",
+ "title": "De cada $100, Apple se queda con $27.6 (adelanto del 22 nov)",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Apple · año fiscal 2026",
+   "title": "De cada $100…",
+   "value": 27.6,
+   "prefix": "$",
+   "decimals": 1,
+   "unit": "",
+   "tone": "up",
+   "caption": "se queda Apple de ganancia",
+   "question": "¿Cómo?",
+   "cue_value": "casi",
+   "cue_question": "sé",
+   "say": "De cada 100 dólares que le pagas a Apple, se queda con casi 28 de ganancia. ¿Cómo lo sé?"
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "kicker": "Fabricar",
+   "text": "$51 se van en fabricar.",
+   "emphasis": "$51",
+   "say": "De esos 100, 51 se van en fabricar los productos y dar los servicios."
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "kicker": "Operar",
+   "text": "$16 en investigar, vender y administrar.",
+   "emphasis": "$16",
+   "say": "Casi 16 se van en investigar, vender y administrar la empresa."
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "kicker": "Impuestos",
+   "text": "$5 en impuestos y otros.",
+   "emphasis": "$5",
+   "say": "Y unos 5, en impuestos y otros gastos."
+  },
+  {
+   "type": "statement",
+   "text": "Quedan $27.6 de utilidad neta.",
+   "emphasis": "$27.6",
+   "sub": "Un supermercado suele quedarse con menos de $5.",
+   "say": "Quedan casi 28 dólares de utilidad neta. Un supermercado, por ejemplo, suele quedarse con menos de 5."
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "kicker": "El secreto",
+   "text": "En sus servicios, el margen bruto es de 76%.",
+   "emphasis": "76%.",
+   "sub": "iCloud, App Store, Apple Music",
+   "say": "Y el secreto: en sus servicios, como iCloud o la App Store, el margen bruto es de 76%. Vender una suscripción más casi no le cuesta."
+  },
+  {
+   "type": "catalyst",
+   "kicker": "Video completo",
+   "date": "DOM 22",
+   "label": "Cómo leer un estado de resultados",
+   "sub": "Con los números reales de Apple",
+   "cue_date": "domingo",
+   "say": "El domingo te enseño a leer el estado de resultados completo, con los números reales de Apple."
+  },
+  {
+   "type": "outro",
+   "question_a": "¿Qué empresa",
+   "question_b": "leemos después?",
+   "cue_a": "empresa",
+   "cue_b": "leamos",
+   "sources": "Apple, reporte 8-K T4 2026 (SEC)",
+   "say": "¿Qué empresa quieres que leamos después?"
+  }
+ ]
+}

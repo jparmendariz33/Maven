@@ -45,7 +45,8 @@ def align(script_toks, wh):
 
 def main(vdir):
     sb = load(os.path.join(vdir, 'storyboard.json'))
-    data = load(os.path.join(vdir, 'data.json'))
+    dp = os.path.join(vdir, 'data.json'); data = load(dp) if os.path.exists(dp) else {}
+    LONG = sb.get('format') == 'long'
     wh = load(os.path.join(vdir, 'build', 'whisper.json'))
     toks, owner = [], []
     for si, s in enumerate(sb['scenes']):
@@ -58,11 +59,15 @@ def main(vdir):
     voice_end = times[-1][1]
     novoice = os.path.exists(os.path.join(vdir, 'audio', 'NO_VOICE'))
     MAXD = 75.0 if novoice else 60.0   # sin voz: margen para leer con calma (Shorts admite hasta 3 min)
-    duration = round(max(45.0, min(MAXD, voice_end + TAIL)), 2)
+    if LONG: MAXD = 3600.0              # video largo: sin tope
+    duration = round(max(45.0 if not LONG else 5.0, min(MAXD, voice_end + TAIL)), 2)
     if voice_end + TAIL > MAXD: print(f'⚠️  La voz termina en {voice_end:.1f}s: el video se recortará a {MAXD:.0f} s.')
     scenes = []
     for si, s in enumerate(sb['scenes']):
-        t0 = 0.0 if si == 0 else round(times[first[si]][0] - 0.3, 3) if si in first else None
+        if si == 0: t0 = 0.0
+        elif si in first: t0 = round(times[first[si]][0] - 0.3, 3)
+        else:   # escena sin narración (p. ej. "Tu turno"): empieza al terminar la frase anterior
+            prev = [times[k][1] for k, o in enumerate(owner) if o < si]; t0 = round((prev[-1] if prev else 0) + .35, 3)
         s = json.loads(json.dumps(s)); s['t0'] = t0; scenes.append(s)
     for i, s in enumerate(scenes):
         if s['t0'] is None: s['t0'] = scenes[i - 1]['t0'] + 3
@@ -90,21 +95,38 @@ def main(vdir):
     for m in missing: print('⚠️  cue no encontrado (se usa tiempo por defecto):', m)
     # subtítulos
     caps, cur = [], []
+    MAXW = 12 if LONG else 4   # largo: frases de teleprompter de hasta 12 palabras
     for k, (tok, (a, b)) in enumerate(zip(toks, times)):
-        if cur and (owner[k] != owner[k - 1] or a - cur[-1][1] > .6 or len(cur) >= 4): caps.append(cur); cur = []
+        if cur and (owner[k] != owner[k - 1] or a - cur[-1][1] > (1.2 if LONG else .6) or len(cur) >= MAXW): caps.append(cur); cur = []
         cur.append([round(a, 3), round(b, 3), tok])
-        if re.search(r'[.,:;?!…]$', tok): caps.append(cur); cur = []
+        if (re.search(r'[.:;?!…]$', tok)) or (re.search(r',$', tok) and (not LONG or len(cur) >= 6)): caps.append(cur); cur = []
     if cur: caps.append(cur)
-    keep = {k: data[k] for k in ('ticker', 'name', 'short_name', 'exchange', 'currency', 'series', 'quarterly', 'metrics', 'price', 'as_of')}
+    keep = {k: data[k] for k in ('ticker', 'name', 'short_name', 'exchange', 'currency', 'series', 'quarterly', 'metrics', 'price', 'as_of') if k in data}
+    chapters = []
+    if LONG:
+        chapters = [{'index': 0, 't0': 0.0, 'title': sb.get('intro_title', 'Introducción')}]
+        for sc in scenes:
+            if sc['type'] == 'chapter': chapters.append({'index': len(chapters), 't0': sc['t0'], 'title': sc.get('chapter_name') or sc.get('title', '')})
     import base64
     br = brand(); lp = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'brand', 'logo_mask_small.png')
     if os.path.exists(lp): br['logo_data'] = 'data:image/png;base64,' + base64.b64encode(open(lp, 'rb').read()).decode()
-    video = {'duration': duration, 'offset': OFFSET, 'brand': br, 'data': keep, 'scenes': scenes, 'captions': caps}
+    video = {'duration': duration, 'offset': OFFSET, 'brand': br, 'data': keep, 'scenes': scenes, 'captions': caps,
+             'format': 'long' if LONG else 'short', 'chapters': chapters, 'thumbnail': sb.get('thumbnail', {}), 'slug': sb.get('slug', '')}
     os.makedirs(os.path.join(vdir, 'build'), exist_ok=True)
     open(os.path.join(vdir, 'build', 'video.js'), 'w').write('window.VIDEO=' + json.dumps(video, ensure_ascii=False) + ';')
-    json.dump({'duration': duration, 'offset': OFFSET, 'scenes': scenes}, open(os.path.join(vdir, 'build', 'timeline.json'), 'w'), ensure_ascii=False, indent=1)
+    json.dump({'duration': duration, 'offset': OFFSET, 'scenes': scenes, 'format': 'long' if LONG else 'short', 'chapters': chapters, 'slug': sb.get('slug', '')},
+              open(os.path.join(vdir, 'build', 'timeline.json'), 'w'), ensure_ascii=False, indent=1)
+    if LONG:
+        fm = lambda x: f'{int(x // 60)}:{int(x % 60):02d}'
+        open(os.path.join(vdir, 'capitulos.txt'), 'w').write('\n'.join(f"{fm(c['t0'])} {c['title']}" for c in chapters) + '\n')
+        print('capítulos de YouTube:'); [print('  ', fm(c['t0']), c['title']) for c in chapters]
     print(f'duración del video: {duration:.1f}s (voz hasta {voice_end:.1f}s)')
-    for s in scenes: print(f'  {s["t0"]:6.2f}–{s["t1"]:6.2f}  {s["type"]}')
+    if not LONG:
+        for s in scenes: print(f'  {s["t0"]:6.2f}–{s["t1"]:6.2f}  {s["type"]}')
+    else:
+        short = [s for s in scenes if s['t1'] - s['t0'] < 3.5]; longs = [s for s in scenes if s['t1'] - s['t0'] > 16]
+        print(f'escenas: {len(scenes)} | muy cortas (<3.5 s): {len(short)} | muy largas (>16 s): {len(longs)}')
+        for s in short + longs: print(f'  revisar escena {scenes.index(s)} ({s["type"]}): {s["t1"] - s["t0"]:.1f}s')
 
 
 if __name__ == '__main__':

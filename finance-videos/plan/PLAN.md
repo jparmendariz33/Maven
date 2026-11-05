@@ -137,12 +137,13 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 - **Re-plan anual** (4 nov 2027): balance del año y plan 2027–2028 con nuevas tareas programadas.
 
 ## 8. Pendientes
-- [x] Calendario de 55 semanas con rotación y búsquedas validadas.
-- [ ] Motor de video largo 16:9 + miniaturas + skill `/largo` (en construcción).
-- [ ] Videos 1 y 2 (15 y 22 nov) como colchón.
-- [ ] Kit del canal (`canal/`).
-- [ ] Llenar `clientes-agencia.md` (tú).
-- [ ] Verificar el canal con tu teléfono en YouTube Studio (tú, 2 min).
+- [x] Calendario de 55 semanas con rotación y búsquedas validadas (gratis).
+- [x] Motor de video largo 16:9 con teleprompter, "Tu turno", capítulos y miniaturas + skill `/largo`.
+- [x] Videos 1 (15 nov) y 2 (22 nov) + sus shorts derivados (11 y 18 nov): colchón de 2 semanas.
+- [x] Kit del canal en `canal/` (banner, foto de perfil, textos, listas, plantilla).
+- [ ] **Tú:** verificar el canal con tu teléfono y configurarlo con `canal/configuracion.md` (~45 min, una vez).
+- [ ] **Tú:** llenar `clientes-agencia.md`.
+- [ ] **Tú, cada domingo:** 2 min en `metricas.md` (o mándame una captura de YouTube Studio).
 
 ## 9. Tareas programadas (zona horaria: Ciudad de México)
 | Tarea | Cuándo | ID |

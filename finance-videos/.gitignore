@@ -2,3 +2,6 @@
 videos/*/build/
 videos/*/audio/*.wav
 __pycache__/
+largos/*/build/
+largos/*/audio/*.wav
+largos/*/audio/_*

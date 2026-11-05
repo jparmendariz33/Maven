@@ -1,0 +1,67 @@
+{
+ "slug": "ACCION",
+ "title": "Qué es una acción (adelanto del video largo del 15 nov)",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Apple · 2009 → 2026",
+   "title": "$10,000 en Apple",
+   "value": 108,
+   "prefix": "×",
+   "decimals": 0,
+   "unit": "",
+   "tone": "up",
+   "caption": "hoy ≈ 1 millón de dólares",
+   "question": "¿Suerte?",
+   "cue_value": "millón",
+   "cue_question": "suerte",
+   "say": "Si en 2009 hubieras puesto 10,000 dólares en Apple, hoy tendrías más de 1 millón. ¿Fue suerte?"
+  },
+  {
+   "type": "statement",
+   "text": "Una acción es una parte de un negocio.",
+   "emphasis": "parte",
+   "say": "No. Fue ser dueño de una parte de un negocio que no dejó de crecer. Eso es una acción."
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "kicker": "Imagina una taquería",
+   "text": "Dividida en 100 partes: con 1, eres dueño del 1%.",
+   "emphasis": "1%.",
+   "say": "Imagina una taquería dividida en 100 partes. Si compras una, eres dueño del 1%, y te toca el 1% de las ganancias."
+  },
+  {
+   "type": "statement",
+   "text": "Si gana más, tu parte vale más.",
+   "emphasis": "más.",
+   "sub": "Si le va mal, vale menos.",
+   "say": "Si la taquería gana el doble, tu parte vale más. Si le va mal, vale menos. Así de simple."
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "text": "Días: emociones. Años: utilidades.",
+   "emphasis": "utilidades.",
+   "say": "En días y semanas, el precio lo mueven las emociones. En años, lo mueven las utilidades."
+  },
+  {
+   "type": "catalyst",
+   "kicker": "Video completo",
+   "date": "DOM 15",
+   "label": "¿Qué es una acción?",
+   "sub": "Explicado fácil, en el canal",
+   "cue_date": "domingo",
+   "say": "El domingo sale el video completo en el canal: qué es una acción, explicado fácil."
+  },
+  {
+   "type": "outro",
+   "question_a": "¿De qué empresa…",
+   "question_b": "te gustaría ser dueño?",
+   "cue_a": "empresa",
+   "cue_b": "dueño",
+   "sources": "Yahoo Finance",
+   "say": "¿De qué empresa te gustaría ser dueño?"
+  }
+ ]
+}

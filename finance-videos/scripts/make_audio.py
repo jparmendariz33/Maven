@@ -46,7 +46,8 @@ def thud(g=.8):               # golpe grave y redondo
 
 def main(vdir):
     tl = json.load(open(os.path.join(vdir, 'build', 'timeline.json')))
-    T = tl['duration']; n = int(T * SR); fx = np.zeros(n); mus = np.zeros(n)
+    LONG = tl.get('format') == 'long'
+    T = tl['duration']; n = int(T * SR); fx = np.zeros(n, np.float32); mus = np.zeros(n, np.float32)
 
     def add(buf, sig, t, g=1.0):
         i = int(t * SR); j = min(n, i + len(sig))
@@ -85,8 +86,9 @@ def main(vdir):
         arp = chords[k % 4]
         for j in range(8):
             add(mus, pluck(arp[j % 4] * 2, .6, .10), k * bar + j * bar / 8)
-        for j in range(4):
-            add(mus, thud(.35), k * bar + j * bar / 4)
+        if not LONG:   # en largos, sin pulso de bombo: cama más tranquila para 10 minutos
+            for j in range(4):
+                add(mus, thud(.35), k * bar + j * bar / 4)
     fi = int(.4 * SR); mus[:fi] *= np.linspace(0, 1, fi); fo = int(1.2 * SR); mus[-fo:] *= np.linspace(1, 0, fo)
     # voz + ducking
     vp = os.path.join(vdir, 'audio', 'voice.wav')
@@ -98,7 +100,7 @@ def main(vdir):
         voice = np.zeros(n); add(voice, v, tl['offset'])
         e = np.convolve(np.abs(voice), np.ones(int(.15 * SR)) / int(.15 * SR), 'same'); e /= e.max() + 1e-9
         duck = 1 - .6 * np.clip(e * 4, 0, 1)
-    mus = mus / (np.abs(mus).max() + 1e-9) * .20 * duck
+    mus = mus / (np.abs(mus).max() + 1e-9) * (.13 if LONG else .20) * duck
     fx = fx / (np.abs(fx).max() + 1e-9) * (.22 if not voice.any() else .34)
     voice = voice / (np.abs(voice).max() + 1e-9) * .92
     mix = np.tanh((voice + mus + fx) * 1.02); mix /= np.abs(mix).max() * 1.06

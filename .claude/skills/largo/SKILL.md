@@ -1,0 +1,109 @@
+---
+name: largo
+description: Produce el video largo semanal (9–11 min, 16:9) de Costa Studio Finance, by JP Armendáriz, listo para que JP solo le ponga su voz — guion con datos verificados, storyboard, render 1920x1080 con teleprompter, miniatura, youtube.md y short derivado. Úsala cuando digan "/largo", "haz el video largo de la semana", "produce el video del domingo", o cuando la tarea programada de los lunes lo pida.
+---
+
+# /largo — video largo semanal (Costa Studio Finance)
+
+Proyecto: `finance-videos/` (todo se ejecuta desde ahí: `cd finance-videos`). Usuario: **Juan Pablo Armendáriz (@jparmendariz)**;
+escríbele en español, corto y claro. Lee antes: `plan/PLAN.md` (§0 marca y conflictos de interés, §4 formato, §6b monetización),
+`plan/calendario-largos.md` y `plan/clientes-agencia.md`. **Costo cero:** no uses vidIQ ni servicios de pago.
+
+## 0. Preparar
+```bash
+bash scripts/setup.sh
+D=AAAA-MM-DD            # domingo de publicación (la semana del calendario)
+mkdir -p largos/$D/data
+```
+Si `largos/$D/*_largo.mp4` ya existe, no lo rehagas.
+
+## 1. Investigar y verificar (WebSearch; fuentes primarias cuando se pueda)
+- Toma de `calendario-largos.md` la semana $D: título, búsqueda objetivo, gancho, capítulos, visuales, short derivado y datos a verificar.
+- Cada número del guion sale de una fuente que anotas en `largos/$D/fuentes.md` (URL + dato). México: Banxico, INEGI, CONSAR, SAT, CNBV, BMV.
+  Empresas: reportes en la SEC o de la empresa. Estudios (Behavioral Finance): el paper original o una fuente académica seria;
+  nada de estudios retractados.
+- Datos de mercado: `python3 scripts/fetch_data.py TICKER largos/$D/data` (empresa) y
+  `python3 scripts/fetch_series.py SIMBOLO DESDE [1mo|1wk|1d] largos/$D/data/x.json` (series para gráficas: ^GSPC, ^IXIC, ^MXX, ^N225, MXN=X…).
+  Si Yahoo responde 429, reintenta con espera creciente.
+- Si la empresa del tema está en `clientes-agencia.md`, decláralo en el guion y la descripción (o avisa a JP).
+
+## 2. Guion + storyboard (`largos/$D/storyboard.json`)
+```json
+{ "format": "long", "slug": "que-es-una-accion", "title": "…", "intro_title": "Introducción",
+  "thumbnail": {"lines": ["¿QUÉ ES UNA", "ACCIÓN?"], "emphasis": "acción", "big": "×108", "big_sub": "Apple desde 2009", "big_tone": "up"},
+  "scenes": [ {"type": "…", "say": "…", …} ] }
+```
+Ejemplo completo y probado: `largos/2026-11-15/storyboard.json` (úsalo como plantilla de ritmo y estilo).
+
+**Estructura (PLAN §4):** gancho (≤30 s) → qué vas a aprender → **"Tu turno" de presentación** → 4–5 capítulos (cada uno abre con
+escena `chapter`) → error común / mito → resumen en 3 puntos (`list`) → `outro` con pregunta y el tema de la próxima semana.
+
+**Reglas de escritura** (voz de JP): español de México, tuteo, frases cortas, tono sereno, números con dígitos ("26%", "10,000 dólares"),
+decimales solo en pantalla. Una idea por pantalla: cada `say` ≤ 45 palabras (≈ 6–18 s). Total **1,300–1,600 palabras** (9–11 min).
+Nunca recomendar comprar/vender; cerrar siempre con "contenido educativo, no asesoría financiera". Los `cue` son palabras del `say`
+de esa misma escena (evita números como cue si puedes).
+
+**Anti "contenido no auténtico" (obligatorio):** al menos **2 escenas `personal`** por video: la presentación (15 s) y una a mitad
+del video (10–15 s) con una pregunta que JP contesta con sus palabras. **Nunca inventes anécdotas de JP**: la escena `personal`
+lleva `"say": ""` y una indicación en `adlib` (lo que se muestra en el teleprompter). Varía los tipos de escena entre semanas.
+
+### Tipos de escena (motor `engine/long.js`, 1920x1080)
+Comunes: `kicker`, `title`, `subtitle`, `theme` ("blue" | "sand" | "white"), `say`, `cue*`.
+- `hook` (azul): `title`, `value` (número o texto), `prefix`, `unit`, `decimals`, `signed`, `tone`, `caption`, `question`, `cue_value`, `cue_question`.
+- `statement` (azul por defecto): `text`, `emphasis` (palabra(s) en serif mostaza), `sub`, `size`.
+- `chapter` (azul): `number`, `title`, `sub`, `chapter_name` (texto del capítulo de YouTube).
+- `personal` (azul): `title`, `sub`, `adlib` (indicación para JP), `adlib_secs` (10–15), `"say": ""`.
+- `bignum`: `label`, `value`, `prefix`, `suffix`, `decimals`, `signed`, `tone`, `sub`, `cue_value`, `cue_sub`.
+- `list`: `items` [{`text`, `sub`, `tone`, `cue`}] (≤ 4 en una columna; 5–8 en dos).
+- `compare`: `items` [{`label`, `value`, `sub`, `tone`, `highlight`, `cue`}] (2–3 tarjetas).
+- `line`: `series` [{`name`, `points` [[fecha|etiqueta, valor]…], `tone`, `cue`}] o `use_price: true` (+ `sessions`) con data.json;
+  `prefix`, `suffix`, `decimals`, `axis_decimals`, `zero`, `y_min`, `y_max`, `x_labels` (índices), `x_fmt: "raw"` (etiquetas tal cual),
+  `annotations` [{`date` o `i`, `label`, `sub`, `tone`, `cue`, `dir` (-1 arriba, 1 abajo), `len`}] (máx. 3; prefiere `dir: -1`).
+- `bars`: `items` [{`label`, `value`, `value2`, `tone`, `display`}] (+ `stack: true`, `legend` [a, b]) o trimestres de data.json
+  (`quarters` para sobrescribir); `prefix`, `suffix`, `decimals`, `cue_bars`.
+- `cascade` (estado de resultados): `items` [{`label`, `value`, `kind`: "total"}]; el 1º es el total inicial, los demás restan salvo `kind: "total"`.
+- `donut`: `slices` [{`label`, `value`, `tone`, `cue`, `display`}], `center`, `cue_donut`.
+- `metric`: igual que en shorts (P/E, PEG, ROE con `scale` y bandas; ver skill /short).
+- `quote` (azul): `text`, `author`, `source`.
+- `formula`: `parts` [{`t`, `op`: true para ÷ = → ×, `tone`, `cue`}], `sub`, `cue_sub`.
+- `timeline`: `events` [{`date`, `label`, `sub`, `tone`, `cue`}] (3–6).
+- `table`: `headers`, `rows`, `highlight` (índice), `row_cues`.
+- `news`: `bullets` [{`text`, `sub`, `tone`, `cue`}], `source`.
+- `catalyst` (azul): `date`, `label`, `sub`, `cue_date`.
+- `outro` (azul): `question_a`, `question_b`, `cue_a`, `cue_b`, `cta`, `sources`.
+
+```bash
+python3 scripts/script_check.py largos/$D      # debe salir ✅ (palabras, capítulos, escenas ≤ 45 palabras)
+```
+
+## 3. Tiempos, revisión y render (sin voz; JP graba encima)
+```bash
+python3 scripts/no_voice.py largos/$D 16        # ritmo de lectura ~140 palabras/min
+python3 scripts/build_timeline.py largos/$D     # sin cues "no encontrados"; revisa escenas <3.5 s o >16 s
+node scripts/render.js largos/$D --qa           # build/qa_1.jpg … qa_N.jpg
+```
+**Mira TODAS las hojas** (Read): textos encimados o fuera de cuadro, etiquetas que chocan con ejes o con el teleprompter (y > 900),
+escenas vacías, datos correctos. Corrige el storyboard y repite. Revisa 2–3 cuadros sueltos con `--at`.
+```bash
+node scripts/render.js largos/$D --thumb        # miniatura.jpg 1280x720 (revísala: texto grande, máx. 4 palabras)
+.venv/bin/python scripts/make_audio.py largos/$D
+node scripts/render.js largos/$D                # <slug>_largo.mp4 (≈15–20 min, en paralelo; córrelo en segundo plano)
+```
+Verifica con `ffprobe` (1920x1080, h264 + aac, duración 8–12 min) y mira 3 cuadros del MP4.
+
+Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, corre `.venv/bin/python scripts/process_voice.py largos/$D`
+(nota: ajusta tempo solo si hace falta), `build_timeline.py`, `make_audio.py` y `render.js`: los visuales se sincronizan con su voz.
+
+## 4. Entregables
+1. `largos/$D/youtube.md`: 3 títulos (la búsqueda objetivo al inicio, ≤ 70 caracteres), descripción (2–3 líneas con la promesa,
+   **capítulos** de `capitulos.txt`, fuentes con URL, "Contenido educativo. No es asesoría financiera.",
+   "Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.", 3–5 hashtags), lista de reproducción del
+   pilar, comentario fijado (la pregunta del outro), pantalla final (video sugerido del mismo pilar) y el **guion para leer** completo
+   (`narration.txt`, marcando dónde va cada "Tu turno").
+2. **Short derivado** (miércoles): `videos/<miércoles>-<SLUG>/` con la skill `/short` en modo sin voz (30–50 s, la idea más poderosa,
+   sin ticker si es educativo: storyboard con `"slug"`, `hook` (con `kicker` y `title` propios), `statement`, `catalyst` ("DOM 15" · video completo) y `outro`; ejemplo: `videos/2026-11-11-ACCION/`. El `outro` lleva
+   "Video completo el domingo en el canal"). En su `youtube.md`, recuerda enlazar el largo con "Video relacionado".
+3. Commit + push a la rama `costa-studio` (sin `build/` ni .wav).
+4. Mensaje a JP: tema, duración, título recomendado, rutas (MP4, miniatura, short) y recordatorio:
+   "Graba tu voz con CapCut (importa el MP4 → Audio → Grabar → lee el teleprompter; en 'Tu turno' habla libre) y prográmalo
+   para el domingo 10:00. El short derivado, el miércoles 19:00 con 'Video relacionado' → este largo."
