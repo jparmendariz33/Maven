@@ -35,14 +35,14 @@ LIC_NAME = {'cc0': 'CC0', 'pdm': 'Dominio público', 'by': 'CC BY', 'by-sa': 'CC
 
 
 def get(url, tries=4, binary=False):
-    if 'wikimedia.org' in url: tries = max(tries, 9)   # Wikimedia limita por IP: paciencia
+    if 'wikimedia.org' in url: tries = max(tries, 7)   # Wikimedia limita por IP: paciencia (esperas de 15–60 s)
     for i in range(tries):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept': '*/*'})
             with urllib.request.urlopen(req, timeout=40) as r:
                 b = r.read(); return b if binary else b.decode('utf-8')
         except urllib.error.HTTPError as e:
-            if e.code in (429, 503) and i < tries - 1: time.sleep(min(30, 6 * (i + 1)) if 'wikimedia.org' in url else 3 * (i + 1)); continue
+            if e.code in (429, 503) and i < tries - 1: time.sleep(min(60, 15 * (i + 1)) if 'wikimedia.org' in url else 3 * (i + 1)); continue
             if i == tries - 1: raise
         except Exception:
             if i == tries - 1: raise
@@ -109,10 +109,10 @@ def cmd_search(a):
         if w and max(w, h) < 700: continue      # muy chica para video
         try:
             time.sleep(.6)   # Wikimedia limita la velocidad; solo acepta anchos estándar (330, 960, 1280, 1920)
-            thumb = wm_thumb(r['url'], 330) if 'upload.wikimedia.org' in r['url'] and (w or 9999) > 330 else None
-            try: data = get(thumb, tries=2, binary=True) if thumb else None
+            try: data = get(f"https://api.openverse.org/v1/images/{r['id']}/thumb/", tries=2, binary=True)   # caché de Openverse
             except Exception: data = None
-            data = data or get(f"https://api.openverse.org/v1/images/{r['id']}/thumb/", tries=2, binary=True)
+            thumb = wm_thumb(r['url'], 330) if 'upload.wikimedia.org' in r['url'] and (w or 9999) > 330 else None
+            if not data and thumb: data = get(thumb, tries=2, binary=True)
         except Exception as e:
             print('  (sin vista previa:', r.get('title', '')[:50], e, ')'); continue
         i = len(out) + 1; fn = os.path.join(cand, f'c{i:02d}.jpg')
