@@ -7,6 +7,11 @@ Archivo: `ACCION_short.mp4`
 ## Descripción
 ```
 Adelanto del video del domingo 15 nov: "¿Qué es una acción y por qué sube o baja?". Míralo completo en el canal.
+Imágenes:
+• Apple Store de la Quinta Avenida: foto de Jorge Láscar, CC BY 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg
+• Taquero y trompo al pastor: foto de permanently scatterbrained, CC BY 2.0, Flickr — https://www.flickr.com/photos/88774309@N00/3422512156
+• Piso de remates de la Bolsa de Nueva York: foto de pingnews.com (Highsmith/LOC), CC BY-SA 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:No_Known_Restrictions_Trading_Floor,_New_York_Stock_Exchange_(Highsmith_LOC)_(6718386525).jpg
+
 Contenido educativo. No es asesoría financiera.
 Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.
 ```

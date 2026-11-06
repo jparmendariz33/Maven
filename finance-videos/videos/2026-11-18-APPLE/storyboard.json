@@ -15,7 +15,8 @@
    "question": "¿Cómo?",
    "cue_value": "casi",
    "cue_question": "sé",
-   "say": "De cada 100 dólares que le pagas a Apple, se queda con casi 28 de ganancia. ¿Cómo lo sé?"
+   "say": "De cada 100 dólares que le pagas a Apple, se queda con casi 28 de ganancia. ¿Cómo lo sé?",
+   "bg_image": "images/apple_store.jpg"
   },
   {
    "type": "statement",
@@ -23,15 +24,15 @@
    "kicker": "Fabricar",
    "text": "$51 se van en fabricar.",
    "emphasis": "$51",
-   "say": "De esos 100, 51 se van en fabricar los productos y dar los servicios."
+   "say": "De esos 100, 51 se van en fabricar los productos y dar los servicios.",
+   "bg_image": "images/iphone.jpg"
   },
   {
-   "type": "statement",
-   "theme": "sand",
-   "kicker": "Operar",
-   "text": "$16 en investigar, vender y administrar.",
-   "emphasis": "$16",
-   "say": "Casi 16 se van en investigar, vender y administrar la empresa."
+   "say": "Casi 16 se van en investigar, vender y administrar la empresa.",
+   "type": "photo",
+   "image": "images/apple_park.jpg",
+   "kicker": "Apple Park · Cupertino",
+   "title": "$16 en investigar, vender y administrar."
   },
   {
    "type": "statement",

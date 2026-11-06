@@ -83,6 +83,8 @@ python3 scripts/fetch_images.py add videos/$ID fachada "https://…" --credit "F
 - Para `commons`: busca nombres con WebFetch en `https://commons.wikimedia.org/wiki/Category:<Empresa>` (y subcategorías: CEO,
   tiendas, productos) y lee autor y licencia en la página `File:…` del archivo. Solo CC0, dominio público, CC BY o CC BY-SA.
 - Wikimedia limita las descargas desde la nube (429): el script reintenta solo, con paciencia (hasta ~3 min por foto).
+  **Si Wikimedia sigue en 429, busca en Flickr** (`search … --source flickr`): baja al instante y también tiene licencias libres
+  (CC BY / BY-SA / CC0). En el pie de foto y en youtube.md escribe una descripción limpia, no el título original de Flickr.
   Lanza las descargas en segundo plano y sigue con el guion. Si una no baja, usa otra fuente o quita esa imagen.
 - **Mira cada imagen antes de usarla** (Read): que de verdad sea esa marca/lugar/persona, sin texto que confunda, nítida.
 - Las fotos horizontales se ven completas (con fondo desenfocado); las verticales llenan la pantalla. `focus` [x, y] (0–1)

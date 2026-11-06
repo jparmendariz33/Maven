@@ -21,6 +21,7 @@ Uso (DIR = carpeta del video, p. ej. videos/2026-11-06-COST o largos/2026-11-15)
 
 Nota: desde los servidores de la nube Wikimedia suele responder 429 (límite de velocidad). El script reintenta solo, con espera
 creciente (hasta ~3 min por archivo); Openverse a veces responde 504: entonces usa `commons` o `add`. jsDelivr (simple-icons) es estable.
+Si Wikimedia sigue bloqueando, usa `search … --source flickr` (Flickr baja sin límite; también licencias libres).
   python3 scripts/fetch_images.py add DIR fachada "https://…/foto.jpg" --credit "Foto: Costco (sala de prensa)"
   python3 scripts/fetch_images.py credits DIR                  → DIR/images/creditos.md (pégalo en youtube.md)
 

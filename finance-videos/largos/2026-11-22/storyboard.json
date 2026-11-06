@@ -12,7 +12,8 @@
   "emphasis": "resultados",
   "big": "$27.6",
   "big_sub": "de cada $100 · Apple",
-  "big_tone": "up"
+  "big_tone": "up",
+  "bg_image": "images/apple_park.jpg"
  },
  "scenes": [
   {
@@ -28,7 +29,8 @@
    "question": "¿Cómo lo sé?",
    "cue_value": "casi",
    "cue_question": "sé",
-   "say": "De cada 100 dólares que le pagas a Apple por un iPhone, una Mac o una suscripción, la empresa se queda con casi 28 de ganancia. ¿Cómo lo sé? Con una sola hoja."
+   "say": "De cada 100 dólares que le pagas a Apple por un iPhone, una Mac o una suscripción, la empresa se queda con casi 28 de ganancia. ¿Cómo lo sé? Con una sola hoja.",
+   "bg_image": "images/apple_store.jpg"
   },
   {
    "type": "statement",
@@ -81,7 +83,8 @@
    "sub": "Una de las empresas más valiosas del mundo. Y su estado de resultados es de los más claros para aprender.",
    "cue_value": "vale",
    "cue_sub": "claros",
-   "say": "¿Por qué Apple? Porque hoy vale más de 5 billones de dólares en la bolsa, es de las empresas más valiosas del mundo, y su estado de resultados es de los más claros para aprender."
+   "say": "¿Por qué Apple? Porque hoy vale más de 5 billones de dólares en la bolsa, es de las empresas más valiosas del mundo, y su estado de resultados es de los más claros para aprender.",
+   "bg_image": "images/apple_park.jpg"
   },
   {
    "type": "personal",
@@ -168,7 +171,8 @@
    "sub": "Si un año el iPhone se vende menos, se nota en todo el estado de resultados.",
    "cue_value": "mitad",
    "cue_sub": "nota",
-   "say": "Que más de la mitad de las ventas venga de un solo producto es una fortaleza, porque es un éxito enorme. Pero también es un riesgo: si un año el iPhone se vende menos, se nota en todo el estado de resultados."
+   "say": "Que más de la mitad de las ventas venga de un solo producto es una fortaleza, porque es un éxito enorme. Pero también es un riesgo: si un año el iPhone se vende menos, se nota en todo el estado de resultados.",
+   "bg_image": "images/iphone.jpg"
   },
   {
    "type": "statement",
@@ -275,10 +279,12 @@
    "say": "Y los servicios siguen creciendo: 13% en un año. Para Apple, cada usuario nuevo de iPhone es también un posible cliente de iCloud, de Apple Music o de la App Store por muchos años."
   },
   {
-   "type": "statement",
-   "text": "Un margen bruto alto suele significar poder de precio.",
-   "emphasis": "precio.",
-   "say": "Un margen bruto alto suele significar poder de precio: la gente está dispuesta a pagar más por tu producto que lo que te cuesta hacerlo. Es una de las señales de una ventaja competitiva."
+   "say": "Un margen bruto alto suele significar poder de precio: la gente está dispuesta a pagar más por tu producto que lo que te cuesta hacerlo. Es una de las señales de una ventaja competitiva.",
+   "type": "photo",
+   "image": "images/apple_store.jpg",
+   "layout": "full",
+   "title": "Un margen bruto alto suele significar poder de precio.",
+   "kicker": "Apple Store · Quinta Avenida"
   },
   {
    "type": "chapter",
@@ -286,7 +292,8 @@
    "title": "Gastos de operación",
    "sub": "Investigar, vender y administrar",
    "chapter_name": "Gastos de operación",
-   "say": "Tercer nivel: los gastos de operación, lo que cuesta hacer funcionar la empresa."
+   "say": "Tercer nivel: los gastos de operación, lo que cuesta hacer funcionar la empresa.",
+   "bg_image": "images/apple_park.jpg"
   },
   {
    "type": "list",
@@ -559,11 +566,17 @@
    "say": "Verás que dice utilidad diluida. Significa que cuenta también las acciones que la empresa podría emitir, por ejemplo las que da a sus empleados como parte de su sueldo. Es la cifra más conservadora."
   },
   {
-   "type": "statement",
-   "text": "Creció más porque hay menos acciones.",
-   "emphasis": "menos",
-   "sub": "Apple recompra y retira sus propias acciones: casi 2% menos en un año.",
-   "say": "¿Por qué creció más? Porque Apple compra sus propias acciones y las retira. Hoy hay casi 2% menos acciones que hace un año, así que la utilidad se reparte entre menos rebanadas."
+   "say": "¿Por qué creció más? Porque Apple compra sus propias acciones y las retira. Hoy hay casi 2% menos acciones que hace un año, así que la utilidad se reparte entre menos rebanadas.",
+   "type": "photo",
+   "image": "images/tim_cook.jpg",
+   "layout": "split",
+   "title": "Creció más porque hay menos acciones.",
+   "kicker": "Recompras",
+   "caption": "Tim Cook, CEO de Apple",
+   "focus": [
+    0.38,
+    0.5
+   ]
   },
   {
    "type": "statement",

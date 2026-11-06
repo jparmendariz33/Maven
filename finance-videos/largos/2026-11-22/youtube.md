@@ -28,6 +28,12 @@ De cada $100 que le pagas a Apple, ¿cuánto se queda de ganancia? Aprende a lee
 • Años 2023–2025: Yahoo Finance (estados anuales de Apple).
 • Valor de mercado al 4 nov 2026: Yahoo Finance.
 
+Imágenes:
+• Apple Store de la Quinta Avenida: foto de Jorge Láscar, CC BY 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg
+• Apple Park (Cupertino): foto de Daniel L. Lu (dllu), CC BY-SA 4.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Aerial_view_of_Apple_Park_dllu.jpg
+• Tim Cook: foto de deerkoski, CC BY 2.0, Flickr — https://www.flickr.com/photos/87677022@N00/7178643521
+• iPhone 17 Pro: imagen de Apple (sala de prensa) — https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/
+
 Contenido educativo. No es asesoría financiera.
 Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.
 #estadoderesultados #inversiones #Apple

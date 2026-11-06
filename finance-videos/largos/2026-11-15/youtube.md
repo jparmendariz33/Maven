@@ -28,6 +28,15 @@ Archivos: `que-es-una-accion_largo.mp4` · `miniatura.jpg` · Lista: **Empezar d
 • Benjamin Graham, citado por Warren Buffett en sus cartas a los accionistas de Berkshire Hathaway: https://www.berkshirehathaway.com/letters/letters.html
 • Meta, resultados del T3 2026 (SEC): https://www.sec.gov/Archives/edgar/data/0001326801/000162828026066700/meta-09302026xexhibit991.htm
 
+Imágenes:
+• Apple Store de la Quinta Avenida: foto de Jorge Láscar, CC BY 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg
+• Taquero y trompo al pastor: foto de permanently scatterbrained, CC BY 2.0, Flickr — https://www.flickr.com/photos/88774309@N00/3422512156
+• Bodega Aurrera Express (Mazatlán): foto de Doge Gamer 2015, CC0, Flickr — https://www.flickr.com/photos/138259041@N03/51314469546
+• Bolsa Mexicana de Valores: foto de * CliNKer *, CC BY-SA 2.0, Flickr — https://www.flickr.com/photos/12541159@N00/3230730656
+• Piso de remates de la Bolsa de Nueva York: foto de pingnews.com (Highsmith/LOC), CC BY-SA 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:No_Known_Restrictions_Trading_Floor,_New_York_Stock_Exchange_(Highsmith_LOC)_(6718386525).jpg
+• Letrero de Wall Street: foto de Acediscovery, CC BY 4.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Wall-Street-Sign-New-York.jpg
+• Fachada de la Bolsa de Nueva York: foto de Images George Rex, CC BY-SA 2.0, Flickr — https://www.flickr.com/photos/36692623@N06/6620452741
+
 Contenido educativo. No es asesoría financiera.
 Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.
 #inversiones #bolsadevalores #finanzaspersonales

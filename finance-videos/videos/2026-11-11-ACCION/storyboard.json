@@ -15,7 +15,8 @@
    "question": "¿Suerte?",
    "cue_value": "millón",
    "cue_question": "suerte",
-   "say": "Si en 2009 hubieras puesto 10,000 dólares en Apple, hoy tendrías más de 1 millón. ¿Fue suerte?"
+   "say": "Si en 2009 hubieras puesto 10,000 dólares en Apple, hoy tendrías más de 1 millón. ¿Fue suerte?",
+   "bg_image": "images/apple_store.jpg"
   },
   {
    "type": "statement",
@@ -24,12 +25,11 @@
    "say": "No. Fue ser dueño de una parte de un negocio que no dejó de crecer. Eso es una acción."
   },
   {
-   "type": "statement",
-   "theme": "sand",
+   "say": "Imagina una taquería dividida en 100 partes. Si compras una, eres dueño del 1%, y te toca el 1% de las ganancias.",
+   "type": "photo",
+   "image": "images/tacos.jpg",
    "kicker": "Imagina una taquería",
-   "text": "Dividida en 100 partes: con 1, eres dueño del 1%.",
-   "emphasis": "1%.",
-   "say": "Imagina una taquería dividida en 100 partes. Si compras una, eres dueño del 1%, y te toca el 1% de las ganancias."
+   "title": "Dividida en 100 partes: con 1, eres dueño del 1%."
   },
   {
    "type": "statement",
@@ -39,11 +39,11 @@
    "say": "Si la taquería gana el doble, tu parte vale más. Si le va mal, vale menos. Así de simple."
   },
   {
-   "type": "statement",
-   "theme": "sand",
-   "text": "Días: emociones. Años: utilidades.",
-   "emphasis": "utilidades.",
-   "say": "En días y semanas, el precio lo mueven las emociones. En años, lo mueven las utilidades."
+   "say": "En días y semanas, el precio lo mueven las emociones. En años, lo mueven las utilidades.",
+   "type": "photo",
+   "image": "images/nyse_piso.jpg",
+   "kicker": "Bolsa de Nueva York",
+   "title": "Días: emociones. Años: utilidades."
   },
   {
    "type": "catalyst",

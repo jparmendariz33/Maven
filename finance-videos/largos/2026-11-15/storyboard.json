@@ -11,7 +11,8 @@
   "emphasis": "acción",
   "big": "×108",
   "big_sub": "Apple desde 2009",
-  "big_tone": "up"
+  "big_tone": "up",
+  "bg_image": "images/apple_store.jpg"
  },
  "scenes": [
   {
@@ -27,7 +28,8 @@
    "question": "¿Fue suerte?",
    "cue_value": "millón",
    "cue_question": "suerte",
-   "say": "Si en enero de 2009 hubieras puesto 10,000 dólares en acciones de Apple, hoy tendrías más de 1 millón de dólares. Más de 100 veces tu dinero. ¿Fue suerte?"
+   "say": "Si en enero de 2009 hubieras puesto 10,000 dólares en acciones de Apple, hoy tendrías más de 1 millón de dólares. Más de 100 veces tu dinero. ¿Fue suerte?",
+   "bg_image": "images/apple_store.jpg"
   },
   {
    "type": "statement",
@@ -137,11 +139,12 @@
    "say": "Decide dividir la taquería en 100 partes iguales. Se queda con 60 y vende las otras 40 a 25,000 pesos cada una. Así junta su millón."
   },
   {
-   "type": "statement",
-   "text": "Una acción es una parte de un negocio.",
-   "emphasis": "parte",
-   "sub": "1 de 100 partes = eres dueño del 1% de la taquería.",
-   "say": "Cada una de esas partes es una acción. Si tienes una de las 100, eres dueño del 1% de la taquería."
+   "say": "Cada una de esas partes es una acción. Si tienes una de las 100, eres dueño del 1% de la taquería.",
+   "type": "photo",
+   "image": "images/tacos.jpg",
+   "layout": "full",
+   "title": "Una acción es una parte de un negocio.",
+   "kicker": "Imagina una taquería"
   },
   {
    "type": "list",
@@ -167,12 +170,13 @@
    "say": "Y ser dueño tiene tres consecuencias. Te toca una parte de las ganancias. Si el negocio vale más, tu parte también. Y si al negocio le va mal, tu parte vale menos."
   },
   {
-   "type": "statement",
-   "theme": "sand",
-   "text": "Apple, Walmart de México o Bimbo funcionan igual.",
-   "emphasis": "igual",
-   "sub": "Solo que no están divididas en 100 partes, sino en miles de millones.",
-   "say": "Con Apple, con Walmart de México o con Bimbo pasa exactamente lo mismo. Solo que no están divididas en 100 partes, sino en miles de millones de acciones."
+   "say": "Con Apple, con Walmart de México o con Bimbo pasa exactamente lo mismo. Solo que no están divididas en 100 partes, sino en miles de millones de acciones.",
+   "type": "photo",
+   "image": "images/bodega_aurrera.jpg",
+   "layout": "split",
+   "title": "Apple, Walmart de México o Bimbo funcionan igual.",
+   "kicker": "Empresas reales",
+   "caption": "Walmart de México (Bodega Aurrera), Bimbo, Apple…"
   },
   {
    "type": "compare",
@@ -205,7 +209,8 @@
    "theme": "sand",
    "text": "La empresa recibe el dinero una vez. Después, las acciones cambian de manos.",
    "emphasis": "una vez",
-   "say": "Ojo con esto. La empresa recibe el dinero solo cuando vende sus acciones por primera vez, en lo que se llama oferta pública inicial. Después, las acciones se compran y se venden entre inversionistas."
+   "say": "Ojo con esto. La empresa recibe el dinero solo cuando vende sus acciones por primera vez, en lo que se llama oferta pública inicial. Después, las acciones se compran y se venden entre inversionistas.",
+   "bg_image": "images/bmv.jpg"
   },
   {
    "type": "list",
@@ -237,13 +242,16 @@
    "title": "¿Por qué sube y por qué baja?",
    "sub": "Utilidades, expectativas y emociones",
    "chapter_name": "Por qué sube y baja",
-   "say": "Ahora, la pregunta del millón. ¿Por qué una acción sube o baja?"
+   "say": "Ahora, la pregunta del millón. ¿Por qué una acción sube o baja?",
+   "bg_image": "images/nyse_piso.jpg"
   },
   {
-   "type": "statement",
-   "text": "El precio es lo que alguien está dispuesto a pagar hoy.",
-   "emphasis": "hoy",
-   "say": "El precio de una acción es simplemente lo que alguien está dispuesto a pagar por ella hoy. Y eso depende de tres cosas."
+   "say": "El precio de una acción es simplemente lo que alguien está dispuesto a pagar por ella hoy. Y eso depende de tres cosas.",
+   "type": "photo",
+   "image": "images/nyse_piso.jpg",
+   "layout": "full",
+   "title": "El precio es lo que alguien está dispuesto a pagar hoy.",
+   "kicker": "Bolsa de Nueva York"
   },
   {
    "type": "list",
@@ -341,7 +349,8 @@
    "title": "Corto plazo vs. largo plazo",
    "sub": "Lo que dicen 76 años de datos",
    "chapter_name": "Corto vs. largo plazo",
-   "say": "Y esto no es una frase bonita. Lo podemos ver con datos."
+   "say": "Y esto no es una frase bonita. Lo podemos ver con datos.",
+   "bg_image": "images/wall_street.jpg"
   },
   {
    "type": "bignum",
@@ -2247,7 +2256,8 @@
    "title": "¿Cómo ganas dinero con una acción?",
    "sub": "Plusvalía y dividendos",
    "chapter_name": "Cómo se gana dinero",
-   "say": "Bien. ¿Y cómo ganas dinero tú con una acción? Hay dos formas."
+   "say": "Bien. ¿Y cómo ganas dinero tú con una acción? Hay dos formas.",
+   "bg_image": "images/nyse.jpg"
   },
   {
    "type": "compare",
@@ -2342,7 +2352,8 @@
    "text": "Así como hay Apples, hay empresas que llegan a cero.",
    "emphasis": "cero.",
    "sub": "Enron (2001) · Lehman Brothers (2008)",
-   "say": "Y aquí va lo que casi nadie te cuenta. Así como Apple multiplicó el dinero más de 100 veces, hay empresas que llegaron a cero. Enron, Lehman Brothers. Sus accionistas lo perdieron todo."
+   "say": "Y aquí va lo que casi nadie te cuenta. Así como Apple multiplicó el dinero más de 100 veces, hay empresas que llegaron a cero. Enron, Lehman Brothers. Sus accionistas lo perdieron todo.",
+   "bg_image": "images/apple_store.jpg"
   },
   {
    "type": "statement",

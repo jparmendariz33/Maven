@@ -7,6 +7,11 @@ Archivo: `APPLE_short.mp4`
 ## Descripción
 ```
 Adelanto del video del domingo 22 nov: "Cómo leer un estado de resultados (con Apple)". Míralo completo en el canal.
+Imágenes:
+• Apple Store de la Quinta Avenida: foto de Jorge Láscar, CC BY 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg
+• Apple Park (Cupertino): foto de Daniel L. Lu (dllu), CC BY-SA 4.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Aerial_view_of_Apple_Park_dllu.jpg
+• iPhone 17 Pro: imagen de Apple (sala de prensa) — https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/
+
 Contenido educativo. No es asesoría financiera.
 Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.
 ```

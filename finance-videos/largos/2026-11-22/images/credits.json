@@ -1,1 +1,34 @@
-{}
+{
+ "images/apple_park.jpg": {
+  "title": "Aerial view of Apple Park dllu",
+  "credit": "Foto: Daniel L. Lu (user:dllu) · CC BY-SA 4.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Apple_Park_dllu.jpg",
+  "provider": "Wikimedia Commons",
+  "creator": "Daniel L. Lu (user:dllu)",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+ },
+ "images/tim_cook.jpg": {
+  "title": "Apple CEO Tim Cook",
+  "creator": "deerkoski",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/87677022@N00/7178643521",
+  "provider": "Flickr"
+ },
+ "images/apple_store.jpg": {
+  "title": "Apple Store - Fifth Avenue (7181848534)",
+  "credit": "Foto: Jorge Láscar from Australia · CC BY 2.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg",
+  "provider": "Wikimedia Commons",
+  "creator": "Jorge Láscar from Australia",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/"
+ },
+ "images/iphone.jpg": {
+  "title": "iphone",
+  "credit": "Foto: Apple (sala de prensa)",
+  "source_url": "https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/",
+  "kind": "photo"
+ }
+}

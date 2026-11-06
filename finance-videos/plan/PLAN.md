@@ -161,6 +161,7 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 - [x] Kit del canal en `canal/` (banner, foto de perfil, textos, listas, plantilla).
 - [x] Imágenes reales en los motores (shorts y largos) + `fetch_images.py` (6 nov 2026).
 - [x] Shorts de análisis de empresa vie/sáb/dom + banco de empresas (6 nov 2026).
+- [x] Fotos reales agregadas a lo ya producido (largos 15 y 22 nov, shorts 11 y 18 nov) sin cambiar los guiones; re-renderizados.
 - [ ] **Tú:** agregar el repo `jparmendariz33/Maven` a los repositorios del entorno "Juan Pa" (claude.ai/code → entorno → Edit →
   Repositories). Sin eso, las tareas programadas hacen el video y te lo mandan por chat, pero no lo pueden guardar en GitHub.
 - [ ] **Tú:** verificar el canal con tu teléfono y configurarlo con `canal/configuracion.md` (~45 min, una vez).

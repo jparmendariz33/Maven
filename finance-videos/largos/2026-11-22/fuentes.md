@@ -4,3 +4,9 @@
 - Cargo fiscal de Apple en FY2024 por la decisión de ayudas de Estado de la UE (≈$10,200 M): reportes de resultados de Apple del T4 FY2024.
 - Valor de mercado (≈$5.08 billones al 4 nov 2026): Yahoo Finance → `data/data.json`
 - Cálculos propios por cada $100: costo 51.2; I+D 9.6; SG&A 6.2; impuestos − otros 5.4; neta 27.6; margen bruto servicios 76.2%, productos 39.3%; tasa efectiva 17.0%.
+
+## Imágenes (licencias libres)
+- Apple Store de la Quinta Avenida: foto de Jorge Láscar, CC BY 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg
+- Apple Park (Cupertino): foto de Daniel L. Lu (dllu), CC BY-SA 4.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Aerial_view_of_Apple_Park_dllu.jpg
+- Tim Cook: foto de deerkoski, CC BY 2.0, Flickr — https://www.flickr.com/photos/87677022@N00/7178643521
+- iPhone 17 Pro: imagen de Apple (sala de prensa) — https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/

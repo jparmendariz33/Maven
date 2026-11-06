@@ -1,0 +1,28 @@
+{
+ "images/apple_store.jpg": {
+  "title": "Apple Store - Fifth Avenue (7181848534)",
+  "credit": "Foto: Jorge Láscar from Australia · CC BY 2.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg",
+  "provider": "Wikimedia Commons",
+  "creator": "Jorge Láscar from Australia",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/"
+ },
+ "images/tacos.jpg": {
+  "title": "amazing mother@%^@!ing taco",
+  "creator": "permanently scatterbrained",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/88774309@N00/3422512156",
+  "provider": "Flickr"
+ },
+ "images/nyse_piso.jpg": {
+  "title": "File:No Known Restrictions Trading Floor, New York Stock Exchange (Highsmith LOC) (6718386525).jpg",
+  "credit": "Foto: pingnews.com · CC BY-SA 2.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:No_Known_Restrictions_Trading_Floor,_New_York_Stock_Exchange_(Highsmith_LOC)_(6718386525).jpg",
+  "provider": "Wikimedia Commons",
+  "creator": "pingnews.com",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/"
+ }
+}
