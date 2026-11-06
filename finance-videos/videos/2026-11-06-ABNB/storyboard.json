@@ -1,0 +1,264 @@
+{
+ "ticker": "ABNB",
+ "mode": "empresa",
+ "title": "Airbnb: +10% tras su tercer trimestre, recompras de $12,000 M y su agente de IA",
+ "scenes": [
+  {
+   "type": "hook",
+   "say": "Airbnb se disparó 10% hoy, cerca de su máximo del año. ¿Por qué?",
+   "kicker": "NASDAQ · ABNB",
+   "title": "Airbnb",
+   "value": 10.0,
+   "decimals": 0,
+   "unit": "%",
+   "signed": true,
+   "tone": "up",
+   "caption": "hoy, tras sus resultados",
+   "question": "¿Por qué?",
+   "cue_value": "disparó",
+   "cue_question": "Por",
+   "bg_image": "images/sede.jpg"
+  },
+  {
+   "type": "company",
+   "say": "Nació en 2007 rentando colchones inflables. Hoy tiene más de 5 millones de anfitriones.",
+   "kicker": "La empresa",
+   "name": "Airbnb",
+   "logo": "images/logo.png",
+   "line": "Plataforma para rentar casas, departamentos y experiencias",
+   "chips": [
+    {
+     "label": "Estancias",
+     "cue": "rentando"
+    },
+    {
+     "label": "Experiencias",
+     "cue": "inflables"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Valor de mercado",
+     "value": "$112 B",
+     "cue": "Hoy"
+    },
+    {
+     "label": "Anfitriones",
+     "value": "5.5 M+",
+     "tone": "blue",
+     "cue": "anfitriones"
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "say": "Y no tiene ni un cuarto: cobra comisión por cada reserva.",
+   "image": "images/atrio.jpg",
+   "kicker": "Sede · San Francisco",
+   "title": "Ni un solo cuarto propio",
+   "caption": "cobra comisión por cada reserva",
+   "cue_title": "cuarto",
+   "cue_caption": "comisión"
+  },
+  {
+   "type": "news",
+   "say": "Ayer reportó 155 millones de noches reservadas y recompras por hasta 12 mil millones.",
+   "kicker": "5 NOV · RESULTADOS T3",
+   "headline": "Más viajes, más ganancias",
+   "source": "Airbnb · reporte 8-K (SEC)",
+   "bullets": [
+    {
+     "text": "155 M de noches reservadas",
+     "sub": "+16% vs. T3 2025",
+     "cue": "noches",
+     "tone": "up"
+    },
+    {
+     "text": "Recompra de hasta $12,000 M",
+     "sub": "compra sus propias acciones",
+     "cue": "recompras",
+     "tone": "accent"
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "say": "Sus ingresos crecieron 19%, y su utilidad neta, 38%.",
+   "count": 6,
+   "quarters": [
+    {
+     "period": "2025-06-30",
+     "revenue": 3096000000,
+     "net_income": 642000000
+    },
+    {
+     "period": "2025-09-30",
+     "revenue": 4095000000,
+     "net_income": 1374000000
+    },
+    {
+     "period": "2025-12-31",
+     "revenue": 2778000000,
+     "net_income": 341000000
+    },
+    {
+     "period": "2026-03-31",
+     "revenue": 2678000000,
+     "net_income": 160000000
+    },
+    {
+     "period": "2026-06-30",
+     "revenue": 3608000000,
+     "net_income": 816000000
+    },
+    {
+     "period": "2026-09-30",
+     "revenue": 4869000000,
+     "net_income": 1890000000
+    }
+   ],
+   "cue_revenue": "ingresos",
+   "cue_net": "utilidad",
+   "note": "+38% utilidad a/a",
+   "note_sub": "$1,890 M en el T3 · ingresos $4,869 M",
+   "cue_note": "neta"
+  },
+  {
+   "type": "photo",
+   "say": "Y su IA ya resuelve 4 de cada 10 problemas de clientes.",
+   "image": "images/chesky.jpg",
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "kicker": "Brian Chesky · CEO",
+   "title": "4 de cada 10 problemas los resuelve su IA",
+   "caption": "sin un humano",
+   "cue_title": "resuelve",
+   "cue_caption": "clientes"
+  },
+  {
+   "type": "price",
+   "say": "En un año subió 55%: de 121 a 187 dólares.",
+   "title": "De $121 a $187",
+   "subtitle": "+55% en 12 meses",
+   "annotations": [
+    {
+     "date": "2025-11-20",
+     "label": "$111.54",
+     "sub": "Mínimo · 20 nov 2025",
+     "tone": "down",
+     "cue": "año",
+     "dir": 1
+    },
+    {
+     "date": "2026-08-25",
+     "label": "$190.50",
+     "sub": "Máximo · 25 ago",
+     "tone": "up",
+     "cue": "subió",
+     "dir": -1
+    }
+   ]
+  },
+  {
+   "type": "metric",
+   "say": "Pero no es barata: pagas 35 dólares por cada dólar que gana.",
+   "kicker": "Valuación · 1/2",
+   "label": "P/E",
+   "fullname": "Precio / Utilidad",
+   "value": 35.0,
+   "decimals": 0,
+   "suffix": "x",
+   "explain": "Pagas $35 por cada $1 de utilidad",
+   "scale": {
+    "min": 0,
+    "max": 60,
+    "bands": [
+     [
+      0,
+      15,
+      "Barata"
+     ],
+     [
+      15,
+      30,
+      "Justa"
+     ],
+     [
+      30,
+      60,
+      "Cara"
+     ]
+    ],
+    "ref": {
+     "value": 25,
+     "label": "S&P 500 ≈ 25x"
+    }
+   },
+   "verdict": "Más cara que el S&P 500",
+   "verdict_tone": "down",
+   "cue_value": "barata",
+   "cue_explain": "pagas",
+   "cue_gauge": "gana"
+  },
+  {
+   "type": "metric",
+   "say": "Eso sí: de cada 100 dólares que vende, le quedan 39.",
+   "kicker": "Rentabilidad · 2/2",
+   "label": "Margen neto",
+   "fullname": "Utilidad ÷ ventas · T3 2026",
+   "value": 39,
+   "decimals": 0,
+   "suffix": "%",
+   "explain": "$39 de utilidad por cada $100 de ventas",
+   "scale": {
+    "min": 0,
+    "max": 50,
+    "bands": [
+     [
+      0,
+      10,
+      "Bajo",
+      "down"
+     ],
+     [
+      10,
+      20,
+      "Bueno",
+      "accent"
+     ],
+     [
+      20,
+      50,
+      "Excelente",
+      "up"
+     ]
+    ]
+   },
+   "verdict": "Excelente",
+   "verdict_tone": "up",
+   "cue_value": "cada",
+   "cue_explain": "vende",
+   "cue_gauge": "quedan"
+  },
+  {
+   "type": "catalyst",
+   "say": "En 2027 lanza su agente de IA para reservar tus viajes.",
+   "kicker": "Próximo catalizador",
+   "date": "1S 2027",
+   "label": "Su agente de IA",
+   "sub": "planea y reserva tu viaje por ti",
+   "cue_date": "lanza"
+  },
+  {
+   "type": "outro",
+   "say": "¿Sigue el despegue... o ya llegó a su destino?",
+   "question_a": "¿Sigue el despegue…",
+   "question_b": "o ya llegó a su destino?",
+   "cue_a": "despegue",
+   "cue_b": "destino",
+   "sources": "Airbnb (SEC) · Yahoo Finance · Investing.com"
+  }
+ ]
+}

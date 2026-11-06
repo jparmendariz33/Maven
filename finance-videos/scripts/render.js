@@ -17,6 +17,7 @@ async function openPage(b, vjs, long) {
   pg.on('pageerror', e => console.log('ERROR en el motor:', e.message));
   await pg.goto('file://' + path.join(ROOT, 'engine', long ? 'long.html' : 'index.html') + '?render=1&v=' + encodeURIComponent('file://' + vjs));
   await pg.evaluate(() => window.ENGINE_READY);
+  await pg.evaluate(() => window.IMAGES_READY);   // fotos y logos incrustados (fetch_images.py)
   await pg.evaluate(async () => { await document.fonts.ready;
     await Promise.all(['800 40px Unbounded', '600 40px Unbounded', '500 40px "Space Grotesk"', '700 40px "Space Grotesk"', '400 40px "Space Grotesk"', 'italic 400 40px "Instrument Serif"'].map(f => document.fonts.load(f)));
     await new Promise(r => setTimeout(r, 300)); });

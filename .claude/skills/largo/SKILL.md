@@ -76,6 +76,18 @@ Comunes: `kicker`, `title`, `subtitle`, `theme` ("blue" | "sand" | "white"), `sa
 - `news`: `bullets` [{`text`, `sub`, `tone`, `cue`}], `source`.
 - `catalyst` (azul): `date`, `label`, `sub`, `cue_date`.
 - `outro` (azul): `question_a`, `question_b`, `cue_a`, `cue_b`, `cta`, `sources`.
+- `photo` (foto real): `image`, `layout` ("full" foto a pantalla completa con texto abajo · "split" texto a la izquierda y foto a la
+  derecha · "logo" logo en ficha blanca), `kicker`, `title`, `caption`, `focus` [x, y], `cue_title`, `cue_caption`.
+- `bg_image` (cualquier escena): foto de fondo en duotono del color del tema. `thumbnail.bg_image` también funciona.
+
+### Imágenes reales (obligatorio: 10–20 por video)
+Que hagan sentido con la historia: logos y tiendas de las empresas que mencionas, sedes, productos, personajes (Buffett,
+Kahneman…), lugares históricos (Wall Street, la Bolsa Mexicana, Banxico), objetos (billetes, certificados de acciones).
+Mismo proceso y reglas que en la skill `/short` §2b (`scripts/fetch_images.py`: `icon`, `logo`, `commons`, `search`/`pick`, `add`;
+solo licencias libres o salas de prensa; nunca IA de marcas o personas reales; mira cada imagen antes de usarla).
+- Úsalas para **romper la monotonía**: una escena `photo` cada 1–2 minutos (al abrir un capítulo o al presentar una empresa,
+  persona o lugar) y `bg_image` en ganchos, citas y capítulos. No tapes gráficas con fotos.
+- Créditos: en `youtube.md` pega la lista de `python3 scripts/fetch_images.py credits largos/$D` (y copia a `fuentes.md`).
 
 ```bash
 python3 scripts/script_check.py largos/$D      # debe salir ✅ (palabras, capítulos, escenas ≤ 45 palabras)
@@ -111,14 +123,15 @@ Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, cor
 
 ## 4. Entregables
 1. `largos/$D/youtube.md`: 3 títulos (la búsqueda objetivo al inicio, ≤ 70 caracteres), descripción (2–3 líneas con la promesa,
-   **capítulos** de `capitulos.txt`, fuentes con URL, "Contenido educativo. No es asesoría financiera.",
+   **capítulos** de `capitulos.txt`, fuentes con URL, créditos de imágenes, "Contenido educativo. No es asesoría financiera.",
    "Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.", 3–5 hashtags), lista de reproducción del
    pilar, comentario fijado (la pregunta del outro), pantalla final (video sugerido del mismo pilar) y el **guion para leer** completo
    (`python3 scripts/guion_lectura.py largos/$D`).
 2. **Short derivado** (miércoles): `videos/<miércoles>-<SLUG>/` con la skill `/short` en modo sin voz (30–50 s, la idea más poderosa,
    sin ticker si es educativo: storyboard con `"slug"`, `hook` (con `kicker` y `title` propios), `statement`, `catalyst` ("DOM 15" · video completo) y `outro`; ejemplo: `videos/2026-11-11-ACCION/`. El `outro` lleva
    "Video completo el domingo en el canal"). En su `youtube.md`, recuerda enlazar el largo con "Video relacionado".
-3. Commit + push a la rama `costa-studio` (sin `build/` ni .wav).
+3. Commit + push a la rama `costa-studio` (sin `build/`, `images/_cand/` ni .wav). Si el push falla, entrega igual: MP4 y miniatura
+   por el chat (SendUserFile) y el contenido de `youtube.md` pegado en el mensaje.
 4. Mensaje a JP: tema, duración, título recomendado, rutas (MP4, miniatura, short) y recordatorio:
    "Graba tu voz con CapCut (importa el MP4 → Audio → Grabar → lee el teleprompter de principio a fin) y prográmalo
    para el domingo 10:00. El short derivado, el miércoles 19:00 con 'Video relacionado' → este largo."

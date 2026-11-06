@@ -112,6 +112,29 @@ def main(vdir):
     if os.path.exists(lp): br['logo_data'] = 'data:image/png;base64,' + base64.b64encode(open(lp, 'rb').read()).decode()
     video = {'duration': duration, 'offset': OFFSET, 'brand': br, 'data': keep, 'scenes': scenes, 'captions': caps,
              'format': 'long' if LONG else 'short', 'novoice': novoice, 'chapters': chapters, 'thumbnail': sb.get('thumbnail', {}), 'slug': sb.get('slug', '')}
+    # imágenes reales (fetch_images.py): se incrustan como dataURL para que el render no dependa de rutas
+    used, missing_img = set(), []
+    def grab_imgs(o):
+        if isinstance(o, dict):
+            for k, v in o.items():
+                if k in ('image', 'bg_image', 'logo') and isinstance(v, str): used.add(v)
+                else: grab_imgs(v)
+        elif isinstance(o, list):
+            for v in o: grab_imgs(v)
+    grab_imgs(scenes); grab_imgs(sb.get('thumbnail', {}))
+    cp = os.path.join(vdir, 'images', 'credits.json'); cred = load(cp) if os.path.exists(cp) else {}
+    video['images'], video['credits'] = {}, {}
+    for rel in sorted(used):
+        fp = os.path.join(vdir, rel)
+        if not os.path.exists(fp): missing_img.append(rel); continue
+        mime = 'image/png' if rel.lower().endswith('.png') else 'image/jpeg'
+        video['images'][rel] = f'data:{mime};base64,' + base64.b64encode(open(fp, 'rb').read()).decode()
+        r = cred.get(rel, {})
+        if r.get('kind') != 'logo':
+            c = r.get('credit') or ' · '.join(x for x in ['Foto: ' + (r.get('creator') or 'autor desconocido'), r.get('license'), r.get('provider')] if x)
+            if r: video['credits'][rel] = c
+    for m in missing_img: print('⚠️  imagen no encontrada (no se dibuja):', m)
+    if used: print(f'imágenes: {len(used) - len(missing_img)} incrustadas')
     os.makedirs(os.path.join(vdir, 'build'), exist_ok=True)
     open(os.path.join(vdir, 'build', 'video.js'), 'w').write('window.VIDEO=' + json.dumps(video, ensure_ascii=False) + ';')
     json.dump({'duration': duration, 'offset': OFFSET, 'scenes': scenes, 'format': 'long' if LONG else 'short', 'chapters': chapters, 'slug': sb.get('slug', '')},

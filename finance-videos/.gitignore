@@ -5,3 +5,5 @@ __pycache__/
 largos/*/build/
 largos/*/audio/*.wav
 largos/*/audio/_*
+videos/*/images/_cand/
+largos/*/images/_cand/

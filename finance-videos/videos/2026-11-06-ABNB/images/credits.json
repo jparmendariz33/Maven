@@ -1,0 +1,20 @@
+{
+ "images/logo.png": {
+  "title": "airbnb",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=airbnb",
+  "kind": "logo"
+ },
+ "images/atrio.jpg": {
+  "title": "Atrium_of_AirBnB_Headquarters_at_888_Brannan_St,_San_Francisco.jpg",
+  "credit": "Foto: Dllu · CC BY-SA 4.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Atrium_of_AirBnB_Headquarters_at_888_Brannan_St,_San_Francisco.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ "images/chesky.jpg": {
+  "title": "Brian_Chesky_2025.jpg",
+  "credit": "Foto: Celeste Sloman · CC BY-SA 4.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Brian_Chesky_2025.jpg",
+  "provider": "Wikimedia Commons"
+ }
+}

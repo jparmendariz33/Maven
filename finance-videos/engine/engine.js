@@ -76,12 +76,39 @@ function logoTint(col) {
   return tinted[col];
 }
 
+// ---------------- imágenes reales (logos, sucursales, productos) ----------------
+// build_timeline.py incrusta en V.images {"images/x.jpg": dataURL} y en V.credits {"images/x.jpg": "Foto: …"}.
+const IMG = {}, imgWait = [];
+for (const [k, src] of Object.entries(V.images || {})) { const im = new Image(); imgWait.push(new Promise(r => { im.onload = im.onerror = r; })); im.src = src; IMG[k] = im; }
+window.IMAGES_READY = Promise.all(imgWait);
+function img(k) { const im = k && IMG[k]; return im && im.complete && im.naturalWidth ? im : null; }
+// dibuja la imagen cubriendo el rectángulo (como CSS cover), con zoom z y punto de foco (fx, fy)
+function cover(im, x, y, w, h, z = 1, fx = .5, fy = .5) {
+  const s = Math.max(w / im.naturalWidth, h / im.naturalHeight) * z, dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+  C.drawImage(im, x + (w - dw) * fx, y + (h - dh) * fy, dw, dh);
+}
+function contain(im, x, y, w, h) {
+  const s = Math.min(w / im.naturalWidth, h / im.naturalHeight), dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+  C.drawImage(im, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
+}
+const kb = (s, t) => 1.04 + .09 * seg(t, s.t0, s.t1 + .6);           // zoom lento tipo Ken Burns
+const focus = s => s.focus || [.5, .5];
+function credit(s, key, x, y, col, al = 'left', a = .75) {
+  const c = s.credit || (V.credits || {})[key]; if (!c) return;
+  txt(c, x, y, { f: F.b, w: 500, s: 21, c: col, al, a });
+}
+
 // ---------------- fondos ----------------
 const THEME = { hook: 'blue', statement: 'blue', catalyst: 'blue', outro: 'blue' };
-function themeOf(s) { return s.theme || THEME[s.type] || 'sand'; }
+function themeOf(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'card' || s.layout === 'logo' ? 'sand' : 'blue') : THEME[s.type]) || 'sand'; }
 function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
   C.fillStyle = th === 'blue' ? B.azul : th === 'white' ? B.gris : B.arena; C.fillRect(0, 0, W, H);
+  const bi = img(s.bg_image);
+  if (bi) { // foto de fondo en duotono con el color del tema (la escena sigue siendo legible)
+    const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
+    C.fillStyle = th === 'blue' ? 'rgba(65,115,209,.80)' : th === 'white' ? 'rgba(245,245,245,.88)' : 'rgba(235,230,186,.87)'; C.fillRect(0, 0, W, H);
+  }
   // línea de marea: horizonte suave que respira
   C.save(); C.strokeStyle = th === 'blue' ? 'rgba(235,230,186,.28)' : 'rgba(65,115,209,.22)'; C.lineWidth = 2;
   for (let k = 0; k < 2; k++) { C.beginPath();
@@ -140,7 +167,11 @@ R.statement = (s, t) => {
 
 R.company = (s, t) => {
   kicker(s.kicker || 'La empresa', 90, 360, s.t0 + .1, t, B.negro);
-  riseLines(wrap(s.name || D.short_name || D.name, F.d, 800, 96, 900), 90, 490, 110, s.t0 + .2, t, { f: F.d, w: 800, s: 96 });
+  const lg = img(s.logo);
+  if (lg) { const k = seg(t, s.t0 + .25, s.t0 + .85); if (k > 0) { C.save(); C.globalAlpha *= k; scaleAt(815, 415, .85 + .15 * back(k));
+    rr(700, 300, 230, 230, 34); C.fillStyle = '#FFFFFF'; C.fill(); C.strokeStyle = 'rgba(10,10,10,.12)'; C.lineWidth = 2; C.stroke();
+    contain(lg, 726, 326, 178, 178); C.restore(); } }
+  riseLines(wrap(s.name || D.short_name || D.name, F.d, 800, 96, lg ? 580 : 900), 90, 490, 110, s.t0 + .2, t, { f: F.d, w: 800, s: lg ? fit(s.name || D.short_name || D.name, F.d, 800, 96, 580, 64) : 96 });
   const ll = wrap(s.line || '', F.b, 500, 46, 880);
   riseLines(ll, 90, 640, 60, s.t0 + .6, t, { f: F.b, w: 500, s: 46, c: '#3a3a3a' });
   let y = 700 + ll.length * 60, x = 90;
@@ -264,9 +295,13 @@ R.zoom = (s, t) => {
 
 R.news = (s, t) => {
   kicker(s.kicker || 'La noticia', 90, 360, s.t0 + .1, t, B.negro);
+  const ni = img(s.image), off = ni ? 430 : 0;
+  if (ni) { const k = seg(t, s.t0 + .1, s.t0 + .8), [fx, fy] = focus(s);
+    C.save(); rr(90, 400, 900, 380 * ex(k), 26); C.clip(); cover(ni, 90, 400, 900, 380, kb(s, t), fx, fy); C.restore();
+    credit(s, s.image, 90, 808, '#4a4a4a', 'left', .8 * k); }
   const hl = wrap(s.headline || '', F.d, 600, 60, 900);
-  riseLines(hl, 90, 480, 76, s.t0 + .25, t, { f: F.d, w: 600, s: 60 });
-  let y = 480 + hl.length * 76 + 60;
+  riseLines(hl, 90, 480 + off, 76, s.t0 + .25, t, { f: F.d, w: 600, s: 60 });
+  let y = 480 + off + hl.length * 76 + 60;
   const kc = seg(t, s.t0 + .6, s.t0 + 1.1);
   C.save(); C.globalAlpha *= kc; C.fillStyle = B.negro; C.fillRect(90, y - 30, 900 * ex(kc), 2); C.restore();
   y += 50;
@@ -281,7 +316,7 @@ R.news = (s, t) => {
     C.restore();
     y += lines.length * 56 + (b.sub ? 70 : 30) + 40;
   });
-  if (s.source) txt('Fuente: ' + s.source, 90, Math.max(y + 20, 1380), { f: F.b, w: 500, s: 28, c: '#4a4a4a', a: seg(t, s.t0 + 1, s.t0 + 1.5) });
+  if (s.source) txt('Fuente: ' + s.source, 90, Math.min(1540, Math.max(y + 20, 1380)), { f: F.b, w: 500, s: 28, c: '#4a4a4a', a: seg(t, s.t0 + 1, s.t0 + 1.5) });
 };
 
 R.bars = (s, t) => {
@@ -337,6 +372,46 @@ R.metric = (s, t) => {
   C.fillStyle = B.arena; C.strokeStyle = B.negro; C.lineWidth = 5; C.beginPath(); C.arc(xm, gy, 20, 0, 7); C.fill(); C.stroke();
   if (s.verdict && km > .98) rise(s.verdict, 90, 1430, seg(t, tm + 1.3, tm + 1.8), { f: F.s, w: 400, s: 72, c: toneC(s.verdict_tone || 'blue') });
   C.restore();
+};
+
+// Foto real a cuadro. layout: "full" (pantalla completa, por defecto) · "card" (tarjeta sobre arena) · "logo" (logo grande en ficha blanca)
+R.photo = (s, t) => {
+  const im = img(s.image), [fx, fy] = focus(s), lay = s.layout || 'full';
+  if (lay === 'full') {
+    const wide = im && im.naturalWidth / im.naturalHeight > .8 && s.fit !== 'cover';
+    const tl = wrap(s.title || '', F.d, 800, s.size || 80, 860), lh = (s.size || 80) * 1.16;
+    const y0 = (wide ? 1470 : 1430) - (tl.length - 1) * lh - (s.caption ? 70 : 0), top = y0 - (s.size || 80) - (s.kicker ? 120 : 30);
+    if (im && wide) { // foto horizontal: completa arriba del texto, sobre la misma foto desenfocada (sin recortes extremos)
+      C.save(); C.filter = 'blur(38px) brightness(.5) saturate(.8)'; cover(im, -80, -80, W + 160, H + 160, 1.1, fx, fy); C.restore();
+      const room = top - 40 - 270, ph = Math.min(room, W / (im.naturalWidth / im.naturalHeight)), py = 270 + (room - ph) / 2, k = seg(t, s.t0, s.t0 + .9);
+      C.save(); C.beginPath(); C.rect(0, py + ph * (1 - ex(k)) / 2, W, ph * ex(k)); C.clip(); C.filter = 'saturate(.95) contrast(1.04)';
+      cover(im, 0, py, W, ph, kb(s, t), fx, fy); C.restore();
+    } else if (im) { C.save(); C.filter = 'saturate(.92) contrast(1.04)'; cover(im, 0, 0, W, H, kb(s, t), fx, fy); C.restore(); }
+    let g = C.createLinearGradient(0, 0, 0, 420); g.addColorStop(0, 'rgba(10,10,10,.55)'); g.addColorStop(1, 'rgba(10,10,10,0)'); C.fillStyle = g; C.fillRect(0, 0, W, 420);
+    const gy = wide ? 1200 : 900;
+    g = C.createLinearGradient(0, gy, 0, H); g.addColorStop(0, 'rgba(10,10,10,0)'); g.addColorStop(.3, 'rgba(10,10,10,.78)'); g.addColorStop(1, 'rgba(10,10,10,.92)');
+    C.fillStyle = g; C.fillRect(0, gy, W, H - gy);
+    const ink = B.arena;
+    if (s.kicker) kicker(s.kicker, 90, y0 - 110, s.t0 + .2, t, ink);
+    riseLines(tl, 90, y0, lh, cueT(s, 'cue_title', .35), t, { f: F.d, w: 800, s: s.size || 80, c: ink });
+    if (s.caption) rise(s.caption, 90, y0 + (tl.length - 1) * lh + 86, seg(t, cueT(s, 'cue_caption', .8), cueT(s, 'cue_caption', .8) + .6), { f: F.s, w: 400, s: 62, c: B.mostaza });
+    credit(s, s.image, 990, 1555, ink, 'right', .7 * seg(t, s.t0 + .5, s.t0 + 1));
+  } else if (lay === 'card') {
+    if (s.kicker) kicker(s.kicker, 90, 360, s.t0 + .1, t, B.negro);
+    const tl = wrap(s.title || '', F.d, 800, 70, 900).slice(0, 2);
+    riseLines(tl, 90, 470, 82, s.t0 + .2, t, { f: F.d, w: 800, s: 70 });
+    const y = 470 + tl.length * 82 + 10, h = 1440 - y - (s.caption ? 120 : 40), k = seg(t, s.t0 + .3, s.t0 + 1.1);
+    if (im) { C.save(); rr(90, y, 900, h * ex(k), 30); C.clip(); cover(im, 90, y, 900, h, kb(s, t), fx, fy); C.restore(); }
+    if (s.caption) rise(s.caption, 90, y + h + 74, seg(t, cueT(s, 'cue_caption', 1), cueT(s, 'cue_caption', 1) + .6), { f: F.b, w: 700, s: fit(s.caption, F.b, 700, 46, 900, 30) });
+    credit(s, s.image, 90, Math.min(1545, y + h + (s.caption ? 124 : 40)), '#4a4a4a', 'left', .8 * k);
+  } else { // logo
+    const k = seg(t, s.t0 + .15, s.t0 + .8);
+    if (s.kicker) kicker(s.kicker, 90, 360, s.t0 + .1, t, B.negro);
+    if (im && k > 0) { C.save(); C.globalAlpha *= k; scaleAt(540, 760, .88 + .12 * back(k));
+      rr(140, 470, 800, 580, 48); C.fillStyle = '#FFFFFF'; C.fill(); contain(im, 220, 540, 640, 440); C.restore(); }
+    if (s.title) rise(s.title, 540, 1210, seg(t, cueT(s, 'cue_title', .6), cueT(s, 'cue_title', .6) + .6), { f: F.d, w: 800, s: fit(s.title, F.d, 800, 78, 880, 40), al: 'center' });
+    if (s.caption) riseLines(wrap(s.caption, F.b, 500, 44, 860), 540, 1290, 58, cueT(s, 'cue_caption', 1), t, { f: F.b, w: 500, s: 44, al: 'center', c: '#3a3a3a' });
+  }
 };
 
 R.catalyst = (s, t) => {

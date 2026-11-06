@@ -88,12 +88,35 @@ function logoTint(col) {
   return tinted[col];
 }
 
+// ---------------- imágenes reales (fetch_images.py → build_timeline.py las incrusta en V.images) ----------------
+const IMG = {}, imgWait = [];
+for (const [k, src] of Object.entries(V.images || {})) { const im = new Image(); imgWait.push(new Promise(r => { im.onload = im.onerror = r; })); im.src = src; IMG[k] = im; }
+window.IMAGES_READY = Promise.all(imgWait);
+function img(k) { const im = k && IMG[k]; return im && im.complete && im.naturalWidth ? im : null; }
+function cover(im, x, y, w, h, z = 1, fx = .5, fy = .5) {
+  const s = Math.max(w / im.naturalWidth, h / im.naturalHeight) * z, dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+  C.drawImage(im, x + (w - dw) * fx, y + (h - dh) * fy, dw, dh);
+}
+function contain(im, x, y, w, h) {
+  const s = Math.min(w / im.naturalWidth, h / im.naturalHeight), dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+  C.drawImage(im, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
+}
+const kb = (s, t) => 1.03 + .07 * seg(t, s.t0, s.t1 + .6);
+const focus = s => s.focus || [.5, .5];
+function credit(s, key, x, y, col, al = 'left', a = .75) {
+  const c = s.credit || (V.credits || {})[key]; if (!c) return;
+  txt(c, x, y, { f: F.b, w: 500, s: 17, c: col, al, a });
+}
+
 // ---------------- fondos y marco ----------------
 const THEME = { personal: 'blue', hook: 'blue', statement: 'blue', chapter: 'blue', catalyst: 'blue', outro: 'blue', quote: 'blue' };
-function themeOf(s) { return s.theme || THEME[s.type] || 'sand'; }
+function themeOf(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'split' || s.layout === 'logo' ? 'sand' : 'blue') : THEME[s.type]) || 'sand'; }
 function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
   C.fillStyle = th === 'blue' ? B.azul : th === 'white' ? B.gris : B.arena; C.fillRect(0, 0, W, H);
+  const bi = img(s.bg_image);
+  if (bi) { const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
+    C.fillStyle = th === 'blue' ? 'rgba(65,115,209,.80)' : th === 'white' ? 'rgba(245,245,245,.88)' : 'rgba(235,230,186,.87)'; C.fillRect(0, 0, W, H); }
   C.save(); C.strokeStyle = th === 'blue' ? 'rgba(235,230,186,.26)' : 'rgba(65,115,209,.2)'; C.lineWidth = 2;
   for (let k = 0; k < 2; k++) { C.beginPath();
     for (let x = 0; x <= W; x += 14) { const y = 884 + k * 18 + Math.sin(x / 170 + t * .9 + k) * 8; x ? C.lineTo(x, y) : C.moveTo(x, y); }
@@ -440,6 +463,42 @@ R.personal = (s, t) => {   // pantalla en primera persona (presentación de JP o
   if (s.sub) rise(s.sub, L, 470 + ls.length * 128, seg(t, s.t0 + .7, s.t0 + 1.3), { f: F.b, w: 500, s: 44, c: B.mostaza });
 };
 
+// Foto real. layout: "full" (pantalla completa con texto abajo a la izquierda) · "split" (texto a la izquierda, foto a la derecha)
+// · "logo" (logo en ficha blanca a la derecha). Campos: image, kicker, title, caption, credit, focus [fx, fy], cue_title, cue_caption.
+R.photo = (s, t) => {
+  const im = img(s.image), [fx, fy] = focus(s), lay = s.layout || 'full';
+  if (lay === 'full') {
+    const tall = im && im.naturalWidth / im.naturalHeight < 1.15;
+    if (im && tall) { // foto vertical o cuadrada: completa a la derecha sobre la misma foto desenfocada
+      C.save(); C.filter = 'blur(36px) brightness(.5)'; cover(im, -80, -80, W + 160, H + 160, 1.1, fx, fy); C.restore();
+      const pw = Math.min(900, 860 * im.naturalWidth / im.naturalHeight); C.save(); rr(RX - pw, 40, pw, 840, 24); C.clip(); cover(im, RX - pw, 40, pw, 840, kb(s, t), fx, fy); C.restore();
+    } else if (im) { C.save(); C.filter = 'saturate(.95) contrast(1.04)'; cover(im, 0, 0, W, H, kb(s, t), fx, fy); C.restore(); }
+    let g = C.createLinearGradient(0, 0, 0, 200); g.addColorStop(0, 'rgba(10,10,10,.5)'); g.addColorStop(1, 'rgba(10,10,10,0)'); C.fillStyle = g; C.fillRect(0, 0, W, 200);
+    g = C.createLinearGradient(0, 480, 0, H); g.addColorStop(0, 'rgba(10,10,10,0)'); g.addColorStop(.5, 'rgba(10,10,10,.7)'); g.addColorStop(1, 'rgba(10,10,10,.9)'); C.fillStyle = g; C.fillRect(0, 480, W, H - 480);
+    const ink = B.arena, size = s.size || 70, tl = wrap(s.title || '', F.d, 800, size, tall ? 820 : 1300), lh = size * 1.15;
+    const y0 = 800 - (tl.length - 1) * lh - (s.caption ? 64 : 0);
+    if (s.kicker) kicker(s.kicker, L, y0 - size - 24, s.t0 + .2, t, ink);
+    riseLines(tl, L, y0, lh, cueT(s, 'cue_title', .35), t, { f: F.d, w: 800, s: size, c: ink });
+    if (s.caption) rise(s.caption, L, y0 + (tl.length - 1) * lh + 70, seg(t, cueT(s, 'cue_caption', .8), cueT(s, 'cue_caption', .8) + .6), { f: F.s, w: 400, s: 54, c: B.mostaza });
+    credit(s, s.image, RX, 900, ink, 'right', .7 * seg(t, s.t0 + .5, s.t0 + 1));
+  } else if (lay === 'split') {
+    const k = seg(t, s.t0 + .15, s.t0 + .9), x0 = 1000, w = RX - x0;
+    if (im) { C.save(); rr(x0, 150, w, 720 * ex(k), 28); C.clip(); cover(im, x0, 150, w, 720, kb(s, t), fx, fy); C.restore(); }
+    credit(s, s.image, RX, 900, '#4a4a4a', 'right', .8 * k);
+    kicker(s.kicker, L, 250, s.t0 + .1, t, B.negro);
+    const size = s.size || 64, tl = wrap(s.title || '', F.d, 800, size, 780);
+    riseLines(tl, L, 360, size * 1.16, cueT(s, 'cue_title', .2), t, { f: F.d, w: 800, s: size });
+    if (s.caption) riseLines(wrap(s.caption, F.b, 500, 38, 760), L, 360 + tl.length * size * 1.16 + 40, 52, cueT(s, 'cue_caption', .8), t, { f: F.b, w: 500, s: 38, c: '#3a3a3a' });
+  } else { // logo
+    const k = seg(t, s.t0 + .15, s.t0 + .8);
+    if (im && k > 0) { C.save(); C.globalAlpha *= k; scaleAt(1390, 500, .88 + .12 * back(k)); rr(1040, 230, 700, 540, 44); C.fillStyle = '#FFFFFF'; C.fill(); contain(im, 1110, 300, 560, 400); C.restore(); }
+    kicker(s.kicker, L, 330, s.t0 + .1, t, B.negro);
+    const size = s.size || 72, tl = wrap(s.title || '', F.d, 800, size, 820);
+    riseLines(tl, L, 450, size * 1.16, cueT(s, 'cue_title', .3), t, { f: F.d, w: 800, s: size });
+    if (s.caption) riseLines(wrap(s.caption, F.b, 500, 38, 800), L, 450 + tl.length * size * 1.16 + 40, 52, cueT(s, 'cue_caption', .8), t, { f: F.b, w: 500, s: 38, c: '#3a3a3a' });
+  }
+};
+
 // ---------------- teleprompter ----------------
 function teleprompter(t) {
   const CAPS = V.captions || []; let ci = -1;
@@ -465,7 +524,7 @@ function teleprompter(t) {
 function renderThumb() {
   const T = V.thumbnail || {}; C = X; X.setTransform(1, 0, 0, 1, 0, 0); X.globalAlpha = 1;
   const th = T.theme || 'blue', ink = th === 'blue' ? B.arena : B.negro, em = th === 'blue' ? B.mostaza : B.azul;
-  bg({ type: 'thumb', theme: th, t0: 0 }, 0);
+  bg({ type: 'thumb', theme: th, t0: 0, t1: 1, bg_image: T.bg_image, focus: T.focus }, 0);
   const lg = logoTint(ink); if (lg) X.drawImage(lg, 90, 70, 130, 114);
   txt('FINANCE', 240, 128, { f: F.d, w: 800, s: 34, ls: 8, c: ink }); txt(V.brand.byline || '', 240, 168, { f: F.b, w: 500, s: 30, c: ink, a: .75 });
   const lines = (T.lines || [T.text || '']).slice(0, 3), emw = (T.emphasis || '').toLowerCase();
