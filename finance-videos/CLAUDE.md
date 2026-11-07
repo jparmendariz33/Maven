@@ -12,7 +12,7 @@ sea cliente de la agencia sin declararlo.
 `videos|largos/<id>/images/` + `images/credits.json`. En el storyboard: escena `photo`, `bg_image`, `company.logo`, `news.image`.
 `build_timeline.py` las incrusta; el motor pone el pie de foto. Detalle en `/short` §2b.
 
-**Ritmo (nov 2026):** 1 short diario (lun/mar/jue reactivo, mié derivado del largo, **vie/sáb/dom análisis de empresa**) + largo los domingos.
+**Ritmo (nov 2026):** un video por día, producido el MISMO día que se publica (`plan/PLAN.md` §2 "Regla de oro"; no repetir nada de `plan/publicados.md`): 1 short diario (lun/mar/jue reactivo, mié derivado del largo, **vie/sáb/dom análisis de empresa**) + largo los domingos.
 
 Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL.md`). Resumen del flujo:
 `setup.sh` → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →

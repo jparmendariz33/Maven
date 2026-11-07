@@ -1,19 +1,19 @@
 {
  "ticker": "ABNB",
  "mode": "empresa",
- "title": "Airbnb: +10% tras su tercer trimestre, recompras de $12,000 M y su agente de IA",
+ "title": "Airbnb: +11.7% el viernes tras su tercer trimestre, recompras de $12,000 M y su agente de IA",
  "scenes": [
   {
    "type": "hook",
-   "say": "Airbnb se disparó 10% hoy, cerca de su máximo del año. ¿Por qué?",
+   "say": "Airbnb se disparó casi 12% el viernes, cerca de su máximo del año. ¿Por qué?",
    "kicker": "NASDAQ · ABNB",
    "title": "Airbnb",
-   "value": 10.0,
-   "decimals": 0,
+   "value": 11.7,
+   "decimals": 1,
    "unit": "%",
    "signed": true,
    "tone": "up",
-   "caption": "hoy, tras sus resultados",
+   "caption": "el viernes, tras sus resultados",
    "question": "¿Por qué?",
    "cue_value": "disparó",
    "cue_question": "Por",
@@ -39,7 +39,7 @@
    "stats": [
     {
      "label": "Valor de mercado",
-     "value": "$112 B",
+     "value": "$114 B",
      "cue": "Hoy"
     },
     {
@@ -62,7 +62,7 @@
   },
   {
    "type": "news",
-   "say": "Ayer reportó 155 millones de noches reservadas y recompras por hasta 12 mil millones.",
+   "say": "El jueves reportó 155 millones de noches reservadas y recompras por hasta 12 mil millones.",
    "kicker": "5 NOV · RESULTADOS T3",
    "headline": "Más viajes, más ganancias",
    "source": "Airbnb · reporte 8-K (SEC)",
@@ -139,9 +139,9 @@
   },
   {
    "type": "price",
-   "say": "En un año subió 55%: de 121 a 187 dólares.",
-   "title": "De $121 a $187",
-   "subtitle": "+55% en 12 meses",
+   "say": "En un año subió 57%: de 121 a 190 dólares.",
+   "title": "De $121 a $190",
+   "subtitle": "+57% en 12 meses",
    "annotations": [
     {
      "date": "2025-11-20",

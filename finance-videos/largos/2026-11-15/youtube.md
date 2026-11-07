@@ -1,52 +1,50 @@
-# Video largo 1 · domingo 15 nov 2026 · 10:00 · 🛡️ Empezar desde cero
-Archivos: `que-es-una-accion_largo.mp4` · `miniatura.jpg` · Lista: **Empezar desde cero: invertir explicado fácil**
+# Video largo 2 · domingo 15 nov 2026 · 10:00 · ⚔️ Leer empresas
+Archivos: `estado-de-resultados-apple_largo.mp4` · `miniatura.jpg` · Lista: **Leer empresas: estados financieros y métricas**
 
 ## Títulos (elige uno)
-1. **Qué es una acción y por qué sube o baja (explicado fácil)** ← recomendado
-2. Qué es una acción: la guía para empezar a invertir desde cero
-3. Qué es una acción y cómo se gana dinero con ella (con datos reales)
+1. **Cómo leer un estado de resultados en 10 minutos (con Apple)** ← recomendado
+2. Cómo leer el estado de resultados de una empresa: ejemplo real con Apple
+3. Estado de resultados explicado fácil: cuánto gana Apple de cada $100
 
 ## Descripción
 ```
-¿Qué es una acción, por qué sube o baja y cómo se gana dinero con ella? Te lo explico con una taquería, con Apple y con 76 años de datos del S&P 500.
+De cada $100 que le pagas a Apple, ¿cuánto se queda de ganancia? Aprende a leer un estado de resultados de arriba hacia abajo, con los números reales del año fiscal 2026 de Apple.
 
 ⏱️ Capítulos
 0:00 Introducción
-1:12 Qué es una acción
-3:21 Por qué sube y baja
-5:20 Corto vs. largo plazo
-7:18 Cómo se gana dinero
-8:57 El error al empezar
+1:18 Ingresos
+3:09 Margen bruto
+4:51 Gastos de operación
+6:45 Utilidad neta y por acción
+9:11 Lo que no te dice
 
-📊 Datos clave
-• $10,000 en Apple en enero de 2009 ≈ $1.08 millones hoy (×108, sin dividendos).
-• S&P 500 desde 1950: 46% de los días cerró en negativo, pero 74% de los años terminó arriba; ningún periodo de 20 años perdió dinero (en dólares, sin ajustar por inflación).
-• Caídas desde 1990: −49% (puntocom), −57% (2008), −34% (COVID).
+📊 Datos clave (Apple, año fiscal 2026, terminado el 26 sep 2026)
+• Ventas: $478,834 M (+15%) · Margen bruto: 48.8% (productos 39%, servicios 76%)
+• Utilidad de operación: $158,063 M (33% de las ventas, +19%)
+• Utilidad neta: $132,175 M (27.6% de las ventas) · Utilidad por acción diluida: $8.98 (+20%)
 
 📚 Fuentes
-• Precios históricos: Yahoo Finance (S&P 500 ^GSPC y AAPL, hasta el 4 nov 2026).
-• Benjamin Graham, citado por Warren Buffett en sus cartas a los accionistas de Berkshire Hathaway: https://www.berkshirehathaway.com/letters/letters.html
-• Meta, resultados del T3 2026 (SEC): https://www.sec.gov/Archives/edgar/data/0001326801/000162828026066700/meta-09302026xexhibit991.htm
+• Apple, resultados del T4 y año fiscal 2026 (8-K, SEC): https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm
+• Años 2023–2025: Yahoo Finance (estados anuales de Apple).
+• Valor de mercado al 4 nov 2026: Yahoo Finance.
 
 Imágenes:
 • Apple Store de la Quinta Avenida: foto de Jorge Láscar, CC BY 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg
-• Taquero y trompo al pastor: foto de permanently scatterbrained, CC BY 2.0, Flickr — https://www.flickr.com/photos/88774309@N00/3422512156
-• Bodega Aurrera Express (Mazatlán): foto de Doge Gamer 2015, CC0, Flickr — https://www.flickr.com/photos/138259041@N03/51314469546
-• Bolsa Mexicana de Valores: foto de * CliNKer *, CC BY-SA 2.0, Flickr — https://www.flickr.com/photos/12541159@N00/3230730656
-• Piso de remates de la Bolsa de Nueva York: foto de pingnews.com (Highsmith/LOC), CC BY-SA 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:No_Known_Restrictions_Trading_Floor,_New_York_Stock_Exchange_(Highsmith_LOC)_(6718386525).jpg
-• Letrero de Wall Street: foto de Acediscovery, CC BY 4.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Wall-Street-Sign-New-York.jpg
-• Fachada de la Bolsa de Nueva York: foto de Images George Rex, CC BY-SA 2.0, Flickr — https://www.flickr.com/photos/36692623@N06/6620452741
+• Apple Park (Cupertino): foto de Daniel L. Lu (dllu), CC BY-SA 4.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Aerial_view_of_Apple_Park_dllu.jpg
+• Tim Cook: foto de deerkoski, CC BY 2.0, Flickr — https://www.flickr.com/photos/87677022@N00/7178643521
+• iPhone 17 Pro: imagen de Apple (sala de prensa) — https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/
 
 Contenido educativo. No es asesoría financiera.
 Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.
-#inversiones #bolsadevalores #finanzaspersonales
+#estadoderesultados #inversiones #Apple
 ```
 
 ## Al subir
 - Miniatura: `miniatura.jpg` · Categoría: Educación · "No es para niños" · Contenido alterado o sintético: **No**.
 - **Programar:** domingo 15 nov, 10:00.
-- **Pantalla final** (últimos 20 s): botón Suscribirse + "Video más reciente". **Comentario fijado:** "¿De qué empresa te gustaría ser dueño y por qué? 👇"
-- Etiquetas: qué es una acción, cómo invertir, bolsa de valores, acciones para principiantes, invertir desde cero, S&P 500
+- **Pantalla final:** Suscribirse + video "¿Qué es una acción?". **Tarjeta** al minuto ~1: "¿Qué es una acción?".
+- **Comentario fijado:** "¿Qué empresa quieres que leamos así? 👇"
+- Etiquetas: cómo leer un estado de resultados, estado de resultados, Apple, margen bruto, utilidad neta, análisis fundamental
 
 ## Cómo grabar tu voz (≈11 min)
 CapCut (gratis) → Nuevo proyecto → importa el MP4 → **Audio → Grabar** → lee el teleprompter de abajo de principio a fin
@@ -54,112 +52,102 @@ CapCut (gratis) → Nuevo proyecto → importa el MP4 → **Audio → Grabar** �
 pregunta a la audiencia. Baja la música original a ~30% → Exportar 1080p.
 
 ## Guion para leer
-Si en enero de 2009 hubieras puesto 10,000 dólares en acciones de Apple, hoy tendrías más de 1 millón de dólares. Más de 100 veces tu dinero. ¿Fue suerte?
+De cada 100 dólares que le pagas a Apple por un iPhone, una Mac o una suscripción, la empresa se queda con casi 28 de ganancia. ¿Cómo lo sé? Con una sola hoja.
 
-No exactamente. Esas personas se volvieron dueñas de un pedazo de un negocio que no dejó de crecer. Eso es una acción.
+Esa hoja se llama estado de resultados. Y hoy vas a aprender a leerla en 10 minutos, de arriba hacia abajo, con los números reales de Apple.
 
-En los próximos 10 minutos vas a entender qué es una acción, por qué sube y por qué baja, cómo se gana dinero con ella, y el error que comete casi todo el que empieza.
+Vamos a ver cuatro niveles: los ingresos, el margen bruto, los gastos de operación y, al final, la utilidad neta y la utilidad por acción. Y te voy a decir dónde encontrar todo esto gratis.
 
-¿Y por qué te debería importar? Porque si tienes una AFORE, lo más probable es que una parte de tu ahorro para el retiro ya esté invertida en acciones. Ya eres dueño, aunque no lo sepas.
+¿Por qué Apple? Porque hoy vale más de 5 billones de dólares en la bolsa, es de las empresas más valiosas del mundo, y su estado de resultados es de los más claros para aprender.
 
-Hola, soy JP Armendáriz y esto es Costa Studio Finance. Aquí te explico, con datos reales y sin rollos, cómo funciona la bolsa y qué hacer con tu dinero. Cada domingo, un video nuevo.
-
-
-### Capítulo 1: Qué es una acción
-
-Empecemos por lo básico. ¿Qué es una acción?
-
-Imagina una taquería que vende muy bien. La dueña quiere abrir una segunda sucursal, pero le falta 1 millón de pesos.
-
-Tiene dos caminos. Pedir un préstamo al banco y pagar intereses. O vender una parte de su negocio a otras personas, que se vuelven sus socios.
-
-Decide dividir la taquería en 100 partes iguales. Se queda con 60 y vende las otras 40 a 25,000 pesos cada una. Así junta su millón.
-
-Cada una de esas partes es una acción. Si tienes una de las 100, eres dueño del 1% de la taquería.
-
-Y ser dueño tiene tres consecuencias. Te toca una parte de las ganancias. Si el negocio vale más, tu parte también. Y si al negocio le va mal, tu parte vale menos.
-
-Con Apple, con Walmart de México o con Bimbo pasa exactamente lo mismo. Solo que no están divididas en 100 partes, sino en miles de millones de acciones.
-
-¿Y dónde se compran y se venden esas partes? En la bolsa de valores. En México está la Bolsa Mexicana de Valores. En Estados Unidos, la Bolsa de Nueva York y el Nasdaq.
-
-Ojo con esto. La empresa recibe el dinero solo cuando vende sus acciones por primera vez, en lo que se llama oferta pública inicial. Después, las acciones se compran y se venden entre inversionistas.
-
-¿Y tú cómo compras? Abres una cuenta en una casa de bolsa, que en México debe estar supervisada por la CNBV. Depositas pesos. Y desde tu celular compras acciones o fondos, de México y de otros países.
+Soy JP Armendáriz, esto es Costa Studio Finance, y antes de empezar, una pregunta: ¿alguna vez has leído un estado de resultados? Si te suena a cosa de contadores, tranquilo: en unos minutos lo vas a leer sin problema.
 
 
-### Capítulo 2: Por qué sube y baja
+### Capítulo 1: Ingresos
 
-Ahora, la pregunta del millón. ¿Por qué una acción sube o baja?
+Empecemos por arriba, por la primera línea de la hoja: los ingresos.
 
-El precio de una acción es simplemente lo que alguien está dispuesto a pagar por ella hoy. Y eso depende de tres cosas.
+Un detalle antes de los números. Cada empresa elige cuándo cierra su año. El de Apple, su año fiscal, termina en septiembre, no en diciembre. Por eso su año 2026 va de octubre de 2025 a septiembre de 2026.
 
-Las utilidades: cuánto gana hoy el negocio. Las expectativas: cuánto se cree que va a ganar mañana. Y las emociones: el miedo y la euforia de la gente que compra y vende.
+En su año fiscal 2026, que terminó en septiembre, Apple vendió 479,000 millones de dólares, 15% más que el año anterior. Es la primera línea del estado de resultados. También se le llama ventas.
 
-Volvamos a la taquería. Si pasa de ganar 300,000 pesos al año a ganar 600,000, tu parte probablemente vale el doble. Las utilidades son el motor de largo plazo.
+¿De dónde viene ese dinero? Más de la mitad, del iPhone. Le siguen los servicios: la App Store, iCloud, Apple Music. Después la Mac, los accesorios como los AirPods, y el iPad.
 
-Pero si se corre la voz de que va a abrir 10 sucursales más, alguien te va a ofrecer más por tu parte hoy, aunque esas sucursales todavía no existan. Eso son las expectativas.
+Que más de la mitad de las ventas venga de un solo producto es una fortaleza, porque es un éxito enorme. Pero también es un riesgo: si un año el iPhone se vende menos, se nota en todo el estado de resultados.
 
-Pasa con empresas reales. En octubre de 2026, Meta vendió 26% más que un año antes. Y al día siguiente su acción cayó 7%. ¿Por qué? Porque al mercado le preocupó cuánto va a gastar en inteligencia artificial.
+La primera pregunta que te haces al ver esta línea es: ¿están creciendo? Un negocio que deja de vender más, tarde o temprano deja de ganar más. Apple creció 15% este año.
 
-Y si un día hay pánico en la colonia por cualquier rumor, alguien va a vender su parte barata, aunque los tacos se sigan vendiendo igual. Eso son las emociones.
-
-Benjamin Graham, el maestro de Warren Buffett, lo resumió así: en el corto plazo, el mercado es una máquina de votar. En el largo plazo, es una báscula.
-
-Es decir: en días y semanas mandan las emociones. En años y décadas, mandan las utilidades.
+Pero ojo: los ingresos solo te dicen cuánto vende una empresa, no cuánto gana. Una empresa puede vender muchísimo y aun así perder dinero. Por eso hay que seguir bajando.
 
 
-### Capítulo 3: Corto vs. largo plazo
+### Capítulo 2: Margen bruto
 
-Y esto no es una frase bonita. Lo podemos ver con datos.
+Segundo nivel: el costo de ventas y el margen bruto.
 
-Desde 1950, el S&P 500, que reúne a las 500 empresas más grandes de Estados Unidos, ha cerrado en negativo el 46% de los días. Casi la mitad.
+A los ingresos se les resta el costo de ventas: lo que cuesta fabricar los productos y dar los servicios. Para Apple fueron 245,000 millones. Lo que queda, 234,000 millones, es el margen bruto.
 
-Pero si lo ves por años, terminó arriba en 3 de cada 4. Y eso sin contar los dividendos.
+En otras palabras: de cada 100 dólares que vende, le quedan casi 49 después de pagar lo que cuesta fabricar. Eso es un margen bruto de casi 49%.
 
-Y si tomas cualquier periodo de 20 años desde 1950, ¿en cuántos habría perdido dinero alguien que compró y se quedó? En cero. En periodos de 10 años, sí pasó el 8% de las veces.
+Y aquí está el secreto de Apple. En sus productos, el margen bruto es de 39%. En sus servicios, de 76%. Vender una suscripción más cuesta mucho menos que fabricar un teléfono más.
 
-Mira el S&P 500 desde 1990. Ahí están la burbuja puntocom, la crisis de 2008 y el COVID: caídas de 49%, 57% y 34%. Y aun así, pasó de 329 a más de 7,600 puntos.
+Por eso, aunque los servicios son apenas una cuarta parte de lo que vende Apple, aportan el 40% de su margen bruto. Pesan mucho más en lo que gana que en lo que vende.
 
-Quien vendió en pleno pánico convirtió una caída temporal en una pérdida permanente. Quien se quedó, vivió la recuperación.
+Y los servicios siguen creciendo: 13% en un año. Para Apple, cada usuario nuevo de iPhone es también un posible cliente de iCloud, de Apple Music o de la App Store por muchos años.
 
-¿Qué significa esto para ti? Que el plazo lo cambia todo. Si vas a necesitar el dinero en un año, la bolsa no es el lugar: puede caer 30%. Si es para dentro de 10 o 20 años, el tiempo juega a tu favor.
-
-Ahora piénsalo tú. Si mañana tu inversión cayera 30%, ¿qué harías? ¿Venderías para no perder más, o te quedarías? No hay respuesta fácil. Cuéntamela en los comentarios.
+Un margen bruto alto suele significar poder de precio: la gente está dispuesta a pagar más por tu producto que lo que te cuesta hacerlo. Es una de las señales de una ventaja competitiva.
 
 
-### Capítulo 4: Cómo se gana dinero
+### Capítulo 3: Gastos de operación
 
-Bien. ¿Y cómo ganas dinero tú con una acción? Hay dos formas.
+Tercer nivel: los gastos de operación, lo que cuesta hacer funcionar la empresa.
 
-La primera es la plusvalía: compras a 100 y, años después, vendes a 150. La segunda son los dividendos: la empresa reparte una parte de sus ganancias entre sus dueños, muchas veces cada 3 meses.
+Son los gastos de hacer funcionar la empresa. En Apple son dos: investigación y desarrollo, casi 46,000 millones, para diseñar lo que viene. Y gastos de venta y administración, casi 30,000 millones: tiendas, publicidad, oficinas y sueldos.
 
-Si compraste a 100 y vendes a 150, ganaste 50%. Pero esa ganancia solo existe cuando vendes. Mientras tanto, es una ganancia en papel.
+Fíjate en algo: la investigación y desarrollo creció 32% en un año. Cuando una empresa invierte más en investigar, está apostando por lo que viene. Vale la pena seguir ese número.
 
-Con los dividendos es parecido. Si una empresa paga 2 dólares al año por cada acción y la acción cuesta 100, recibes 2% al año, sin vender nada. A eso se le llama rendimiento por dividendo.
+Al margen bruto le restas esos gastos y obtienes la utilidad de operación: 158,000 millones de dólares. Es lo que gana el negocio por hacer lo que hace.
 
-No todas las empresas pagan dividendos. Algunas prefieren reinvertir todo para crecer más rápido. Ninguna opción es mejor: depende de la etapa de la empresa.
+De cada 100 dólares, quedan 33. Eso se llama margen de operación, y sirve muchísimo para comparar negocios. Un supermercado, por ejemplo, suele tener márgenes de un solo dígito.
 
-Y aquí va lo que casi nadie te cuenta. Así como Apple multiplicó el dinero más de 100 veces, hay empresas que llegaron a cero. Enron, Lehman Brothers. Sus accionistas lo perdieron todo.
+Y mira esto: las ventas de Apple crecieron 15%, pero la utilidad de operación creció 19%. Cuando las ventas suben más rápido que los gastos, la utilidad crece todavía más. A eso se le llama apalancamiento operativo.
 
-Por eso la mayoría de los inversionistas no apuesta todo a una sola empresa. Compra muchas, o un fondo que ya las incluye. De eso hablaremos pronto en el canal.
+Ahora piénsalo tú: de las empresas que usas todos los días, ¿cuál crees que se queda con más dinero de cada 100 que vende? ¿Tu banco, tu supermercado, tu app favorita? Escríbelo en los comentarios.
 
 
-### Capítulo 5: El error al empezar
+### Capítulo 4: Utilidad neta y por acción
 
-Y ahora, el error que comete casi todo el que empieza.
+Y llegamos al final de la hoja, a la línea más famosa: la utilidad neta.
 
-Una acción cuesta 5 dólares y otra cuesta 500. ¿Cuál está más barata? Mucha gente diría que la de 5. Y no necesariamente.
+A la utilidad de operación se le suman o restan otros ingresos y gastos, como intereses, y se le restan los impuestos: 27,000 millones. Lo que queda es la utilidad neta: 132,000 millones de dólares.
 
-Regresa a la taquería. Vale 2 millones y medio de pesos. Entre 100 partes son 25,000 pesos por acción. Si la dividiera en 1,000 partes, serían 2,500. El negocio es exactamente el mismo.
+Por cierto, esos 27,000 millones de impuestos equivalen a una tasa efectiva de 17% sobre su utilidad antes de impuestos. Las empresas globales pagan impuestos en muchos países, y esa tasa cambia de año a año.
 
-El precio por acción cambió, pero el valor del negocio no. Por eso una acción de 5 dólares puede estar carísima, y una de 500, barata.
+Así se ve completo, por cada 100 dólares. Empiezas con 100. Fabricar cuesta 51. Investigar, casi 10. Vender y administrar, 6. Impuestos y otros, 5. Y quedan casi 28 de utilidad neta.
 
-Lo que importa no es cuánto cuesta una acción, sino cuánto vale el negocio comparado con lo que gana. Eso se mide con una herramienta que veremos muy pronto: el PER.
+Y así se ve en el reporte real, con los dos últimos años lado a lado. Ya lo puedes leer: ventas, costo de ventas, margen bruto, los dos gastos de operación, la utilidad de operación y, abajo, la utilidad neta.
 
-Y un segundo error muy común: revisar el precio todos los días. Recuerda que casi la mitad de los días la bolsa baja. Verlo a diario solo te pone nervioso, y los nervios llevan a malas decisiones.
+Y si divides esa utilidad entre todas las acciones de Apple, obtienes la utilidad por acción: casi 9 dólares por acción. Subió 20%, más que la utilidad total, que subió 18%.
 
-Resumiendo. Una acción es una parte de un negocio. En el corto plazo la mueven las emociones; en el largo, las utilidades. Y su precio, solo, no te dice si está cara o barata.
+Verás que dice utilidad diluida. Significa que cuenta también las acciones que la empresa podría emitir, por ejemplo las que da a sus empleados como parte de su sueldo. Es la cifra más conservadora.
 
-Ahora dime en los comentarios: ¿de qué empresa te gustaría ser dueño, y por qué? La próxima semana: cómo leer el estado de resultados de una empresa, con Apple. Recuerda que esto es contenido educativo, no asesoría financiera.
+¿Por qué creció más? Porque Apple compra sus propias acciones y las retira. Hoy hay casi 2% menos acciones que hace un año, así que la utilidad se reparte entre menos rebanadas.
+
+Este número es clave, porque es el que se usa para calcular el PER: el precio de la acción entre la utilidad por acción. De eso hablaremos pronto en el canal.
+
+
+### Capítulo 5: Lo que no te dice
+
+Antes de terminar, tres cosas que el estado de resultados no te dice.
+
+Uno: utilidad no es efectivo en la caja; eso se ve en otro reporte. Dos: un solo año engaña, compara varios. Y tres: los cargos únicos, como el cargo legal de casi 10,000 millones de Meta este año, distorsionan los números.
+
+Mira a Apple en 4 años. Sus ventas casi no crecieron en 2024 y su utilidad bajó, en parte por un cargo de impuestos en Europa. En 2026 tuvo un año muy fuerte. La tendencia te dice más que un solo número.
+
+¿Y dónde encuentras todo esto gratis? En la sección de relaciones con inversionistas de cada empresa. Las de Estados Unidos lo publican en la SEC, en reportes llamados 10-K y 10-Q. Las mexicanas, en la Bolsa Mexicana de Valores.
+
+Te dejo un ejercicio para esta semana. Elige una empresa que conozcas y busca tres números: sus ventas de los últimos tres años, su margen de operación y su utilidad por acción. En 15 minutos vas a entenderla mejor que mucha gente.
+
+Resumiendo. Los ingresos te dicen cuánto vende. Los márgenes, qué tan buen negocio es. Y la utilidad neta y por acción, lo que realmente le queda al dueño.
+
+Ahora te toca a ti: ¿qué empresa quieres que analicemos así? Déjala en los comentarios. La próxima semana: por qué tu cerebro te hace perder dinero, el inicio de nuestra serie de finanzas conductuales. Contenido educativo, no asesoría financiera.
 

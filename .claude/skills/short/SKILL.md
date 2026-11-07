@@ -10,6 +10,11 @@ Dos modos, mismo motor, misma duración (~65–75 s sin voz) y misma marca:
 - **Reactivo** (lun, mar, jue): qué pasó hoy con una acción o índice (ver `plan/PLAN.md` §2).
 - **Empresa** (vie, sáb, dom): análisis de una empresa que está en boca de todos (sección 1b). `"mode": "empresa"` en el storyboard.
 **Todos los shorts llevan imágenes reales** que hagan sentido con la historia (sección 2b).
+**Fecha (regla de oro de JP):** un short por día, hecho el MISMO día en que se publica (19:00 CDMX). La carpeta lleva la fecha de
+publicación; "hoy" y "ayer" se cuentan desde ese día (en fin de semana di "el viernes…"). Nunca produzcas shorts de días futuros
+(el adelanto del miércoles lo hace la tarea del miércoles). Antes de elegir tema, revisa `plan/publicados.md` para no repetir, y al
+terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno por párrafo (regenéralo si cambias el guion).
+**Modelo de estilo:** `videos/2026-11-07-ABNB/` (el favorito de JP).
 
 Proyecto: `finance-videos/` en la raíz del repo. Todo se ejecuta desde ahí:
 `cd finance-videos` (rutas abajo relativas a esa carpeta).
@@ -55,7 +60,7 @@ Guarda las fuentes (URLs) para `youtube.md`.
    shorts reactivos de esa semana; nunca una de `plan/clientes-agencia.md` sin declararlo.
 Anota la empresa elegida en la tabla "Ya publicadas" de `plan/banco-empresas.md`.
 
-**Estructura (10–11 escenas, ~120–130 palabras ≈ 70–75 s; ejemplo: `videos/2026-11-06-ABNB/`):**
+**Estructura (10–11 escenas, ~120–130 palabras ≈ 70–75 s; ejemplo: `videos/2026-11-07-ABNB/`):**
 | # | type | Qué cuenta |
 |---|------|-----------|
 | 1 | `hook` + `bg_image` | El dato que detiene el scroll + "¿Por qué?" (foto de la marca en duotono de fondo) |

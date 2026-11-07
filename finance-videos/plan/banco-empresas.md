@@ -43,7 +43,7 @@ empresa en 30 días ni una de los shorts reactivos de esa semana; revisar `clien
 | Netflix | NFLX | Anuncios, deportes en vivo | Oficinas, logo |
 | Spotify | SPOT | Por fin rentable | App, logo |
 | Uber | UBER | Robotaxis y entregas | Autos, app |
-| Airbnb | ABNB | Ver `videos/2026-11-06-ABNB` | Sede, logo, CEO |
+| Airbnb | ABNB | Ver `videos/2026-11-07-ABNB` | Sede, logo, CEO |
 | Tesla | TSLA | Robotaxi, ventas de autos | Autos, fábricas |
 | BYD | BYDDY | Supera a Tesla en ventas; llega a México | Autos, agencias |
 | Nvidia | NVDA | El motor de la IA | Chips, CEO Jensen Huang |
@@ -63,4 +63,4 @@ empresa en 30 días ni una de los shorts reactivos de esa semana; revisar `clien
 ## Ya publicadas (no repetir en 30 días)
 | Fecha | Empresa | Ticker | Carpeta |
 |---|---|---|---|
-| 6 nov 2026 | Airbnb | ABNB | `videos/2026-11-06-ABNB` |
+| 7 nov 2026 | Airbnb | ABNB | `videos/2026-11-07-ABNB` |

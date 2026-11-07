@@ -1,0 +1,61 @@
+{
+ "images/apple_store.jpg": {
+  "title": "Apple Store - Fifth Avenue (7181848534)",
+  "credit": "Foto: Jorge Láscar from Australia · CC BY 2.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg",
+  "provider": "Wikimedia Commons",
+  "creator": "Jorge Láscar from Australia",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/"
+ },
+ "images/nyse_piso.jpg": {
+  "title": "File:No Known Restrictions Trading Floor, New York Stock Exchange (Highsmith LOC) (6718386525).jpg",
+  "credit": "Foto: pingnews.com · CC BY-SA 2.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:No_Known_Restrictions_Trading_Floor,_New_York_Stock_Exchange_(Highsmith_LOC)_(6718386525).jpg",
+  "provider": "Wikimedia Commons",
+  "creator": "pingnews.com",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/"
+ },
+ "images/wall_street.jpg": {
+  "title": "Wall-Street-Sign-New-York",
+  "credit": "Foto: Acediscovery · CC BY 4.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Wall-Street-Sign-New-York.jpg",
+  "provider": "Wikimedia Commons",
+  "creator": "Acediscovery",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/"
+ },
+ "images/tacos.jpg": {
+  "title": "amazing mother@%^@!ing taco",
+  "creator": "permanently scatterbrained",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/88774309@N00/3422512156",
+  "provider": "Flickr"
+ },
+ "images/bmv.jpg": {
+  "title": "Torre Axtel y Bolsa de Valores",
+  "creator": "* CliNKer *",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+  "source_url": "https://www.flickr.com/photos/12541159@N00/3230730656",
+  "provider": "Flickr"
+ },
+ "images/nyse.jpg": {
+  "title": "New York Stock Exchange / (NYSE)",
+  "creator": "Images George Rex",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+  "source_url": "https://www.flickr.com/photos/36692623@N06/6620452741",
+  "provider": "Flickr"
+ },
+ "images/bodega_aurrera.jpg": {
+  "title": "Bodega Aurrera Express | Avenida Gutiérrez Najera | Mazatlán | 14 de Julio del 2021",
+  "creator": "Doge Gamer 2015",
+  "license": "CC0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_url": "https://www.flickr.com/photos/138259041@N03/51314469546",
+  "provider": "Flickr"
+ }
+}

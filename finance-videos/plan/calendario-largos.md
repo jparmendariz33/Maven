@@ -10,9 +10,10 @@ Las búsquedas objetivo se validaron con el autocompletado de YouTube (gratis, 5
 ## Resumen
 | # | Domingo | Pilar | Video |
 |---|---|---|---|
-| 1 | 15 nov 26 | 🛡️ Empezar desde cero | ¿Qué es una acción y por qué sube o baja? Explicado fácil |
-| 2 | 22 nov 26 | ⚔️ Leer empresas | Cómo leer un estado de resultados en 10 minutos (con Apple) |
-| 3 | 29 nov 26 | 🧠 Psicología del dinero | Finanzas conductuales: por qué tu cerebro te hace perder dinero |
+| 1 | ✅ publicado ~5 nov 26 | 🛡️ Empezar desde cero | ¿Qué es una acción y por qué sube o baja? Explicado fácil (ya en el canal, versión con voz de IA de 8:38) |
+| 2 | 15 nov 26 | ⚔️ Leer empresas | Cómo leer un estado de resultados en 10 minutos (con Apple) |
+| 3 | 22 nov 26 | 🧠 Psicología del dinero | Finanzas conductuales: por qué tu cerebro te hace perder dinero |
+| 3b | 29 nov 26 | 🛡️ Empezar desde cero | Cómo empezar a invertir desde cero en México (con poco dinero) · *nuevo: llena el hueco que dejó publicar el #1 antes* |
 | 4 | 6 dic 26 | 🛡️ Patrimonio en México | Qué hacer con tu aguinaldo: 5 opciones ordenadas por riesgo · 📅 aguinaldo |
 | 5 | 13 dic 26 | 🎯 Historia y criterio | La burbuja puntocom: ¿se parece a la inteligencia artificial de hoy? |
 | 6 | 20 dic 26 | 🛡️ Empezar desde cero | Interés compuesto: la regla del 72 y empezar a los 25 vs. a los 35 |
@@ -68,7 +69,7 @@ Las búsquedas objetivo se validaron con el autocompletado de YouTube (gratis, 5
 
 ## Detalle por semana
 
-### Semana 1 · domingo 15 nov 2026 · 🛡️ Empezar desde cero (Defensa)
+### Semana 1 · ✅ YA PUBLICADO (~5 nov 2026, versión con voz de IA) · 🛡️ Empezar desde cero (Defensa)
 **Título:** ¿Qué es una acción y por qué sube o baja? Explicado fácil  
 **Búsqueda objetivo (autocompletado de YouTube):** "qué es una acción"  
 **Gancho (0:00–0:30):** Si hubieras comprado acciones de Apple en 2009, hoy tendrías muchas veces tu dinero. No por suerte: porque una acción es un pedazo de un negocio.  
@@ -81,9 +82,9 @@ Las búsquedas objetivo se validaron con el autocompletado de YouTube (gratis, 5
 **Visuales clave:** taquería dividida en 100 partes · S&P 500 desde 1990 · % de días negativos vs. % de décadas positivas  
 **Short derivado (miércoles 11 nov 2026):** Comprar una acción es comprar una parte de un negocio  
 **Datos a verificar al escribir:** múltiplo de Apple 2009→hoy; % de años positivos del S&P 500  
-*Producción automática: lunes 9 nov 2026 · Publica: domingo 15 nov 2026 10:00 · Carpeta: `largos/2026-11-15/`*
+*Ya está en el canal. No se vuelve a producir. Archivos: `largos/publicado-que-es-una-accion/` (y `-voz`). Su short derivado quedó como extra opcional: `videos/extra-ACCION/`.*
 
-### Semana 2 · domingo 22 nov 2026 · ⚔️ Leer empresas (Ataque)
+### Semana 2 · domingo 15 nov 2026 · ⚔️ Leer empresas (Ataque)
 **Título:** Cómo leer un estado de resultados en 10 minutos (con Apple)  
 **Búsqueda objetivo (autocompletado de YouTube):** "como leer un estado de resultados de una empresa"  
 **Gancho (0:00–0:30):** De cada 100 dólares que le pagas a Apple por un iPhone, ¿cuántos se queda de ganancia? La respuesta está en una sola hoja.  
@@ -94,11 +95,11 @@ Las búsquedas objetivo se validaron con el autocompletado de YouTube (gratis, 5
 4. Utilidad neta y utilidad por acción (EPS)
 
 **Visuales clave:** cascada de $100 de ventas de Apple hasta la utilidad · márgenes en barras · dónde encontrar el reporte (10-K)  
-**Short derivado (miércoles 18 nov 2026):** De $100 que gastas en Apple, esto es lo que gana  
+**Short derivado (miércoles 11 nov 2026):** De $100 que gastas en Apple, esto es lo que gana  
 **Datos a verificar al escribir:** estado de resultados anual de Apple (10-K más reciente)  
-*Producción automática: lunes 16 nov 2026 · Publica: domingo 22 nov 2026 10:00 · Carpeta: `largos/2026-11-22/`*
+*Ya producido (5 nov, con fotos el 6 nov). Publica: domingo 15 nov 2026 10:00 · Carpeta: `largos/2026-11-15/` · Short: `videos/2026-11-11-APPLE/`*
 
-### Semana 3 · domingo 29 nov 2026 · 🧠 Psicología del dinero (Medio)
+### Semana 3 · domingo 22 nov 2026 · 🧠 Psicología del dinero (Medio)
 **Título:** Finanzas conductuales: por qué tu cerebro te hace perder dinero  
 **Búsqueda objetivo (autocompletado de YouTube):** "finanzas conductuales"  
 **Gancho (0:00–0:30):** Un fondo de Fidelity ganó casi 30% al año durante 13 años. Y aun así, muchos de sus inversionistas perdieron dinero. El problema no era el fondo.  
@@ -109,9 +110,24 @@ Las búsquedas objetivo se validaron con el autocompletado de YouTube (gratis, 5
 4. Tu primer escudo: reglas antes que emociones
 
 **Visuales clave:** dos barras: rendimiento del fondo vs. del inversionista · fotos/nombres de los Nobel (Kahneman 2002, Thaler 2017) · tres tarjetas de sesgos  
-**Short derivado (miércoles 25 nov 2026):** Tu peor enemigo en la bolsa eres tú  
+**Short derivado (miércoles 18 nov 2026):** Tu peor enemigo en la bolsa eres tú  
 **Datos a verificar al escribir:** caso Magellan/Peter Lynch con fuente; estudios DALBAR o Morningstar 'Mind the Gap' recientes  
-*Producción automática: lunes 23 nov 2026 · Publica: domingo 29 nov 2026 10:00 · Carpeta: `largos/2026-11-29/`*
+*Producción automática: lunes 16 nov 2026 · Short derivado: miércoles 18 nov 2026 · Publica: domingo 22 nov 2026 10:00 · Carpeta: `largos/2026-11-22/`*
+
+### Semana 3b · domingo 29 nov 2026 · 🛡️ Empezar desde cero (Defensa) · nuevo
+**Título:** Cómo empezar a invertir desde cero en México (con poco dinero)  
+**Búsqueda objetivo (autocompletado de YouTube, validada 7 nov 2026):** "como empezar a invertir en mexico" / "como empezar a invertir con poco dinero"  
+**Gancho (0:00–0:30):** No necesitas ser rico para invertir: con lo que cuesta una pizza ya puedes empezar. Lo difícil no es el dinero, es saber por dónde.  
+**Capítulos:**
+1. Antes de invertir: deudas caras y fondo de emergencia
+2. Dónde: CETES Directo, casas de bolsa supervisadas por la CNBV, el SIC
+3. Qué comprar primero: un ETF amplio en vez de adivinar acciones
+4. Cuánto y cada cuándo: invertir cada mes sin adivinar el mercado
+
+**Visuales clave:** escalera de 4 pasos · montos mínimos reales de cada plataforma · $1,000 al mes por 10 años  
+**Short derivado (miércoles 25 nov 2026):** Con lo que cuesta una pizza ya puedes invertir  
+**Datos a verificar al escribir:** monto mínimo de CETES Directo; tasa de CETES 28 días (Banxico); casas de bolsa autorizadas (CNBV)  
+*Producción automática: lunes 23 nov 2026 · Short derivado: miércoles 25 nov 2026 · Publica: domingo 29 nov 2026 10:00 · Carpeta: `largos/2026-11-29/`*
 
 ### Semana 4 · domingo 6 dic 2026 · 🛡️ Patrimonio en México (Defensa) · 📅 aguinaldo
 **Título:** Qué hacer con tu aguinaldo: 5 opciones ordenadas por riesgo  

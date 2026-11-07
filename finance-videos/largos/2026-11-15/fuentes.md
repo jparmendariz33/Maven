@@ -1,16 +1,12 @@
-# Fuentes · ¿Qué es una acción? (15 nov 2026)
-- Yahoo Finance, chart API (consultado 4–5 nov 2026): AAPL mensual desde ene 2009 (3.22 → 349.51, ×108.5; precios ajustados por splits, sin dividendos) → `data/aapl_mensual.json`
-- Yahoo Finance: ^GSPC diario desde 1950 → 46.2% de días negativos; 56 de 76 años arriba (74%); 0 de 683 ventanas de 20 años negativas; 8% de ventanas de 10 años negativas (precio, sin dividendos ni inflación) → `data/sp500_diario.json`
-- Yahoo Finance: ^GSPC mensual 1990–2026 (329.08 → 7,688.62); mínimos sep 2002, feb 2009, mar 2020 → `data/sp500_mensual.json`
-- Caídas de máximo a mínimo del S&P 500: −49% (2000–2002), −57% (2007–2009), −34% (feb–mar 2020): datos históricos ampliamente documentados (cierres diarios de ^GSPC).
-- Cita de Benjamin Graham ("voting machine / weighing machine"), citada por Warren Buffett en sus cartas: https://www.berkshirehathaway.com/letters/letters.html
-- Meta T3 2026: ingresos +26%; caída de −6.98% el 22 oct 2026: https://www.sec.gov/Archives/edgar/data/0001326801/000162828026066700/meta-09302026xexhibit991.htm · https://www.heygotrade.com/en/news/meta-meta-stock-news-october-23-2026/
+# Fuentes · Cómo leer un estado de resultados (15 nov 2026)
+- Apple, 8-K con resultados del T4 y del año fiscal 2026 (12 meses al 26 sep 2026): ventas 478,834; costo de ventas 245,232; margen bruto 233,602; I+D 45,765; SG&A 29,774; utilidad de operación 158,063; otros 1,174; impuestos 27,062; utilidad neta 132,175; UPA diluida $8.98 (2025: $7.46); acciones diluidas 14,720,306 mil (2025: 15,004,697 mil); ventas por categoría (iPhone 254,098; Servicios 123,301; Mac 37,929; Wearables 35,577; iPad 27,929); productos 355,533 / costo 215,874; servicios 123,301 / costo 29,358 → https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm
+- Años fiscales 2023–2025 (ventas y utilidad neta): Yahoo Finance fundamentals → `data/data.json`
+- Cargo fiscal de Apple en FY2024 por la decisión de ayudas de Estado de la UE (≈$10,200 M): reportes de resultados de Apple del T4 FY2024.
+- Valor de mercado (≈$5.08 billones al 4 nov 2026): Yahoo Finance → `data/data.json`
+- Cálculos propios por cada $100: costo 51.2; I+D 9.6; SG&A 6.2; impuestos − otros 5.4; neta 27.6; margen bruto servicios 76.2%, productos 39.3%; tasa efectiva 17.0%.
 
 ## Imágenes (licencias libres)
 - Apple Store de la Quinta Avenida: foto de Jorge Láscar, CC BY 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg
-- Taquero y trompo al pastor: foto de permanently scatterbrained, CC BY 2.0, Flickr — https://www.flickr.com/photos/88774309@N00/3422512156
-- Bodega Aurrera Express (Mazatlán): foto de Doge Gamer 2015, CC0, Flickr — https://www.flickr.com/photos/138259041@N03/51314469546
-- Bolsa Mexicana de Valores: foto de * CliNKer *, CC BY-SA 2.0, Flickr — https://www.flickr.com/photos/12541159@N00/3230730656
-- Piso de remates de la Bolsa de Nueva York: foto de pingnews.com (Highsmith/LOC), CC BY-SA 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:No_Known_Restrictions_Trading_Floor,_New_York_Stock_Exchange_(Highsmith_LOC)_(6718386525).jpg
-- Letrero de Wall Street: foto de Acediscovery, CC BY 4.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Wall-Street-Sign-New-York.jpg
-- Fachada de la Bolsa de Nueva York: foto de Images George Rex, CC BY-SA 2.0, Flickr — https://www.flickr.com/photos/36692623@N06/6620452741
+- Apple Park (Cupertino): foto de Daniel L. Lu (dllu), CC BY-SA 4.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Aerial_view_of_Apple_Park_dllu.jpg
+- Tim Cook: foto de deerkoski, CC BY 2.0, Flickr — https://www.flickr.com/photos/87677022@N00/7178643521
+- iPhone 17 Pro: imagen de Apple (sala de prensa) — https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/

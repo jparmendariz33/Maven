@@ -7,9 +7,9 @@
  "sector": "Consumer Cyclical",
  "industry": "Travel Services",
  "business_summary": "Airbnb, Inc., together with its subsidiaries, operates a platform for stays, experiences, and services worldwide. The company's marketplace connects hosts and guests online or through mobile devices to book spaces, experiences, and services. It also offers gift cards. The company was formerly known as AirBed & Breakfast, Inc. and changed its name to Airbnb, Inc. in November 2010. Airbnb, Inc. was founded in 2007 and is headquartered in San Francisco, California.",
- "as_of": "2026-11-06",
+ "as_of": "2026-11-06 (cierre)",
  "fetched_at": "2026-11-06T16:09:39+00:00",
- "price": 187.1,
+ "price": 189.99,
  "high_52w": 193.453,
  "low_52w": 110.81,
  "close_high_1y": {
@@ -1493,7 +1493,7 @@
   ],
   [
    "2026-11-06",
-   187.1,
+   189.99,
    4248584
   ]
  ]

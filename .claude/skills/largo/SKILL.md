@@ -127,8 +127,8 @@ Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, cor
    "Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.", 3–5 hashtags), lista de reproducción del
    pilar, comentario fijado (la pregunta del outro), pantalla final (video sugerido del mismo pilar) y el **guion para leer** completo
    (`python3 scripts/guion_lectura.py largos/$D`).
-2. **Short derivado** (miércoles): `videos/<miércoles>-<SLUG>/` con la skill `/short` en modo sin voz (30–50 s, la idea más poderosa,
-   sin ticker si es educativo: storyboard con `"slug"`, `hook` (con `kicker` y `title` propios), `statement`, `catalyst` ("DOM 15" · video completo) y `outro`; ejemplo: `videos/2026-11-11-ACCION/`. El `outro` lleva
+2. **Short derivado** (miércoles; lo produce la tarea del MIÉRCOLES, no la del lunes): `videos/<miércoles>-<SLUG>/` con la skill `/short` en modo sin voz (30–50 s, la idea más poderosa,
+   sin ticker si es educativo: storyboard con `"slug"`, `hook` (con `kicker` y `title` propios), `statement`, `catalyst` ("DOM <día>" · video completo) y `outro`; ejemplo: `videos/2026-11-11-APPLE/`. El `outro` lleva
    "Video completo el domingo en el canal"). En su `youtube.md`, recuerda enlazar el largo con "Video relacionado".
 3. Commit + push a la rama `costa-studio` (sin `build/`, `images/_cand/` ni .wav). Si el push falla, entrega igual: MP4 y miniatura
    por el chat (SendUserFile) y el contenido de `youtube.md` pegado en el mensaje.

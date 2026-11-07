@@ -37,6 +37,10 @@ análisis de empresas "calientes" el fin de semana). **Todos los videos llevan i
 Tú pones la voz (más genuino que IA); Claude hace la investigación, el guion, los gráficos y el render.
 
 ## 2. Ritmo de publicación (fijo, todas las semanas)
+**Regla de oro (feedback de JP, 7 nov 2026): UN video por día, producido AUTOMÁTICAMENTE el MISMO día en que se publica.** Nada se
+produce con semanas de anticipación. Única excepción: el largo se produce el lunes para el domingo de ESA MISMA semana (para que
+JP tenga tiempo de grabar su voz). La carpeta lleva la fecha de publicación; "hoy" y "ayer" en el guion se cuentan desde el día en
+que se publica. Antes de producir, revisar `plan/publicados.md` para no repetir nada que ya esté en el canal.
 | Día (CDMX) | Qué se publica | Duración | Origen |
 |---|---|---|---|
 | **Lunes 19:00** | Short reactivo #1 | 45–65 s | Lo más fuerte del viernes/fin de semana |
@@ -79,8 +83,9 @@ en pantalla y en la descripción; **nunca imágenes generadas con IA de marcas o
 | Cuándo (CDMX) | Quién | Qué pasa |
 |---|---|---|
 | **Lunes 16:40** | Tarea "Radar de Shorts" | Elige y produce el short reactivo #1 (sin voz). Te notifica. |
-| **Lunes 19:10** | Tarea "Producción del video largo" | Toma la semana del calendario, escribe el guion con datos verificados, genera el **video 16:9 completo sin voz** (subtítulos-teleprompter), la miniatura, `youtube.md` y el short derivado. Te notifica. |
+| **Lunes 19:10** | Tarea "Producción del video largo" | Produce SOLO el largo del domingo de esta semana (si ya existe, no hace nada): guion con datos verificados, **video 16:9 completo sin voz** (subtítulos-teleprompter), miniatura y `youtube.md`. Te notifica. |
 | **Martes 16:40** | Radar | Short reactivo #2. |
+| **Miércoles 13:20** | Tarea "Short derivado (miércoles)" | Produce el short adelanto del largo de ese domingo. Te notifica. |
 | **Jueves 16:40** | Radar | Short reactivo #3. |
 | **Vie, sáb y dom 13:40** | Tarea "Análisis de empresa" | Elige la empresa caliente y produce el short (sin voz, con imágenes). Te notifica. |
 | **Lun → sáb** | **Tú** | Grabas tu voz encima de cada video: shorts con *Voz en off* en la app de YouTube; el largo en CapCut (gratis): importas el MP4, *Audio → Grabar*, lees los subtítulos, exportas. Subes y programas. |
@@ -157,7 +162,9 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 ## 8. Pendientes
 - [x] Calendario de 55 semanas con rotación y búsquedas validadas (gratis).
 - [x] Motor de video largo 16:9 con teleprompter, capítulos y miniaturas + skill `/largo`.
-- [x] Videos 1 (15 nov) y 2 (22 nov) + sus shorts derivados (11 y 18 nov): colchón de 2 semanas.
+- [x] Videos 1 y 2 + sus shorts derivados (hechos el 5 nov). El video 1 ("¿Qué es una acción?") ya se publicó el ~5 nov, así que el
+  calendario se recorrió una semana: Apple sale el 15 nov y su short el 11 nov (ver `calendario-largos.md` y `publicados.md`).
+- [x] 7 nov 2026: se acabó el "colchón": cada tarea produce solo el video del día (el largo, solo el de esa semana).
 - [x] Kit del canal en `canal/` (banner, foto de perfil, textos, listas, plantilla).
 - [x] Imágenes reales en los motores (shorts y largos) + `fetch_images.py` (6 nov 2026).
 - [x] Shorts de análisis de empresa vie/sáb/dom + banco de empresas (6 nov 2026).
@@ -173,6 +180,7 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 |---|---|---|
 | Radar de Shorts (3 por semana) | Lun, mar y jue 16:40 | trig_01CnUTcJ3bevrqhQoUcnexqW |
 | Análisis de empresa (3 por semana) | Vie, sáb y dom 13:40 | trig_01QJCh2FaMNmfpP1SMLHn1E9 |
-| Producción del video largo | Lunes 19:10 | trig_01PqPWwd22ymEiaN4zJynEAN |
+| Producción del video largo (solo el de esa semana) | Lunes 19:10 | trig_01PqPWwd22ymEiaN4zJynEAN |
+| Short derivado (adelanto del largo) | Miércoles 13:20 | trig_01CgPooCEzGfqDFb8XAbQQ14 |
 | Check-up trimestral | 4 feb, 4 may, 4 ago · 17:12 | trig_01DUUsYHU5STYp3ERkoYnnkU |
 | Re-plan anual | 4 nov 2027 · 17:12 | trig_012FRZsfmRFvxMPNyMQJTHsq |

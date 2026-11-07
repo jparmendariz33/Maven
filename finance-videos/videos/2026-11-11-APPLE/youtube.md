@@ -1,4 +1,4 @@
-# Short derivado · miércoles 18 nov · 19:00
+# Short derivado · miércoles 11 nov · 19:00
 Archivo: `APPLE_short.mp4`
 
 ## Título
@@ -6,7 +6,7 @@ Archivo: `APPLE_short.mp4`
 
 ## Descripción
 ```
-Adelanto del video del domingo 22 nov: "Cómo leer un estado de resultados (con Apple)". Míralo completo en el canal.
+Adelanto del video del domingo 15 nov: "Cómo leer un estado de resultados (con Apple)". Míralo completo en el canal.
 Imágenes:
 • Apple Store de la Quinta Avenida: foto de Jorge Láscar, CC BY 2.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Apple_Store_-_Fifth_Avenue_(7181848534).jpg
 • Apple Park (Cupertino): foto de Daniel L. Lu (dllu), CC BY-SA 4.0, Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Aerial_view_of_Apple_Park_dllu.jpg

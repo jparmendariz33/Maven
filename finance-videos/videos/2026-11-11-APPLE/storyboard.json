@@ -1,6 +1,6 @@
 {
  "slug": "APPLE",
- "title": "De cada $100, Apple se queda con $27.6 (adelanto del 22 nov)",
+ "title": "De cada $100, Apple se queda con $27.6 (adelanto del 15 nov)",
  "scenes": [
   {
    "type": "hook",
@@ -61,7 +61,7 @@
   {
    "type": "catalyst",
    "kicker": "Video completo",
-   "date": "DOM 22",
+   "date": "DOM 15",
    "label": "Cómo leer un estado de resultados",
    "sub": "Con los números reales de Apple",
    "cue_date": "domingo",
