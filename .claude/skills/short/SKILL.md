@@ -207,13 +207,19 @@ node scripts/render.js videos/$ID                        # → videos/$ID/TICKER
 Verifica con `ffprobe` (1080x1920, h264 + aac, duración) y revisa 2–3 cuadros del MP4 final.
 
 ## 5. Entregar
-1. Escribe `videos/$ID/youtube.md`: 3 títulos (≤100 caracteres, el gancho en los primeros ~40, con 2–3 hashtags),
-   descripción con datos clave, fuentes reales, **créditos de las imágenes** (`fetch_images.py credits`), "Contenido educativo. No es asesoría financiera.", la línea
-   "Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio." y hashtags (si la empresa es cliente de la agencia,
-   decláralo; ver `plan/PLAN.md` §0);
-   recuerda marcar "No es para niños" y "contenido alterado/sintético: voz de IA".
-2. Envía el MP4 con SendUserFile (display render), dale al usuario el título recomendado y **pega en el chat el guion para leer**
-   (el contenido de `narration.txt`, una escena por párrafo), porque él graba su voz leyéndolo.
+1. Escribe `videos/$ID/youtube.md` empezando con la sección **`## ✅ Para copiar y pegar`** (modelo: `videos/2026-11-07-ABNB/youtube.md`):
+   - **Título** listo, en un bloque de código: ≤ 100 caracteres (ideal 60–80), la empresa o el tema y el gancho en los primeros
+     ~40, **2 hashtags al final** (la empresa + `#acciones`/`#inversiones`/`#bolsa`). Indica cuántos caracteres lleva.
+   - **Descripción** lista, en otro bloque de código, corta para el celular: 1.ª línea con la noticia y las palabras clave
+     (es lo que se ve sin abrir), "📌 Datos clave" en 4–6 viñetas, la pregunta del outro, fuentes en una línea, **créditos de las
+     imágenes** en una línea (autor + licencia), "Contenido educativo. No es asesoría financiera.", "Costa Studio Finance, by JP
+     Armendáriz." y al final **3–5 hashtags** (los 3 primeros salen arriba del título; nunca más de 15 porque YouTube los ignora
+     todos): empresa, ticker, tema y `#Shorts`. Si la empresa es cliente de la agencia, decláralo (ver `plan/PLAN.md` §0).
+   - Debajo: 2 títulos alternativos, "Fuentes completas (enlaces)" y "Al subir" (no es para niños; contenido alterado/sintético
+     = No si la voz es de JP, Sí si es voz de IA; video relacionado; comentario fijado).
+2. Envía el MP4 con SendUserFile (display render). En el mensaje a JP **SIEMPRE** pega, listos para copiar: **el título, la
+   descripción completa** (los dos bloques de "Para copiar y pegar") y **el guion para leer** (el contenido de `narration.txt`, una
+   escena por párrafo), porque él graba su voz leyéndolo y sube el video desde el celular.
 3. Commit y push de `finance-videos/videos/$ID/` (storyboard, data, narration, images/ sin `_cand/`, voice_raw.mp3, mp4, youtube.md)
    a la rama actual. **Si el push falla** (p. ej. 403 porque la sesión no tiene el repo), no te detengas: el MP4 ya se envió por el
    chat; pega también el contenido completo de `youtube.md` en el mensaje final para que JP pueda publicar igual.

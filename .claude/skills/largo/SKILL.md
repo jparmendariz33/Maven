@@ -122,7 +122,9 @@ Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, cor
   "soy JP": usa "Bienvenido a Costa Studio Finance, de Jota Pe Armendáriz". En `youtube.md`: contenido alterado o sintético = **Sí**.
 
 ## 4. Entregables
-1. `largos/$D/youtube.md`: 3 títulos (la búsqueda objetivo al inicio, ≤ 70 caracteres), descripción (2–3 líneas con la promesa,
+1. `largos/$D/youtube.md`, empezando con **`## ✅ Para copiar y pegar`** (igual que los shorts): **Título** listo en un bloque de
+   código (la búsqueda objetivo al inicio, ≤ 70 caracteres, sin hashtags en el título del largo) y **Descripción** lista en otro bloque
+   (en el mensaje a JP pega SIEMPRE ambos bloques); debajo, 2 títulos alternativos. La descripción lleva: (2–3 líneas con la promesa,
    **capítulos** de `capitulos.txt`, fuentes con URL, créditos de imágenes, "Contenido educativo. No es asesoría financiera.",
    "Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.", 3–5 hashtags), lista de reproducción del
    pilar, comentario fijado (la pregunta del outro), pantalla final (video sugerido del mismo pilar) y el **guion para leer** completo
@@ -132,6 +134,6 @@ Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, cor
    "Video completo el domingo en el canal"). En su `youtube.md`, recuerda enlazar el largo con "Video relacionado".
 3. Commit + push a la rama `costa-studio` (sin `build/`, `images/_cand/` ni .wav). Si el push falla, entrega igual: MP4 y miniatura
    por el chat (SendUserFile) y el contenido de `youtube.md` pegado en el mensaje.
-4. Mensaje a JP: tema, duración, título recomendado, rutas (MP4, miniatura, short) y recordatorio:
+4. Mensaje a JP: tema, duración, **el título y la descripción completos listos para copiar** (los bloques de "Para copiar y pegar"), rutas (MP4, miniatura, short) y recordatorio:
    "Graba tu voz con CapCut (importa el MP4 → Audio → Grabar → lee el teleprompter de principio a fin) y prográmalo
    para el domingo 10:00. El short derivado, el miércoles 19:00 con 'Video relacionado' → este largo."
