@@ -51,7 +51,9 @@ Guarda las fuentes (URLs) para `youtube.md`.
 ## 1b. Modo empresa (viernes, sábado y domingo)
 **Cómo elegir la empresa** (tómala tú, sin preguntar; revisa `plan/banco-empresas.md` y `videos/` para no repetir):
 1. **Está en las noticias de la semana**: resultados que sorprendieron, adquisición, IPO, expansión, lanzamiento, polémica,
-   cambio de CEO, récord, o es tendencia en redes. Debe cotizar en bolsa (el formato usa precio y métricas). EE.UU., México
+   cambio de CEO, récord, o es tendencia en redes. **Solo empresas que ya coticen en bolsa o que estén cerca de su IPO**
+   (fecha anunciada o S-1/F-1/prospecto presentado). Nunca privadas sin IPO en puerta, startups ni cripto. Si es pre-IPO: sin
+   `fetch_data.py`; cifras del prospecto, valor/ventas con el rango de precio en lugar de P/E, y di claro que aún no cotiza. EE.UU., México
    (BMV: tickers de Yahoo con `.MX`, p. ej. `WALMEX.MX`, `FEMSAUBD.MX`, `GSANBORB-1.MX`) o del mundo (ADR o bolsa local).
 2. **Marca cotidiana** que tu audiencia conoce o usa (tiendas, apps, comida, autos, viajes, ropa, tecnología, bancos).
 3. **La gente la busca**: autocompletado gratuito de YouTube

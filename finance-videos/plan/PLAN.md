@@ -69,7 +69,9 @@ Siempre se explica con matiz (si ya venía cayendo, se dice) y nunca se recomien
 
 ### Cómo se elige cada short de empresa (vie, sáb, dom)
 Mismo formato y duración que los reactivos, pero la historia es la **empresa**: qué hace, cómo gana dinero, por qué está en boca de
-todos ahora y qué tan cara o rentable es. Debe cotizar en bolsa. Prioridad: (1) noticia de la semana (resultados que sorprendieron,
+todos ahora y qué tan cara o rentable es. **Solo empresas que ya coticen en bolsa o que estén cerca de su IPO** (fecha anunciada o
+S-1/F-1/prospecto presentado; feedback de JP, 8 nov 2026). Nunca privadas sin IPO en puerta, startups ni cripto. Si es pre-IPO, se usan
+las cifras del prospecto y se dice claro que aún no cotiza. Prioridad: (1) noticia de la semana (resultados que sorprendieron,
 adquisición, IPO, expansión, lanzamiento, polémica, récord); (2) marca cotidiana para la audiencia; (3) búsquedas en YouTube.
 Al menos 1 de cada 3 es mexicana. Sin repetir empresas en 30 días ni las de los reactivos de esa semana. Banco de ideas y
 registro: [`banco-empresas.md`](banco-empresas.md). Estructura: skill `/short` §1b.
@@ -80,14 +82,17 @@ sus sucursales y su logo). Solo fotos con licencia libre (Wikimedia Commons, Fli
 en pantalla y en la descripción; **nunca imágenes generadas con IA de marcas o personas reales.** Herramienta: `scripts/fetch_images.py`.
 
 ## 3. Flujo semanal (automatizado)
+**Todas las entregas salen a la misma hora: 6:41 CDMX (llegan ~7:00)** para que JP tenga el día para revisar y editar. **Todos los
+videos se publican SIEMPRE a las 19:00** (el largo del domingo, a las 10:00). Cambio pedido por JP el 8 nov 2026.
+
 | Cuándo (CDMX) | Quién | Qué pasa |
 |---|---|---|
-| **Lunes 16:40** | Tarea "Radar de Shorts" | Elige y produce el short reactivo #1 (sin voz). Te notifica. |
-| **Lunes 19:10** | Tarea "Producción del video largo" | Produce SOLO el largo del domingo de esta semana (si ya existe, no hace nada): guion con datos verificados, **video 16:9 completo sin voz** (subtítulos-teleprompter), miniatura y `youtube.md`. Te notifica. |
-| **Martes 16:40** | Radar | Short reactivo #2. |
-| **Miércoles 13:20** | Tarea "Short derivado (miércoles)" | Produce el short adelanto del largo de ese domingo. Te notifica. |
-| **Jueves 16:40** | Radar | Short reactivo #3. |
-| **Vie, sáb y dom 13:40** | Tarea "Análisis de empresa" | Elige la empresa caliente y produce el short (sin voz, con imágenes). Te notifica. |
+| **Lunes 6:41** | Tarea "Radar de Shorts" | Elige y produce el short reactivo #1 (sin voz). Te notifica. |
+| **Lunes 6:41** | Tarea "Producción del video largo" | Produce SOLO el largo del domingo de esta semana (si ya existe, no hace nada): guion con datos verificados, **video 16:9 completo sin voz** (subtítulos-teleprompter), miniatura y `youtube.md`. Te notifica. |
+| **Martes 6:41** | Radar | Short reactivo #2. |
+| **Miércoles 6:41** | Tarea "Short derivado (miércoles)" | Produce el short adelanto del largo de ese domingo. Te notifica. |
+| **Jueves 6:41** | Radar | Short reactivo #3. |
+| **Vie, sáb y dom 6:41** | Tarea "Análisis de empresa" | Elige la empresa caliente y produce el short (sin voz, con imágenes). Te notifica. |
 | **Lun → sáb** | **Tú** | Grabas tu voz encima de cada video: shorts con *Voz en off* en la app de YouTube; el largo en CapCut (gratis): importas el MP4, *Audio → Grabar*, lees los subtítulos, exportas. Subes y programas. |
 | **Domingo** | **Tú** | Sale el largo a las 10:00. 10 min contestando comentarios. |
 
@@ -178,9 +183,9 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 ## 9. Tareas programadas (zona horaria: Ciudad de México)
 | Tarea | Cuándo | ID |
 |---|---|---|
-| Radar de Shorts (3 por semana) | Lun, mar y jue 16:40 | trig_01CnUTcJ3bevrqhQoUcnexqW |
-| Análisis de empresa (3 por semana) | Vie, sáb y dom 13:40 | trig_01QJCh2FaMNmfpP1SMLHn1E9 |
-| Producción del video largo (solo el de esa semana) | Lunes 19:10 | trig_01PqPWwd22ymEiaN4zJynEAN |
-| Short derivado (adelanto del largo) | Miércoles 13:20 | trig_01CgPooCEzGfqDFb8XAbQQ14 |
-| Check-up trimestral | 4 feb, 4 may, 4 ago · 17:12 | trig_01DUUsYHU5STYp3ERkoYnnkU |
-| Re-plan anual | 4 nov 2027 · 17:12 | trig_012FRZsfmRFvxMPNyMQJTHsq |
+| Radar de Shorts (3 por semana) | Lun, mar y jue 6:41 | trig_01CnUTcJ3bevrqhQoUcnexqW |
+| Análisis de empresa (3 por semana) | Vie, sáb y dom 6:41 | trig_01QJCh2FaMNmfpP1SMLHn1E9 |
+| Producción del video largo (solo el de esa semana) | Lunes 6:41 | trig_01PqPWwd22ymEiaN4zJynEAN |
+| Short derivado (adelanto del largo) | Miércoles 6:41 | trig_01CgPooCEzGfqDFb8XAbQQ14 |
+| Check-up trimestral | 4 feb, 4 may, 4 ago · 6:41 | trig_01DUUsYHU5STYp3ERkoYnnkU |
+| Re-plan anual | 4 nov 2027 · 6:41 | trig_012FRZsfmRFvxMPNyMQJTHsq |
