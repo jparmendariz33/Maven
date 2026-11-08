@@ -1,0 +1,20 @@
+{
+ "images/botellas.jpg": {
+  "title": "Jose_cuervo.jpg",
+  "credit": "Foto: Belenois · CC BY-SA 4.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Jose_cuervo.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ "images/alambiques.jpg": {
+  "title": "Tequila_stills_José_Cuervo.jpg",
+  "credit": "Foto: Gzzz · CC BY-SA 4.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Tequila_stills_José_Cuervo.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ "images/pinas.jpg": {
+  "title": "Hearts_of_agave_plants_Tequila_Mexico.jpg",
+  "credit": "Foto: Gzzz · CC BY-SA 4.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Hearts_of_agave_plants_Tequila_Mexico.jpg",
+  "provider": "Wikimedia Commons"
+ }
+}

@@ -1,0 +1,260 @@
+{
+ "ticker": "CUERVO",
+ "mode": "empresa",
+ "format": "analisis+potencial",
+ "title": "Becle (José Cuervo): −11.9% en un día tras su 3T26 · Análisis + Potencial a 5 años",
+ "brand_colors": {
+  "primary": "#B01E23",
+  "name": "Rojo del sello La Rojeña (etiqueta José Cuervo)"
+ },
+ "scenes": [
+  {
+   "type": "hook",
+   "say": "José Cuervo se hundió casi 12% en un día. ¿Todavía tiene futuro?",
+   "kicker": "BMV · CUERVO",
+   "title": "José Cuervo",
+   "value": -11.9,
+   "decimals": 1,
+   "unit": "%",
+   "tone": "down",
+   "caption": "el 29 de octubre, tras su reporte",
+   "question": "¿Tiene futuro?",
+   "cue_value": "hundió",
+   "cue_question": "futuro",
+   "bg_image": "images/botellas.jpg",
+   "focus": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "type": "company",
+   "say": "Su dueña, Becle, es el mayor productor de tequila del mundo: más de 30 marcas en 85 países.",
+   "kicker": "La empresa",
+   "name": "Becle",
+   "line": "El mayor productor de tequila del mundo",
+   "chips": [
+    {
+     "label": "José Cuervo",
+     "cue": "dueña"
+    },
+    {
+     "label": "1800",
+     "cue": "productor"
+    },
+    {
+     "label": "Maestro Dobel",
+     "cue": "tequila"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Valor de mercado",
+     "value": "$50 mil M MXN",
+     "cue": "marcas"
+    },
+    {
+     "label": "Marcas · países",
+     "value": "30+ · 85+",
+     "cue": "países"
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "say": "Cuece el agave, lo destila y gana por cada botella que vende.",
+   "image": "images/pinas.jpg",
+   "kicker": "Tequila, Jalisco",
+   "title": "Del agave a la botella",
+   "caption": "gana por cada botella vendida",
+   "cue_title": "agave",
+   "cue_caption": "botella"
+  },
+  {
+   "type": "news",
+   "say": "El 28 de octubre reportó ventas 15% menores y 9% menos cajas.",
+   "kicker": "28 OCT · RESULTADOS 3T26",
+   "headline": "Vende menos y gana menos",
+   "source": "Becle · reporte 3T26 (BMV)",
+   "image": "images/alambiques.jpg",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "bullets": [
+    {
+     "text": "Ventas −15.3%: $9,253 M",
+     "sub": "en pesos; el peso fuerte también le pegó",
+     "cue": "ventas",
+     "tone": "down"
+    },
+    {
+     "text": "Volumen −8.7%",
+     "sub": "5.7 M de cajas de 9 litros",
+     "cue": "cajas",
+     "tone": "down"
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "say": "Su utilidad cayó 85%, aunque hace un año traía una ganancia extra.",
+   "count": 6,
+   "quarters": [
+    {
+     "period": "2025-06-30",
+     "revenue": 11461567000,
+     "net_income": 2003184000
+    },
+    {
+     "period": "2025-09-30",
+     "revenue": 10922000000,
+     "net_income": 4123000000
+    },
+    {
+     "period": "2025-12-31",
+     "revenue": 11077000000,
+     "net_income": 1353000000
+    },
+    {
+     "period": "2026-03-31",
+     "revenue": 7404704000,
+     "net_income": 388201000
+    },
+    {
+     "period": "2026-06-30",
+     "revenue": 9865449000,
+     "net_income": 1409736000
+    },
+    {
+     "period": "2026-09-30",
+     "revenue": 9253173000,
+     "net_income": 632551000
+    }
+   ],
+   "cue_revenue": "utilidad",
+   "cue_net": "cayó",
+   "note": "−85% utilidad a/a",
+   "note_sub": "En pesos · T3 2025 con ganancia extra (Lalo Spirits)",
+   "note_tone": "down",
+   "cue_note": "extra"
+  },
+  {
+   "type": "metric",
+   "say": "Tras la caída, pagas 13 pesos por cada peso que gana.",
+   "kicker": "Valuación",
+   "label": "P/E",
+   "fullname": "Precio / Utilidad · últimos 4 trimestres",
+   "value": 13,
+   "decimals": 0,
+   "suffix": "x",
+   "explain": "Pagas $13 por cada $1 de utilidad",
+   "scale": {
+    "min": 0,
+    "max": 60,
+    "bands": [
+     [
+      0,
+      15,
+      "Barata"
+     ],
+     [
+      15,
+      30,
+      "Justa"
+     ],
+     [
+      30,
+      60,
+      "Cara"
+     ]
+    ]
+   },
+   "verdict": "Barata… si vuelve a crecer",
+   "verdict_tone": "accent",
+   "cue_value": "caída",
+   "cue_explain": "pagas",
+   "cue_gauge": "gana"
+  },
+  {
+   "type": "statement",
+   "say": "¿Y a cinco años? Su motor son sus tequilas más caros.",
+   "kicker": "El potencial · a 5 años",
+   "text": "Su motor: los tequilas premium",
+   "emphasis": "premium"
+  },
+  {
+   "type": "metric",
+   "say": "1800 y Maestro Dobel ya pesan 43% de sus ventas, más que José Cuervo.",
+   "kicker": "El motor · 3T26",
+   "label": "Otros tequilas",
+   "fullname": "1800, Maestro Dobel, Centenario… · % de las ventas",
+   "value": 43,
+   "decimals": 0,
+   "suffix": "%",
+   "explain": "José Cuervo: 32% · y en cajas casi no bajaron (−0.6%)",
+   "cue_value": "pesan",
+   "cue_explain": "Cuervo"
+  },
+  {
+   "type": "news",
+   "say": "Su ventaja: el tequila solo se hace en México, y nadie produce más que Becle.",
+   "kicker": "Su ventaja",
+   "headline": "Difícil de copiar",
+   "source": "Becle · reporte 3T26 (BMV)",
+   "bullets": [
+    {
+     "text": "Denominación de origen",
+     "sub": "el tequila solo se produce en México",
+     "cue": "México",
+     "tone": "up"
+    },
+    {
+     "text": "El mayor productor del mundo",
+     "sub": "y deuda controlada: 1.3 veces su UAFIDA",
+     "cue": "produce",
+     "tone": "up"
+    }
+   ]
+  },
+  {
+   "type": "news",
+   "say": "El riesgo: 56% de sus ventas son en Estados Unidos, y los jóvenes beben menos alcohol.",
+   "kicker": "Lo que podría salir mal",
+   "headline": "Dos riesgos reales",
+   "source": "Becle 3T26 · Expansión",
+   "bullets": [
+    {
+     "text": "56% de sus ventas: EE. UU. y Canadá",
+     "sub": "aranceles y peso fuerte le pegan",
+     "cue": "ventas",
+     "tone": "down"
+    },
+    {
+     "text": "Los jóvenes beben menos",
+     "sub": "y prueban otras bebidas",
+     "cue": "jóvenes",
+     "tone": "down"
+    }
+   ]
+  },
+  {
+   "type": "catalyst",
+   "say": "Qué vigilar: que Estados Unidos vuelva a crecer en su próximo reporte.",
+   "kicker": "Qué vigilar",
+   "date": "4T26",
+   "label": "Su próximo reporte",
+   "sub": "¿vuelve a crecer en EE. UU.?",
+   "cue_date": "vigilar"
+  },
+  {
+   "type": "outro",
+   "say": "¿Fue un mal trago... o le queda brindis para rato?",
+   "question_a": "¿Fue un mal trago…",
+   "question_b": "o le queda brindis para rato?",
+   "cue_a": "trago",
+   "cue_b": "brindis",
+   "sources": "Becle (reporte 3T26, BMV) · Yahoo Finance · Expansión"
+  }
+ ]
+}
