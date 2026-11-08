@@ -150,7 +150,7 @@ function credit(s, key, x, y, col, al = 'left', a = .75) {
 
 // ---------------- fondos ----------------
 const THEME = { hook: 'blue', statement: 'blue', catalyst: 'blue', outro: 'blue' };
-function themeOf0(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'card' || s.layout === 'logo' ? 'sand' : 'blue') : THEME[s.type]) || 'sand'; }
+function themeOf0(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'full' ? 'blue' : 'sand') : THEME[s.type]) || 'sand'; }
 // con brand_colors: 'brand' (fondo de la empresa) en gancho/catalizador/cierre; el resto, el fondo base (arena = 'sand', azul = 'dark' o 'blue')
 function themeOf(s) {
   const t = themeOf0(s);
@@ -434,10 +434,26 @@ R.metric = (s, t) => {
   C.restore();
 };
 
-// Foto real a cuadro. layout: "full" (pantalla completa, por defecto) · "card" (tarjeta sobre arena) · "logo" (logo grande en ficha blanca)
+// Foto real. layout: "framed" (por defecto, JP 8 nov 2026: foto en tarjeta redondeada sobre el fondo del video, con el texto
+// debajo, para que combine con el resto) · "full" (pantalla completa con fondo oscuro) · "card" (título arriba, foto grande) ·
+// "logo" (logo grande en ficha blanca)
 R.photo = (s, t) => {
-  const im = img(s.image), [fx, fy] = focus(s), lay = s.layout || 'full';
-  if (lay === 'full') {
+  const im = img(s.image), [fx, fy] = focus(s), lay = s.layout || 'framed';
+  if (lay === 'framed') {
+    const size = s.size || 72, tl = wrap(s.title || '', F.d, 800, size, 900), lh = size * 1.16;
+    const textH = (s.kicker ? 70 : 0) + tl.length * lh + (s.caption ? 84 : 0) + 40;
+    const ar = im ? im.naturalWidth / im.naturalHeight : 1.5, maxH = 1530 - 290 - 60 - textH;
+    const ph = Math.max(380, Math.min(900 / ar * 1.35, maxH));                  // fotos horizontales: algo más altas (recorta los lados)
+    const top = 290 + Math.max(0, 1530 - 290 - (ph + 60 + textH)) * .45, k = seg(t, s.t0, s.t0 + .9);   // bloque centrado
+    if (im) { C.save(); rr(90, top, 900, ph * ex(k), 30); C.clip(); C.filter = 'saturate(.95) contrast(1.04)'; cover(im, 90, top, 900, ph, kb(s, t), fx, fy); C.restore();
+      credit(s, s.image, 990, top + ph + 34, B.g4, 'right', .8 * k); }
+    let y = top + ph + 60 + (s.kicker ? 50 : 0);
+    if (s.kicker) kicker(s.kicker, 90, y - 50 + 28, s.t0 + .2, t, B.negro);
+    y += size * .9;
+    riseLines(tl, 90, y, lh, cueT(s, 'cue_title', .35), t, { f: F.d, w: 800, s: size });
+    if (s.caption) rise(s.caption, 90, y + (tl.length - 1) * lh + 84, seg(t, cueT(s, 'cue_caption', .8), cueT(s, 'cue_caption', .8) + .6),
+      { f: F.s, w: 400, s: fit(s.caption, F.s, 400, 60, 900, 36), c: BR ? B.marca : B.azul });
+  } else if (lay === 'full') {
     const wide = im && im.naturalWidth / im.naturalHeight > .8 && s.fit !== 'cover';
     const tl = wrap(s.title || '', F.d, 800, s.size || 80, 860), lh = (s.size || 80) * 1.16;
     const y0 = (wide ? 1470 : 1430) - (tl.length - 1) * lh - (s.caption ? 70 : 0), top = y0 - (s.size || 80) - (s.kicker ? 120 : 30);
