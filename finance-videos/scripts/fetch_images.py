@@ -23,6 +23,8 @@ Nota: desde los servidores de la nube Wikimedia suele responder 429 (límite de 
 creciente (hasta ~3 min por archivo); Openverse a veces responde 504: entonces usa `commons` o `add`. jsDelivr (simple-icons) es estable.
 Si Wikimedia sigue bloqueando, usa `search … --source flickr` (Flickr baja sin límite; también licencias libres).
   python3 scripts/fetch_images.py add DIR fachada "https://…/foto.jpg" --credit "Foto: Costco (sala de prensa)"
+  python3 scripts/fetch_images.py add DIR logo "https://empresa.com/…/logo.svg" --logo --credit "Logo: Empresa (sitio oficial)"
+        → un logo .svg o .png de la web oficial queda como images/logo.png TRANSPARENTE (los logos SIEMPRE en PNG, nunca JPG)"
   python3 scripts/fetch_images.py credits DIR                  → DIR/images/creditos.md (pégalo en youtube.md)
 
 En el storyboard se usan como "images/tienda.jpg" (campos `image`, `bg_image`, `logo`). build_timeline.py las incrusta.
@@ -198,6 +200,15 @@ def cmd_icon(a):
 
 
 def cmd_add(a):
+    if a.url.lower().split('?')[0].endswith('.svg'):   # logo SVG (p. ej. del sitio oficial de la empresa) → PNG transparente recortado
+        import subprocess, tempfile
+        tmp = tempfile.NamedTemporaryFile(suffix='.svg', delete=False); tmp.write(get(a.url, binary=True)); tmp.close()
+        rel = f'images/{a.name}.png'; out = os.path.join(a.dir, rel); os.makedirs(os.path.dirname(out), exist_ok=True)
+        subprocess.run(['node', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'svg2png.js'), tmp.name, out, '1000'], check=True)
+        from PIL import Image
+        im = Image.open(out); im.crop(im.getbbox()).save(out)
+        put_credit(a.dir, rel, {'title': a.name, 'credit': a.credit, 'source_url': a.source or a.url, 'kind': 'logo'})
+        print(f'✅ {rel} (SVG → PNG transparente) · {a.credit}'); return
     data = get(a.url, binary=True); png = a.url.lower().split('?')[0].endswith('.png') or a.logo
     rel = f'images/{a.name}.' + ('png' if png else 'jpg'); size = save_img(data, os.path.join(a.dir, rel), keep_alpha=png)
     put_credit(a.dir, rel, {'title': a.name, 'credit': a.credit, 'source_url': a.source or a.url, 'kind': 'logo' if a.logo else 'photo'})

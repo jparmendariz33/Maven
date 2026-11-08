@@ -77,7 +77,8 @@ Comunes: `kicker`, `title`, `subtitle`, `theme` ("blue" | "sand" | "white"), `sa
 - `catalyst` (azul): `date`, `label`, `sub`, `cue_date`.
 - `outro` (azul): `question_a`, `question_b`, `cue_a`, `cue_b`, `cta`, `sources`.
 - `photo` (foto real): `image`, `layout` ("full" foto a pantalla completa con texto abajo · "split" texto a la izquierda y foto a la
-  derecha · "logo" logo en ficha blanca), `kicker`, `title`, `caption`, `focus` [x, y], `cue_title`, `cue_caption`.
+  derecha · "logo" logo grande; los logos SIEMPRE en PNG transparente, se dibujan sin recuadro sobre el fondo — solo llevan
+  ficha blanca si son tan claros que se perderían; `"logo_card": true` la fuerza), `kicker`, `title`, `caption`, `focus` [x, y], `cue_title`, `cue_caption`.
 - `bg_image` (cualquier escena): foto de fondo en duotono del color del tema. `thumbnail.bg_image` también funciona.
 
 ### Imágenes reales (obligatorio: 10–20 por video)

@@ -16,5 +16,12 @@
   "credit": "Foto: Gzzz · CC BY-SA 4.0 · Wikimedia Commons",
   "source_url": "https://commons.wikimedia.org/wiki/File:Hearts_of_agave_plants_Tequila_Mexico.jpg",
   "provider": "Wikimedia Commons"
+ },
+ "images/logo.png": {
+  "title": "Logo de Becle (cuervo)",
+  "credit": "Logo: Becle (sitio oficial cuervo.com.mx)",
+  "source_url": "https://www.cuervo.com.mx/assets/img/cuervo.svg",
+  "provider": "Becle",
+  "kind": "logo"
  }
 }

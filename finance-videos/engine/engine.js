@@ -141,6 +141,16 @@ function contain(im, x, y, w, h) {
   const s = Math.min(w / im.naturalWidth, h / im.naturalHeight), dw = im.naturalWidth * s, dh = im.naturalHeight * s;
   C.drawImage(im, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
 }
+// Logos (PNG transparente): se dibujan directo sobre el fondo del video (JP, 8 nov 2026). Solo si el logo casi no contrasta con
+// el fondo (p. ej. un logo blanco sobre arena) se pone sobre una ficha blanca.
+const logoTone = {};
+function logoNeedsCard(k, im, bgc) {
+  if (!(k in logoTone)) { const c = document.createElement('canvas'); c.width = c.height = 48; const g = c.getContext('2d');
+    g.drawImage(im, 0, 0, 48, 48); const d = g.getImageData(0, 0, 48, 48).data; let r = 0, gg = 0, b = 0, n = 0;
+    for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 128) { r += d[i]; gg += d[i + 1]; b += d[i + 2]; n++; }
+    logoTone[k] = n ? toHex([r / n, gg / n, b / n]) : null; }
+  return !logoTone[k] || contrast(logoTone[k], bgc) < 1.6;
+}
 const kb = (s, t) => 1.04 + .09 * seg(t, s.t0, s.t1 + .6);           // zoom lento tipo Ken Burns
 const focus = s => s.focus || [.5, .5];
 function credit(s, key, x, y, col, al = 'left', a = .75) {
@@ -232,8 +242,10 @@ R.company = (s, t) => {
   kicker(s.kicker || 'La empresa', 90, 360, s.t0 + .1, t, B.negro);
   const lg = img(s.logo);
   if (lg) { const k = seg(t, s.t0 + .25, s.t0 + .85); if (k > 0) { C.save(); C.globalAlpha *= k; scaleAt(815, 415, .85 + .15 * back(k));
-    rr(700, 300, 230, 230, 34); C.fillStyle = '#FFFFFF'; C.fill(); C.strokeStyle = B.grid; C.lineWidth = 2; C.stroke();
-    contain(lg, 726, 326, 178, 178); C.restore(); } }
+    if (s.logo_card || logoNeedsCard(s.logo, lg, themeOf(s) === 'dark' ? B0.azul : B0.arena)) {
+      rr(700, 300, 230, 230, 34); C.fillStyle = '#FFFFFF'; C.fill(); C.strokeStyle = B.grid; C.lineWidth = 2; C.stroke(); contain(lg, 726, 326, 178, 178); }
+    else contain(lg, 700, 300, 230, 230);
+    C.restore(); } }
   riseLines(wrap(s.name || D.short_name || D.name, F.d, 800, 96, lg ? 580 : 900), 90, 490, 110, s.t0 + .2, t, { f: F.d, w: 800, s: lg ? fit(s.name || D.short_name || D.name, F.d, 800, 96, 580, 64) : 96, c: B.marca });
   const ll = wrap(s.line || '', F.b, 500, 46, 880);
   riseLines(ll, 90, 640, 60, s.t0 + .6, t, { f: F.b, w: 500, s: 46, c: B.g3 });
@@ -372,8 +384,9 @@ R.news = (s, t) => {
     const tc = typeof b.cue === 'number' ? b.cue : s.t0 + 1.4 + i * 1.2, k = seg(t, tc, tc + .5); if (k <= 0) return;
     const lines = wrap(b.text, F.b, 700, 46, 800);
     C.save(); C.globalAlpha *= k; C.translate((1 - ex(k)) * 40, 0);
-    C.fillStyle = b.tone ? toneC(b.tone) : B.azul; C.beginPath(); C.arc(116, y - 15, 26, 0, 7); C.fill();
-    txt(String(i + 1), 116, y - 3, { f: F.d, w: 800, s: 28, al: 'center', c: BR ? inkOn(b.tone ? toneC(b.tone) : B.azul) : B.arena });
+    const bf = BR ? B.azul : b.tone ? toneC(b.tone) : B.azul;   // con brand_colors, todas las viñetas en el color de la empresa
+    C.fillStyle = bf; C.beginPath(); C.arc(116, y - 15, 26, 0, 7); C.fill();
+    txt(String(i + 1), 116, y - 3, { f: F.d, w: 800, s: 28, al: 'center', c: BR ? inkOn(bf) : B.arena });
     lines.forEach((l, j) => txt(l, 170, y + j * 56, { f: F.b, w: 700, s: 46 }));
     if (b.sub) txt(b.sub, 170, y + lines.length * 56 - 4, { f: F.b, w: 400, s: 34, c: B.g4, a: seg(t, tc + .4, tc + .9) });
     C.restore();
@@ -487,7 +500,9 @@ R.photo = (s, t) => {
     const k = seg(t, s.t0 + .15, s.t0 + .8);
     if (s.kicker) kicker(s.kicker, 90, 360, s.t0 + .1, t, B.negro);
     if (im && k > 0) { C.save(); C.globalAlpha *= k; scaleAt(540, 760, .88 + .12 * back(k));
-      rr(140, 470, 800, 580, 48); C.fillStyle = '#FFFFFF'; C.fill(); contain(im, 220, 540, 640, 440); C.restore(); }
+      if (s.logo_card || logoNeedsCard(s.image, im, themeOf(s) === 'dark' ? B0.azul : B0.arena)) { rr(140, 470, 800, 580, 48); C.fillStyle = '#FFFFFF'; C.fill(); contain(im, 220, 540, 640, 440); }
+      else contain(im, 160, 490, 760, 540);
+      C.restore(); }
     if (s.title) rise(s.title, 540, 1210, seg(t, cueT(s, 'cue_title', .6), cueT(s, 'cue_title', .6) + .6), { f: F.d, w: 800, s: fit(s.title, F.d, 800, 78, 880, 40), al: 'center' });
     if (s.caption) riseLines(wrap(s.caption, F.b, 500, 44, 860), 540, 1290, 58, cueT(s, 'cue_caption', 1), t, { f: F.b, w: 500, s: 44, al: 'center', c: B.g3 });
   }

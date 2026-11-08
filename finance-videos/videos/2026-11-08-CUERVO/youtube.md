@@ -21,7 +21,7 @@ Becle, dueña de José Cuervo, cayó casi 12% en la BMV el 29 de octubre tras su
 ¿Fue un mal trago… o le queda brindis para rato? Te leo en los comentarios 👇
 
 Fuentes: Becle, reporte de resultados 3T26 (BMV) · Yahoo Finance (cierre del 6 nov 2026) · Expansión
-Imágenes: botellas de José Cuervo, foto de Belenois (CC BY-SA 4.0) · alambiques y piñas de agave, fotos de Gzzz (CC BY-SA 4.0) · Wikimedia Commons
+Imágenes: botellas de José Cuervo, foto de Belenois (CC BY-SA 4.0) · alambiques y piñas de agave, fotos de Gzzz (CC BY-SA 4.0) · Wikimedia Commons · logo: Becle (sitio oficial)
 
 Contenido educativo. No es asesoría financiera ni una recomendación de compra o venta.
 Costa Studio Finance, by JP Armendáriz.
@@ -38,6 +38,7 @@ Costa Studio Finance, by JP Armendáriz.
   (ventas, volumen, utilidad, ventas por región y por categoría, apalancamiento 1.3x, "mayor productor de tequila del mundo", 30+ marcas, 85+ países)
 • Expansión, caída de ganancias 3T26: https://expansion.mx/empresas/2026/10/28/jose-cuervo-caida-ganancias-tercer-trimestre-2026
 • Expansión, los jóvenes beben menos alcohol: https://expansion.mx/empresas/2026/09/18/jovenes-beben-menos-alcohol-tequileras-ajustan-estrategias
+• Logo: https://www.cuervo.com.mx/assets/img/cuervo.svg (sitio oficial de Becle)
 • Fotos: https://commons.wikimedia.org/wiki/File:Jose_cuervo.jpg · https://commons.wikimedia.org/wiki/File:Tequila_stills_José_Cuervo.jpg · https://commons.wikimedia.org/wiki/File:Hearts_of_agave_plants_Tequila_Mexico.jpg
 Notas: −11.9% = cierre del 29 oct ($13.65) vs. 28 oct ($15.50), Yahoo Finance. P/E = $13.93 (cierre 6 nov) ÷ UPA de 4 trimestres ($0.38 + $0.11 + $0.39 + $0.18 = $1.06). Valor de mercado ≈ $50 mil M de pesos (Yahoo). 43% = $4,008 M de "Otros Tequilas" ÷ $9,253 M; José Cuervo 32% = $2,966 M ÷ $9,253 M; 56% = $5,145 M de EE. UU. y Canadá ÷ $9,253 M. Color de marca: rojo del sello "Fábrica La Rojeña" de la etiqueta (#B01E23).
 

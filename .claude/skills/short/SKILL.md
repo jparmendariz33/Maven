@@ -14,7 +14,28 @@ Dos modos, mismo motor, misma duración (~65–75 s sin voz) y misma marca:
 publicación; "hoy" y "ayer" se cuentan desde ese día (en fin de semana di "el viernes…"). Nunca produzcas shorts de días futuros
 (el adelanto del miércoles lo hace la tarea del miércoles). Antes de elegir tema, revisa `plan/publicados.md` para no repetir, y al
 terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno por párrafo (regenéralo si cambias el guion).
-**Modelo de estilo:** `videos/2026-11-07-ABNB/` (el favorito de JP).
+**Modelo de estilo:** `videos/2026-11-07-ABNB/` (el favorito de JP) y, para el formato y los colores de empresa, `videos/2026-11-08-CUERVO/`.
+
+### ✅ Checklist de estilo (reglas que pidió JP — revisa TODAS antes de entregar)
+1. **Un video por día**, hecho el mismo día, que se publica **siempre a las 19:00 CDMX** (las tareas corren a las 6:41 para que JP lo revise).
+2. **Empresas:** solo las que ya cotizan en bolsa o están cerca de su IPO (prospecto o fecha anunciada). Nada privado, startups ni cripto.
+3. **Formato de empresa "Análisis + Potencial"** (§1b): mitad análisis, mitad potencial a 5 años; riesgos con el mismo peso;
+   nunca "cómprala" ni precios objetivo; `disclosure` si JP tiene acciones (`plan/posiciones-jp.md`).
+4. **Colores** (§1b): `brand_colors` con el color real de la marca (verificado en logo/etiqueta/sitio). Gancho, catalizador y
+   cierre con fondo de la marca; el resto con UN fondo Costa (arena para marcas fuertes; azul solo para marcas pastel); los datos
+   de la empresa en su color; **todas las viñetas de las listas en el color de la empresa** (nada de verdes sueltos); nunca bloques
+   rellenos del color de la empresa sobre el azul Costa.
+5. **Logo SIEMPRE:** la escena `company` lleva `logo` (y el logo sale en cada video de empresa). **Los logos van SIEMPRE en PNG
+   transparente** (nunca JPG ni capturas con fondo) para que se vea el fondo del video; el motor lo dibuja sin recuadro (solo pone
+   ficha blanca si el logo es tan claro que se perdería). Fuentes, en orden: `icon` (simple-icons), `logo` (Commons .svg) o
+   `add … logo URL.svg --logo` (SVG/PNG del sitio oficial o sala de prensa de la empresa). Si la escena es de la matriz (Becle),
+   usa el logo de la matriz.
+6. **Fotos reales** (3–5 + logo; nunca IA de marcas o personas): a pantalla completa sobre negro, con el texto en el color base
+   del video (arena, o azul si la marca es pastel).
+7. **Datos verificados** con fuente primaria (reporte trimestral, 8-K/10-Q, BMV, prospecto) y P/E recalculado si acaba de reportar.
+8. **QA (`build/qa.jpg`):** nada encimado ni fuera de la zona segura; el logo aparece; los colores siguen las reglas 4–6;
+   duración 75–85 s en formato de empresa.
+9. **Entrega:** MP4 + título y descripción listos para copiar + guion para leer (§5).
 
 Proyecto: `finance-videos/` en la raíz del repo. Todo se ejecuta desde ahí:
 `cd finance-videos` (rutas abajo relativas a esa carpeta).
@@ -98,6 +119,7 @@ Cuervo"}` (el color principal de la marca, verificado en su logo, etiqueta o sit
   - En el gancho/catalizador/cierre: color brillante o pastel → exacto con texto negro; color oscuro → oscurecido lo justo con
     texto arena.
   - Para forzarlo: `"base": "arena"` o `"base": "azul"` dentro de `brand_colors` (solo si en `qa.jpg` no combina).
+- Viñetas de `news`: con `brand_colors` TODAS van en el color de la empresa (el `tone` ya no las pinta de verde/rojo).
 - En esas escenas, **los DATOS de la empresa** (nombre, cifras, barras de ingresos, valor de cada métrica, gráfica del precio, ficha
   principal, viñetas sin tono) van en el color de la empresa; sube/baja siguen en musgo/terracota; frases y subtítulos en paleta Costa.
 - Las fotos a pantalla completa (`photo`, por defecto) van sobre negro, con el texto en el color base del video (arena o azul).
@@ -132,7 +154,8 @@ python3 scripts/fetch_images.py add videos/$ID fachada "https://…" --credit "F
   video — arena, o azul si la marca es pastel; así lo quiere JP · "framed" foto en tarjeta sobre el fondo del video ·
   "card" título arriba y foto grande · "logo" logo grande en ficha blanca),
   `kicker`, `title`, `caption`, `focus`, `fit: "cover"` (forzar pantalla completa), `cue_title`, `cue_caption`.
-- `company.logo`: ficha blanca con el logo a la derecha del nombre.
+- `company.logo` (obligatorio en videos de empresa): logo PNG transparente a la derecha del nombre, directo sobre el fondo del
+  video (sin ficha). `"logo_card": true` fuerza la ficha blanca si hiciera falta.
 - `news.image` (+ `focus`): foto en tarjeta arriba del titular (con imagen: máx. 2 bullets).
 El pie de foto (autor · licencia) sale solo en pantalla. En `youtube.md` pega la lista de `python3 scripts/fetch_images.py credits videos/$ID`.
 

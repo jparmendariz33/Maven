@@ -110,6 +110,14 @@ function credit(s, key, x, y, col, al = 'left', a = .75) {
 
 // ---------------- fondos y marco ----------------
 const THEME = { personal: 'blue', hook: 'blue', statement: 'blue', chapter: 'blue', catalyst: 'blue', outro: 'blue', quote: 'blue' };
+const _lt = {};
+function logoLight(k, im) {   // ¿el logo es casi del color de la arena? (luminancia media de los píxeles opacos)
+  if (!(k in _lt)) { const c = document.createElement('canvas'); c.width = c.height = 48; const g = c.getContext('2d'); g.drawImage(im, 0, 0, 48, 48);
+    const d = g.getImageData(0, 0, 48, 48).data; let l = 0, n = 0;
+    for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 128) { l += (.2126 * d[i] + .7152 * d[i + 1] + .0722 * d[i + 2]) / 255; n++; }
+    _lt[k] = !n || l / n > .72; }
+  return _lt[k];
+}
 function themeOf(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'split' || s.layout === 'logo' ? 'sand' : 'blue') : THEME[s.type]) || 'sand'; }
 function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
@@ -491,7 +499,11 @@ R.photo = (s, t) => {
     if (s.caption) riseLines(wrap(s.caption, F.b, 500, 38, 760), L, 360 + tl.length * size * 1.16 + 40, 52, cueT(s, 'cue_caption', .8), t, { f: F.b, w: 500, s: 38, c: '#3a3a3a' });
   } else { // logo
     const k = seg(t, s.t0 + .15, s.t0 + .8);
-    if (im && k > 0) { C.save(); C.globalAlpha *= k; scaleAt(1390, 500, .88 + .12 * back(k)); rr(1040, 230, 700, 540, 44); C.fillStyle = '#FFFFFF'; C.fill(); contain(im, 1110, 300, 560, 400); C.restore(); }
+    if (im && k > 0) { C.save(); C.globalAlpha *= k; scaleAt(1390, 500, .88 + .12 * back(k));
+      // logos PNG transparentes directo sobre el fondo (JP, 8 nov 2026); ficha blanca solo si el logo se perdería en la arena
+      if (s.logo_card || logoLight(s.image, im)) { rr(1040, 230, 700, 540, 44); C.fillStyle = '#FFFFFF'; C.fill(); contain(im, 1110, 300, 560, 400); }
+      else contain(im, 1060, 250, 660, 500);
+      C.restore(); }
     kicker(s.kicker, L, 330, s.t0 + .1, t, B.negro);
     const size = s.size || 72, tl = wrap(s.title || '', F.d, 800, size, 820);
     riseLines(tl, L, 450, size * 1.16, cueT(s, 'cue_title', .3), t, { f: F.d, w: 800, s: size });
