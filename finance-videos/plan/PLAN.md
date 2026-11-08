@@ -82,9 +82,8 @@ riesgos con el mismo peso y qué vigilar). Nunca "cómprala" ni precios objetivo
 Si JP tiene acciones de la empresa ([`posiciones-jp.md`](posiciones-jp.md)), se declara en pantalla y en la descripción.
 El **sábado** es "Tesis a 5 años": la empresa sale de [`banco-tesis.md`](banco-tesis.md) aunque no esté en las noticias.
 Cuando una tesis jale vistas y comentarios, se convierte en video largo en un espacio de "⚔️ Leer empresas" (propuesta a JP).
-**Colores de la empresa:** el color de la marca se usa SOLO en los datos de la empresa (nombre, cifras, barras, métricas, la cifra
-del gancho); los fondos y todo lo demás son los colores institucionales de Costa, **salvo el gancho y el cierre, que llevan de
-fondo el color de la empresa** (skill `/short` §1b).
+**Colores de la empresa:** el gancho, el catalizador y el cierre llevan de fondo el color de la empresa; el resto del video usa
+un fondo institucional que combine (marca fuerte → arena; marca clara → azul) con los datos de la empresa en su color (skill `/short` §1b).
 
 ### Imágenes en todos los videos
 Cada short lleva 3–5 imágenes reales y cada largo 10–20, que hagan sentido con la historia (ej.: un análisis de Sanborns muestra

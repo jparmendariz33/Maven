@@ -88,18 +88,20 @@ números; la segunda, por qué podría (o no) valer más en 5 años. 12 escenas,
 aunque no esté en las noticias; el "por qué ahora" es su dato más reciente (resultados, máximo, expansión). Viernes y domingo:
 la empresa caliente de la semana, de preferencia una con una historia de largo plazo creíble.
 
-**Colores de la empresa (regla de JP, 8 nov 2026): el color de la empresa = los DATOS de la empresa; los fondos son los
-institucionales de Costa, salvo el gancho y el cierre.** Pon en el storyboard `"brand_colors": {"primary": "#XXXXXX", "name": "Rojo Cuervo"}` (el color
-principal de la marca, verificado en su logo, etiqueta o sitio oficial) y el motor lo aplica solo:
-- **Gancho (`hook`) y cierre (`outro`): fondo del color de la empresa** (oscurecido lo justo para que el texto arena se lea). El
-  video abre y cierra con la marca.
-- **Escenas arena** (`company`, `bars`, `metric`, `news`, `price`, `zoom`, fotos en tarjeta): fondo Costa; el nombre, las cifras,
-  las barras de ingresos, el valor de cada métrica, la gráfica del precio, la ficha principal y las viñetas sin tono van en el
-  color de la empresa. Sube/baja siguen en musgo/terracota.
-- **Escenas azules de en medio** (`catalyst`, `statement`): 100% Costa, sin nada del color de la empresa.
-- ❌ **Nunca** pongas el color de la empresa como bloque, ficha o recuadro relleno sobre el azul Costa (se ve pesado: lo
-  rechazó JP el 8 nov 2026), ni cambies el fondo de las escenas de en medio.
-`"brand": false` apaga el color en una escena; `"brand_bg": true/false` pone o quita el fondo de marca en una escena azul.
+**Colores de la empresa (reglas de JP, 8 nov 2026).** Pon en el storyboard `"brand_colors": {"primary": "#XXXXXX", "name": "Rojo
+Cuervo"}` (el color principal de la marca, verificado en su logo, etiqueta o sitio oficial) y el motor lo aplica solo:
+- **Gancho (`hook`), catalizador (`catalyst`) y cierre (`outro`): fondo del color de la empresa**, con el mismo formato del gancho.
+- **El resto del video usa UN fondo institucional, el que combine con la marca** (el motor lo elige por la luminosidad del color):
+  - Marca **fuerte u oscura** (rojo, verde, naranja, azul marino…) → fondo **arena**; en el gancho/catalizador/cierre la marca se
+    oscurece lo justo para que el texto arena se lea.
+  - Marca **clara** (amarillo, pastel…) → fondo **azul**; el gancho/catalizador/cierre usan el color exacto con texto negro, y las
+    escenas de datos pasan a texto arena sobre azul (sube/baja en verde y rojo claros).
+  - Para forzarlo: `"base": "arena"` o `"base": "azul"` dentro de `brand_colors` (solo si en `qa.jpg` no combina).
+- En esas escenas, **los DATOS de la empresa** (nombre, cifras, barras de ingresos, valor de cada métrica, gráfica del precio, ficha
+  principal, viñetas sin tono) van en el color de la empresa; sube/baja siguen en musgo/terracota; frases y subtítulos en paleta Costa.
+- Las fotos a pantalla completa no cambian.
+- ❌ **Nunca** pongas el color de la empresa como bloque, ficha o recuadro relleno sobre el azul Costa (se ve pesado: lo rechazó JP).
+`"brand": false` apaga la marca en una escena; `"brand_bg": true/false` pone o quita el fondo de marca en una escena.
 Si la marca es negra, blanca o gris (sin un color distintivo), no uses `brand_colors`. Revisa en `qa.jpg` que todo se lea.
 
 ## 2b. Imágenes reales (obligatorio en TODOS los shorts: 3–5 por video)

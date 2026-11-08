@@ -30,11 +30,15 @@ const toneC = t => t === 'down' ? B.terracota : t === 'up' ? B.musgo : t === 'ac
 const fmtNum = (v, dec = 0) => { const s = Math.abs(v).toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g, ','); return (v < 0 ? '−' : '') + s; };
 
 // ---------------- colores de la empresa (brand_colors en el storyboard) ----------------
-// Regla (JP, 8 nov 2026): el color de la empresa = los DATOS de la empresa; los fondos siempre son los institucionales de Costa.
-//  · En fondos claros (arena): nombre, cifras, barras de ingresos, valor de la métrica, fichas y viñetas van en el color de la
-//    empresa (oscurecido solo si no contrasta con la arena).
-//  · Las escenas azules de en medio (catalyst, statement) se quedan 100% Costa: un color de marca sobre el azul se ve pesado.
-//  · Sube/baja siguen en musgo/terracota; frases, subtítulos y cierre, en paleta Costa. "brand": false apaga una escena.
+// Reglas de JP (8 nov 2026):
+//  · GANCHO, CATALIZADOR y CIERRE llevan DE FONDO el color de la empresa.
+//  · El resto usa UN fondo institucional por video, el que combine con la marca:
+//      marca fuerte u oscura (rojo, verde, naranja…) → ARENA, y la marca oscurecida lo justo en los fondos de marca (texto arena);
+//      marca clara (amarillo, pastel…)               → AZUL, y la marca exacta en los fondos de marca (texto negro).
+//    (se puede forzar con brand_colors.base: "arena" | "azul").
+//  · En esas escenas, los DATOS de la empresa (nombre, cifras, barras, métricas, gráfica) van en su color; sube/baja en musgo/
+//    terracota; nunca bloques rellenos del color de la empresa sobre el azul. "brand": false apaga la marca en una escena.
+Object.assign(B, { g3: '#3a3a3a', g4: '#4a4a4a', grid: 'rgba(10,10,10,.12)', gridt: 'rgba(10,10,10,.45)' });
 const B0 = { ...B };
 const hex = h => { h = h.replace('#', ''); if (h.length === 3) h = h.split('').map(c => c + c).join(''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
 const toHex = a => '#' + a.map(v => Math.round(cl(v, 0, 255)).toString(16).padStart(2, '0')).join('');
@@ -42,24 +46,31 @@ const mix = (a, b, k) => toHex(hex(a).map((v, i) => lerp(v, hex(b)[i], k)));
 const lum = h => { const [r, g, b] = hex(h).map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * r + .7152 * g + .0722 * b; };
 const contrast = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
 const rgba = (h, a) => `rgba(${hex(h).join(',')},${a})`;
-function darkFor(c, ink, ratio) { let k = 0, o = c; while (contrast(o, ink) < ratio && k < 1) { k += .04; o = mix(c, '#0A0A0A', k); } return o; }
+// mezcla c hacia `to` (negro o blanco) hasta que contraste ≥ ratio con `ink`
+function toward(c, to, ink, ratio) { let k = 0, o = c; while (contrast(o, ink) < ratio && k < 1) { k += .03; o = mix(c, to, k); } return o; }
 const inkOn = f => ['#FFFFFF', '#0A0A0A'].sort((a, b) => contrast(b, f) - contrast(a, f))[0];
 const BC = V.brand_colors && V.brand_colors.primary ? V.brand_colors : null;
-const BRAND = BC ? { onLight: darkFor(BC.primary, B0.arena, 3) } : null;
-let BR = null, BGB = null; // marca activa en la escena que se dibuja · fondo sólido de la marca (gancho y cierre)
-// Excepción (JP, 8 nov 2026): el GANCHO y el CIERRE llevan de fondo el color de la empresa (oscurecido lo justo para que el
-// texto arena se lea). "brand_bg": true/false en una escena lo fuerza o lo quita.
-const BG_TYPES = { hook: 1, outro: 1 };
+const BRAND = BC ? (() => { const P = BC.primary, base = BC.base || (lum(P) > .45 ? 'azul' : 'arena');
+  return { P, base,
+    bg: base === 'azul' ? toward(P, '#FFFFFF', B0.negro, 4.5) : toward(P, '#0A0A0A', B0.arena, 3.6),   // fondo de marca
+    ink: base === 'azul' ? B0.negro : B0.arena,                                                        // texto sobre ese fondo
+    data: base === 'azul' ? toward(P, '#FFFFFF', B0.azul, 3) : toward(P, '#0A0A0A', B0.arena, 3) };    // datos sobre el fondo base
+})() : null;
+const BG_TYPES = { hook: 1, catalyst: 1, outro: 1 };
+let BR = null, BGB = null; // marca activa en la escena · fondo de marca de la escena
 function applyBrand(s) {
   Object.assign(B, B0); B.marca = B0.negro; BR = null; BGB = null;
   if (!BRAND || s.brand === false) return;
-  if (themeOf(s) === 'blue' && (s.brand_bg ?? BG_TYPES[s.type])) {
-    BGB = B.azul = darkFor(BC.primary, B0.arena, 3.6);
-    if (contrast(B0.mostaza, BGB) < 2.4) B.mostaza = B0.arena;
+  const th = themeOf(s);
+  if (th === 'brand') {
+    BGB = B.azul = BRAND.bg; B.arena = BRAND.ink;
+    if (contrast(B0.mostaza, BGB) < 2.4) B.mostaza = BRAND.ink;
     return;
   }
-  if (themeOf(s) === 'blue') return;   // escenas azules de en medio: 100% Costa
-  BR = BRAND; B.azul = BRAND.onLight; B.marca = BRAND.onLight;
+  if (th === 'blue') return;   // foto a pantalla completa u otra escena azul fija: Costa
+  BR = BRAND; B.azul = B.marca = BRAND.data;
+  if (th === 'dark') Object.assign(B, { negro: B0.arena, g3: rgba(B0.arena, .88), g4: rgba(B0.arena, .72), grid: rgba(B0.arena, .2), gridt: rgba(B0.arena, .6),
+    musgo: '#DDE8B8', terracota: '#F3C3B4' });   // sube/baja en tonos claros para que se lean sobre el azul
 }
 
 let C; // contexto activo
@@ -133,26 +144,36 @@ function credit(s, key, x, y, col, al = 'left', a = .75) {
 
 // ---------------- fondos ----------------
 const THEME = { hook: 'blue', statement: 'blue', catalyst: 'blue', outro: 'blue' };
-function themeOf(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'card' || s.layout === 'logo' ? 'sand' : 'blue') : THEME[s.type]) || 'sand'; }
+function themeOf0(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'card' || s.layout === 'logo' ? 'sand' : 'blue') : THEME[s.type]) || 'sand'; }
+// con brand_colors: 'brand' (fondo de la empresa) en gancho/catalizador/cierre; el resto, el fondo base (arena = 'sand', azul = 'dark' o 'blue')
+function themeOf(s) {
+  const t = themeOf0(s);
+  if (!BRAND || s.brand === false || s.theme) return t;
+  if (s.brand_bg ?? BG_TYPES[s.type]) return 'brand';
+  if (s.type === 'photo' && t === 'blue') return t;           // foto a pantalla completa: sin cambios
+  if (BRAND.base === 'azul') return t === 'sand' ? 'dark' : t;
+  return t === 'blue' ? 'sand' : t;
+}
+const isDarkBg = th => th === 'blue' || th === 'brand' || th === 'dark';
 function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
-  C.fillStyle = th === 'blue' ? (BGB || B0.azul) : th === 'white' ? B.gris : B0.arena; C.fillRect(0, 0, W, H);
+  C.fillStyle = th === 'brand' ? BGB : isDarkBg(th) ? B0.azul : th === 'white' ? B.gris : B0.arena; C.fillRect(0, 0, W, H);
   const bi = img(s.bg_image);
   if (bi) { // foto de fondo en duotono con el color del tema (la escena sigue siendo legible)
     const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
-    C.fillStyle = th === 'blue' ? rgba(BGB || B0.azul, .80) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B0.arena, .87); C.fillRect(0, 0, W, H);
+    C.fillStyle = th === 'brand' ? rgba(BGB, .80) : isDarkBg(th) ? rgba(B0.azul, .85) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B0.arena, .87); C.fillRect(0, 0, W, H);
   }
   // línea de marea: horizonte suave que respira
-  C.save(); C.strokeStyle = th === 'blue' ? 'rgba(235,230,186,.28)' : rgba(B0.azul, .22); C.lineWidth = 2;
+  C.save(); C.strokeStyle = isDarkBg(th) ? rgba(B.arena, .28) : rgba(B0.azul, .22); C.lineWidth = 2;
   for (let k = 0; k < 2; k++) { C.beginPath();
     for (let x = 0; x <= W; x += 12) { const y = 1490 + k * 26 + Math.sin(x / 140 + t * .9 + k) * 9; x ? C.lineTo(x, y) : C.moveTo(x, y); }
     C.stroke(); }
   C.restore();
   // sol / círculo de marca
-  if (th === 'blue') { C.save(); C.globalAlpha = .08; C.fillStyle = B.arena; C.beginPath(); C.arc(860, 300 - lt * 4, 260, 0, 7); C.fill(); C.restore(); }
+  if (th === 'blue' || th === 'brand') { C.save(); C.globalAlpha = .08; C.fillStyle = B.arena; C.beginPath(); C.arc(860, 300 - lt * 4, 260, 0, 7); C.fill(); C.restore(); }
 }
 function chrome(s, t) {
-  const th = themeOf(s), col = th === 'blue' ? B.arena : B.negro;
+  const th = themeOf(s), col = th === 'blue' || th === 'brand' ? B.arena : B.negro;
   const lg = logoTint(col); C.save(); C.globalAlpha = .9;
   if (lg) C.drawImage(lg, 60, 150, 102, 90);
   if (V.brand.division) {   // sub-marca: "COSTA STUDIO" (logo) + "FINANCE"
@@ -183,7 +204,7 @@ R.hook = (s, t) => {
 };
 
 R.statement = (s, t) => {
-  const th = themeOf(s), ink = th === 'blue' ? B.arena : B.negro, em = th === 'blue' ? B.mostaza : B.azul;
+  const th = themeOf(s), dk = th === 'blue' || th === 'brand', ink = dk ? B.arena : B.negro, em = dk ? B.mostaza : B.azul;
   if (s.kicker) kicker(s.kicker, 90, 520, s.t0 + .1, t, ink);
   const size = s.size || 84, lines = wrap(s.text, F.d, 600, size, 900), lh = size * 1.22;
   const y0 = 760 - (lines.length - 1) * lh / 2 + 80, emw = (s.emphasis || '').toLowerCase();
@@ -202,11 +223,11 @@ R.company = (s, t) => {
   kicker(s.kicker || 'La empresa', 90, 360, s.t0 + .1, t, B.negro);
   const lg = img(s.logo);
   if (lg) { const k = seg(t, s.t0 + .25, s.t0 + .85); if (k > 0) { C.save(); C.globalAlpha *= k; scaleAt(815, 415, .85 + .15 * back(k));
-    rr(700, 300, 230, 230, 34); C.fillStyle = '#FFFFFF'; C.fill(); C.strokeStyle = 'rgba(10,10,10,.12)'; C.lineWidth = 2; C.stroke();
+    rr(700, 300, 230, 230, 34); C.fillStyle = '#FFFFFF'; C.fill(); C.strokeStyle = B.grid; C.lineWidth = 2; C.stroke();
     contain(lg, 726, 326, 178, 178); C.restore(); } }
   riseLines(wrap(s.name || D.short_name || D.name, F.d, 800, 96, lg ? 580 : 900), 90, 490, 110, s.t0 + .2, t, { f: F.d, w: 800, s: lg ? fit(s.name || D.short_name || D.name, F.d, 800, 96, 580, 64) : 96, c: B.marca });
   const ll = wrap(s.line || '', F.b, 500, 46, 880);
-  riseLines(ll, 90, 640, 60, s.t0 + .6, t, { f: F.b, w: 500, s: 46, c: '#3a3a3a' });
+  riseLines(ll, 90, 640, 60, s.t0 + .6, t, { f: F.b, w: 500, s: 46, c: B.g3 });
   let y = 700 + ll.length * 60, x = 90;
   (s.chips || []).forEach((c, i) => {
     const label = typeof c === 'string' ? c : c.label, tc = typeof c === 'object' && typeof c.cue === 'number' ? c.cue : s.t0 + 1.2 + i * .25;
@@ -221,7 +242,7 @@ R.company = (s, t) => {
   (s.stats || []).forEach((st, i) => {
     const tc = typeof st.cue === 'number' ? st.cue : s.t0 + 1.8 + i * .3, k = seg(t, tc, tc + .5); if (k <= 0) return;
     C.save(); C.globalAlpha *= k; C.fillStyle = B.negro; C.fillRect(90, y + i * 130, 900 * ex(k), 2);
-    rise(st.label.toUpperCase(), 90, y + i * 130 + 70, k, { f: F.b, w: 500, s: 28, ls: 3, c: '#4a4a4a' });
+    rise(st.label.toUpperCase(), 90, y + i * 130 + 70, k, { f: F.b, w: 500, s: 28, ls: 3, c: B.g4 });
     rise(st.value, 990, y + i * 130 + 82, k, { f: F.d, w: 800, s: 56, al: 'right', c: st.tone && st.tone !== 'blue' ? toneC(st.tone) : BR ? B.marca : toneC(st.tone) });
     C.restore();
   });
@@ -233,10 +254,10 @@ function lineChart(s, t, pts, box, opt) {
   let lo = Math.min(...vals), hi = Math.max(...vals); const pad = (hi - lo) * .12 || 1; lo -= pad; hi += pad;
   const px = i => box.x0 + (box.x1 - box.x0) * i / (n - 1), py = v => box.y1 - (v - lo) / (hi - lo) * (box.y1 - box.y0);
   // rejilla
-  C.save(); C.strokeStyle = 'rgba(10,10,10,.12)'; C.lineWidth = 2;
+  C.save(); C.strokeStyle = B.grid; C.lineWidth = 2;
   const step = niceStep((hi - lo) / 4);
   for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) { const y = py(v); C.beginPath(); C.moveTo(box.x0, y); C.lineTo(box.x1, y); C.stroke();
-    txt('$' + fmtNum(v, step < 1 ? 1 : 0), box.x0, y - 10, { f: F.b, w: 500, s: 22, c: 'rgba(10,10,10,.45)' }); }
+    txt('$' + fmtNum(v, step < 1 ? 1 : 0), box.x0, y - 10, { f: F.b, w: 500, s: 22, c: B.gridt }); }
   C.restore();
   // progreso con keyframes por cue
   const K = [[s.t0 + .5, 0]];
@@ -276,7 +297,7 @@ function pin(t, x, y, m, dir, col) {
   C.fillStyle = B.arena; C.strokeStyle = col; C.lineWidth = 4; C.beginPath(); C.arc(x, y, 10, 0, 7); C.fill(); C.stroke();
   const al = x < 260 ? 'left' : x > 820 ? 'right' : 'center', tx = cl(x, 90, 990), ty = y + len + (dir < 0 ? -44 : 50);
   rise(m.label, tx, ty, k, { f: F.d, w: 600, s: 38, al, c: col });
-  if (m.sub) rise(m.sub, tx, ty + (dir < 0 ? -48 : 42), seg(t, m.t + .15, m.t + .6), { f: F.b, w: 500, s: 27, al, c: '#4a4a4a' });
+  if (m.sub) rise(m.sub, tx, ty + (dir < 0 ? -48 : 42), seg(t, m.t + .15, m.t + .6), { f: F.b, w: 500, s: 27, al, c: B.g4 });
   C.restore();
 }
 
@@ -285,7 +306,7 @@ R.price = (s, t) => {
   const first = S[0][1], lastv = S[S.length - 1][1];
   const pt = s.title || `De $${fmtNum(first, 0)} a $${fmtNum(lastv, 0)}`;
   rise(pt, 90, 480, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(pt, F.d, 800, 84, 900) });
-  if (s.subtitle) rise(s.subtitle, 90, 545, seg(t, s.t0 + .4, s.t0 + 1), { f: F.b, w: 500, s: 40, c: '#3a3a3a' });
+  if (s.subtitle) rise(s.subtitle, 90, 545, seg(t, s.t0 + .4, s.t0 + 1), { f: F.b, w: 500, s: 40, c: B.g3 });
   const box = { x0: 90, x1: 930, y0: 760, y1: 1200 };
   const marks = (s.annotations || []).map(a => ({ ...a, i: idxOf(S, a.date), t: typeof a.cue === 'number' ? a.cue : s.t0 + 1.5 }));
   const endT = typeof s.cue_end === 'number' ? s.cue_end : Math.max(...marks.map(m => m.t), s.t0 + 1) + 1.2;
@@ -296,7 +317,7 @@ R.price = (s, t) => {
     const w = 280, x = 90 + i * 310, y = 1300;
     C.save(); C.globalAlpha *= k; C.translate(0, (1 - ex(k)) * 30);
     rr(x, y, w, 150, 20); C.fillStyle = 'rgba(255,255,255,.4)'; C.fill(); C.strokeStyle = B.negro; C.lineWidth = 2; C.stroke();
-    txt(c.label.toUpperCase(), x + 24, y + 46, { f: F.b, w: 500, s: 24, ls: 2, c: '#4a4a4a' });
+    txt(c.label.toUpperCase(), x + 24, y + 46, { f: F.b, w: 500, s: 24, ls: 2, c: B.g4 });
     txt(c.value, x + 24, y + 116, { f: F.d, w: 800, s: 50, c: toneC(c.tone) }); C.restore();
   });
 };
@@ -318,11 +339,11 @@ R.zoom = (s, t) => {
   // volumen
   if (s.show_volume !== false) {
     const vmax = Math.max(...pts.map(p => p[2])), ev = new Set(marks.map(x => x.i));
-    txt('VOLUMEN', 920, vb.y0 - 10, { f: F.b, w: 500, s: 22, ls: 3, al: 'right', c: '#4a4a4a' });
+    txt('VOLUMEN', 920, vb.y0 - 10, { f: F.b, w: 500, s: 22, ls: 3, al: 'right', c: B.g4 });
     pts.forEach((p, i) => { const g = cl(G.p - i + 1); if (g <= 0) return; const h = p[2] / vmax * (vb.y1 - vb.y0) * eo(g);
       C.fillStyle = ev.has(i) ? B.terracota : rgba(B.azul, .45); rr(G.px(i) - 18, vb.y1 - h, 36, h, 6); C.fill(); });
   }
-  [0, Math.floor((N - 1) / 2), N - 1].forEach(i => txt(fmtD(pts[i][0]), G.px(i), vb.y1 + 40, { f: F.b, w: 500, s: 24, al: 'center', c: '#4a4a4a' }));
+  [0, Math.floor((N - 1) / 2), N - 1].forEach(i => txt(fmtD(pts[i][0]), G.px(i), vb.y1 + 40, { f: F.b, w: 500, s: 24, al: 'center', c: B.g4 }));
   marks.forEach(mm => { const v = pts[mm.i][1]; pin(t, G.px(mm.i), G.py(v), { ...mm, len: 90 }, mm.dir || 1, toneC(mm.tone || (mm.i > 0 && v < pts[mm.i - 1][1] ? 'down' : 'up'))); });
 };
 
@@ -331,7 +352,7 @@ R.news = (s, t) => {
   const ni = img(s.image), off = ni ? 430 : 0;
   if (ni) { const k = seg(t, s.t0 + .1, s.t0 + .8), [fx, fy] = focus(s);
     C.save(); rr(90, 400, 900, 380 * ex(k), 26); C.clip(); cover(ni, 90, 400, 900, 380, kb(s, t), fx, fy); C.restore();
-    credit(s, s.image, 90, 808, '#4a4a4a', 'left', .8 * k); }
+    credit(s, s.image, 90, 808, B.g4, 'left', .8 * k); }
   const hl = wrap(s.headline || '', F.d, 600, 60, 900);
   riseLines(hl, 90, 480 + off, 76, s.t0 + .25, t, { f: F.d, w: 600, s: 60 });
   let y = 480 + off + hl.length * 76 + 60;
@@ -343,13 +364,13 @@ R.news = (s, t) => {
     const lines = wrap(b.text, F.b, 700, 46, 800);
     C.save(); C.globalAlpha *= k; C.translate((1 - ex(k)) * 40, 0);
     C.fillStyle = b.tone ? toneC(b.tone) : B.azul; C.beginPath(); C.arc(116, y - 15, 26, 0, 7); C.fill();
-    txt(String(i + 1), 116, y - 3, { f: F.d, w: 800, s: 28, al: 'center', c: BR && !b.tone ? inkOn(B.azul) : B.arena });
+    txt(String(i + 1), 116, y - 3, { f: F.d, w: 800, s: 28, al: 'center', c: BR ? inkOn(b.tone ? toneC(b.tone) : B.azul) : B.arena });
     lines.forEach((l, j) => txt(l, 170, y + j * 56, { f: F.b, w: 700, s: 46 }));
-    if (b.sub) txt(b.sub, 170, y + lines.length * 56 - 4, { f: F.b, w: 400, s: 34, c: '#4a4a4a', a: seg(t, tc + .4, tc + .9) });
+    if (b.sub) txt(b.sub, 170, y + lines.length * 56 - 4, { f: F.b, w: 400, s: 34, c: B.g4, a: seg(t, tc + .4, tc + .9) });
     C.restore();
     y += lines.length * 56 + (b.sub ? 70 : 30) + 40;
   });
-  if (s.source) txt('Fuente: ' + s.source, 90, Math.min(1540, Math.max(y + 20, 1380)), { f: F.b, w: 500, s: 28, c: '#4a4a4a', a: seg(t, s.t0 + 1, s.t0 + 1.5) });
+  if (s.source) txt('Fuente: ' + s.source, 90, Math.min(1540, Math.max(y + 20, 1380)), { f: F.b, w: 500, s: 28, c: B.g4, a: seg(t, s.t0 + 1, s.t0 + 1.5) });
 };
 
 R.bars = (s, t) => {
@@ -373,18 +394,18 @@ R.bars = (s, t) => {
     if (kr > .9) txt(money(q.revenue, 0).replace(' ', ''), cx - bw / 2 - 4, base - hr - 14, { f: F.b, w: 700, s: 22, al: 'center', c: B.azul });
     if (kn > .9) txt(money(q.net_income, 0).replace(' ', ''), cx + bw / 2 + 4, base - hn - 14, { f: F.b, w: 700, s: 22, al: 'center' });
     const d = new Date(q.period + 'T00:00:00Z'), qq = Math.floor(d.getUTCMonth() / 3) + 1;
-    txt(`T${qq} '${String(d.getUTCFullYear()).slice(2)}`, cx, base + 44, { f: F.b, w: last ? 700 : 500, s: 26, al: 'center', c: last ? B.negro : '#4a4a4a', a: seg(t, s.t0 + .5, s.t0 + 1) });
+    txt(`T${qq} '${String(d.getUTCFullYear()).slice(2)}`, cx, base + 44, { f: F.b, w: last ? 700 : 500, s: 26, al: 'center', c: last ? B.negro : B.g4, a: seg(t, s.t0 + .5, s.t0 + 1) });
     if (last && s.note) { const k = seg(t, cueT(s, 'cue_note', 3.4), cueT(s, 'cue_note', 3.4) + .5); if (k > 0) { C.save(); C.globalAlpha *= k; C.fillStyle = B.mostaza; C.fillRect(cx - gw / 2 + 6, base + 62, gw - 12, 5); C.restore(); } }
   });
   if (s.note) { const tc = cueT(s, 'cue_note', 3.4);
     rise(s.note, 90, 1340, seg(t, tc, tc + .6), { f: F.d, w: 600, s: 52, c: toneC(s.note_tone || 'up') });
-    if (s.note_sub) rise(s.note_sub, 90, 1400, seg(t, tc + .2, tc + .8), { f: F.b, w: 500, s: 36, c: '#4a4a4a' }); }
+    if (s.note_sub) rise(s.note_sub, 90, 1400, seg(t, tc + .2, tc + .8), { f: F.b, w: 500, s: 36, c: B.g4 }); }
 };
 
 R.metric = (s, t) => {
   kicker(s.kicker || 'Valuación', 90, 360, s.t0 + .1, t, B.negro);
   rise(s.label, 90, 520, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(s.label, F.d, 800, 120, 900) });
-  if (s.fullname) rise(s.fullname, 90, 590, seg(t, s.t0 + .35, s.t0 + .9), { f: F.b, w: 500, s: 38, c: '#3a3a3a' });
+  if (s.fullname) rise(s.fullname, 90, 590, seg(t, s.t0 + .35, s.t0 + .9), { f: F.b, w: 500, s: 38, c: B.g3 });
   const tv = cueT(s, 'cue_value', .7), k = eo(seg(t, tv, tv + 1.1));
   const str = (s.prefix || '') + fmtNum((s.value || 0) * k, s.decimals ?? 1) + (s.suffix || '');
   txt(str, 90, 850, { f: F.d, w: 800, s: 210, c: B.azul, a: seg(t, tv - .1, tv + .25) });
@@ -397,9 +418,9 @@ R.metric = (s, t) => {
   C.save(); C.globalAlpha *= kg;
   (sc.bands || []).forEach((b, i) => { const xa = X_(b[0]), xb = X_(b[1]); C.fillStyle = b[3] ? toneC(b[3]) : [B.musgo, B.mostaza, B.terracota][i % 3];
     rr(xa + 3, gy - 10, (xb - xa - 6) * ex(kg), 20, 10); C.fill();
-    txt(b[2], (xa + xb) / 2, gy + 64, { f: F.b, w: 700, s: 30, al: 'center', c: '#3a3a3a' }); });
+    txt(b[2], (xa + xb) / 2, gy + 64, { f: F.b, w: 700, s: 30, al: 'center', c: B.g3 }); });
   if (sc.ref) { const xr = X_(sc.ref.value); C.fillStyle = B.negro; C.fillRect(xr - 1.5, gy - 36, 3, 72);
-    txt(sc.ref.label, xr, gy - 52, { f: F.b, w: 500, s: 26, al: 'center', c: '#3a3a3a' }); }
+    txt(sc.ref.label, xr, gy - 52, { f: F.b, w: 500, s: 26, al: 'center', c: B.g3 }); }
   const tm = tg + .5, km = eio(seg(t, tm, tm + 1.3)), xm = lerp(gx0, X_(s.value), km);
   C.fillStyle = B.negro; C.beginPath(); C.moveTo(xm, gy - 22); C.lineTo(xm - 18, gy - 52); C.lineTo(xm + 18, gy - 52); C.closePath(); C.fill();
   C.fillStyle = B.arena; C.strokeStyle = B.negro; C.lineWidth = 5; C.beginPath(); C.arc(xm, gy, 20, 0, 7); C.fill(); C.stroke();
@@ -436,14 +457,14 @@ R.photo = (s, t) => {
     const y = 470 + tl.length * 82 + 10, h = 1440 - y - (s.caption ? 120 : 40), k = seg(t, s.t0 + .3, s.t0 + 1.1);
     if (im) { C.save(); rr(90, y, 900, h * ex(k), 30); C.clip(); cover(im, 90, y, 900, h, kb(s, t), fx, fy); C.restore(); }
     if (s.caption) rise(s.caption, 90, y + h + 74, seg(t, cueT(s, 'cue_caption', 1), cueT(s, 'cue_caption', 1) + .6), { f: F.b, w: 700, s: fit(s.caption, F.b, 700, 46, 900, 30) });
-    credit(s, s.image, 90, Math.min(1545, y + h + (s.caption ? 124 : 40)), '#4a4a4a', 'left', .8 * k);
+    credit(s, s.image, 90, Math.min(1545, y + h + (s.caption ? 124 : 40)), B.g4, 'left', .8 * k);
   } else { // logo
     const k = seg(t, s.t0 + .15, s.t0 + .8);
     if (s.kicker) kicker(s.kicker, 90, 360, s.t0 + .1, t, B.negro);
     if (im && k > 0) { C.save(); C.globalAlpha *= k; scaleAt(540, 760, .88 + .12 * back(k));
       rr(140, 470, 800, 580, 48); C.fillStyle = '#FFFFFF'; C.fill(); contain(im, 220, 540, 640, 440); C.restore(); }
     if (s.title) rise(s.title, 540, 1210, seg(t, cueT(s, 'cue_title', .6), cueT(s, 'cue_title', .6) + .6), { f: F.d, w: 800, s: fit(s.title, F.d, 800, 78, 880, 40), al: 'center' });
-    if (s.caption) riseLines(wrap(s.caption, F.b, 500, 44, 860), 540, 1290, 58, cueT(s, 'cue_caption', 1), t, { f: F.b, w: 500, s: 44, al: 'center', c: '#3a3a3a' });
+    if (s.caption) riseLines(wrap(s.caption, F.b, 500, 44, 860), 540, 1290, 58, cueT(s, 'cue_caption', 1), t, { f: F.b, w: 500, s: 44, al: 'center', c: B.g3 });
   }
 };
 
