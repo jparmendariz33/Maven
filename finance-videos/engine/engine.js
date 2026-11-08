@@ -47,10 +47,18 @@ function darkFor(c, ink, ratio) { let k = 0, o = c; while (contrast(o, ink) < ra
 const inkOn = f => ['#FFFFFF', '#0A0A0A'].sort((a, b) => contrast(b, f) - contrast(a, f))[0];
 const BC = V.brand_colors && V.brand_colors.primary ? V.brand_colors : null;
 const BRAND = BC ? { block: BC.primary, ink: inkOn(BC.primary), onLight: darkFor(BC.primary, B0.arena, 3) } : null;
-let BR = null; // marca activa en la escena que se dibuja
+let BR = null, BGB = null; // marca activa en la escena que se dibuja · fondo sólido de la marca (gancho y cierre)
+// Excepción (JP, 8 nov 2026): el GANCHO y el CIERRE llevan de fondo el color de la empresa (oscurecido lo justo para que el
+// texto arena se lea). "brand_bg": true/false en una escena lo fuerza o lo quita.
+const BG_TYPES = { hook: 1, outro: 1 };
 function applyBrand(s) {
-  Object.assign(B, B0); B.marca = B0.negro; BR = null;
+  Object.assign(B, B0); B.marca = B0.negro; BR = null; BGB = null;
   if (!BRAND || s.brand === false) return;
+  if (themeOf(s) === 'blue' && (s.brand_bg ?? BG_TYPES[s.type])) {
+    BGB = B.azul = darkFor(BC.primary, B0.arena, 3.6);
+    if (contrast(B0.mostaza, BGB) < 2.4) B.mostaza = B0.arena;
+    return;
+  }
   BR = BRAND;
   if (themeOf(s) !== 'blue') { B.azul = BRAND.onLight; B.marca = BRAND.onLight; }   // en fondo azul, el azul ES el fondo: no se toca
 }
@@ -134,11 +142,11 @@ const THEME = { hook: 'blue', statement: 'blue', catalyst: 'blue', outro: 'blue'
 function themeOf(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'card' || s.layout === 'logo' ? 'sand' : 'blue') : THEME[s.type]) || 'sand'; }
 function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
-  C.fillStyle = th === 'blue' ? B0.azul : th === 'white' ? B.gris : B0.arena; C.fillRect(0, 0, W, H);
+  C.fillStyle = th === 'blue' ? (BGB || B0.azul) : th === 'white' ? B.gris : B0.arena; C.fillRect(0, 0, W, H);
   const bi = img(s.bg_image);
   if (bi) { // foto de fondo en duotono con el color del tema (la escena sigue siendo legible)
     const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
-    C.fillStyle = th === 'blue' ? rgba(B0.azul, .80) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B0.arena, .87); C.fillRect(0, 0, W, H);
+    C.fillStyle = th === 'blue' ? rgba(BGB || B0.azul, .80) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B0.arena, .87); C.fillRect(0, 0, W, H);
   }
   // línea de marea: horizonte suave que respira
   C.save(); C.strokeStyle = th === 'blue' ? 'rgba(235,230,186,.28)' : rgba(B0.azul, .22); C.lineWidth = 2;
@@ -508,7 +516,7 @@ function drawScene(ctx, s, t) {
   (R[s.type] || (() => txt('escena desconocida: ' + s.type, 90, 900, { s: 50 })))(s, t);
   C.restore();
   chrome(s, t);
-  Object.assign(B, B0); BR = null;
+  Object.assign(B, B0); BR = null; BGB = null;
 }
 function renderAt(t) {
   const SC = V.scenes; let i = SC.findIndex(s => t >= s.t0 && t < s.t1); if (i < 0) i = SC.length - 1;

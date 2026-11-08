@@ -88,13 +88,15 @@ números; la segunda, por qué podría (o no) valer más en 5 años. 12 escenas,
 aunque no esté en las noticias; el "por qué ahora" es su dato más reciente (resultados, máximo, expansión). Viernes y domingo:
 la empresa caliente de la semana, de preferencia una con una historia de largo plazo creíble.
 
-**Colores de la empresa (regla de JP, 8 nov 2026): el color de la empresa = los DATOS de la empresa; los fondos SIEMPRE son
-los institucionales de Costa.** Pon en el storyboard `"brand_colors": {"primary": "#XXXXXX", "name": "Rojo Cuervo"}` (el color
+**Colores de la empresa (regla de JP, 8 nov 2026): el color de la empresa = los DATOS de la empresa; los fondos son los
+institucionales de Costa, salvo el gancho y el cierre.** Pon en el storyboard `"brand_colors": {"primary": "#XXXXXX", "name": "Rojo Cuervo"}` (el color
 principal de la marca, verificado en su logo, etiqueta o sitio oficial) y el motor lo aplica solo en todas las escenas: en fondo
 arena, el nombre, las cifras, las barras de ingresos, el valor de cada métrica, la gráfica del precio, la ficha principal y las
 viñetas sin tono van en el color de la empresa; en fondo azul (`hook`, `catalyst`) el nombre, la cifra del gancho y la fecha van
-sobre un "marcatextos" del color exacto de la empresa (texto blanco o negro según contraste). Sube/baja en viñetas y notas siguen
-en musgo/terracota; frases, subtítulos y el `outro` quedan en paleta Costa. `"brand": false` apaga el color en una escena.
+sobre un "marcatextos" del color exacto de la empresa (texto blanco o negro según contraste). **Excepción: el GANCHO (`hook`)
+y el CIERRE (`outro`) llevan DE FONDO el color de la empresa** (oscurecido lo justo para que el texto arena se lea): el video abre
+y cierra con la marca. Sube/baja en viñetas y notas siguen en musgo/terracota; frases y subtítulos, en paleta Costa.
+`"brand": false` apaga el color en una escena; `"brand_bg": true/false` pone o quita el fondo de marca en una escena azul.
 Si la marca es negra, blanca o gris (sin un color distintivo), no uses `brand_colors`. Revisa en `qa.jpg` que todo se lea.
 
 ## 2b. Imágenes reales (obligatorio en TODOS los shorts: 3–5 por video)
