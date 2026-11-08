@@ -29,6 +29,35 @@ const money = (v, dec) => { if (v == null) return 'n/d'; const a = Math.abs(v), 
 const toneC = t => t === 'down' ? B.terracota : t === 'up' ? B.musgo : t === 'accent' ? B.mostaza : t === 'blue' ? B.azul : B.negro;
 const fmtNum = (v, dec = 0) => { const s = Math.abs(v).toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g, ','); return (v < 0 ? '−' : '') + s; };
 
+// ---------------- colores de la empresa (brand_colors en el storyboard) ----------------
+// Escenas con "brand": true usan el color de la empresa combinado con la paleta Costa:
+//  · escenas azules (hook, statement, catalyst): fondo sólido del color de la empresa, oscurecido lo necesario para que el
+//    texto arena se lea (contraste ≥ 4.5); el acento mostaza se cambia por arena si no contrasta.
+//  · escenas claras (company, bars, metric, news, price…): fondo = color de la empresa muy aclarado; el color de la empresa
+//    (oscurecido si hace falta) reemplaza al azul en barras, cifras y fichas. Los tonos de sube/baja siguen siendo Costa.
+const B0 = { ...B };
+const hex = h => { h = h.replace('#', ''); if (h.length === 3) h = h.split('').map(c => c + c).join(''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+const toHex = a => '#' + a.map(v => Math.round(cl(v, 0, 255)).toString(16).padStart(2, '0')).join('');
+const mix = (a, b, k) => toHex(hex(a).map((v, i) => lerp(v, hex(b)[i], k)));
+const lum = h => { const [r, g, b] = hex(h).map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * r + .7152 * g + .0722 * b; };
+const contrast = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+const rgba = (h, a) => `rgba(${hex(h).join(',')},${a})`;
+function darkFor(c, ink, ratio) { let k = 0, o = c; while (contrast(o, ink) < ratio && k < 1) { k += .04; o = mix(c, '#0A0A0A', k); } return o; }
+function lightFor(c, ink, ratio) { let k = .78, o = mix(c, '#FFFFFF', k); while (contrast(o, ink) < ratio && k < 1) { k += .03; o = mix(c, '#FFFFFF', k); } return o; }
+const BC = V.brand_colors && V.brand_colors.primary ? V.brand_colors : null;
+function applyBrand(s) {
+  Object.assign(B, B0); B.fondo = null;
+  if (!BC || !s.brand) return;
+  const P = BC.primary;
+  if (themeOf(s) === 'blue') {
+    B.azul = darkFor(P, B0.arena, 3.6);
+    if (contrast(B0.mostaza, B.azul) < 2.4) B.mostaza = B0.arena;
+  } else {
+    B.fondo = lightFor(BC.light || P, B0.negro, 12);
+    B.azul = darkFor(P, B.fondo, 3.2);
+  }
+}
+
 let C; // contexto activo
 function font(f, w, s) { C.font = `${w} ${s}px ${f}`; }
 function txt(s, x, y, o = {}) {
@@ -103,14 +132,14 @@ const THEME = { hook: 'blue', statement: 'blue', catalyst: 'blue', outro: 'blue'
 function themeOf(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'card' || s.layout === 'logo' ? 'sand' : 'blue') : THEME[s.type]) || 'sand'; }
 function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
-  C.fillStyle = th === 'blue' ? B.azul : th === 'white' ? B.gris : B.arena; C.fillRect(0, 0, W, H);
+  C.fillStyle = th === 'blue' ? B.azul : th === 'white' ? B.gris : (B.fondo || B.arena); C.fillRect(0, 0, W, H);
   const bi = img(s.bg_image);
   if (bi) { // foto de fondo en duotono con el color del tema (la escena sigue siendo legible)
     const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
-    C.fillStyle = th === 'blue' ? 'rgba(65,115,209,.80)' : th === 'white' ? 'rgba(245,245,245,.88)' : 'rgba(235,230,186,.87)'; C.fillRect(0, 0, W, H);
+    C.fillStyle = th === 'blue' ? rgba(B.azul, .80) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B.fondo || B.arena, .87); C.fillRect(0, 0, W, H);
   }
   // línea de marea: horizonte suave que respira
-  C.save(); C.strokeStyle = th === 'blue' ? 'rgba(235,230,186,.28)' : 'rgba(65,115,209,.22)'; C.lineWidth = 2;
+  C.save(); C.strokeStyle = th === 'blue' ? 'rgba(235,230,186,.28)' : rgba(B.azul, .22); C.lineWidth = 2;
   for (let k = 0; k < 2; k++) { C.beginPath();
     for (let x = 0; x <= W; x += 12) { const y = 1490 + k * 26 + Math.sin(x / 140 + t * .9 + k) * 9; x ? C.lineTo(x, y) : C.moveTo(x, y); }
     C.stroke(); }
@@ -214,7 +243,7 @@ function lineChart(s, t, pts, box, opt) {
   const m = Math.floor(p), fr = p - m;
   const head = m < n - 1 ? [lerp(px(m), px(m + 1), fr), lerp(py(vals[m]), py(vals[m + 1]), fr)] : [px(n - 1), py(vals[n - 1])];
   // área
-  const g = C.createLinearGradient(0, box.y0, 0, box.y1); g.addColorStop(0, 'rgba(65,115,209,.35)'); g.addColorStop(1, 'rgba(65,115,209,0)');
+  const g = C.createLinearGradient(0, box.y0, 0, box.y1); g.addColorStop(0, rgba(B.azul, .35)); g.addColorStop(1, rgba(B.azul, 0));
   C.beginPath(); C.moveTo(px(0), box.y1); for (let i = 0; i <= m; i++) C.lineTo(px(i), py(vals[i])); C.lineTo(head[0], head[1]); C.lineTo(head[0], box.y1); C.closePath(); C.fillStyle = g; C.fill();
   // línea (tramos de bajada en terracota si opt.tone)
   C.lineCap = 'round'; C.lineJoin = 'round';
@@ -227,7 +256,7 @@ function lineChart(s, t, pts, box, opt) {
   if (opt.dots) for (let i = 0; i <= m; i++) { C.fillStyle = B.negro; C.beginPath(); C.arc(px(i), py(vals[i]), 6, 0, 7); C.fill(); }
   // cabeza
   if (t > K[0][0]) { const pulse = (t * 1.2) % 1;
-    C.strokeStyle = `rgba(65,115,209,${1 - pulse})`; C.lineWidth = 3; C.beginPath(); C.arc(head[0], head[1], 12 + 22 * pulse, 0, 7); C.stroke();
+    C.strokeStyle = rgba(B.azul, 1 - pulse); C.lineWidth = 3; C.beginPath(); C.arc(head[0], head[1], 12 + 22 * pulse, 0, 7); C.stroke();
     C.fillStyle = B.azul; C.beginPath(); C.arc(head[0], head[1], 12, 0, 7); C.fill(); }
   return { px, py, p, vals, head, n };
 }
@@ -287,7 +316,7 @@ R.zoom = (s, t) => {
     const vmax = Math.max(...pts.map(p => p[2])), ev = new Set(marks.map(x => x.i));
     txt('VOLUMEN', 920, vb.y0 - 10, { f: F.b, w: 500, s: 22, ls: 3, al: 'right', c: '#4a4a4a' });
     pts.forEach((p, i) => { const g = cl(G.p - i + 1); if (g <= 0) return; const h = p[2] / vmax * (vb.y1 - vb.y0) * eo(g);
-      C.fillStyle = ev.has(i) ? B.terracota : 'rgba(65,115,209,.45)'; rr(G.px(i) - 18, vb.y1 - h, 36, h, 6); C.fill(); });
+      C.fillStyle = ev.has(i) ? B.terracota : rgba(B.azul, .45); rr(G.px(i) - 18, vb.y1 - h, 36, h, 6); C.fill(); });
   }
   [0, Math.floor((N - 1) / 2), N - 1].forEach(i => txt(fmtD(pts[i][0]), G.px(i), vb.y1 + 40, { f: F.b, w: 500, s: 24, al: 'center', c: '#4a4a4a' }));
   marks.forEach(mm => { const v = pts[mm.i][1]; pin(t, G.px(mm.i), G.py(v), { ...mm, len: 90 }, mm.dir || 1, toneC(mm.tone || (mm.i > 0 && v < pts[mm.i - 1][1] ? 'down' : 'up'))); });
@@ -444,6 +473,7 @@ R.outro = (s, t) => {
   if (V.brand.name) txt(V.brand.name.toUpperCase() + (V.brand.byline ? '  ·  ' + V.brand.byline.toUpperCase() : ''), 540, 1278, { f: F.d, w: 800, s: 19, ls: 3, al: 'center', c: B.mostaza, a: kd });
   txt(s.sources ? 'Datos: ' + s.sources : 'Datos: Yahoo Finance', 540, 1330, { f: F.b, w: 400, s: 28, al: 'center', c: ink, a: kd * .85 });
   txt(V.brand.disclaimer, 540, 1372, { f: F.b, w: 400, s: 28, al: 'center', c: ink, a: kd * .85 });
+  if (s.disclosure) txt(s.disclosure, 540, 1414, { f: F.b, w: 700, s: 28, al: 'center', c: B.mostaza, a: kd });
 };
 
 // ---------------- subtítulos ----------------
@@ -465,11 +495,13 @@ function captions(t) {
 // ---------------- composición ----------------
 function drawScene(ctx, s, t) {
   C = ctx; C.setTransform(1, 0, 0, 1, 0, 0); C.globalAlpha = 1;
+  applyBrand(s);
   bg(s, t);
   C.save(); scaleAt(W / 2, H / 2, 1 + .018 * seg(t, s.t0, s.t1)); // deriva lenta de cámara
   (R[s.type] || (() => txt('escena desconocida: ' + s.type, 90, 900, { s: 50 })))(s, t);
   C.restore();
   chrome(s, t);
+  Object.assign(B, B0); B.fondo = null;
 }
 function renderAt(t) {
   const SC = V.scenes; let i = SC.findIndex(s => t >= s.t0 && t < s.t1); if (i < 0) i = SC.length - 1;

@@ -8,7 +8,7 @@ argument-hint: "<TICKER o nombre de la empresa> [enfoque opcional]"
 
 Dos modos, mismo motor, misma duración (~65–75 s sin voz) y misma marca:
 - **Reactivo** (lun, mar, jue): qué pasó hoy con una acción o índice (ver `plan/PLAN.md` §2).
-- **Empresa** (vie, sáb, dom): análisis de una empresa que está en boca de todos (sección 1b). `"mode": "empresa"` en el storyboard.
+- **Empresa** (vie, sáb, dom): "Análisis + Potencial" de una empresa (sección 1b); el sábado, "Tesis a 5 años" de `plan/banco-tesis.md`. `"mode": "empresa"` en el storyboard.
 **Todos los shorts llevan imágenes reales** que hagan sentido con la historia (sección 2b).
 **Fecha (regla de oro de JP):** un short por día, hecho el MISMO día en que se publica (19:00 CDMX). La carpeta lleva la fecha de
 publicación; "hoy" y "ayer" se cuentan desde ese día (en fin de semana di "el viernes…"). Nunca produzcas shorts de días futuros
@@ -62,19 +62,39 @@ Guarda las fuentes (URLs) para `youtube.md`.
    shorts reactivos de esa semana; nunca una de `plan/clientes-agencia.md` sin declararlo.
 Anota la empresa elegida en la tabla "Ya publicadas" de `plan/banco-empresas.md`.
 
-**Estructura (10–11 escenas, ~120–130 palabras ≈ 70–75 s; ejemplo: `videos/2026-11-07-ABNB/`):**
-| # | type | Qué cuenta |
-|---|------|-----------|
-| 1 | `hook` + `bg_image` | El dato que detiene el scroll + "¿Por qué?" (foto de la marca en duotono de fondo) |
-| 2 | `company` + `logo` | Origen o qué hace en 1 línea, valor de mercado y un dato de escala |
-| 3 | `photo` | El modelo de negocio: cómo gana dinero (foto de tienda, producto, sede o app) |
-| 4 | `news` + `image` | Por qué está caliente ahora (con fecha y fuente) |
-| 5 | `bars` | Ingresos y utilidad neta por trimestre (con el trimestre nuevo) |
-| 6 | `statement` o `photo` | Un dato sorprendente (IA, expansión, clientes, México) |
-| 7 | `price` | 12 meses de la acción |
-| 8–9 | `metric` ×2 | P/E (¿cara o barata?) y una de rentabilidad (ROE o margen neto) |
-| 10 | `catalyst` | Lo que viene (resultados, lanzamiento, apertura) |
-| 11 | `outro` | Pregunta en dos partes ligada a la historia |
+**Formato "Análisis + Potencial" (desde el 8 nov 2026, pedido por JP): mitad análisis de la empresa, mitad su potencial de
+inversión a largo plazo.** Las dos mitades se complementan: la primera explica qué es, por qué está en boca de todos y cómo van sus
+números; la segunda, por qué podría (o no) valer más en 5 años. 12 escenas, ~145–155 palabras ≈ 75–85 s. Ejemplo: `videos/2026-11-08-CUERVO/`.
+
+| # | type | Mitad | Qué cuenta |
+|---|------|-------|-----------|
+| 1 | `hook` + `bg_image` · **brand** | Análisis | El dato que detiene el scroll + pregunta ("¿Tiene futuro?", "¿Por qué?") |
+| 2 | `company` + `logo` · **brand** | Análisis | Qué hace en 1 línea, valor de mercado y un dato de escala |
+| 3 | `photo` | Análisis | El modelo de negocio: cómo gana dinero |
+| 4 | `news` + `image` | Análisis | Por qué está en boca de todos ahora (fecha y fuente) |
+| 5 | `bars` · **brand** | Análisis | Ingresos y utilidad neta por trimestre (con el trimestre nuevo) |
+| 6 | `metric` | Análisis | ¿Está cara? P/E (o valor/ventas si pierde dinero o es pre-IPO) |
+| 7 | `statement` · **brand** | Potencial | Puente + el motor de crecimiento en una frase (kicker "El potencial · a 5 años") |
+| 8 | `photo` o `metric` | Potencial | El dato del motor: mercado por conquistar, crecimiento, expansión (verificado) |
+| 9 | `news` (kicker "Su ventaja") | Potencial | 2 razones por las que es difícil de copiar (marca, red, escala, licencias, costos) |
+| 10 | `news` (kicker "Lo que podría salir mal") | Potencial | 2 riesgos reales, con el MISMO peso que lo bueno (tono `down`) |
+| 11 | `catalyst` | Potencial | Qué vigilar: el próximo dato que confirma o rompe la tesis |
+| 12 | `outro` + `disclosure` | — | Pregunta en dos partes ("¿Motor para 5 años… o ya está en el precio?") |
+
+**La parte de potencial NO es recomendación:** se presenta como "la tesis optimista y lo que podría salir mal", nunca "cómprala",
+"va a subir" ni precios objetivo propios. Si JP tiene acciones de la empresa (`plan/posiciones-jp.md`), el outro lleva
+`"disclosure": "JP tiene acciones de <empresa>"` y la descripción lo dice; si la tabla está vacía, no se afirma nada.
+**Sábado = "Tesis a 5 años":** la empresa sale de `plan/banco-tesis.md` (empresas con potencial de largo plazo, como Grab o ASUR),
+aunque no esté en las noticias; el "por qué ahora" es su dato más reciente (resultados, máximo, expansión). Viernes y domingo:
+la empresa caliente de la semana, de preferencia una con una historia de largo plazo creíble.
+
+**Colores de la empresa (desde el 8 nov 2026):** pon el color principal de la marca en el storyboard
+(`"brand_colors": {"primary": "#XXXXXX", "name": "Rojo Cuervo"}`, verificado en su logo o su sitio oficial) y marca con
+`"brand": true` 3–5 escenas (las marcadas **brand** arriba). El motor combina ese color con la paleta Costa: en `hook`,
+`statement` y `catalyst` es el fondo sólido (lo oscurece lo necesario para que el texto se lea); en `company`, `bars`, `metric`,
+`news` y `price` es un fondo muy claro de ese color y reemplaza al azul en barras, cifras y fichas. Sube/baja siguen en musgo/
+terracota, y el `outro` se queda SIEMPRE en azul Costa (la firma del canal). Si la marca es negra, blanca o gris (sin un color
+distintivo), no uses `brand_colors`. Revisa en `qa.jpg` que todo se lea.
 
 ## 2b. Imágenes reales (obligatorio en TODOS los shorts: 3–5 por video)
 Que hagan sentido con la historia: logo de la marca, sucursales/tiendas, productos, sede, la app, el CEO, la fábrica…
@@ -151,6 +171,8 @@ frases-puente cortas ("Pero en octubre, todo cambió.").
 { "ticker": "AAPL", "title": "tema del video", "scenes": [ {"type": "...", "say": "...", ...} ] }
 ```
 Campos por tipo (todos opcionales salvo `type` y `say`; `theme` puede forzar `"blue"`, `"sand"` o `"white"`):
+- Nivel raíz: `brand_colors` {"primary": "#hex", "name"} (colores de la empresa, §1b). En cualquier escena: `"brand": true`.
+- `outro`: `disclosure` (opcional, "JP tiene acciones de X").
 - `hook` (azul): `kicker` ("NASDAQ · AAPL"), `title`, `value` (número, ej. -24.1), `decimals`, `unit` ("%"), `prefix`,
   `signed` (true = "+"), `tone` ("down"|"up"), `caption`, `question`, `cue_value`, `cue_question`.
 - `statement` (azul): `text`, `emphasis` (palabra en serif mostaza), `kicker`, `sub`, `size`.

@@ -47,10 +47,10 @@ que se publica. Antes de producir, revisar `plan/publicados.md` para no repetir 
 | **Martes 19:00** | Short reactivo #2 | 45–65 s | Lo más fuerte del lunes |
 | **Miércoles 19:00** | Short derivado del largo (adelanto: "el domingo, el video completo") | 30–50 s | Idea más poderosa del largo de la semana |
 | **Jueves 19:00** | Short reactivo #3 | 60–75 s | Lo más fuerte del miércoles |
-| **Viernes 19:00** | Short **análisis de empresa** #1 | 60–75 s | Empresa "caliente" (ver abajo) |
-| **Sábado 19:00** | Short **análisis de empresa** #2 | 60–75 s | Empresa "caliente" |
+| **Viernes 19:00** | Short **Análisis + Potencial** #1 | 75–85 s | Empresa "caliente" con historia de largo plazo (ver abajo) |
+| **Sábado 19:00** | Short **Tesis a 5 años** (Análisis + Potencial) | 75–85 s | Empresa con potencial de [`banco-tesis.md`](banco-tesis.md) (Grab, ASUR…) |
 | **Domingo 10:00** | **Video largo atemporal** (16:9) | 9–11 min | Calendario de 55 semanas |
-| **Domingo 19:00** | Short **análisis de empresa** #3 | 60–75 s | Empresa "caliente" |
+| **Domingo 19:00** | Short **Análisis + Potencial** #3 | 75–85 s | Empresa "caliente" con historia de largo plazo |
 
 = **8 piezas por semana** (1 largo + 7 shorts: uno diario). Al año: 55 largos y ~380 shorts.
 (Cambio del 6 nov 2026: antes eran 4 shorts por semana; JP pidió video diario y que los nuevos fueran análisis de empresas.)
@@ -75,6 +75,15 @@ las cifras del prospecto y se dice claro que aún no cotiza. Prioridad: (1) noti
 adquisición, IPO, expansión, lanzamiento, polémica, récord); (2) marca cotidiana para la audiencia; (3) búsquedas en YouTube.
 Al menos 1 de cada 3 es mexicana. Sin repetir empresas en 30 días ni las de los reactivos de esa semana. Banco de ideas y
 registro: [`banco-empresas.md`](banco-empresas.md). Estructura: skill `/short` §1b.
+
+**Formato "Análisis + Potencial" (8 nov 2026, pedido por JP):** cada short de empresa es mitad análisis (qué hace, por qué está en
+boca de todos, números y valuación) y mitad potencial de inversión a largo plazo (motor de crecimiento, ventaja competitiva,
+riesgos con el mismo peso y qué vigilar). Nunca "cómprala" ni precios objetivo: es "la tesis optimista y lo que podría salir mal".
+Si JP tiene acciones de la empresa ([`posiciones-jp.md`](posiciones-jp.md)), se declara en pantalla y en la descripción.
+El **sábado** es "Tesis a 5 años": la empresa sale de [`banco-tesis.md`](banco-tesis.md) aunque no esté en las noticias.
+Cuando una tesis jale vistas y comentarios, se convierte en video largo en un espacio de "⚔️ Leer empresas" (propuesta a JP).
+**Colores de la empresa:** 3–5 escenas usan el color de la marca combinado con la paleta Costa (skill `/short` §1b); el cierre
+siempre queda en azul Costa.
 
 ### Imágenes en todos los videos
 Cada short lleva 3–5 imágenes reales y cada largo 10–20, que hagan sentido con la historia (ej.: un análisis de Sanborns muestra
@@ -184,7 +193,7 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 | Tarea | Cuándo | ID |
 |---|---|---|
 | Radar de Shorts (3 por semana) | Lun, mar y jue 6:41 | trig_01CnUTcJ3bevrqhQoUcnexqW |
-| Análisis de empresa (3 por semana) | Vie, sáb y dom 6:41 | trig_01QJCh2FaMNmfpP1SMLHn1E9 |
+| Análisis + Potencial (3 por semana; sáb = Tesis a 5 años) | Vie, sáb y dom 6:41 | trig_01QJCh2FaMNmfpP1SMLHn1E9 |
 | Producción del video largo (solo el de esa semana) | Lunes 6:41 | trig_01PqPWwd22ymEiaN4zJynEAN |
 | Short derivado (adelanto del largo) | Miércoles 6:41 | trig_01CgPooCEzGfqDFb8XAbQQ14 |
 | Check-up trimestral | 4 feb, 4 may, 4 ago · 6:41 | trig_01DUUsYHU5STYp3ERkoYnnkU |

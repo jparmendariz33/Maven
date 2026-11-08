@@ -111,7 +111,8 @@ def main(vdir):
     br = brand(); lp = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'brand', 'logo_mask_small.png')
     if os.path.exists(lp): br['logo_data'] = 'data:image/png;base64,' + base64.b64encode(open(lp, 'rb').read()).decode()
     video = {'duration': duration, 'offset': OFFSET, 'brand': br, 'data': keep, 'scenes': scenes, 'captions': caps,
-             'format': 'long' if LONG else 'short', 'novoice': novoice, 'chapters': chapters, 'thumbnail': sb.get('thumbnail', {}), 'slug': sb.get('slug', '')}
+             'format': 'long' if LONG else 'short', 'novoice': novoice, 'chapters': chapters, 'thumbnail': sb.get('thumbnail', {}), 'slug': sb.get('slug', ''),
+             'brand_colors': sb.get('brand_colors')}
     # imágenes reales (fetch_images.py): se incrustan como dataURL para que el render no dependa de rutas
     used, missing_img = set(), []
     def grab_imgs(o):
