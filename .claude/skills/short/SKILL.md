@@ -91,11 +91,12 @@ la empresa caliente de la semana, de preferencia una con una historia de largo p
 **Colores de la empresa (reglas de JP, 8 nov 2026).** Pon en el storyboard `"brand_colors": {"primary": "#XXXXXX", "name": "Rojo
 Cuervo"}` (el color principal de la marca, verificado en su logo, etiqueta o sitio oficial) y el motor lo aplica solo:
 - **Gancho (`hook`), catalizador (`catalyst`) y cierre (`outro`): fondo del color de la empresa**, con el mismo formato del gancho.
-- **El resto del video usa UN fondo institucional, el que combine con la marca** (el motor lo elige por la luminosidad del color):
-  - Marca **fuerte u oscura** (rojo, verde, naranja, azul marino…) → fondo **arena**; en el gancho/catalizador/cierre la marca se
-    oscurece lo justo para que el texto arena se lea.
-  - Marca **clara** (amarillo, pastel…) → fondo **azul**; el gancho/catalizador/cierre usan el color exacto con texto negro, y las
-    escenas de datos pasan a texto arena sobre azul (sube/baja en verde y rojo claros).
+- **El resto del video usa UN fondo institucional, el que combine con la marca** (el motor lo elige solo):
+  - Marca de color **FUERTE** (rojo, verde, naranja, amarillo intenso, azul marino… — casi todas) → fondo **ARENA**.
+  - Marca **TENUE / PASTEL** (amarillo pastel, verde menta, rosa palo: muy clara o poco saturada) → fondo **AZUL**. Solo estas:
+    un color fuerte sobre el azul se ve demasiado colorido (lo rechazó JP con un amarillo intenso).
+  - En el gancho/catalizador/cierre: color brillante o pastel → exacto con texto negro; color oscuro → oscurecido lo justo con
+    texto arena.
   - Para forzarlo: `"base": "arena"` o `"base": "azul"` dentro de `brand_colors` (solo si en `qa.jpg` no combina).
 - En esas escenas, **los DATOS de la empresa** (nombre, cifras, barras de ingresos, valor de cada métrica, gráfica del precio, ficha
   principal, viñetas sin tono) van en el color de la empresa; sube/baja siguen en musgo/terracota; frases y subtítulos en paleta Costa.

@@ -33,8 +33,9 @@ const fmtNum = (v, dec = 0) => { const s = Math.abs(v).toFixed(dec).replace(/\B(
 // Reglas de JP (8 nov 2026):
 //  · GANCHO, CATALIZADOR y CIERRE llevan DE FONDO el color de la empresa.
 //  · El resto usa UN fondo institucional por video, el que combine con la marca:
-//      marca fuerte u oscura (rojo, verde, naranja…) → ARENA, y la marca oscurecida lo justo en los fondos de marca (texto arena);
-//      marca clara (amarillo, pastel…)               → AZUL, y la marca exacta en los fondos de marca (texto negro).
+//      marca de color FUERTE (rojo, verde, naranja, amarillo intenso, azul marino…) → ARENA;
+//      marca TENUE / PASTEL (amarillo pastel, verde menta, rosa palo…)             → AZUL (si no, se ve demasiado colorido).
+//    En los fondos de marca: color brillante o pastel → exacto con texto negro; oscuro → oscurecido lo justo con texto arena.
 //    (se puede forzar con brand_colors.base: "arena" | "azul").
 //  · En esas escenas, los DATOS de la empresa (nombre, cifras, barras, métricas, gráfica) van en su color; sube/baja en musgo/
 //    terracota; nunca bloques rellenos del color de la empresa sobre el azul. "brand": false apaga la marca en una escena.
@@ -50,11 +51,16 @@ const rgba = (h, a) => `rgba(${hex(h).join(',')},${a})`;
 function toward(c, to, ink, ratio) { let k = 0, o = c; while (contrast(o, ink) < ratio && k < 1) { k += .03; o = mix(c, to, k); } return o; }
 const inkOn = f => ['#FFFFFF', '#0A0A0A'].sort((a, b) => contrast(b, f) - contrast(a, f))[0];
 const BC = V.brand_colors && V.brand_colors.primary ? V.brand_colors : null;
-const BRAND = BC ? (() => { const P = BC.primary, base = BC.base || (lum(P) > .45 ? 'azul' : 'arena');
+// tono "pastel / tenue": muy claro, o claro y poco saturado (HSL). Solo estos usan el fondo base AZUL.
+function hsl(h) { const [r, g, b] = hex(h).map(v => v / 255), mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, d = mx - mn;
+  return { s: d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1)), l }; }
+const isPastel = c => { const { s, l } = hsl(c); return l >= .78 || (s <= .35 && l >= .62); };
+const BRAND = BC ? (() => { const P = BC.primary, base = BC.base || (isPastel(P) ? 'azul' : 'arena'), bright = lum(P) > .45;
   return { P, base,
-    bg: base === 'azul' ? toward(P, '#FFFFFF', B0.negro, 4.5) : toward(P, '#0A0A0A', B0.arena, 3.6),   // fondo de marca
-    ink: base === 'azul' ? B0.negro : B0.arena,                                                        // texto sobre ese fondo
-    data: base === 'azul' ? toward(P, '#FFFFFF', B0.azul, 3) : toward(P, '#0A0A0A', B0.arena, 3) };    // datos sobre el fondo base
+    // fondo de marca (gancho, catalizador, cierre): color brillante/pastel → exacto con texto negro; oscuro → oscurecido lo justo con texto arena
+    bg: bright ? toward(P, '#FFFFFF', B0.negro, 4.5) : toward(P, '#0A0A0A', B0.arena, 3.6),
+    ink: bright ? B0.negro : B0.arena,
+    data: base === 'azul' ? toward(P, '#FFFFFF', B0.azul, 3) : toward(P, '#0A0A0A', B0.arena, 3) };   // datos sobre el fondo base
 })() : null;
 const BG_TYPES = { hook: 1, catalyst: 1, outro: 1 };
 let BR = null, BGB = null; // marca activa en la escena · fondo de marca de la escena
