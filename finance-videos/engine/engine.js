@@ -150,7 +150,10 @@ function credit(s, key, x, y, col, al = 'left', a = .75) {
 
 // ---------------- fondos ----------------
 const THEME = { hook: 'blue', statement: 'blue', catalyst: 'blue', outro: 'blue' };
-function themeOf0(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'full' ? 'blue' : 'sand') : THEME[s.type]) || 'sand'; }
+function themeOf0(s) { return s.theme || (s.type === 'photo' ? (!s.layout || s.layout === 'full' ? 'blue' : 'sand') : THEME[s.type]) || 'sand'; }
+// fotos a pantalla completa (fondo negro): el texto va en el color base del video (arena, o azul si la marca es pastel)
+const photoInk = () => BRAND && BRAND.base === 'azul' ? B0.azul : B0.arena;
+const isFullPhoto = s => s.type === 'photo' && (!s.layout || s.layout === 'full');
 // con brand_colors: 'brand' (fondo de la empresa) en gancho/catalizador/cierre; el resto, el fondo base (arena = 'sand', azul = 'dark' o 'blue')
 function themeOf(s) {
   const t = themeOf0(s);
@@ -179,7 +182,7 @@ function bg(s, t) {
   if (th === 'blue' || th === 'brand') { C.save(); C.globalAlpha = .08; C.fillStyle = B.arena; C.beginPath(); C.arc(860, 300 - lt * 4, 260, 0, 7); C.fill(); C.restore(); }
 }
 function chrome(s, t) {
-  const th = themeOf(s), col = th === 'blue' || th === 'brand' ? B.arena : B.negro;
+  const th = themeOf(s), col = isFullPhoto(s) ? photoInk() : th === 'blue' || th === 'brand' ? B.arena : B.negro;
   const lg = logoTint(col); C.save(); C.globalAlpha = .9;
   if (lg) C.drawImage(lg, 60, 150, 102, 90);
   if (V.brand.division) {   // sub-marca: "COSTA STUDIO" (logo) + "FINANCE"
@@ -434,11 +437,11 @@ R.metric = (s, t) => {
   C.restore();
 };
 
-// Foto real. layout: "framed" (por defecto, JP 8 nov 2026: foto en tarjeta redondeada sobre el fondo del video, con el texto
-// debajo, para que combine con el resto) · "full" (pantalla completa con fondo oscuro) · "card" (título arriba, foto grande) ·
+// Foto real. layout: "full" (por defecto: pantalla completa sobre negro; el texto en el color base del video, arena o azul — JP,
+// 8 nov 2026) · "framed" (foto en tarjeta redondeada sobre el fondo del video, texto debajo) · "card" (título arriba, foto grande) ·
 // "logo" (logo grande en ficha blanca)
 R.photo = (s, t) => {
-  const im = img(s.image), [fx, fy] = focus(s), lay = s.layout || 'framed';
+  const im = img(s.image), [fx, fy] = focus(s), lay = s.layout || 'full';
   if (lay === 'framed') {
     const size = s.size || 72, tl = wrap(s.title || '', F.d, 800, size, 900), lh = size * 1.16;
     const textH = (s.kicker ? 70 : 0) + tl.length * lh + (s.caption ? 84 : 0) + 40;
@@ -467,7 +470,7 @@ R.photo = (s, t) => {
     const gy = wide ? 1200 : 900;
     g = C.createLinearGradient(0, gy, 0, H); g.addColorStop(0, 'rgba(10,10,10,0)'); g.addColorStop(.3, 'rgba(10,10,10,.78)'); g.addColorStop(1, 'rgba(10,10,10,.92)');
     C.fillStyle = g; C.fillRect(0, gy, W, H - gy);
-    const ink = B.arena;
+    const ink = photoInk();
     if (s.kicker) kicker(s.kicker, 90, y0 - 110, s.t0 + .2, t, ink);
     riseLines(tl, 90, y0, lh, cueT(s, 'cue_title', .35), t, { f: F.d, w: 800, s: s.size || 80, c: ink });
     if (s.caption) rise(s.caption, 90, y0 + (tl.length - 1) * lh + 86, seg(t, cueT(s, 'cue_caption', .8), cueT(s, 'cue_caption', .8) + .6), { f: F.s, w: 400, s: 62, c: B.mostaza });

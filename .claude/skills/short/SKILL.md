@@ -100,7 +100,7 @@ Cuervo"}` (el color principal de la marca, verificado en su logo, etiqueta o sit
   - Para forzarlo: `"base": "arena"` o `"base": "azul"` dentro de `brand_colors` (solo si en `qa.jpg` no combina).
 - En esas escenas, **los DATOS de la empresa** (nombre, cifras, barras de ingresos, valor de cada métrica, gráfica del precio, ficha
   principal, viñetas sin tono) van en el color de la empresa; sube/baja siguen en musgo/terracota; frases y subtítulos en paleta Costa.
-- Las fotos (`photo`, layout "framed" por defecto) van en tarjeta sobre el fondo base del video, nunca sobre negro.
+- Las fotos a pantalla completa (`photo`, por defecto) van sobre negro, con el texto en el color base del video (arena o azul).
 - ❌ **Nunca** pongas el color de la empresa como bloque, ficha o recuadro relleno sobre el azul Costa (se ve pesado: lo rechazó JP).
 `"brand": false` apaga la marca en una escena; `"brand_bg": true/false` pone o quita el fondo de marca en una escena.
 Si la marca es negra, blanca o gris (sin un color distintivo), no uses `brand_colors`. Revisa en `qa.jpg` que todo se lea.
@@ -128,9 +128,9 @@ python3 scripts/fetch_images.py add videos/$ID fachada "https://…" --credit "F
 
 **Campos de imagen** (las rutas son relativas a la carpeta del video):
 - `bg_image` (cualquier escena): foto de fondo en duotono con el color del tema; el texto sigue legible. Ideal en `hook`.
-- `photo`: `image`, `layout` (**"framed" por defecto**: foto en tarjeta redondeada sobre el MISMO fondo del video y el texto debajo,
-  para que combine con todo lo demás — JP no quiere fondos negros · "full" pantalla completa con fondo oscuro, solo si se pide ·
-  "card" título arriba y foto grande · "logo" logo grande en ficha blanca); el `caption` sale en el color de la empresa,
+- `photo`: `image`, `layout` (**"full" por defecto**: pantalla completa sobre fondo negro, con el texto en el color base del
+  video — arena, o azul si la marca es pastel; así lo quiere JP · "framed" foto en tarjeta sobre el fondo del video ·
+  "card" título arriba y foto grande · "logo" logo grande en ficha blanca),
   `kicker`, `title`, `caption`, `focus`, `fit: "cover"` (forzar pantalla completa), `cue_title`, `cue_caption`.
 - `company.logo`: ficha blanca con el logo a la derecha del nombre.
 - `news.image` (+ `focus`): foto en tarjeta arriba del titular (con imagen: máx. 2 bullets).
