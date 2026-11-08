@@ -30,11 +30,12 @@ const toneC = t => t === 'down' ? B.terracota : t === 'up' ? B.musgo : t === 'ac
 const fmtNum = (v, dec = 0) => { const s = Math.abs(v).toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g, ','); return (v < 0 ? '−' : '') + s; };
 
 // ---------------- colores de la empresa (brand_colors en el storyboard) ----------------
-// Escenas con "brand": true usan el color de la empresa combinado con la paleta Costa:
-//  · escenas azules (hook, statement, catalyst): fondo sólido del color de la empresa, oscurecido lo necesario para que el
-//    texto arena se lea (contraste ≥ 4.5); el acento mostaza se cambia por arena si no contrasta.
-//  · escenas claras (company, bars, metric, news, price…): fondo = color de la empresa muy aclarado; el color de la empresa
-//    (oscurecido si hace falta) reemplaza al azul en barras, cifras y fichas. Los tonos de sube/baja siguen siendo Costa.
+// Regla (JP, 8 nov 2026): el color de la empresa = los DATOS de la empresa; los fondos siempre son los institucionales de Costa.
+//  · En fondos claros (arena): nombre, cifras, barras de ingresos, valor de la métrica, fichas y viñetas van en el color de la
+//    empresa (oscurecido solo si no contrasta con la arena).
+//  · En fondos azules (hook, catalyst): el dato va sobre un "marcatextos" del color exacto de la empresa, con texto blanco o
+//    negro según contraste (rojo sobre azul no se lee).
+//  · Sube/baja siguen en musgo/terracota; frases, subtítulos y cierre, en paleta Costa. "brand": false apaga una escena.
 const B0 = { ...B };
 const hex = h => { h = h.replace('#', ''); if (h.length === 3) h = h.split('').map(c => c + c).join(''); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
 const toHex = a => '#' + a.map(v => Math.round(cl(v, 0, 255)).toString(16).padStart(2, '0')).join('');
@@ -43,19 +44,20 @@ const lum = h => { const [r, g, b] = hex(h).map(v => { v /= 255; return v <= .03
 const contrast = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
 const rgba = (h, a) => `rgba(${hex(h).join(',')},${a})`;
 function darkFor(c, ink, ratio) { let k = 0, o = c; while (contrast(o, ink) < ratio && k < 1) { k += .04; o = mix(c, '#0A0A0A', k); } return o; }
-function lightFor(c, ink, ratio) { let k = .78, o = mix(c, '#FFFFFF', k); while (contrast(o, ink) < ratio && k < 1) { k += .03; o = mix(c, '#FFFFFF', k); } return o; }
+const inkOn = f => ['#FFFFFF', '#0A0A0A'].sort((a, b) => contrast(b, f) - contrast(a, f))[0];
 const BC = V.brand_colors && V.brand_colors.primary ? V.brand_colors : null;
+const BRAND = BC ? { block: BC.primary, ink: inkOn(BC.primary), onLight: darkFor(BC.primary, B0.arena, 3) } : null;
+let BR = null; // marca activa en la escena que se dibuja
 function applyBrand(s) {
-  Object.assign(B, B0); B.fondo = null;
-  if (!BC || !s.brand) return;
-  const P = BC.primary;
-  if (themeOf(s) === 'blue') {
-    B.azul = darkFor(P, B0.arena, 3.6);
-    if (contrast(B0.mostaza, B.azul) < 2.4) B.mostaza = B0.arena;
-  } else {
-    B.fondo = lightFor(BC.light || P, B0.negro, 12);
-    B.azul = darkFor(P, B.fondo, 3.2);
-  }
+  Object.assign(B, B0); B.marca = B0.negro; BR = null;
+  if (!BRAND || s.brand === false) return;
+  BR = BRAND;
+  if (themeOf(s) !== 'blue') { B.azul = BRAND.onLight; B.marca = BRAND.onLight; }   // en fondo azul, el azul ES el fondo: no se toca
+}
+// marcatextos: bloque del color de la empresa que se "pinta" de izquierda a derecha detrás de un texto
+function marker(x, y, w, size, k, pad = .22) {
+  if (k <= 0 || !BR) return; C.save(); C.fillStyle = BR.block;
+  rr(x - size * pad, y - size * .86, (w + size * pad * 2) * ex(k), size * 1.12, size * .14); C.fill(); C.restore();
 }
 
 let C; // contexto activo
@@ -132,14 +134,14 @@ const THEME = { hook: 'blue', statement: 'blue', catalyst: 'blue', outro: 'blue'
 function themeOf(s) { return s.theme || (s.type === 'photo' ? (s.layout === 'card' || s.layout === 'logo' ? 'sand' : 'blue') : THEME[s.type]) || 'sand'; }
 function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
-  C.fillStyle = th === 'blue' ? B.azul : th === 'white' ? B.gris : (B.fondo || B.arena); C.fillRect(0, 0, W, H);
+  C.fillStyle = th === 'blue' ? B0.azul : th === 'white' ? B.gris : B0.arena; C.fillRect(0, 0, W, H);
   const bi = img(s.bg_image);
   if (bi) { // foto de fondo en duotono con el color del tema (la escena sigue siendo legible)
     const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
-    C.fillStyle = th === 'blue' ? rgba(B.azul, .80) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B.fondo || B.arena, .87); C.fillRect(0, 0, W, H);
+    C.fillStyle = th === 'blue' ? rgba(B0.azul, .80) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B0.arena, .87); C.fillRect(0, 0, W, H);
   }
   // línea de marea: horizonte suave que respira
-  C.save(); C.strokeStyle = th === 'blue' ? 'rgba(235,230,186,.28)' : rgba(B.azul, .22); C.lineWidth = 2;
+  C.save(); C.strokeStyle = th === 'blue' ? 'rgba(235,230,186,.28)' : rgba(B0.azul, .22); C.lineWidth = 2;
   for (let k = 0; k < 2; k++) { C.beginPath();
     for (let x = 0; x <= W; x += 12) { const y = 1490 + k * 26 + Math.sin(x / 140 + t * .9 + k) * 9; x ? C.lineTo(x, y) : C.moveTo(x, y); }
     C.stroke(); }
@@ -165,14 +167,18 @@ const R = {};
 R.hook = (s, t) => {
   const lt = t - s.t0, ink = B.arena;
   kicker(s.kicker || `${D.exchange || ''} · ${D.ticker}`, 90, 360, s.t0 + .1, t, ink);
-  riseLines(wrap(s.title || D.short_name || D.name, F.d, 800, 104, 900), 90, 500, 118, s.t0 + .2, t, { f: F.d, w: 800, s: 104, c: ink });
+  const hl = wrap(s.title || D.short_name || D.name, F.d, 800, 104, 860);
+  if (BR) hl.forEach((l, i) => marker(90, 500 + i * 118, tw(l, F.d, 800, 104), 104, seg(t, s.t0 + .1 + i * .09, s.t0 + .6 + i * .09), .18));
+  riseLines(hl, 90, 500, 118, s.t0 + .2, t, { f: F.d, w: 800, s: 104, c: BR ? BR.ink : ink });
   const tv = cueT(s, 'cue_value', .9), k = eo(seg(t, tv, tv + 1.4));
   const v = (s.value || 0) * k, dec = s.decimals ?? 1;
   const str = (s.prefix || '') + (s.value < 0 ? '−' : s.signed ? '+' : '') + Math.abs(v).toFixed(dec) + (s.unit ?? '%');
   const a = seg(t, tv - .1, tv + .3);
   C.save(); C.globalAlpha *= a; scaleAt(90, 860, .94 + .06 * ex(seg(t, tv, tv + .6)));
-  let size = 230; while (tw(str, F.d, 800, size) > 900 && size > 120) size -= 10;
-  txt(str, 90, 960, { f: F.d, w: 800, s: size, c: s.tone === 'down' ? '#F3C3B4' : s.tone === 'up' ? '#DDE8B8' : ink });
+  let size = 230; while (tw(str, F.d, 800, size) > (BR ? 820 : 900) && size > 120) size -= 10;
+  if (BR) { const sw = tw((s.prefix || '') + (s.value < 0 ? '−' : s.signed ? '+' : '') + Math.abs(s.value || 0).toFixed(dec) + (s.unit ?? '%'), F.d, 800, size);
+    marker(90, 960, sw, size, 1, .12); }
+  txt(str, 90, 960, { f: F.d, w: 800, s: size, c: BR ? BR.ink : s.tone === 'down' ? '#F3C3B4' : s.tone === 'up' ? '#DDE8B8' : ink });
   C.restore();
   if (s.caption) { const tc = tv + .8; rise(s.caption, 90, 1060, seg(t, tc, tc + .6), { f: F.b, w: 500, s: 54, c: ink }); }
   if (s.question) { const tq = cueT(s, 'cue_question', 3); rise(s.question, 90, 1300, seg(t, tq - .1, tq + .5), { f: F.s, w: 400, s: 150, c: B.mostaza }); }
@@ -200,7 +206,7 @@ R.company = (s, t) => {
   if (lg) { const k = seg(t, s.t0 + .25, s.t0 + .85); if (k > 0) { C.save(); C.globalAlpha *= k; scaleAt(815, 415, .85 + .15 * back(k));
     rr(700, 300, 230, 230, 34); C.fillStyle = '#FFFFFF'; C.fill(); C.strokeStyle = 'rgba(10,10,10,.12)'; C.lineWidth = 2; C.stroke();
     contain(lg, 726, 326, 178, 178); C.restore(); } }
-  riseLines(wrap(s.name || D.short_name || D.name, F.d, 800, 96, lg ? 580 : 900), 90, 490, 110, s.t0 + .2, t, { f: F.d, w: 800, s: lg ? fit(s.name || D.short_name || D.name, F.d, 800, 96, 580, 64) : 96 });
+  riseLines(wrap(s.name || D.short_name || D.name, F.d, 800, 96, lg ? 580 : 900), 90, 490, 110, s.t0 + .2, t, { f: F.d, w: 800, s: lg ? fit(s.name || D.short_name || D.name, F.d, 800, 96, 580, 64) : 96, c: B.marca });
   const ll = wrap(s.line || '', F.b, 500, 46, 880);
   riseLines(ll, 90, 640, 60, s.t0 + .6, t, { f: F.b, w: 500, s: 46, c: '#3a3a3a' });
   let y = 700 + ll.length * 60, x = 90;
@@ -210,7 +216,7 @@ R.company = (s, t) => {
     if (x + w > 990) { x = 90; y += 96; }
     if (k > 0) { C.save(); C.globalAlpha *= k; C.translate(0, (1 - ex(k)) * 30);
       rr(x, y, w, 76, 38); C.fillStyle = i === 0 ? B.azul : 'rgba(255,255,255,.35)'; C.fill(); C.strokeStyle = B.negro; C.lineWidth = 2; if (i) C.stroke();
-      txt(label, x + 32, y + 51, { f: F.b, w: 700, s: 38, c: i === 0 ? B.arena : B.negro }); C.restore(); }
+      txt(label, x + 32, y + 51, { f: F.b, w: 700, s: 38, c: i === 0 ? (BR ? inkOn(B.azul) : B.arena) : B.negro }); C.restore(); }
     x += w + 18;
   });
   y += 170;
@@ -218,7 +224,7 @@ R.company = (s, t) => {
     const tc = typeof st.cue === 'number' ? st.cue : s.t0 + 1.8 + i * .3, k = seg(t, tc, tc + .5); if (k <= 0) return;
     C.save(); C.globalAlpha *= k; C.fillStyle = B.negro; C.fillRect(90, y + i * 130, 900 * ex(k), 2);
     rise(st.label.toUpperCase(), 90, y + i * 130 + 70, k, { f: F.b, w: 500, s: 28, ls: 3, c: '#4a4a4a' });
-    rise(st.value, 990, y + i * 130 + 82, k, { f: F.d, w: 800, s: 56, al: 'right', c: toneC(st.tone) });
+    rise(st.value, 990, y + i * 130 + 82, k, { f: F.d, w: 800, s: 56, al: 'right', c: st.tone && st.tone !== 'blue' ? toneC(st.tone) : BR ? B.marca : toneC(st.tone) });
     C.restore();
   });
 };
@@ -339,7 +345,7 @@ R.news = (s, t) => {
     const lines = wrap(b.text, F.b, 700, 46, 800);
     C.save(); C.globalAlpha *= k; C.translate((1 - ex(k)) * 40, 0);
     C.fillStyle = b.tone ? toneC(b.tone) : B.azul; C.beginPath(); C.arc(116, y - 15, 26, 0, 7); C.fill();
-    txt(String(i + 1), 116, y - 3, { f: F.d, w: 800, s: 28, al: 'center', c: B.arena });
+    txt(String(i + 1), 116, y - 3, { f: F.d, w: 800, s: 28, al: 'center', c: BR && !b.tone ? inkOn(B.azul) : B.arena });
     lines.forEach((l, j) => txt(l, 170, y + j * 56, { f: F.b, w: 700, s: 46 }));
     if (b.sub) txt(b.sub, 170, y + lines.length * 56 - 4, { f: F.b, w: 400, s: 34, c: '#4a4a4a', a: seg(t, tc + .4, tc + .9) });
     C.restore();
@@ -448,10 +454,11 @@ R.catalyst = (s, t) => {
   kicker(s.kicker || 'Próximo catalizador', 90, 520, s.t0 + .1, t, ink);
   const td = cueT(s, 'cue_date', .5), k = seg(t, td, td + .7);
   if (k > 0) { C.save(); C.globalAlpha *= k;
-    rr(90, 600, 900, 330, 28); C.strokeStyle = ink; C.lineWidth = 4; C.stroke();
+    rr(90, 600, 900, 330, 28); if (BR) { C.save(); C.beginPath(); C.rect(90, 600, 900 * ex(k), 330); C.clip(); rr(90, 600, 900, 330, 28); C.fillStyle = BR.block; C.fill(); C.restore(); }
+    else { C.strokeStyle = ink; C.lineWidth = 4; C.stroke(); }
     C.save(); C.beginPath(); C.rect(90, 600, 900, 330); C.clip();
     let size = 200; while (tw(s.date, F.d, 800, size) > 820 && size > 90) size -= 10;
-    txt(s.date, 540, 770 + size * .36 + (1 - ex(k)) * 200, { f: F.d, w: 800, s: size, al: 'center', c: ink });
+    txt(s.date, 540, 770 + size * .36 + (1 - ex(k)) * 200, { f: F.d, w: 800, s: size, al: 'center', c: BR ? BR.ink : ink });
     C.restore(); C.restore(); }
   if (s.label) rise(s.label, 540, 1040, seg(t, td + .4, td + 1), { f: F.d, w: 600, s: fit(s.label, F.d, 600, 58, 760, 34), al: 'center', c: ink });
   if (s.sub) riseLines(wrap(s.sub, F.b, 500, 42, 860), 540, 1120, 56, td + .7, t, { f: F.b, w: 500, s: 42, al: 'center', c: ink });
@@ -501,7 +508,7 @@ function drawScene(ctx, s, t) {
   (R[s.type] || (() => txt('escena desconocida: ' + s.type, 90, 900, { s: 50 })))(s, t);
   C.restore();
   chrome(s, t);
-  Object.assign(B, B0); B.fondo = null;
+  Object.assign(B, B0); BR = null;
 }
 function renderAt(t) {
   const SC = V.scenes; let i = SC.findIndex(s => t >= s.t0 && t < s.t1); if (i < 0) i = SC.length - 1;

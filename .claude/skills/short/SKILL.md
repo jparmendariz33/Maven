@@ -68,13 +68,13 @@ números; la segunda, por qué podría (o no) valer más en 5 años. 12 escenas,
 
 | # | type | Mitad | Qué cuenta |
 |---|------|-------|-----------|
-| 1 | `hook` + `bg_image` · **brand** | Análisis | El dato que detiene el scroll + pregunta ("¿Tiene futuro?", "¿Por qué?") |
-| 2 | `company` + `logo` · **brand** | Análisis | Qué hace en 1 línea, valor de mercado y un dato de escala |
+| 1 | `hook` + `bg_image` | Análisis | El dato que detiene el scroll + pregunta ("¿Tiene futuro?", "¿Por qué?") |
+| 2 | `company` + `logo` | Análisis | Qué hace en 1 línea, valor de mercado y un dato de escala |
 | 3 | `photo` | Análisis | El modelo de negocio: cómo gana dinero |
 | 4 | `news` + `image` | Análisis | Por qué está en boca de todos ahora (fecha y fuente) |
-| 5 | `bars` · **brand** | Análisis | Ingresos y utilidad neta por trimestre (con el trimestre nuevo) |
+| 5 | `bars` | Análisis | Ingresos y utilidad neta por trimestre (con el trimestre nuevo) |
 | 6 | `metric` | Análisis | ¿Está cara? P/E (o valor/ventas si pierde dinero o es pre-IPO) |
-| 7 | `statement` · **brand** | Potencial | Puente + el motor de crecimiento en una frase (kicker "El potencial · a 5 años") |
+| 7 | `statement` | Potencial | Puente + el motor de crecimiento en una frase (kicker "El potencial · a 5 años") |
 | 8 | `photo` o `metric` | Potencial | El dato del motor: mercado por conquistar, crecimiento, expansión (verificado) |
 | 9 | `news` (kicker "Su ventaja") | Potencial | 2 razones por las que es difícil de copiar (marca, red, escala, licencias, costos) |
 | 10 | `news` (kicker "Lo que podría salir mal") | Potencial | 2 riesgos reales, con el MISMO peso que lo bueno (tono `down`) |
@@ -88,13 +88,14 @@ números; la segunda, por qué podría (o no) valer más en 5 años. 12 escenas,
 aunque no esté en las noticias; el "por qué ahora" es su dato más reciente (resultados, máximo, expansión). Viernes y domingo:
 la empresa caliente de la semana, de preferencia una con una historia de largo plazo creíble.
 
-**Colores de la empresa (desde el 8 nov 2026):** pon el color principal de la marca en el storyboard
-(`"brand_colors": {"primary": "#XXXXXX", "name": "Rojo Cuervo"}`, verificado en su logo o su sitio oficial) y marca con
-`"brand": true` 3–5 escenas (las marcadas **brand** arriba). El motor combina ese color con la paleta Costa: en `hook`,
-`statement` y `catalyst` es el fondo sólido (lo oscurece lo necesario para que el texto se lea); en `company`, `bars`, `metric`,
-`news` y `price` es un fondo muy claro de ese color y reemplaza al azul en barras, cifras y fichas. Sube/baja siguen en musgo/
-terracota, y el `outro` se queda SIEMPRE en azul Costa (la firma del canal). Si la marca es negra, blanca o gris (sin un color
-distintivo), no uses `brand_colors`. Revisa en `qa.jpg` que todo se lea.
+**Colores de la empresa (regla de JP, 8 nov 2026): el color de la empresa = los DATOS de la empresa; los fondos SIEMPRE son
+los institucionales de Costa.** Pon en el storyboard `"brand_colors": {"primary": "#XXXXXX", "name": "Rojo Cuervo"}` (el color
+principal de la marca, verificado en su logo, etiqueta o sitio oficial) y el motor lo aplica solo en todas las escenas: en fondo
+arena, el nombre, las cifras, las barras de ingresos, el valor de cada métrica, la gráfica del precio, la ficha principal y las
+viñetas sin tono van en el color de la empresa; en fondo azul (`hook`, `catalyst`) el nombre, la cifra del gancho y la fecha van
+sobre un "marcatextos" del color exacto de la empresa (texto blanco o negro según contraste). Sube/baja en viñetas y notas siguen
+en musgo/terracota; frases, subtítulos y el `outro` quedan en paleta Costa. `"brand": false` apaga el color en una escena.
+Si la marca es negra, blanca o gris (sin un color distintivo), no uses `brand_colors`. Revisa en `qa.jpg` que todo se lea.
 
 ## 2b. Imágenes reales (obligatorio en TODOS los shorts: 3–5 por video)
 Que hagan sentido con la historia: logo de la marca, sucursales/tiendas, productos, sede, la app, el CEO, la fábrica…
@@ -171,7 +172,7 @@ frases-puente cortas ("Pero en octubre, todo cambió.").
 { "ticker": "AAPL", "title": "tema del video", "scenes": [ {"type": "...", "say": "...", ...} ] }
 ```
 Campos por tipo (todos opcionales salvo `type` y `say`; `theme` puede forzar `"blue"`, `"sand"` o `"white"`):
-- Nivel raíz: `brand_colors` {"primary": "#hex", "name"} (colores de la empresa, §1b). En cualquier escena: `"brand": true`.
+- Nivel raíz: `brand_colors` {"primary": "#hex", "name"} (colores de la empresa, §1b; se aplica solo). En una escena: `"brand": false` lo apaga.
 - `outro`: `disclosure` (opcional, "JP tiene acciones de X").
 - `hook` (azul): `kicker` ("NASDAQ · AAPL"), `title`, `value` (número, ej. -24.1), `decimals`, `unit` ("%"), `prefix`,
   `signed` (true = "+"), `tone` ("down"|"up"), `caption`, `question`, `cue_value`, `cue_question`.
