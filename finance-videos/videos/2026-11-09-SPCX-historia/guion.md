@@ -1,7 +1,7 @@
 # SpaceX: de casi quebrar a la IPO más grande de la historia
 Historia 3D · estilo **Costa Diorama** · ~80 s (con pausas entre frases) · 1080x1920 · voz Daniel (vidIQ)
 
-**Estado:** guion + animatic listos → **falta tu OK para generar la voz** (936 caracteres = 28 créditos de vidIQ; hoy hay 10, se renuevan el 4 dic).
+**Estado:** animatic espaciado (~84 s, sin voz) listo para que Juan Pablo grabe su propia voz leyendo el guion. No usar voz de vidIQ.
 
 ## Concepto
 Maquetas de plastilina mate sobre papel arena, solo con colores de la marca. Encima va la misma capa editorial de los shorts:
