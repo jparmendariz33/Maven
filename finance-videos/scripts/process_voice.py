@@ -8,6 +8,7 @@ Salida:   videos/<id>/audio/voice.wav      (pausas recortadas, tempo ajustado, v
 
 Reglas: pausas internas máx 0.32 s, pausas entre párrafos 0.55 s, tempo 1.04x
 (se sube hasta 1.10x si la voz pasa de 56 s, para que el video quede en 45–60 s).
+Con --historia (videos 3D): tempo natural 1.0x, sin acelerar; las pausas entre frases las agrega build_timing3d.py.
 """
 import sys, os, json, subprocess, wave
 import numpy as np
@@ -43,7 +44,7 @@ def silences(x, thr_db=-38, min_len=.25):
     return out
 
 
-def main(vdir):
+def main(vdir, historia=False):
     a = os.path.join(vdir, 'audio'); b = os.path.join(vdir, 'build'); os.makedirs(b, exist_ok=True)
     raw = os.path.join(a, 'voice_raw.mp3'); tmp = os.path.join(a, '_raw.wav')
     run(['ffmpeg', '-loglevel', 'error', '-y', '-i', raw, '-ac', '1', '-ar', str(SR), tmp])
@@ -63,7 +64,7 @@ def main(vdir):
     if pos is not None: parts.append(x[int(pos * SR):])
     y = np.concatenate(parts); tight = os.path.join(a, '_tight.wav'); write_wav(tight, y)
     dur = len(y) / SR
-    tempo = min(1.10, max(1.04, dur / 56.0))
+    tempo = 1.0 if historia else min(1.10, max(1.04, dur / 56.0))
     out = os.path.join(a, 'voice.wav')
     run(['ffmpeg', '-loglevel', 'error', '-y', '-i', tight, '-af',
          f'atempo={tempo:.3f},highpass=f=70,acompressor=threshold=-18dB:ratio=3:attack=5:release=80,loudnorm=I=-15:TP=-1.5:LRA=7',
@@ -85,4 +86,4 @@ def main(vdir):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2: sys.exit(__doc__)
-    main(sys.argv[1])
+    main(sys.argv[1], historia='--historia' in sys.argv)

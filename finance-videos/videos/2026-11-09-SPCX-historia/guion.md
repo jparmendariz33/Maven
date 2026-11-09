@@ -1,7 +1,7 @@
 # SpaceX: de casi quebrar a la IPO más grande de la historia
-Historia 3D · estilo **Costa Diorama** · ~60 s · 1080x1920 · voz Daniel (vidIQ)
+Historia 3D · estilo **Costa Diorama** · ~80 s (con pausas entre frases) · 1080x1920 · voz Daniel (vidIQ)
 
-**Estado:** guion + animatic listos → **falta tu OK para generar la voz** (936 caracteres = 14 créditos).
+**Estado:** guion + animatic listos → **falta tu OK para generar la voz** (936 caracteres = 28 créditos de vidIQ; hoy hay 10, se renuevan el 4 dic).
 
 ## Concepto
 Maquetas de plastilina mate sobre papel arena, solo con colores de la marca. Encima va la misma capa editorial de los shorts:
@@ -14,7 +14,7 @@ etiqueta, titular en Unbounded, píldora de subtítulos y logo.
 ## Escena por escena
 | # | Seg* | Escena | Qué pasa en la maqueta | El dato en pantalla |
 |---|------|--------|------------------------|---------------------|
-| 1 | 0–6.6 | **Gancho** | La costa: despega el cohete y Elon saluda a cámara | $75,000 millones · la IPO más grande de la historia |
+| 1 | 0–6.6 | **Gancho** | La costa: despega el cohete "SPACEX" y Elon (etiqueta "Elon Musk · CEO") saluda | **SpaceX** · $75,000 millones · la IPO más grande de la historia |
 | 2 | 6.6–13.6 | **2008** | Isla en el Pacífico: explotan tres cohetes, Elon suda y se rasca la cabeza; aparece el cuarto | 3 cohetes perdidos ✕✕✕ ? · palabra gigante **ÚLTIMO** |
 | 3 | 13.6–20.9 | **El giro** | El cuarto cohete sube (la cámara lo sigue) y deja una estela mostaza; llueven monedas y Elon celebra | ¡Llegó a órbita! → $1,600 millones (NASA, dic 2008) |
 | 4 | 20.9–30.9 | **Starlink** | El globo de plastilina gira, se encienden los países y aparecen los satélites; luego crece un anillo de ingresos al 61% | 164 países → 61% de sus ingresos |
@@ -23,7 +23,7 @@ etiqueta, titular en Unbounded, píldora de subtítulos y logo.
 | 7 | 47.5–57 | **Hoy** | Toma abierta de toda la montaña rusa; el carrito baja día por día y se detiene debajo de la línea punteada de $135. Elon suda y luego respira | $134.27 (último cierre, 6 nov) · "Debajo de su precio de salida" → +$4,400 M de utilidad |
 | 8 | 57–61.8 | **Cierre** | Noche azul: Elon sentado en la Luna, con los satélites encima de la Tierra | ¿Visión del siglo… o burbuja? + lema + aviso legal |
 
-\*Tiempos estimados; con la voz real se ajustan solos (`build_timing3d.py`).
+\*Tiempos de la primera versión (60 s). La versión con pausas dura ~84 s y los tiempos se ajustan solos a la voz real (`build_timing3d.py`).
 
 ## Narración (lo que dice Daniel)
 1. ¿Cómo una empresa que casi quiebra en dos mil ocho... hizo la salida a bolsa más grande de la historia?

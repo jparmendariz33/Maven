@@ -19,8 +19,8 @@ Gancho · qué hace la empresa · precio 12 meses · el movimiento reciente y su
 P/E · PEG · ROE · próximos resultados · pregunta de cierre. Voz en off (Daniel), subtítulos palabra por palabra, música y efectos.
 
 ## Créditos de voz
-Se usan los de tu cuenta de **vidIQ** (conectada a Claude): 14 créditos por video (guion < 1,000 caracteres).
-Plan actual: 150 créditos/mes, se renuevan cada día 4. ≈10 videos al mes.
+Se usan los de tu cuenta de **vidIQ** (conectada a Claude): 28 créditos por video (guion < 1,000 caracteres; vidIQ cobra 28 por cada 1,000).
+Plan actual: 150 créditos/mes, se renuevan cada día 4. ≈5 videos al mes.
 
 ## Estilo
 Paleta y tono de costastudio.mx. Tipografías libres (OFL) que sustituyen a PP Neue Machina y Seneca:

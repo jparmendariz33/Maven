@@ -20,7 +20,7 @@ const worlds = {
     [[-.45, -.45], [.45, -.45], [-.45, .45], [.45, .45]].forEach(([x, z]) => { const p = mesh(new THREE.BoxGeometry(.12, 6.5, .12), dk); p.position.set(x, 3.25, z); tw.add(p); });
     for (let y = .6; y < 6.5; y += .9) { const b = mesh(new THREE.BoxGeometry(1.0, .08, 1.0), dk); b.position.y = y; tw.add(b); }
     const pad = mesh(new THREE.CylinderGeometry(1.6, 1.8, .4, 32), clay('#BDB28A', .9)); pad.position.set(3.3, 1.55, -2.6); base.add(pad);
-    const rk = L.rocket(5.2); base.add(rk);
+    const rk = L.rocket(5.2, 'SPACEX'); base.add(rk);
     const sm = L.puffs(34, 3.0, .85, 3); sm.position.set(3.3, 1.7, -2.6); base.add(sm);
     [[-6, 3], [-4.6, 5.2], [5.5, 4.4]].forEach(([x, z]) => base.add(L.palm(x, z, 1.35)));
     [[3.5, 6.5], [-2.5, 7.3], [6.8, 1.5]].forEach(([x, z]) => { const k = mesh(new THREE.DodecahedronGeometry(.45), clay(B.terracota)); k.position.set(x, 1.5, z); base.add(k); });
@@ -145,7 +145,7 @@ function headline(L, lt, l1, l2, c2, sub, ink, t0 = 0, y = 500, S = 104) {
 
 // ---------------------------------------------------------------- escenas
 const scenes = [
-  { id: 'gancho', world: 'coast', d: 6.6, year: '2026',
+  { id: 'gancho', world: 'coast', d: 9.2, year: '2026',
     cap: '¿Cómo una empresa que casi quiebra en 2008… hizo la salida a bolsa más grande de la historia?',
     update(w, lt, t, L) {
       const s = this, p = P(lt, s), rise = L.ex(L.seg(lt, .5, 6.5));
@@ -154,15 +154,18 @@ const scenes = [
       w.waves.forEach(v => v.position.y = 1.22 + Math.sin(t * 2 + v.userData.ph) * .03);
       L.face(w.elon, { lid: .55, brow: .4, smile: 1 });
       w.elon.userData.arms[1].rotation.z = 2.5 + Math.sin(t * 9) * .35; w.elon.userData.head.rotation.set(-.3, -.6 + Math.sin(t * 1.3) * .06, 0);
-      const k = L.eio(p); look(w.cam, mixv([-4, 10, 30], [-2.6, 9.4, 26.5], k), mixv([.4, 6.6, 0], [.8, 7.6, 0], k));
+      const k = L.eio(p); look(w.cam, mixv([-4, 10, 30], [-2.6, 9.4, 26.5], k), mixv([-.3, 6.6, 0], [0, 7.6, 0], k));
     },
-    overlay(lt, t, L) {
-      const ink = L.B.negro; L.kicker('12 jun 2026 · Nasdaq: SPCX', 360, 1, ink);
-      L.txt('$75,000', 90, 500, { f: L.F.d, w: 800, s: 120, c: ink }); L.txt('millones', 90, 615, { f: L.F.d, w: 800, s: 104, c: L.B.azul });
-      L.txt('La IPO más grande de la historia', 90, 680, { s: 40, c: ink, a: .75 });
+    overlay(lt, t, L, s, w) {
+      // el primer cuadro es la miniatura: quién (SpaceX) + el dato, visibles desde t = 0
+      const ink = L.B.negro; L.kicker('Nasdaq: SPCX · 12 jun 2026', 360, 1, ink);
+      L.txt('SpaceX', 90, 505, { f: L.F.d, w: 800, s: 132, c: ink });
+      L.txt('$75,000 millones', 90, 598, { f: L.F.d, w: 800, s: 58, c: L.B.azul });
+      L.txt('La IPO más grande de la historia', 90, 662, { s: 40, c: ink, a: .75 });
+      L.tag('Elon Musk · CEO', w.elon, w.cam, L.seg(lt, .4, 1.0), 2.6);
     } },
 
-  { id: '2008', world: 'island', d: 7.0, year: '2008',
+  { id: '2008', world: 'island', d: 9.6, year: '2008',
     cap: 'En 2008, SpaceX ya había perdido sus tres primeros cohetes. Solo le alcanzaba para un último intento.',
     big: [['ÚLTIMO', .8, '#BB6F58']],
     update(w, lt, t, L) {
@@ -193,7 +196,7 @@ const scenes = [
         L.C.restore(); }
     } },
 
-  { id: 'orbita', world: 'island', d: 7.3, year: '2008', trans: 'cont',
+  { id: 'orbita', world: 'island', d: 10.0, year: '2008', trans: 'cont',
     cap: 'El cuarto llegó a órbita. Y tres meses después, la NASA le dio un contrato de 1,600 millones de dólares.',
     update(w, lt, t, L) {
       const s = this, p = P(lt, s), d = s.t1 - s.t0;
@@ -229,7 +232,7 @@ const scenes = [
         L.rise('Contrato de carga a la Estación Espacial', 90, 680, L.seg(l2, .35, .95), { s: 40, c: ink, a: .75 }); }
     } },
 
-  { id: 'starlink', world: 'starlink', d: 10.0, year: '2025',
+  { id: 'starlink', world: 'starlink', d: 13.7, year: '2025',
     cap: 'Luego vino Starlink: internet desde el espacio en 164 países. En 2025, ya era el 61% de sus ingresos.',
     update(w, lt, t, L) {
       const s = this, p = P(lt, s);
@@ -254,7 +257,7 @@ const scenes = [
         L.rise('$11,400 de $18,700 millones vinieron de Starlink', 90, 665, L.seg(l2, .35, .95), { s: 36, c: ink, a: .75 }); }
     } },
 
-  { id: 'plan', world: 'orbit', d: 7.7, year: '2026', ink: '#EBE6BA',
+  { id: 'plan', world: 'orbit', d: 11.8, year: '2026', ink: '#EBE6BA',
     cap: 'En febrero, Elon fusionó SpaceX con xAI. ¿El plan? Llevar los centros de datos de inteligencia artificial… al espacio.',
     update(w, lt, t, L) {
       const s = this, p = P(lt, s), m = L.eio(L.seg(p, .05, .3)), merged = p > .3;
@@ -275,7 +278,7 @@ const scenes = [
       else { const l2 = lt - b; L.kicker('El plan', 360, L.seg(l2, 0, .5), ink); headline(L, l2, 'Centros de datos', 'en órbita', L.B.mostaza, 'Inteligencia artificial alimentada por el Sol', ink, -.1, 500, 84); }
     } },
 
-  { id: 'ipo', world: 'coaster', d: 8.9, year: '2026',
+  { id: 'ipo', world: 'coaster', d: 11.8, year: '2026',
     cap: 'En junio salió a bolsa a 135 dólares, y recaudó 75,000 millones. A los pocos días, ya valía 211.',
     update(w, lt, t, L) {
       const s = this, p = P(lt, s), u = L.eio(L.seg(p, .55, .95)) * w.iPk;   // índice continuo sobre la serie
@@ -293,7 +296,7 @@ const scenes = [
       else priceHUD(L, lt - b, this._price, this._date, ink, this._idx);
     } },
 
-  { id: 'hoy', world: 'coaster', d: 9.5, year: 'Hoy', trans: 'cont',
+  { id: 'hoy', world: 'coaster', d: 13.0, year: 'Hoy', trans: 'cont',
     cap: 'Hoy cotiza en 134: debajo de su precio de salida. Aunque en su último trimestre, por fin ganó 4,400 millones.',
     update(w, lt, t, L) {
       const s = this, p = P(lt, s), N = w.pts.length - 1, u = w.iPk + (N - w.iPk) * L.seg(p, 0, .55);
@@ -321,7 +324,7 @@ const scenes = [
         L.rise('millones', 90, 615, L.seg(l2, .2, .8), { f: L.F.d, w: 800, s: 104, c: ink }); L.rise('Su primera utilidad desde la IPO', 90, 680, L.seg(l2, .35, .95), { s: 40, c: ink, a: .75 }); }
     } },
 
-  { id: 'cierre', world: 'night', d: 3.6, year: null, ink: '#EBE6BA',
+  { id: 'cierre', world: 'night', d: 4.2, year: null, ink: '#EBE6BA',
     cap: '¿Visión del siglo… o burbuja?',
     update(w, lt, t, L) {
       w.sats.forEach((s, i) => s.userData.update(0, t + i)); w.elon.userData.head.rotation.set(.15, .25 + Math.sin(t * 1.2) * .25, .1);

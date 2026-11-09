@@ -89,7 +89,7 @@ def main(vdir):
             add(mus, thud(.35), k * bar + j * bar / 4)
     fi = int(.4 * SR); mus[:fi] *= np.linspace(0, 1, fi); fo = int(1.2 * SR); mus[-fo:] *= np.linspace(1, 0, fo)
     # voz + ducking
-    w = wave.open(os.path.join(vdir, 'audio', 'voice.wav')); v = np.frombuffer(w.readframes(w.getnframes()), '<i2').astype(float) / 32768; w.close()
+    w = wave.open(os.path.join(vdir, 'audio', tl.get('voice', 'voice.wav'))); v = np.frombuffer(w.readframes(w.getnframes()), '<i2').astype(float) / 32768; w.close()
     voice = np.zeros(n); add(voice, v, tl['offset'])
     e = np.convolve(np.abs(voice), np.ones(int(.15 * SR)) / int(.15 * SR), 'same'); e /= e.max() + 1e-9
     duck = 1 - .6 * np.clip(e * 4, 0, 1)

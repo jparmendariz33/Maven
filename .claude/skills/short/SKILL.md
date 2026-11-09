@@ -40,7 +40,7 @@ Escribe `videos/$ID/storyboard.json` (esquema abajo). Luego:
 ```bash
 python3 scripts/script_check.py videos/$ID
 ```
-Debe salir ✅: **650–950 caracteres** (≈45–60 s y 14 créditos). Si sale ❌, ajusta y repite.
+Debe salir ✅: **650–950 caracteres** (≈45–60 s y 28 créditos). Si sale ❌, ajusta y repite.
 
 Muéstrale al usuario el guion (la narración por escena) y un resumen de las escenas, y **pide su OK**. No generes la voz
 sin su aprobación (cuesta créditos de vidIQ). Si pide cambios, edita y vuelve a correr `script_check.py`.
@@ -100,7 +100,7 @@ Ejemplo completo: `finance-videos/videos/ejemplo-SE/storyboard.json`.
 
 ## 3. Voz (después del OK)
 1. Carga las herramientas: `ToolSearch` con `select:mcp__vidIQ__vidiq_balance,mcp__vidIQ__vidiq_voiceover_generate,mcp__vidIQ__vidiq_job_poll`.
-2. `vidiq_balance` → dile al usuario cuántos créditos tiene y que este video usará 14.
+2. `vidiq_balance` → dile al usuario cuántos créditos tiene y que este video usará 28 (vidIQ cobra 28 por cada 1,000 caracteres, redondeado hacia arriba).
 3. `vidiq_voiceover_generate` con `script` = contenido exacto de `videos/$ID/narration.txt` y
    `voiceId` = `onwK4e9ZLuTAKqWW03F9` (Daniel – Steady Broadcaster; está en `assets/brand/brand.json`).
 4. `vidiq_job_poll` hasta `completed` (tarda ~1–2 min; entre sondeos haz otra cosa o usa Monitor, no `sleep`).

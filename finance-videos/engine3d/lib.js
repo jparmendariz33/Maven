@@ -96,9 +96,14 @@ export function face(g, { lid = .55, brow = 0, smile = 1, sweat = false } = {}) 
 }
 
 // ---------- utilería ----------
-export function rocket(h = 5.2) {
+export function rocket(h = 5.2, label = null) {
   const r = new THREE.Group(), steel = clay('#E9E6DF', .45), dark = clay(B.negro, .6);
   r.add(mesh(new THREE.CylinderGeometry(.55, .55, h, 32), steel));
+  if (label) { // nombre pintado a lo largo del cuerpo (tipografía de marca, no logotipo)
+    const L = new THREE.Mesh(new THREE.CylinderGeometry(.556, .556, h * .5, 32, 1, true, -Math.PI * .22, Math.PI * .44),
+      new THREE.MeshStandardMaterial({ roughness: .5, transparent: true, map: canvasTex((g, W, Hh) => { g.translate(W / 2, Hh / 2); g.rotate(-Math.PI / 2);
+        g.fillStyle = B.negro; g.font = `800 ${W * .5}px Unbounded`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(label, 0, 4); }, 256, 1024) }));
+    L.position.y = h * .02; r.add(L); }
   const nc = mesh(new THREE.SphereGeometry(.55, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), steel); nc.scale.y = 2.2; nc.position.y = h / 2; r.add(nc);
   [h * .3, -h * .2].forEach(y => { const b = mesh(new THREE.CylinderGeometry(.56, .56, .12, 32), dark); b.position.y = y; r.add(b); });
   [-1, 1].forEach(i => { const f = mesh(new THREE.BoxGeometry(.08, 1.2, .7), dark); f.position.set(i * .6, -h / 2 + .6, 0); r.add(f); });
@@ -220,16 +225,29 @@ export function captions(CAPS, t) {
     txt(w[2], x, y, { w: 700, s: S, c: cur ? B.mostaza : on ? B.arena : 'rgba(235,230,186,.4)' }); x += ws[i] + gap; });
   C.restore();
 }
-// reparte palabras en el tiempo (para el animatic, antes de tener la voz) y arma grupos de ≤4 palabras
+// reparte palabras en el tiempo (animatic, antes de tener la voz): pausa tras cada punto/?/:/… y al final de la escena
+export const PACE = { lead: .35, sentence: .7, tail: 1.0 };
+export const sentenceEnd = w => /[.:?!…]$/.test(w);
 export function autoCaptions(scenes) {
   const groups = [];
   scenes.forEach(s => {
-    if (!s.cap) return; const words = s.cap.split(/\s+/).filter(Boolean), a = s.t0 + .2, b = s.t1 - .35;
+    if (!s.cap) return; const words = s.cap.split(/\s+/).filter(Boolean);
+    const nPause = words.slice(0, -1).filter(sentenceEnd).length, a = s.t0 + PACE.lead, speak = (s.t1 - PACE.tail) - a - nPause * PACE.sentence;
     const wts = words.map(w => w.length + 2), tot = wts.reduce((p, q) => p + q, 0); let t = a, cur = [];
-    words.forEach((w, i) => { const d = (b - a) * wts[i] / tot; cur.push([t, t + d * .9, w]); t += d;
-      if (cur.length >= 4 || /[.,:?!…]$/.test(w) || i === words.length - 1) { groups.push(cur); cur = []; } });
+    words.forEach((w, i) => { const d = speak * wts[i] / tot; cur.push([t, t + d * .9, w]); t += d;
+      const end = sentenceEnd(w); if (end && i < words.length - 1) t += PACE.sentence;
+      if (cur.length >= 4 || /[,]$/.test(w) || end || i === words.length - 1) { groups.push(cur); cur = []; } });
   });
   return groups;
+}
+// etiqueta 2D que sigue a un punto 3D (p. ej. el nombre de un personaje)
+export function tag(text, obj, cam, k, dy = 1.0) {
+  if (k <= 0) return; const v = new THREE.Vector3(); obj.getWorldPosition(v); v.y += dy; v.project(cam);
+  const x = (v.x + 1) / 2 * W, y = (1 - v.y) / 2 * H, o = { w: 700, s: 34 }, tw0 = tw(text, o) + 48;
+  C.save(); C.globalAlpha *= clamp(k * 2); C.translate(x, y); C.scale(back(k), back(k));
+  C.fillStyle = B.negro; C.beginPath(); C.roundRect(-tw0 / 2, -62, tw0, 58, 29); C.fill();
+  C.beginPath(); C.moveTo(-12, -5); C.lineTo(12, -5); C.lineTo(0, 12); C.fill();
+  txt(text, 0, -22, { ...o, c: B.arena, al: 'center' }); C.restore();
 }
 // grano de película fijo
 let grainC = null;

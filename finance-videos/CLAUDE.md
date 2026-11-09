@@ -15,7 +15,7 @@ Para crear un video, sigue la skill **`/short`** (`../.claude/skills/short/SKILL
   `audio/voice_raw.mp3` (la voz pagada: no borrar), `<TICKER>_short.mp4`, `youtube.md`. `build/` y los .wav no se versionan.
 
 ## Reglas
-- No generar voz sin aprobación del guion (cuesta créditos de vidIQ: 14 por cada 1,000 caracteres; plan de 150/mes,
+- No generar voz sin aprobación del guion (cuesta créditos de vidIQ: 28 por cada 1,000 caracteres, redondeado hacia arriba; plan de 150/mes,
   se renueva el día 4 de cada mes).
 - Datos siempre verificados; nunca recomendaciones de compra/venta.
 - Para cambiar el estilo, editar `brand.json` / `engine.js` y probar con `videos/ejemplo-SE` (re-render sin gastar créditos:
@@ -25,10 +25,12 @@ Para crear un video, sigue la skill **`/short`** (`../.claude/skills/short/SKILL
 Videos narrativos con personajes de plastilina (Three.js) + la misma capa editorial de los shorts. Flujo:
 `fetch_data.py` → `narration.txt` (un párrafo por escena) + `story.js` (mundos 3D y escenas, mismo orden) + `guion.md`
 → `node engine3d/render3d.js videos/<id> --qa` (revisar) → animatic mudo (`render3d.js videos/<id>`) → **OK del usuario**
-→ voz (vidIQ) → `process_voice.py` → `build_timing3d.py` (escenas y subtítulos a la voz real) → `make_audio.py` → `render3d.js`.
+→ voz (vidIQ) → `process_voice.py --historia` (sin acelerar) → `build_timing3d.py` (agrega pausas: 0.7 s tras cada frase, 1.1 s entre
+  escenas → `audio/voice_story.wav`; escenas y subtítulos amarrados a la voz real) → `make_audio.py` → `render3d.js`.
 - `engine3d/lib.js` — piezas reutilizables: plastilina, personaje con expresiones (`guy`, `face`), cohete, humo, explosión,
   satélite con corte, globo, capa editorial (kicker, titulares, ficha del año, palabra gigante, subtítulos), transición de marea.
 - `engine3d/player.js` — línea de tiempo; escenas con `trans: 'cont'` comparten mundo (plano secuencia).
+- Ritmo: las historias respiran (≈80 s para ~940 caracteres). Duración estimada por escena = caracteres/14.4 + pausas.
 - Render ~1 s por cuadro (SwiftShader): 60 s ≈ 30 min. Ejemplo: `videos/2026-11-09-SPCX-historia/`.
 - Reglas de diseño: solo colores de `brand.json`; el texto va arriba (y < 760 px), la maqueta en el centro y abajo, los subtítulos en y≈1650;
   algo nuevo cada 1.5–2 s; nada de logotipos reales.

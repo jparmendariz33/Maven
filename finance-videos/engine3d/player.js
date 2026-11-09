@@ -33,9 +33,9 @@ function draw(canvas, i, t) {
   L.renderer.render(w.scene, w.cam);
   ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.drawImage(L.renderer.domElement, 0, 0);
   L.setCtx(ctx);
-  if (s.overlay) s.overlay(lt, t, L, s);
+  if (s.overlay) s.overlay(lt, t, L, s, w);
   L.chrome(s.ink || B.negro);
-  if (s.year) { const prev = i > 0 ? SC[i - 1].year : null; L.yearChip(s.year, prev !== s.year ? prev : null, prev !== s.year ? L.seg(lt, .1, .7) : 1, s.ink || B.negro); }
+  if (s.year) { const prev = i > 0 ? SC[i - 1].year : null, ch = i > 0 && prev !== s.year; L.yearChip(s.year, ch ? prev : null, ch ? L.seg(lt, .1, .7) : 1, s.ink || B.negro); }
   (s.big || []).forEach(([word, at, col]) => L.bigWord(word, t, s.t0 + at * (s.t1 - s.t0), col || B.negro));
 }
 
