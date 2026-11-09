@@ -25,3 +25,7 @@ Plan actual: 150 créditos/mes, se renuevan cada día 4. ≈10 videos al mes.
 ## Estilo
 Paleta y tono de costastudio.mx. Tipografías libres (OFL) que sustituyen a PP Neue Machina y Seneca:
 Unbounded, Space Grotesk e Instrument Serif.
+
+## 🎞️ Historias 3D (nuevo, experimental)
+Videos con historia y personajes de plastilina en 3D (estilo **Costa Diorama**), con los mismos datos verificados y la misma marca.
+Ejemplo: `videos/2026-11-09-SPCX-historia/` (SpaceX, ~60 s). Ver `guion.md` de ese folder y la sección "Historias 3D" de `CLAUDE.md`.

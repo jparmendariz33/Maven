@@ -2,3 +2,4 @@
 videos/*/build/
 videos/*/audio/*.wav
 __pycache__/
+engine3d/node_modules/

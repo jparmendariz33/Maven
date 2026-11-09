@@ -20,3 +20,15 @@ Para crear un video, sigue la skill **`/short`** (`../.claude/skills/short/SKILL
 - Datos siempre verificados; nunca recomendaciones de compra/venta.
 - Para cambiar el estilo, editar `brand.json` / `engine.js` y probar con `videos/ejemplo-SE` (re-render sin gastar créditos:
   `build_timeline.py` → `make_audio.py` → `render.js`).
+
+## Historias 3D — "Costa Diorama" (`engine3d/`)
+Videos narrativos con personajes de plastilina (Three.js) + la misma capa editorial de los shorts. Flujo:
+`fetch_data.py` → `narration.txt` (un párrafo por escena) + `story.js` (mundos 3D y escenas, mismo orden) + `guion.md`
+→ `node engine3d/render3d.js videos/<id> --qa` (revisar) → animatic mudo (`render3d.js videos/<id>`) → **OK del usuario**
+→ voz (vidIQ) → `process_voice.py` → `build_timing3d.py` (escenas y subtítulos a la voz real) → `make_audio.py` → `render3d.js`.
+- `engine3d/lib.js` — piezas reutilizables: plastilina, personaje con expresiones (`guy`, `face`), cohete, humo, explosión,
+  satélite con corte, globo, capa editorial (kicker, titulares, ficha del año, palabra gigante, subtítulos), transición de marea.
+- `engine3d/player.js` — línea de tiempo; escenas con `trans: 'cont'` comparten mundo (plano secuencia).
+- Render ~1 s por cuadro (SwiftShader): 60 s ≈ 30 min. Ejemplo: `videos/2026-11-09-SPCX-historia/`.
+- Reglas de diseño: solo colores de `brand.json`; el texto va arriba (y < 760 px), la maqueta en el centro y abajo, los subtítulos en y≈1650;
+  algo nuevo cada 1.5–2 s; nada de logotipos reales.
