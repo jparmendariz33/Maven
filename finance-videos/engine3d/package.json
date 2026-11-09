@@ -1,0 +1,6 @@
+{
+  "name": "costa-engine3d",
+  "private": true,
+  "description": "Motor 3D 'Costa Diorama' para historias animadas (Three.js)",
+  "dependencies": { "three": "0.170.0" }
+}

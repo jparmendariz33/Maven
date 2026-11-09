@@ -7,3 +7,4 @@ largos/*/audio/*.wav
 largos/*/audio/_*
 videos/*/images/_cand/
 largos/*/images/_cand/
+engine3d/node_modules/
