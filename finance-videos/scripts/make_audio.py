@@ -44,6 +44,71 @@ def thud(g=.8):               # golpe grave y redondo
     x = tt(.9); f = 45 + 60 * np.exp(-x * 9); return np.sin(2 * np.pi * np.cumsum(f) / SR) * env(.9, .002, 5) * g
 
 
+# ---------- efectos por acción (historias 3D): cada escena de story.js declara sfx: [[fracción, nombre, volumen?, duración?], ...]
+def sfx_pop(g=1, d=0):        # algo aparece: "blip" que sube
+    x = tt(.16); f = 420 + 900 * x / .16; return np.sin(2 * np.pi * np.cumsum(f) / SR) * env(.16, .002, 6) * .5 * g
+
+
+def sfx_whoosh(g=1, d=0):     # movimiento rápido: ruido que barre
+    d = d or .5; n = rng.standard_normal(int(d * SR)); k = np.linspace(.02, .25, len(n)); y = np.empty_like(n); a = 0.0
+    for i in range(len(n)):
+        a += k[i] * (n[i] - a); y[i] = a
+    return y * np.sin(np.pi * np.linspace(0, 1, len(y))) ** 2 * 1.6 * g
+
+
+def sfx_door(g=1, d=0):       # puerta: golpe grave + clic
+    y = thud(.9 * g); c = tick(.5 * g); y[int(.05 * SR):int(.05 * SR) + len(c)] += c; return y
+
+
+def sfx_steps(g=1, d=0):      # pasos: golpecitos suaves, dos por segundo y medio
+    d = d or 2.0; y = np.zeros(int(d * SR)); k = 0; t = 0.0
+    while t < d - .15:
+        x = tt(.09); st = np.sin(2 * np.pi * (150 if k % 2 else 130) * x) * env(.09, .002, 9) * .55 * g; i = int(t * SR); y[i:i + len(st)] += st[:len(y) - i]; t += .36; k += 1
+    return y
+
+
+def sfx_coins(g=1, d=0):      # monedas: campanitas agudas
+    y = np.zeros(int(.9 * SR))
+    for k, f in enumerate([1568, 2093, 1760, 2349, 1976]):
+        p = pluck(f, .35, .22 * g); i = int(k * .09 * SR); y[i:i + len(p)] += p[:len(y) - i]
+    return y
+
+
+def sfx_arp(notes, step, g):
+    y = np.zeros(int((len(notes) * step + .7) * SR))
+    for k, f in enumerate(notes):
+        p = pluck(f, .6, .3 * g); i = int(k * step * SR); y[i:i + len(p)] += p[:len(y) - i]
+    return y
+
+
+def sfx_rise(g=1, d=0): return sfx_arp([392, 523.25, 659.25, 783.99, 1046.5], .11, g)      # algo crece o sale bien
+def sfx_fall(g=1, d=0): return sfx_arp([659.25, 523.25, 440, 349.23], .16, g * .9)          # algo sale mal
+def sfx_shine(g=1, d=0):      # revelación: campana con brillo
+    x = tt(1.2); return (np.sin(2 * np.pi * 1318.5 * x) + .5 * np.sin(2 * np.pi * 1976 * x) + .3 * np.sin(2 * np.pi * 2637 * x)) * env(1.2, .004, 4) * .3 * g
+
+
+def sfx_ticks(g=1, d=0):      # contador que corre
+    d = d or 1.2; y = np.zeros(int(d * SR)); t = 0.0
+    while t < d - .04:
+        c = tick(.5 * g); i = int(t * SR); y[i:i + len(c)] += c[:len(y) - i]; t += .075
+    return y
+
+
+def sfx_applause(g=1, d=0):   # aplausos: ráfagas de ruido
+    d = d or 2.2; n = rng.standard_normal(int(d * SR)); y = n - onepole(n, .25); m = np.zeros(len(n))
+    for _ in range(int(d * 55)):
+        i = int(rng.uniform(0, len(n) - 600)); m[i:i + 500] += np.exp(-np.linspace(0, 6, 500))
+    return y * np.minimum(m, 2) * np.sin(np.pi * np.linspace(0, 1, len(y))) ** .6 * .28 * g
+
+
+def sfx_vote(g=1, d=0):       # golpe seco de madera (una paleta, un mazo)
+    x = tt(.18); return (np.sin(2 * np.pi * 320 * x) + .5 * np.sin(2 * np.pi * 640 * x)) * env(.18, .001, 14) * .6 * g
+
+
+SFX = {'pop': sfx_pop, 'whoosh': sfx_whoosh, 'door': sfx_door, 'steps': sfx_steps, 'coins': sfx_coins, 'rise': sfx_rise, 'fall': sfx_fall,
+       'shine': sfx_shine, 'ticks': sfx_ticks, 'applause': sfx_applause, 'vote': sfx_vote, 'thud': lambda g=1, d=0: thud(.8 * g), 'wave': lambda g=1, d=0: wave_sfx(.9, g)}
+
+
 def main(vdir):
     tl = json.load(open(os.path.join(vdir, 'build', 'timeline.json')))
     LONG = tl.get('format') == 'long'
@@ -73,6 +138,15 @@ def main(vdir):
         if s['type'] == 'metric' and 'cue_gauge' in s:
             for k in range(8): add(fx, tick(.1), s['cue_gauge'] + .5 + k * .16)
         if s['type'] == 'catalyst': add(fx, thud(.5), s.get('cue_date', s['t0'] + .5))
+    # historias 3D: efectos por acción que declara cada escena (build/sfx.json lo escribe engine3d/render3d.js)
+    sp = os.path.join(vdir, 'build', 'sfx.json'); STORY = tl.get('format') == 'story'
+    if os.path.exists(sp):
+        for sc in json.load(open(sp))['scenes']:
+            for ev in sc.get('sfx', []):
+                t, name, g = ev[0], ev[1], (ev[2] if len(ev) > 2 else 1)
+                if name not in SFX: print(f'⚠️  efecto desconocido: {name} (hay: {", ".join(SFX)})'); continue
+                add(fx, SFX[name](g, ev[3] if len(ev) > 3 else 0), t)
+    elif STORY: print('⚠️  falta build/sfx.json: corre antes `node engine3d/render3d.js <carpeta> --qa` para tener los efectos por acción')
     # cama musical: Am9 – Fmaj7 – C – G, pads suaves + arpegio lento (92 bpm)
     x = np.arange(n) / SR
     chords = [[110, 164.81, 196, 246.94], [87.31, 130.81, 174.61, 220], [130.81, 164.81, 196, 261.63], [98, 146.83, 196, 246.94]]
@@ -88,7 +162,7 @@ def main(vdir):
             add(mus, pluck(arp[j % 4] * 2, .6, .10), k * bar + j * bar / 8)
         if not LONG:   # en largos, sin pulso de bombo: cama más tranquila para 10 minutos
             for j in range(4):
-                add(mus, thud(.35), k * bar + j * bar / 4)
+                add(mus, thud(.2 if STORY else .35), k * bar + j * bar / 4)   # historias: pulso más suave, mandan los efectos
     fi = int(.4 * SR); mus[:fi] *= np.linspace(0, 1, fi); fo = int(1.2 * SR); mus[-fo:] *= np.linspace(1, 0, fo)
     # voz + ducking
     vp = os.path.join(vdir, 'audio', 'voice.wav')

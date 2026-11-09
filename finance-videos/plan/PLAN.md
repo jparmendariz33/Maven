@@ -48,11 +48,15 @@ que se publica. Antes de producir, revisar `plan/publicados.md` para no repetir 
 | **Miércoles 19:00** | Short derivado del largo (adelanto: "el domingo, el video completo") | 30–50 s | Idea más poderosa del largo de la semana |
 | **Jueves 19:00** | Short reactivo #3 | 60–75 s | Lo más fuerte del miércoles |
 | **Viernes 19:00** | Short **Análisis + Potencial** #1 | 75–85 s | Empresa "caliente" con historia de largo plazo (ver abajo) |
+| **Sábado 12:00** | 🎬 **Historia 3D** (maquetas animadas: la historia de una empresa o su fundador) | 75–90 s | [`banco-historias.md`](banco-historias.md) · skill `/historia` |
 | **Sábado 19:00** | Short **Tesis a 5 años** (Análisis + Potencial) | 75–85 s | Empresa con potencial de [`banco-tesis.md`](banco-tesis.md) (Grab, ASUR…) |
 | **Domingo 10:00** | **Video largo atemporal** (16:9) | 9–11 min | Calendario de 55 semanas |
 | **Domingo 19:00** | Short **Análisis + Potencial** #3 | 75–85 s | Empresa "caliente" con historia de largo plazo |
 
-= **8 piezas por semana** (1 largo + 7 shorts: uno diario). Al año: 55 largos y ~380 shorts.
+= **9 piezas por semana** (1 largo + 7 shorts, uno diario + 1 Historia 3D). Al año: 55 largos, ~380 shorts y ~52 historias.
+(Cambio del 9 nov 2026: JP pidió sumar las historias animadas en 3D. Van 1 por semana, el sábado a las 12:00; ese día salen dos
+piezas, separadas 7 horas para que no compitan. Se revisa en el check-up de febrero: si las historias rinden más que los shorts
+normales, se sube a 2 por semana con una segunda los miércoles a las 12:00.)
 (Cambio del 6 nov 2026: antes eran 4 shorts por semana; JP pidió video diario y que los nuevos fueran análisis de empresas.)
 Los 3 reactivos son siempre de **acciones/temas distintos** en la semana y no repiten una empresa de los últimos 10 días.
 Regla de oro: **constancia > perfección.** Si una semana no puedes grabar, se publican los shorts y el largo se recorre una semana
@@ -85,6 +89,15 @@ Cuando una tesis jale vistas y comentarios, se convierte en video largo en un es
 **Colores de la empresa:** el gancho, el catalizador y el cierre llevan de fondo el color de la empresa; el resto del video usa
 un fondo institucional que combine (marca de color fuerte → arena; solo marcas tenues/pastel → azul) con los datos de la empresa en su color (skill `/short` §1b).
 
+### Historia 3D (sábados 12:00)
+La historia de una empresa o de quien la fundó, contada con maquetas de plastilina animadas, personajes que actúan, luz de cine,
+música y efectos (estilo "Costa Diorama"; modelo: `videos/2026-11-14-JOBS-historia/`). Es el formato más visual del canal: sirve
+para atraer gente nueva y mandarla al largo o al short de esa empresa. Reglas: solo empresas que coticen o estén cerca de su IPO;
+hechos públicos y documentados (nada de vida privada ni acusaciones no probadas); caricatura respetuosa; sin logotipos reales;
+nunca recomendaciones. Al menos 1 de cada 3 es de México o Latinoamérica. **Se produce el viernes para el sábado** (segunda
+excepción a la regla de "mismo día", junto con el largo): hacer una maqueta tarda más y JP necesita tiempo para grabar su voz.
+Ideas y registro: [`banco-historias.md`](banco-historias.md). Cómo se hace: skill `/historia`.
+
 ### Imágenes en todos los videos
 Cada short lleva 3–5 imágenes reales y cada largo 10–20, que hagan sentido con la historia (ej.: un análisis de Sanborns muestra
 sus sucursales y su logo). Solo fotos con licencia libre (Wikimedia Commons, Flickr CC) o de salas de prensa oficiales, con crédito
@@ -102,10 +115,11 @@ videos se publican SIEMPRE a las 19:00** (el largo del domingo, a las 10:00). Ca
 | **Miércoles 6:41** | Tarea "Short derivado (miércoles)" | Produce el short adelanto del largo de ese domingo. Te notifica. |
 | **Jueves 6:41** | Radar | Short reactivo #3. |
 | **Vie, sáb y dom 6:41** | Tarea "Análisis de empresa" | Elige la empresa caliente y produce el short (sin voz, con imágenes). Te notifica. |
+| **Viernes 6:41** | Tarea "Historia 3D" | Elige la historia, verifica los datos, arma la maqueta y renderiza el video con música y efectos (sin voz). Llega a media mañana (el render tarda). Se publica el **sábado 12:00**. |
 | **Lun → sáb** | **Tú** | Grabas tu voz encima de cada video: shorts con *Voz en off* en la app de YouTube; el largo en CapCut (gratis): importas el MP4, *Audio → Grabar*, lees los subtítulos, exportas. Subes y programas. |
 | **Domingo** | **Tú** | Sale el largo a las 10:00. 10 min contestando comentarios. |
 
-Tu tiempo: ~15 min el largo (es leer 10 min) + ~5 min cada short = **~50 min por semana**, más subir y contestar.
+Tu tiempo: ~15 min el largo (es leer 10 min) + ~5 min cada short y cada historia = **~55 min por semana**, más subir y contestar.
 Alternativa para el largo: si prefieres leer a tu ritmo, graba solo el audio leyendo `guion.md` y súbelo a
 `finance-videos/largos/<fecha>/` en GitHub; la tarea lo sincroniza (whisper) y re-renderiza con tu voz incluida.
 
@@ -183,6 +197,7 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 - [x] Imágenes reales en los motores (shorts y largos) + `fetch_images.py` (6 nov 2026).
 - [x] Shorts de análisis de empresa vie/sáb/dom + banco de empresas (6 nov 2026).
 - [x] Fotos reales agregadas a lo ya producido (largos 15 y 22 nov, shorts 11 y 18 nov) sin cambiar los guiones; re-renderizados.
+- [x] 9 nov 2026: Historias 3D (motor `engine3d/` con luz de cine y actores, skill `/historia`, banco de historias y tarea de los viernes).
 - [ ] **Tú:** agregar el repo `jparmendariz33/Maven` a los repositorios del entorno "Juan Pa" (claude.ai/code → entorno → Edit →
   Repositories). Sin eso, las tareas programadas hacen el video y te lo mandan por chat, pero no lo pueden guardar en GitHub.
 - [ ] **Tú:** verificar el canal con tu teléfono y configurarlo con `canal/configuracion.md` (~45 min, una vez).
@@ -196,5 +211,6 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 | Análisis + Potencial (3 por semana; sáb = Tesis a 5 años) | Vie, sáb y dom 6:41 | trig_01QJCh2FaMNmfpP1SMLHn1E9 |
 | Producción del video largo (solo el de esa semana) | Lunes 6:41 | trig_01PqPWwd22ymEiaN4zJynEAN |
 | Short derivado (adelanto del largo) | Miércoles 6:41 | trig_01CgPooCEzGfqDFb8XAbQQ14 |
+| Historia 3D (se publica el sábado 12:00) | Viernes 6:41 | trig_01WiLjHyjJxTvYkRxBT6ZbUH |
 | Check-up trimestral | 4 feb, 4 may, 4 ago · 6:41 | trig_01DUUsYHU5STYp3ERkoYnnkU |
 | Re-plan anual | 4 nov 2027 · 6:41 | trig_012FRZsfmRFvxMPNyMQJTHsq |

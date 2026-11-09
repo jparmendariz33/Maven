@@ -7,12 +7,17 @@ sea cliente de la agencia sin declararlo.
 **Videos largos (16:9, 9–11 min):** skill **`/largo`** (`../.claude/skills/largo/SKILL.md`), motor `engine/long.js`, carpetas
 `largos/<domingo AAAA-MM-DD>/`. Plan, calendario y metas en `plan/`. Costo cero: sin vidIQ; JP pone su voz (modo sin voz por defecto).
 
+**Historias 3D (verticales, 75–90 s, sábados 12:00):** skill **`/historia`** (`../.claude/skills/historia/SKILL.md`), motor `engine3d/`
+(Three.js: `lib.js` + `cine.js` con luz de cine y actores articulados), carpetas `videos/<sábado>-<SLUG>-historia/` con `story.js`.
+Flujo: `story.js` → `scripts/pace3d.py` → `engine3d/render3d.js --qa` → `make_audio.py` (música + efectos por acción) → `render3d.js video`.
+Ideas en `plan/banco-historias.md`. Aquí NO van fotos: todo es maqueta 3D propia, sin logotipos reales.
+
 **Imágenes reales en TODOS los videos** (shorts y largos): logos, sucursales, productos, sedes, personas. `scripts/fetch_images.py`
 (Openverse / Wikimedia Commons / simple-icons / salas de prensa; solo licencias libres; nunca IA de marcas o personas reales) →
 `videos|largos/<id>/images/` + `images/credits.json`. En el storyboard: escena `photo`, `bg_image`, `company.logo`, `news.image`.
 `build_timeline.py` las incrusta; el motor pone el pie de foto. Detalle en `/short` §2b.
 
-**Ritmo (nov 2026):** un video por día, producido el MISMO día que se publica (`plan/PLAN.md` §2 "Regla de oro"; no repetir nada de `plan/publicados.md`): 1 short diario (lun/mar/jue reactivo, mié derivado del largo, **vie/sáb/dom análisis de empresa**) + largo los domingos.
+**Ritmo (nov 2026):** un video por día, producido el MISMO día que se publica (`plan/PLAN.md` §2 "Regla de oro"; no repetir nada de `plan/publicados.md`): 1 short diario (lun/mar/jue reactivo, mié derivado del largo, **vie/sáb/dom análisis de empresa**) + largo los domingos + **1 Historia 3D los sábados 12:00** (se produce el viernes).
 
 Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL.md`). Resumen del flujo:
 `setup.sh` → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →

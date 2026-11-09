@@ -3,7 +3,8 @@
  *   node engine3d/render3d.js videos/<id>              → videos/<id>/<id>.mp4 (con audio/mix.wav si existe; si no, animatic mudo)
  *   node engine3d/render3d.js videos/<id> --qa         → build/qa.jpg (2 cuadros por escena)
  *   node engine3d/render3d.js videos/<id> --at 3.5 12  → build/frame_3.5.png ...
- *   --fps 30 (por defecto) · --jobs 3 (procesos en paralelo)
+ *   --fps 30 (por defecto) · --jobs 3 (procesos en paralelo) · --hq (3D al 100% y sombras suaves VSM: ~2.5x más lento)
+ *   Siempre escribe build/sfx.json (los efectos de sonido que declara cada escena) para scripts/make_audio.py.
  */
 const { chromium } = require('playwright');
 const { spawn, execFileSync } = require('child_process');
@@ -20,9 +21,12 @@ const ROOT = path.resolve(__dirname, '..');
   const pg = await b.newPage({ viewport: { width: 1080, height: 1920 } });
   pg.on('pageerror', e => console.log('ERROR en el motor:', e.message));
   pg.on('console', m => { if (m.type() === 'error') console.log('consola:', m.text()); });
-  await pg.goto('file://' + path.join(__dirname, 'index.html') + '?render=1&v=' + encodeURIComponent('file://' + path.join(vdir, 'story.js')));
+  // calidad: por defecto el 3D se renderiza al 75% y con sombras PCF (≈2.5x más rápido; el texto sigue a 1080x1920). --hq = 100% + sombras VSM.
+  const HQ = process.argv.includes('--hq'), qs = HQ ? '' : '&rs=.75&shadow=pcf';
+  await pg.goto('file://' + path.join(__dirname, 'index.html') + '?render=1' + qs + '&v=' + encodeURIComponent('file://' + path.join(vdir, 'story.js')));
   await pg.waitForFunction(() => window.ENGINE_READY, null, { timeout: 120000 });
   const DUR = await pg.evaluate(() => window.DUR), TL = await pg.evaluate(() => window.TIMELINE);
+  if (!process.argv.includes('--range')) fs.writeFileSync(path.join(build, 'sfx.json'), JSON.stringify({ duration: DUR, scenes: TL }, null, 1));   // efectos por acción para make_audio.py
   const frame = async (t, type = 'jpeg', q = .92) => Buffer.from((await pg.evaluate(([t, type, q]) => { renderAt(t); return document.getElementById('c').toDataURL('image/' + type, q); }, [t, type, q])).split(',')[1], 'base64');
 
   if (mode === '--qa' || mode === '--at') {
@@ -55,7 +59,7 @@ const ROOT = path.resolve(__dirname, '..');
   // modo padre: reparte los cuadros entre --jobs procesos (por defecto 3), une las partes y agrega el audio
   const JOBS = Math.max(1, +(arg('--jobs') || 3)), per = Math.ceil(N / JOBS), parts = [];
   await Promise.all(Array.from({ length: JOBS }, (_, j) => { const a = j * per, z = Math.min(N, a + per); if (a >= z) return null; const part = path.join(build, `part_${j}.mp4`); parts.push(part);
-    return new Promise((res, rej) => { const c = spawn(process.execPath, [__filename, vdir, 'video', '--fps', String(FPS), '--range', String(a), String(z), part], { stdio: 'inherit' }); c.on('close', code => code === 0 ? res() : rej(new Error('parte ' + j + ' falló'))); }); }));
+    return new Promise((res, rej) => { const c = spawn(process.execPath, [__filename, vdir, 'video', '--fps', String(FPS), '--range', String(a), String(z), part].concat(HQ ? ['--hq'] : []), { stdio: 'inherit' }); c.on('close', code => code === 0 ? res() : rej(new Error('parte ' + j + ' falló'))); }); }));
   const list = path.join(build, 'parts.txt'); fs.writeFileSync(list, parts.map(p => `file '${p}'`).join('\n'));
   const tmp = path.join(build, 'render.part.mp4'), args = ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', list];
   if (hasAudio) args.push('-i', mix, '-c:a', 'aac', '-b:a', '192k', '-shortest');

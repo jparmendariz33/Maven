@@ -84,7 +84,8 @@ const worlds = {
     const pc = new THREE.Group(); pc.position.set(-.35, 1.38, .05); bench.add(pc);
     const cs = rbox(1.25, .2, .82, .05, clay2('#B5793F', .85)); cs.position.y = .1; pc.add(cs);
     const kb = rbox(1.0, .06, .36, .03, clay2('#2A2A2A', .6)); kb.position.set(0, .22, .18); kb.rotation.x = -.12; pc.add(kb);
-    for (let i = 0; i < 4; i++) for (let j = 0; j < 11; j++) { const ky = rbox(.06, .03, .06, .012, clay2('#E8E2D0', .6)); ky.castShadow = false; ky.position.set(-.4 + j * .08, .262 - i * .0085, .06 + i * .075); ky.rotation.x = -.12; pc.add(ky); }
+    const keys = []; for (let i = 0; i < 4; i++) for (let j = 0; j < 11; j++) { const ky = new THREE.Mesh(new THREE.BoxGeometry(.06, .03, .06)); ky.position.set(-.4 + j * .08, .262 - i * .0085, .06 + i * .075); ky.rotation.x = -.12; keys.push(ky); }
+    pc.add(L.merged(keys, clay2('#E8E2D0', .6), false));
     const mon = rbox(.82, .66, .6, .09, clay2('#D9D2BF', .7)); mon.position.set(-.18, .56, -.18); pc.add(mon);
     const scr = new THREE.Mesh(new THREE.PlaneGeometry(.6, .44), new THREE.MeshBasicMaterial({ map: L.canvasTex((c, W2, H2) => { c.fillStyle = '#0B1A10'; c.fillRect(0, 0, W2, H2); c.fillStyle = '#7CF29A'; c.font = '700 46px monospace';
       ['APPLE 1', '> HOLA_'].forEach((s, i) => c.fillText(s, 26, 70 + i * 62)); }, 256, 192) })); scr.position.set(-.18, .57, .125); pc.add(scr);
@@ -201,7 +202,7 @@ const head = (L, k1, title, sub, ink, lt, col) => {
 };
 
 const scenes = [
-  { id: 'gancho', world: 'exit', d: 7.5, year: '1985',
+  { id: 'gancho', world: 'exit', d: 7.5, sfx: [[.02, 'steps', .8, .68], [.47, 'door'], [.8, 'fall', .7]], year: '1985',
     cap: 'En 1985, a Steve Jobs lo sacaron de Apple. La empresa que él mismo había fundado.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), k = L.eio(L.seg(p, 0, .72)), z = L.lerp(-2.2, 3.4, k), x = L.lerp(.6, -.9, k), moving = p < .72;
@@ -217,7 +218,7 @@ const scenes = [
       L.tag('Steve Jobs · 30 años', w.jobs, w.cam, L.seg(lt, .9, 1.5), 3.0);
     } },
 
-  { id: '1976', world: 'garage', d: 7, year: '1976', ink: '#EBE6BA',
+  { id: '1976', world: 'garage', d: 7, sfx: [[.45, 'pop'], [.5, 'shine', .7], [.7, 'ticks', .5, .2]], year: '1976', ink: '#EBE6BA',
     cap: 'Todo empezó en 1976, en un garaje: dos amigos y una computadora armada a mano.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
@@ -232,7 +233,7 @@ const scenes = [
       L.tag('Steve Wozniak', w.woz, w.cam, L.seg(lt, 1.6, 2.2), 3.3);
     } },
 
-  { id: 'consejo', world: 'board', d: 9, year: '1985',
+  { id: 'consejo', world: 'board', d: 9, sfx: [[.5, 'vote'], [.52, 'vote'], [.54, 'vote'], [.56, 'vote'], [.58, 'vote'], [.6, 'vote'], [.72, 'fall']], year: '1985',
     cap: 'Nueve años después, chocó con el director que él mismo había contratado. Y el consejo no lo eligió a él.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), d = this.t1 - this.t0;
@@ -247,7 +248,7 @@ const scenes = [
       const ink = L.B.negro; head(L, '1985 · La sala del consejo', ['El consejo', 'votó en', 'su contra'], null, ink, lt, L.B.terracota);
     } },
 
-  { id: 'fuera', world: 'next', d: 7.5, year: '1985–96',
+  { id: 'fuera', world: 'next', d: 7.5, sfx: [[.07, 'pop'], [.1, 'shine', .6], [.6, 'thud', .7], [.7, 'thud', .7], [.8, 'thud', .7], [.9, 'thud', .8]], year: '1985–96',
     cap: 'Jobs se fue y fundó otra empresa: NeXT. Mientras, Apple perdía el rumbo.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = p < .45 ? L.talkAt(L.CAPS, q) : 0;
@@ -264,7 +265,7 @@ const scenes = [
       head(L, '1985 – 1996 · Los años fuera', ['Él fundó NeXT.', 'Apple perdió', 'el rumbo'], null, ink, lt, L.B.terracota);
     } },
 
-  { id: 'regreso', world: 'back', d: 12.5, year: '1997', ink: '#EBE6BA',
+  { id: 'regreso', world: 'back', d: 12.5, sfx: [[.04, 'ticks', .8, .18], [.22, 'thud'], [.31, 'fall', .6], [.58, 'steps', .8, .3], [.72, 'whoosh'], [.85, 'rise'], [.9, 'shine']], year: '1997', ink: '#EBE6BA',
     cap: 'En 1997, Apple perdió más de 1,000 millones de dólares. Según Jobs, estaba a 90 días de la quiebra. Y lo llamaron de vuelta.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), turn = L.eio(L.seg(p, .5, .6)), k = L.eio(L.seg(p, .58, .9)), moving = p > .58 && p < .9;
@@ -287,7 +288,7 @@ const scenes = [
       L.tag('Steve Jobs · 42 años', w.jobs, w.cam, L.seg(p, .42, .47) * (1 - L.seg(p, .6, .64)), 3.0);
     } },
 
-  { id: 'giro', world: 'stage', d: 10.5, year: '1998–07', ink: '#EBE6BA',
+  { id: 'giro', world: 'stage', d: 10.5, sfx: [[.42, 'pop'], [.56, 'pop'], [.74, 'whoosh'], [.84, 'shine'], [.87, 'applause', 1, .13]], year: '1998–07', ink: '#EBE6BA',
     cap: 'Recortó la mayoría de los productos y apostó por unos cuantos: el iMac, el iPod... y en 2007, el iPhone.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), up = L.back(L.seg(p, .74, .86)), talk = L.talkAt(L.CAPS, q);
@@ -307,7 +308,7 @@ const scenes = [
       L.tag('iPhone · 2007', w.phone, w.cam, L.seg(p, .86, .91), .6);
     } },
 
-  { id: 'hoy', world: 'climb', d: 10.5, year: 'Hoy',
+  { id: 'hoy', world: 'climb', d: 10.5, sfx: [[.02, 'steps', .7, .42], [.5, 'rise'], [.52, 'ticks', .6, .28], [.82, 'shine'], [.84, 'coins']], year: 'Hoy',
     cap: 'Hoy, el iPhone es más de la mitad de las ventas de Apple, que vale unos 5 billones de dólares.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), u = L.lerp(0, w.iDeath, L.eio(L.seg(p, 0, .46))), walking = p < .46, rest = L.seg(p, .5, .82);
@@ -337,7 +338,7 @@ const scenes = [
       L.tag('Steve Jobs · 1955–2011', w.jobs, w.cam, L.seg(p, .52, .58), 1.6);
     } },
 
-  { id: 'cierre', world: 'stage', d: 6, year: null, ink: '#EBE6BA',
+  { id: 'cierre', world: 'stage', d: 6, sfx: [[.08, 'shine', .5]], year: null, ink: '#EBE6BA',
     cap: '¿Genio irrepetible... o una empresa capaz de reinventarse?',
     update(w, lt, t, L) {
       const p = P(lt, this);

@@ -7,6 +7,7 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { BokehPass } from 'three/addons/postprocessing/BokehPass.js';
 import { GTAOPass } from 'three/addons/postprocessing/GTAOPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { renderer, W, H, B, mesh, rng, clamp, lerp, back, canvasTex } from './lib.js';
 
 // ---------- plastilina con huellas ----------
@@ -50,10 +51,11 @@ export const on2 = (t, fps = 12) => Math.floor(t * fps + 1e-6) / fps;
 let composer = null, rp, gtao, bokeh;
 function post() {
   if (composer) return;
-  composer = new EffectComposer(renderer); composer.setPixelRatio(1); composer.setSize(W, H);
+  const sz = renderer.getSize(new THREE.Vector2()), RW = sz.x, RH = sz.y;        // tamaño real del render (player.js aplica ?rs=)
+  composer = new EffectComposer(renderer); composer.setPixelRatio(1); composer.setSize(RW, RH);
   const dummyS = new THREE.Scene(), dummyC = new THREE.PerspectiveCamera(30, W / H, .1, 600);
   rp = new RenderPass(dummyS, dummyC); composer.addPass(rp);
-  gtao = new GTAOPass(dummyS, dummyC, W, H); gtao.updateGtaoMaterial({ radius: .55, distanceExponent: 1.4, thickness: 1.2, scale: 1.25, samples: 12 });
+  gtao = new GTAOPass(dummyS, dummyC, RW, RH); gtao.updateGtaoMaterial({ radius: .55, distanceExponent: 1.4, thickness: 1.2, scale: 1.25, samples: 12 });
   gtao.updatePdMaterial({ lumaPhi: 10, depthPhi: 2, normalPhi: 3, radius: 6, rings: 2, samples: 8 }); composer.addPass(gtao);
   bokeh = new BokehPass(dummyS, dummyC, { focus: 20, aperture: .0001, maxblur: .008 }); composer.addPass(bokeh);
   composer.addPass(new OutputPass());
@@ -103,6 +105,16 @@ export function scrim(C, y0, y1, a = .5, col = '10,10,10') {
   const g = C.createLinearGradient(0, y0, 0, y1); g.addColorStop(0, `rgba(${col},${a})`); g.addColorStop(1, `rgba(${col},0)`); C.save(); C.fillStyle = g; C.fillRect(0, Math.min(y0, y1), W, Math.abs(y1 - y0)); C.restore();
 }
 
+// fusiona muchas piezas pequeñas del mismo material en UNA malla (una llamada de dibujo en vez de cien: clave para la velocidad)
+export function blobs(list, mat, cast = true) {      // list: [[x, y, z, radio], ...]
+  const gs = list.map(([x, y, z, r]) => { const g = new THREE.SphereGeometry(r, 9, 7); g.translate(x, y, z); return g; });
+  const m = mesh(mergeGeometries(gs), mat, cast); gs.forEach(g => g.dispose()); return m;
+}
+export function merged(meshes, mat, cast = true) {   // fusiona mallas ya colocadas (usa su posición/rotación/escala locales)
+  const gs = meshes.map(o => { o.updateMatrix(); const g = o.geometry.clone(); g.applyMatrix4(o.matrix); return g; });
+  return mesh(mergeGeometries(gs), mat, cast);
+}
+
 // ---------- actor articulado ----------
 // o: skin, shirt, pants, shoes, hair, hairStyle ('mop' | 'short' | 'side' | 'bald'), glasses, beard (color), collar ('turtle' | 'suit' | 'tee'), tie (color), bow (color), size
 export function actor(o = {}) {
@@ -137,11 +149,13 @@ export function actor(o = {}) {
   const st = o.hairStyle || 'mop';
   if (st === 'mop' || st === 'side') {
     const cap = mesh(new THREE.SphereGeometry(.65, 48, 24, 0, Math.PI * 2, 0, st === 'mop' ? 1.12 : .98), hairM); cap.rotation.x = -.32; head.add(cap);
-    for (let i = 0; i < (st === 'mop' ? 120 : 60); i++) { const b = mesh(new THREE.SphereGeometry(.085 + r() * .05, 10, 8), hairM, false);
-      b.position.setFromSphericalCoords(.655, r() * (st === 'mop' ? 1.18 : .95), r() * Math.PI * 2); b.position.applyAxisAngle(new THREE.Vector3(1, 0, 0), -.32); head.add(b); }
-    if (st === 'mop') [-1, 1].forEach(s => { for (let i = 0; i < 9; i++) { const b = mesh(new THREE.SphereGeometry(.09 + r() * .03, 10, 8), hairM, false); b.position.set(s * (.6 + r() * .04), .12 - i * .05, -.1 + r() * .16); head.add(b); } });
+    const hb = [], ax = new THREE.Vector3(1, 0, 0), v = new THREE.Vector3();
+    for (let i = 0; i < (st === 'mop' ? 120 : 60); i++) { const rad = .085 + r() * .05; v.setFromSphericalCoords(.655, r() * (st === 'mop' ? 1.18 : .95), r() * Math.PI * 2).applyAxisAngle(ax, -.32); hb.push([v.x, v.y, v.z, rad]); }
+    if (st === 'mop') [-1, 1].forEach(s => { for (let i = 0; i < 9; i++) hb.push([s * (.6 + r() * .04), .12 - i * .05, -.1 + r() * .16, .09 + r() * .03]); });
+    head.add(blobs(hb, hairM, false));
   } else if (st === 'short') {                                // corto y con entradas
     const cap = mesh(new THREE.SphereGeometry(.634, 48, 24, 0, Math.PI * 2, 0, 1.12), hairM); cap.rotation.x = -.36; head.add(cap);
+    const top = mesh(new THREE.SphereGeometry(.628, 40, 16, 0, Math.PI * 2, 0, .62), hairM, false); top.rotation.x = -.08; head.add(top);   // pelo ralo arriba (que no se vea calvo de frente)
     [-1, 1].forEach(s => { const sb = mesh(new THREE.SphereGeometry(.2, 14, 10), hairM, false); sb.scale.set(.35, 1, .8); sb.position.set(s * .585, .1, -.05); head.add(sb); });
   }
   if (o.beard) { const bd = mesh(new THREE.SphereGeometry(.631, 40, 20, 0, Math.PI * 2, 1.95, 1.2), clay2(o.beard, .98), false); bd.rotation.x = .42; head.add(bd); }
