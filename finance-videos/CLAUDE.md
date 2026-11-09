@@ -31,6 +31,8 @@ Videos narrativos con personajes de plastilina (Three.js) + la misma capa editor
   satélite con corte, globo, capa editorial (kicker, titulares, ficha del año, palabra gigante, subtítulos), transición de marea.
 - `engine3d/player.js` — línea de tiempo; escenas con `trans: 'cont'` comparten mundo (plano secuencia).
 - Ritmo: las historias respiran (≈80 s para ~940 caracteres). Duración estimada por escena = caracteres/14.4 + pausas.
+- Música: `scripts/music3d.py videos/<id> [--mp4 video.mp4]` → composición original (órgano + piano minimalista, crece con la
+  historia) + efectos sincronizados → `audio/music.wav|m4a` y `<video>_musica.mp4`. Nunca imitar canciones con derechos.
 - Render ~1 s por cuadro (SwiftShader): 60 s ≈ 30 min. Ejemplo: `videos/2026-11-09-SPCX-historia/`.
 - Reglas de diseño: solo colores de `brand.json`; el texto va arriba (y < 760 px), la maqueta en el centro y abajo, los subtítulos en y≈1650;
   algo nuevo cada 1.5–2 s; nada de logotipos reales.

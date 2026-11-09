@@ -1,6 +1,6 @@
 # YouTube Shorts / Reels / TikTok — SpaceX (historia 3D)
 
-Archivo: `2026-11-09-SPCX-historia_animatic.mp4` (84.5 s, 1080x1920) + voz grabada por Juan Pablo.
+Archivo: `2026-11-09-SPCX-historia_animatic_musica.mp4` (84.5 s, 1080x1920, con música) + voz grabada por Juan Pablo.
 
 ## Títulos (≤100 caracteres; el gancho va en los primeros ~40)
 1. **(recomendado)** SpaceX casi quiebra en 2008… y luego hizo la IPO más grande de la historia 🚀 #SpaceX #ElonMusk
@@ -46,6 +46,7 @@ historia de SpaceX, Falcon 1, Nasdaq, Costa Studio
 - Contenido alterado o sintético: **No**. La voz es tuya y la animación es una caricatura de plastilina claramente no realista
   (YouTube pide marcarlo solo cuando el contenido se ve realista). Si algún día usas voz de IA, ahí sí márcalo.
 - Categoría: Educación.
+- Música: pieza original generada para este video (`audio/music.m4a`), sin derechos de terceros: no debería tener reclamos de Content ID.
 - Miniatura: el primer cuadro (SpaceX · $75,000 millones · cohete) está pensado como portada.
 - Comentario fijado sugerido: "¿Visión del siglo o burbuja? 🚀 Cuéntame qué opinas 👇"
 - Nota: el precio cambia todos los días; la descripción dice "último cierre (6 nov 2026)" para que siga siendo correcta.
