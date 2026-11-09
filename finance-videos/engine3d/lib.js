@@ -21,7 +21,7 @@ export function rng(seed) { let s = seed % 2147483647 || 7; return () => (s = (s
 // ---------- renderer ----------
 export const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
 renderer.setSize(W, H, false); renderer.setPixelRatio(1);
-renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.VSMShadowMap;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.VSMShadowMap;   // cine.js usa sombras más baratas si la historia lo pide
 renderer.toneMapping = THREE.NeutralToneMapping; renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 // ---------- materiales / mallas ----------

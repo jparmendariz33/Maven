@@ -3,7 +3,7 @@
  *   node engine3d/render3d.js videos/<id>              → videos/<id>/<id>.mp4 (con audio/mix.wav si existe; si no, animatic mudo)
  *   node engine3d/render3d.js videos/<id> --qa         → build/qa.jpg (2 cuadros por escena)
  *   node engine3d/render3d.js videos/<id> --at 3.5 12  → build/frame_3.5.png ...
- *   --fps 30 (por defecto)
+ *   --fps 30 (por defecto) · --jobs 3 (procesos en paralelo)
  */
 const { chromium } = require('playwright');
 const { spawn, execFileSync } = require('child_process');
@@ -41,15 +41,25 @@ const ROOT = path.resolve(__dirname, '..');
 
   const id = path.basename(vdir), mix = path.join(vdir, 'audio', 'mix.wav'), hasAudio = fs.existsSync(mix);
   const out = path.join(vdir, hasAudio ? `${id}.mp4` : `${id}_animatic.mp4`);
-  const args = ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-'];
-  if (hasAudio) args.push('-i', mix, '-c:a', 'aac', '-b:a', '192k', '-shortest');
-  const tmp = path.join(build, 'render.part.mp4');   // se escribe en build/ y se mueve al terminar
-  args.push('-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-movflags', '+faststart', tmp);
-  const ff = spawn('ffmpeg', args, { stdio: ['pipe', 'inherit', 'inherit'] });
-  const N = Math.round(DUR * FPS), s0 = Date.now();
-  for (let f = 0; f < N; f++) {
-    if (!ff.stdin.write(await frame(f / FPS))) await new Promise(r => ff.stdin.once('drain', r));
-    if (f % 60 === 0) process.stdout.write(`\r${Math.round(f / N * 100)}%  (${Math.round((Date.now() - s0) / 1000)} s)`);
+  const N = Math.round(DUR * FPS), s0 = Date.now(), arg = k => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : null; };
+
+  // modo hijo: --range a b archivo → renderiza los cuadros [a, b) a un intermedio de alta calidad
+  if (arg('--range')) {
+    const i = process.argv.indexOf('--range'), a = +process.argv[i + 1], z = +process.argv[i + 2], part = process.argv[i + 3];
+    const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '12', '-pix_fmt', 'yuv420p', part], { stdio: ['pipe', 'inherit', 'inherit'] });
+    for (let f = a; f < z; f++) { if (!ff.stdin.write(await frame(f / FPS, 'jpeg', .95))) await new Promise(r => ff.stdin.once('drain', r));
+      if ((f - a) % 30 === 0) fs.writeFileSync(part + '.progress', `${f - a}/${z - a}`); }
+    ff.stdin.end(); await new Promise(r => ff.on('close', r)); fs.writeFileSync(part + '.progress', 'ok'); await b.close(); return;
   }
-  ff.stdin.end(); ff.on('close', c => { if (c === 0) fs.renameSync(tmp, out); console.log(`\r100% → ${out} (ffmpeg ${c})`); b.close(); });
+  await b.close();
+  // modo padre: reparte los cuadros entre --jobs procesos (por defecto 3), une las partes y agrega el audio
+  const JOBS = Math.max(1, +(arg('--jobs') || 3)), per = Math.ceil(N / JOBS), parts = [];
+  await Promise.all(Array.from({ length: JOBS }, (_, j) => { const a = j * per, z = Math.min(N, a + per); if (a >= z) return null; const part = path.join(build, `part_${j}.mp4`); parts.push(part);
+    return new Promise((res, rej) => { const c = spawn(process.execPath, [__filename, vdir, 'video', '--fps', String(FPS), '--range', String(a), String(z), part], { stdio: 'inherit' }); c.on('close', code => code === 0 ? res() : rej(new Error('parte ' + j + ' falló'))); }); }));
+  const list = path.join(build, 'parts.txt'); fs.writeFileSync(list, parts.map(p => `file '${p}'`).join('\n'));
+  const tmp = path.join(build, 'render.part.mp4'), args = ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', list];
+  if (hasAudio) args.push('-i', mix, '-c:a', 'aac', '-b:a', '192k', '-shortest');
+  args.push('-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-movflags', '+faststart', tmp);
+  execFileSync('ffmpeg', args, { stdio: 'inherit' }); fs.renameSync(tmp, out); parts.forEach(p => { fs.unlinkSync(p); try { fs.unlinkSync(p + '.progress'); } catch (e) {} });
+  console.log(`listo en ${Math.round((Date.now() - s0) / 1000)} s → ${out}`);
 })();

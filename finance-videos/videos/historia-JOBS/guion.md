@@ -1,8 +1,8 @@
 # Steve Jobs: lo sacaron de su propia empresa
 Historia 3D · estilo **Costa Diorama v2** (luz de cine + actores articulados) · ~80 s · 1080x1920 · sin voz (JP graba la suya)
 
-**Estado (9 nov 2026):** prueba de estilo con 4 de las 8 escenas (gancho, garaje, consejo, iPhone). Falta el OK de JP al estilo
-para animar las otras 4 (los años fuera, el regreso de 1997, hoy y el cierre).
+**Estado (9 nov 2026):** las 8 escenas están animadas (animatic sin voz). Falta el OK de JP al estilo y al guion; después, verificar
+los datos marcados con * y ajustar los tiempos a su voz.
 
 ## Qué cambió frente a SpaceX (motor `engine3d/cine.js`)
 - **Luz de cine:** luz principal cálida con sombra, contraluz que recorta la silueta, relleno frío, focos reales en interiores
@@ -21,7 +21,7 @@ para animar las otras 4 (los años fuera, el regreso de 1997, hoy y el cierre).
 5. **1997 · El regreso.** En 1997, Apple perdió más de 1,000 millones de dólares. Según Jobs, estaba a 90 días de la quiebra. Y lo llamaron de vuelta.
 6. **1998–2007 · El giro.** Recortó la mayoría de los productos y apostó por unos cuantos: el iMac, el iPod... y en 2007, el iPhone.
 7. **Hoy.** Hoy, el iPhone es más de la mitad de las ventas de Apple, que vale unos 5 billones de dólares.
-8. **Cierre.** ¿Genio irrepetible... o la prueba de que una empresa puede reinventarse?
+8. **Cierre.** ¿Genio irrepetible... o una empresa capaz de reinventarse?
 
 ## Datos y fuentes (por verificar contra fuente primaria antes del render final los marcados con *)
 | Dato | Valor | Fuente |
