@@ -1,0 +1,182 @@
+{
+ "ticker": "NVDA",
+ "title": "Nvidia cae mientras las otras 6 grandes tecnológicas suben: el consejo investiga a su CEO, Jensen Huang",
+ "brand_colors": {
+  "primary": "#76B900",
+  "name": "Verde Nvidia"
+ },
+ "scenes": [
+  {
+   "type": "hook",
+   "say": "Hoy Wall Street tuvo un gran día. Pero Nvidia cayó casi 6%. ¿Por qué?",
+   "kicker": "NASDAQ · NVDA · 9 NOV",
+   "title": "Nvidia",
+   "value": -5.6,
+   "decimals": 1,
+   "unit": "%",
+   "tone": "down",
+   "caption": "el día que el Nasdaq 100 subió 3.3%",
+   "question": "¿Por qué?",
+   "cue_value": "cayó",
+   "cue_question": "Por",
+   "bg_image": "images/keynote.jpg"
+  },
+  {
+   "type": "news",
+   "say": "Las otras 6 gigantes tecnológicas subieron: Tesla y Meta, más de 5%.",
+   "kicker": "9 NOV · LAS OTRAS 6 MAGNÍFICAS",
+   "headline": "Todas, menos Nvidia",
+   "source": "Yahoo Finance · 9 nov 2026",
+   "bullets": [
+    {
+     "text": "Amazon +3.4% · Microsoft +2.8%",
+     "sub": "",
+     "cue": "gigantes",
+     "tone": "up"
+    },
+    {
+     "text": "Apple +2.6% · Alphabet +1.7%",
+     "sub": "",
+     "cue": "subieron",
+     "tone": "up"
+    },
+    {
+     "text": "Tesla +5.9% · Meta +5.4%",
+     "sub": "las que más subieron",
+     "cue": "Tesla",
+     "tone": "up"
+    }
+   ]
+  },
+  {
+   "type": "statement",
+   "say": "No fue por sus chips. Fue por su director.",
+   "kicker": "La diferencia",
+   "text": "No fue por sus chips. Fue por su director.",
+   "emphasis": "director"
+  },
+  {
+   "type": "photo",
+   "say": "Jensen Huang fundó Nvidia en 1993 y la dirige desde entonces.",
+   "image": "images/huang.jpg",
+   "focus": [
+    0.3,
+    0.3
+   ],
+   "kicker": "Jensen Huang · CEO y fundador",
+   "title": "33 años al frente de Nvidia",
+   "caption": "la fundó en 1993",
+   "cue_title": "fundó",
+   "cue_caption": "dirige"
+  },
+  {
+   "type": "news",
+   "say": "El domingo, el consejo abrió una investigación sobre él. Según reportes de prensa, tuvo una relación con una presunta espía china.",
+   "kicker": "8 NOV · EL DETONANTE",
+   "headline": "El consejo investiga a su propio CEO",
+   "source": "Comunicado de Nvidia · NYT · Financial Times",
+   "image": "images/sede.jpg",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "bullets": [
+    {
+     "text": "Investigación independiente",
+     "sub": "la supervisan consejeros independientes",
+     "cue": "investigación"
+    },
+    {
+     "text": "Presunto espionaje, no probado",
+     "sub": "reportes de prensa · China lo niega",
+     "cue": "presunta"
+    }
+   ]
+  },
+  {
+   "type": "news",
+   "say": "Huang admitió una infidelidad y dijo que cooperará. El consejo dice no tener indicios de secretos filtrados.",
+   "kicker": "Lo que se sabe",
+   "headline": "Lo confirmado",
+   "source": "NBC News · CNBC · 9 nov 2026",
+   "bullets": [
+    {
+     "text": "Admitió una infidelidad",
+     "sub": "en un mensaje a sus empleados",
+     "cue": "admitió"
+    },
+    {
+     "text": "Cooperará con la investigación",
+     "sub": "y sigue como CEO, dice Nvidia",
+     "cue": "cooperará"
+    },
+    {
+     "text": "Sin indicios de secretos filtrados",
+     "sub": "según el consejo de Nvidia",
+     "cue": "indicios"
+    }
+   ]
+  },
+  {
+   "type": "statement",
+   "say": "¿Por qué pesa tanto? Porque para Wall Street, Huang es Nvidia.",
+   "kicker": "Riesgo de persona clave",
+   "text": "Para Wall Street, Huang es Nvidia.",
+   "emphasis": "es Nvidia.",
+   "sub": "Tiene cerca de 3.5% de las acciones · el consejo sí puede removerlo"
+  },
+  {
+   "type": "price",
+   "say": "Y la acción ya venía golpeada: cae 26% desde su máximo de octubre.",
+   "kicker": "12 meses",
+   "title": "De $239 a $176",
+   "subtitle": "−26% desde su máximo de octubre",
+   "annotations": [
+    {
+     "date": "2026-10-06",
+     "label": "$239.24",
+     "sub": "Máximo · 6 oct",
+     "tone": "up",
+     "cue": "máximo",
+     "dir": -1
+    },
+    {
+     "date": "2026-11-05",
+     "label": "−9.3%",
+     "sub": "5 nov · un día",
+     "tone": "down",
+     "cue": "golpeada",
+     "dir": 1
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "say": "Eso sí, el negocio sigue fuerte: su último trimestre vendió 96 mil millones de dólares.",
+   "count": 5,
+   "cue_revenue": "vendió",
+   "cue_net": "millones",
+   "note": "$96,200 M de ingresos",
+   "note_sub": "utilidad neta de $59,700 M · trimestre a julio 2026",
+   "cue_note": "fuerte"
+  },
+  {
+   "type": "catalyst",
+   "say": "La próxima prueba: resultados, el 17 de noviembre.",
+   "kicker": "Próxima prueba",
+   "date": "17 NOV",
+   "label": "Resultados del 3T",
+   "sub": "y las primeras preguntas de los analistas",
+   "cue_date": "prueba"
+  },
+  {
+   "type": "outro",
+   "say": "¿Tropiezo personal... o un riesgo real para la empresa?",
+   "question_a": "¿Tropiezo personal…",
+   "question_b": "o un riesgo real para la empresa?",
+   "cue_a": "Tropiezo",
+   "cue_b": "riesgo",
+   "sources": "Nvidia · NBC News · CNBC · Yahoo Finance"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "images/logo.png": {
+  "title": "nvidia",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=nvidia",
+  "kind": "logo"
+ },
+ "images/huang.jpg": {
+  "title": "Nvidia CEO Jensen Huang",
+  "creator": "pestoverde",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/30364433@N05/34072594183",
+  "provider": "Flickr"
+ },
+ "images/keynote.jpg": {
+  "title": "Nvidia CEO Jensen Huang",
+  "creator": "Open Grid Scheduler / Grid Engine",
+  "license": "CC0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_url": "https://www.flickr.com/photos/29155878@N03/53552985083",
+  "provider": "Flickr"
+ },
+ "images/sede.jpg": {
+  "title": "NVIDIA Sign - Santa Clara - California",
+  "creator": "willbuckner",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/160344139@N02/50591924966",
+  "provider": "Flickr"
+ }
+}
