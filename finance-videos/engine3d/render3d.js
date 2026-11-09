@@ -43,12 +43,13 @@ const ROOT = path.resolve(__dirname, '..');
   const out = path.join(vdir, hasAudio ? `${id}.mp4` : `${id}_animatic.mp4`);
   const args = ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-'];
   if (hasAudio) args.push('-i', mix, '-c:a', 'aac', '-b:a', '192k', '-shortest');
-  args.push('-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-movflags', '+faststart', out);
+  const tmp = path.join(build, 'render.part.mp4');   // se escribe en build/ y se mueve al terminar
+  args.push('-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-movflags', '+faststart', tmp);
   const ff = spawn('ffmpeg', args, { stdio: ['pipe', 'inherit', 'inherit'] });
   const N = Math.round(DUR * FPS), s0 = Date.now();
   for (let f = 0; f < N; f++) {
     if (!ff.stdin.write(await frame(f / FPS))) await new Promise(r => ff.stdin.once('drain', r));
     if (f % 60 === 0) process.stdout.write(`\r${Math.round(f / N * 100)}%  (${Math.round((Date.now() - s0) / 1000)} s)`);
   }
-  ff.stdin.end(); ff.on('close', c => { console.log(`\r100% → ${out} (ffmpeg ${c})`); b.close(); });
+  ff.stdin.end(); ff.on('close', c => { if (c === 0) fs.renameSync(tmp, out); console.log(`\r100% → ${out} (ffmpeg ${c})`); b.close(); });
 })();

@@ -106,7 +106,7 @@ const worlds = {
     const lIPO = label('$135', 'Precio de salida · 12 jun', B.mostaza, B.negro); lIPO.position.set(X0 - .2, Y(IPO) + 1.6, .7); w.scene.add(lIPO);
     const iPk = pts.findIndex(p => p[1] === PEAK);
     const lPk = label('$211.39', 'Máximo · 16 jun', B.arena, B.negro); lPk.position.set(v[iPk].x + 1.2, v[iPk].y + 1.5, .7); w.scene.add(lPk);
-    const lNow = label('$134.27', 'Hoy · 6 nov', B.negro, B.arena); lNow.position.set(v[N - 1].x - .4, v[N - 1].y + 2.2, .7); w.scene.add(lNow);
+    const lNow = label('$134.27', 'Último cierre · 6 nov', B.negro, B.arena); lNow.position.set(v[N - 1].x - .4, v[N - 1].y + 2.2, .7); w.scene.add(lNow);
     const lQ3 = L.plaque(3.4, 1.4, (g, W, H) => { g.fillStyle = B.musgo; g.beginPath(); g.roundRect(0, 0, W, H, 50); g.fill(); g.fillStyle = B.arena;
       g.font = `800 ${H * .34}px Unbounded`; g.fillText('+$4,400 M', 34, H * .5); g.font = `500 ${H * .17}px "Space Grotesk"`; g.fillText('Utilidad neta · T3 2026', 36, H * .8); });
     lQ3.position.set(v[N - 1].x - 2.4, v[N - 1].y + 5.0, .7); w.scene.add(lQ3);
@@ -289,8 +289,8 @@ const scenes = [
       const ink = L.B.negro, d = s.t1 - s.t0, b = .52 * d;
       if (lt < b) { L.C.save(); L.C.globalAlpha = 1 - L.seg(lt, b - .25, b); L.kicker('12 jun 2026 · IPO a $135', 360, L.seg(lt, .1, .6), ink);
         const n = 75000 * L.ex(L.seg(lt, .15, .45 * d)); L.rise('$' + L.fmt(Math.round(n / 100) * 100), 90, 500, L.seg(lt, .1, .7), { f: L.F.d, w: 800, s: 120, c: ink });
-        L.rise('millones', 90, 615, L.seg(lt, .2, .8), { f: L.F.d, w: 800, s: 104, c: L.B.azul }); L.rise('Recaudados en un solo día', 90, 680, L.seg(lt, .35, .95), { s: 40, c: ink, a: .75 }); L.C.restore(); }
-      else priceHUD(L, lt - b, this._price, this._date, ink);
+        L.rise('millones', 90, 615, L.seg(lt, .2, .8), { f: L.F.d, w: 800, s: 104, c: L.B.azul }); L.rise('Recaudados al salir a bolsa', 90, 680, L.seg(lt, .35, .95), { s: 40, c: ink, a: .75 }); L.C.restore(); }
+      else priceHUD(L, lt - b, this._price, this._date, ink, this._idx);
     } },
 
   { id: 'hoy', world: 'coaster', d: 9.5, year: 'Hoy', trans: 'cont',
@@ -313,7 +313,7 @@ const scenes = [
     },
     overlay(lt, t, L, s) {
       const ink = L.B.negro, d = s.t1 - s.t0, b = .68 * d;
-      if (lt < b) { L.C.save(); L.C.globalAlpha = 1 - L.seg(lt, b - .25, b); priceHUD(L, 9, this._price, this._date, ink);
+      if (lt < b) { L.C.save(); L.C.globalAlpha = 1 - L.seg(lt, b - .25, b); priceHUD(L, 9, this._price, this._date, ink, this._idx);
         const k = L.pop(lt, .55 * d, .4); if (k > 0) { L.C.save(); L.C.translate(90, 715); L.C.scale(k, k); L.C.fillStyle = L.B.terracota; L.C.beginPath(); L.C.roundRect(0, -46, 470, 62, 31); L.C.fill();
           L.txt('Debajo de su precio de salida', 26, -4, { w: 700, s: 30, c: L.B.arena }); L.C.restore(); } L.C.restore(); }
       else { const l2 = lt - b; L.kicker('T3 2026 · Resultados', 360, L.seg(l2, 0, .5), ink);
@@ -341,13 +341,14 @@ const scenes = [
 function placeCart(w, u, L) {
   const N = w.pts.length - 1, f = Math.min(.9999, Math.max(0, u / N)), pt = w.curve.getPoint(f), tg = w.curve.getTangent(f);
   w.cart.position.copy(pt); w.cart.rotation.z = Math.atan2(tg.y, tg.x);
-  const i = Math.min(N - 1, Math.floor(u)), k = u - i, p0 = w.pts[i][1], p1 = w.pts[Math.min(N, i + 1)][1];
-  scenes.forEach(s => { if (s.world === 'coaster') { s._price = p0 + (p1 - p0) * k; s._date = w.pts[Math.round(u)][0]; } });
+  // el contador salta de cierre en cierre: cada precio en pantalla es un dato real con su fecha exacta
+  const j = Math.min(N, Math.round(u));
+  scenes.forEach(s => { if (s.world === 'coaster') { s._price = w.pts[j][1]; s._date = w.pts[j][0]; s._idx = j; } });
 }
 const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-function priceHUD(L, l2, price, date, ink) {
+function priceHUD(L, l2, price, date, ink, idx) {
   if (price == null) return; const [y, m, d] = date.split('-').map(Number);
-  L.kicker('Precio de SPCX · ' + d + ' ' + MES[m - 1], 360, L.seg(l2, 0, .4), ink);
+  L.kicker((idx === 0 ? 'Precio de salida · ' : 'Cierre de SPCX · ') + d + ' ' + MES[m - 1] + ' ' + y, 360, L.seg(l2, 0, .4), ink);
   L.rise('$' + L.fmt(price, 2), 90, 500, L.seg(l2, .05, .5), { f: L.F.d, w: 800, s: 120, c: price >= IPO ? ink : L.B.terracota });
   const ch = (price / IPO - 1) * 100;
   L.rise((ch >= 0 ? '+' : '') + ch.toFixed(1) + '% vs. su precio de salida ($135)', 90, 570, L.seg(l2, .15, .6), { s: 38, c: ink, a: .75 });

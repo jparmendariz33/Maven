@@ -20,7 +20,7 @@ etiqueta, titular en Unbounded, píldora de subtítulos y logo.
 | 4 | 20.9–30.9 | **Starlink** | El globo de plastilina gira, se encienden los países y aparecen los satélites; luego crece un anillo de ingresos al 61% | 164 países → 61% de sus ingresos |
 | 5 | 30.9–38.6 | **El plan** | Los bloques "SpaceX" y "xAI" chocan y se convierten en un satélite que se abre en corte: adentro hay servidores. La cámara se aleja y aparece la flota sobre la Tierra | SpaceX + xAI ($1.25 billones) → Centros de datos en órbita |
 | 6 | 38.6–47.5 | **La IPO** | Montaña rusa: Elon arranca en $135 y sube la cuesta hasta el máximo | $75,000 M recaudados → precio vivo hasta $211.39 |
-| 7 | 47.5–57 | **Hoy** | Toma abierta de toda la montaña rusa; el carrito baja día por día y se detiene debajo de la línea punteada de $135. Elon suda y luego respira | $134.27 · "Debajo de su precio de salida" → +$4,400 M de utilidad |
+| 7 | 47.5–57 | **Hoy** | Toma abierta de toda la montaña rusa; el carrito baja día por día y se detiene debajo de la línea punteada de $135. Elon suda y luego respira | $134.27 (último cierre, 6 nov) · "Debajo de su precio de salida" → +$4,400 M de utilidad |
 | 8 | 57–61.8 | **Cierre** | Noche azul: Elon sentado en la Luna, con los satélites encima de la Tierra | ¿Visión del siglo… o burbuja? + lema + aviso legal |
 
 \*Tiempos estimados; con la voz real se ajustan solos (`build_timing3d.py`).
