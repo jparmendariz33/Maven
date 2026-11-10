@@ -356,4 +356,4 @@ const scenes = [
 ];
 const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
-export default { id: 'historia-JOBS', title: 'Steve Jobs: lo sacaron de su propia empresa', tail: 1.2, worlds, scenes };
+export default { id: '2026-11-14-JOBS-historia', title: 'Steve Jobs: lo sacaron de su propia empresa', tail: 1.2, worlds, scenes };

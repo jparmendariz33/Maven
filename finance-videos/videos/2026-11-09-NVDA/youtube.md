@@ -1,26 +1,26 @@
 # NVDA · Short reactivo (lunes 9 nov 2026 · publicar 19:00)
 
 > Pedido por JP: por qué cayó Nvidia el día que las otras 6 grandes tecnológicas subieron.
-> Cifras de precio: sesión del 9 nov 2026 (versión preliminar con datos intradía de las 13:40 CDMX; se actualiza con el cierre).
+> Cifras de precio: CIERRE de la sesión del 9 nov 2026 (Yahoo Finance).
 
 ## ✅ Para copiar y pegar
 
-**Título** (84 de 100 caracteres):
+**Título** (86 de 100 caracteres):
 ```
-Nvidia cayó casi 6% el día que todas las demás subieron: ¿por qué? #Nvidia #acciones
+Nvidia cayó más de 4% el día que todas las demás subieron: ¿por qué? #Nvidia #acciones
 ```
 
 **Descripción** (en la app: "Mostrar más" → Descripción):
 ```
-Nvidia cayó cerca de 6% este lunes 9 de noviembre, mientras Tesla, Meta, Amazon, Microsoft, Apple y Alphabet subieron. ¿Qué pasó?
+Nvidia cayó 4.3% este lunes 9 de noviembre, mientras Tesla, Meta, Amazon, Microsoft, Apple y Alphabet subieron. ¿Qué pasó?
 
 📌 Datos clave
-• Nvidia (NVDA): −5.6% · Nasdaq 100: +3.3% · S&P 500: +2.3%
-• Tesla +5.9% · Meta +5.4% · Amazon +3.4% · Microsoft +2.8% · Apple +2.6% · Alphabet +1.7%
+• Nvidia (NVDA): −4.3% · Nasdaq 100: +3.4% · S&P 500: +2.3%
+• Tesla +5.5% · Meta +5.1% · Amazon +2.9% · Microsoft +2.8% · Apple +2.4% · Alphabet +1.2%
 • El domingo 8 nov, el consejo de Nvidia abrió una investigación independiente sobre su CEO, Jensen Huang
 • Según reportes de prensa (NYT, Financial Times), tuvo una relación con una empresaria a la que agencias de EE.UU. señalan como presunta espía china; no está probado y China lo niega
 • Huang admitió una infidelidad en un mensaje a empleados y dijo que cooperará; el consejo dice no tener indicios de secretos comprometidos
-• La acción cae 26% desde su máximo del 6 de octubre ($239.24) · Reporta resultados el 17 de noviembre
+• La acción cae 25% desde su máximo del 6 de octubre ($239.24) · Reporta resultados el 17 de noviembre
 
 ¿Tropiezo personal… o un riesgo real para la empresa? Te leo en los comentarios 👇
 

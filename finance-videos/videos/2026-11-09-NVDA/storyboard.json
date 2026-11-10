@@ -8,14 +8,14 @@
  "scenes": [
   {
    "type": "hook",
-   "say": "Hoy Wall Street tuvo un gran día. Pero Nvidia cayó casi 6%. ¿Por qué?",
+   "say": "Hoy Wall Street tuvo un gran día. Pero Nvidia cayó más de 4%. ¿Por qué?",
    "kicker": "NASDAQ · NVDA · 9 NOV",
    "title": "Nvidia",
-   "value": -5.6,
+   "value": -4.3,
    "decimals": 1,
    "unit": "%",
    "tone": "down",
-   "caption": "el día que el Nasdaq 100 subió 3.3%",
+   "caption": "el día que el Nasdaq 100 subió 3.4%",
    "question": "¿Por qué?",
    "cue_value": "cayó",
    "cue_question": "Por",
@@ -29,19 +29,19 @@
    "source": "Yahoo Finance · 9 nov 2026",
    "bullets": [
     {
-     "text": "Amazon +3.4% · Microsoft +2.8%",
+     "text": "Amazon +2.9% · Microsoft +2.8%",
      "sub": "",
      "cue": "gigantes",
      "tone": "up"
     },
     {
-     "text": "Apple +2.6% · Alphabet +1.7%",
+     "text": "Apple +2.4% · Alphabet +1.2%",
      "sub": "",
      "cue": "subieron",
      "tone": "up"
     },
     {
-     "text": "Tesla +5.9% · Meta +5.4%",
+     "text": "Tesla +5.5% · Meta +5.1%",
      "sub": "las que más subieron",
      "cue": "Tesla",
      "tone": "up"
@@ -127,10 +127,10 @@
   },
   {
    "type": "price",
-   "say": "Y la acción ya venía golpeada: cae 26% desde su máximo de octubre.",
+   "say": "Y la acción ya venía golpeada: cae 25% desde su máximo de octubre.",
    "kicker": "12 meses",
-   "title": "De $239 a $176",
-   "subtitle": "−26% desde su máximo de octubre",
+   "title": "De $239 a $179",
+   "subtitle": "−25% desde su máximo de octubre",
    "annotations": [
     {
      "date": "2026-10-06",

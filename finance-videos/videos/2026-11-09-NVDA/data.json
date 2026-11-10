@@ -8,8 +8,8 @@
  "industry": "Semiconductors",
  "business_summary": "NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. It operates through Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants. It has a collaboration with Cisco to develop Ultra-Dense Small Form Factor Pluggable (USFP), a high-density optical module pluggable transceiver. It has a collaboration with ChipAgents to develop Build-A-Chip-Bench, a benchmark for AI agents carrying chip design tasks and The Company has a strategic alliance with MediaTek to build the next generations of AI computing platforms. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
  "as_of": "2026-11-09",
- "fetched_at": "2026-11-09T19:37:01+00:00",
- "price": 176.2,
+ "fetched_at": "2026-11-10T04:32:35+00:00",
+ "price": 178.67,
  "high_52w": 243.37,
  "low_52w": 164.27,
  "close_high_1y": {
@@ -21,15 +21,15 @@
   "close": 165.17
  },
  "change_pct": {
-  "1d": -5.59,
-  "5s": -12.8,
-  "15s": -18.84,
-  "1m": -23.15,
-  "3m": -18.99,
-  "6m": -19.7,
-  "1y": -11.48,
-  "ytd": -6.7,
-  "from_1y_high": -26.35
+  "1d": -4.27,
+  "5s": -11.58,
+  "15s": -17.7,
+  "1m": -22.07,
+  "3m": -17.85,
+  "6m": -18.58,
+  "1y": -10.24,
+  "ytd": -5.39,
+  "from_1y_high": -25.32
  },
  "biggest_moves_60s": [
   {
@@ -47,13 +47,6 @@
    "vol_x": 2.6
   },
   {
-   "date": "2026-11-09",
-   "close": 176.2,
-   "pct": -5.59,
-   "volume": 349478129,
-   "vol_x": 3.09
-  },
-  {
    "date": "2026-08-28",
    "close": 217.55,
    "pct": -4.57,
@@ -66,6 +59,13 @@
    "pct": -4.4,
    "volume": 125407600,
    "vol_x": 1.21
+  },
+  {
+   "date": "2026-11-09",
+   "close": 178.67,
+   "pct": -4.27,
+   "volume": 459116500,
+   "vol_x": 4.07
   },
   {
    "date": "2026-10-30",
@@ -90,18 +90,18 @@
   }
  ],
  "metrics": {
-  "market_cap": 4254701191168,
-  "pe_trailing": 22.2756,
-  "pe_forward": 11.066115,
+  "market_cap": 4314344194048,
+  "pe_trailing": 23.602377,
+  "pe_forward": 11.217311,
   "peg": 0.23,
   "peg_source": "yahoo",
   "roe": 1.17211,
   "profit_margin": 0.63663,
   "revenue_growth_yoy": 1.059,
   "earnings_growth_yoy": 1.278,
-  "eps_trailing": 7.91,
+  "eps_trailing": 7.57,
   "beta": 2.247,
-  "dividend_yield": 0.0054,
+  "dividend_yield": 0.0056,
   "debt_to_equity": 16.971,
   "free_cash_flow": 41809874944,
   "target_mean_price": 326.91754,
@@ -163,70 +163,70 @@
  ],
  "news_seed": [
   {
-   "date": "2026-11-09",
-   "title": "What we know — and what we don't — as Nvidia investigates an alleged spy plot involving its CEO",
-   "publisher": "Associated Press",
-   "link": "https://finance.yahoo.com/technology/ai/articles/know-dont-nvidia-investigates-alleged-193242398.html"
+   "date": "2026-11-10",
+   "title": "Asia stocks rally as Korean chips surge and oil retreat lifts sentiment",
+   "publisher": "Investing.com",
+   "link": "https://finance.yahoo.com/markets/world-indices/articles/asia-stocks-rally-korean-chips-042232811.html"
   },
   {
-   "date": "2026-11-09",
-   "title": "Wall St jumps back as oil slide eases inflation worries; Nvidia slumps",
-   "publisher": "Reuters",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-rise-rough-103539344.html"
+   "date": "2026-11-10",
+   "title": "Trump says FBI investigating Nvidia CEO Huang over Chinese scandal",
+   "publisher": "Investing.com",
+   "link": "https://finance.yahoo.com/technology/ai/articles/trump-says-fbi-investigating-nvidia-035047356.html"
   },
   {
-   "date": "2026-11-09",
-   "title": "Not Revenue. Not Growth. Here’s What I’ll Be Watching When CoreWeave and Nebius Report This Week.",
+   "date": "2026-11-10",
+   "title": "The Nasdaq Fell Into Correction Territory Recently. Should You Buy the Dip?",
    "publisher": "Motley Fool",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/not-revenue-not-growth-ll-192201829.html"
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-fell-correction-territory-recently-035000849.html"
   },
   {
-   "date": "2026-11-09",
-   "title": "Think $1 Million in Retirement Savings Will Cut It? Here's the Math That Might Make You Change Your Tune",
-   "publisher": "Motley Fool",
-   "link": "https://finance.yahoo.com/markets/articles/think-1-million-retirement-savings-192102947.html"
-  },
-  {
-   "date": "2026-11-09",
-   "title": "The Stock Market Is Crashing. History Says the Smartest Investors Are Making This 1 Simple Move.",
-   "publisher": "Motley Fool",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-crashing-history-says-192000793.html"
-  },
-  {
-   "date": "2026-11-09",
-   "title": "Stock market today: Nasdaq rallies despite Nvidia stock slide, Dow and S&P 500 rise as AI stocks rebound",
-   "publisher": "Yahoo Finance",
-   "link": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-9-dow-sp-500-nasdaq-nvidia-090535419.html"
-  },
-  {
-   "date": "2026-11-09",
-   "title": "Target Trades at a Fraction of Walmart's Valuation. Is the Discount Deserved?",
-   "publisher": "Motley Fool",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/target-trades-fraction-walmarts-valuation-191700534.html"
-  },
-  {
-   "date": "2026-11-09",
-   "title": "AMD Lands Key Role in Google's New AI Chip System as Nvidia Rivalry Intensifies",
+   "date": "2026-11-10",
+   "title": "'Objectively Hilarious': Anthony Pompliano Sees Jensen Huang Affair Potentially Marking the Bottom for AI Stocks — What Do Crypto Bettors Think?",
    "publisher": "Benzinga Prediction Markets",
-   "link": "https://finance.yahoo.com/technology/ai/articles/amd-lands-key-role-googles-191648789.html"
+   "link": "https://finance.yahoo.com/technology/ai/articles/objectively-hilarious-anthony-pompliano-sees-033254413.html"
   },
   {
-   "date": "2026-11-09",
-   "title": "The Big Winner From the Aurora Cannabis-Organigram Deal: Curaleaf",
+   "date": "2026-11-10",
+   "title": "Anthropic's S-1 Says It Will Expand Its Data Center Footprint. Here's Who Could Pour the Concrete, Wire the Power, and Cool the Chips.",
    "publisher": "Motley Fool",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/big-winner-aurora-cannabis-organigram-191002418.html"
+   "link": "https://finance.yahoo.com/technology/ai/articles/anthropics-1-says-expand-data-031400345.html"
   },
   {
-   "date": "2026-11-09",
-   "title": "Nvidia live updates: Nvidia stock falls 5% as board investigates CEO's affair with alleged Chinese spy",
-   "publisher": "Yahoo Finance",
-   "link": "https://finance.yahoo.com/technology/live/nvidia-scandal-live-updates-nvidia-stock--board-investigates-ceo-jensen-huang-affair-alleged-chinese-spy-163130372.html"
+   "date": "2026-11-10",
+   "title": "If I Could Buy Just 1 Stock in November and Hold for 5 Years, It Would Be Alphabet",
+   "publisher": "Motley Fool",
+   "link": "https://finance.yahoo.com/technology/ai/articles/could-buy-just-1-stock-025000882.html"
   },
   {
-   "date": "2026-11-09",
-   "title": "Bitcoin in Limbo as Stocks Rebound Ahead of US Inflation Report",
-   "publisher": "decrypt",
-   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-limbo-stocks-rebound-ahead-190603721.html"
+   "date": "2026-11-10",
+   "title": "Micron, FormFactor, Amkor, Teradyne, and Nvidia shares skyrocket, what you need to know",
+   "publisher": "StockStory",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/micron-formfactor-amkor-teradyne-nvidia-024536276.html"
+  },
+  {
+   "date": "2026-11-10",
+   "title": "Nvidia Faces Class Action Suit Over Huang Allegations; Senator Seeks Probe, Analyst Puts CEO Exit Odds At 15%",
+   "publisher": "Stocktwits",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-faces-class-action-suit-024448260.html"
+  },
+  {
+   "date": "2026-11-10",
+   "title": "Tech leads Asian stock rally as traders track Wall St rebound",
+   "publisher": "AFP",
+   "link": "https://finance.yahoo.com/markets/world-indices/articles/tech-leads-asian-stock-rally-023930562.html"
+  },
+  {
+   "date": "2026-11-10",
+   "title": "Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next",
+   "publisher": "Investor's Business Daily",
+   "link": "https://finance.yahoo.com/m/db2f6d95-b7a5-3274-8193-c767d2b681c1/dow-jones-soars-1%2C132-points.html"
+  },
+  {
+   "date": "2026-11-10",
+   "title": "Nasdaq Stock Market Correction: 2 Stocks I Wouldn't Hesitate to Buy the Dip On (Hint: It's Not Nvidia)",
+   "publisher": "Motley Fool",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-stock-market-correction-2-022000976.html"
   }
  ],
  "series": [
@@ -1478,12 +1478,12 @@
   [
    "2026-11-06",
    186.64,
-   179722400
+   180212300
   ],
   [
    "2026-11-09",
-   176.2,
-   349478129
+   178.67,
+   459116500
   ]
  ]
 }

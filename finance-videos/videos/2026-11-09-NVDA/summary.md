@@ -1,11 +1,11 @@
 # NVIDIA Corporation (NVDA) — NasdaqGS — datos al 2026-11-09
 Sector: Technology / Semiconductors
 
-**Precio:** 176.2 USD | 52s: 164.27–243.37
+**Precio:** 178.67 USD | 52s: 164.27–243.37
 Máx. cierre 1a: 239.24 (2026-10-06) | Mín. cierre 1a: 165.17 (2026-03-30)
-**Cambios:** 1d: -5.59% | 5s: -12.8% | 15s: -18.84% | 1m: -23.15% | 3m: -18.99% | 6m: -19.7% | 1y: -11.48% | ytd: -6.7% | from_1y_high: -26.35%
+**Cambios:** 1d: -4.27% | 5s: -11.58% | 15s: -17.7% | 1m: -22.07% | 3m: -17.85% | 6m: -18.58% | 1y: -10.24% | ytd: -5.39% | from_1y_high: -25.32%
 
-**Valuación:** Market cap 4.25T | P/E 22.2756 | P/E fwd 11.066115 | PEG 0.23 (yahoo)
+**Valuación:** Market cap 4.31T | P/E 23.602377 | P/E fwd 11.217311 | PEG 0.23 (yahoo)
 **Rentabilidad:** ROE 117.2% | Margen neto 63.7% | Crec. ingresos a/a 105.9% | Crec. utilidad a/a 127.8%
 **Analistas:** objetivo medio 326.91754 | recomendación strong_buy (57)
 **Próximos resultados:** 2026-11-17
@@ -20,25 +20,25 @@ Máx. cierre 1a: 239.24 (2026-10-06) | Mín. cierre 1a: 165.17 (2026-03-30)
 ## Movimientos diarios más grandes (últimas 60 sesiones)
 - 2026-11-05: -9.26% → 181.6 (volumen 3.06x el promedio)
 - 2026-08-27: +8.74% → 227.98 (volumen 2.6x el promedio)
-- 2026-11-09: -5.59% → 176.2 (volumen 3.09x el promedio)
 - 2026-08-28: -4.57% → 217.55 (volumen 1.67x el promedio)
 - 2026-10-22: -4.40% → 212.21 (volumen 1.21x el promedio)
+- 2026-11-09: -4.27% → 178.67 (volumen 4.07x el promedio)
 - 2026-10-30: -4.22% → 204.64 (volumen 1.68x el promedio)
 - 2026-09-14: -3.36% → 210.96 (volumen 1.03x el promedio)
 - 2026-09-02: +3.21% → 224.41 (volumen 1.23x el promedio)
 
 ## Titulares (semilla, VERIFICAR)
-- 2026-11-09 · Associated Press: What we know — and what we don't — as Nvidia investigates an alleged spy plot involving its CEO
-- 2026-11-09 · Reuters: Wall St jumps back as oil slide eases inflation worries; Nvidia slumps
-- 2026-11-09 · Motley Fool: Not Revenue. Not Growth. Here’s What I’ll Be Watching When CoreWeave and Nebius Report This Week.
-- 2026-11-09 · Motley Fool: Think $1 Million in Retirement Savings Will Cut It? Here's the Math That Might Make You Change Your Tune
-- 2026-11-09 · Motley Fool: The Stock Market Is Crashing. History Says the Smartest Investors Are Making This 1 Simple Move.
-- 2026-11-09 · Yahoo Finance: Stock market today: Nasdaq rallies despite Nvidia stock slide, Dow and S&P 500 rise as AI stocks rebound
-- 2026-11-09 · Motley Fool: Target Trades at a Fraction of Walmart's Valuation. Is the Discount Deserved?
-- 2026-11-09 · Benzinga Prediction Markets: AMD Lands Key Role in Google's New AI Chip System as Nvidia Rivalry Intensifies
-- 2026-11-09 · Motley Fool: The Big Winner From the Aurora Cannabis-Organigram Deal: Curaleaf
-- 2026-11-09 · Yahoo Finance: Nvidia live updates: Nvidia stock falls 5% as board investigates CEO's affair with alleged Chinese spy
-- 2026-11-09 · decrypt: Bitcoin in Limbo as Stocks Rebound Ahead of US Inflation Report
+- 2026-11-10 · Investing.com: Asia stocks rally as Korean chips surge and oil retreat lifts sentiment
+- 2026-11-10 · Investing.com: Trump says FBI investigating Nvidia CEO Huang over Chinese scandal
+- 2026-11-10 · Motley Fool: The Nasdaq Fell Into Correction Territory Recently. Should You Buy the Dip?
+- 2026-11-10 · Benzinga Prediction Markets: 'Objectively Hilarious': Anthony Pompliano Sees Jensen Huang Affair Potentially Marking the Bottom for AI Stocks — What Do Crypto Bettors Think?
+- 2026-11-10 · Motley Fool: Anthropic's S-1 Says It Will Expand Its Data Center Footprint. Here's Who Could Pour the Concrete, Wire the Power, and Cool the Chips.
+- 2026-11-10 · Motley Fool: If I Could Buy Just 1 Stock in November and Hold for 5 Years, It Would Be Alphabet
+- 2026-11-10 · StockStory: Micron, FormFactor, Amkor, Teradyne, and Nvidia shares skyrocket, what you need to know
+- 2026-11-10 · Stocktwits: Nvidia Faces Class Action Suit Over Huang Allegations; Senator Seeks Probe, Analyst Puts CEO Exit Odds At 15%
+- 2026-11-10 · AFP: Tech leads Asian stock rally as traders track Wall St rebound
+- 2026-11-10 · Investor's Business Daily: Dow Jones Soars 1,132 Points As Amazon, Tesla Rally, But Nvidia Dives; CPI Inflation Report Next
+- 2026-11-10 · Motley Fool: Nasdaq Stock Market Correction: 2 Stocks I Wouldn't Hesitate to Buy the Dip On (Hint: It's Not Nvidia)
 
 ## Resumen del negocio
 NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. It operates through Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturer
