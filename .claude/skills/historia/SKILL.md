@@ -11,7 +11,7 @@ escríbele en español, corto y claro. **Costo cero:** nada de vidIQ ni servicio
 Lee antes: `plan/PLAN.md` (§0 marca y conflictos de interés, §2 ritmo), `plan/banco-historias.md`, `plan/publicados.md`,
 `plan/clientes-agencia.md`, `plan/posiciones-jp.md`.
 
-**Ritmo (pedido por JP, 9 nov 2026): 1 historia por semana. Se produce el VIERNES y se publica el SÁBADO a las 12:00 CDMX**
+**Ritmo (pedido por JP, 9 nov 2026): 1 historia por semana. Se produce el VIERNES (después del cierre de la bolsa) y se publica el SÁBADO a las 12:00 CDMX**
 (el sábado a las 19:00 sale además el short "Tesis a 5 años"). Es la segunda excepción a la regla de "mismo día" (la otra es el
 largo): JP necesita un día para grabar su voz. La carpeta lleva la fecha de publicación: `videos/<sábado AAAA-MM-DD>-<SLUG>-historia/`.
 **Plantilla y modelo de estilo:** `videos/2026-11-14-JOBS-historia/` (Steve Jobs: `story.js`, `guion.md`, `youtube.md`). Cópiala y adáptala.
@@ -54,6 +54,8 @@ Reglas duras:
 - WebSearch/WebFetch: fechas, cifras y frases con **fuente primaria** (informe anual, 10-K/8-K, comunicado de la empresa, prospecto,
   biografía autorizada o entrevista). Si solo hay fuentes secundarias para un dato, búscalo en dos y dilo con matiz, o quítalo.
 - Cuida los verbos: "lo sacaron" ≠ "lo despidieron"; "casi quiebra" necesita una cifra o una cita atribuida.
+- **Regla del cierre:** `python3 scripts/market_close.py` antes de bajar precios; si la bolsa sigue abierta, adelanta la maqueta y baja
+  los datos de "Hoy" al cierre (`--wait`). La historia del sábado usa el cierre del viernes.
 - Datos de hoy: `python3 scripts/fetch_data.py TICKER videos/$ID` (precio, valor de mercado, trimestres). Serie larga para la escena
   de la gráfica: `python3 scripts/fetch_series.py TICKER DESDE 1mo videos/$ID/serie.json` y pásala a `videos/$ID/series.js`
   (`export default [["AAAA-MM", cierre], ...]`). Si la gráfica abarca décadas, usa escala logarítmica y dilo en pantalla.

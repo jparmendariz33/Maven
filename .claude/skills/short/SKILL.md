@@ -7,7 +7,7 @@ argument-hint: "<TICKER o nombre de la empresa> [enfoque opcional]"
 # /short — análisis de una acción o empresa en video (Costa Studio Finance)
 
 Dos modos, mismo motor, misma duración (~65–75 s sin voz) y misma marca:
-- **Reactivo** (lun, mar, jue): qué pasó hoy con una acción o índice (ver `plan/PLAN.md` §2).
+- **Reactivo** (lun, mar, jue): qué pasó HOY con una acción o índice, con precios de cierre (ver `plan/PLAN.md` §2).
 - **Empresa** (vie, sáb, dom): "Análisis + Potencial" de una empresa (sección 1b); el sábado, "Tesis a 5 años" de `plan/banco-tesis.md`. `"mode": "empresa"` en el storyboard.
 **Todos los shorts llevan imágenes reales** que hagan sentido con la historia (sección 2b).
 **Fecha (regla de oro de JP):** un short por día, hecho el MISMO día en que se publica (19:00 CDMX). La carpeta lleva la fecha de
@@ -17,7 +17,9 @@ terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno p
 **Modelo de estilo:** `videos/2026-11-07-ABNB/` (el favorito de JP) y, para el formato y los colores de empresa, `videos/2026-11-08-CUERVO/`.
 
 ### ✅ Checklist de estilo (reglas que pidió JP — revisa TODAS antes de entregar)
-1. **Un video por día**, hecho el mismo día, que se publica **siempre a las 19:00 CDMX** (las tareas corren a las 6:41 para que JP lo revise).
+1. **Un video por día**, hecho el mismo día, que se publica **siempre a las 19:00 CDMX**. **Regla del cierre:** los datos son los de
+   CIERRE de la sesión; nada se termina ni se entrega antes de que cierre la bolsa (`python3 scripts/market_close.py`; ver `CLAUDE.md`).
+   Si JP pide un tema durante el día, prepara todo y entrégalo UNA vez, después del cierre, ya con los datos finales.
 2. **Empresas:** solo las que ya cotizan en bolsa o están cerca de su IPO (prospecto o fecha anunciada). Nada privado, startups ni cripto.
 3. **Formato de empresa "Análisis + Potencial"** (§1b): mitad análisis, mitad potencial a 5 años; riesgos con el mismo peso;
    nunca "cómprala" ni precios objetivo; `disclosure` si JP tiene acciones (`plan/posiciones-jp.md`).
@@ -49,6 +51,9 @@ bash scripts/setup.sh
 Crea `.venv` (numpy + faster-whisper). ffmpeg y Playwright ya vienen en el contenedor.
 
 ## 1. Datos (sin preguntar)
+**Primero: `python3 scripts/market_close.py`.** Si dice ABIERTO, adelanta investigación, imágenes y guion (sin cifras de precio) y
+corre `python3 scripts/market_close.py --wait` en segundo plano; `fetch_data.py`, las cifras del guion y el render van DESPUÉS del
+cierre. Si dice SIN SESIÓN (fin de semana o festivo), usa el último cierre y nombra ese día ("el viernes…").
 Si el usuario dio un nombre y no un ticker, deduce el ticker (Apple → AAPL; Sea Limited → SE).
 ```bash
 ID=$(date +%F)-TICKER            # ej. 2026-11-07-AAPL
