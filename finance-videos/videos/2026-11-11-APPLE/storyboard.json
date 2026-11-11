@@ -63,12 +63,51 @@
    "say": "Y unos 5, en impuestos y otros gastos."
   },
   {
-   "type": "statement",
-   "kicker": "Lo que queda",
-   "text": "Le quedan $27.6 limpios.",
-   "emphasis": "$27.6",
-   "sub": "De cada $100 que vende",
-   "say": "O sea, le quedan casi 28 dólares limpios."
+   "type": "waterfall",
+   "theme": "sand",
+   "kicker": "De cada $100 que vende Apple",
+   "title": "Así llega a $27.6",
+   "subtitle": "Año fiscal 2026",
+   "steps": [
+    {
+     "label": "Ventas",
+     "value": 100,
+     "kind": "total",
+     "text": "$100",
+     "cue": "Entran"
+    },
+    {
+     "label": "Fabricar y servicio",
+     "value": 51.2,
+     "kind": "minus",
+     "text": "−$51",
+     "cue": "51"
+    },
+    {
+     "label": "Operar la empresa",
+     "value": 15.9,
+     "kind": "minus",
+     "text": "−$16",
+     "cue": "16"
+    },
+    {
+     "label": "Impuestos y otros",
+     "value": 5.3,
+     "kind": "minus",
+     "text": "−$5",
+     "cue": "otros"
+    },
+    {
+     "label": "Utilidad neta",
+     "value": 27.6,
+     "kind": "result",
+     "text": "$27.6",
+     "cue": "quedan"
+    }
+   ],
+   "note": "Casi $28 de cada $100",
+   "cue_note": "limpios",
+   "say": "O sea: Entran 100. Salen 51, 16 y otros 5. Y le quedan casi 28 dólares limpios."
   },
   {
    "type": "statement",

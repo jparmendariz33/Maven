@@ -19,6 +19,7 @@ el texto de cada tarea. Si JP cambia una regla, se cambia AQUÍ (y en la skill q
   (`python3 scripts/market_close.py --wait`; fin de semana = cierre del viernes); solo empresas que coticen o estén cerca de su IPO; nunca
   repitas algo de `publicados.md`; guion con la voz de JP; fotos reales, nítidas y limpias (`/short` §2b); nunca imágenes de IA de marcas o
   personas reales; modo sin voz (`no_voice.py`); costo cero salvo la excepción de vidIQ en el ranking; nunca publiques nada tú.
+- **Cascada (waterfall):** siempre que el video explique resultados, márgenes o cómo gana dinero una empresa (`/short` §1e).
 - **JP en 3D** (`/short` §2c): recortado y chico sobre la foto del tema. Shorts: solo gancho y cierre. `node engine3d/render_host.js <carpeta>`
   después de `build_timeline.py`. Varía acto y vestuario respecto al video anterior. Revisa SIEMPRE `build/qa.jpg` antes de renderizar.
 - **Un solo MP4 por pieza en GitHub:** no subas renders de prueba ni versiones alternas (el repo crece con cada video).

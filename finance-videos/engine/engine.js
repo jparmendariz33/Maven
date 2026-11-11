@@ -528,6 +528,30 @@ R.photo = (s, t) => {
   }
 };
 
+// Cascada (waterfall): de los ingresos a la utilidad, paso a paso. steps: [{label, value, kind: "total" | "minus" | "result", text?, cue?}]
+// "total" arranca en 0; "minus" resta desde donde va la cuenta; "result" es lo que queda (si no trae value, se calcula).
+R.waterfall = (s, t) => {
+  const dk = isDarkBg(themeOf(s)), ink = dk ? B.arena : B.negro, soft = dk ? rgba(B.arena, .7) : B.g4;
+  kicker(s.kicker || 'De los ingresos a la utilidad', 90, 360, s.t0 + .1, t, ink);
+  const tl_ = s.title || ''; rise(tl_, 90, 470, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(tl_, F.d, 800, 72, 900), c: ink });
+  if (s.subtitle) rise(s.subtitle, 90, 545, seg(t, s.t0 + .4, s.t0 + 1), { f: F.b, w: 500, s: 38, c: soft });
+  const st = s.steps || [], n = st.length || 1, x0 = 96, x1 = 984, y0 = 720, y1 = 1290, gap = 22, bw = (x1 - x0 - gap * (n - 1)) / n;
+  let run = 0; const lv = st.map(p => { let a, b; if (p.kind === 'minus') { a = run; b = run - p.value; } else { a = 0; b = p.kind === 'result' && p.value == null ? run : p.value; } run = b; return [a, b]; });
+  const mx = Math.max(1e-9, ...lv.flat()), py = v => y1 - (y1 - y0) * v / mx;
+  C.save(); C.strokeStyle = dk ? rgba(B.arena, .35) : B.grid; C.lineWidth = 3; C.beginPath(); C.moveTo(x0 - 10, y1); C.lineTo(x1 + 10, y1); C.stroke(); C.restore();
+  st.forEach((p, i) => {
+    const tc = typeof p.cue === 'number' ? p.cue : s.t0 + .8 + i * .6, k = ex(seg(t, tc, tc + .55)); if (k <= 0) return;
+    const [a, b] = lv[i], x = x0 + i * (bw + gap), hi = py(Math.max(a, b)), lo = py(Math.min(a, b)), h = (lo - hi) * k, minus = p.kind === 'minus';
+    const col = minus ? B.terracota : p.kind === 'result' ? B.musgo : (dk ? B.arena : B.azul), y = minus ? hi : lo - h;       // lo que se resta cae desde arriba; los totales crecen desde abajo
+    C.save(); C.fillStyle = col; rr(x, y, bw, Math.max(2, h), 12); C.fill(); C.restore();
+    if (i < n - 1 && k > .9) { const yy = py(b); C.save(); C.strokeStyle = soft; C.lineWidth = 2; C.setLineDash([8, 8]); C.beginPath(); C.moveTo(x + bw, yy); C.lineTo(x + bw + gap, yy); C.stroke(); C.restore(); }
+    const val = p.text || ((minus ? '−' : '') + '$' + fmtNum(Math.abs(p.kind === 'minus' ? p.value : b), 0));
+    txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: minus ? B.terracota : ink, a: seg(t, tc + .25, tc + .6) });
+    wrap(p.label || '', F.b, 500, 27, bw + gap - 4).slice(0, 2).forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * 32, { f: F.b, w: 500, s: 27, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
+  });
+  if (s.note) { const tn = cueT(s, 'cue_note', .8 + n * .6 + .3); rise(s.note, 90, 1470, seg(t, tn, tn + .6), { f: F.s, w: 400, s: 64, c: dk ? B.mostaza : B.azul }); }
+};
+
 R.catalyst = (s, t) => {
   const ink = B.arena;
   kicker(s.kicker || 'Próximo catalizador', 90, 520, s.t0 + .1, t, ink);

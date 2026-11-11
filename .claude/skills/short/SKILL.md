@@ -81,6 +81,17 @@ de las últimas 60 sesiones (con volumen vs promedio) y titulares semilla.
   real 35x. Si no puedes recalcular una métrica con fuente primaria, usa otra (p. ej. margen neto del trimestre, del 8-K).
 Guarda las fuentes (URLs) para `youtube.md`.
 
+## 1e. Cascada (waterfall) siempre que se hable del estado de resultados (regla de JP, 11 nov 2026)
+Cuando un video explique cómo gana dinero una empresa, sus márgenes, sus resultados o su P&L, **incluye una cascada**: de los ingresos a
+la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de entenderlo, y además sirve para revisar que los números cuadren
+(si las barras no llegan al resultado, hay un dato mal).
+- Shorts: escena `waterfall` (ver esquema). Largos: escena `cascade`. Publicaciones: descríbela en una imagen `dato` con viñetas, o usa la gráfica.
+- Escala fácil: "de cada $100 que vende" (porcentajes sobre ingresos) o en miles de millones, pero una sola escala por cascada.
+- Pasos típicos: ingresos → costo de lo vendido → gastos de operación (investigación, ventas, administración) → impuestos y otros → utilidad neta.
+  Si la empresa pierde dinero, la última barra se muestra como pérdida y se dice claro.
+- Todos los números salen del reporte oficial (10-K/10-Q/8-K o reporte a la BMV) y deben sumar: ingresos − todo lo que sale = utilidad neta.
+- En Análisis + Potencial ponla en la mitad de análisis ("cómo gana dinero"). En el guion, una frase la recorre: "entran 100, salen 51, 16 y otros 5; quedan 28".
+
 ## 1c. Short reactivo = short de CONTEXTO (lunes, martes y jueves — plan del 11 nov 2026)
 Lo que pasó hoy caduca mañana, y un short se sigue viendo durante meses. Por eso la noticia del día es solo el PRETEXTO para elegir el tema;
 el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exacto vive en las publicaciones: skill `/publicacion`.)
@@ -323,6 +334,10 @@ Campos por tipo (todos opcionales salvo `type` y `say`; `theme` puede forzar `"b
 - `metric`: `kicker` ("Valuación · 1/3"), `label` ("P/E"), `fullname`, `value`, `decimals`, `prefix`, `suffix` ("x", "%"),
   `explain`, `scale` {"min","max","bands":[[a,b,"texto","tono?"]],"ref":{"value","label"}}, `verdict`, `verdict_tone`,
   `cue_value`, `cue_explain`, `cue_gauge`.
+- `waterfall` (cascada del estado de resultados): `kicker`, `title`, `subtitle`, `steps` [{"label" (corta, 2–3 palabras), "value", "kind":
+  "total" | "minus" | "result", "text" (lo que se lee arriba de la barra, ej. "−$51"), "cue"}], `note`, `cue_note`. La primera es `total`
+  (ingresos), las de en medio `minus` (lo que se va) y la última `result` (lo que queda). 4 a 6 barras; cada `cue` es una palabra DISTINTA
+  del `say` (ojo: "5" también calza dentro de "51"; usa otra palabra).
 - `catalyst` (azul): `kicker`, `date` ("28 ENE"), `label`, `sub`, `cue_date`.
 - `outro` (azul): `question_a`, `question_b`, `cue_a`, `cue_b`, `cta` (opcional), `sources` ("Yahoo Finance · Reuters").
 - `photo`, `bg_image`, `company.logo`, `news.image`: ver sección 2b.
