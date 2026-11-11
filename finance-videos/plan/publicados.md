@@ -20,7 +20,7 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 | lun 9 nov 2026 · 19:00 | Short reactivo | Nvidia cayó 4.3% mientras las otras 6 grandes tecnológicas subieron: el consejo investiga a su CEO (NVDA; pedido por JP) | `videos/2026-11-09-NVDA/` |
 | mar 10 nov 2026 · 19:00 | Short reactivo | Take-Two, la dueña de GTA, subió 8.3% aunque perdió dinero: preventas de GTA VI "sin precedentes" (TTWO) | `videos/2026-11-10-TTWO/` |
 | mié 11 nov 2026 · 19:00 | Short derivado | De cada $100, Apple se queda con $27.6 (adelanto del largo) | `videos/2026-11-11-APPLE/` |
-| sáb 14 nov 2026 · 12:00 | Historia 3D | Steve Jobs: lo sacaron de su propia empresa (Apple) | `videos/2026-11-14-JOBS-historia/` |
+| sáb 14 nov 2026 · 12:00 | Historia 3D | Steve Jobs: lo sacaron de su propia empresa (Apple) · con la partitura de órgano y piano | `videos/2026-11-14-JOBS-historia/` |
 | dom 15 nov 2026 · 10:00 | Largo | Cómo leer un estado de resultados (con Apple) | `largos/2026-11-15/` |
 
 **No programado:** `videos/2026-11-09-SPCX-historia/` (primera Historia 3D, SpaceX: animatic sin voz y versión con música; hecha con el motor 3D v1). `videos/extra-ACCION/` (short del largo "¿Qué es una acción?", que ya se publicó). Solo si JP lo pide.

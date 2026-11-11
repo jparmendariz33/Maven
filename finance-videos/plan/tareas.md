@@ -8,7 +8,10 @@ el texto de cada tarea. Si JP cambia una regla, se cambia AQUÍ (y en la skill q
   español, corto y claro. Costa Studio (la agencia) es OTRA empresa: aquí todo es Costa Studio Finance.
 - **Repo:** `jparmendariz33/Maven`, rama **`costa-studio-finance`** (la principal del proyecto). Si ya está en `/home/user/Maven`, úsalo; si no,
   clónalo (o agrégalo con add_repo, acceso "push"). `git fetch origin costa-studio-finance && git checkout costa-studio-finance && git pull --rebase origin costa-studio-finance`
-  sin perder commits locales. No toques `main` ni la rama vieja `costa-studio`.
+  sin perder commits locales. No trabajes sobre la rama vieja `costa-studio`.
+- **`main` siempre al día (JP, 11 nov 2026: "que todo esté en GitHub y sea sencillo"):** después de cada push a `costa-studio-finance`, corre
+  también `git push origin costa-studio-finance:main` (avance directo, sin forzar). Así cualquier conversación nueva, que arranca en `main`,
+  ve todo el proyecto. Si ese push falla, no insistas: dilo en el mensaje final.
 - **Antes de producir:** `git push --dry-run origin costa-studio-finance`. Si falla, produce igual y dilo en la PRIMERA línea del mensaje final.
 - Lee `finance-videos/CLAUDE.md`, `plan/PLAN.md` (§0, §2, §2b), `plan/publicados.md`, `plan/voz-jp.md`, `plan/clientes-agencia.md`,
   `plan/posiciones-jp.md` y la skill que toque, COMPLETA. Dentro de `finance-videos`: `bash scripts/setup.sh`.
