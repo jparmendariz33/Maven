@@ -98,9 +98,10 @@ python3 scripts/script_check.py largos/$D      # debe salir ✅ (palabras, capí
 ```
 
 ### JP en 3D en los largos (pendiente de construir)
-JP pidió que su personaje 3D (ver `/short` §2c) salga también en los largos: al inicio, en varios puntos intermedios y en el cierre.
-El puente hoy solo existe para shorts verticales (`engine/engine.js`); **el motor de largos (`engine/long.js`, 16:9) todavía no lo dibuja**.
-Mientras no exista, produce el largo como siempre y dilo en el mensaje final. No inventes un parche por tu cuenta en una tarea automática.
+JP quiere a su personaje 3D también en los largos, con la misma regla que en los shorts (`/short` §2c): **recorte chico con fondo
+transparente, encima de la escena, interactuando con el texto, la foto o la gráfica; nunca grande ni con fondo propio.** Los recortes ya
+se generan (`engine3d/render_host.js`), pero **`engine/long.js` (16:9) todavía no los dibuja**. Mientras no exista, produce el largo como
+siempre y dilo en el mensaje final. No inventes un parche por tu cuenta en una tarea automática.
 
 ## 3. Tiempos, revisión y render (sin voz; JP graba encima)
 ```bash

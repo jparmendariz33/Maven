@@ -20,7 +20,7 @@ terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno p
 **Modelo de estilo:** `videos/2026-11-07-ABNB/` (el favorito de JP) y, para el formato y los colores de empresa, `videos/2026-11-08-CUERVO/`.
 
 ### ✅ Checklist de estilo (reglas que pidió JP — revisa TODAS antes de entregar)
-- **JP en 3D en al menos 3 escenas** (gancho, mitad y cierre) con `"host"`, variando acto y vestuario respecto al video anterior (§2c).
+- **JP en 3D (§2c): en prueba.** No lo uses en tareas automáticas hasta que JP lo apruebe. Cuando se use: chico, recortado, sobre la foto del tema a pantalla completa.
 1. **Un video por día**, hecho el mismo día, que se publica **siempre a las 19:00 CDMX**. **Regla del cierre:** los datos son los de
    CIERRE de la sesión; nada se termina ni se entrega antes de que cierre la bolsa (`python3 scripts/market_close.py`; ver `CLAUDE.md`).
    Si JP pide un tema durante el día, prepara todo y entrégalo UNA vez, después del cierre, ya con los datos finales.
@@ -168,36 +168,39 @@ python3 scripts/fetch_images.py add videos/$ID fachada "https://…" --credit "F
 - `news.image` (+ `focus`): foto en tarjeta arriba del titular (con imagen: máx. 2 bullets).
 El pie de foto (autor · licencia) sale solo en pantalla. En `youtube.md` pega la lista de `python3 scripts/fetch_images.py credits videos/$ID`.
 
-## 2c. JP en 3D: el anfitrión del canal (obligatorio en TODOS los shorts desde el 11 nov 2026)
-JP pidió que cada video lleve a su personaje 3D (plastilina, luz de claroscuro) **en al menos 3 escenas: el gancho, una a la mitad
-y el cierre**. Es el mismo personaje siempre (pelo oscuro corto con copete, cejas marcadas, sin barba), pero **en cada video cambia**
-de ropa, accesorio, objeto y actividad. El personaje es parte del gancho: mira la pantalla, voltea a cámara y reacciona al dato.
+## 2c. JP en 3D: el anfitrión del canal, como recorte sobre el tema
+> **ESTADO (11 nov 2026): en prueba.** JP está revisando el formato. **En las tareas automáticas NO pongas `"host"` todavía**; úsalo solo
+> si JP lo pide en el chat. Cuando lo apruebe, esta nota se cambia por "obligatorio".
 
-En el storyboard, agrega `"host"` a la escena (funciona en `hook`, `statement`, `catalyst` y `outro`; el texto se acomoda solo arriba
-y JP queda en la mitad de abajo):
+**Regla de JP: el protagonista es el TEMA del video, no él.** Su personaje 3D (plastilina, sin párpados) sale como un **recorte con fondo
+transparente**: solo él y los objetos con los que interactúa (escritorio, laptop con el logo de la empresa, ficha del logo, flecha, taza…).
+Va **chico (≈1/8 de la pantalla), en una esquina, encima de la escena**, y reacciona a lo que hay en ella: mira el dato, lo señala, se
+apoya en el logo, piensa frente a la gráfica. Nunca media pantalla, nunca con un fondo propio.
+
+- **Mínimo 3 escenas por video: el gancho, una a la mitad y el cierre.** Puede ir sobre CUALQUIER tipo de escena (también `price`, `bars`, `company`…).
+- **En `hook`, `statement`, `catalyst` y `outro` la foto del tema va a TODA la pantalla:** `"bg_image": "images/....jpg", "bg_full": true`
+  (+ `"focus": [x, y]`). Es una de las fotos reales del video (§2b), a color, con un velo oscuro para leer el texto. Sin ella la escena no
+  dice de qué trata el video.
 ```json
-{"type": "hook", "host": {"act": "hook", "mood": "up", "image": "images/producto.jpg", "focus": [0.3, 0.3]}, ...}
-{"type": "statement", "host": {"act": "explica", "mood": "up", "image": "images/ceo.jpg"}, ...}
-{"type": "outro", "host": {"act": "cierre", "image": "images/tienda.jpg"}, ...}
+{"type": "hook", "bg_image": "images/producto.jpg", "bg_full": true, "host": {"act": "escritorio", "mood": "up"}, ...}
+{"type": "price", "host": {"act": "piensa", "size": 400}, ...}
+{"type": "outro", "bg_image": "images/tienda.jpg", "bg_full": true, "host": {"act": "cierre"}, ...}
 ```
-- **`image` es obligatoria (corrección de JP, 11 nov 2026): la escena tiene que decir de qué trata el video.** Es una de las fotos reales del
-  video (§2b) y sale en una pantalla gigante detrás de JP; el logo de la empresa (`company.logo`) va solo en su laptop o en la pared.
-  JP sin contexto ("yo en una computadora") no sirve: en el gancho pon la foto que más grita el tema (el producto, la marca, la tienda),
-  a la mitad la de quien o lo que se está explicando, y en el cierre otra distinta o la misma con otro `focus`. Elige fotos con el sujeto
-  al centro (la pantalla es vertical y la mitad de abajo la tapa JP) y revisa en `qa.jpg` que el tema se reconozca de un vistazo.
-- `act`: `hook` (en su escritorio: teclea, voltea y reacciona) · `cafe` (igual, con sorbo de café) · `telefono` (de pie, mira el celular y
-  reacciona) · `explica` (de pie, señala una flecha que sube o baja) · `piensa` (mano en la barbilla, moneda girando) · `camina`
-  (entra caminando y saluda) · `cierre` (se encoge de hombros con la pregunta y señala a cámara).
-- `mood`: `up` (festeja, luz verde) · `down` (se agarra la cabeza, luz roja) · `neutral`. Debe coincidir con el dato de esa escena.
-- **Variar en cada video (regla de JP: que no aburra):** no repitas la combinación de actos del video anterior (mira el storyboard del
-  último short). El vestuario sale solo de la fecha de la carpeta (cambia cada día); para fijarlo, pon a nivel del storyboard
-  `"host": {"outfit": "negra|blanca|hoodie|blazer|polo|sueter", "accessory": "ninguno|lentes|gorra|audifonos|reloj", "prop": "ninguno|cafe|telefono", "color": "#hex"}`.
-  Con `brand_colors`, el contraluz y la flecha toman el color de la empresa.
-- En la escena con `host` no uses `bg_image` (el fondo es el 3D). Las 3–5 fotos reales siguen siendo obligatorias en las demás escenas.
-- Flujo: `build_timeline.py` → **`node engine3d/render_host.js videos/$ID`** (≈4 min; solo vuelve a renderizar las escenas que cambiaron)
-  → `render.js --qa`. Si cambian los tiempos (otro guion u otra voz), corre `render_host.js` otra vez.
-- En `qa.jpg` revisa que el texto no tape la cara de JP y que el subtítulo no tape nada importante. Hoja de pruebas del personaje:
-  `node engine3d/render_host.js --sheet /ruta/hoja.jpg`. El personaje vive en `engine3d/host.js`.
+- `act`: `escritorio` (teclea, levanta la vista al dato y reacciona; el logo va en su laptop) · `cafe` (igual, con sorbo) · `logo` (presenta
+  una ficha grande con el logo de la empresa y se apoya en ella) · `senala` (señala el dato; a su lado sube o baja una flecha) · `piensa`
+  (mano en la barbilla, moneda girando: bueno frente a gráficas) · `telefono` · `camina` (entra y saluda) · `cierre` (junto al logo, se
+  encoge de hombros con la pregunta y señala a cámara).
+- `mood`: `up` (festeja) · `down` (se agarra la cabeza) · `neutral`. Debe coincidir con el dato de la escena.
+- `pos`: `br` (abajo a la derecha, por defecto) · `bl` · `bc`; `size` en px (por defecto 500; 420 en el cierre; máx. 560). Colócalo donde
+  NO tape el dato principal; JP mira solo hacia el centro. El logo sale del `logo` de la escena `company`.
+- **Variar en cada video:** no repitas la combinación de actos del short anterior. El vestuario sale de la fecha de la carpeta; para fijarlo:
+  `"host": {"outfit": "negra|blanca|hoodie|blazer|polo|sueter", "accessory": "ninguno|lentes|gorra|audifonos|reloj", "prop": "ninguno|cafe|telefono"}` a nivel del storyboard.
+- **Personas famosas:** si la escena habla de alguien conocido (un CEO, un fundador), el muñeco de esa escena debe ser ESA persona
+  (caricatura de plastilina con sus rasgos públicos), no JP. Todavía no existe en este motor: mientras tanto, esa escena lleva la foto real
+  de la persona sin muñeco, y JP sale en las escenas generales.
+- Flujo: `build_timeline.py` → **`node engine3d/render_host.js videos/$ID`** (≈1 min; solo re-renderiza lo que cambió) → `render.js --qa`.
+- En `qa.jpg`: que JP no tape cifras ni el título, que el tema se reconozca de un vistazo y que JP se vea chico.
+  Hoja de pruebas del personaje: `node engine3d/render_host.js --sheet /ruta/hoja.jpg images/logo.png`. Personaje: `engine3d/host.js`.
 
 ## 2. Guion + storyboard → MOSTRAR AL USUARIO ANTES DE GASTAR CRÉDITOS
 Escribe `videos/$ID/storyboard.json` (esquema abajo). Luego:

@@ -196,7 +196,7 @@ export function actor(o = {}) {
   [-1, 1].forEach(s => {
     const e = mesh(new THREE.SphereGeometry(.075, 16, 12), clay2('#121212', .3, 0), false); e.scale.set(1, 1.2, .45); e.position.set(s * .2, .03, .595); head.add(e);
     const hl = mesh(new THREE.SphereGeometry(.02, 8, 6), new THREE.MeshBasicMaterial({ color: '#ffffff' }), false); hl.position.set(s * .2 + .022, .062, .628); head.add(hl);
-    const lid = mesh(new THREE.SphereGeometry(.098, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), skin, false); lid.scale.set(1.1, 1, .55); lid.position.set(s * .2, .03, .595); head.add(lid); u.lids.push(lid);
+    const lid = mesh(new THREE.SphereGeometry(.098, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), skin, false); lid.scale.set(1.1, 1, .55); lid.position.set(s * .2, .03, .595); lid.visible = false; head.add(lid); u.lids.push(lid);   // sin párpados (JP, 11 nov 2026): ojos siempre abiertos
     if (o.eyeStyle === 'full') {                              // ojo completo: blanco + iris + pupila (más expresivo en primeros planos)
       e.material = clay2('#F7F4EC', .35, 0); e.scale.set(1.42, 1.62, .42); e.position.z = .578;
       const ir = mesh(new THREE.SphereGeometry(.062, 18, 14), clay2(o.eyes || '#4A2F1B', .3, 0), false); ir.scale.set(1, 1.08, .4); ir.position.set(s * .2, .02, .612); head.add(ir);

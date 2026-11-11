@@ -138,6 +138,7 @@ reusa mundos (día/noche del mismo edificio); 3–5 mundos por historia; no uses
 `applause`, `wave`. Cada acción visible lleva su efecto, en la misma fracción de la escena en la que ocurre. 3–7 por escena, no más.
 
 ### Personajes: que no se vean raros (corrección de JP, 11 nov 2026)
+- **Sin párpados (JP, 11 nov 2026):** ningún personaje lleva párpados; los ojos van siempre abiertos y la expresión se da con cejas y boca (`lid` ya no hace nada).
 - **Sentados de verdad.** Los actores ya tienen rodillas: `L.pose(a, { sit: 1, bob: -.2 })` dobla cadera y rodilla. Todo el que esté en una
   junta, un escritorio o un auto va con `sit: 1` y una silla o asiento visible debajo (una caja redondeada basta). Nunca "de pie detrás de la mesa".
 - **Opciones nuevas de `L.actor`:** `hairStyle: 'quiff'`, `eyeStyle: 'full'` (ojo con blanco, iris y pupila: úsalo en protagonistas y primeros

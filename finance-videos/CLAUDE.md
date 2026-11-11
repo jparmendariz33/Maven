@@ -12,10 +12,10 @@ sea cliente de la agencia sin declararlo.
 Flujo: `story.js` → `scripts/pace3d.py` → `engine3d/render3d.js --qa` → `make_audio.py` (música + efectos por acción) → `render3d.js video`.
 Ideas en `plan/banco-historias.md`. Aquí NO van fotos: todo es maqueta 3D propia, sin logotipos reales.
 
-**JP en 3D (anfitrión del canal, desde el 11 nov 2026):** todo short lleva al personaje 3D de JP en al menos 3 escenas (gancho, mitad y
-cierre) con `"host": {"act", "mood", "image"}` en el storyboard (la `image` es la foto real del tema, en la pantalla detrás de JP: sin ella la escena no dice de qué trata el video); cada video cambia de ropa, accesorio y actividad. Personaje: `engine3d/host.js`;
-render de sus escenas: `node engine3d/render_host.js videos/<id>` (después de `build_timeline.py`, antes de `render.js`). Detalle en `/short` §2c.
-En los largos está pendiente (ver `/largo`).
+**JP en 3D (anfitrión del canal; EN PRUEBA desde el 11 nov 2026):** el personaje 3D de JP sale como recorte con fondo transparente,
+chico (≈1/8 de la pantalla), encima de la escena y reaccionando a ella; el protagonista es el tema (foto a toda la pantalla con
+`"bg_full": true`), no JP. `"host": {"act", "mood", "pos"}` en la escena; `node engine3d/render_host.js videos/<id>` después de
+`build_timeline.py`. Sin párpados en ningún personaje. **No usarlo en tareas automáticas hasta que JP lo apruebe.** Detalle: `/short` §2c.
 
 **Imágenes reales en TODOS los videos** (shorts y largos): logos, sucursales, productos, sedes, personas. `scripts/fetch_images.py`
 (Openverse / Wikimedia Commons / simple-icons / salas de prensa; solo licencias libres; nunca IA de marcas o personas reales) →

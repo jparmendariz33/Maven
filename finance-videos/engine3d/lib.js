@@ -19,7 +19,8 @@ export const pop = (t, t0, d = .45) => back(seg(t, t0, t0 + d));    // aparece c
 export function rng(seed) { let s = seed % 2147483647 || 7; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
 
 // ---------- renderer ----------
-export const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+// ?alpha=1 → fondo transparente (lo usa el anfitrión 3D, que se recorta y se pone encima del motor 2D)
+export const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: new URLSearchParams(location.search).has('alpha') });
 renderer.setSize(W, H, false); renderer.setPixelRatio(1);
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.VSMShadowMap;   // cine.js usa sombras más baratas si la historia lo pide
 renderer.toneMapping = THREE.NeutralToneMapping; renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -71,7 +72,7 @@ export function guy(o = {}) {
     const e = mesh(new THREE.SphereGeometry(.075, 16, 12), clay('#121212', .35), false); e.scale.set(1, 1.2, .45); e.position.set(s * .2, .03, .595); head.add(e);
     const hl = mesh(new THREE.SphereGeometry(.018, 8, 6), clay('#ffffff', .3), false); hl.position.set(s * .2 + .02, .06, .625); head.add(hl);
     const lid = mesh(new THREE.SphereGeometry(.098, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), skin, false);
-    lid.scale.set(1.1, 1, .55); lid.position.set(s * .2, .03, .595); head.add(lid); lids.push(lid);
+    lid.scale.set(1.1, 1, .55); lid.position.set(s * .2, .03, .595); lid.visible = false; head.add(lid); lids.push(lid);
     const br = mesh(new THREE.CapsuleGeometry(.025, .14, 4, 8), hairM, false); br.position.set(s * .2, .2, .585); head.add(br); brows.push([br, s]);
   });
   const mouth = mesh(new THREE.TorusGeometry(.12, .022, 8, 24, 1.6), clay('#4a2626', .5), false); mouth.scale.z = .5; head.add(mouth);

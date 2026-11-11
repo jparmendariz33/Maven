@@ -17,14 +17,15 @@
    "cue_value": "subió",
    "cue_question": "Por",
    "host": {
-    "act": "hook",
-    "mood": "up",
-    "image": "images/posters.jpg",
-    "focus": [
-     0.25,
-     0.3
-    ]
-   }
+    "act": "escritorio",
+    "mood": "up"
+   },
+   "bg_image": "images/posters.jpg",
+   "bg_full": true,
+   "focus": [
+    0.5,
+    0.35
+   ]
   },
   {
    "type": "company",
@@ -79,14 +80,16 @@
    "text": "Al mercado le importó otra cosa.",
    "emphasis": "otra cosa.",
    "host": {
-    "act": "explica",
+    "act": "senala",
     "mood": "up",
-    "image": "images/zelnick.jpg",
-    "focus": [
-     0.5,
-     0.25
-    ]
-   }
+    "pos": "bl"
+   },
+   "bg_image": "images/zelnick.jpg",
+   "bg_full": true,
+   "focus": [
+    0.5,
+    0.3
+   ]
   },
   {
    "type": "photo",
@@ -182,7 +185,11 @@
      "cue": "salto",
      "dir": -1
     }
-   ]
+   ],
+   "host": {
+    "act": "piensa",
+    "size": 400
+   }
   },
   {
    "type": "catalyst",
@@ -202,13 +209,14 @@
    "cue_b": "precio",
    "sources": "Take-Two (SEC) · Yahoo Finance · Zacks",
    "host": {
-    "act": "cierre",
-    "image": "images/posters.jpg",
-    "focus": [
-     0.8,
-     0.3
-    ]
-   }
+    "act": "cierre"
+   },
+   "bg_image": "images/cartel.jpg",
+   "bg_full": true,
+   "focus": [
+    0.7,
+    0.3
+   ]
   }
  ],
  "host": {
