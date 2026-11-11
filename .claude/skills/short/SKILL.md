@@ -4,6 +4,9 @@ description: Crea un short vertical (YouTube Shorts / Reels / TikTok) con el an�
 argument-hint: "<TICKER o nombre de la empresa> [enfoque opcional]"
 ---
 
+> **Voz de JP (obligatorio en todo guion):** antes de escribir, lee `finance-videos/plan/voz-jp.md` y redacta con ese tono. El guion no debe sonar a IA.
+
+
 # /short — análisis de una acción o empresa en video (Costa Studio Finance)
 
 Dos modos, mismo motor, misma duración (~65–75 s sin voz) y misma marca:

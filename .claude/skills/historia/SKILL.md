@@ -4,6 +4,9 @@ description: Crea una "Historia 3D" vertical (75–90 s, YouTube Shorts / Reels 
 argument-hint: "<empresa o personaje> [enfoque opcional]"
 ---
 
+> **Voz de JP (obligatorio en todo guion):** antes de escribir, lee `finance-videos/plan/voz-jp.md` y redacta con ese tono. El guion no debe sonar a IA.
+
+
 # /historia — historia 3D animada de una empresa o su fundador (Costa Studio Finance)
 
 Proyecto: `finance-videos/` (todo se ejecuta desde ahí: `cd finance-videos`). Usuario: **Juan Pablo Armendáriz (@jparmendariz)**;

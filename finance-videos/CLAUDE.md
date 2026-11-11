@@ -60,6 +60,7 @@ Un número mide pocos caracteres pero tarda mucho en decirse: "45" son 2 caracte
   `audio/voice_raw.mp3` (la voz pagada: no borrar), `<TICKER>_short.mp4`, `youtube.md`. `build/` y los .wav no se versionan.
 
 ## Reglas
+- **Voz de JP:** todo guion se escribe con el tono de `plan/voz-jp.md` (conversado, suyo, sin frases que suenen a IA). Léelo antes de redactar.
 - No generar voz sin aprobación del guion (cuesta créditos de vidIQ: 14 por cada 1,000 caracteres; plan de 150/mes,
   se renueva el día 4 de cada mes).
 - Datos siempre verificados; nunca recomendaciones de compra/venta.

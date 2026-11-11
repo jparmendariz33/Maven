@@ -3,6 +3,9 @@ name: largo
 description: Produce el video largo semanal (9–11 min, 16:9) de Costa Studio Finance, by JP Armendáriz, listo para que JP solo le ponga su voz — guion con datos verificados, storyboard, render 1920x1080 con teleprompter, miniatura, youtube.md y short derivado. Úsala cuando digan "/largo", "haz el video largo de la semana", "produce el video del domingo", o cuando la tarea programada de los lunes lo pida.
 ---
 
+> **Voz de JP (obligatorio en todo guion):** antes de escribir, lee `finance-videos/plan/voz-jp.md` y redacta con ese tono. El guion no debe sonar a IA.
+
+
 # /largo — video largo semanal (Costa Studio Finance)
 
 Proyecto: `finance-videos/` (todo se ejecuta desde ahí: `cd finance-videos`). Usuario: **Juan Pablo Armendáriz (@jparmendariz)**;
