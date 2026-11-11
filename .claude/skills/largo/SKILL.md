@@ -97,6 +97,8 @@ solo licencias libres o salas de prensa; nunca IA de marcas o personas reales; m
 python3 scripts/script_check.py largos/$D      # debe salir ✅ (palabras, capítulos, escenas ≤ 45 palabras)
 ```
 
+**Calidad de las imágenes:** aplica la regla de `/short` §2b ("Calidad de las imágenes"): nítidas (≥ 1600 px), limpias, con el sujeto solo y sin ruido de fondo.
+
 ### JP en 3D en los largos (obligatorio desde el 11 nov 2026)
 Misma regla que en los shorts (`/short` §2c): **recorte chico con fondo transparente, encima de la escena, reaccionando al texto, la foto o
 la gráfica; nunca grande ni con fondo propio.** En un largo sale en **la primera escena, en 3 a 5 puntos intermedios (al abrir un capítulo o

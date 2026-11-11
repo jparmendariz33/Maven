@@ -91,6 +91,19 @@ el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exac
 - Sigue valiendo todo lo demás: datos de cierre verificados (Regla del cierre), no repetir empresas, fotos reales, nunca recomendación.
 - Los shorts de viernes, sábado y domingo (Análisis + Potencial) y el derivado del miércoles ya son atemporales: no cambian.
 
+## 1d. Formato RANKING (top 3 o top 5) — idea de JP, 11 nov 2026
+Cuenta regresiva: del último lugar al número 1. Sirve para shorts, publicaciones y, de vez en cuando, un largo.
+- **Estructura del short:** gancho ("Las 5 … de 2026") → #5 → #4 → #3 → #2 → **pausa antes del #1** ("Antes del número 1: sígueme, que cada
+  semana hay uno de estos") → #1 → cierre con pregunta ("¿Cuál pondrías tú?"). Una escena por puesto, con la foto o el logo de la empresa, el
+  número grande en el `kicker` ("#5") y UN dato que explique por qué está ahí. Top 3 si los datos necesitan más aire; top 5 si son de una línea.
+- **El criterio manda y se dice en pantalla.** Todo ranking se ordena por un dato verificable: crecimiento de ingresos, margen, rendimiento en
+  el año, caída desde el máximo, dividendo, valor de mercado, flujo libre… Di el criterio en el gancho y la fecha de corte en la descripción.
+- **Nunca "las que van a subir" ni "las mejores para comprar".** Eso es recomendación y predicción. En su lugar: "las 5 que más crecieron este
+  año", "las 5 más castigadas del S&P 500", "5 empresas que JP está vigilando y por qué" (opinión declarada como opinión, con su riesgo al lado).
+  Si la empresa está en `posiciones-jp.md`, se declara.
+- **Vigencia:** evita rankings atados a un mes ("para diciembre"); caducan en semanas. Mejor "de 2026", "de los últimos 12 meses", "de la década".
+- En publicaciones: portada + puestos 5–4 + puestos 3–2 + el #1 con la pregunta (4 imágenes).
+
 ## 1b. Modo empresa (viernes, sábado y domingo)
 **Cómo elegir la empresa** (tómala tú, sin preguntar; revisa `plan/banco-empresas.md` y `videos/` para no repetir):
 1. **Está en las noticias de la semana**: resultados que sorprendieron, adquisición, IPO, expansión, lanzamiento, polémica,
@@ -180,6 +193,16 @@ python3 scripts/fetch_images.py add videos/$ID fachada "https://…" --credit "F
   video (sin ficha). `"logo_card": true` fuerza la ficha blanca si hiciera falta.
 - `news.image` (+ `focus`): foto en tarjeta arriba del titular (con imagen: máx. 2 bullets).
 El pie de foto (autor · licencia) sale solo en pantalla. En `youtube.md` pega la lista de `python3 scripts/fetch_images.py credits videos/$ID`.
+
+### Calidad de las imágenes (regla de JP, 11 nov 2026 — aplica a shorts, largos, publicaciones y cualquier video)
+Cada foto debe verse **nítida y limpia, con el sujeto solo y sin ruido alrededor**. Antes de usar una imagen, ábrela y descártala si:
+- mide menos de **1600 px** por su lado largo (logos en PNG transparente o SVG: sin mínimo), o se ve borrosa, pixelada o con marca de agua;
+- es una foto "de calle" donde el tema ocupa poco y hay de todo alrededor (rejas, coches, gente, letreros ajenos, franjas blancas o grises);
+- tiene texto ajeno grande que compite con el título, o bordes y marcos de otra publicación.
+Prefiere, en este orden: material oficial de prensa de la empresa (producto, tienda, sede), fotos de producto sobre fondo limpio, retratos
+de estudio o de evento con fondo desenfocado, y fotos de sedes o tiendas tomadas de frente. Si la mejor candidata no cumple, busca más
+(`fetch_images.py search` con otras palabras y `--n 24`, o `--source flickr`) antes de conformarte; es mejor 3 fotos excelentes que 5 regulares.
+Para fondos a pantalla completa (`bg_full`) y portadas, la foto debe aguantar el recorte vertical: sujeto al centro y sin zonas claras abajo.
 
 ## 2c. JP en 3D: el anfitrión del canal, como recorte sobre el tema
 > **ESTADO: aprobado por JP el 11 nov 2026. Obligatorio en TODOS los shorts, también en las tareas automáticas.**

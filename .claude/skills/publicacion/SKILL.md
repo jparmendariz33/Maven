@@ -46,6 +46,8 @@ Cada publicación cuenta UNA cosa, en este orden: **qué pasó → por qué → 
 - Títulos cortos (≤ 8 palabras), una idea por imagen, cifras exactas y verificadas con fuente primaria. Nunca recomendación de compra/venta.
 - `poll`: la encuesta va como publicación aparte (YouTube no mezcla imágenes y encuesta en la misma publicación). Es opcional; úsala 1 vez por semana.
 
+**Calidad de las imágenes:** aplica la regla de `/short` §2b ("Calidad de las imágenes"): nítidas (≥ 1600 px), limpias, con el sujeto solo y sin ruido de fondo.
+
 ## 2. Generar y revisar
 ```bash
 node scripts/make_post.js videos/$ID        # → videos/$ID/post/01.png … + post/publicacion.md
@@ -54,6 +56,7 @@ Mira TODAS las imágenes: que nada se encime, que JP no tape texto, que el tema 
 
 ## 3. Entregar
 1. Envía las imágenes con SendUserFile (todas juntas, en orden).
-2. Pega en el mensaje el texto para copiar y, si hay, la encuesta.
+2. **Siempre** pega en el mensaje, en un bloque para copiar, la **DESCRIPCIÓN de la publicación** (es lo único que pide YouTube además de las
+   imágenes: el campo `text`; no lleva título). Debe tener sentido por sí sola: qué pasó, la fecha, la pregunta y 2–3 hashtags. Si hay encuesta, pégala aparte.
 3. Agrega la publicación a `plan/publicados.md` (tabla "Publicaciones") y haz commit + push a `costa-studio`.
 4. Recuérdale: "Publícala hoy alrededor de las 17:00 desde YouTube → Crear → Crear publicación → Imagen".
