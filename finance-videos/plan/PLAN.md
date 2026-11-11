@@ -65,6 +65,24 @@ Los 3 reactivos son siempre de **acciones/temas distintos** en la semana y no re
 Regla de oro: **constancia > perfección.** Si una semana no puedes grabar, se publican los shorts y el largo se recorre una semana
 (nunca 2 semanas seguidas sin largo).
 
+## 2b. Qué hace cada formato (replanteo acordado con JP el 11 nov 2026)
+Objetivo final: crecer la audiencia de finanzas e inversión y monetizar el canal. Cada formato tiene su trabajo:
+
+| Formato | Objetivo | Qué cuenta | Vigencia | Cuándo |
+|---|---|---|---|---|
+| Publicaciones (3–4 imágenes) | Conversación con quien ya sigue a JP | Lo que pasó HOY + una pregunta | Un día | Lun, mié y vie ≈17:00 (tras el cierre) |
+| Shorts | Que lo descubra gente nueva | Una empresa y una idea: qué le pasa, por qué y qué viene | Meses | Diario 19:00 |
+| Historia 3D | Alcance y marca | La historia de una empresa o fundador | Años | Sáb 12:00 |
+| Largos | Horas de reproducción y búsqueda | Enseñar algo de inversión | Años | Dom 10:00 |
+
+- **Shorts de lunes, martes y jueves = shorts de contexto** (`/short` §1c): la noticia es el pretexto; sin "hoy" ni fechas en título y guion.
+- **Publicaciones:** skill `/publicacion`. La cuarta (domingo, resumen de la semana) solo si las tres primeras funcionan.
+- **JP en 3D:** recorte chico sobre el tema (`/short` §2c). Shorts: gancho y cierre. Largos: inicio, 3–5 intermedios y cierre. Publicaciones: primera y última imagen.
+- **Los videos anteriores al 11 nov no se tocan.**
+- **Revisión cada 4 semanas** con los números de YouTube Studio de JP (`plan/metricas.md`): qué pegó, por qué, dónde se cae la audiencia,
+  y si los shorts de contexto retienen más vistas que los de noticia. Horarios: no hay evidencia sólida de un mejor horario (investigación
+  del 11 nov); se ajustan con el reporte "Cuándo están tus espectadores en YouTube" de JP.
+
 ### Cómo se elige cada short reactivo (siempre hay uno)
 Se ordena por "qué tan extraordinario" y se toma el #1 que no se haya usado en la semana:
 1. Empresa grande (S&P 500, Nasdaq-100 o BMV: Walmex, FEMSA, Bimbo, Cemex, Banorte, América Móvil, GMéxico…) con **±8% en un día**

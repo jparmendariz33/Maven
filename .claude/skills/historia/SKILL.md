@@ -145,6 +145,7 @@ reusa mundos (día/noche del mismo edificio); 3–5 mundos por historia; no uses
   planos), `neck: true`, `sleeves: 'short'`, `collar: 'crew' | 'polo' | 'hoodie'`, `cap`, `headphones`, `watch`, `browW`.
 - **Manos y miradas con intención:** cada personaje mira a quien habla o a lo que pasa; nadie con los brazos colgando si la escena es tensa.
 - **Mantener el claroscuro** que le gustó a JP: luz principal cálida de lado, contraluz que recorta la silueta, relleno bajo.
+- **El protagonista de una historia es la persona real** (su caricatura con rasgos públicos), nunca un JP genérico en su lugar.
 - **JP como narrador:** si la historia lo pide, el personaje del canal se puede meter con `L.actor({ ...L.JP, shirt: '#2A2A31', collar: 'crew' })` (rasgos en `engine3d/host.js`).
 - Revisa en `qa.jpg` cada escena con gente: postura, que nadie atraviese muebles y que las caras se vean.
 

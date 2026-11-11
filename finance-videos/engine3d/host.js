@@ -9,6 +9,7 @@
 //   mood    'up' | 'down' | 'neutral'   → reacción de JP y color de la luz / flecha
 //   logo    logo de la empresa: en la laptop (escritorio, cafe) o como ficha grande en la que JP se apoya (logo, cierre)
 //   side    'r' | 'l'  lado de la pantalla donde va el recorte (JP mira hacia el centro, donde está el contenido)
+//   who     rasgos de una persona famosa (opciones de L.actor): reemplaza a JP en esa escena
 //   outfit  'negra' | 'blanca' | 'hoodie' | 'blazer' | 'polo' | 'sueter' · accessory 'ninguno' | 'lentes' | 'gorra' | 'audifonos' | 'reloj'
 //   prop    'ninguno' | 'cafe' | 'telefono' · color (prenda) · accent (color de la empresa) · seed (varía el vestuario; por defecto la carpeta)
 
@@ -54,12 +55,14 @@ export function buildHost(L, cfg = {}) {
   const cam = new THREE.PerspectiveCamera(30, 1, .1, 100);
 
   // ---------- JP ----------
-  const o = OUTFITS[look.outfit], ao = { ...JP, ...o, seed: 23 };
-  if (look.color) ao.shirt = look.color;
-  if (look.accessory === 'lentes') ao.glasses = '#1b1b1d';
-  if (look.accessory === 'gorra') ao.cap = cfg.accent || B.azul;
-  if (look.accessory === 'audifonos') ao.headphones = '#F4F1E8';
-  if (look.accessory === 'reloj' || look.outfit === 'blazer') ao.watch = '#1b1b1d';
+  // who: si la escena habla de una persona famosa, el muñeco es ESA persona (caricatura con sus rasgos públicos), no JP.
+  //      Ej.: {"who": {"skin": "#F0D2B8", "hair": "#8A8A8A", "hairStyle": "short", "glasses": true, "shirt": "#111111", "collar": "turtle", "pants": "#3F5E8C"}}
+  const o = OUTFITS[look.outfit], ao = cfg.who ? { eyeStyle: 'full', neck: true, browW: .03, pants: '#2B3A55', shoes: '#F2F0E8', ...cfg.who, seed: 31 } : { ...JP, ...o, seed: 23 };
+  if (!cfg.who && look.color) ao.shirt = look.color;
+  if (!cfg.who && look.accessory === 'lentes') ao.glasses = '#1b1b1d';
+  if (!cfg.who && look.accessory === 'gorra') ao.cap = cfg.accent || B.azul;
+  if (!cfg.who && look.accessory === 'audifonos') ao.headphones = '#F4F1E8';
+  if (!cfg.who && look.accessory === 'reloj' || look.outfit === 'blazer') ao.watch = '#1b1b1d';
   const jp = actor(ao), U = jp.userData; R.add(jp);
 
   const mug = new THREE.Group(); { const m = clay2('#F4F1E8', .5, .4);

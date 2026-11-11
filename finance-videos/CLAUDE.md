@@ -12,10 +12,14 @@ sea cliente de la agencia sin declararlo.
 Flujo: `story.js` → `scripts/pace3d.py` → `engine3d/render3d.js --qa` → `make_audio.py` (música + efectos por acción) → `render3d.js video`.
 Ideas en `plan/banco-historias.md`. Aquí NO van fotos: todo es maqueta 3D propia, sin logotipos reales.
 
-**JP en 3D (anfitrión del canal; EN PRUEBA desde el 11 nov 2026):** el personaje 3D de JP sale como recorte con fondo transparente,
+**JP en 3D (anfitrión del canal; aprobado el 11 nov 2026, obligatorio):** el personaje 3D de JP sale como recorte con fondo transparente,
 chico (≈1/8 de la pantalla), encima de la escena y reaccionando a ella; el protagonista es el tema (foto a toda la pantalla con
-`"bg_full": true`), no JP. `"host": {"act", "mood", "pos"}` en la escena; `node engine3d/render_host.js videos/<id>` después de
-`build_timeline.py`. Sin párpados en ningún personaje. **No usarlo en tareas automáticas hasta que JP lo apruebe.** Detalle: `/short` §2c.
+`"bg_full": true`), no JP. Shorts: SOLO en el gancho y el cierre. Largos: inicio, 3–5 puntos intermedios y cierre. Publicaciones: primera y
+última imagen. Personas famosas: su propio muñeco (`"who"`). Sin párpados en ningún personaje. `"host": {"act", "mood", "pos"}` en la escena;
+`node engine3d/render_host.js <carpeta>` después de `build_timeline.py`. Detalle: `/short` §2c.
+
+**Qué hace cada formato (plan del 11 nov 2026, `plan/PLAN.md` §2b):** publicaciones = lo de hoy (skill `/publicacion`, lun/mié/vie);
+shorts = contexto que dura meses (sin "hoy"; `/short` §1c); historia 3D = alcance y marca; largos = horas de reproducción y búsqueda.
 
 **Imágenes reales en TODOS los videos** (shorts y largos): logos, sucursales, productos, sedes, personas. `scripts/fetch_images.py`
 (Openverse / Wikimedia Commons / simple-icons / salas de prensa; solo licencias libres; nunca IA de marcas o personas reales) →

@@ -97,11 +97,15 @@ solo licencias libres o salas de prensa; nunca IA de marcas o personas reales; m
 python3 scripts/script_check.py largos/$D      # debe salir ✅ (palabras, capítulos, escenas ≤ 45 palabras)
 ```
 
-### JP en 3D en los largos (pendiente de construir)
-JP quiere a su personaje 3D también en los largos, con la misma regla que en los shorts (`/short` §2c): **recorte chico con fondo
-transparente, encima de la escena, interactuando con el texto, la foto o la gráfica; nunca grande ni con fondo propio.** Los recortes ya
-se generan (`engine3d/render_host.js`), pero **`engine/long.js` (16:9) todavía no los dibuja**. Mientras no exista, produce el largo como
-siempre y dilo en el mensaje final. No inventes un parche por tu cuenta en una tarea automática.
+### JP en 3D en los largos (obligatorio desde el 11 nov 2026)
+Misma regla que en los shorts (`/short` §2c): **recorte chico con fondo transparente, encima de la escena, reaccionando al texto, la foto o
+la gráfica; nunca grande ni con fondo propio.** En un largo sale en **la primera escena, en 3 a 5 puntos intermedios (al abrir un capítulo o
+frente a la gráfica o el dato más importante) y en el cierre.** No lo pongas en escenas seguidas ni en todas.
+- En el storyboard: `"host": {"act": "senala", "mood": "up", "pos": "br"}` en la escena. Actos, ánimo, vestuario y `"who"` (personas
+  famosas): los de `/short` §2c. Tamaño por defecto 380 px (de 1080 de alto); `pos` `br` | `bl` | `bc`; `"y"` para subirlo o bajarlo.
+- Colócalo donde no tape el contenido: en `bignum`, `line`, `bars` y `table` el dato suele llegar hasta la derecha, así que usa `"pos": "bl"`,
+  un `size` menor (300) o súbelo/bájalo con `"y"`. Revisa cada hoja de QA: JP nunca encima de una cifra.
+- Flujo: `build_timeline.py` → `node engine3d/render_host.js largos/$D` → `render.js --qa`. Si cambian los tiempos, repite `render_host.js`.
 
 ## 3. Tiempos, revisión y render (sin voz; JP graba encima)
 ```bash

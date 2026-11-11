@@ -24,3 +24,7 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 | dom 15 nov 2026 · 10:00 | Largo | Cómo leer un estado de resultados (con Apple) | `largos/2026-11-15/` |
 
 **No programado:** `videos/2026-11-09-SPCX-historia/` (primera Historia 3D, SpaceX: animatic sin voz y versión con música; hecha con el motor 3D v1). `videos/extra-ACCION/` (short del largo "¿Qué es una acción?", que ya se publicó). Solo si JP lo pide.
+
+## Publicaciones (pestaña Publicaciones de YouTube; skill `/publicacion`)
+| Fecha | Tema | Carpeta |
+|---|---|---|

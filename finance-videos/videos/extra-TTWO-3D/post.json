@@ -1,0 +1,14 @@
+{
+ "title": "Take-Two sube 8.3% por las preventas de GTA VI",
+ "logo": "images/logo.png",
+ "host": {"outfit": "hoodie", "accessory": "ninguno", "prop": "ninguno"},
+ "sources": "Take-Two (SEC) · Yahoo Finance",
+ "slides": [
+  {"type": "portada", "image": "images/posters.jpg", "focus": [0.5, 0.3], "kicker": "10 nov · Take-Two (TTWO)", "title": "La dueña de GTA subió 8.3% hoy", "sub": "Y eso que ayer reportó pérdidas.", "host": {"act": "logo", "mood": "up"}, "credit": "Foto: Paul Lowry · CC BY 2.0 · Flickr"},
+  {"type": "dato", "kicker": "Lo que reportó", "title": "Vendió menos y perdió dinero", "bullets": ["Ingresos: $1,500 M (−15.6% vs. hace un año)", "Pérdida neta: $54 M en el trimestre", "Pero las preventas de GTA VI van en niveles “sin precedentes”, según su CEO"]},
+  {"type": "grafica", "kicker": "12 meses", "title": "De $258 a $225", "sub": "Sigue 13% debajo de su máximo de julio", "note": "Cierre del 10 nov: $224.64"},
+  {"type": "pregunta", "image": "images/cartel.jpg", "focus": [0.7, 0.3], "kicker": "Tu turno", "question": "¿El mayor lanzamiento de la historia o ya está todo en el precio?", "size": 78, "cta": "Te leo en los comentarios 👇", "host": {"act": "cierre"}, "credit": ""}
+ ],
+ "text": "Take-Two, la dueña de GTA, subió 8.3% el 10 de noviembre aunque un día antes reportó pérdidas. ¿Qué vio el mercado? Las preventas de GTA VI, que salen el 19 de noviembre.\n\n¿Tú qué opinas: el mayor lanzamiento de la historia o ya está todo en el precio? Te leo 👇\n\nContenido educativo. No es asesoría financiera.\n#GTA6 #TakeTwo #bolsa",
+ "poll": {"question": "¿GTA VI ya está en el precio de Take-Two?", "options": ["Sí, ya subió lo que iba a subir", "No, falta lo mejor", "No tengo idea, por eso estoy aquí"]}
+}

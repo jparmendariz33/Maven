@@ -38,7 +38,7 @@ const shotAt = async (pg, lt, d, bg = null) => Buffer.from((await pg.evaluate(([
   tl.scenes.forEach((s, i) => { if (!s.host) return; const d = +(s.t1 - s.t0).toFixed(3), n = Math.ceil((d + PAD) * FPS);
     const cfg = { seed: path.basename(vdir), ...(sb.host || {}), ...(typeof s.host === 'object' ? s.host : {}) };
     if (!cfg.act) cfg.act = i === 0 ? 'escritorio' : i === tl.scenes.length - 1 ? 'cierre' : 'senala';
-    if (!cfg.mood && s.tone) cfg.mood = s.tone;
+    if (!cfg.mood && ['up', 'down'].includes(s.tone)) cfg.mood = s.tone;
     if (!cfg.accent && sb.brand_colors && sb.brand_colors.primary) cfg.accent = sb.brand_colors.primary;
     // lado: el recorte va a la derecha (pos "br", por defecto) o a la izquierda ("bl"); JP mira hacia el centro. Logo: el de la empresa.
     cfg.side = /l$/.test(cfg.pos || 'br') ? 'l' : 'r';

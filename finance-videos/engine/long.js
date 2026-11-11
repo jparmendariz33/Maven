@@ -91,6 +91,18 @@ function logoTint(col) {
 // ---------------- imágenes reales (fetch_images.py → build_timeline.py las incrusta en V.images) ----------------
 const IMG = {}, imgWait = [];
 for (const [k, src] of Object.entries(V.images || {})) { const im = new Image(); imgWait.push(new Promise(r => { im.onload = im.onerror = r; })); im.src = src; IMG[k] = im; }
+// anfitrión 3D (JP): recortes con fondo transparente (engine3d/render_host.js), chicos y encima de la escena (igual que en los shorts)
+const HOSTF = {};
+for (const [i, h] of Object.entries(V.host || {})) { HOSTF[i] = []; for (let k = 0; k < h.n; k++) { const im = new Image(); imgWait.push(new Promise(r => { im.onload = im.onerror = r; }));
+  im.src = h.dir + String(k).padStart(4, '0') + '.png'; HOSTF[i].push(im); } }
+function drawHost(s, t) {
+  const i = V.scenes.indexOf(s), fr = HOSTF[i], h = (V.host || {})[i]; if (!s.host || !fr || !fr.length) return;
+  const im = fr[Math.max(0, Math.min(fr.length - 1, Math.floor((t - s.t0) * h.fps + 1e-6)))]; if (!im.complete || !im.naturalWidth) return;
+  const o = typeof s.host === 'object' ? s.host : {}, size = o.size || 380, pos = o.pos || 'br';
+  const x = o.x ?? (pos === 'bl' ? 30 : pos === 'bc' ? (W - size) / 2 : W - size - 30), yb = o.y ?? 885, k = seg(t, s.t0 + .05, s.t0 + .5);
+  C.save(); C.globalAlpha *= Math.min(1, k * 2); C.shadowColor = 'rgba(0,0,0,.4)'; C.shadowBlur = 28; C.shadowOffsetY = 8;
+  C.drawImage(im, x, yb - size + (1 - back(k)) * 110, size, size); C.restore();
+}
 window.IMAGES_READY = Promise.all(imgWait);
 function img(k) { const im = k && IMG[k]; return im && im.complete && im.naturalWidth ? im : null; }
 function cover(im, x, y, w, h, z = 1, fx = .5, fy = .5) {
@@ -559,6 +571,7 @@ function drawScene(ctx, s, t) {
   C.save(); scaleAt(W / 2, H * .42, 1 + .014 * seg(t, s.t0, s.t1));
   (R[s.type] || (() => txt('escena desconocida: ' + s.type, L, 500, { s: 50 })))(s, t);
   C.restore();
+  drawHost(s, t);
   chrome(s, t);
 }
 function renderAt(t) {

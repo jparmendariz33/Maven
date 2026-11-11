@@ -20,7 +20,8 @@ terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno p
 **Modelo de estilo:** `videos/2026-11-07-ABNB/` (el favorito de JP) y, para el formato y los colores de empresa, `videos/2026-11-08-CUERVO/`.
 
 ### ✅ Checklist de estilo (reglas que pidió JP — revisa TODAS antes de entregar)
-- **JP en 3D (§2c): en prueba.** No lo uses en tareas automáticas hasta que JP lo apruebe. Cuando se use: chico, recortado, sobre la foto del tema a pantalla completa.
+- **JP en 3D (§2c), obligatorio:** solo en el gancho y en el cierre, chico y recortado, sobre la foto del tema a pantalla completa (`bg_full`). Nada 3D en medio. Varía acto y vestuario respecto al short anterior.
+- **Short reactivo = short de contexto (§1c):** sin "hoy" ni fecha en el título, el gancho y el guion; la noticia es el pretexto, el ángulo dura meses.
 1. **Un video por día**, hecho el mismo día, que se publica **siempre a las 19:00 CDMX**. **Regla del cierre:** los datos son los de
    CIERRE de la sesión; nada se termina ni se entrega antes de que cierre la bolsa (`python3 scripts/market_close.py`; ver `CLAUDE.md`).
    Si JP pide un tema durante el día, prepara todo y entrégalo UNA vez, después del cierre, ya con los datos finales.
@@ -77,6 +78,18 @@ de las últimas 60 sesiones (con volumen vs promedio) y titulares semilla.
   P/E = precio ÷ suma del EPS diluido de los últimos 4 trimestres (incluido el nuevo). Ejemplo ABNB 6 nov 2026: Yahoo 42.6x,
   real 35x. Si no puedes recalcular una métrica con fuente primaria, usa otra (p. ej. margen neto del trimestre, del 8-K).
 Guarda las fuentes (URLs) para `youtube.md`.
+
+## 1c. Short reactivo = short de CONTEXTO (lunes, martes y jueves — plan del 11 nov 2026)
+Lo que pasó hoy caduca mañana, y un short se sigue viendo durante meses. Por eso la noticia del día es solo el PRETEXTO para elegir el tema;
+el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exacto vive en las publicaciones: skill `/publicacion`.)
+- **Ángulo:** qué le está pasando a la empresa (el mes, el trimestre, el año), por qué, y qué viene o qué tiene planeado. Ej.: no "Nvidia
+  cayó 5% hoy", sino "Nvidia lleva un mes cayendo: esto pasa y esto es lo que planea". O "Apple sacó X: esto es lo que puede implicar".
+- **Sin "hoy", "ayer", "esta mañana" ni fechas del día** en el título, el gancho y el guion. Usa marcos largos ("en el último mes", "este
+  año", "desde su máximo"). La fecha de los datos va solo en la descripción y en la fuente pequeña de pantalla.
+- **Gancho con la cifra de periodo largo** (1 mes, 3 meses, en el año, desde el máximo), no con la del día.
+- **Cierre:** qué vigilar en los próximos meses (un evento, un dato, un lanzamiento), no "mañana veremos".
+- Sigue valiendo todo lo demás: datos de cierre verificados (Regla del cierre), no repetir empresas, fotos reales, nunca recomendación.
+- Los shorts de viernes, sábado y domingo (Análisis + Potencial) y el derivado del miércoles ya son atemporales: no cambian.
 
 ## 1b. Modo empresa (viernes, sábado y domingo)
 **Cómo elegir la empresa** (tómala tú, sin preguntar; revisa `plan/banco-empresas.md` y `videos/` para no repetir):
@@ -169,21 +182,20 @@ python3 scripts/fetch_images.py add videos/$ID fachada "https://…" --credit "F
 El pie de foto (autor · licencia) sale solo en pantalla. En `youtube.md` pega la lista de `python3 scripts/fetch_images.py credits videos/$ID`.
 
 ## 2c. JP en 3D: el anfitrión del canal, como recorte sobre el tema
-> **ESTADO (11 nov 2026): en prueba.** JP está revisando el formato. **En las tareas automáticas NO pongas `"host"` todavía**; úsalo solo
-> si JP lo pide en el chat. Cuando lo apruebe, esta nota se cambia por "obligatorio".
+> **ESTADO: aprobado por JP el 11 nov 2026. Obligatorio en TODOS los shorts, también en las tareas automáticas.**
 
 **Regla de JP: el protagonista es el TEMA del video, no él.** Su personaje 3D (plastilina, sin párpados) sale como un **recorte con fondo
 transparente**: solo él y los objetos con los que interactúa (escritorio, laptop con el logo de la empresa, ficha del logo, flecha, taza…).
 Va **chico (≈1/8 de la pantalla), en una esquina, encima de la escena**, y reacciona a lo que hay en ella: mira el dato, lo señala, se
 apoya en el logo, piensa frente a la gráfica. Nunca media pantalla, nunca con un fondo propio.
 
-- **Mínimo 3 escenas por video: el gancho, una a la mitad y el cierre.** Puede ir sobre CUALQUIER tipo de escena (también `price`, `bars`, `company`…).
+- **En los shorts JP sale SOLO en dos escenas: el gancho (la primera) y el cierre (la última).** En medio no va ningún personaje ni figura
+  3D (JP, 11 nov 2026): ahí mandan las fotos, los datos y las gráficas.
 - **En `hook`, `statement`, `catalyst` y `outro` la foto del tema va a TODA la pantalla:** `"bg_image": "images/....jpg", "bg_full": true`
   (+ `"focus": [x, y]`). Es una de las fotos reales del video (§2b), a color, con un velo oscuro para leer el texto. Sin ella la escena no
   dice de qué trata el video.
 ```json
 {"type": "hook", "bg_image": "images/producto.jpg", "bg_full": true, "host": {"act": "escritorio", "mood": "up"}, ...}
-{"type": "price", "host": {"act": "piensa", "size": 400}, ...}
 {"type": "outro", "bg_image": "images/tienda.jpg", "bg_full": true, "host": {"act": "cierre"}, ...}
 ```
 - `act`: `escritorio` (teclea, levanta la vista al dato y reacciona; el logo va en su laptop) · `cafe` (igual, con sorbo) · `logo` (presenta
@@ -196,9 +208,15 @@ apoya en el logo, piensa frente a la gráfica. Nunca media pantalla, nunca con u
 - **Variar en cada video:** no repitas la combinación de actos del short anterior. El vestuario sale de la fecha de la carpeta; para fijarlo:
   `"host": {"outfit": "negra|blanca|hoodie|blazer|polo|sueter", "accessory": "ninguno|lentes|gorra|audifonos|reloj", "prop": "ninguno|cafe|telefono"}` a nivel del storyboard.
 - **Personas famosas:** si la escena habla de alguien conocido (un CEO, un fundador), el muñeco de esa escena debe ser ESA persona
-  (caricatura de plastilina con sus rasgos públicos), no JP. Todavía no existe en este motor: mientras tanto, esa escena lleva la foto real
-  de la persona sin muñeco, y JP sale en las escenas generales.
+  (caricatura de plastilina con sus rasgos públicos), no JP. En el `host` de esa escena pon `"who"` con opciones de `L.actor` sacadas de
+  fotos reales de la persona: `{"who": {"skin": "#F0D2B8", "hair": "#8A8A8A", "hairStyle": "short|side|mop|quiff|bald", "glasses": true,
+  "beard": "#555", "shirt": "#111111", "collar": "turtle|suit|crew|polo|hoodie", "tie": "#hex", "pants": "#3F5E8C"}}`. Solo rasgos públicos y
+  neutrales (peinado, lentes, barba, ropa típica); nada burlón. En un short esto solo aplica si el gancho o el cierre son sobre esa persona.
 - Flujo: `build_timeline.py` → **`node engine3d/render_host.js videos/$ID`** (≈1 min; solo re-renderiza lo que cambió) → `render.js --qa`.
+- **No repitas la misma foto en escenas seguidas** (corrección de JP): si una escena usa `bg_image` + `bg_full` con una foto, la escena
+  siguiente o anterior NO puede ser una `photo` con esa misma foto (se ve como si la escena se repitiera). Usa otra foto u otro tipo de escena.
+- **Fotos con franjas claras:** si la foto tiene una zona blanca o gris justo donde va JP (parece un piso raro bajo su escritorio), cambia el
+  `focus`, mueve a JP (`pos`) o elige otra foto.
 - En `qa.jpg`: que JP no tape cifras ni el título, que el tema se reconozca de un vistazo y que JP se vea chico.
   Hoja de pruebas del personaje: `node engine3d/render_host.js --sheet /ruta/hoja.jpg images/logo.png`. Personaje: `engine3d/host.js`.
 

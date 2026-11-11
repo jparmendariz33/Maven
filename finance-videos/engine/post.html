@@ -1,0 +1,66 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Costa Studio Finance · publicación</title>
+<style>
+@font-face{font-family:'Unbounded';src:url('../assets/fonts/Unbounded-600.ttf');font-weight:600}
+@font-face{font-family:'Unbounded';src:url('../assets/fonts/Unbounded-800.ttf');font-weight:800}
+@font-face{font-family:'Space Grotesk';src:url('../assets/fonts/SpaceGrotesk-500.ttf');font-weight:500}
+@font-face{font-family:'Space Grotesk';src:url('../assets/fonts/SpaceGrotesk-700.ttf');font-weight:700}
+@font-face{font-family:'Instrument Serif';src:url('../assets/fonts/InstrumentSerif-400.ttf');font-style:italic;font-weight:400}
+html,body{margin:0;background:#111}
+</style></head>
+<body><canvas id="c" width="1080" height="1080"></canvas>
+<script>
+// Dibuja UNA imagen de la publicación (1080x1080). Estilo Costa Studio Finance; la foto del tema va a todo el fondo y JP, chico, encima.
+const S = 1080, cv = document.getElementById('c'), C = cv.getContext('2d');
+const B = { arena: '#EBE6BA', azul: '#4173D1', negro: '#0A0A0A', mostaza: '#C7A317', musgo: '#7E8C54', terracota: '#BB6F58' };
+const F = { d: 'Unbounded', b: '"Space Grotesk"', s: '"Instrument Serif"' };
+const load = src => src ? new Promise(r => { const im = new Image(); im.onload = () => r(im); im.onerror = () => r(null); im.src = src; }) : null;
+function T(s, x, y, o = {}) { C.save(); C.font = `${o.it ? 'italic ' : ''}${o.w || 500} ${o.s || 40}px ${o.f || F.b}`; C.fillStyle = o.c || B.negro; C.textAlign = o.al || 'left'; C.globalAlpha = o.a ?? 1; if (o.ls) C.letterSpacing = o.ls + 'px'; C.fillText(s, x, y); C.restore(); }
+function tw(s, o) { C.save(); C.font = `${o.it ? 'italic ' : ''}${o.w || 500} ${o.s || 40}px ${o.f || F.b}`; const m = C.measureText(s).width; C.restore(); return m; }
+function wrap(s, o, max) { const out = []; let cur = ''; for (const w of String(s).split(' ')) { const t = cur ? cur + ' ' + w : w; if (tw(t, o) > max && cur) { out.push(cur); cur = w; } else cur = t; } if (cur) out.push(cur); return out; }
+function para(s, x, y, o, max, lh) { const ls = wrap(s, o, max); ls.forEach((l, i) => T(l, x, y + i * lh, o)); return y + ls.length * lh; }
+function cover(im, fx = .5, fy = .5) { const k = Math.max(S / im.naturalWidth, S / im.naturalHeight), w = im.naturalWidth * k, h = im.naturalHeight * k; C.drawImage(im, (S - w) * fx, (S - h) * fy, w, h); }
+window.drawSlide = async ({ s, i, n, brand, image, logo, series, sources }) => {
+  const im = await load(image), lg = await load(logo), host = await load(s._host);
+  const dark = !!im || s.theme === 'azul', ink = dark ? B.arena : B.negro, f = s.focus || [.5, .5];
+  C.clearRect(0, 0, S, S); C.fillStyle = s.theme === 'azul' ? B.azul : B.arena; C.fillRect(0, 0, S, S);
+  if (im) { C.save(); C.filter = 'saturate(.92) contrast(1.05)'; cover(im, f[0], f[1]); C.restore();
+    const g = C.createLinearGradient(0, 0, 0, S); g.addColorStop(0, 'rgba(6,9,20,.82)'); g.addColorStop(.55, 'rgba(6,9,20,.5)'); g.addColorStop(1, 'rgba(6,9,20,.68)'); C.fillStyle = g; C.fillRect(0, 0, S, S); }
+  // encabezado de marca + contador
+  T((brand.division ? 'COSTA STUDIO ' + brand.division : brand.name || 'COSTA STUDIO').toUpperCase(), 70, 92, { f: F.d, w: 800, s: 22, ls: 5, c: ink });
+  T([brand.byline, brand.handle].filter(Boolean).join('  ·  '), 70, 126, { s: 22, c: ink, a: .75 });
+  T(`${i + 1} / ${n}`, S - 70, 100, { f: F.d, w: 600, s: 24, al: 'right', c: ink, a: .8 });
+  let y = 250;
+  if (s.kicker) { C.fillStyle = ink; C.fillRect(70, y - 12, 44, 3); T(s.kicker.toUpperCase(), 130, y, { s: 24, ls: 4, c: ink }); y += 80; }
+  if (s.type === 'portada') {
+    y = para(s.title, 70, y + 30, { f: F.d, w: 800, s: s.size || 84, c: ink }, 940, (s.size || 84) * 1.14) + 20;
+    if (s.sub) para(s.sub, 70, y + 20, { s: 42, c: ink, a: .92 }, 720, 54);
+  } else if (s.type === 'dato') {
+    if (s.title) y = para(s.title, 70, y, { f: F.d, w: 800, s: 54, c: ink }, 940, 64) + 10;
+    if (s.big) { let sz = 210; while (tw(s.big, { f: F.d, w: 800, s: sz }) > 940 && sz > 90) sz -= 10; T(s.big, 70, y + sz * .82, { f: F.d, w: 800, s: sz, c: s.tone === 'down' ? B.terracota : s.tone === 'up' ? (dark ? '#DDE8B8' : B.musgo) : (dark ? B.arena : B.azul) }); y += sz + 40; }
+    if (s.text) y = para(s.text, 70, y + 20, { s: 44, c: ink }, 940, 58) + 16;
+    (s.bullets || []).forEach((b, k) => { C.fillStyle = dark ? B.mostaza : B.azul; C.beginPath(); C.arc(88, y + 8, 18, 0, 7); C.fill(); T(String(k + 1), 88, y + 17, { w: 700, s: 24, al: 'center', c: dark ? B.negro : B.arena });
+      y = para(b, 126, y + 20, { s: 40, c: ink }, 880, 52) + 22; });
+  } else if (s.type === 'grafica') {
+    if (s.title) y = para(s.title, 70, y, { f: F.d, w: 800, s: 62, c: ink }, 940, 72);
+    if (s.sub) { T(s.sub, 70, y + 16, { s: 38, c: ink, a: .8 }); y += 50; }
+    const pts = (series || []).slice(-(s.days || 250)), x0 = 90, x1 = 990, y0 = y + 60, y1 = 860;
+    if (pts.length > 2) { const v = pts.map(p => p[1]), lo = Math.min(...v), hi = Math.max(...v), px = k => x0 + (x1 - x0) * k / (pts.length - 1), py = q => y1 - (y1 - y0) * (q - lo) / (hi - lo || 1);
+      C.strokeStyle = dark ? 'rgba(235,230,186,.2)' : 'rgba(10,10,10,.12)'; C.lineWidth = 2; for (let k = 0; k <= 3; k++) { const yy = y0 + (y1 - y0) * k / 3; C.beginPath(); C.moveTo(x0, yy); C.lineTo(x1, yy); C.stroke(); T('$' + (hi - (hi - lo) * k / 3).toFixed(0), x0 - 8, yy - 8, { s: 22, c: ink, a: .6 }); }
+      C.beginPath(); pts.forEach((p, k) => k ? C.lineTo(px(k), py(p[1])) : C.moveTo(px(k), py(p[1]))); C.strokeStyle = ink; C.lineWidth = 5; C.lineJoin = 'round'; C.stroke();
+      C.lineTo(x1, y1); C.lineTo(x0, y1); C.closePath(); C.fillStyle = dark ? 'rgba(235,230,186,.12)' : 'rgba(65,115,209,.14)'; C.fill();
+      const lx = px(pts.length - 1), ly = py(v[v.length - 1]); C.fillStyle = B.azul; C.beginPath(); C.arc(lx, ly, 12, 0, 7); C.fill(); C.strokeStyle = B.arena; C.lineWidth = 4; C.stroke();
+      T('$' + v[v.length - 1].toFixed(2), lx - 10, ly - 26, { f: F.d, w: 600, s: 34, al: 'right', c: ink }); }
+    if (s.note) T(s.note, 70, 930, { s: 34, c: ink, a: .85 });
+  } else if (s.type === 'pregunta') {
+    y = para(s.question, 70, y + 40, { f: F.s, it: true, w: 400, s: s.size || 96, c: ink }, 940, (s.size || 96) * 1.08) + 30;
+    (s.options || []).forEach(o => { const w = tw(o, { w: 700, s: 38 }) + 80; C.beginPath(); C.roundRect(70, y, w, 84, 42); C.fillStyle = dark ? B.arena : B.azul; C.fill(); T(o, 110, y + 55, { w: 700, s: 38, c: dark ? B.azul : B.arena }); y += 108; });
+    if (s.cta) T(s.cta, 70, y + 50, { s: 36, c: ink, a: .9 });
+  }
+  if (lg && s.show_logo) { const z = 150; C.fillStyle = '#F7F5EE'; C.beginPath(); C.roundRect(S - 70 - z, 150, z, z, 28); C.fill(); const k = Math.min(z * .76 / lg.naturalWidth, z * .76 / lg.naturalHeight); C.drawImage(lg, S - 70 - z / 2 - lg.naturalWidth * k / 2, 150 + z / 2 - lg.naturalHeight * k / 2, lg.naturalWidth * k, lg.naturalHeight * k); }
+  if (host) { const z = s.host_size || 400, o = typeof s.host === 'object' ? s.host : {}, x = /l$/.test(o.pos || 'br') ? 10 : S - z - 10; C.save(); C.shadowColor = 'rgba(0,0,0,.45)'; C.shadowBlur = 30; C.shadowOffsetY = 8; C.drawImage(host, x, S - z - 70, z, z); C.restore(); }
+  const foot = i === n - 1 ? [sources ? 'Datos: ' + sources : '', brand.disclaimer || 'Contenido educativo. No es asesoría financiera.'].filter(Boolean).join('  ·  ') : (s.credit || '');
+  if (foot) T(foot, 70, S - 38, { s: 21, c: ink, a: .7 });
+  return cv.toDataURL('image/png');
+};
+</script></body></html>

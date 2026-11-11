@@ -79,13 +79,6 @@
    "kicker": "El giro",
    "text": "Al mercado le importó otra cosa.",
    "emphasis": "otra cosa.",
-   "host": {
-    "act": "senala",
-    "mood": "up",
-    "pos": "bl"
-   },
-   "bg_image": "images/zelnick.jpg",
-   "bg_full": true,
    "focus": [
     0.5,
     0.3
@@ -185,11 +178,7 @@
      "cue": "salto",
      "dir": -1
     }
-   ],
-   "host": {
-    "act": "piensa",
-    "size": 400
-   }
+   ]
   },
   {
    "type": "catalyst",
