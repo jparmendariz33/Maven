@@ -32,6 +32,10 @@ Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL
 `setup.sh` → `market_close.py` (¿ya cerró?) → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →
 `process_voice.py` → `build_timeline.py` → `engine3d/render_host.js` (JP en 3D) → `render.js --qa` (revisar) → `make_audio.py` → `render.js` → youtube.md → commit.
 
+**Rama y tareas:** todo el proyecto vive en la rama `costa-studio-finance` de `jparmendariz33/Maven` (Costa Studio, la agencia, es otra
+empresa: no mezclar nombres). Las instrucciones de las tareas programadas están en `plan/tareas.md`. Un solo MP4 por pieza en GitHub
+(sin renders de prueba ni versiones alternas: el repo crece con cada video).
+
 ## Regla del cierre (pedida por JP, 9 nov 2026 — aplica a TODO video que lleve datos de mercado)
 **Ningún video con precios, porcentajes del día o valor de mercado se termina ni se entrega antes del cierre de la sesión ordinaria
 de Wall Street** (16:00 de Nueva York = 15:00 CDMX en invierno y 14:00 CDMX durante el horario de verano de EE.UU.; la BMV cierra a

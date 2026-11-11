@@ -59,5 +59,5 @@ Mira TODAS las imágenes: que nada se encime, que JP no tape texto, que el tema 
 1. Envía las imágenes con SendUserFile (todas juntas, en orden).
 2. **Siempre** pega en el mensaje, en un bloque para copiar, la **DESCRIPCIÓN de la publicación** (es lo único que pide YouTube además de las
    imágenes: el campo `text`; no lleva título). Debe tener sentido por sí sola: qué pasó, la fecha, la pregunta y 2–3 hashtags. Si hay encuesta, pégala aparte.
-3. Agrega la publicación a `plan/publicados.md` (tabla "Publicaciones") y haz commit + push a `costa-studio`.
+3. Agrega la publicación a `plan/publicados.md` (tabla "Publicaciones") y haz commit + push a `costa-studio-finance`.
 4. Recuérdale: "Publícala hoy alrededor de las 17:00 desde YouTube → Crear → Crear publicación → Imagen".

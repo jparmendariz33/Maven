@@ -208,7 +208,7 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 3. **Canal configurado** (kit en `canal/`): verificación con teléfono, banner, descripción, plantilla de descripción, 5 listas por pilar.
 4. **Colchón:** siempre 1–2 largos listos por adelantado.
 5. **Miniaturas** automáticas + "Probar y comparar" de YouTube.
-6. **Costo cero:** nada de vidIQ ni servicios de pago. Búsquedas con el autocompletado de YouTube; voz tuya; CapCut gratis.
+6. **Costo cero:** nada de servicios de pago; vidIQ solo para elegir tema y título del ranking del domingo (tope de 15 créditos; `/short` §1d). Búsquedas con el autocompletado de YouTube; voz tuya; CapCut gratis.
    (Recomendación opcional: micrófono de solapa ~$300–600 MXN.)
 7. **Medición:** cada domingo mándame una captura de YouTube Studio → Analytics (o pégala en `plan/metricas.md`).
 
@@ -238,9 +238,10 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 - [ ] **Tú, cada domingo:** 2 min en `metricas.md` (o mándame una captura de YouTube Studio).
 
 ## 9. Tareas programadas (actualizado el 11 nov 2026)
-Las tareas de producción corren dentro de la conversación de Claude "session_01FvjQ3qKsfHX4rzw8jtw3Rk" (la única con permiso de escritura
-en el repo). Cada una lee su texto base de la tarea original, que quedó EN PAUSA (no borrarla). Si esa conversación se archiva, hay que
-recrearlas o hacer el arreglo de fondo (§8).
+**Las instrucciones de cada tarea viven en [`tareas.md`](tareas.md)** (la tarea programada solo dice qué sección ejecutar). Rama del
+proyecto: **`costa-studio-finance`**. Por ahora las tareas corren dentro de la conversación de Claude "session_01FvjQ3qKsfHX4rzw8jtw3Rk"
+(la única con permiso de escritura); cuando JP agregue el repo al entorno "Juan Pa" se pasan a sesiones nuevas y dejan de depender de ella.
+Las tareas originales siguen en pausa solo como respaldo.
 
 | Tarea activa | Cuándo | ID | Texto base (en pausa) |
 |---|---|---|---|

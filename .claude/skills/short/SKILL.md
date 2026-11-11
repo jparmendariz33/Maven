@@ -111,6 +111,12 @@ Cuenta regresiva: del último lugar al número 1. Sirve para shorts, publicacion
   lleva por qué se vigila Y su riesgo, con el mismo peso. Es una lista de seguimiento, no de compra: dilo una vez en el video y en la descripción.
   Si alguna empresa está en `posiciones-jp.md`, se declara como "Costa Studio Finance tiene posición en <empresa>".
 - **Vigencia:** evita rankings atados a un mes ("para diciembre"); caducan en semanas. Mejor "de 2026", "de los últimos 12 meses", "de la década".
+- **vidIQ para elegir tema y título (permitido por JP el 11 nov 2026; única excepción a "costo cero"):** carga con ToolSearch
+  `select:mcp__vidIQ__vidiq_balance,mcp__vidIQ__vidiq_keyword_research,mcp__vidIQ__vidiq_outliers`. Mira el saldo (`vidiq_balance`, gratis);
+  con `vidiq_keyword_research` compara 3–5 ideas de ranking (volumen y competencia en español) y, si alcanza, `vidiq_outliers` para ver qué
+  rankings de finanzas han pegado. **Tope: 15 créditos por ranking.** vidIQ solo ayuda a decidir QUÉ ranking hacer y cómo titularlo; el
+  ranking en sí sale de datos financieros verificados. Si no hay saldo o la herramienta falla, sigue sin ella. Di en el mensaje final
+  cuántos créditos usaste y cuántos quedan. No uses vidIQ para nada más (ni voz, ni guion, ni miniaturas).
 - **Cuándo: se publica el DOMINGO 19:00 y se produce el SÁBADO en la mañana** (para que JP tenga un día para grabar). La carpeta lleva la
   fecha del domingo. El short del domingo es un ranking (en lugar del Análisis + Potencial de ese día) y va
   acompañado de su publicación de 4 imágenes: portada + puestos 5–4 + puestos 3–2 + el #1 con la pregunta (`/publicacion`). Alterna cada
