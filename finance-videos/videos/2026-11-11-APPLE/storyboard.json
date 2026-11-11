@@ -27,9 +27,9 @@
    "decimals": 1,
    "unit": "",
    "tone": "up",
-   "caption": "son ganancia. Un súper: menos de $5",
+   "caption": "son ganancia para Apple",
    "cue_value": "casi",
-   "say": "De cada 100 dólares que le pagas a Apple, casi 28 son ganancia. Un súper suele quedarse con menos de 5."
+   "say": "De cada 100 dólares que le pagas a Apple, casi 28 son ganancia."
   },
   {
    "type": "statement",

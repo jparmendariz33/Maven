@@ -10,7 +10,7 @@ De cada $100 que le pagas a Apple, $28 son ganancia #Apple #bolsa
 
 **Descripción** (en la app: "Mostrar más" → Descripción):
 ```
-De cada 100 dólares que le pagas a Apple, casi 28 son ganancia. Un súper suele quedarse con menos de 5. ¿A dónde se van los otros 72?
+De cada 100 dólares que le pagas a Apple, casi 28 son ganancia. ¿A dónde se van los otros 72?
 
 Datos del año fiscal 2026 de Apple (reporte 8-K a la SEC). Es un adelanto del video del domingo 15 de noviembre: "Cómo leer un estado de resultados (con Apple)". Míralo completo en el canal.
 
@@ -45,7 +45,7 @@ Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa St
 - "No es para niños" · Contenido alterado o sintético: **No**.
 
 ## Guion para leer
-De cada 100 dólares que le pagas a Apple, casi 28 son ganancia. Un súper suele quedarse con menos de 5.
+De cada 100 dólares que le pagas a Apple, casi 28 son ganancia.
 
 Entonces, ¿a dónde se van los otros 72?
 
