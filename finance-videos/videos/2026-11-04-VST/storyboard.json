@@ -1,0 +1,281 @@
+{
+ "ticker": "VST",
+ "title": "Vistra cae 12% tras las elecciones intermedias (nov 2026)",
+ "scenes": [
+  {
+   "type": "hook",
+   "say": "Vistra se desplomó 12% en un solo día. ¿Qué pasó?",
+   "kicker": "NYSE · VST",
+   "title": "Vistra",
+   "value": -12.3,
+   "decimals": 1,
+   "unit": "%",
+   "tone": "down",
+   "caption": "en un solo día · 4 nov",
+   "question": "¿Qué pasó?",
+   "cue_value": "desplomó",
+   "cue_question": "pasó"
+  },
+  {
+   "type": "company",
+   "say": "Vistra genera electricidad con gas, nuclear y solar, y se la vende a centros de datos. Vale 41 mil millones de dólares.",
+   "name": "Vistra Corp.",
+   "line": "Genera y vende electricidad en EE. UU.",
+   "chips": [
+    {
+     "label": "Gas",
+     "cue": "gas"
+    },
+    {
+     "label": "Nuclear",
+     "cue": "nuclear"
+    },
+    {
+     "label": "Solar",
+     "cue": "solar"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Valor de mercado",
+     "value": "$41.1 mil M",
+     "cue": "Vale"
+    },
+    {
+     "label": "Capacidad",
+     "value": "44 GW",
+     "cue": "genera"
+    },
+    {
+     "label": "Clientes",
+     "value": "5 M",
+     "cue": "centros"
+    }
+   ]
+  },
+  {
+   "type": "price",
+   "say": "Hace un año valía 191 dólares. En octubre rebotó a 166. Hoy vale 122.",
+   "title": "De $191 a $122",
+   "subtitle": "−34% en 12 meses",
+   "annotations": [
+    {
+     "date": "2025-11-07",
+     "label": "$191.00",
+     "sub": "Máximo · nov 2025",
+     "cue": "valía"
+    },
+    {
+     "date": "2026-10-07",
+     "label": "$166.72",
+     "sub": "Rebote · 7 oct",
+     "tone": "up",
+     "cue": "rebotó",
+     "dir": -1
+    },
+    {
+     "date": "2026-11-04",
+     "label": "$122.36",
+     "sub": "Hoy · mínimo del año",
+     "tone": "down",
+     "cue": "Hoy"
+    }
+   ]
+  },
+  {
+   "type": "news",
+   "say": "¿La razón? Los demócratas arrasaron en las elecciones intermedias. El mercado teme más reglas para los centros de datos, sobre todo en Texas.",
+   "kicker": "4 NOV · EL DETONANTE",
+   "headline": "Victoria demócrata en las intermedias",
+   "source": "Reuters · BofA",
+   "bullets": [
+    {
+     "text": "Caen las acciones de energía",
+     "sub": "Constellation −5% · GE Vernova −6%",
+     "cue": "arrasaron",
+     "tone": "down"
+    },
+    {
+     "text": "Más vigilancia al boom de la IA",
+     "sub": "nuevas reglas para centros de datos",
+     "cue": "mercado"
+    },
+    {
+     "text": "Riesgo regulatorio en Texas",
+     "sub": "su mercado más importante",
+     "cue": "reglas",
+     "tone": "down"
+    }
+   ]
+  },
+  {
+   "type": "zoom",
+   "say": "Pero ya venía bajando desde octubre: lleva 27% de caída.",
+   "sessions": 25,
+   "title": "−27% desde el 7 de octubre",
+   "events": [
+    {
+     "date": "2026-10-22",
+     "label": "−9.8%",
+     "sub": "22 oct · volumen 1.7x",
+     "tone": "down",
+     "cue": "octubre"
+    },
+    {
+     "date": "2026-11-04",
+     "label": "−12.3%",
+     "sub": "4 nov · elecciones",
+     "tone": "down",
+     "cue": "caída"
+    }
+   ]
+  },
+  {
+   "type": "bars",
+   "say": "En su último trimestre, sus ingresos bajaron 5%.",
+   "count": 6,
+   "cue_revenue": "ingresos",
+   "cue_net": "trimestre",
+   "note": "−5.5% ingresos a/a",
+   "note_sub": "T2 2026 vs T2 2025",
+   "note_tone": "down",
+   "cue_note": "bajaron"
+  },
+  {
+   "type": "metric",
+   "say": "Su P/E es de 21: pagas 21 dólares por cada dólar que gana. Menos que el S&P 500.",
+   "kicker": "Valuación · 1/3",
+   "label": "P/E",
+   "fullname": "Precio / Utilidad",
+   "value": 20.6,
+   "decimals": 1,
+   "suffix": "x",
+   "explain": "Pagas $20.6 por cada $1 de utilidad",
+   "scale": {
+    "min": 0,
+    "max": 60,
+    "bands": [
+     [
+      0,
+      15,
+      "Barata"
+     ],
+     [
+      15,
+      30,
+      "Justa"
+     ],
+     [
+      30,
+      60,
+      "Cara"
+     ]
+    ],
+    "ref": {
+     "value": 24.5,
+     "label": "S&P 500"
+    }
+   },
+   "verdict": "Justa",
+   "verdict_tone": "accent",
+   "cue_value": "P/E",
+   "cue_explain": "pagas",
+   "cue_gauge": "S&P"
+  },
+  {
+   "type": "metric",
+   "say": "Su PEG, el precio contra el crecimiento, es menor a 1: suele verse barato.",
+   "kicker": "Valuación · 2/3",
+   "label": "PEG",
+   "fullname": "P/E ÷ crecimiento esperado",
+   "value": 0.39,
+   "decimals": 2,
+   "suffix": "",
+   "explain": "Menos de 1 suele verse barato",
+   "scale": {
+    "min": 0,
+    "max": 4,
+    "bands": [
+     [
+      0,
+      1,
+      "Barata"
+     ],
+     [
+      1,
+      2,
+      "Justa"
+     ],
+     [
+      2,
+      4,
+      "Cara"
+     ]
+    ]
+   },
+   "verdict": "Barata",
+   "verdict_tone": "up",
+   "cue_value": "PEG",
+   "cue_explain": "crecimiento",
+   "cue_gauge": "barato"
+  },
+  {
+   "type": "metric",
+   "say": "Y su ROE es de 43%: por cada 100 dólares del accionista, genera 43.",
+   "kicker": "Rentabilidad · 3/3",
+   "label": "ROE",
+   "fullname": "Retorno sobre capital",
+   "value": 43.0,
+   "decimals": 0,
+   "suffix": "%",
+   "explain": "Por cada $100 del accionista, genera $43",
+   "scale": {
+    "min": 0,
+    "max": 60,
+    "bands": [
+     [
+      0,
+      10,
+      "Bajo",
+      "down"
+     ],
+     [
+      10,
+      20,
+      "Bueno",
+      "accent"
+     ],
+     [
+      20,
+      60,
+      "Excelente",
+      "up"
+     ]
+    ]
+   },
+   "verdict": "Excelente",
+   "verdict_tone": "up",
+   "cue_value": "ROE",
+   "cue_explain": "accionista",
+   "cue_gauge": "genera"
+  },
+  {
+   "type": "catalyst",
+   "say": "Este jueves presenta resultados.",
+   "kicker": "Próximo catalizador",
+   "date": "6 NOV",
+   "label": "Resultados T3 2026",
+   "sub": "y guía para 2027",
+   "cue_date": "jueves"
+  },
+  {
+   "type": "outro",
+   "say": "¿Oportunidad... o señal de alerta?",
+   "question_a": "¿Oportunidad…",
+   "question_b": "o señal de alerta?",
+   "cue_a": "Oportunidad",
+   "cue_b": "alerta",
+   "sources": "Yahoo Finance · Reuters · Vistra"
+  }
+ ]
+}

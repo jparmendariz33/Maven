@@ -9,7 +9,7 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 | ~5 nov 2026 | Largo | ¿Qué es una acción y por qué sube o baja? (versión con voz de IA, 8:38) | `largos/publicado-que-es-una-accion-voz/` |
 | ~5 nov 2026 | Short | Nvidia cayó 9% en un día y el Nasdaq entró en corrección (NVDA) | (hecho por la tarea del 5 nov; no llegó a GitHub) |
 | antes del 7 nov 2026 | Short | Meta: ¿oportunidad o alerta? (META) | `videos/2026-11-04-META/` |
-| antes del 7 nov 2026 | Short | Vistra se desploma 12% en un día (VST) | — |
+| antes del 7 nov 2026 | Short | Vistra se desploma 12% en un día (VST) | `videos/2026-11-04-VST/` |
 | antes del 7 nov 2026 | Short | ¿Por qué se desplomó Sea Limited? −24% en 7 días (SE) | `videos/ejemplo-SE/` |
 
 ## Programado (ya producido, aún no publicado)
@@ -23,4 +23,4 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 | sáb 14 nov 2026 · 12:00 | Historia 3D | Steve Jobs: lo sacaron de su propia empresa (Apple) | `videos/2026-11-14-JOBS-historia/` |
 | dom 15 nov 2026 · 10:00 | Largo | Cómo leer un estado de resultados (con Apple) | `largos/2026-11-15/` |
 
-**No programado:** `videos/extra-ACCION/` (short del largo "¿Qué es una acción?", que ya se publicó). Solo si JP lo pide.
+**No programado:** `videos/2026-11-09-SPCX-historia/` (primera Historia 3D, SpaceX: animatic sin voz y versión con música; hecha con el motor 3D v1). `videos/extra-ACCION/` (short del largo "¿Qué es una acción?", que ya se publicó). Solo si JP lo pide.

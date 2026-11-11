@@ -40,5 +40,5 @@ son una guía: **verifícalos con fuente primaria antes de usarlos.**
 ## Ya publicadas (no repetir)
 | Se publica | Historia | Carpeta |
 |---|---|---|
-| (primera, 9 nov 2026; rama claude/elegant-mendel-dm8amd) | SpaceX: de casi quebrar a la IPO más grande de la historia (SPCX) | `videos/2026-11-09-SPCX-historia/` (animatic; no está en costa-studio) |
+| (primera, 9 nov 2026) | SpaceX: de casi quebrar a la IPO más grande de la historia (SPCX) | `videos/2026-11-09-SPCX-historia/` (animatic y versión con música) |
 | sáb 14 nov 2026 · 12:00 | Steve Jobs: lo sacaron de su propia empresa (Apple, AAPL) | `videos/2026-11-14-JOBS-historia/` |

@@ -1,0 +1,755 @@
+{
+ "ticker": "SPCX",
+ "name": "Space Exploration Technologies Corp.",
+ "short_name": "Space Exploration Technologies ",
+ "exchange": "NasdaqGS",
+ "currency": "USD",
+ "sector": "Industrials",
+ "industry": "Aerospace & Defense",
+ "business_summary": "Space Exploration Technologies Corp. provides satellite-based broadband services in the United States, Ireland, Canada, and internationally. It operates through three operating segments: Space, Connectivity, and AI. The Space segment designs, manufactures, and launches reusable rockets to provide access to space. It also provides launch services for the deployment of payloads to intended orbits for commercial and government customers utilizing Falcon 9 and Falcon Heavy; and engages in the launch and development for the development of spacecraft and the provision of launch and mission services for government agency space programs utilizing Falcon 9, Falcon Heavy, Starship, and Dragon. Its company's Connectivity segment operates broadband data and communications network by various Starlink satellites in low-earth orbit, delivering connectivity to various consumers, enterprise, and government customers. The company's AI segment operates a vertically integrated AI platform spanning a frontier LLM Grok; AI solutions for consumer and enterprise customers; X, a real-time information, entertainment, and free speech platform; and AI computational infrastructure. Space Exploration Technologies Corp. was incorporated in 2002 and is based in Starbase, Texas.",
+ "as_of": "2026-11-06",
+ "fetched_at": "2026-11-09T03:49:25+00:00",
+ "price": 134.27,
+ "high_52w": 225.64,
+ "low_52w": 104.83,
+ "close_high_1y": {
+  "date": "2026-06-16",
+  "close": 211.39
+ },
+ "close_low_1y": {
+  "date": "2026-08-05",
+  "close": 108.27
+ },
+ "change_pct": {
+  "1d": 8.62,
+  "5s": -0.33,
+  "15s": -8.05,
+  "1m": -16.38,
+  "3m": -3.22,
+  "6m": null,
+  "1y": -16.58,
+  "ytd": -16.58,
+  "from_1y_high": -36.48
+ },
+ "biggest_moves_60s": [
+  {
+   "date": "2026-10-22",
+   "close": 144.75,
+   "pct": -9.14,
+   "volume": 197046500,
+   "vol_x": 2.33
+  },
+  {
+   "date": "2026-11-05",
+   "close": 123.62,
+   "pct": -9.05,
+   "volume": 171356200,
+   "vol_x": 1.7
+  },
+  {
+   "date": "2026-11-06",
+   "close": 134.27,
+   "pct": 8.62,
+   "volume": 114807000,
+   "vol_x": 1.11
+  },
+  {
+   "date": "2026-10-21",
+   "close": 159.31,
+   "pct": 7.79,
+   "volume": 220785200,
+   "vol_x": 2.7
+  },
+  {
+   "date": "2026-10-05",
+   "close": 171.09,
+   "pct": 7.63,
+   "volume": 135688900,
+   "vol_x": 1.44
+  },
+  {
+   "date": "2026-10-02",
+   "close": 158.96,
+   "pct": 7.35,
+   "volume": 119859100,
+   "vol_x": 1.28
+  },
+  {
+   "date": "2026-09-03",
+   "close": 149.74,
+   "pct": 6.42,
+   "volume": 121333600,
+   "vol_x": 1.08
+  },
+  {
+   "date": "2026-10-30",
+   "close": 134.72,
+   "pct": -6.37,
+   "volume": 122653600,
+   "vol_x": 1.18
+  }
+ ],
+ "metrics": {
+  "market_cap": 1823529500672,
+  "pe_trailing": 583.7826,
+  "pe_forward": 50.410923,
+  "peg": null,
+  "peg_source": "yahoo",
+  "roe": null,
+  "profit_margin": -0.08613,
+  "revenue_growth_yoy": 1.614,
+  "earnings_growth_yoy": null,
+  "eps_trailing": 0.23,
+  "beta": null,
+  "dividend_yield": 0.0,
+  "debt_to_equity": 22.186,
+  "free_cash_flow": null,
+  "target_mean_price": 255.0627,
+  "recommendation": "buy",
+  "analysts": 37
+ },
+ "next_earnings": "2026-10-20",
+ "quarterly": [
+  {
+   "period": "2025-09-30",
+   "revenue": 5576000000.0,
+   "net_income": -1054000000.0,
+   "eps": -0.099368
+  },
+  {
+   "period": "2025-12-31",
+   "revenue": 4960000000.0,
+   "net_income": -2347000000.0,
+   "eps": null
+  },
+  {
+   "period": "2026-03-31",
+   "revenue": 4694000000.0,
+   "net_income": -4276000000.0,
+   "eps": -0.41
+  },
+  {
+   "period": "2026-06-30",
+   "revenue": 7814000000.0,
+   "net_income": -541000000.0,
+   "eps": -0.09
+  },
+  {
+   "period": "2026-09-30",
+   "revenue": 14575000000.0,
+   "net_income": 4404000000.0,
+   "eps": 0.35
+  }
+ ],
+ "annual": [
+  {
+   "period": "2023-12-31",
+   "revenue": 10387000000.0,
+   "net_income": -4628000000.0,
+   "eps": null
+  },
+  {
+   "period": "2024-12-31",
+   "revenue": 14015000000.0,
+   "net_income": 791000000.0,
+   "eps": null
+  },
+  {
+   "period": "2025-12-31",
+   "revenue": 18674000000.0,
+   "net_income": -4937000000.0,
+   "eps": null
+  }
+ ],
+ "news_seed": [
+  {
+   "date": "2026-11-09",
+   "title": "Elon Musk sends a strong signal to SpaceX stock investors",
+   "publisher": "TheStreet",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-sends-strong-signal-031700146.html"
+  },
+  {
+   "date": "2026-11-09",
+   "title": "SpaceX Wants To Turn AI Compute Into A $500B Business Next Year – And Elon Musk Says NASA’s Annual Budget Is No Match",
+   "publisher": "Stocktwits",
+   "link": "https://finance.yahoo.com/technology/ai/articles/spacex-wants-turn-ai-compute-024426765.html"
+  },
+  {
+   "date": "2026-11-09",
+   "title": "NVDA, PLTR, QCOM, SPCX, MRVL: Why Retail Traders Couldn’t Take Their Eyes Off These Stocks Last Week",
+   "publisher": "Stocktwits",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/nvda-pltr-qcom-spcx-mrvl-020455465.html"
+  },
+  {
+   "date": "2026-11-09",
+   "title": "SpaceX's Starlink Could Build a Nationwide Cell Network. Here's What Investors Need to Know",
+   "publisher": "Motley Fool",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/spacexs-starlink-could-build-nationwide-012000683.html"
+  },
+  {
+   "date": "2026-11-09",
+   "title": "How much SpaceX stock does CEO Elon Musk actually own?",
+   "publisher": "TheStreet",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/much-spacex-stock-does-ceo-004241271.html"
+  },
+  {
+   "date": "2026-11-08",
+   "title": "Tesla Bulls Could Get Burned? Gary Black Sees Trouble With SpaceX All-Stock Merger: Warns 24% Premium 'Can Quickly Go Negative'",
+   "publisher": "Benzinga",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-bulls-could-burned-gary-223005762.html"
+  },
+  {
+   "date": "2026-11-08",
+   "title": "SpaceX (SPCX) Lands $45 Billion AI Deal As New Contracts Recast Its Growth Story",
+   "publisher": "Simply Wall St.",
+   "link": "https://finance.yahoo.com/technology/ai/articles/spacex-spcx-lands-45-billion-220638884.html"
+  },
+  {
+   "date": "2026-11-08",
+   "title": "5 Best Satellite and Space Stocks Billionaires Are Buying",
+   "publisher": "Insider Monkey",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/5-best-satellite-space-stocks-213631004.html"
+  },
+  {
+   "date": "2026-11-08",
+   "title": "Mark Cuban Says Elon Musk Is Amazing and the ‘Best Entrepreneur of Our Lifetime,’ But He’s a Salesman — ‘He’s Gotta Sell What He’s Got to Sell’",
+   "publisher": "Benzinga",
+   "link": "https://finance.yahoo.com/small-business/articles/mark-cuban-says-elon-musk-213006371.html"
+  },
+  {
+   "date": "2026-11-08",
+   "title": "Fibocom LTE Cat.1 bis Modules: Starlink DTC Field Test Report",
+   "publisher": "PR Newswire",
+   "link": "https://finance.yahoo.com/technology/ai/articles/fibocom-lte-cat-1-bis-210000606.html"
+  },
+  {
+   "date": "2026-11-08",
+   "title": "A Popular New Bet Hailing From Cryptoland Sets Off a Wall Street Turf War",
+   "publisher": "The Wall Street Journal",
+   "link": "https://finance.yahoo.com/m/4d54da75-6425-316c-8c14-885c90c29c7a/a-popular-new-bet-hailing.html"
+  },
+  {
+   "date": "2026-11-08",
+   "title": "Tesla Isn’t a Mag-7 Stock. This Is.",
+   "publisher": "Barrons.com",
+   "link": "https://finance.yahoo.com/m/1989a8d6-2668-3d81-b94f-8613123a1e6b/tesla-isn%E2%80%99t-a-mag-7-stock..html"
+  }
+ ],
+ "series": [
+  [
+   "2026-06-12",
+   160.95,
+   519234800
+  ],
+  [
+   "2026-06-15",
+   192.5,
+   256226600
+  ],
+  [
+   "2026-06-16",
+   211.39,
+   195401600
+  ],
+  [
+   "2026-06-17",
+   191.82,
+   201719500
+  ],
+  [
+   "2026-06-18",
+   185.0,
+   272126800
+  ],
+  [
+   "2026-06-22",
+   154.6,
+   169183800
+  ],
+  [
+   "2026-06-23",
+   156.11,
+   155848100
+  ],
+  [
+   "2026-06-24",
+   154.54,
+   76101500
+  ],
+  [
+   "2026-06-25",
+   153.0,
+   62212400
+  ],
+  [
+   "2026-06-26",
+   153.23,
+   126932900
+  ],
+  [
+   "2026-06-29",
+   164.19,
+   81443100
+  ],
+  [
+   "2026-06-30",
+   170.86,
+   82047500
+  ],
+  [
+   "2026-07-01",
+   157.54,
+   109317600
+  ],
+  [
+   "2026-07-02",
+   162.0,
+   61257100
+  ],
+  [
+   "2026-07-06",
+   160.42,
+   188831300
+  ],
+  [
+   "2026-07-07",
+   149.47,
+   83779700
+  ],
+  [
+   "2026-07-08",
+   148.3,
+   60949400
+  ],
+  [
+   "2026-07-09",
+   152.16,
+   46468600
+  ],
+  [
+   "2026-07-10",
+   145.3,
+   46826000
+  ],
+  [
+   "2026-07-13",
+   139.14,
+   71456500
+  ],
+  [
+   "2026-07-14",
+   136.08,
+   46694800
+  ],
+  [
+   "2026-07-15",
+   135.27,
+   58040900
+  ],
+  [
+   "2026-07-16",
+   131.11,
+   58725600
+  ],
+  [
+   "2026-07-17",
+   123.99,
+   83706200
+  ],
+  [
+   "2026-07-20",
+   119.85,
+   57337300
+  ],
+  [
+   "2026-07-21",
+   123.54,
+   79718100
+  ],
+  [
+   "2026-07-22",
+   115.26,
+   92731800
+  ],
+  [
+   "2026-07-23",
+   118.24,
+   75246500
+  ],
+  [
+   "2026-07-24",
+   115.07,
+   56786100
+  ],
+  [
+   "2026-07-27",
+   113.5,
+   64540700
+  ],
+  [
+   "2026-07-28",
+   116.41,
+   81714300
+  ],
+  [
+   "2026-07-29",
+   112.55,
+   53995200
+  ],
+  [
+   "2026-07-30",
+   112.2,
+   56008000
+  ],
+  [
+   "2026-07-31",
+   108.37,
+   58835700
+  ],
+  [
+   "2026-08-03",
+   114.53,
+   70524000
+  ],
+  [
+   "2026-08-04",
+   125.33,
+   144130100
+  ],
+  [
+   "2026-08-05",
+   108.27,
+   208488400
+  ],
+  [
+   "2026-08-06",
+   114.92,
+   255176600
+  ],
+  [
+   "2026-08-07",
+   133.11,
+   242130700
+  ],
+  [
+   "2026-08-10",
+   138.74,
+   169934300
+  ],
+  [
+   "2026-08-11",
+   133.29,
+   108900600
+  ],
+  [
+   "2026-08-12",
+   146.15,
+   167236400
+  ],
+  [
+   "2026-08-13",
+   141.29,
+   120282200
+  ],
+  [
+   "2026-08-14",
+   140.0,
+   96727800
+  ],
+  [
+   "2026-08-17",
+   146.23,
+   116675400
+  ],
+  [
+   "2026-08-18",
+   143.34,
+   84191000
+  ],
+  [
+   "2026-08-19",
+   139.65,
+   76612300
+  ],
+  [
+   "2026-08-20",
+   134.0,
+   119813200
+  ],
+  [
+   "2026-08-21",
+   136.97,
+   78808300
+  ],
+  [
+   "2026-08-24",
+   135.0,
+   60188400
+  ],
+  [
+   "2026-08-25",
+   137.95,
+   53075000
+  ],
+  [
+   "2026-08-26",
+   139.63,
+   61380500
+  ],
+  [
+   "2026-08-27",
+   140.87,
+   55268800
+  ],
+  [
+   "2026-08-28",
+   141.5,
+   55111200
+  ],
+  [
+   "2026-08-31",
+   143.69,
+   63145000
+  ],
+  [
+   "2026-09-01",
+   142.23,
+   53808100
+  ],
+  [
+   "2026-09-02",
+   140.71,
+   49903700
+  ],
+  [
+   "2026-09-03",
+   149.74,
+   121333600
+  ],
+  [
+   "2026-09-04",
+   147.95,
+   49122400
+  ],
+  [
+   "2026-09-08",
+   153.47,
+   85840700
+  ],
+  [
+   "2026-09-09",
+   147.55,
+   120593500
+  ],
+  [
+   "2026-09-10",
+   148.18,
+   118598900
+  ],
+  [
+   "2026-09-11",
+   151.21,
+   79273400
+  ],
+  [
+   "2026-09-14",
+   148.15,
+   67861000
+  ],
+  [
+   "2026-09-15",
+   143.49,
+   72746800
+  ],
+  [
+   "2026-09-16",
+   150.88,
+   108770000
+  ],
+  [
+   "2026-09-17",
+   154.81,
+   83986400
+  ],
+  [
+   "2026-09-18",
+   152.71,
+   335670500
+  ],
+  [
+   "2026-09-21",
+   151.85,
+   82283700
+  ],
+  [
+   "2026-09-22",
+   154.72,
+   59197600
+  ],
+  [
+   "2026-09-23",
+   148.36,
+   60641600
+  ],
+  [
+   "2026-09-24",
+   148.03,
+   72721400
+  ],
+  [
+   "2026-09-25",
+   148.68,
+   54595200
+  ],
+  [
+   "2026-09-28",
+   145.47,
+   83516700
+  ],
+  [
+   "2026-09-29",
+   149.24,
+   80056700
+  ],
+  [
+   "2026-09-30",
+   150.86,
+   79614200
+  ],
+  [
+   "2026-10-01",
+   148.07,
+   69092500
+  ],
+  [
+   "2026-10-02",
+   158.96,
+   119859100
+  ],
+  [
+   "2026-10-05",
+   171.09,
+   135688900
+  ],
+  [
+   "2026-10-06",
+   171.92,
+   106952400
+  ],
+  [
+   "2026-10-07",
+   167.6,
+   77473000
+  ],
+  [
+   "2026-10-08",
+   160.57,
+   71897800
+  ],
+  [
+   "2026-10-09",
+   162.57,
+   93042600
+  ],
+  [
+   "2026-10-12",
+   163.42,
+   67434500
+  ],
+  [
+   "2026-10-13",
+   156.54,
+   69022500
+  ],
+  [
+   "2026-10-14",
+   152.16,
+   68781000
+  ],
+  [
+   "2026-10-15",
+   148.62,
+   101177100
+  ],
+  [
+   "2026-10-16",
+   146.03,
+   88552900
+  ],
+  [
+   "2026-10-19",
+   147.96,
+   74037800
+  ],
+  [
+   "2026-10-20",
+   147.79,
+   117204900
+  ],
+  [
+   "2026-10-21",
+   159.31,
+   220785200
+  ],
+  [
+   "2026-10-22",
+   144.75,
+   197046500
+  ],
+  [
+   "2026-10-23",
+   147.49,
+   110617500
+  ],
+  [
+   "2026-10-26",
+   146.9,
+   103184900
+  ],
+  [
+   "2026-10-27",
+   148.58,
+   95845400
+  ],
+  [
+   "2026-10-28",
+   145.23,
+   98705800
+  ],
+  [
+   "2026-10-29",
+   143.89,
+   68364400
+  ],
+  [
+   "2026-10-30",
+   134.72,
+   122653600
+  ],
+  [
+   "2026-11-02",
+   136.37,
+   90995400
+  ],
+  [
+   "2026-11-03",
+   141.31,
+   73242000
+  ],
+  [
+   "2026-11-04",
+   135.92,
+   135443400
+  ],
+  [
+   "2026-11-05",
+   123.62,
+   171356200
+  ],
+  [
+   "2026-11-06",
+   134.27,
+   114807000
+  ]
+ ]
+}
