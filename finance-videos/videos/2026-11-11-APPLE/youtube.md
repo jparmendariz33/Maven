@@ -3,20 +3,20 @@ Archivo: `APPLE_short.mp4`
 
 ## ✅ Para copiar y pegar
 
-**Título** (56 de 100 caracteres):
+**Título** (65 de 100 caracteres):
 ```
-De cada $100, Apple se queda con casi $28 #Apple #inversiones
+De cada $100 que le pagas a Apple, $28 son ganancia #Apple #bolsa
 ```
 
 **Descripción** (en la app: "Mostrar más" → Descripción):
 ```
-De cada 100 dólares que le pagas a Apple por un iPhone, una Mac o una suscripción, la empresa se queda con casi 28 de ganancia. Aquí va a dónde se van los otros 72.
+De cada 100 dólares que le pagas a Apple, casi 28 son ganancia. Un súper suele quedarse con menos de 5. ¿A dónde se van los otros 72?
 
-Es un adelanto del video del domingo 15 de noviembre: "Cómo leer un estado de resultados (con Apple)". Míralo completo en el canal.
+Datos del año fiscal 2026 de Apple (reporte 8-K a la SEC). Es un adelanto del video del domingo 15 de noviembre: "Cómo leer un estado de resultados (con Apple)". Míralo completo en el canal.
 
 ¿Qué empresa quieres que leamos después? Te leo en los comentarios 👇
 
-Imágenes: Apple Store de la Quinta Avenida, foto de Jorge Láscar (CC BY 2.0, Wikimedia Commons) · Apple Park, foto de Daniel L. Lu (CC BY-SA 4.0, Wikimedia Commons) · iPhone 17 Pro, imagen de Apple (sala de prensa)
+Imágenes: iPhone 17 Pro, imagen de Apple (sala de prensa) · Apple Park, foto de Daniel L. Lu (CC BY-SA 4.0, Wikimedia Commons) · Apple Store de la Quinta Avenida, foto de Jorge Láscar (CC BY 2.0, Wikimedia Commons)
 
 Contenido educativo. No es asesoría financiera.
 Costa Studio Finance, by JP Armendáriz.
@@ -45,19 +45,20 @@ Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa St
 - "No es para niños" · Contenido alterado o sintético: **No**.
 
 ## Guion para leer
-De cada 100 dólares que le pagas a Apple, se queda con casi 28 de ganancia. ¿Cómo lo sé?
+De cada 100 dólares que le pagas a Apple, casi 28 son ganancia. Un súper suele quedarse con menos de 5.
 
-De esos 100, 51 se van en fabricar los productos y dar los servicios.
+Entonces, ¿a dónde se van los otros 72?
 
-Casi 16 se van en investigar, vender y administrar la empresa.
+51 se van en fabricar el iPhone, la Mac y en dar sus servicios.
+
+Casi 16, en investigar, vender y pagar la operación.
 
 Y unos 5, en impuestos y otros gastos.
 
-Quedan casi 28 dólares de utilidad neta. Un supermercado, por ejemplo, suele quedarse con menos de 5.
+O sea, le quedan casi 28 dólares limpios.
 
-Y el secreto: en sus servicios, como iCloud o la App Store, el margen bruto es de 76%. Vender una suscripción más casi no le cuesta.
+Ahora, lo interesante: en sus servicios, como iCloud o la App Store, el margen bruto es de 76%. Una suscripción más casi no le cuesta.
 
-El domingo te enseño a leer el estado de resultados completo, con los números reales de Apple.
+El domingo te enseño a leer el estado de resultados completo, con los números de Apple.
 
-¿Qué empresa quieres que leamos después?
-
+¿Qué empresa quieres que leamos después? Te leo.

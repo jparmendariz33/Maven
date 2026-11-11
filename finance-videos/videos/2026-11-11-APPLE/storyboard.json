@@ -1,62 +1,83 @@
 {
  "slug": "APPLE",
- "title": "De cada $100, Apple se queda con $27.6 (adelanto del 15 nov)",
+ "title": "De cada $100 que le pagas a Apple, casi $28 son ganancia (adelanto del 15 nov)",
+ "host": {
+  "logo": "images/logo.png",
+  "outfit": "negra",
+  "accessory": "reloj",
+  "prop": "ninguno"
+ },
  "scenes": [
   {
    "type": "hook",
+   "bg_image": "images/iphone.jpg",
+   "bg_full": true,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "host": {
+    "act": "escritorio",
+    "mood": "up"
+   },
    "kicker": "Apple · año fiscal 2026",
-   "title": "De cada $100…",
+   "title": "De cada $100 que le pagas…",
    "value": 27.6,
    "prefix": "$",
    "decimals": 1,
    "unit": "",
    "tone": "up",
-   "caption": "se queda Apple de ganancia",
-   "question": "¿Cómo?",
+   "caption": "son ganancia. Un súper: menos de $5",
    "cue_value": "casi",
-   "cue_question": "sé",
-   "say": "De cada 100 dólares que le pagas a Apple, se queda con casi 28 de ganancia. ¿Cómo lo sé?",
-   "bg_image": "images/apple_store.jpg"
+   "say": "De cada 100 dólares que le pagas a Apple, casi 28 son ganancia. Un súper suele quedarse con menos de 5."
+  },
+  {
+   "type": "statement",
+   "kicker": "La pregunta",
+   "text": "¿A dónde se van los otros $72?",
+   "emphasis": "$72?",
+   "say": "Entonces, ¿a dónde se van los otros 72?"
   },
   {
    "type": "statement",
    "theme": "sand",
-   "kicker": "Fabricar",
-   "text": "$51 se van en fabricar.",
+   "kicker": "1 · Hacer el producto",
+   "bg_image": "images/apple_store.jpg",
+   "text": "$51 se van en fabricar y dar el servicio.",
    "emphasis": "$51",
-   "say": "De esos 100, 51 se van en fabricar los productos y dar los servicios.",
-   "bg_image": "images/iphone.jpg"
+   "say": "51 se van en fabricar el iPhone, la Mac y en dar sus servicios."
   },
   {
-   "say": "Casi 16 se van en investigar, vender y administrar la empresa.",
    "type": "photo",
    "image": "images/apple_park.jpg",
-   "kicker": "Apple Park · Cupertino",
-   "title": "$16 en investigar, vender y administrar."
+   "kicker": "2 · Apple Park · Cupertino",
+   "title": "$16 en investigar, vender y operar",
+   "say": "Casi 16, en investigar, vender y pagar la operación."
   },
   {
    "type": "statement",
    "theme": "sand",
-   "kicker": "Impuestos",
-   "text": "$5 en impuestos y otros.",
+   "kicker": "3 · Impuestos",
+   "text": "$5 en impuestos y otros gastos.",
    "emphasis": "$5",
    "say": "Y unos 5, en impuestos y otros gastos."
   },
   {
    "type": "statement",
-   "text": "Quedan $27.6 de utilidad neta.",
+   "kicker": "Lo que queda",
+   "text": "Le quedan $27.6 limpios.",
    "emphasis": "$27.6",
-   "sub": "Un supermercado suele quedarse con menos de $5.",
-   "say": "Quedan casi 28 dólares de utilidad neta. Un supermercado, por ejemplo, suele quedarse con menos de 5."
+   "sub": "De cada $100 que vende",
+   "say": "O sea, le quedan casi 28 dólares limpios."
   },
   {
    "type": "statement",
    "theme": "sand",
-   "kicker": "El secreto",
+   "kicker": "Lo interesante",
    "text": "En sus servicios, el margen bruto es de 76%.",
    "emphasis": "76%.",
    "sub": "iCloud, App Store, Apple Music",
-   "say": "Y el secreto: en sus servicios, como iCloud o la App Store, el margen bruto es de 76%. Vender una suscripción más casi no le cuesta."
+   "say": "Ahora, lo interesante: en sus servicios, como iCloud o la App Store, el margen bruto es de 76%. Una suscripción más casi no le cuesta."
   },
   {
    "type": "catalyst",
@@ -65,16 +86,25 @@
    "label": "Cómo leer un estado de resultados",
    "sub": "Con los números reales de Apple",
    "cue_date": "domingo",
-   "say": "El domingo te enseño a leer el estado de resultados completo, con los números reales de Apple."
+   "say": "El domingo te enseño a leer el estado de resultados completo, con los números de Apple."
   },
   {
    "type": "outro",
+   "bg_image": "images/apple_park.jpg",
+   "bg_full": true,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "host": {
+    "act": "cierre"
+   },
    "question_a": "¿Qué empresa",
    "question_b": "leemos después?",
    "cue_a": "empresa",
    "cue_b": "leamos",
    "sources": "Apple, reporte 8-K T4 2026 (SEC)",
-   "say": "¿Qué empresa quieres que leamos después?"
+   "say": "¿Qué empresa quieres que leamos después? Te leo."
   }
  ]
 }
