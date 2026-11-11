@@ -11,7 +11,8 @@ argument-hint: "<TICKER o nombre de la empresa> [enfoque opcional]"
 
 Dos modos, mismo motor, misma duración (~65–75 s sin voz) y misma marca:
 - **Contexto** (lun, mar, jue; antes "reactivo"): la noticia de la sesión es el pretexto; el short cuenta algo que dure meses (sección 1c).
-- **Empresa** (vie y sáb): "Análisis + Potencial" de una empresa (sección 1b); el sábado, "Tesis a 5 años" de `plan/banco-tesis.md`. `"mode": "empresa"` en el storyboard.
+- **Empresa** (solo viernes): "Análisis + Potencial" (sección 1b). Desde el 11 nov 2026 absorbe a la "Tesis a 5 años" del sábado, que era lo
+  mismo: la empresa es la caliente de la semana o, si ninguna lo amerita, una de `plan/banco-tesis.md`. `"mode": "empresa"` en el storyboard.
 - **Ranking** (dom): top 3 o top 5 en cuenta regresiva (sección 1d).
 **Todos los shorts llevan imágenes reales** que hagan sentido con la historia (sección 2b).
 **Fecha (regla de oro de JP):** un short por día, hecho el MISMO día en que se publica (19:00 CDMX). La carpeta lleva la fecha de
@@ -85,9 +86,13 @@ Lo que pasó hoy caduca mañana, y un short se sigue viendo durante meses. Por e
 el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exacto vive en las publicaciones: skill `/publicacion`.)
 - **Ángulo:** qué le está pasando a la empresa (el mes, el trimestre, el año), por qué, y qué viene o qué tiene planeado. Ej.: no "Nvidia
   cayó 5% hoy", sino "Nvidia lleva un mes cayendo: esto pasa y esto es lo que planea". O "Apple sacó X: esto es lo que puede implicar".
-- **Sin "hoy", "ayer", "esta mañana" ni fechas del día** en el título, el gancho y el guion. Usa marcos largos ("en el último mes", "este
-  año", "desde su máximo"). La fecha de los datos va solo en la descripción y en la fuente pequeña de pantalla.
+- **Sin "hoy", "ayer", "esta mañana" ni el día exacto** en el título, el gancho y el guion.
+- **Pero SÍ ancla el periodo con fechas absolutas y largas (precisión de JP, 11 nov 2026):** "Nvidia viene cayendo desde enero de 2025",
+  "en 2026 lleva −30%", "desde su máximo de julio de 2026". Nunca relativas ("este mes", "este año", "en el último mes"): quien lo vea en
+  5 años debe saber de qué época habla el video sin sentir que es una noticia vieja. El día exacto de los datos va en la descripción.
 - **Gancho con la cifra de periodo largo** (1 mes, 3 meses, en el año, desde el máximo), no con la del día.
+- **Lo que viene es el gancho:** el corazón del short es el porqué y, sobre todo, qué viene o qué tiene planeado la empresa. De vez en cuando
+  (no siempre, que no se vuelva fórmula) úsalo para retener: "y lo que tiene planeado es lo interesante". Sin exagerar ni prometer de más.
 - **Cierre:** qué vigilar en los próximos meses (un evento, un dato, un lanzamiento), no "mañana veremos".
 - Sigue valiendo todo lo demás: datos de cierre verificados (Regla del cierre), no repetir empresas, fotos reales, nunca recomendación.
 - Los shorts de viernes, sábado y domingo (Análisis + Potencial) y el derivado del miércoles ya son atemporales: no cambian.
@@ -106,12 +111,13 @@ Cuenta regresiva: del último lugar al número 1. Sirve para shorts, publicacion
   lleva por qué se vigila Y su riesgo, con el mismo peso. Es una lista de seguimiento, no de compra: dilo una vez en el video y en la descripción.
   Si alguna empresa está en `posiciones-jp.md`, se declara como "Costa Studio Finance tiene posición en <empresa>".
 - **Vigencia:** evita rankings atados a un mes ("para diciembre"); caducan en semanas. Mejor "de 2026", "de los últimos 12 meses", "de la década".
-- **Cuándo (activado el 11 nov 2026): el DOMINGO.** El short del domingo es un ranking (en lugar del Análisis + Potencial de ese día) y va
+- **Cuándo: se publica el DOMINGO 19:00 y se produce el SÁBADO en la mañana** (para que JP tenga un día para grabar). La carpeta lleva la
+  fecha del domingo. El short del domingo es un ranking (en lugar del Análisis + Potencial de ese día) y va
   acompañado de su publicación de 4 imágenes: portada + puestos 5–4 + puestos 3–2 + el #1 con la pregunta (`/publicacion`). Alterna cada
   semana entre un ranking por dato ("las 5 que más…") y "5 empresas que Costa Studio Finance está vigilando". No repitas en la lista
   más de 2 empresas del ranking anterior. Carpeta: `videos/<domingo>-TOP5-<tema>/`.
 
-## 1b. Modo empresa (viernes, sábado y domingo)
+## 1b. Modo empresa (viernes)
 **Cómo elegir la empresa** (tómala tú, sin preguntar; revisa `plan/banco-empresas.md` y `videos/` para no repetir):
 1. **Está en las noticias de la semana**: resultados que sorprendieron, adquisición, IPO, expansión, lanzamiento, polémica,
    cambio de CEO, récord, o es tendencia en redes. **Solo empresas que ya coticen en bolsa o que estén cerca de su IPO**

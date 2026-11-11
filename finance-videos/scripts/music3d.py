@@ -89,8 +89,9 @@ def reverb(buf, secs=2.8, mix=.3):
     return out
 
 
-def main(vdir, mp4=None):
-    T0, DUR = scene_times(vdir); n = int((DUR + 1) * SR); mus = np.zeros((2, n)); fx = np.zeros((2, n))
+def score(T0, DUR):
+    """La partitura (sin efectos): estéreo (2, n), ya con reverb y crescendo. La usa make_audio.py en TODAS las historias 3D."""
+    n = int((DUR + 1) * SR); mus = np.zeros((2, n))
     S = lambda i: T0[i] if i < len(T0) else DUR
     # intensidad por tramo de la historia (0..1), interpolada suave
     keys = [(0, .35), (S(1), .45), (S(2), .62), (S(3), .75), (S(4), .82), (S(5), 1.0), (S(6) - .5, 1.0), (S(6) + 1.5, .45),
@@ -125,7 +126,15 @@ def main(vdir, mp4=None):
             for i in range(0, 16, 2): add(mus, piano(mtof(bs[b % 4] + 12), .6, .12 * k), t + i * S16)
         if k > .9:                                            # timbales en el clímax
             add(mus, timpani(.3), t); add(mus, timpani(.2), t + BAR / 2)
-    # efectos sincronizados con la animación (mismas fracciones que story.js)
+    mus = reverb(mus, 3.0, .35)
+    tgrid = np.arange(n) / SR; arc = .2 + .8 * np.interp(tgrid, [k[0] for k in keys], [max(k[1], .35) for k in keys]) ** 1.4  # crescendo audible
+    return mus / (np.abs(mus).max() + 1e-9) * .8 * arc
+
+
+def main(vdir, mp4=None):
+    T0, DUR = scene_times(vdir); n = int((DUR + 1) * SR); fx = np.zeros((2, n)); S = lambda i: T0[i] if i < len(T0) else DUR
+    mus = score(T0, DUR)
+    # efectos sincronizados con la animación (mismas fracciones que story.js) — solo para la historia de SpaceX
     d2 = S(2) - S(1); d3 = S(3) - S(2)
     add(fx, rumble(4.5, .35), .3)
     for f in (.1, .3, .5): add(fx, rumble(1.6, .18), S(1) + f * d2); add(fx, boom(.55), S(1) + f * d2 + 1.05)
@@ -133,10 +142,9 @@ def main(vdir, mp4=None):
     for i in range(18): add(fx, coin(.07 + .05 * rng.random()), S(2) + .45 * d3 + .2 + i * .09 + rng.random() * .05, rng.uniform(-.6, .6))
     for i in (1, 3, 4, 5, 7): add(fx, whoosh(1.1, .22), S(i) - .25)
     # mezcla
-    mus = reverb(mus, 3.0, .35); fx = reverb(fx, 1.6, .15)
+    fx = reverb(fx, 1.6, .15)
     fade = np.ones(n); kf = int(1.8 * SR); end = int(DUR * SR); fade[end - kf:end] = np.linspace(1, 0, kf); fade[end:] = 0
-    tgrid = np.arange(n) / SR; arc = .2 + .8 * np.interp(tgrid, [k[0] for k in keys], [max(k[1], .35) for k in keys]) ** 1.4  # crescendo audible
-    mix = (mus / (np.abs(mus).max() + 1e-9) * .8 * arc + fx * .9) * fade
+    mix = (mus + fx * .9) * fade
     mix = mix[:, :int(DUR * SR)]
     os.makedirs(os.path.join(vdir, 'audio'), exist_ok=True)
     raw = os.path.join(vdir, 'audio', '_music_raw.wav'); wav = os.path.join(vdir, 'audio', 'music.wav'); m4a = os.path.join(vdir, 'audio', 'music.m4a')

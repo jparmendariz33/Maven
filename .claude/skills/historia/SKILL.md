@@ -15,7 +15,7 @@ Lee antes: `plan/PLAN.md` (§0 marca y conflictos de interés, §2 ritmo), `plan
 `plan/clientes-agencia.md`, `plan/posiciones-jp.md`.
 
 **Ritmo (pedido por JP, 9 nov 2026): 1 historia por semana. Se produce el VIERNES (después del cierre de la bolsa) y se publica el SÁBADO a las 12:00 CDMX**
-(el sábado a las 19:00 sale además el short "Tesis a 5 años"). Es la segunda excepción a la regla de "mismo día" (la otra es el
+(desde el 11 nov 2026 el sábado ya no sale otro short: la historia es la única pieza del día). Es la segunda excepción a la regla de "mismo día" (la otra es el
 largo): JP necesita un día para grabar su voz. La carpeta lleva la fecha de publicación: `videos/<sábado AAAA-MM-DD>-<SLUG>-historia/`.
 **Plantilla y modelo de estilo:** `videos/2026-11-14-JOBS-historia/` (Steve Jobs: `story.js`, `guion.md`, `youtube.md`). Cópiala y adáptala.
 
@@ -26,7 +26,8 @@ largo): JP necesita un día para grabar su voz. La carpeta lleva la fecha de pub
 4. **Primer cuadro = miniatura:** quién + el dato o la frase, visibles desde t = 0.
 5. **Arriba limpio:** el 40% superior de cada escena es fondo liso o lleva `L.scrim`; titular legible; nada tapa el logo ni la ficha del año.
 6. **Personajes vivos:** parpadean, hablan con el subtítulo (`talkAt`), caminan y gesticulan; animados a 12 cuadros/s (`on2`).
-7. **Música + efectos por acción** (`sfx` en cada escena) → `make_audio.py`. Nunca entregar un video mudo.
+7. **Música + efectos por acción** (`sfx` en cada escena) → `make_audio.py`. Nunca entregar un video mudo. **Todas las historias llevan la
+   partitura de órgano y piano** (la de SpaceX, elegida por JP el 11 nov 2026); `make_audio.py` la pone sola. Los shorts y largos usan otra.
 8. **Sin logotipos reales** (los nombres van como texto) y **sin imágenes de IA de personas o marcas**: todo es maqueta 3D propia.
 9. **Entrega:** MP4 con audio + título y descripción listos + guion para leer + `publicados.md` y `banco-historias.md` actualizados.
 

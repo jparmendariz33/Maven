@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Mezcla final: voz + cama musical cálida (se baja sola cuando habla la voz) + efectos suaves.
+"""Mezcla final: voz + música (se baja sola cuando habla la voz) + efectos suaves.
+
+MÚSICA (decisión de JP, 11 nov 2026): las HISTORIAS 3D llevan la partitura de órgano y piano (la de SpaceX, scripts/music3d.py);
+todo lo demás (shorts y largos) lleva la cama cálida de siempre.
 
 Uso:  .venv/bin/python scripts/make_audio.py videos/<id>
 Lee build/timeline.json (tiempos de escenas y cues) y audio/voice.wav → audio/mix.wav
@@ -175,10 +178,16 @@ def main(vdir):
         e = np.convolve(np.abs(voice), np.ones(int(.15 * SR)) / int(.15 * SR), 'same'); e /= e.max() + 1e-9
         duck = 1 - .6 * np.clip(e * 4, 0, 1)
     mus = mus / (np.abs(mus).max() + 1e-9) * (.13 if LONG else .20) * duck
+    st = np.zeros((2, n))
+    if STORY:   # historias 3D: partitura de órgano y piano en estéreo, en lugar de la cama cálida
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import music3d
+        sc = music3d.score([s['t0'] for s in tl['scenes']], T)[:, :n]; st[:, :sc.shape[1]] = sc
+        fo2 = int(1.8 * SR); st[:, -fo2:] *= np.linspace(1, 0, fo2); st *= .34 * duck; mus[:] = 0
+        print('historia 3D: partitura de órgano y piano')
     fx = fx / (np.abs(fx).max() + 1e-9) * (.22 if not voice.any() else .34)
     voice = voice / (np.abs(voice).max() + 1e-9) * .92
-    mix = np.tanh((voice + mus + fx) * 1.02); mix /= np.abs(mix).max() * 1.06
-    pcm = (np.stack([mix, mix], 1) * 32767).astype('<i2')
+    mix = np.tanh((voice + mus + fx + st) * 1.02); mix /= np.abs(mix).max() * 1.06      # (2, n): la partitura conserva su estéreo
+    pcm = (mix.T * 32767).astype('<i2')
     o = wave.open(os.path.join(vdir, 'audio', 'mix.wav'), 'wb'); o.setnchannels(2); o.setsampwidth(2); o.setframerate(SR); o.writeframes(pcm.tobytes()); o.close()
     print(f'mezcla lista: {T:.1f}s')
 
