@@ -137,6 +137,16 @@ reusa mundos (día/noche del mismo edificio); 3–5 mundos por historia; no uses
 `vote` (golpe seco), `ticks` (contador; ponle duración), `coins`, `rise` (algo sale bien), `fall` (algo sale mal), `shine` (revelación),
 `applause`, `wave`. Cada acción visible lleva su efecto, en la misma fracción de la escena en la que ocurre. 3–7 por escena, no más.
 
+### Personajes: que no se vean raros (corrección de JP, 11 nov 2026)
+- **Sentados de verdad.** Los actores ya tienen rodillas: `L.pose(a, { sit: 1, bob: -.2 })` dobla cadera y rodilla. Todo el que esté en una
+  junta, un escritorio o un auto va con `sit: 1` y una silla o asiento visible debajo (una caja redondeada basta). Nunca "de pie detrás de la mesa".
+- **Opciones nuevas de `L.actor`:** `hairStyle: 'quiff'`, `eyeStyle: 'full'` (ojo con blanco, iris y pupila: úsalo en protagonistas y primeros
+  planos), `neck: true`, `sleeves: 'short'`, `collar: 'crew' | 'polo' | 'hoodie'`, `cap`, `headphones`, `watch`, `browW`.
+- **Manos y miradas con intención:** cada personaje mira a quien habla o a lo que pasa; nadie con los brazos colgando si la escena es tensa.
+- **Mantener el claroscuro** que le gustó a JP: luz principal cálida de lado, contraluz que recorta la silueta, relleno bajo.
+- **JP como narrador:** si la historia lo pide, el personaje del canal se puede meter con `L.actor({ ...L.JP, shirt: '#2A2A31', collar: 'crew' })` (rasgos en `engine3d/host.js`).
+- Revisa en `qa.jpg` cada escena con gente: postura, que nadie atraviese muebles y que las caras se vean.
+
 ## 5. Ritmo, revisión, audio y render
 ```bash
 python3 scripts/pace3d.py videos/$ID                 # tiempos al ritmo de JP → narration.txt, build/timing.js, build/timeline.json

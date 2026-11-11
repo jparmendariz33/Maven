@@ -20,6 +20,7 @@ terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno p
 **Modelo de estilo:** `videos/2026-11-07-ABNB/` (el favorito de JP) y, para el formato y los colores de empresa, `videos/2026-11-08-CUERVO/`.
 
 ### ✅ Checklist de estilo (reglas que pidió JP — revisa TODAS antes de entregar)
+- **JP en 3D en al menos 3 escenas** (gancho, mitad y cierre) con `"host"`, variando acto y vestuario respecto al video anterior (§2c).
 1. **Un video por día**, hecho el mismo día, que se publica **siempre a las 19:00 CDMX**. **Regla del cierre:** los datos son los de
    CIERRE de la sesión; nada se termina ni se entrega antes de que cierre la bolsa (`python3 scripts/market_close.py`; ver `CLAUDE.md`).
    Si JP pide un tema durante el día, prepara todo y entrégalo UNA vez, después del cierre, ya con los datos finales.
@@ -167,6 +168,37 @@ python3 scripts/fetch_images.py add videos/$ID fachada "https://…" --credit "F
 - `news.image` (+ `focus`): foto en tarjeta arriba del titular (con imagen: máx. 2 bullets).
 El pie de foto (autor · licencia) sale solo en pantalla. En `youtube.md` pega la lista de `python3 scripts/fetch_images.py credits videos/$ID`.
 
+## 2c. JP en 3D: el anfitrión del canal (obligatorio en TODOS los shorts desde el 11 nov 2026)
+JP pidió que cada video lleve a su personaje 3D (plastilina, luz de claroscuro) **en al menos 3 escenas: el gancho, una a la mitad
+y el cierre**. Es el mismo personaje siempre (pelo oscuro corto con copete, cejas marcadas, sin barba), pero **en cada video cambia**
+de ropa, accesorio, objeto y actividad. El personaje es parte del gancho: mira la pantalla, voltea a cámara y reacciona al dato.
+
+En el storyboard, agrega `"host"` a la escena (funciona en `hook`, `statement`, `catalyst` y `outro`; el texto se acomoda solo arriba
+y JP queda en la mitad de abajo):
+```json
+{"type": "hook", "host": {"act": "hook", "mood": "up", "image": "images/producto.jpg", "focus": [0.3, 0.3]}, ...}
+{"type": "statement", "host": {"act": "explica", "mood": "up", "image": "images/ceo.jpg"}, ...}
+{"type": "outro", "host": {"act": "cierre", "image": "images/tienda.jpg"}, ...}
+```
+- **`image` es obligatoria (corrección de JP, 11 nov 2026): la escena tiene que decir de qué trata el video.** Es una de las fotos reales del
+  video (§2b) y sale en una pantalla gigante detrás de JP; el logo de la empresa (`company.logo`) va solo en su laptop o en la pared.
+  JP sin contexto ("yo en una computadora") no sirve: en el gancho pon la foto que más grita el tema (el producto, la marca, la tienda),
+  a la mitad la de quien o lo que se está explicando, y en el cierre otra distinta o la misma con otro `focus`. Elige fotos con el sujeto
+  al centro (la pantalla es vertical y la mitad de abajo la tapa JP) y revisa en `qa.jpg` que el tema se reconozca de un vistazo.
+- `act`: `hook` (en su escritorio: teclea, voltea y reacciona) · `cafe` (igual, con sorbo de café) · `telefono` (de pie, mira el celular y
+  reacciona) · `explica` (de pie, señala una flecha que sube o baja) · `piensa` (mano en la barbilla, moneda girando) · `camina`
+  (entra caminando y saluda) · `cierre` (se encoge de hombros con la pregunta y señala a cámara).
+- `mood`: `up` (festeja, luz verde) · `down` (se agarra la cabeza, luz roja) · `neutral`. Debe coincidir con el dato de esa escena.
+- **Variar en cada video (regla de JP: que no aburra):** no repitas la combinación de actos del video anterior (mira el storyboard del
+  último short). El vestuario sale solo de la fecha de la carpeta (cambia cada día); para fijarlo, pon a nivel del storyboard
+  `"host": {"outfit": "negra|blanca|hoodie|blazer|polo|sueter", "accessory": "ninguno|lentes|gorra|audifonos|reloj", "prop": "ninguno|cafe|telefono", "color": "#hex"}`.
+  Con `brand_colors`, el contraluz y la flecha toman el color de la empresa.
+- En la escena con `host` no uses `bg_image` (el fondo es el 3D). Las 3–5 fotos reales siguen siendo obligatorias en las demás escenas.
+- Flujo: `build_timeline.py` → **`node engine3d/render_host.js videos/$ID`** (≈4 min; solo vuelve a renderizar las escenas que cambiaron)
+  → `render.js --qa`. Si cambian los tiempos (otro guion u otra voz), corre `render_host.js` otra vez.
+- En `qa.jpg` revisa que el texto no tape la cara de JP y que el subtítulo no tape nada importante. Hoja de pruebas del personaje:
+  `node engine3d/render_host.js --sheet /ruta/hoja.jpg`. El personaje vive en `engine3d/host.js`.
+
 ## 2. Guion + storyboard → MOSTRAR AL USUARIO ANTES DE GASTAR CRÉDITOS
 Escribe `videos/$ID/storyboard.json` (esquema abajo). Luego:
 ```bash
@@ -260,6 +292,7 @@ el texto de `tts_chunks.json` (números ya en palabras), no `narration.txt`. Ver
 ```bash
 .venv/bin/python scripts/process_voice.py videos/$ID     # recorta pausas, tempo, normaliza, tiempos por palabra
 python3 scripts/build_timeline.py videos/$ID             # escenas y cues en segundos, subtítulos
+node engine3d/render_host.js videos/$ID                  # JP en 3D (escenas con "host"; ver §2c) — siempre antes de render.js
 node scripts/render.js videos/$ID --qa                   # hoja de revisión → videos/$ID/build/qa.jpg
 ```
 - `build_timeline.py` debe reportar alineación ≥ 60% y sin cues "no encontrados" (si hay, cambia el cue y repite).

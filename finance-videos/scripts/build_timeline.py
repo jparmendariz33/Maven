@@ -113,6 +113,11 @@ def main(vdir):
     video = {'duration': duration, 'offset': OFFSET, 'brand': br, 'data': keep, 'scenes': scenes, 'captions': caps,
              'format': 'long' if LONG else 'short', 'novoice': novoice, 'chapters': chapters, 'thumbnail': sb.get('thumbnail', {}), 'slug': sb.get('slug', ''),
              'brand_colors': sb.get('brand_colors')}
+    # anfitrión 3D (JP): escenas con "host" → cuadros en build/host/<n>/ (los genera engine3d/render_host.js, a 12 cuadros/s)
+    import math
+    video['host'] = {str(i): {'dir': 'file://' + os.path.join(os.path.abspath(vdir), 'build', 'host', str(i)) + '/', 'fps': 12,
+                              'n': math.ceil((sc['t1'] - sc['t0'] + .75) * 12)} for i, sc in enumerate(scenes) if sc.get('host')}
+    if video['host']: print(f"anfitrión 3D: {len(video['host'])} escenas → corre: node engine3d/render_host.js {vdir}")
     # imágenes reales (fetch_images.py): se incrustan como dataURL para que el render no dependa de rutas
     used, missing_img = set(), []
     def grab_imgs(o):

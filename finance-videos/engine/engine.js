@@ -130,6 +130,15 @@ function logoTint(col) {
 // build_timeline.py incrusta en V.images {"images/x.jpg": dataURL} y en V.credits {"images/x.jpg": "Foto: …"}.
 const IMG = {}, imgWait = [];
 for (const [k, src] of Object.entries(V.images || {})) { const im = new Image(); imgWait.push(new Promise(r => { im.onload = im.onerror = r; })); im.src = src; IMG[k] = im; }
+// anfitrión 3D (JP): secuencias de cuadros que renderiza engine3d/render_host.js; el motor las pone de fondo de la escena
+const HOSTF = {};
+for (const [i, h] of Object.entries(V.host || {})) { HOSTF[i] = []; for (let k = 0; k < h.n; k++) { const im = new Image(); imgWait.push(new Promise(r => { im.onload = im.onerror = r; }));
+  im.src = h.dir + String(k).padStart(4, '0') + '.jpg'; HOSTF[i].push(im); } }
+function hostFrame(s, t) { const fr = HOSTF[V.scenes.indexOf(s)], h = (V.host || {})[V.scenes.indexOf(s)]; if (!fr || !fr.length) return null;
+  const im = fr[Math.max(0, Math.min(fr.length - 1, Math.floor((t - s.t0) * h.fps + 1e-6)))]; return im.complete && im.naturalWidth ? im : null; }
+const isHost = s => !!(s.host && (V.host || {})[V.scenes.indexOf(s)]);
+// con JP en la mitad baja, el contenido de la escena se compacta arriba: [ancla x, escala, desplazamiento y previo]
+const HOSTFIT = { hook: [90, .68, -40], statement: [90, .82, -210], catalyst: [540, .72, -230], outro: [540, .7, -330], photo: [90, .8, 0] };
 window.IMAGES_READY = Promise.all(imgWait);
 function img(k) { const im = k && IMG[k]; return im && im.complete && im.naturalWidth ? im : null; }
 // dibuja la imagen cubriendo el rectángulo (como CSS cover), con zoom z y punto de foco (fx, fy)
@@ -166,6 +175,7 @@ const photoInk = () => BRAND && BRAND.base === 'azul' ? B0.azul : B0.arena;
 const isFullPhoto = s => s.type === 'photo' && (!s.layout || s.layout === 'full');
 // con brand_colors: 'brand' (fondo de la empresa) en gancho/catalizador/cierre; el resto, el fondo base (arena = 'sand', azul = 'dark' o 'blue')
 function themeOf(s) {
+  if (isHost(s)) return 'blue';                                  // escena con JP en 3D: texto claro sobre el estudio oscuro
   const t = themeOf0(s);
   if (!BRAND || s.brand === false || s.theme) return t;
   if (s.brand_bg ?? BG_TYPES[s.type]) return 'brand';
@@ -177,6 +187,10 @@ const isDarkBg = th => th === 'blue' || th === 'brand' || th === 'dark';
 function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
   C.fillStyle = th === 'brand' ? BGB : isDarkBg(th) ? B0.azul : th === 'white' ? B.gris : B0.arena; C.fillRect(0, 0, W, H);
+  const hf = isHost(s) && hostFrame(s, t);
+  if (hf) { C.drawImage(hf, 0, 0, W, H);                          // JP en 3D + velo arriba para que el texto se lea
+    const g = C.createLinearGradient(0, 0, 0, 1000); g.addColorStop(0, 'rgba(6,10,24,.86)'); g.addColorStop(.62, 'rgba(6,10,24,.6)'); g.addColorStop(1, 'rgba(6,10,24,0)'); C.fillStyle = g; C.fillRect(0, 0, W, 1000);
+    return; }
   const bi = img(s.bg_image);
   if (bi) { // foto de fondo en duotono con el color del tema (la escena sigue siendo legible)
     const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
@@ -563,6 +577,8 @@ function drawScene(ctx, s, t) {
   applyBrand(s);
   bg(s, t);
   C.save(); scaleAt(W / 2, H / 2, 1 + .018 * seg(t, s.t0, s.t1)); // deriva lenta de cámara
+  const hfit = isHost(s) && HOSTFIT[s.type];
+  if (hfit) { C.translate(hfit[0], 300); C.scale(hfit[1], hfit[1]); C.translate(-hfit[0], -300 + hfit[2]); }
   (R[s.type] || (() => txt('escena desconocida: ' + s.type, 90, 900, { s: 50 })))(s, t);
   C.restore();
   chrome(s, t);

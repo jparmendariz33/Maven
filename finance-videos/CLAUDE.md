@@ -12,6 +12,11 @@ sea cliente de la agencia sin declararlo.
 Flujo: `story.js` → `scripts/pace3d.py` → `engine3d/render3d.js --qa` → `make_audio.py` (música + efectos por acción) → `render3d.js video`.
 Ideas en `plan/banco-historias.md`. Aquí NO van fotos: todo es maqueta 3D propia, sin logotipos reales.
 
+**JP en 3D (anfitrión del canal, desde el 11 nov 2026):** todo short lleva al personaje 3D de JP en al menos 3 escenas (gancho, mitad y
+cierre) con `"host": {"act", "mood", "image"}` en el storyboard (la `image` es la foto real del tema, en la pantalla detrás de JP: sin ella la escena no dice de qué trata el video); cada video cambia de ropa, accesorio y actividad. Personaje: `engine3d/host.js`;
+render de sus escenas: `node engine3d/render_host.js videos/<id>` (después de `build_timeline.py`, antes de `render.js`). Detalle en `/short` §2c.
+En los largos está pendiente (ver `/largo`).
+
 **Imágenes reales en TODOS los videos** (shorts y largos): logos, sucursales, productos, sedes, personas. `scripts/fetch_images.py`
 (Openverse / Wikimedia Commons / simple-icons / salas de prensa; solo licencias libres; nunca IA de marcas o personas reales) →
 `videos|largos/<id>/images/` + `images/credits.json`. En el storyboard: escena `photo`, `bg_image`, `company.logo`, `news.image`.
@@ -21,7 +26,7 @@ Ideas en `plan/banco-historias.md`. Aquí NO van fotos: todo es maqueta 3D propi
 
 Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL.md`). Resumen del flujo:
 `setup.sh` → `market_close.py` (¿ya cerró?) → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →
-`process_voice.py` → `build_timeline.py` → `render.js --qa` (revisar) → `make_audio.py` → `render.js` → youtube.md → commit.
+`process_voice.py` → `build_timeline.py` → `engine3d/render_host.js` (JP en 3D) → `render.js --qa` (revisar) → `make_audio.py` → `render.js` → youtube.md → commit.
 
 ## Regla del cierre (pedida por JP, 9 nov 2026 — aplica a TODO video que lleve datos de mercado)
 **Ningún video con precios, porcentajes del día o valor de mercado se termina ni se entrega antes del cierre de la sesión ordinaria

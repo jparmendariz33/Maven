@@ -97,6 +97,11 @@ solo licencias libres o salas de prensa; nunca IA de marcas o personas reales; m
 python3 scripts/script_check.py largos/$D      # debe salir ✅ (palabras, capítulos, escenas ≤ 45 palabras)
 ```
 
+### JP en 3D en los largos (pendiente de construir)
+JP pidió que su personaje 3D (ver `/short` §2c) salga también en los largos: al inicio, en varios puntos intermedios y en el cierre.
+El puente hoy solo existe para shorts verticales (`engine/engine.js`); **el motor de largos (`engine/long.js`, 16:9) todavía no lo dibuja**.
+Mientras no exista, produce el largo como siempre y dilo en el mensaje final. No inventes un parche por tu cuenta en una tarea automática.
+
 ## 3. Tiempos, revisión y render (sin voz; JP graba encima)
 ```bash
 python3 scripts/no_voice.py largos/$D           # ritmo de lectura ~120 palabras/min, cuenta sílabas reales (números incluidos)

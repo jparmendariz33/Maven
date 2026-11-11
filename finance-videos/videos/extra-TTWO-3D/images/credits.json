@@ -1,0 +1,30 @@
+{
+ "images/logo.png": {
+  "title": "Take-Two_Interactive_Logo.svg",
+  "credit": "Logo: marca registrada de su titular · vía Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Take-Two_Interactive_Logo.svg",
+  "kind": "logo"
+ },
+ "images/zelnick.jpg": {
+  "title": "Strauss_Zelnick,_2015_(16339090774).jpg",
+  "credit": "Foto: Christopher Michel · CC BY 2.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Strauss_Zelnick,_2015_(16339090774).jpg",
+  "provider": "Wikimedia Commons"
+ },
+ "images/cartel.jpg": {
+  "title": "Cartel de Grand Theft Auto V en Birmingham (2013)",
+  "creator": "ell brown",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/39415781@N06/9776412944",
+  "provider": "Flickr"
+ },
+ "images/posters.jpg": {
+  "title": "Carteles de Grand Theft Auto IV (2008)",
+  "creator": "Paul Lowry",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/10039026@N03/2437107147",
+  "provider": "Flickr"
+ }
+}

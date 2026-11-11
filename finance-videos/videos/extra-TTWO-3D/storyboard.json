@@ -1,0 +1,219 @@
+{
+ "ticker": "TTWO",
+ "title": "Take-Two, la dueña de GTA, sube 8.3% aunque perdió dinero: preventas de GTA VI sin precedentes",
+ "scenes": [
+  {
+   "type": "hook",
+   "say": "Hoy la dueña de GTA subió más de 8%... y eso que perdió dinero. ¿Por qué?",
+   "kicker": "NASDAQ · TTWO · 10 NOV",
+   "title": "La dueña de GTA",
+   "value": 8.3,
+   "decimals": 1,
+   "unit": "%",
+   "signed": true,
+   "tone": "up",
+   "caption": "un día después de su reporte",
+   "question": "¿Por qué?",
+   "cue_value": "subió",
+   "cue_question": "Por",
+   "host": {
+    "act": "hook",
+    "mood": "up",
+    "image": "images/posters.jpg",
+    "focus": [
+     0.25,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "company",
+   "say": "Se llama Take-Two. Es dueña de Rockstar, de GTA y de NBA 2K. Vale 42 mil millones de dólares.",
+   "kicker": "La empresa",
+   "name": "Take-Two",
+   "logo": "images/logo.png",
+   "line": "Crea y publica videojuegos para consola, PC y celular",
+   "chips": [
+    {
+     "label": "Rockstar · GTA",
+     "cue": "Rockstar"
+    },
+    {
+     "label": "NBA 2K",
+     "cue": "NBA"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Valor de mercado",
+     "value": "$42 B",
+     "cue": "Vale"
+    }
+   ]
+  },
+  {
+   "type": "news",
+   "say": "Ayer reportó su trimestre: vendió 15% menos y perdió 54 millones de dólares.",
+   "kicker": "9 NOV · RESULTADOS",
+   "headline": "Vendió menos y perdió dinero",
+   "source": "Take-Two · reporte 8-K (SEC)",
+   "bullets": [
+    {
+     "text": "Ingresos: $1,500 M",
+     "sub": "−15.6% vs. hace un año",
+     "cue": "vendió",
+     "tone": "down"
+    },
+    {
+     "text": "Pérdida neta: $54 M",
+     "sub": "trimestre julio–septiembre",
+     "cue": "perdió",
+     "tone": "down"
+    }
+   ]
+  },
+  {
+   "type": "statement",
+   "say": "Pero al mercado le importó otra cosa.",
+   "kicker": "El giro",
+   "text": "Al mercado le importó otra cosa.",
+   "emphasis": "otra cosa.",
+   "host": {
+    "act": "explica",
+    "mood": "up",
+    "image": "images/zelnick.jpg",
+    "focus": [
+     0.5,
+     0.25
+    ]
+   }
+  },
+  {
+   "type": "photo",
+   "say": "Su director, Strauss Zelnick, dijo que las preventas de GTA 6 están en niveles sin precedentes.",
+   "image": "images/zelnick.jpg",
+   "focus": [
+    0.5,
+    0.3
+   ],
+   "kicker": "Strauss Zelnick · CEO",
+   "title": "Preventas de GTA VI “sin precedentes”",
+   "caption": "comunicado del 9 de noviembre",
+   "cue_title": "preventas",
+   "cue_caption": "precedentes"
+  },
+  {
+   "type": "photo",
+   "say": "El anterior, GTA 5, vendió casi 235 millones de copias. Y este llega tras 2 retrasos.",
+   "image": "images/cartel.jpg",
+   "kicker": "La saga Grand Theft Auto",
+   "title": "GTA V: casi 235 M de copias",
+   "caption": "GTA VI llega tras 2 retrasos",
+   "cue_title": "copias",
+   "cue_caption": "retrasos",
+   "focus": [
+    0.7,
+    0.3
+   ]
+  },
+  {
+   "type": "bars",
+   "say": "Para este trimestre, Take-Two espera vender casi el doble que hace un año.",
+   "count": 6,
+   "quarters": [
+    {
+     "period": "2025-06-30",
+     "revenue": 1503800000,
+     "net_income": -11900000
+    },
+    {
+     "period": "2025-09-30",
+     "revenue": 1773800000,
+     "net_income": -133900000
+    },
+    {
+     "period": "2025-12-31",
+     "revenue": 1699000000,
+     "net_income": -92900000
+    },
+    {
+     "period": "2026-03-31",
+     "revenue": 1679800000,
+     "net_income": -59500000
+    },
+    {
+     "period": "2026-06-30",
+     "revenue": 1533900000,
+     "net_income": -34100000
+    },
+    {
+     "period": "2026-09-30",
+     "revenue": 1500000000,
+     "net_income": -54000000
+    }
+   ],
+   "cue_revenue": "trimestre",
+   "cue_net": "espera",
+   "note": "Guía: $3,350–3,500 M",
+   "note_sub": "reservas netas oct–dic · vs. $1,760 M hace un año",
+   "note_tone": "up",
+   "cue_note": "doble"
+  },
+  {
+   "type": "price",
+   "say": "Ojo: aun con el salto de hoy, la acción sigue 13% debajo de su máximo de julio.",
+   "kicker": "12 meses",
+   "title": "De $258 a $225",
+   "subtitle": "−13% desde su máximo de julio",
+   "annotations": [
+    {
+     "date": "2026-07-06",
+     "label": "$258.41",
+     "sub": "Máximo · 6 jul",
+     "tone": "down",
+     "cue": "máximo",
+     "dir": -1
+    },
+    {
+     "date": "2026-11-10",
+     "label": "+8.3%",
+     "sub": "Hoy · $224.64",
+     "tone": "up",
+     "cue": "salto",
+     "dir": -1
+    }
+   ]
+  },
+  {
+   "type": "catalyst",
+   "say": "La prueba de fuego: GTA 6 sale el 19 de noviembre.",
+   "kicker": "La prueba de fuego",
+   "date": "19 NOV",
+   "label": "Sale GTA VI",
+   "sub": "en PS5 y Xbox Series X|S",
+   "cue_date": "sale"
+  },
+  {
+   "type": "outro",
+   "say": "¿El mayor lanzamiento de la historia... o ya está todo en el precio?",
+   "question_a": "¿El mayor lanzamiento de la historia…",
+   "question_b": "o ya está todo en el precio?",
+   "cue_a": "lanzamiento",
+   "cue_b": "precio",
+   "sources": "Take-Two (SEC) · Yahoo Finance · Zacks",
+   "host": {
+    "act": "cierre",
+    "image": "images/posters.jpg",
+    "focus": [
+     0.8,
+     0.3
+    ]
+   }
+  }
+ ],
+ "host": {
+  "outfit": "negra",
+  "accessory": "reloj",
+  "prop": "ninguno"
+ }
+}

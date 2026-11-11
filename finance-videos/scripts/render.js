@@ -49,7 +49,7 @@ async function renderRange(b, vjs, long, f0, f1, out, audio, label, opts) {
   const build = path.join(vdir, 'build'), vjs = path.join(build, 'video.js');
   if (!fs.existsSync(vjs)) { console.error('Falta ' + vjs + ' (corre build_timeline.py)'); process.exit(1); }
   const tl = JSON.parse(fs.readFileSync(path.join(build, 'timeline.json'))), long = tl.format === 'long';
-  const b = await chromium.launch();
+  const b = await chromium.launch({ args: ['--allow-file-access-from-files'] });
 
   if (mode === '--thumb') {
     const pg = await openPage(b, vjs, true);
@@ -95,7 +95,7 @@ async function renderRange(b, vjs, long, f0, f1, out, audio, label, opts) {
   const WORKERS = +(process.env.WORKERS || 3), parts = [], per = Math.ceil(N / WORKERS);
   const t0 = Date.now();
   await Promise.all(Array.from({ length: WORKERS }, async (_, w) => {
-    const bw = w === 0 ? b : await chromium.launch(), f0 = w * per, f1 = Math.min(N, f0 + per);
+    const bw = w === 0 ? b : await chromium.launch({ args: ['--allow-file-access-from-files'] }), f0 = w * per, f1 = Math.min(N, f0 + per);
     const out = path.join(build, `part_${w}.mp4`); parts[w] = out;
     const code = await renderRange(bw, vjs, true, f0, f1, out, null, `parte ${w + 1}/${WORKERS}`, { preset: 'medium', crf: 25, tune: 'animation' });   // ~50 MB por 9 min: cabe en GitHub (<100 MB)
     if (code !== 0) throw new Error('ffmpeg falló en parte ' + w);

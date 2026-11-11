@@ -2,7 +2,8 @@
 // Uso: index.html?v=<ruta a story.js>   (?render=1 para no animar en loop)
 import * as L0 from './lib.js';
 import * as CINE from './cine.js';
-const EXTRA = {};   // datos del reproductor que las historias pueden leer (p. ej. L.CAPS para mover la boca)
+import { JP } from './host.js';   // rasgos del anfitrión del canal: L.actor({ ...L.JP })
+const EXTRA = { JP };   // datos del reproductor que las historias pueden leer (p. ej. L.CAPS para mover la boca)
 const L = new Proxy({}, { get: (_, k) => k in EXTRA ? EXTRA[k] : k in CINE ? CINE[k] : L0[k] });
 const { W, H, B } = L0;
 

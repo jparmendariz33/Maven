@@ -116,7 +116,8 @@ export function merged(meshes, mat, cast = true) {   // fusiona mallas ya coloca
 }
 
 // ---------- actor articulado ----------
-// o: skin, shirt, pants, shoes, hair, hairStyle ('mop' | 'short' | 'side' | 'bald'), glasses, beard (color), collar ('turtle' | 'suit' | 'tee'), tie (color), bow (color), size
+// o: skin, shirt, pants, shoes, hair, hairStyle ('mop' | 'short' | 'side' | 'quiff' | 'bald'), glasses, beard (color), collar ('turtle' | 'suit' | 'crew' | 'polo' | 'hoodie'), trim (color del cuello),
+//    tie (color), bow (color), eyeStyle 'full' + eyes (color del iris), neck (true), sleeves 'short', cap (color), headphones (color), watch (color), browW (grosor de ceja), size
 export function actor(o = {}) {
   const r = rng(o.seed || 11), g = new THREE.Group(), u = {};
   const skin = clay2(o.skin || '#F2D6BF', .72, .7), shirt = clay2(o.shirt || B.negro, .9), pants = clay2(o.pants || '#3F5E8C', .9), shoe = clay2(o.shoes || '#F2F0E8', .6, .5), hairM = clay2(o.hair || '#3B2A1E', .95);
@@ -125,12 +126,24 @@ export function actor(o = {}) {
     const gr = c.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(0,0,0,.42)'); gr.addColorStop(.6, 'rgba(0,0,0,.16)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); }, 128, 128) }));
   sh0.rotation.x = -Math.PI / 2; sh0.position.y = .012; g.add(sh0); u.blob = sh0;
   u.legs = {};
+  u.knees = {};
   [-1, 1].forEach(s => { const hip = new THREE.Group(); hip.position.set(s * .2, .52, 0); root.add(hip);
-    const leg = mesh(new THREE.CapsuleGeometry(.145, .24, 6, 14), pants); leg.position.y = -.2; hip.add(leg);
-    const sh = mesh(new THREE.SphereGeometry(.17, 18, 14), shoe); sh.scale.set(1, .62, 1.55); sh.position.set(0, -.42, .09); hip.add(sh); u.legs[s] = hip; });
+    const th = mesh(new THREE.CapsuleGeometry(.145, .08, 6, 14), pants); th.position.y = -.1; hip.add(th);
+    const kn = new THREE.Group(); kn.position.y = -.2; hip.add(kn);                       // rodilla: permite sentarse (pose.sit)
+    const shn = mesh(new THREE.CapsuleGeometry(.136, .06, 6, 14), pants); shn.position.y = -.08; kn.add(shn);
+    const sh = mesh(new THREE.SphereGeometry(.17, 18, 14), shoe); sh.scale.set(1, .62, 1.55); sh.position.set(0, -.22, .09); kn.add(sh); u.legs[s] = hip; u.knees[s] = kn; });
   const torso = new THREE.Group(); torso.position.y = .5; root.add(torso); u.torso = torso;
   const body = mesh(new THREE.CapsuleGeometry(.42, .45, 8, 26), shirt); body.position.y = .5; torso.add(body);
   if (o.collar === 'turtle') { const c = mesh(new THREE.CylinderGeometry(.27, .31, .2, 24), shirt); c.position.y = 1.1; torso.add(c); }
+  if (o.collar === 'crew') { const c = mesh(new THREE.TorusGeometry(.265, .04, 10, 28), clay2(o.trim || o.shirt || B.negro, .95), false); c.rotation.x = Math.PI / 2 - .12; c.position.set(0, 1.07, .02); torso.add(c); }
+  if (o.collar === 'polo') { const pm = clay2(o.trim || o.shirt || B.negro, .9);
+    [-1, 1].forEach(s => { const f = mesh(new THREE.SphereGeometry(.17, 14, 10), pm, false); f.scale.set(1, .32, .7); f.rotation.z = s * -.5; f.position.set(s * .15, 1.06, .27); torso.add(f); });
+    const pl = mesh(new THREE.BoxGeometry(.07, .26, .02), pm, false); pl.position.set(0, .9, .425); pl.rotation.x = -.12; torso.add(pl); }
+  if (o.collar === 'hoodie') { const hm = clay2(o.shirt || B.negro, .95), tm = clay2(o.trim || '#F4F1E8', .8);
+    const hood = mesh(new THREE.SphereGeometry(.36, 20, 14), hm); hood.scale.set(1.15, .7, .8); hood.position.set(0, 1.1, -.24); torso.add(hood);
+    const rim = mesh(new THREE.TorusGeometry(.29, .06, 10, 28), hm, false); rim.rotation.x = Math.PI / 2 - .2; rim.position.set(0, 1.07, .03); torso.add(rim);
+    [-1, 1].forEach(s => { const st = mesh(new THREE.CapsuleGeometry(.016, .22, 4, 6), tm, false); st.position.set(s * .1, .86, .43); st.rotation.x = -.1; torso.add(st); });
+    const pk = rbox(.5, .2, .06, .05, hm); pk.position.set(0, .3, .4); torso.add(pk); }
   if (o.collar === 'suit') {                                  // camisa blanca + corbata o moño
     const v = mesh(new THREE.ConeGeometry(.17, .42, 3), clay2('#F4F1E8', .8), false); v.rotation.set(Math.PI, Math.PI / 6 + Math.PI, 0); v.scale.z = .35; v.position.set(0, .82, .385); torso.add(v);
     if (o.tie) { const t = mesh(new THREE.ConeGeometry(.055, .34, 4), clay2(o.tie, .7), false); t.rotation.x = Math.PI; t.scale.z = .5; t.position.set(0, .8, .44); torso.add(t); }
@@ -140,10 +153,14 @@ export function actor(o = {}) {
   [-1, 1].forEach(s => { const sh = new THREE.Group(); sh.position.set(s * .47, .9, 0); torso.add(sh);
     const up = mesh(new THREE.CapsuleGeometry(.115, .2, 6, 12), shirt); up.position.y = -.19; sh.add(up);
     const el = new THREE.Group(); el.position.y = -.38; sh.add(el);
-    const fo = mesh(new THREE.CapsuleGeometry(.105, .18, 6, 12), shirt); fo.position.y = -.16; el.add(fo);
+    const fo = mesh(new THREE.CapsuleGeometry(o.sleeves === 'short' ? .096 : .105, .18, 6, 12), o.sleeves === 'short' ? skin : shirt); fo.position.y = -.16; el.add(fo);
     const hand = mesh(new THREE.SphereGeometry(.135, 16, 12), skin); hand.position.y = -.37; el.add(hand);
+    const thumb = mesh(new THREE.SphereGeometry(.058, 10, 8), skin, false); thumb.scale.set(1, 1.35, 1); thumb.position.set(-s * .1, .03, .07); hand.add(thumb);
+    if (o.watch && s === -1) { const wb = mesh(new THREE.TorusGeometry(.108, .028, 8, 20), clay2(o.watch === true ? '#1b1b1d' : o.watch, .5, 0), false); wb.rotation.x = Math.PI / 2; wb.position.y = -.26; el.add(wb);
+      const wf = mesh(new THREE.CylinderGeometry(.06, .06, .03, 16), clay2('#E9E6DA', .3, 0), false); wf.rotation.z = Math.PI / 2; wf.position.set(-.115, -.26, 0); el.add(wf); }
     u.arms[s] = { sh, el, hand }; });
-  const head = new THREE.Group(); head.position.y = 1.62; torso.add(head); u.head = head;
+  const head = new THREE.Group(); head.position.y = o.neck ? 1.72 : 1.62; torso.add(head); u.head = head;
+  if (o.neck) { const nk = mesh(new THREE.CylinderGeometry(.2, .23, .3, 20), skin); nk.position.y = 1.1; torso.add(nk); }
   head.add(mesh(new THREE.SphereGeometry(.62, 48, 36), skin));
   [-1, 1].forEach(s => { const ear = mesh(new THREE.SphereGeometry(.1, 12, 10), skin, false); ear.scale.z = .5; ear.position.set(s * .61, -.02, 0); head.add(ear); });
   const st = o.hairStyle || 'mop';
@@ -158,17 +175,38 @@ export function actor(o = {}) {
     const top = mesh(new THREE.SphereGeometry(.628, 40, 16, 0, Math.PI * 2, 0, .62), hairM, false); top.rotation.x = -.08; head.add(top);   // pelo ralo arriba (que no se vea calvo de frente)
     [-1, 1].forEach(s => { const sb = mesh(new THREE.SphereGeometry(.2, 14, 10), hairM, false); sb.scale.set(.35, 1, .8); sb.position.set(s * .585, .1, -.05); head.add(sb); });
   }
+  if (st === 'quiff') {
+    const cap = mesh(new THREE.SphereGeometry(.636, 48, 24, 0, Math.PI * 2, 0, 1.22), hairM); cap.rotation.x = -.5; head.add(cap);   // lados y nuca cortos
+    [-1, 1].forEach(s => { const sb = mesh(new THREE.SphereGeometry(.2, 14, 10), hairM, false); sb.scale.set(.3, 1.05, .75); sb.position.set(s * .59, .12, -.02); head.add(sb); });
+    if (!o.cap) {                                            // volumen liso arriba + copete al frente, ladeado
+      const top = mesh(new THREE.SphereGeometry(.5, 36, 22), hairM); top.scale.set(1.13, .5, 1.14); top.position.set(.02, .43, .0); top.rotation.set(-.14, 0, -.07); head.add(top);
+      const qf = mesh(new THREE.SphereGeometry(.3, 28, 18), hairM); qf.scale.set(1.5, .6, .82); qf.position.set(.07, .55, .33); qf.rotation.set(-.38, 0, -.12); head.add(qf);
+      const sw = mesh(new THREE.SphereGeometry(.2, 18, 12), hairM, false); sw.scale.set(1.35, .62, .95); sw.position.set(.3, .5, .27); sw.rotation.z = -.35; head.add(sw);
+      const bk = mesh(new THREE.SphereGeometry(.4, 24, 16), hairM, false); bk.scale.set(1.25, .7, .9); bk.position.set(0, .3, -.33); head.add(bk); }
+  }
+  if (o.cap) { const cm = clay2(o.cap === true ? B.azul : o.cap, .9);
+    const dome = mesh(new THREE.SphereGeometry(.665, 40, 20, 0, Math.PI * 2, 0, 1.25), cm); dome.rotation.x = -.3; head.add(dome);
+    const vis = mesh(new THREE.SphereGeometry(.36, 24, 12), cm); vis.scale.set(1, .1, .9); vis.position.set(0, .3, .66); vis.rotation.x = .12; head.add(vis);
+    const bt = mesh(new THREE.SphereGeometry(.05, 10, 8), cm, false); bt.position.set(0, .68, -.2); head.add(bt); }
+  if (o.headphones) { const pm = clay2(o.headphones === true ? '#F4F1E8' : o.headphones, .5, .3);
+    const band = mesh(new THREE.TorusGeometry(.75, .04, 8, 36, Math.PI), pm, false); head.add(band);
+    [-1, 1].forEach(s => { const cup = mesh(new THREE.CylinderGeometry(.19, .19, .14, 20), pm, false); cup.rotation.z = Math.PI / 2; cup.position.set(s * .68, -.02, 0); head.add(cup); }); }
   if (o.beard) { const bd = mesh(new THREE.SphereGeometry(.631, 40, 20, 0, Math.PI * 2, 1.95, 1.2), clay2(o.beard, .98), false); bd.rotation.x = .42; head.add(bd); }
   const mz = o.beard ? .03 : 0; u.lids = []; u.brows = [];
   [-1, 1].forEach(s => {
     const e = mesh(new THREE.SphereGeometry(.075, 16, 12), clay2('#121212', .3, 0), false); e.scale.set(1, 1.2, .45); e.position.set(s * .2, .03, .595); head.add(e);
     const hl = mesh(new THREE.SphereGeometry(.02, 8, 6), new THREE.MeshBasicMaterial({ color: '#ffffff' }), false); hl.position.set(s * .2 + .022, .062, .628); head.add(hl);
     const lid = mesh(new THREE.SphereGeometry(.098, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2), skin, false); lid.scale.set(1.1, 1, .55); lid.position.set(s * .2, .03, .595); head.add(lid); u.lids.push(lid);
-    const br = mesh(new THREE.CapsuleGeometry(.026, .14, 4, 8), hairM, false); br.position.set(s * .2, .2, .588); head.add(br); u.brows.push([br, s]);
+    if (o.eyeStyle === 'full') {                              // ojo completo: blanco + iris + pupila (más expresivo en primeros planos)
+      e.material = clay2('#F7F4EC', .35, 0); e.scale.set(1.42, 1.62, .42); e.position.z = .578;
+      const ir = mesh(new THREE.SphereGeometry(.062, 18, 14), clay2(o.eyes || '#4A2F1B', .3, 0), false); ir.scale.set(1, 1.08, .4); ir.position.set(s * .2, .02, .612); head.add(ir);
+      const pu = mesh(new THREE.SphereGeometry(.033, 12, 10), clay2('#0d0d0d', .25, 0), false); pu.scale.z = .4; pu.position.set(s * .2, .02, .632); head.add(pu);
+      hl.position.set(s * .2 + .026, .05, .648); lid.scale.set(1.5, 1.42, .62); }
+    const br = mesh(new THREE.CapsuleGeometry(o.browW || .026, o.browW ? .17 : .14, 4, 8), hairM, false); br.position.set(s * .2, .2, .588); head.add(br); u.brows.push([br, s]);
   });
   if (o.glasses) { const gm = clay2(o.glasses === true ? '#2B2B2B' : o.glasses, .35, 0);
     [-1, 1].forEach(s => { const ring = mesh(new THREE.TorusGeometry(.125, .013, 8, 32), gm, false); ring.position.set(s * .2, .03, .655); head.add(ring);
-      const tm = mesh(new THREE.CylinderGeometry(.01, .01, .62, 6), gm, false); tm.rotation.x = Math.PI / 2; tm.position.set(s * .345, .04, .35); tm.rotation.y = 0; tm.rotation.z = 0; tm.rotation.set(Math.PI / 2, 0, s * -.42); head.add(tm); });
+      const tg = new THREE.CylinderGeometry(.011, .011, .7, 6); tg.rotateX(Math.PI / 2); const tm = mesh(tg, gm, false); tm.position.set(s * .47, .045, .33); tm.rotation.y = Math.atan2(s * .28, -.655); head.add(tm); });
     const bridge = mesh(new THREE.CylinderGeometry(.011, .011, .16, 6), gm, false); bridge.rotation.z = Math.PI / 2; bridge.position.set(0, .05, .665); head.add(bridge); }
   const nose = mesh(new THREE.SphereGeometry(.062, 12, 10), skin, false); nose.position.set(0, -.07, .625); head.add(nose);
   u.smile = mesh(new THREE.TorusGeometry(.12, .022, 8, 24, 1.6), clay2('#4a2626', .5, 0), false); u.smile.scale.z = .5; head.add(u.smile);
@@ -178,11 +216,12 @@ export function actor(o = {}) {
   u.mz = mz; g.userData = u; if (o.size) g.scale.setScalar(o.size); pose(g, {}); return g;
 }
 // pose: walk (fase en rad, null = quieto) · amp · armL/armR [levantar al frente, abrir al lado, doblar codo] en rad · head [rx, ry, rz]
-// lid 0 abiertos..1 cerrados · brow -1 triste..1 decidido · smile -1..1 · talk 0..1 (boca abierta) · lean · bob · sweat
+// sit 0..1 = sentado (dobla cadera y rodilla; baja al actor con bob ≈ -.2*sit y ponle una silla) · lid 0 abiertos..1 cerrados · brow -1 triste..1 decidido · smile -1..1 · talk 0..1 (boca abierta) · lean · bob · sweat
 export function pose(g, p = {}) {
   const u = g.userData, q = { walk: null, amp: .55, lid: .12, brow: 0, smile: .5, talk: 0, sweat: false, head: [0, 0, 0], armL: [0, .14, .1], armR: [0, .14, .1], lean: 0, bob: 0, ...p };
   const ph = q.walk, sw = ph == null ? 0 : Math.sin(ph) * q.amp;
-  u.legs[-1].rotation.x = sw; u.legs[1].rotation.x = -sw;
+  const sit = q.sit || 0; u.legs[-1].rotation.x = sw - 1.5 * sit; u.legs[1].rotation.x = -sw - 1.5 * sit;
+  if (u.knees) u.knees[-1].rotation.x = u.knees[1].rotation.x = 1.5 * sit;
   u.root.position.y = (ph == null ? 0 : Math.abs(Math.cos(ph)) * .055) + q.bob; u.torso.rotation.x = q.lean; u.torso.rotation.z = ph == null ? 0 : Math.sin(ph) * .035;
   [[-1, q.armL], [1, q.armR]].forEach(([s, a]) => { const A = u.arms[s]; A.sh.rotation.set(-a[0] + (ph == null || a[3] ? 0 : s * sw * .8), 0, s * a[1]); A.el.rotation.x = -a[2]; });
   u.head.rotation.set(q.head[0], q.head[1], q.head[2] || 0);
