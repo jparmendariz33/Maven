@@ -1,7 +1,30 @@
 # Short derivado · miércoles 11 nov · 19:00
 Archivo: `APPLE_short.mp4`
 
-## Título
+## ✅ Para copiar y pegar
+
+**Título** (56 de 100 caracteres):
+```
+De cada $100, Apple se queda con casi $28 #Apple #inversiones
+```
+
+**Descripción** (en la app: "Mostrar más" → Descripción):
+```
+De cada 100 dólares que le pagas a Apple por un iPhone, una Mac o una suscripción, la empresa se queda con casi 28 de ganancia. Aquí va a dónde se van los otros 72.
+
+Es un adelanto del video del domingo 15 de noviembre: "Cómo leer un estado de resultados (con Apple)". Míralo completo en el canal.
+
+¿Qué empresa quieres que leamos después? Te leo en los comentarios 👇
+
+Imágenes: Apple Store de la Quinta Avenida, foto de Jorge Láscar (CC BY 2.0, Wikimedia Commons) · Apple Park, foto de Daniel L. Lu (CC BY-SA 4.0, Wikimedia Commons) · iPhone 17 Pro, imagen de Apple (sala de prensa)
+
+Contenido educativo. No es asesoría financiera.
+Costa Studio Finance, by JP Armendáriz.
+
+#Apple #AAPL #inversiones #bolsa #Shorts
+```
+
+## Título (versión anterior)
 **De cada $100, Apple se queda con $27.6 #Apple #inversiones #bolsa**
 
 ## Descripción
