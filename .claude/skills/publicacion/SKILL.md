@@ -9,7 +9,8 @@ description: Crea una publicación de YouTube (pestaña Publicaciones) de 3–4 
 
 **Para qué sirve este formato (plan del 11 nov 2026, `plan/PLAN.md` §2b):** las publicaciones son lo TEMPORAL del canal. Cuentan qué pasó
 hoy y abren conversación con quien ya sigue a JP. Aquí sí va la fecha y el "hoy" (los shorts ya no: son de contexto y duran meses).
-Ritmo: **3 por semana (lunes, miércoles y viernes, después del cierre)**. JP las publica a mano; nunca publiques nada tú.
+Ritmo: **3 por semana (lunes, miércoles y viernes, después del cierre)** + **el ranking del domingo** (`/short` §1d: portada, puestos 5–4,
+puestos 3–2 y el #1 con la pregunta; ese no lleva "hoy", es el mismo ranking del short del domingo). JP las publica a mano; nunca publiques nada tú.
 
 ## 0. Preparar
 ```bash

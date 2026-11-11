@@ -1,4 +1,9 @@
-# 🎬 Finance Videos — shorts de acciones (estilo Costa Studio)
+# 🎬 Finance Videos — Costa Studio Finance
+
+> **Este README describe la primera versión (nov 2026, shorts con voz de IA). Está desactualizado.** La fuente de verdad es
+> `CLAUDE.md` + `plan/PLAN.md` (§2b y §9) + las skills en `../.claude/skills/` (`/short`, `/largo`, `/historia`, `/publicacion`).
+
+## (Histórico) shorts de acciones (estilo Costa Studio)
 
 Ruta del proyecto: **`Maven/finance-videos/`** (repo `jparmendariz33/Maven`).
 

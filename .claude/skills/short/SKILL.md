@@ -10,11 +10,12 @@ argument-hint: "<TICKER o nombre de la empresa> [enfoque opcional]"
 # /short — análisis de una acción o empresa en video (Costa Studio Finance)
 
 Dos modos, mismo motor, misma duración (~65–75 s sin voz) y misma marca:
-- **Reactivo** (lun, mar, jue): qué pasó HOY con una acción o índice, con precios de cierre (ver `plan/PLAN.md` §2).
-- **Empresa** (vie, sáb, dom): "Análisis + Potencial" de una empresa (sección 1b); el sábado, "Tesis a 5 años" de `plan/banco-tesis.md`. `"mode": "empresa"` en el storyboard.
+- **Contexto** (lun, mar, jue; antes "reactivo"): la noticia de la sesión es el pretexto; el short cuenta algo que dure meses (sección 1c).
+- **Empresa** (vie y sáb): "Análisis + Potencial" de una empresa (sección 1b); el sábado, "Tesis a 5 años" de `plan/banco-tesis.md`. `"mode": "empresa"` en el storyboard.
+- **Ranking** (dom): top 3 o top 5 en cuenta regresiva (sección 1d).
 **Todos los shorts llevan imágenes reales** que hagan sentido con la historia (sección 2b).
 **Fecha (regla de oro de JP):** un short por día, hecho el MISMO día en que se publica (19:00 CDMX). La carpeta lleva la fecha de
-publicación; "hoy" y "ayer" se cuentan desde ese día (en fin de semana di "el viernes…"). Nunca produzcas shorts de días futuros
+publicación. En los shorts ya no se dice "hoy" ni "ayer" (§1c); eso vive en las publicaciones. Nunca produzcas shorts de días futuros
 (el adelanto del miércoles lo hace la tarea del miércoles). Antes de elegir tema, revisa `plan/publicados.md` para no repetir, y al
 terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno por párrafo (regenéralo si cambias el guion).
 **Modelo de estilo:** `videos/2026-11-07-ABNB/` (el favorito de JP) y, para el formato y los colores de empresa, `videos/2026-11-08-CUERVO/`.
@@ -99,10 +100,16 @@ Cuenta regresiva: del último lugar al número 1. Sirve para shorts, publicacion
 - **El criterio manda y se dice en pantalla.** Todo ranking se ordena por un dato verificable: crecimiento de ingresos, margen, rendimiento en
   el año, caída desde el máximo, dividendo, valor de mercado, flujo libre… Di el criterio en el gancho y la fecha de corte en la descripción.
 - **Nunca "las que van a subir" ni "las mejores para comprar".** Eso es recomendación y predicción. En su lugar: "las 5 que más crecieron este
-  año", "las 5 más castigadas del S&P 500", "5 empresas que JP está vigilando y por qué" (opinión declarada como opinión, con su riesgo al lado).
-  Si la empresa está en `posiciones-jp.md`, se declara.
+  año", "las 5 más castigadas del S&P 500" o, el favorito de JP, **"5 empresas que Costa Studio Finance está vigilando y por qué"**.
+- **Quien vigila es el canal, no JP (pedido de JP, 11 nov 2026):** en rankings y listas de seguimiento el sujeto es SIEMPRE "Costa Studio
+  Finance" ("estamos vigilando", "en Costa Studio Finance seguimos de cerca…"); no digas "JP vigila", "yo vigilo" ni su nombre. Cada puesto
+  lleva por qué se vigila Y su riesgo, con el mismo peso. Es una lista de seguimiento, no de compra: dilo una vez en el video y en la descripción.
+  Si alguna empresa está en `posiciones-jp.md`, se declara como "Costa Studio Finance tiene posición en <empresa>".
 - **Vigencia:** evita rankings atados a un mes ("para diciembre"); caducan en semanas. Mejor "de 2026", "de los últimos 12 meses", "de la década".
-- En publicaciones: portada + puestos 5–4 + puestos 3–2 + el #1 con la pregunta (4 imágenes).
+- **Cuándo (activado el 11 nov 2026): el DOMINGO.** El short del domingo es un ranking (en lugar del Análisis + Potencial de ese día) y va
+  acompañado de su publicación de 4 imágenes: portada + puestos 5–4 + puestos 3–2 + el #1 con la pregunta (`/publicacion`). Alterna cada
+  semana entre un ranking por dato ("las 5 que más…") y "5 empresas que Costa Studio Finance está vigilando". No repitas en la lista
+  más de 2 empresas del ranking anterior. Carpeta: `videos/<domingo>-TOP5-<tema>/`.
 
 ## 1b. Modo empresa (viernes, sábado y domingo)
 **Cómo elegir la empresa** (tómala tú, sin preguntar; revisa `plan/banco-empresas.md` y `videos/` para no repetir):

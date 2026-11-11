@@ -26,7 +26,7 @@ shorts = contexto que dura meses (sin "hoy"; `/short` §1c); historia 3D = alcan
 `videos|largos/<id>/images/` + `images/credits.json`. En el storyboard: escena `photo`, `bg_image`, `company.logo`, `news.image`.
 `build_timeline.py` las incrusta; el motor pone el pie de foto. Detalle en `/short` §2b. **Calidad (JP, 11 nov 2026):** solo fotos nítidas (≥ 1600 px), limpias, con el sujeto solo y sin ruido de fondo; nada de fotos de calle cargadas.
 
-**Ritmo (nov 2026):** un video por día, producido el MISMO día que se publica (`plan/PLAN.md` §2 "Regla de oro"; no repetir nada de `plan/publicados.md`): 1 short diario (lun/mar/jue reactivo, mié derivado del largo, **vie/sáb/dom análisis de empresa**) + largo los domingos + **1 Historia 3D los sábados 12:00** (se produce el viernes). Los videos con datos del día se hacen DESPUÉS del cierre de la bolsa (ver "Regla del cierre").
+**Ritmo (nov 2026):** un video por día, producido el MISMO día que se publica (`plan/PLAN.md` §2 "Regla de oro"; no repetir nada de `plan/publicados.md`): 1 short diario (lun/mar/jue de contexto, mié derivado del largo, vie/sáb análisis de empresa, **dom ranking**) + publicaciones lun/mié/vie/dom + largo los domingos + **1 Historia 3D los sábados 12:00** (se produce el viernes). Los videos con datos del día se hacen DESPUÉS del cierre de la bolsa (ver "Regla del cierre").
 
 Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL.md`). Resumen del flujo:
 `setup.sh` → `market_close.py` (¿ya cerró?) → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →

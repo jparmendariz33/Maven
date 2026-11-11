@@ -46,17 +46,20 @@ que se publica. Antes de producir, revisar `plan/publicados.md` para no repetir 
 las 19:00. Si JP da una idea durante el día, se prepara todo y se entrega una sola vez, ya con el cierre (detalle en `CLAUDE.md`).
 | Día (CDMX) | Qué se publica | Duración | Origen |
 |---|---|---|---|
-| **Lunes 19:00** | Short reactivo #1 | 45–65 s | Lo más fuerte de la sesión de HOY (lunes), con datos de cierre |
-| **Martes 19:00** | Short reactivo #2 | 45–65 s | Lo más fuerte de la sesión de hoy |
+| **Lunes 19:00** | Short de contexto #1 | 60–75 s | La noticia de la sesión es el pretexto; cuenta algo que dure meses (§2b). Datos de cierre |
+| **Lunes ≈17:00** | 📌 Publicación del día (3–4 imágenes) | — | Lo que pasó HOY + pregunta (skill `/publicacion`) |
+| **Martes 19:00** | Short de contexto #2 | 60–75 s | Igual |
 | **Miércoles 19:00** | Short derivado del largo (adelanto: "el domingo, el video completo") | 30–50 s | Idea más poderosa del largo de la semana |
-| **Jueves 19:00** | Short reactivo #3 | 60–75 s | Lo más fuerte de la sesión de hoy |
+| **Miércoles ≈17:00** | 📌 Publicación del día | — | Lo que pasó HOY + pregunta |
+| **Jueves 19:00** | Short de contexto #3 | 60–75 s | Igual que lunes y martes |
 | **Viernes 19:00** | Short **Análisis + Potencial** #1 | 75–85 s | Empresa "caliente" con historia de largo plazo (ver abajo) |
+| **Viernes ≈17:00** | 📌 Publicación del día | — | Lo que pasó HOY + pregunta |
 | **Sábado 12:00** | 🎬 **Historia 3D** (maquetas animadas: la historia de una empresa o su fundador) | 75–90 s | [`banco-historias.md`](banco-historias.md) · skill `/historia` |
 | **Sábado 19:00** | Short **Tesis a 5 años** (Análisis + Potencial) | 75–85 s | Empresa con potencial de [`banco-tesis.md`](banco-tesis.md) (Grab, ASUR…) |
 | **Domingo 10:00** | **Video largo atemporal** (16:9) | 9–11 min | Calendario de 55 semanas |
-| **Domingo 19:00** | Short **Análisis + Potencial** #3 | 75–85 s | Empresa "caliente" con historia de largo plazo |
+| **Domingo 19:00** | Short **Ranking** (top 3 o top 5) + su 📌 publicación | 75–85 s | Por un dato verificable, o "5 empresas que Costa Studio Finance está vigilando" (`/short` §1d) |
 
-= **9 piezas por semana** (1 largo + 7 shorts, uno diario + 1 Historia 3D). Al año: 55 largos, ~380 shorts y ~52 historias.
+= **13 piezas por semana** desde el 11 nov 2026 (1 largo + 7 shorts + 1 Historia 3D + 4 publicaciones). JP graba voz en 9. Al año: 55 largos, ~380 shorts y ~52 historias.
 (Cambio del 9 nov 2026: JP pidió sumar las historias animadas en 3D. Van 1 por semana, el sábado a las 12:00; ese día salen dos
 piezas, separadas 7 horas para que no compitan. Se revisa en el check-up de febrero: si las historias rinden más que los shorts
 normales, se sube a 2 por semana con una segunda los miércoles a las 12:00.)
@@ -76,7 +79,9 @@ Objetivo final: crecer la audiencia de finanzas e inversión y monetizar el cana
 | Largos | Horas de reproducción y búsqueda | Enseñar algo de inversión | Años | Dom 10:00 |
 
 - **Shorts de lunes, martes y jueves = shorts de contexto** (`/short` §1c): la noticia es el pretexto; sin "hoy" ni fechas en título y guion.
-- **Publicaciones:** skill `/publicacion`. La cuarta (domingo, resumen de la semana) solo si las tres primeras funcionan.
+- **Publicaciones:** skill `/publicacion`: lunes, miércoles y viernes (la noticia del día) + domingo (el ranking de la semana).
+- **Rankings (domingo):** short + publicación. Siempre por un dato verificable o como lista de seguimiento de **Costa Studio Finance** (nunca
+  "JP vigila", nunca "van a subir", nunca atados a un mes). Detalle: `/short` §1d.
 - **JP en 3D:** recorte chico sobre el tema (`/short` §2c). Shorts: gancho y cierre. Largos: inicio, 3–5 intermedios y cierre. Publicaciones: primera y última imagen.
 - **Los videos anteriores al 11 nov no se tocan.**
 - **Revisión cada 4 semanas** con los números de YouTube Studio de JP (`plan/metricas.md`): qué pegó, por qué, dónde se cae la audiencia,
@@ -132,7 +137,8 @@ mercado (largo, adelanto del miércoles, shorts de sábado y domingo) sigue lleg
 | Cuándo (CDMX) | Quién | Qué pasa |
 |---|---|---|
 | **Lunes 6:41** | Tarea "Producción del video largo" | Produce SOLO el largo del domingo de esta semana (si ya existe, no hace nada): guion con datos verificados, **video 16:9 completo sin voz** (subtítulos-teleprompter), miniatura y `youtube.md`. Te notifica. |
-| **Lun, mar y jue · tras el cierre (~15:25)** | Tarea "Radar de Shorts" | Elige lo más fuerte de la sesión de HOY y produce el short reactivo con precios de cierre (sin voz). Llega ~16:00. |
+| **Lun, mar y jue · tras el cierre (~15:25)** | Tarea "Short de contexto" | Parte de la noticia de la sesión y produce el short de contexto con precios de cierre (sin voz). Llega ~16:00. |
+| **Lun, mié y vie · tras el cierre (~15:26)** | Tarea "Publicación del día" | 3–4 imágenes con la noticia de hoy + descripción para copiar. Llega ~16:00; se publica ≈17:00. |
 | **Miércoles 6:41** | Tarea "Short derivado (miércoles)" | Produce el short adelanto del largo de ese domingo. Te notifica. |
 | **Viernes · tras el cierre (~15:25)** | Tarea "Análisis de empresa (viernes)" | Elige la empresa caliente y produce el short con el cierre del viernes. Llega ~16:00. |
 | **Viernes · tras el cierre (~15:25)** | Tarea "Historia 3D" | Elige la historia, verifica los datos (con el cierre del viernes), arma la maqueta y renderiza con música y efectos. Llega en la tarde-noche (el render tarda ~1 h). Se publica el **sábado 12:00**. |
@@ -220,20 +226,28 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 - [x] Fotos reales agregadas a lo ya producido (largos 15 y 22 nov, shorts 11 y 18 nov) sin cambiar los guiones; re-renderizados.
 - [x] 9 nov 2026: **Regla del cierre**: los videos con datos del día se producen después del cierre de la bolsa (`scripts/market_close.py`; tareas a las 16:25 de Nueva York).
 - [x] 9 nov 2026: Historias 3D (motor `engine3d/` con luz de cine y actores, skill `/historia`, banco de historias y tarea de los viernes).
-- [ ] **Tú:** agregar el repo `jparmendariz33/Maven` a los repositorios del entorno "Juan Pa" (claude.ai/code → entorno → Edit →
+- [x] 11 nov 2026: plan nuevo (§2b): publicaciones, shorts de contexto, ranking del domingo, JP en 3D como recorte, voz de JP en los guiones.
+  Las tareas de producción corren ahora dentro de UNA conversación de Claude que sí puede guardar en GitHub (parche; ver §9).
+- [ ] **Tú (arreglo de fondo, sigue pendiente):** agregar el repo `jparmendariz33/Maven` a los repositorios del entorno "Juan Pa" (claude.ai/code → entorno → Edit →
   Repositories). Sin eso, las tareas programadas hacen el video y te lo mandan por chat, pero no lo pueden guardar en GitHub.
 - [ ] **Tú:** verificar el canal con tu teléfono y configurarlo con `canal/configuracion.md` (~45 min, una vez).
 - [ ] **Tú:** llenar `clientes-agencia.md`.
 - [ ] **Tú, cada domingo:** 2 min en `metricas.md` (o mándame una captura de YouTube Studio).
 
-## 9. Tareas programadas (zona horaria: Ciudad de México)
-| Tarea | Cuándo | ID |
-|---|---|---|
-| Radar de Shorts (3 por semana) | Lun, mar y jue · 16:25 de Nueva York (tras el cierre) | trig_01CnUTcJ3bevrqhQoUcnexqW |
-| Análisis + Potencial (sáb = Tesis a 5 años) | Sáb y dom 6:41 | trig_01QJCh2FaMNmfpP1SMLHn1E9 |
-| Análisis + Potencial del viernes | Viernes · 16:25 de Nueva York (tras el cierre) | trig_0195fwBGXcNMr4tAiS2yXVsF |
-| Producción del video largo (solo el de esa semana) | Lunes 6:41 | trig_01PqPWwd22ymEiaN4zJynEAN |
-| Short derivado (adelanto del largo) | Miércoles 6:41 | trig_01CgPooCEzGfqDFb8XAbQQ14 |
-| Historia 3D (se publica el sábado 12:00) | Viernes · 16:25 de Nueva York (tras el cierre) | trig_01WiLjHyjJxTvYkRxBT6ZbUH |
-| Check-up trimestral | 4 feb, 4 may, 4 ago · 6:41 | trig_01DUUsYHU5STYp3ERkoYnnkU |
-| Re-plan anual | 4 nov 2027 · 6:41 | trig_012FRZsfmRFvxMPNyMQJTHsq |
+## 9. Tareas programadas (actualizado el 11 nov 2026)
+Las tareas de producción corren dentro de la conversación de Claude "session_01FvjQ3qKsfHX4rzw8jtw3Rk" (la única con permiso de escritura
+en el repo). Cada una lee su texto base de la tarea original, que quedó EN PAUSA (no borrarla). Si esa conversación se archiva, hay que
+recrearlas o hacer el arreglo de fondo (§8).
+
+| Tarea activa | Cuándo | ID | Texto base (en pausa) |
+|---|---|---|---|
+| Short de contexto | Lun, mar y jue · 16:25 de Nueva York | trig_01YC6XSBjLTQC99azkzwABed | trig_01CnUTcJ3bevrqhQoUcnexqW |
+| Publicación del día | Lun, mié y vie · 16:26 de Nueva York | trig_019nTN3FFZncYqTA7e5RFBRJ | — |
+| Short derivado (adelanto del largo) | Miércoles 6:41 | trig_011sLZh1asQNFXhKC4Tyu99z | trig_01CgPooCEzGfqDFb8XAbQQ14 |
+| Análisis + Potencial del viernes | Viernes · 16:25 de Nueva York | trig_01RFu1UMadn1pzisH5YpPuSa | trig_0195fwBGXcNMr4tAiS2yXVsF |
+| Historia 3D (se publica el sábado 12:00) | Viernes · 16:27 de Nueva York | trig_01FTeyhPd6NuwpkDqharo2Y2 | trig_01WiLjHyjJxTvYkRxBT6ZbUH |
+| Sábado: Tesis a 5 años · Domingo: Ranking + su publicación | Sáb y dom 6:41 | trig_01JLBXKzRJ2bicmH6SpWWwPS | trig_01QJCh2FaMNmfpP1SMLHn1E9 |
+| Producción del video largo | Lunes 6:41 | trig_012xeT5xAkvs2cXZ5uM4VNMp | trig_01PqPWwd22ymEiaN4zJynEAN |
+| Revisión de números (cada ~4 semanas) | Día 9 de cada mes 11:13 | trig_01KQNjkV65mHR52Wwr9rUTVD | — |
+| Check-up trimestral (config. anterior: no puede guardar en GitHub) | 4 feb, 4 may, 4 ago · 6:41 | trig_01DUUsYHU5STYp3ERkoYnnkU | — |
+| Re-plan anual (config. anterior: no puede guardar en GitHub) | 4 nov 2027 · 6:41 | trig_012FRZsfmRFvxMPNyMQJTHsq | — |
