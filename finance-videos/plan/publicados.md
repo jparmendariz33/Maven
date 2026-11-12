@@ -28,3 +28,4 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 ## Publicaciones (pestaña Publicaciones de YouTube; skill `/publicacion`)
 | Fecha | Tema | Carpeta |
 |---|---|---|
+| mié 11 nov 2026 (entregada el 12) | CoreWeave subió 25% y levantó a los chips: Micron, Arm y Dell ≈ +12% (CRWV) | `videos/2026-11-11-POST-CRWV/` |

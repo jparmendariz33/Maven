@@ -1,0 +1,61 @@
+{
+ "title": "CoreWeave subió 25% y levantó a los chips (11 nov 2026)",
+ "host": {
+  "outfit": "hoodie",
+  "accessory": "ninguno",
+  "prop": "ninguno"
+ },
+ "sources": "CoreWeave (SEC) · Yahoo Finance",
+ "slides": [
+  {
+   "type": "portada",
+   "image": "images/racks.jpg",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "kicker": "Miércoles 11 nov · CoreWeave (CRWV)",
+   "title": "CoreWeave subió 25% y levantó a los chips",
+   "size": 78,
+   "sub": "Micron, Arm y Dell ganaron cerca de 12% ese mismo día.",
+   "host": {
+    "act": "senala",
+    "mood": "up"
+   },
+   "credit": "Foto: U.S. Army CCDC · CC BY 2.0 · Flickr"
+  },
+  {
+   "type": "dato",
+   "kicker": "Por qué",
+   "title": "Sus resultados calmaron el miedo a que se frene la IA",
+   "bullets": [
+    "Ingresos del trimestre: $3,661 M, +168% contra hace un año",
+    "Contratos firmados por cobrar: $132,500 M",
+    "Ojo: sigue perdiendo dinero. −$709 M en el trimestre"
+   ]
+  },
+  {
+   "type": "grafica",
+   "kicker": "CoreWeave · 12 meses",
+   "title": "De $138 a $61",
+   "sub": "Sigue 56% abajo de su máximo de mayo",
+   "note": "Cierre del 11 nov: $60.77 (+24.7% en el día)"
+  },
+  {
+   "type": "pregunta",
+   "image": "images/pasillo.jpg",
+   "focus": [
+    0.3,
+    0.5
+   ],
+   "kicker": "Tu turno",
+   "question": "¿Rebote de un día o regresa la fiebre por la IA?",
+   "size": 84,
+   "cta": "Te leo en los comentarios 👇",
+   "host": {
+    "act": "cierre"
+   }
+  }
+ ],
+ "text": "El miércoles 11 de noviembre, CoreWeave subió casi 25% en un día y se llevó de corbata a medio sector: Micron, Arm y Dell ganaron cerca de 12%.\n\n¿Qué pasó? CoreWeave renta centros de datos para inteligencia artificial y reportó que sus ingresos crecieron 168% y que tiene contratos firmados por 132 mil 500 millones de dólares. O sea, la demanda ahí sigue. Ahora, también sigue perdiendo dinero, y la acción está 56% abajo de su máximo de mayo.\n\n¿Tú cómo lo ves: rebote de un día o regresa la fiebre por la IA? Te leo 👇\n\nFuentes: reporte de CoreWeave a la SEC (10 nov 2026) y precios de cierre de Yahoo Finance.\nFotos: U.S. Army Combat Capabilities Development Command y bugeaters (CC BY 2.0, Flickr).\nContenido educativo. No es asesoría financiera.\n#CoreWeave #IA #bolsa"
+}
