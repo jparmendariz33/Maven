@@ -1,0 +1,24 @@
+{
+ "images/logo.png": {
+  "title": "amd",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=amd",
+  "kind": "logo"
+ },
+ "images/chip.jpg": {
+  "title": "ULSI_AMC_DX_DLC_40MHz_2015-03-14-11.56.50_-_ZS-DMap_-_Stack-DSC09781-DSC09831",
+  "creator": "FritzchensFritz",
+  "license": "CC0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source_url": "http://www.flickr.com/photos/130561288@N04/16205191643",
+  "provider": "Flickr"
+ },
+ "images/placa.jpg": {
+  "title": "Microprocessor",
+  "creator": "jcubic",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+  "source_url": "https://www.flickr.com/photos/56196558@N08/12237986156",
+  "provider": "Flickr"
+ }
+}

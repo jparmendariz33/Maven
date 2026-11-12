@@ -1,0 +1,175 @@
+{
+ "ticker": "AMD",
+ "title": "AMD se multiplicó por dos en un año y su rival se quedó sin fundador",
+ "brand_colors": {
+  "primary": "#ED1C24",
+  "name": "AMD"
+ },
+ "host": {
+  "logo": "images/logo.png",
+  "outfit": "blazer",
+  "accessory": "lentes",
+  "prop": "ninguno"
+ },
+ "scenes": [
+  {
+   "type": "hook",
+   "bg_image": "images/chip.jpg",
+   "bg_full": true,
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "host": {
+    "act": "senala",
+    "mood": "up"
+   },
+   "kicker": "NASDAQ · AMD",
+   "title": "AMD, en 12 meses",
+   "value": 136,
+   "signed": true,
+   "decimals": 0,
+   "unit": "%",
+   "tone": "up",
+   "caption": "y su rival se quedó sin fundador",
+   "cue_value": "duplicó",
+   "say": "La acción de AMD se duplicó en 12 meses. Y ahora su rival más grande se quedó sin fundador."
+  },
+  {
+   "type": "company",
+   "kicker": "La empresa",
+   "name": "AMD",
+   "logo": "images/logo.png",
+   "line": "Hace los chips que van dentro de tu computadora y de los centros de datos",
+   "chips": [
+    {
+     "label": "Ryzen · computadoras",
+     "cue": "computadora"
+    },
+    {
+     "label": "Instinct · inteligencia artificial",
+     "cue": "inteligencia"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Valor de mercado",
+     "value": "$960 B",
+     "cue": "chips"
+    }
+   ],
+   "say": "AMD hace chips: los de tu computadora y, cada vez más, los de inteligencia artificial."
+  },
+  {
+   "type": "news",
+   "kicker": "12 NOV 2026 · NVIDIA",
+   "headline": "Jensen Huang renunció",
+   "source": "Nvidia · reporte 8-K (SEC), 12 nov 2026",
+   "bullets": [
+    {
+     "text": "Dejó la dirección y el consejo",
+     "sub": "efecto inmediato",
+     "cue": "renunció",
+     "tone": "down"
+    },
+    {
+     "text": "Colette Kress queda como interina",
+     "sub": "era la directora de finanzas",
+     "cue": "finanzas"
+    }
+   ],
+   "say": "En noviembre de 2026, el fundador de Nvidia renunció. Entra su directora de finanzas como interina."
+  },
+  {
+   "type": "waterfall",
+   "theme": "sand",
+   "kicker": "Trimestre jul–sep 2026 · reporte a la SEC",
+   "title": "Así llega a su ganancia",
+   "subtitle": "Cifras en millones de dólares",
+   "steps": [
+    {
+     "label": "Ventas",
+     "value": 13377,
+     "kind": "total",
+     "text": "$13,377",
+     "cue": "vendió"
+    },
+    {
+     "label": "Hacer los chips",
+     "value": 6167,
+     "kind": "minus",
+     "text": "−$6,167",
+     "cue": "Fabricarlos"
+    },
+    {
+     "label": "Investigar y vender",
+     "value": 4378,
+     "kind": "minus",
+     "text": "−$4,378",
+     "cue": "Investigar"
+    },
+    {
+     "label": "Otros e impuestos",
+     "value": 404,
+     "kind": "minus",
+     "text": "−$404",
+     "cue": "Impuestos"
+    },
+    {
+     "label": "Ganancia",
+     "value": 2428,
+     "kind": "result",
+     "text": "$2,428",
+     "cue": "quedaron"
+    }
+   ],
+   "note": "45% más ventas que un año antes",
+   "cue_note": "limpios",
+   "say": "Pero venía de antes. En el trimestre vendió 13 mil millones de dólares. Fabricarlos costó 6 mil. Investigar y vender, 4 mil. Impuestos y demás, el resto. Y le quedaron 2 mil 400 limpios."
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "kicker": "De dónde viene",
+   "text": "Centros de datos: $8,546 millones.",
+   "emphasis": "$8,546",
+   "sub": "El doble que un año antes. Ahí está el pleito con Nvidia.",
+   "say": "Casi todo viene de centros de datos: 8 mil 500 millones, el doble que hace un año."
+  },
+  {
+   "type": "statement",
+   "kicker": "El otro lado",
+   "text": "No está regalada: 125 veces sus ganancias.",
+   "emphasis": "125",
+   "sub": "Y sigue 10% abajo de su máximo de octubre de 2026.",
+   "say": "Ahora, no está regalada: se paga a 125 veces sus ganancias."
+  },
+  {
+   "type": "catalyst",
+   "kicker": "Lo que viene",
+   "date": "FEB 2027",
+   "label": "Reporta el trimestre completo",
+   "sub": "Su directora, Lisa Su, espera crecer más de 80% en 2027",
+   "cue_date": "febrero",
+   "say": "Lo que voy a estar viendo es febrero de 2027: esperan crecer más de 80% ese año."
+  },
+  {
+   "type": "outro",
+   "bg_image": "images/placa.jpg",
+   "bg_full": true,
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "host": {
+    "act": "cierre"
+   },
+   "question_a": "¿Se come el mercado",
+   "question_b": "de la IA?",
+   "cue_a": "come",
+   "cue_b": "IA",
+   "sources": "AMD, reporte 10-Q (SEC) · Nvidia, 8-K (SEC) · Yahoo Finance",
+   "say": "¿Tú crees que AMD se come un pedazo grande de la IA? Te leo."
+  }
+ ]
+}
