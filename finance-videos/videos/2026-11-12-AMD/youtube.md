@@ -13,8 +13,8 @@ La acción de AMD se duplicó en 12 meses. Y el 12 de noviembre de 2026, el fund
 
 📌 Los números (trimestre julio–septiembre de 2026, reporte 10-Q a la SEC)
 • Ventas: $13,377 M (+45% contra un año antes)
-• Hacer los chips: −$6,167 M · Investigar y vender: −$4,378 M · Otros e impuestos: −$404 M
-• Ganancia del trimestre: $2,428 M
+• Hacer los chips: −$6,167 M (46% de las ventas) · Investigar y vender: −$4,378 M (33%) · Otros e impuestos: −$404 M (3%)
+• Ganancia del trimestre: $2,428 M, o sea 18 de cada 100 dólares que vendió
 • Centros de datos: $8,546 M, casi el doble que un año antes
 • Se paga a 125 veces sus ganancias de los últimos 12 meses y sigue 10% abajo de su máximo del 6 de octubre de 2026
 • Su directora, Lisa Su, espera crecer más de 80% en 2027. Reporta el trimestre completo en febrero de 2027
@@ -50,7 +50,7 @@ AMD hace chips: los de tu computadora y, cada vez más, los de inteligencia arti
 
 El 12 de noviembre de 2026, el fundador de Nvidia renunció. Entra su directora de finanzas como interina.
 
-Pero venía de antes. En el trimestre vendió 13 mil millones de dólares. Fabricarlos costó 6 mil. Investigar y vender, 4 mil. Impuestos y demás, el resto. Y le quedaron 2 mil 400 limpios.
+Pero venía de antes. En el trimestre vendió 13 mil millones de dólares. Fabricarlos costó 6 mil. Investigar y vender, 4 mil. Impuestos y demás, el resto. Y le quedaron 18 de cada 100.
 
 Casi todo viene de centros de datos: 8 mil 500 millones, el doble que hace un año.
 

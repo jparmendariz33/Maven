@@ -86,6 +86,17 @@ Cuando un video explique cómo gana dinero una empresa, sus márgenes, sus resul
 la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de entenderlo, y además sirve para revisar que los números cuadren
 (si las barras no llegan al resultado, hay un dato mal).
 - Shorts: escena `waterfall` (ver esquema). Largos: escena `cascade`. Publicaciones: descríbela en una imagen `dato` con viñetas, o usa la gráfica.
+- **Porcentajes SIEMPRE en pantalla (regla de JP, 12 nov 2026).** El motor pone en cada barra el **% sobre las ventas, grande**, y el monto
+  debajo, chico: "100% / $13,377" → "−46% / −$6,167" → "−33% / −$4,378" → "−3% / −$404" → "18% / $2,428". El porcentaje es lo que la
+  gente entiende de un vistazo ("se le va casi la mitad en fabricar"); el monto da la prueba. Sale solo: no hay que calcularlo. Para
+  apagarlo, `"percent": false` en la escena; para forzar un texto, `"pct": "−46%"` en un paso. Igual en los largos (escena `cascade`).
+- **En la voz, una sola vía por barra, nunca las dos** (regla de los números: decir "seis mil ciento sesenta y siete millones" Y "cuarenta
+  y seis por ciento" es el doble de tiempo). Elige según el caso:
+  - **Por defecto:** narra los MONTOS redondeados de las barras intermedias y **remata con el porcentaje** en la última ("…y le quedaron
+    18 de cada 100"). Los demás porcentajes viven en pantalla y el cierre es el que se queda en la cabeza.
+  - **Si los montos son difíciles de dimensionar** (miles de millones, empresa gigante, cifras en otra moneda): narra TODO en porcentajes
+    ("de cada 100 pesos que vende, 46 se van en producir…") y deja los montos solo en pantalla.
+  - **Si la empresa es chica o el monto es la noticia** (una pérdida, un récord): narra los montos y di el porcentaje solo al final.
 - Escala fácil: "de cada $100 que vende" (porcentajes sobre ingresos) o en miles de millones, pero una sola escala por cascada.
 - Pasos típicos: ingresos → costo de lo vendido → gastos de operación (investigación, ventas, administración) → impuestos y otros → utilidad neta.
   Si la empresa pierde dinero, la última barra se muestra como pérdida y se dice claro.

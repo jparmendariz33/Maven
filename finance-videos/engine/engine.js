@@ -528,7 +528,8 @@ R.photo = (s, t) => {
   }
 };
 
-// Cascada (waterfall): de los ingresos a la utilidad, paso a paso. steps: [{label, value, kind: "total" | "minus" | "result", text?, cue?}]
+// Cascada (waterfall): de los ingresos a la utilidad, paso a paso. steps: [{label, value, kind: "total" | "minus" | "result", text?, pct?, cue?}]
+// Cada barra muestra su % sobre las ventas (grande) y el monto (chico). "percent": false lo apaga; "pct" en un paso fuerza el texto.
 // "total" arranca en 0; "minus" resta desde donde va la cuenta; "result" es lo que queda (si no trae value, se calcula).
 R.waterfall = (s, t) => {
   const dk = isDarkBg(themeOf(s)), ink = dk ? B.arena : B.negro, soft = dk ? rgba(B.arena, .7) : B.g4;
@@ -545,8 +546,15 @@ R.waterfall = (s, t) => {
     const col = minus ? B.terracota : p.kind === 'result' ? B.musgo : (dk ? B.arena : B.azul), y = minus ? hi : lo - h;       // lo que se resta cae desde arriba; los totales crecen desde abajo
     C.save(); C.fillStyle = col; rr(x, y, bw, Math.max(2, h), 12); C.fill(); C.restore();
     if (i < n - 1 && k > .9) { const yy = py(b); C.save(); C.strokeStyle = soft; C.lineWidth = 2; C.setLineDash([8, 8]); C.beginPath(); C.moveTo(x + bw, yy); C.lineTo(x + bw + gap, yy); C.stroke(); C.restore(); }
+    // encima de cada barra: el PORCENTAJE sobre las ventas (lo que de verdad se entiende) y, más chico, el monto.
     const val = p.text || ((minus ? '−' : '') + '$' + fmtNum(Math.abs(p.kind === 'minus' ? p.value : b), 0));
-    txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: minus ? B.terracota : ink, a: seg(t, tc + .25, tc + .6) });
+    const base0 = lv[0] ? lv[0][1] : 0, pv = p.kind === 'minus' ? p.value : b;
+    const pct = s.percent === false ? null : (p.pct || (base0 ? (minus ? '−' : '') + Math.round(Math.abs(pv) / base0 * 100) + '%' : null));
+    const ka = seg(t, tc + .25, tc + .6), pcol = minus ? B.terracota : p.kind === 'result' ? (dk ? '#DDE8B8' : B.musgo) : ink;
+    if (pct) {
+      txt(pct, x + bw / 2, hi - 20, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });
+      txt(val, x + bw / 2, hi - 68, { f: F.b, w: 500, s: fit(val, F.b, 500, 26, bw + gap - 6, 17), al: 'center', c: soft, a: ka });
+    } else txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: pcol, a: ka });
     wrap(p.label || '', F.b, 500, 27, bw + gap - 4).slice(0, 2).forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * 32, { f: F.b, w: 500, s: 27, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
   });
   if (s.note) { const tn = cueT(s, 'cue_note', .8 + n * .6 + .3); rise(s.note, 90, 1470, seg(t, tn, tn + .6), { f: F.s, w: 400, s: 64, c: dk ? B.mostaza : B.azul }); }

@@ -351,7 +351,12 @@ R.cascade = (s, t) => {
     C.fillStyle = col; rr(cx - bw / 2, ya, bw, Math.max(2, yb - ya), 8); C.fill();
     if (i < items.length - 1) { C.strokeStyle = 'rgba(10,10,10,.35)'; C.setLineDash([5, 6]); C.lineWidth = 2; const yl = it.kind === 'total' || i === 0 ? ya : yb;
       C.beginPath(); C.moveTo(cx + bw / 2, yl); C.lineTo(cx + gw - bw / 2, yl); C.stroke(); C.setLineDash([]); }
-    txt((it.kind === 'total' || i === 0 ? '' : '−') + fmtV(Math.abs(it.value), s), cx, ya - 16, { f: F.d, w: 600, s: 28, al: 'center', c: col, a: seg(t, tc + .3, tc + .7) });
+    const vtx = (it.kind === 'total' || i === 0 ? '' : '−') + fmtV(Math.abs(it.value), s), ka = seg(t, tc + .3, tc + .7);
+    const b0 = Math.abs(items[0].value), pc = s.percent === false ? null : (it.pct || (b0 ? (it.kind === 'total' || i === 0 ? '' : '−') + Math.round(Math.abs(it.value) / b0 * 100) + '%' : null));
+    if (pc) {   // % sobre las ventas (grande) + monto (chico)
+      txt(pc, cx, ya - 16, { f: F.d, w: 800, s: fit(pc, F.d, 800, 34, gw - 10, 20), al: 'center', c: col, a: ka });
+      txt(vtx, cx, ya - 52, { f: F.b, w: 500, s: fit(vtx, F.b, 500, 22, gw - 10, 14), al: 'center', c: '#4a4a4a', a: ka });
+    } else txt(vtx, cx, ya - 16, { f: F.d, w: 600, s: 28, al: 'center', c: col, a: ka });
     txt(it.label, cx, base + 42, { f: F.b, w: 500, s: fit(it.label, F.b, 500, 24, gw - 8, 15), al: 'center', c: '#3a3a3a', a: seg(t, tc, tc + .4) });
   });
 };
