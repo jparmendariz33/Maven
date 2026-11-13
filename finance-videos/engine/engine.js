@@ -574,8 +574,8 @@ R.waterfall = (s, t) => {
     const pct = s.percent === false ? null : (p.pct || (base0 ? Math.round(Math.abs(pv) / base0 * 100) + '%' : null));   // sin signo: el color y la caída ya dicen que resta (JP, 12 nov 2026)
     const ka = seg(t, tc + .25, tc + .6), pcol = minus ? B.terracota : p.kind === 'result' ? (dk ? '#DDE8B8' : B.musgo) : (dk ? col : toward(col, B.negro, B0.arena, 2.6));   // cada % en el color de su barra
     if (pct) {
-      txt(pct, x + bw / 2, hi - 20, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });
-      txt(val, x + bw / 2, hi - 68, { f: F.b, w: 500, s: fit(val, F.b, 500, 26, bw + gap - 6, 17), al: 'center', c: soft, a: ka });
+      txt(pct, x + bw / 2, hi - 54, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });   // % arriba
+      txt(val, x + bw / 2, hi - 18, { f: F.b, w: 500, s: fit(val, F.b, 500, 26, bw + gap - 6, 17), al: 'center', c: soft, a: ka });                              // monto debajo, pegado a la barra
     } else txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: pcol, a: ka });
     wrap(p.label || '', F.b, 500, 27, bw + gap - 4).slice(0, 2).forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * 32, { f: F.b, w: 500, s: 27, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
   });

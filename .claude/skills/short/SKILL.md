@@ -86,8 +86,8 @@ Cuando un video explique cómo gana dinero una empresa, sus márgenes, sus resul
 la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de entenderlo, y además sirve para revisar que los números cuadren
 (si las barras no llegan al resultado, hay un dato mal).
 - Shorts: escena `waterfall` (ver esquema). Largos: escena `cascade`. Publicaciones: descríbela en una imagen `dato` con viñetas, o usa la gráfica.
-- **Porcentajes SIEMPRE en pantalla (regla de JP, 12 nov 2026).** El motor pone en cada barra el **% sobre las ventas, grande**, y el monto
-  debajo, chico: "100% / $13,377" → "46% / −$6,167" → "33% / −$4,378" → "3% / −$404" → "18% / $2,428". **El porcentaje va SIN signo
+- **Porcentajes SIEMPRE en pantalla (regla de JP, 12 nov 2026).** Encima de cada barra van dos renglones: **arriba el % sobre las ventas,
+  grande y en el color de su barra; debajo, pegado a la barra, el monto en chico** (sin paréntesis): "100% / $13,377" → "46% / −$6,167" → "33% / −$4,378" → "3% / −$404" → "18% / $2,428". **El porcentaje va SIN signo
   negativo y en el color de SU barra** (JP, 12 nov 2026): el color y la caída ya dicen que resta, y el signo solo se queda en el monto. El porcentaje es lo que la
   gente entiende de un vistazo ("se le va casi la mitad en fabricar"); el monto da la prueba. Sale solo: no hay que calcularlo. Para
   apagarlo, `"percent": false` en la escena; para forzar un texto, `"pct": "−46%"` en un paso. Igual en los largos (escena `cascade`).
