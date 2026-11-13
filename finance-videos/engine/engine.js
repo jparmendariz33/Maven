@@ -530,6 +530,7 @@ R.photo = (s, t) => {
 
 // Cascada (waterfall): de los ingresos a la utilidad, paso a paso. steps: [{label, value, kind: "total" | "minus" | "result", text?, pct?, cue?}]
 // Cada barra muestra su % sobre las ventas (grande) y el monto (chico). "percent": false lo apaga; "pct" en un paso fuerza el texto.
+// "callout" {label, value, cue, step?}: al llegar su cue, parte esa barra y pinta la porción del segmento en el mismo color más claro, con su % dentro.
 // "total" arranca en 0; "minus" resta desde donde va la cuenta; "result" es lo que queda (si no trae value, se calcula).
 R.waterfall = (s, t) => {
   const dk = isDarkBg(themeOf(s)), ink = dk ? B.arena : B.negro, soft = dk ? rgba(B.arena, .7) : B.g4;
@@ -547,12 +548,21 @@ R.waterfall = (s, t) => {
     const [a, b] = lv[i], x = x0 + i * (bw + gap), hi = py(Math.max(a, b)), lo = py(Math.min(a, b)), h = (lo - hi) * k, minus = p.kind === 'minus';
     const col = minus ? B.terracota : p.kind === 'result' ? B.musgo : (dk ? B.arena : B.azul), y = minus ? hi : lo - h;       // lo que se resta cae desde arriba; los totales crecen desde abajo
     C.save(); C.fillStyle = col; rr(x, y, bw, Math.max(2, h), 12); C.fill();
-    if (CO && CO.step === i && b > 0) {        // de dónde vienen las ventas: la porción del segmento queda viva y el resto se apaga
-      const ph = h * Math.min(1, CO.value / b), ytop = y + h - ph;
-      C.save(); C.beginPath(); C.rect(x, y, bw, Math.max(0, h - ph)); C.clip();
-      C.fillStyle = dk ? 'rgba(10,10,10,.42)' : rgba(B0.arena, .55); rr(x, y, bw, Math.max(2, h), 12); C.fill(); C.restore();
-      C.strokeStyle = dk ? rgba(B.negro, .55) : rgba(B0.arena, .9); C.lineWidth = 3;
-      C.beginPath(); C.moveTo(x, ytop); C.lineTo(x + bw, ytop); C.stroke(); CO._y = ytop + ph / 2; CO._x = x + bw;
+    if (CO && CO.step === i && b > 0) {        // de dónde vienen las ventas: la porción del segmento, en el MISMO color un poco más claro
+      const ctc = typeof CO.cue === 'number' ? CO.cue : s.t0 + .8 + n * .6, ck = ex(seg(t, ctc, ctc + .5));
+      if (ck > 0) {
+        const ph = h * Math.min(1, CO.value / b) * ck, ytop = y + h - ph;
+        C.save(); C.beginPath(); C.rect(x, ytop, bw, ph); C.clip();
+        C.fillStyle = mix(col, dk ? '#000000' : '#FFFFFF', .26); rr(x, y, bw, Math.max(2, h), 12); C.fill(); C.restore();
+        C.strokeStyle = rgba(dk ? B.negro : '#FFFFFF', .5); C.lineWidth = 2; C.beginPath(); C.moveTo(x, ytop); C.lineTo(x + bw, ytop); C.stroke();
+        const ka2 = seg(t, ctc + .3, ctc + .7), pc2 = Math.round(CO.value / b * 100) + '%', iw2 = bw - 14, tin = contrast('#0A0A0A', mix(col, '#FFFFFF', .26)) > 4 ? B.negro : B0.arena;
+        const lsz2 = fit(CO.label || '', F.b, 700, 26, iw2, 20), ll2 = wrap(CO.label || '', F.b, 700, lsz2, iw2).slice(0, 2);
+        const need = 56 + ll2.length * (lsz2 + 7);
+        if (ph > need) {
+          txt(pc2, x + bw / 2, ytop + 58, { f: F.d, w: 800, s: fit(pc2, F.d, 800, 46, iw2, 26), al: 'center', c: tin, a: ka2 });
+          ll2.forEach((l, j) => txt(l, x + bw / 2, ytop + 96 + j * (lsz2 + 7), { f: F.b, w: 700, s: lsz2, al: 'center', c: tin, a: ka2 * .95 }));
+        }
+      }
     }
     C.restore();
     if (i < n - 1 && k > .9) { const yy = py(b); C.save(); C.strokeStyle = soft; C.lineWidth = 2; C.setLineDash([8, 8]); C.beginPath(); C.moveTo(x + bw, yy); C.lineTo(x + bw + gap, yy); C.stroke(); C.restore(); }
@@ -567,39 +577,6 @@ R.waterfall = (s, t) => {
     } else txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: pcol, a: ka });
     wrap(p.label || '', F.b, 500, 27, bw + gap - 4).slice(0, 2).forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * 32, { f: F.b, w: 500, s: 27, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
   });
-  // tarjeta de "de dónde viene": se coloca sola en el hueco que deja la escalera (arriba a la derecha)
-  if (CO && CO._x) {
-    const tc = typeof CO.cue === 'number' ? CO.cue : s.t0 + .8 + n * .6, k = seg(t, tc, tc + .5);
-    if (k > 0) {
-      let best = null;
-      for (let j = 1; j < n; j++) {                                   // de la columna j a la última: ¿cuánto espacio libre hay arriba?
-        const tops = lv.slice(j).map(([a2, b2]) => py(Math.max(a2, b2)) - 76), top = Math.min(...tops);
-        const cx0 = x0 + j * (bw + gap), w = x1 - cx0, h2 = top - 600;
-        if (w >= 316 && h2 >= 150) { const ar = w * h2; if (!best || ar > best.ar) best = { x: cx0 + 16, y: 600, w: w - 16, h: h2, ar }; }
-      }
-      if (best) {
-        // acomodo de arriba hacia abajo: kicker · % grande · nombre · detalle. El alto sale del contenido.
-        const pc = Math.round(CO.value / (lv[CO.step] ? lv[CO.step][1] : 1) * 100) + '%';
-        const iw = best.w - 44, ks = (CO.kicker || 'De dónde viene').toUpperCase();
-        const lsz = fit(CO.label || '', F.d, 600, 38, iw, 26), ll = wrap(CO.label || '', F.d, 600, lsz, iw).slice(0, 2);
-        let ssz = CO.sub ? fit(CO.sub, F.b, 500, 28, iw, 21) : 0, sl = CO.sub ? wrap(CO.sub, F.b, 500, ssz, iw).slice(0, 2) : [];
-        let bh = 44 + 80 + 46 + (ll.length - 1) * (lsz + 6) + (sl.length ? 30 + (sl.length - 1) * (ssz + 6) : 0) + 26;
-        if (bh > best.h) { sl = sl.slice(0, 1); bh = 44 + 80 + 46 + (ll.length - 1) * (lsz + 6) + (sl.length ? 30 : 0) + 26; }
-        bh = Math.min(bh, best.h); const by = best.y + (best.h - bh) / 2, cx = best.x + best.w / 2;
-        C.save(); C.globalAlpha *= k;
-        C.strokeStyle = soft; C.lineWidth = 2; C.setLineDash([7, 7]); C.beginPath(); C.moveTo(CO._x, CO._y); C.lineTo(best.x - 12, by + bh / 2); C.stroke(); C.setLineDash([]);
-        rr(best.x, by, best.w, bh, 22); C.fillStyle = dk ? rgba(B.arena, .1) : rgba(col0, .07); C.fill();
-        C.strokeStyle = dk ? rgba(B.arena, .45) : rgba(col0, .32); C.lineWidth = 3; rr(best.x, by, best.w, bh, 22); C.stroke();
-        let y2 = by + 44;
-        txt(ks, cx, y2, { f: F.b, w: 500, s: 23, ls: 3, al: 'center', c: soft });
-        y2 += 80; txt(pc, cx, y2, { f: F.d, w: 800, s: fit(pc, F.d, 800, 88, iw), al: 'center', c: col0 });
-        y2 += 46; ll.forEach((l, j) => txt(l, cx, y2 + j * (lsz + 6), { f: F.d, w: 600, s: lsz, al: 'center', c: ink }));
-        y2 += (ll.length - 1) * (lsz + 6) + 30;
-        sl.forEach((l, j) => txt(l, cx, y2 + j * (ssz + 6), { f: F.b, w: 500, s: ssz, al: 'center', c: soft }));
-        C.restore();
-      }
-    }
-  }
   if (s.note) { const tn = cueT(s, 'cue_note', .8 + n * .6 + .3); rise(s.note, 90, 1470, seg(t, tn, tn + .6), { f: F.s, w: 400, s: 64, c: dk ? B.mostaza : B.azul }); }
 };
 

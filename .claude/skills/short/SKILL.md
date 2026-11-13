@@ -98,17 +98,18 @@ la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de
   - **Si los montos son difíciles de dimensionar** (miles de millones, empresa gigante, cifras en otra moneda): narra TODO en porcentajes
     ("de cada 100 pesos que vende, 46 se van en producir…") y deja los montos solo en pantalla.
   - **Si la empresa es chica o el monto es la noticia** (una pérdida, un récord): narra los montos y di el porcentaje solo al final.
-- **De dónde vienen las ventas: va DENTRO de la cascada, no en una escena aparte (JP, 12 nov 2026).** Cuando el negocio depende de un
-  producto, servicio o segmento, no le dediques otra pantalla: usa `callout` en la misma escena `waterfall`. La barra de ventas se parte
-  (la porción del segmento queda en color vivo y el resto se apaga) y en el hueco que deja la escalera aparece una tarjeta con el %, el
-  nombre y el detalle, unida por una línea punteada. El motor busca solo el hueco; si no cabe, no la dibuja.
+- **De dónde vienen las ventas: DENTRO de la propia barra (JP, 12 nov 2026).** Cuando el negocio depende de un producto, servicio o
+  segmento, no le dediques otra escena ni una tarjeta aparte: usa `callout` en la misma escena `waterfall`. La barra de ventas empieza
+  completa en su color y, al llegar el `cue`, la porción de ese segmento se pinta **en el mismo color un punto más claro** (contraste
+  sutil: rojo con rojo, nunca rojo con naranja) y aparece dentro de ella su `%` y su nombre. Sin tarjetas, sin líneas punteadas.
 ```json
-"callout": {"kicker": "De dónde vienen", "label": "Centros de datos", "value": 8546,
-            "sub": "$8,546 M · casi el doble que en 2025", "cue": "centros", "step": 0}
+"callout": {"label": "Centros de datos", "value": 8546, "cue": "centros", "step": 0}
 ```
   `value` en la misma escala que los pasos; `step` es la barra que se parte (0 = ventas, por defecto); `cue`, la palabra del `say` donde
-  aparece. En el guion basta una frase: "…vendió 13 mil millones, y casi dos terceras partes vienen de centros de datos". Así una sola
-  escena contesta cuánto vendió, de dónde salió y cuánto quedó.
+  se revela. El nombre va corto (2–3 palabras): se escribe dentro de la barra, que mide ~160 px. Si la porción es muy chica para el texto,
+  el motor pinta solo el color. En el guion basta una frase: "…vendió 13 mil millones, y casi dos terceras partes vienen de centros de
+  datos". Así una sola escena contesta cuánto vendió, de dónde salió y cuánto le quedó, y el dato extra (por ejemplo "casi el doble que
+  en 2025") cabe en el `note` de la escena.
 - Escala fácil: "de cada $100 que vende" (porcentajes sobre ingresos) o en miles de millones, pero una sola escala por cascada.
 - Pasos típicos: ingresos → costo de lo vendido → gastos de operación (investigación, ventas, administración) → impuestos y otros → utilidad neta.
   Si la empresa pierde dinero, la última barra se muestra como pérdida y se dice claro.
