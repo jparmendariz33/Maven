@@ -55,6 +55,13 @@ la misma hora). Los datos son SIEMPRE los de cierre, lo más actualizados posibl
 - No dependen del cierre: el largo (atemporal), su short derivado del miércoles y los shorts de sábado y domingo (no hay mercado: usan
   el cierre del viernes).
 
+## Regla de la maquetación (13 nov 2026, tras el defecto que encontró JP en el short de Nubank)
+El motor tiene que aguantar cualquier largo de texto: **nunca** se arregla un encimado acortando el guion.
+- `fitLines(txt, f, w, size, maxW, maxLines, min)` achica hasta que quepa. `wrap(...).slice(0, n)` tira palabras en
+  silencio (así se perdieron "pagan" e "impuestos" en las etiquetas de una cascada): prohibido.
+- Nada se dibuja en una Y fija si arriba hay texto de largo variable: cada bloque cuelga de donde terminó el anterior.
+- Antes de entregar, barrido del MP4 completo (un cuadro cada 3 s en contacto), no solo `qa.jpg`. Receta en `/short` §4.
+
 ## Regla de los números (descubierta en nov 2026 — aplica a TODO: shorts, largos, voz propia o de IA)
 Un número mide pocos caracteres pero tarda mucho en decirse: "45" son 2 caracteres y se dice "cuarenta y cinco";
 "1950" → "mil novecientos cincuenta" (8 sílabas); "46%" → "cuarenta y seis por ciento"; "$45,765" → 20 sílabas.

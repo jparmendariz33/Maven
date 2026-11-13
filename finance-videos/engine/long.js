@@ -54,6 +54,12 @@ function riseLines(lines, x, y, lh, t0, t, o = {}, stagger = .09) {
   lines.forEach((l, i) => rise(l, x, y + i * lh, seg(t, t0 + i * stagger, t0 + i * stagger + .6), o));
 }
 function fit(s, f, w, size, maxW, min = 30) { while (tw(s, f, w, size) > maxW && size > min) size -= 2; return size; }
+// como fit, pero para varias líneas: achica hasta que QUEPA en maxLines. Nunca recorta palabras (bug visto el 13 nov 2026).
+function fitLines(s, f, w, size, maxW, maxLines = 2, min = 16) {
+  let ls = wrap(s, f, w, size, maxW);
+  while (ls.length > maxLines && size > min) { size -= 2; ls = wrap(s, f, w, size, maxW); }
+  return { lines: ls, size };
+}
 function rr(x, y, w, h, r) { C.beginPath(); C.roundRect(x, y, w, h, r); }
 function scaleAt(x, y, s) { C.translate(x, y); C.scale(s, s); C.translate(-x, -y); }
 function kicker(s, x, y, t0, t, col) {
@@ -253,7 +259,8 @@ R.compare = (s, t) => {
     txt(String(c.label || '').toUpperCase(), x + 40, y + 70, { f: F.b, w: 500, s: 26, ls: 3, c: fg, a: .8 });
     const vs = String(c.value ?? '');
     txt(vs, x + 40, y + 200, { f: F.d, w: 800, s: fit(vs, F.d, 800, 96, w - 80, 40), c: c.highlight ? B.arena : toneC(c.tone) });
-    wrap(c.sub || '', F.b, 500, 34, w - 80).slice(0, 4).forEach((l, j) => txt(l, x + 40, y + 280 + j * 44, { f: F.b, w: 500, s: 34, c: fg, a: .85 }));
+    const cs = fitLines(c.sub || '', F.b, 500, 34, w - 80, 4, 22);
+    cs.lines.forEach((l, j) => txt(l, x + 40, y + 280 + j * Math.round(cs.size * 1.29), { f: F.b, w: 500, s: cs.size, c: fg, a: .85 }));
     C.restore();
   });
 };
@@ -358,7 +365,8 @@ R.cascade = (s, t) => {
       txt(pc, cx, ya - 16, { f: F.d, w: 800, s: fit(pc, F.d, 800, 34, gw - 10, 20), al: 'center', c: col, a: ka });
       txt(vtx, cx, ya - 52, { f: F.b, w: 500, s: fit(vtx, F.b, 500, 22, gw - 10, 14), al: 'center', c: '#4a4a4a', a: ka });
     } else txt(vtx, cx, ya - 16, { f: F.d, w: 600, s: 28, al: 'center', c: col, a: ka });
-    txt(it.label, cx, base + 42, { f: F.b, w: 500, s: fit(it.label, F.b, 500, 24, gw - 8, 15), al: 'center', c: '#3a3a3a', a: seg(t, tc, tc + .4) });
+    const il = fitLines(it.label, F.b, 500, 24, gw - 14, 2, 17);   // dos líneas antes que letra ilegible (13 nov 2026)
+    il.lines.forEach((l, j) => txt(l, cx, base + 42 + j * Math.round(il.size * 1.2), { f: F.b, w: 500, s: il.size, al: 'center', c: '#3a3a3a', a: seg(t, tc, tc + .4) }));
   });
 };
 
@@ -424,7 +432,8 @@ R.timeline = (s, t) => {
     const up = i % 2 === 0, col = toneC(e.tone || 'blue'), al = i === 0 ? 'left' : i === n - 1 ? 'right' : 'center', tx = x + (al === 'left' ? -20 : al === 'right' ? 20 : 0);
     C.save(); C.globalAlpha *= k; C.fillStyle = B.arena; C.strokeStyle = col; C.lineWidth = 5; C.beginPath(); C.arc(x, y, 16 * back(k), 0, 7); C.fill(); C.stroke();
     txt(e.date, tx, up ? y - 110 : y + 80, { f: F.d, w: 800, s: 34, al, c: col });
-    wrap(e.label, F.b, 700, 30, 360).slice(0, 2).forEach((l, j) => txt(l, tx, (up ? y - 70 : y + 120) + j * 36, { f: F.b, w: 700, s: 30, al, c: ink }));
+    const el = fitLines(e.label, F.b, 700, 30, 360, 2, 20);
+    el.lines.forEach((l, j) => txt(l, tx, (up ? y - 70 : y + 120) + j * Math.round(el.size * 1.2), { f: F.b, w: 700, s: el.size, al, c: ink }));
     if (e.sub) txt(e.sub, tx, up ? y - 146 : y + 196, { f: F.b, w: 400, s: 24, al, c: sub2(s) });
     C.restore(); });
 };

@@ -429,7 +429,25 @@ node scripts/render.js videos/$ID --qa                   # hoja de revisión →
 .venv/bin/python scripts/make_audio.py videos/$ID        # voz + música + efectos → audio/mix.wav
 node scripts/render.js videos/$ID                        # → videos/$ID/TICKER_short.mp4 (~2 min, en segundo plano)
 ```
-Verifica con `ffprobe` (1080x1920, h264 + aac, duración) y revisa 2–3 cuadros del MP4 final.
+Verifica con `ffprobe` (1080x1920, h264 + aac, duración).
+
+### QC del MP4 final — obligatorio, sobre el video, no sobre el storyboard (JP, 13 nov 2026)
+La hoja `qa.jpg` toma 20 instantes y se le escapan cosas: en el short de Nubank el título de 4 líneas se encimó con la
+cifra grande y nadie lo vio hasta que JP abrió el video. Antes de entregar, **barre el MP4 completo**:
+```bash
+T=$(mktemp -d); ffmpeg -v error -i videos/$ID/*_short.mp4 -vf "fps=1/3,scale=300:-1" $T/g_%02d.jpg
+montage $T/g_*.jpg -tile 5x6 -geometry +3+3 -background '#222' $T/all.jpg    # → léelo con Read
+```
+Busca, en este orden: **texto encimado con otro texto**, **texto cortado por el borde**, **palabras que faltan al final de
+una etiqueta**, etiquetas vecinas que se tocan, y escenas vacías. Si algo se ve raro, recorta ese cuadro al 100% antes de
+opinar (`ffmpeg -ss <seg> -i … -frames:v 1` y `convert … -crop`); a 300 px de ancho un defecto chico no se distingue.
+
+**Nunca se arregla metiendo texto más corto**: el motor tiene que aguantar cualquier largo. Dos reglas del motor:
+- `fitLines(texto, fuente, peso, tamaño, ancho, maxLíneas, mín)` **achica la letra hasta que quepa**; `wrap(...).slice(0, n)`
+  **tira las palabras sobrantes en silencio**. Usa siempre `fitLines`. Nunca `.slice()` sobre un `wrap`.
+- Los bloques se acomodan **en cascada**: cada elemento se coloca debajo de donde de verdad terminó el anterior
+  (`y = yAnterior + aire`), nunca en una Y fija, y si la suma no cabe antes de donde empieza JP en 3D, lo que se achica es
+  la cifra, no el título.
 
 ## 5. Entregar
 1. Escribe `videos/$ID/youtube.md` empezando con la sección **`## ✅ Para copiar y pegar`** (modelo: `videos/2026-11-07-ABNB/youtube.md`):

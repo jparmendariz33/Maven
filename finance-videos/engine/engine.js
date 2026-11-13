@@ -103,6 +103,12 @@ function riseLines(lines, x, y, lh, t0, t, o = {}, stagger = .09) {
   lines.forEach((l, i) => rise(l, x, y + i * lh, seg(t, t0 + i * stagger, t0 + i * stagger + .6), o));
 }
 function fit(s, f, w, size, maxW, min = 40) { while (tw(s, f, w, size) > maxW && size > min) size -= 2; return size; }
+// como fit, pero para varias líneas: achica hasta que QUEPA en maxLines. Nunca recorta palabras (bug visto el 13 nov 2026).
+function fitLines(s, f, w, size, maxW, maxLines = 2, min = 16) {
+  let ls = wrap(s, f, w, size, maxW);
+  while (ls.length > maxLines && size > min) { size -= 2; ls = wrap(s, f, w, size, maxW); }
+  return { lines: ls, size };
+}
 function rr(x, y, w, h, r) { C.beginPath(); C.roundRect(x, y, w, h, r); }
 function scaleAt(x, y, s) { C.translate(x, y); C.scale(s, s); C.translate(-x, -y); }
 function kicker(s, x, y, t0, t, col) {
@@ -229,16 +235,26 @@ const R = {};
 R.hook = (s, t) => {
   const lt = t - s.t0, ink = B.arena;
   kicker(s.kicker || `${D.exchange || ''} · ${D.ticker}`, 90, 360, s.t0 + .1, t, ink);
-  riseLines(wrap(s.title || D.short_name || D.name, F.d, 800, 104, 900), 90, 500, 118, s.t0 + .2, t, { f: F.d, w: 800, s: 104, c: ink });
+  // layout en cascada: el título se acomoda primero y TODO lo demás cuelga de su última línea real.
+  // (13 nov 2026: con un título de 4 líneas la cifra se encimaba encima del texto.)
+  const COL = 900, BOT = 1150;                                     // 1150 = donde empieza JP en 3D
+  const tt = fitLines(s.title || D.short_name || D.name, F.d, 800, 104, COL, 3, 68);
+  const tlh = Math.round(tt.size * 1.14);
+  riseLines(tt.lines, 90, 500, tlh, s.t0 + .2, t, { f: F.d, w: 800, s: tt.size, c: ink });
+  const yT = 500 + (tt.lines.length - 1) * tlh + tt.size * .26;     // debajo de la última línea
   const tv = cueT(s, 'cue_value', .9), k = eo(seg(t, tv, tv + 1.4));
   const v = (s.value || 0) * k, dec = s.decimals ?? 1;
   const str = (s.prefix || '') + (s.value < 0 ? '−' : s.signed ? '+' : '') + Math.abs(v).toFixed(dec) + (s.unit ?? '%');
+  const cp = s.caption ? fitLines(s.caption, F.b, 500, 54, COL, 2, 38) : null;   // el pie también se parte en vez de salirse
+  const capH = cp ? cp.lines.length * Math.round(cp.size * 1.22) + 46 : 0;
+  let size = 230; while (tw(str, F.d, 800, size) > COL && size > 120) size -= 10;
+  while (size > 112 && yT + 44 + size * 1.0 + capH > BOT) size -= 6;  // que la cifra Y el pie quepan antes de JP
+  const yV = yT + 44 + size * .78;
   const a = seg(t, tv - .1, tv + .3);
-  C.save(); C.globalAlpha *= a; scaleAt(90, 860, .94 + .06 * ex(seg(t, tv, tv + .6)));
-  let size = 230; while (tw(str, F.d, 800, size) > 900 && size > 120) size -= 10;
-  txt(str, 90, 960, { f: F.d, w: 800, s: size, c: BGB ? ink : s.tone === 'down' ? '#F3C3B4' : s.tone === 'up' ? '#DDE8B8' : ink });
+  C.save(); C.globalAlpha *= a; scaleAt(90, yV - size * .3, .94 + .06 * ex(seg(t, tv, tv + .6)));
+  txt(str, 90, yV, { f: F.d, w: 800, s: size, c: BGB ? ink : s.tone === 'down' ? '#F3C3B4' : s.tone === 'up' ? '#DDE8B8' : ink });
   C.restore();
-  if (s.caption) { const tc = tv + .8; rise(s.caption, 90, 1060, seg(t, tc, tc + .6), { f: F.b, w: 500, s: 54, c: ink }); }
+  if (cp) riseLines(cp.lines, 90, yV + 46 + cp.size * .62, Math.round(cp.size * 1.22), tv + .8, t, { f: F.b, w: 500, s: cp.size, c: ink });
   if (s.question) { const tq = cueT(s, 'cue_question', 3); rise(s.question, 90, 1300, seg(t, tq - .1, tq + .5), { f: F.s, w: 400, s: 150, c: B.mostaza }); }
 };
 
@@ -510,9 +526,9 @@ R.photo = (s, t) => {
     credit(s, s.image, 990, 1555, ink, 'right', .7 * seg(t, s.t0 + .5, s.t0 + 1));
   } else if (lay === 'card') {
     if (s.kicker) kicker(s.kicker, 90, 360, s.t0 + .1, t, B.negro);
-    const tl = wrap(s.title || '', F.d, 800, 70, 900).slice(0, 2);
-    riseLines(tl, 90, 470, 82, s.t0 + .2, t, { f: F.d, w: 800, s: 70 });
-    const y = 470 + tl.length * 82 + 10, h = 1440 - y - (s.caption ? 120 : 40), k = seg(t, s.t0 + .3, s.t0 + 1.1);
+    const tf = fitLines(s.title || '', F.d, 800, 70, 900, 2, 44), tl = tf.lines, tlh2 = Math.round(tf.size * 1.17);
+    riseLines(tl, 90, 470, tlh2, s.t0 + .2, t, { f: F.d, w: 800, s: tf.size });
+    const y = 470 + tl.length * tlh2 + 10, h = 1440 - y - (s.caption ? 120 : 40), k = seg(t, s.t0 + .3, s.t0 + 1.1);
     if (im) { C.save(); rr(90, y, 900, h * ex(k), 30); C.clip(); cover(im, 90, y, 900, h, kb(s, t), fx, fy); C.restore(); }
     if (s.caption) rise(s.caption, 90, y + h + 74, seg(t, cueT(s, 'cue_caption', 1), cueT(s, 'cue_caption', 1) + .6), { f: F.b, w: 700, s: fit(s.caption, F.b, 700, 46, 900, 30) });
     credit(s, s.image, 90, Math.min(1545, y + h + (s.caption ? 124 : 40)), B.g4, 'left', .8 * k);
@@ -559,7 +575,7 @@ R.waterfall = (s, t) => {
         // la etiqueta no debe competir con el % de la barra: serif en itálica, delgada y más chica
         const ka2 = seg(t, ctc + .3, ctc + .7), pc2 = Math.round(CO.value / b * 100) + '%', iw2 = bw - 14;
         const tin = contrast('#0A0A0A', mix(col, '#FFFFFF', .15)) > 3.2 ? B.negro : B0.arena;
-        const lsz2 = fit(CO.label || '', F.b, 500, 20, iw2, 16), ll2 = wrap(CO.label || '', F.b, 500, lsz2, iw2).slice(0, 2);
+        const cl2 = fitLines(CO.label || '', F.b, 500, 20, iw2, 2, 14), lsz2 = cl2.size, ll2 = cl2.lines;
         const need = 48 + ll2.length * (lsz2 + 6);
         if (ph > need) {
           txt(pc2, x + bw / 2, ytop + 50, { f: F.s, w: 400, s: fit(pc2, F.s, 400, 34, iw2, 22), al: 'center', c: tin, a: ka2 });
@@ -579,7 +595,8 @@ R.waterfall = (s, t) => {
       txt(pct, cxp, hi - 52, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });           // % arriba
       txt(val, cxp, hi - 18, { f: F.s, w: 400, s: fit(val, F.s, 400, 25, bw + gap - 6, 16), al: 'center', c: soft, a: ka });                                      // monto debajo, chico y en itálica
     } else txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: pcol, a: ka });
-    wrap(p.label || '', F.b, 500, 27, bw + gap - 4).slice(0, 2).forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * 32, { f: F.b, w: 500, s: 27, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
+    const lb = fitLines(p.label || '', F.b, 500, 27, bw + gap - 20, 2, 18);   // cabe entero o se achica; nunca se corta (13 nov 2026)
+    lb.lines.forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * Math.round(lb.size * 1.2), { f: F.b, w: 500, s: lb.size, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
   });
   // logo de la empresa en el hueco que deja la escalera (si cabe y si el video tiene logo)
   const lk = s.logo || (V.scenes.find(z => z.logo) || {}).logo, lim = img(lk);
