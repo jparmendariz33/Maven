@@ -88,7 +88,7 @@ la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de
 - Shorts: escena `waterfall` (ver esquema). Largos: escena `cascade`. Publicaciones: descríbela en una imagen `dato` con viñetas, o usa la gráfica.
 - **Porcentajes SIEMPRE en pantalla (regla de JP, 12 nov 2026).** El motor pone en cada barra el **% sobre las ventas, grande**, y el monto
   debajo, chico: "100% / $13,377" → "46% / −$6,167" → "33% / −$4,378" → "3% / −$404" → "18% / $2,428". **El porcentaje va SIN signo
-  negativo** (JP, 12 nov 2026): el color y la caída de la barra ya dicen que resta; el signo solo se queda en el monto. El porcentaje es lo que la
+  negativo y en el color de SU barra** (JP, 12 nov 2026): el color y la caída ya dicen que resta, y el signo solo se queda en el monto. El porcentaje es lo que la
   gente entiende de un vistazo ("se le va casi la mitad en fabricar"); el monto da la prueba. Sale solo: no hay que calcularlo. Para
   apagarlo, `"percent": false` en la escena; para forzar un texto, `"pct": "−46%"` en un paso. Igual en los largos (escena `cascade`).
 - **En la voz, una sola vía por barra, nunca las dos** (regla de los números: decir "seis mil ciento sesenta y siete millones" Y "cuarenta
@@ -101,7 +101,9 @@ la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de
 - **De dónde vienen las ventas: DENTRO de la propia barra (JP, 12 nov 2026).** Cuando el negocio depende de un producto, servicio o
   segmento, no le dediques otra escena ni una tarjeta aparte: usa `callout` en la misma escena `waterfall`. La barra de ventas empieza
   completa en su color y, al llegar el `cue`, la porción de ese segmento se pinta **en el mismo color un punto más claro** (contraste
-  sutil: rojo con rojo, nunca rojo con naranja) y aparece dentro de ella su `%` y su nombre. Sin tarjetas, sin líneas punteadas.
+  MUY sutil: rojo con rojo, nunca rojo con naranja) y aparece dentro de ella su `%` y su nombre. Sin tarjetas, sin líneas punteadas.
+  Ese `%` interno **no debe competir con el de la barra**: va en serif itálica, delgado, más chico y en negro; el protagonista sigue
+  siendo el 100% de arriba.
 ```json
 "callout": {"label": "Centros de datos", "value": 8546, "cue": "centros", "step": 0}
 ```

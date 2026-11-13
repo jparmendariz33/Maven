@@ -553,14 +553,16 @@ R.waterfall = (s, t) => {
       if (ck > 0) {
         const ph = h * Math.min(1, CO.value / b) * ck, ytop = y + h - ph;
         C.save(); C.beginPath(); C.rect(x, ytop, bw, ph); C.clip();
-        C.fillStyle = mix(col, dk ? '#000000' : '#FFFFFF', .26); rr(x, y, bw, Math.max(2, h), 12); C.fill(); C.restore();
-        C.strokeStyle = rgba(dk ? B.negro : '#FFFFFF', .5); C.lineWidth = 2; C.beginPath(); C.moveTo(x, ytop); C.lineTo(x + bw, ytop); C.stroke();
-        const ka2 = seg(t, ctc + .3, ctc + .7), pc2 = Math.round(CO.value / b * 100) + '%', iw2 = bw - 14, tin = contrast('#0A0A0A', mix(col, '#FFFFFF', .26)) > 4 ? B.negro : B0.arena;
-        const lsz2 = fit(CO.label || '', F.b, 700, 26, iw2, 20), ll2 = wrap(CO.label || '', F.b, 700, lsz2, iw2).slice(0, 2);
-        const need = 56 + ll2.length * (lsz2 + 7);
+        C.fillStyle = mix(col, dk ? '#000000' : '#FFFFFF', .15); rr(x, y, bw, Math.max(2, h), 12); C.fill(); C.restore();   // mismo color, un punto más claro
+        C.strokeStyle = rgba(dk ? B.negro : '#FFFFFF', .55); C.lineWidth = 2; C.beginPath(); C.moveTo(x, ytop); C.lineTo(x + bw, ytop); C.stroke();
+        // la etiqueta no debe competir con el % de la barra: serif en itálica, delgada y más chica
+        const ka2 = seg(t, ctc + .3, ctc + .7), pc2 = Math.round(CO.value / b * 100) + '%', iw2 = bw - 14;
+        const tin = contrast('#0A0A0A', mix(col, '#FFFFFF', .15)) > 3.2 ? B.negro : B0.arena;
+        const lsz2 = fit(CO.label || '', F.b, 500, 20, iw2, 16), ll2 = wrap(CO.label || '', F.b, 500, lsz2, iw2).slice(0, 2);
+        const need = 48 + ll2.length * (lsz2 + 6);
         if (ph > need) {
-          txt(pc2, x + bw / 2, ytop + 58, { f: F.d, w: 800, s: fit(pc2, F.d, 800, 46, iw2, 26), al: 'center', c: tin, a: ka2 });
-          ll2.forEach((l, j) => txt(l, x + bw / 2, ytop + 96 + j * (lsz2 + 7), { f: F.b, w: 700, s: lsz2, al: 'center', c: tin, a: ka2 * .95 }));
+          txt(pc2, x + bw / 2, ytop + 50, { f: F.s, w: 400, s: fit(pc2, F.s, 400, 34, iw2, 22), al: 'center', c: tin, a: ka2 });
+          ll2.forEach((l, j) => txt(l, x + bw / 2, ytop + 80 + j * (lsz2 + 6), { f: F.b, w: 500, s: lsz2, al: 'center', c: tin, a: ka2 * .92 }));
         }
       }
     }
@@ -570,7 +572,7 @@ R.waterfall = (s, t) => {
     const val = p.text || ((minus ? '−' : '') + '$' + fmtNum(Math.abs(p.kind === 'minus' ? p.value : b), 0));
     const base0 = lv[0] ? lv[0][1] : 0, pv = p.kind === 'minus' ? p.value : b;
     const pct = s.percent === false ? null : (p.pct || (base0 ? Math.round(Math.abs(pv) / base0 * 100) + '%' : null));   // sin signo: el color y la caída ya dicen que resta (JP, 12 nov 2026)
-    const ka = seg(t, tc + .25, tc + .6), pcol = minus ? B.terracota : p.kind === 'result' ? (dk ? '#DDE8B8' : B.musgo) : ink;
+    const ka = seg(t, tc + .25, tc + .6), pcol = minus ? B.terracota : p.kind === 'result' ? (dk ? '#DDE8B8' : B.musgo) : (dk ? col : toward(col, B.negro, B0.arena, 2.6));   // cada % en el color de su barra
     if (pct) {
       txt(pct, x + bw / 2, hi - 20, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });
       txt(val, x + bw / 2, hi - 68, { f: F.b, w: 500, s: fit(val, F.b, 500, 26, bw + gap - 6, 17), al: 'center', c: soft, a: ka });
