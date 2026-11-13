@@ -538,6 +538,7 @@ R.waterfall = (s, t) => {
   const tl_ = s.title || ''; rise(tl_, 90, 470, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(tl_, F.d, 800, 72, 900), c: ink });
   if (s.subtitle) rise(s.subtitle, 90, 545, seg(t, s.t0 + .4, s.t0 + 1), { f: F.b, w: 500, s: 38, c: soft });
   const st = s.steps || [], n = st.length || 1, x0 = 96, x1 = 984, y0 = 720, y1 = 1290, gap = 22, bw = (x1 - x0 - gap * (n - 1)) / n;
+  const ROJO = mix(B0.terracota, '#C0241C', .55);   // lo que resta: terracota de la casa, llevado al rojo
   const CO = s.callout ? { step: 0, ...s.callout } : null;
   const col0 = dk ? B.mostaza : (BR ? B.marca : B0.azul);   // el dato de la empresa va en su color (§1b)   // callout: {label, value, sub?, kicker?, step?, cue} → parte la barra y pone la tarjeta
   let run = 0; const lv = st.map(p => { let a, b; if (p.kind === 'minus') { a = run; b = run - p.value; } else { a = 0; b = p.kind === 'result' && p.value == null ? run : p.value; } run = b; return [a, b]; });
@@ -546,7 +547,7 @@ R.waterfall = (s, t) => {
   st.forEach((p, i) => {
     const tc = typeof p.cue === 'number' ? p.cue : s.t0 + .8 + i * .6, k = ex(seg(t, tc, tc + .55)); if (k <= 0) return;
     const [a, b] = lv[i], x = x0 + i * (bw + gap), hi = py(Math.max(a, b)), lo = py(Math.min(a, b)), h = (lo - hi) * k, minus = p.kind === 'minus';
-    const col = minus ? B0.terracota : p.kind === 'result' ? B0.musgo : (dk ? B0.azulClaro : B0.azul), y = minus ? hi : lo - h;   // colores funcionales, nunca el de la marca (JP, 12 nov 2026): azul entra · terracota sale · verde queda       // lo que se resta cae desde arriba; los totales crecen desde abajo
+    const col = minus ? ROJO : p.kind === 'result' ? B0.musgo : (dk ? B0.azulClaro : B0.azul), y = minus ? hi : lo - h;   // colores funcionales, nunca el de la marca (JP, 12 nov 2026): azul entra · terracota sale · verde queda       // lo que se resta cae desde arriba; los totales crecen desde abajo
     C.save(); C.fillStyle = col; rr(x, y, bw, Math.max(2, h), 12); C.fill();
     if (CO && CO.step === i && b > 0) {        // de dónde vienen las ventas: la porción del segmento, en el MISMO color un poco más claro
       const ctc = typeof CO.cue === 'number' ? CO.cue : s.t0 + .8 + n * .6, ck = ex(seg(t, ctc, ctc + .5));
@@ -574,11 +575,24 @@ R.waterfall = (s, t) => {
     const pct = s.percent === false ? null : (p.pct || (base0 ? Math.round(Math.abs(pv) / base0 * 100) + '%' : null));   // sin signo: el color y la caída ya dicen que resta (JP, 12 nov 2026)
     const ka = seg(t, tc + .25, tc + .6), pcol = dk ? (p.kind === 'result' ? '#DDE8B8' : col) : toward(col, B.negro, B0.arena, 2.6);   // cada % en el color de su barra
     if (pct) {
-      txt(pct, x + bw / 2, hi - 54, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });   // % arriba
-      txt(val, x + bw / 2, hi - 18, { f: F.b, w: 500, s: fit(val, F.b, 500, 26, bw + gap - 6, 17), al: 'center', c: soft, a: ka });                              // monto debajo, pegado a la barra
+      txt(pct, x + bw / 2, hi - 20, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });   // % pegado a la barra
+      txt(val, x + bw / 2, hi - 68, { f: F.b, w: 500, s: fit(val, F.b, 500, 26, bw + gap - 6, 17), al: 'center', c: soft, a: ka });                              // monto arriba
     } else txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: pcol, a: ka });
     wrap(p.label || '', F.b, 500, 27, bw + gap - 4).slice(0, 2).forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * 32, { f: F.b, w: 500, s: 27, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
   });
+  // logo de la empresa en el hueco que deja la escalera (si cabe y si el video tiene logo)
+  const lk = s.logo || (V.scenes.find(z => z.logo) || {}).logo, lim = img(lk);
+  if (lim) {
+    let hole = null;
+    for (let j = 1; j < n; j++) {
+      const top = Math.min(...lv.slice(j).map(([a2, b2]) => py(Math.max(a2, b2)) - 104)), cx0 = x0 + j * (bw + gap), w = x1 - cx0, h2 = top - 600;
+      if (w >= 280 && h2 >= 140) { const ar = w * h2; if (!hole || ar > hole.ar) hole = { x: cx0, y: 600, w, h: h2, ar }; }
+    }
+    if (hole) {
+      const z = Math.min(hole.w * .62, hole.h * .74, 230), k2 = seg(t, s.t0 + .5, s.t0 + 1.1);
+      C.save(); C.globalAlpha *= k2 * .9; contain(lim, hole.x + (hole.w - z) / 2, hole.y + (hole.h - z) / 2, z, z); C.restore();
+    }
+  }
   if (s.note) { const tn = cueT(s, 'cue_note', .8 + n * .6 + .3); rise(s.note, 90, 1470, seg(t, tn, tn + .6), { f: F.s, w: 400, s: 64, c: dk ? B.mostaza : B.azul }); }
 };
 

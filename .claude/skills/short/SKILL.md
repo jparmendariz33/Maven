@@ -86,8 +86,8 @@ Cuando un video explique cómo gana dinero una empresa, sus márgenes, sus resul
 la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de entenderlo, y además sirve para revisar que los números cuadren
 (si las barras no llegan al resultado, hay un dato mal).
 - Shorts: escena `waterfall` (ver esquema). Largos: escena `cascade`. Publicaciones: descríbela en una imagen `dato` con viñetas, o usa la gráfica.
-- **Porcentajes SIEMPRE en pantalla (regla de JP, 12 nov 2026).** Encima de cada barra van dos renglones: **arriba el % sobre las ventas,
-  grande y en el color de su barra; debajo, pegado a la barra, el monto en chico** (sin paréntesis): "100% / $13,377" → "46% / −$6,167" → "33% / −$4,378" → "3% / −$404" → "18% / $2,428". **El porcentaje va SIN signo
+- **Porcentajes SIEMPRE en pantalla (regla de JP, 12 nov 2026).** Encima de cada barra van dos renglones: **arriba el monto, en chico;
+  debajo, pegado a la barra, el % sobre las ventas, grande y en el color de su barra** (sin paréntesis): "100% / $13,377" → "46% / −$6,167" → "33% / −$4,378" → "3% / −$404" → "18% / $2,428". **El porcentaje va SIN signo
   negativo y en el color de SU barra** (JP, 12 nov 2026): el color y la caída ya dicen que resta, y el signo solo se queda en el monto. El porcentaje es lo que la
   gente entiende de un vistazo ("se le va casi la mitad en fabricar"); el monto da la prueba. Sale solo: no hay que calcularlo. Para
   apagarlo, `"percent": false` en la escena; para forzar un texto, `"pct": "−46%"` en un paso. Igual en los largos (escena `cascade`).
@@ -112,10 +112,12 @@ la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de
   el motor pinta solo el color. En el guion basta una frase: "…vendió 13 mil millones, y casi dos terceras partes vienen de centros de
   datos". Así una sola escena contesta cuánto vendió, de dónde salió y cuánto le quedó, y el dato extra (por ejemplo "casi el doble que
   en 2025") cabe en el `note` de la escena.
-- **Los colores de la cascada son funcionales, NO los de la marca (JP, 12 nov 2026):** **azul** lo que entra (ingresos; su desglose, en azul
-  más claro), **terracota** lo que sale (costos y gastos) y **verde** lo que queda (la utilidad). Esto manda sobre `brand_colors`: en los
-  ingresos nunca uses rojo, aunque el rojo sea el color de la empresa, porque en una gráfica financiera el rojo ya significa "lo que se va"
-  y choca con las barras de costos. El color de la marca puede seguir en el `note` y en el resto de las escenas.
+- **Los colores de la cascada son funcionales, NO los de la marca (JP, 12 nov 2026):** **azul** las ventas (y su desglose, en azul más
+  claro), **rojo** todo lo que resta (costos y gastos, para que se vea que baja el valor) y **verde** lo que queda. Esto manda sobre
+  `brand_colors` y sale solo: no hay que configurarlo. **Ojo: esta excepción es SOLO del `waterfall`.** Todas las demás gráficas y escenas
+  siguen con los colores de la empresa como dice §1b; el color de la marca puede seguir también en el `note` de la propia cascada.
+- **El logo de la empresa va en el hueco que deja la escalera.** El motor lo coloca solo (toma el `logo` de la escena `company` del video,
+  o el `logo` que pongas en la escena) si hay espacio suficiente. No hay que acomodarlo.
 - Escala fácil: "de cada $100 que vende" (porcentajes sobre ingresos) o en miles de millones, pero una sola escala por cascada.
 - Pasos típicos: ingresos → costo de lo vendido → gastos de operación (investigación, ventas, administración) → impuestos y otros → utilidad neta.
   Si la empresa pierde dinero, la última barra se muestra como pérdida y se dice claro.
