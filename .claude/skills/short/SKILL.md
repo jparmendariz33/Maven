@@ -148,6 +148,10 @@ el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exac
   Lo que nunca va son las referencias relativas ("este mes", "este año", "en el último mes", "la semana pasada"), porque dependen de cuándo
   se vea. Regla práctica: si alguien ve el short en 5 años, debe saber de qué época habla sin sentir que es una noticia caducada.
 - **Gancho con la cifra de periodo largo** (1 mes, 3 meses, en el año, desde el máximo), no con la del día.
+- **Prefiere empresas gigantes y muy conocidas (dato real del canal, 13 nov 2026):** los shorts que más tiempo retuvieron son los de
+  Nvidia (47–48 s vistos) y Meta (45 s); los de empresas menos conocidas o de nicho se quedaron en 28–35 s. Si hay que elegir entre dos
+  temas igual de buenos, gana la empresa que la audiencia ya conoce. Si el tema es una empresa mexicana tradicional (la de peor gancho
+  hasta hoy: 29.2%), entra por el producto que la gente usa, no por el nombre de la empresa ni por su ticker.
 - **Lo que viene es el gancho:** el corazón del short es el porqué y, sobre todo, qué viene o qué tiene planeado la empresa. De vez en cuando
   (no siempre, que no se vuelva fórmula) úsalo para retener: "y lo que tiene planeado es lo interesante". Sin exagerar ni prometer de más.
 - **Cierre:** qué vigilar en los próximos meses (un evento, un dato, un lanzamiento), no "mañana veremos".

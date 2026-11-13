@@ -41,6 +41,16 @@ Ejemplo completo y probado: `largos/2026-11-15/storyboard.json` (úsalo como pla
 **Estructura (PLAN §4):** gancho (≤30 s) → qué vas a aprender → **presentación de JP** (escena `personal`) → 4–5 capítulos (cada uno abre con
 escena `chapter`) → error común / mito → resumen en 3 puntos (`list`) → `outro` con pregunta y el tema de la próxima semana.
 
+### El primer minuto decide todo (dato real del canal, 13 nov 2026)
+La audiencia se va **al minuto**, dure el video 3 o 9 minutos: la retención del largo de "¿Qué es una acción?" (8:38) fue de 11.6% y el
+tiempo visto, 1:00. Por eso:
+- **Un dato o un ejemplo concreto en los primeros 15 segundos.** Nada de introducciones teóricas, definiciones ni saludos largos; la
+  presentación de JP va DESPUÉS del gancho y dura una frase.
+- Enseguida, **la promesa de la estructura en una línea**: "en 6 minutos vas a saber qué mueve el precio, cómo leerlo y qué hacer con eso".
+  Le da al espectador una razón concreta para pasar del primer minuto.
+- Nada de "antes de empezar", "suscríbete" ni contexto largo en la apertura: el CTA va al final.
+- Al revisar el guion, léete solo el primer minuto: si en ese minuto no hay ni un dato sorprendente ni un ejemplo, reescríbelo.
+
 **Reglas de escritura** (voz de JP): español de México, tuteo, frases cortas, tono sereno, números con dígitos ("26%", "10,000 dólares"),
 decimales solo en pantalla. Una idea por pantalla: cada `say` ≤ 45 palabras (≈ 6–18 s). Total **1,150–1,400 palabras** (10–11.5 min al ritmo de lectura de JP, ~120 palabras/min).
 Nunca recomendar comprar/vender; cerrar siempre con "contenido educativo, no asesoría financiera". Los `cue` son palabras del `say`

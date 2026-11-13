@@ -132,6 +132,15 @@ Cada short lleva 3–5 imágenes reales y cada largo 10–20, que hagan sentido 
 sus sucursales y su logo). Solo fotos con licencia libre (Wikimedia Commons, Flickr CC) o de salas de prensa oficiales, con crédito
 en pantalla y en la descripción; **nunca imágenes generadas con IA de marcas o personas reales.** Herramienta: `scripts/fetch_images.py`.
 
+## 2c. Lo que dicen los primeros números (13 nov 2026)
+Primera lectura con datos reales: `plan/checkups/2026-11-13-revision.md` · cifras en `plan/metricas.md`.
+- **La Historia 3D arrasa:** SpaceX tiene 1,404 vistas (el segundo lugar, 255), el mejor gancho del canal (62.4%) y el 70% de todo el
+  tiempo visto en shorts.
+- **En shorts pesa el tiempo visto, no el porcentaje:** los mejores son empresas gigantes y conocidas (Nvidia, Meta: 45–48 s).
+- **Los largos se caen al minuto**, duren 3 o 9 minutos. El canal lleva **4.9 horas de las 4,000** que pide la monetización: con el ritmo
+  actual ese camino no cierra por vistas y retención, no por cantidad de videos. Arreglar el primer minuto es la prioridad (`/largo`).
+- **Cuidado con la muestra:** siete de nueve shorts tienen menos de 150 vistas; solo SpaceX y Nvidia −9% aguantan conclusiones.
+
 ## 3. Flujo semanal (automatizado)
 **Los videos con datos del día llegan DESPUÉS del cierre de la bolsa** (las tareas corren a las 16:25 de Nueva York = 15:25 CDMX en
 invierno / 14:25 en el verano de EE.UU.; el short llega ~30 min después) y **se publican SIEMPRE a las 19:00**. Lo que no depende del
