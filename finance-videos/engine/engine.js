@@ -546,7 +546,7 @@ R.waterfall = (s, t) => {
   st.forEach((p, i) => {
     const tc = typeof p.cue === 'number' ? p.cue : s.t0 + .8 + i * .6, k = ex(seg(t, tc, tc + .55)); if (k <= 0) return;
     const [a, b] = lv[i], x = x0 + i * (bw + gap), hi = py(Math.max(a, b)), lo = py(Math.min(a, b)), h = (lo - hi) * k, minus = p.kind === 'minus';
-    const col = minus ? B.terracota : p.kind === 'result' ? B.musgo : (dk ? B.arena : B.azul), y = minus ? hi : lo - h;       // lo que se resta cae desde arriba; los totales crecen desde abajo
+    const col = minus ? B0.terracota : p.kind === 'result' ? B0.musgo : (dk ? B0.azulClaro : B0.azul), y = minus ? hi : lo - h;   // colores funcionales, nunca el de la marca (JP, 12 nov 2026): azul entra · terracota sale · verde queda       // lo que se resta cae desde arriba; los totales crecen desde abajo
     C.save(); C.fillStyle = col; rr(x, y, bw, Math.max(2, h), 12); C.fill();
     if (CO && CO.step === i && b > 0) {        // de dónde vienen las ventas: la porción del segmento, en el MISMO color un poco más claro
       const ctc = typeof CO.cue === 'number' ? CO.cue : s.t0 + .8 + n * .6, ck = ex(seg(t, ctc, ctc + .5));
@@ -572,7 +572,7 @@ R.waterfall = (s, t) => {
     const val = p.text || ((minus ? '−' : '') + '$' + fmtNum(Math.abs(p.kind === 'minus' ? p.value : b), 0));
     const base0 = lv[0] ? lv[0][1] : 0, pv = p.kind === 'minus' ? p.value : b;
     const pct = s.percent === false ? null : (p.pct || (base0 ? Math.round(Math.abs(pv) / base0 * 100) + '%' : null));   // sin signo: el color y la caída ya dicen que resta (JP, 12 nov 2026)
-    const ka = seg(t, tc + .25, tc + .6), pcol = minus ? B.terracota : p.kind === 'result' ? (dk ? '#DDE8B8' : B.musgo) : (dk ? col : toward(col, B.negro, B0.arena, 2.6));   // cada % en el color de su barra
+    const ka = seg(t, tc + .25, tc + .6), pcol = dk ? (p.kind === 'result' ? '#DDE8B8' : col) : toward(col, B.negro, B0.arena, 2.6);   // cada % en el color de su barra
     if (pct) {
       txt(pct, x + bw / 2, hi - 54, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });   // % arriba
       txt(val, x + bw / 2, hi - 18, { f: F.b, w: 500, s: fit(val, F.b, 500, 26, bw + gap - 6, 17), al: 'center', c: soft, a: ka });                              // monto debajo, pegado a la barra

@@ -112,6 +112,10 @@ la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de
   el motor pinta solo el color. En el guion basta una frase: "…vendió 13 mil millones, y casi dos terceras partes vienen de centros de
   datos". Así una sola escena contesta cuánto vendió, de dónde salió y cuánto le quedó, y el dato extra (por ejemplo "casi el doble que
   en 2025") cabe en el `note` de la escena.
+- **Los colores de la cascada son funcionales, NO los de la marca (JP, 12 nov 2026):** **azul** lo que entra (ingresos; su desglose, en azul
+  más claro), **terracota** lo que sale (costos y gastos) y **verde** lo que queda (la utilidad). Esto manda sobre `brand_colors`: en los
+  ingresos nunca uses rojo, aunque el rojo sea el color de la empresa, porque en una gráfica financiera el rojo ya significa "lo que se va"
+  y choca con las barras de costos. El color de la marca puede seguir en el `note` y en el resto de las escenas.
 - Escala fácil: "de cada $100 que vende" (porcentajes sobre ingresos) o en miles de millones, pero una sola escala por cascada.
 - Pasos típicos: ingresos → costo de lo vendido → gastos de operación (investigación, ventas, administración) → impuestos y otros → utilidad neta.
   Si la empresa pierde dinero, la última barra se muestra como pérdida y se dice claro.
