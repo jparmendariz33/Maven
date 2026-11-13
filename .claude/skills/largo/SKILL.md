@@ -71,6 +71,7 @@ Comunes: `kicker`, `title`, `subtitle`, `theme` ("blue" | "sand" | "white"), `sa
   (`quarters` para sobrescribir); `prefix`, `suffix`, `decimals`, `cue_bars`.
 - **Regla de JP (11 nov 2026): siempre que el largo hable del estado de resultados, márgenes o cómo gana dinero una empresa, lleva una `cascade`** (de ingresos a utilidad neta; detalle en `/short` §1e).
 - `cascade` (estado de resultados): `items` [{`label`, `value`, `kind`: "total"}]; el 1º es el total inicial, los demás restan salvo `kind: "total"`.
+  Se ve igual que en los shorts (`/short` §1e): % sobre las ventas arriba, monto debajo, negativos entre paréntesis y nunca con signo.
 - `donut`: `slices` [{`label`, `value`, `tone`, `cue`, `display`}], `center`, `cue_donut`.
 - `metric`: igual que en shorts (P/E, PEG, ROE con `scale` y bandas; ver skill /short).
 - `quote` (azul): `text`, `author`, `source`.

@@ -45,6 +45,9 @@ Cada publicación cuenta UNA cosa, en este orden: **qué pasó → por qué → 
   los de `/short` §2c. Si la noticia es de una persona famosa, usa `"who"` (§2c) en lugar de JP.
 - **La foto del tema va a todo el fondo** en la portada y en la pregunta; usa fotos distintas o distinto `focus`.
 - Títulos cortos (≤ 8 palabras), una idea por imagen, cifras exactas y verificadas con fuente primaria. Nunca recomendación de compra/venta.
+- **Cifras, igual que en los videos (`/short` §1e):** acompaña el monto con su porcentaje cuando ayude a dimensionarlo, escribe los negativos
+  **entre paréntesis y sin signo** —`($709 M)`, no `−$709 M`— y los positivos limpios. Si la publicación desglosa un estado de resultados,
+  usa el mismo orden: ingresos → lo que sale → lo que queda.
 - `poll`: la encuesta va como publicación aparte (YouTube no mezcla imágenes y encuesta en la misma publicación). Es opcional; úsala 1 vez por semana.
 
 **Calidad de las imágenes:** aplica la regla de `/short` §2b ("Calidad de las imágenes"): nítidas (≥ 1600 px), limpias, con el sujeto solo y sin ruido de fondo.

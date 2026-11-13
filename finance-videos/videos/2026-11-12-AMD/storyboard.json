@@ -91,35 +91,30 @@
      "label": "Ventas",
      "value": 13377,
      "kind": "total",
-     "text": "$13,377",
      "cue": "vendió"
     },
     {
      "label": "Hacer los chips",
      "value": 6167,
      "kind": "minus",
-     "text": "−$6,167",
      "cue": "Fabricarlos"
     },
     {
      "label": "Investigar y vender",
      "value": 4378,
      "kind": "minus",
-     "text": "−$4,378",
      "cue": "Investigar"
     },
     {
      "label": "Otros e impuestos",
      "value": 404,
      "kind": "minus",
-     "text": "−$404",
      "cue": "Impuestos"
     },
     {
      "label": "Ganancia",
      "value": 2428,
      "kind": "result",
-     "text": "$2,428",
      "cue": "quedaron"
     }
    ],

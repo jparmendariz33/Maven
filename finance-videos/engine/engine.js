@@ -570,14 +570,14 @@ R.waterfall = (s, t) => {
     C.restore();
     if (i < n - 1 && k > .9) { const yy = py(b); C.save(); C.strokeStyle = soft; C.lineWidth = 2; C.setLineDash([8, 8]); C.beginPath(); C.moveTo(x + bw, yy); C.lineTo(x + bw + gap, yy); C.stroke(); C.restore(); }
     // encima de cada barra: el PORCENTAJE sobre las ventas (lo que de verdad se entiende) y, más chico, el monto.
-    const val = p.text || ((minus ? '−' : '') + '$' + fmtNum(Math.abs(p.kind === 'minus' ? p.value : b), 0));
-    const base0 = lv[0] ? lv[0][1] : 0, pv = p.kind === 'minus' ? p.value : b;
+    const base0 = lv[0] ? lv[0][1] : 0, pv = p.kind === 'minus' ? p.value : b, neg = minus || pv < 0;
+    const val = p.text || (neg ? '($' + fmtNum(Math.abs(pv), 0) + ')' : '$' + fmtNum(Math.abs(pv), 0));   // negativo = paréntesis, nunca signo; positivo = limpio
     const pct = s.percent === false ? null : (p.pct || (base0 ? Math.round(Math.abs(pv) / base0 * 100) + '%' : null));   // sin signo: el color y la caída ya dicen que resta (JP, 12 nov 2026)
     const ka = seg(t, tc + .25, tc + .6), pcol = dk ? (p.kind === 'result' ? '#DDE8B8' : col) : toward(col, B.negro, B0.arena, 2.6);   // cada % en el color de su barra
     if (pct) {
-      const vtx = '(' + val + ')', cxp = x + bw / 2;
+      const cxp = x + bw / 2;
       txt(pct, cxp, hi - 52, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });           // % arriba
-      txt(vtx, cxp, hi - 18, { f: F.s, w: 400, s: fit(vtx, F.s, 400, 25, bw + gap - 6, 16), al: 'center', c: soft, a: ka });                                      // monto debajo, chico y en itálica
+      txt(val, cxp, hi - 18, { f: F.s, w: 400, s: fit(val, F.s, 400, 25, bw + gap - 6, 16), al: 'center', c: soft, a: ka });                                      // monto debajo, chico y en itálica
     } else txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: pcol, a: ka });
     wrap(p.label || '', F.b, 500, 27, bw + gap - 4).slice(0, 2).forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * 32, { f: F.b, w: 500, s: 27, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
   });

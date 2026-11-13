@@ -81,48 +81,60 @@ de las últimas 60 sesiones (con volumen vs promedio) y titulares semilla.
   real 35x. Si no puedes recalcular una métrica con fuente primaria, usa otra (p. ej. margen neto del trimestre, del 8-K).
 Guarda las fuentes (URLs) para `youtube.md`.
 
-## 1e. Cascada (waterfall) siempre que se hable del estado de resultados (regla de JP, 11 nov 2026)
+## 1e. Cascada (waterfall) siempre que se hable del estado de resultados (regla de JP, 11–12 nov 2026)
 Cuando un video explique cómo gana dinero una empresa, sus márgenes, sus resultados o su P&L, **incluye una cascada**: de los ingresos a
-la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de entenderlo, y además sirve para revisar que los números cuadren
-(si las barras no llegan al resultado, hay un dato mal).
-- Shorts: escena `waterfall` (ver esquema). Largos: escena `cascade`. Publicaciones: descríbela en una imagen `dato` con viñetas, o usa la gráfica.
-- **Porcentajes SIEMPRE en pantalla (regla de JP, 12 nov 2026).** Encima de cada barra van dos renglones: **arriba el % sobre las ventas,
-  grande y en el color de su barra; debajo, pegado a la barra, el monto entre paréntesis, chico y en itálica**: "100% / $13,377" → "46% / −$6,167" → "33% / −$4,378" → "3% / −$404" → "18% / $2,428". **El porcentaje va SIN signo
-  negativo y en el color de SU barra** (JP, 12 nov 2026): el color y la caída ya dicen que resta, y el signo solo se queda en el monto. El porcentaje es lo que la
-  gente entiende de un vistazo ("se le va casi la mitad en fabricar"); el monto da la prueba. Sale solo: no hay que calcularlo. Para
-  apagarlo, `"percent": false` en la escena; para forzar un texto, `"pct": "−46%"` en un paso. Igual en los largos (escena `cascade`).
-- **En la voz, una sola vía por barra, nunca las dos** (regla de los números: decir "seis mil ciento sesenta y siete millones" Y "cuarenta
-  y seis por ciento" es el doble de tiempo). Elige según el caso:
-  - **Por defecto:** narra los MONTOS redondeados de las barras intermedias y **remata con el porcentaje** en la última ("…y le quedaron
-    18 de cada 100"). Los demás porcentajes viven en pantalla y el cierre es el que se queda en la cabeza.
-  - **Si los montos son difíciles de dimensionar** (miles de millones, empresa gigante, cifras en otra moneda): narra TODO en porcentajes
-    ("de cada 100 pesos que vende, 46 se van en producir…") y deja los montos solo en pantalla.
-  - **Si la empresa es chica o el monto es la noticia** (una pérdida, un récord): narra los montos y di el porcentaje solo al final.
-- **De dónde vienen las ventas: DENTRO de la propia barra (JP, 12 nov 2026).** Cuando el negocio depende de un producto, servicio o
-  segmento, no le dediques otra escena ni una tarjeta aparte: usa `callout` en la misma escena `waterfall`. La barra de ventas empieza
-  completa en su color y, al llegar el `cue`, la porción de ese segmento se pinta **en el mismo color un punto más claro** (contraste
-  MUY sutil: rojo con rojo, nunca rojo con naranja) y aparece dentro de ella su `%` y su nombre. Sin tarjetas, sin líneas punteadas.
-  Ese `%` interno **no debe competir con el de la barra**: va en serif itálica, delgado, más chico y en negro; el protagonista sigue
-  siendo el 100% de arriba.
-```json
-"callout": {"label": "Centros de datos", "value": 8546, "cue": "centros", "step": 0}
-```
-  `value` en la misma escala que los pasos; `step` es la barra que se parte (0 = ventas, por defecto); `cue`, la palabra del `say` donde
-  se revela. El nombre va corto (2–3 palabras): se escribe dentro de la barra, que mide ~160 px. Si la porción es muy chica para el texto,
-  el motor pinta solo el color. En el guion basta una frase: "…vendió 13 mil millones, y casi dos terceras partes vienen de centros de
-  datos". Así una sola escena contesta cuánto vendió, de dónde salió y cuánto le quedó, y el dato extra (por ejemplo "casi el doble que
-  en 2025") cabe en el `note` de la escena.
-- **Los colores de la cascada son funcionales, NO los de la marca (JP, 12 nov 2026):** **azul** las ventas (y su desglose, en azul más
-  claro), **rojo** todo lo que resta (costos y gastos, para que se vea que baja el valor) y **verde** lo que queda. Esto manda sobre
-  `brand_colors` y sale solo: no hay que configurarlo. **Ojo: esta excepción es SOLO del `waterfall`.** Todas las demás gráficas y escenas
-  siguen con los colores de la empresa como dice §1b; el color de la marca puede seguir también en el `note` de la propia cascada.
-- **El logo de la empresa va en el hueco que deja la escalera.** El motor lo coloca solo (toma el `logo` de la escena `company` del video,
-  o el `logo` que pongas en la escena) si hay espacio suficiente. No hay que acomodarlo.
-- Escala fácil: "de cada $100 que vende" (porcentajes sobre ingresos) o en miles de millones, pero una sola escala por cascada.
-- Pasos típicos: ingresos → costo de lo vendido → gastos de operación (investigación, ventas, administración) → impuestos y otros → utilidad neta.
-  Si la empresa pierde dinero, la última barra se muestra como pérdida y se dice claro.
+la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de entenderlo, y además sirve para revisar que los números
+cuadren (si las barras no llegan al resultado, hay un dato mal).
+- Shorts: escena `waterfall`. Largos: escena `cascade`. Publicaciones: una imagen `dato` con los mismos porcentajes y la misma convención.
+- Pasos típicos: ingresos → costo de lo vendido → gastos de operación (investigación, ventas, administración) → impuestos y otros →
+  utilidad neta. Si la empresa pierde dinero, la última barra se muestra como pérdida y se dice claro. 4 a 6 barras.
 - Todos los números salen del reporte oficial (10-K/10-Q/8-K o reporte a la BMV) y deben sumar: ingresos − todo lo que sale = utilidad neta.
-- En Análisis + Potencial ponla en la mitad de análisis ("cómo gana dinero"). En el guion, una frase la recorre: "entran 100, salen 51, 16 y otros 5; quedan 28".
+- Una sola escala por cascada: o todo en millones, o todo "de cada $100 que vende".
+- En Análisis + Potencial va en la mitad de análisis ("cómo gana dinero").
+
+### Cómo se ve (lo decidió JP el 12 nov 2026; el motor lo hace solo)
+- **Encima de cada barra, dos renglones:** arriba el **% sobre las ventas**, grande y en el color de su barra; debajo, pegado a la barra,
+  el **monto, chico y en itálica**.
+- **Signos: nunca "−" ni "+".** Lo que resta va **entre paréntesis**: `($6,167)`. Lo positivo (los ingresos siempre, y la utilidad cuando
+  la hay) va limpio: `$13,377`. Los porcentajes, siempre sin signo: `46%`, no `−46%`.
+- **Colores funcionales, NO los de la marca:** **azul** las ventas (y su desglose, en azul más claro), **rojo** todo lo que resta y
+  **verde** lo que queda. Esto manda sobre `brand_colors`: en los ingresos nunca uses rojo, aunque sea el color de la empresa, porque en
+  una gráfica financiera el rojo ya significa "lo que se va". **Esta excepción es SOLO del `waterfall`:** las demás escenas siguen con los
+  colores de la empresa (§1b), y el color de la marca puede seguir en el `note` de la propia cascada.
+- **El logo de la empresa** se coloca solo en el hueco que deja la escalera, si cabe.
+- **De dónde vienen las ventas: DENTRO de la propia barra.** Si el negocio depende de un producto o segmento, no le dediques otra escena:
+  usa `callout`. La barra de ventas empieza completa y, al llegar su `cue`, la porción de ese segmento se pinta en el **mismo color un
+  punto más claro** (contraste muy sutil: azul con azul) y aparece dentro su `%` y su nombre, en serif itálica, delgado y más chico, para
+  que no compita con el 100% de arriba.
+
+### Esquema
+```json
+{"type": "waterfall", "theme": "sand",
+ "kicker": "Trimestre jul–sep 2026 · reporte a la SEC", "title": "Así llega a su ganancia",
+ "subtitle": "Cifras en millones de dólares",
+ "callout": {"label": "Centros de datos", "value": 8546, "cue": "centros", "step": 0},
+ "steps": [
+  {"label": "Ventas",              "value": 13377, "kind": "total",  "cue": "vendió"},
+  {"label": "Hacer los chips",     "value": 6167,  "kind": "minus",  "cue": "Fabricar"},
+  {"label": "Investigar y vender", "value": 4378,  "kind": "minus",  "cue": "Investigar"},
+  {"label": "Otros e impuestos",   "value": 404,   "kind": "minus",  "cue": "Impuestos"},
+  {"label": "Ganancia",            "value": 2428,  "kind": "result", "cue": "quedaron"}],
+ "note": "45% más ventas que un año antes", "cue_note": "cada",
+ "say": "Vendió 13 mil millones… Fabricar los chips costó 6 mil… y le quedaron 18 de cada 100."}
+```
+- `value` siempre **positivo**: el motor pone los paréntesis según el `kind`. `label` corto (2–3 palabras). Cada `cue` es una palabra
+  DISTINTA del `say` (ojo: "5" también calza dentro de "51"; usa otra palabra). `percent: false` apaga los porcentajes y `pct` en un paso
+  fuerza un texto; `text` en un paso fuerza el monto (escríbelo ya con la convención). `callout.value` va en la misma escala que los pasos.
+
+### Qué se dice en la voz
+**Una sola vía por barra, nunca las dos** (regla de los números: decir "seis mil ciento sesenta y siete millones" Y "cuarenta y seis por
+ciento" es el doble de tiempo). Elige según el caso:
+- **Por defecto:** narra los MONTOS redondeados de las barras intermedias y **remata con el porcentaje** en la última ("…y le quedaron
+  18 de cada 100"). Los demás porcentajes viven en pantalla y el cierre es el que se queda en la cabeza.
+- **Si los montos son difíciles de dimensionar** (miles de millones, empresa gigante, otra moneda): narra TODO en porcentajes ("de cada
+  100 pesos que vende, 46 se van en producir…") y deja los montos solo en pantalla.
+- **Si el monto es la noticia** (una pérdida, un récord): narra los montos y di el porcentaje solo al final.
+- El desglose del `callout` cabe en una frase: "…vendió 13 mil millones, y casi dos terceras partes vienen de centros de datos".
 
 ## 1c. Short reactivo = short de CONTEXTO (lunes, martes y jueves — plan del 11 nov 2026)
 Lo que pasó hoy caduca mañana, y un short se sigue viendo durante meses. Por eso la noticia del día es solo el PRETEXTO para elegir el tema;
@@ -368,10 +380,8 @@ Campos por tipo (todos opcionales salvo `type` y `say`; `theme` puede forzar `"b
 - `metric`: `kicker` ("Valuación · 1/3"), `label` ("P/E"), `fullname`, `value`, `decimals`, `prefix`, `suffix` ("x", "%"),
   `explain`, `scale` {"min","max","bands":[[a,b,"texto","tono?"]],"ref":{"value","label"}}, `verdict`, `verdict_tone`,
   `cue_value`, `cue_explain`, `cue_gauge`.
-- `waterfall` (cascada del estado de resultados): `kicker`, `title`, `subtitle`, `callout` (de dónde vienen las ventas; ver §1e), `steps` [{"label" (corta, 2–3 palabras), "value", "kind":
-  "total" | "minus" | "result", "text" (lo que se lee arriba de la barra, ej. "−$51"), "cue"}], `note`, `cue_note`. La primera es `total`
-  (ingresos), las de en medio `minus` (lo que se va) y la última `result` (lo que queda). 4 a 6 barras; cada `cue` es una palabra DISTINTA
-  del `say` (ojo: "5" también calza dentro de "51"; usa otra palabra).
+- `waterfall` (cascada del estado de resultados, §1e): `kicker`, `title`, `subtitle`, `steps`, `callout`, `note`, `cue_note`.
+  Valores siempre positivos; el motor pone paréntesis, porcentajes, colores funcionales y el logo.
 - `catalyst` (azul): `kicker`, `date` ("28 ENE"), `label`, `sub`, `cue_date`.
 - `outro` (azul): `question_a`, `question_b`, `cue_a`, `cue_b`, `cta` (opcional), `sources` ("Yahoo Finance · Reuters").
 - `photo`, `bg_image`, `company.logo`, `news.image`: ver sección 2b.

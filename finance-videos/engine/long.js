@@ -351,8 +351,9 @@ R.cascade = (s, t) => {
     C.fillStyle = col; rr(cx - bw / 2, ya, bw, Math.max(2, yb - ya), 8); C.fill();
     if (i < items.length - 1) { C.strokeStyle = 'rgba(10,10,10,.35)'; C.setLineDash([5, 6]); C.lineWidth = 2; const yl = it.kind === 'total' || i === 0 ? ya : yb;
       C.beginPath(); C.moveTo(cx + bw / 2, yl); C.lineTo(cx + gw - bw / 2, yl); C.stroke(); C.setLineDash([]); }
-    const vtx = (it.kind === 'total' || i === 0 ? '' : '−') + fmtV(Math.abs(it.value), s), ka = seg(t, tc + .3, tc + .7);
-    const b0 = Math.abs(items[0].value), pc = s.percent === false ? null : (it.pct || (b0 ? (it.kind === 'total' || i === 0 ? '' : '−') + Math.round(Math.abs(it.value) / b0 * 100) + '%' : null));
+    const negL = !(it.kind === 'total' || i === 0) || it.value < 0;                      // negativo = paréntesis, nunca signo
+    const vtx = negL ? '(' + fmtV(Math.abs(it.value), s) + ')' : fmtV(Math.abs(it.value), s), ka = seg(t, tc + .3, tc + .7);
+    const b0 = Math.abs(items[0].value), pc = s.percent === false ? null : (it.pct || (b0 ? Math.round(Math.abs(it.value) / b0 * 100) + '%' : null));   // % sin signo
     if (pc) {   // % sobre las ventas (grande) + monto (chico)
       txt(pc, cx, ya - 16, { f: F.d, w: 800, s: fit(pc, F.d, 800, 34, gw - 10, 20), al: 'center', c: col, a: ka });
       txt(vtx, cx, ya - 52, { f: F.b, w: 500, s: fit(vtx, F.b, 500, 22, gw - 10, 14), al: 'center', c: '#4a4a4a', a: ka });
