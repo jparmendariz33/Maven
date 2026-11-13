@@ -1,6 +1,6 @@
 ---
 name: largo
-description: Produce el video largo semanal (9–11 min, 16:9) de Costa Studio Finance, by JP Armendáriz, listo para que JP solo le ponga su voz — guion con datos verificados, storyboard, render 1920x1080 con teleprompter, miniatura, youtube.md y short derivado. Úsala cuando digan "/largo", "haz el video largo de la semana", "produce el video del domingo", o cuando la tarea programada de los lunes lo pida.
+description: Produce el video largo semanal (6–7 min, 16:9) de Costa Studio Finance, by JP Armendáriz, listo para que JP solo le ponga su voz — guion con datos verificados, storyboard, render 1920x1080 con teleprompter, miniatura, youtube.md y short derivado. Úsala cuando digan "/largo", "haz el video largo de la semana", "produce el video del domingo", o cuando la tarea programada de los lunes lo pida.
 ---
 
 > **Voz de JP (obligatorio en todo guion):** antes de escribir, lee `finance-videos/plan/voz-jp.md` y redacta con ese tono. El guion no debe sonar a IA.
@@ -21,7 +21,8 @@ mkdir -p largos/$D/data
 Si `largos/$D/*_largo.mp4` ya existe, no lo rehagas.
 
 ## 1. Investigar y verificar (WebSearch; fuentes primarias cuando se pueda)
-- Toma de `calendario-largos.md` la semana $D: título, búsqueda objetivo, gancho, capítulos, visuales, short derivado y datos a verificar.
+- Toma de `calendario-largos.md` la semana $D: título, búsqueda objetivo, gancho, capítulos, visuales y datos a verificar. (La columna
+  "short derivado" quedó obsoleta el 13 nov 2026: ese puente lo hace ahora la **Historia 3D del miércoles**, con el mismo tema del largo.)
 - Cada número del guion sale de una fuente que anotas en `largos/$D/fuentes.md` (URL + dato). México: Banxico, INEGI, CONSAR, SAT, CNBV, BMV.
   Empresas: reportes en la SEC o de la empresa. Estudios (Behavioral Finance): el paper original o una fuente académica seria;
   nada de estudios retractados.
@@ -38,7 +39,7 @@ Si `largos/$D/*_largo.mp4` ya existe, no lo rehagas.
 ```
 Ejemplo completo y probado: `largos/2026-11-15/storyboard.json` (úsalo como plantilla de ritmo y estilo).
 
-**Estructura (PLAN §4):** gancho (≤30 s) → qué vas a aprender → **presentación de JP** (escena `personal`) → 4–5 capítulos (cada uno abre con
+**Estructura (PLAN §4):** gancho (≤15 s) → la promesa en una línea → **presentación de JP** (escena `personal`, una frase) → 3–4 capítulos (cada uno abre con
 escena `chapter`) → error común / mito → resumen en 3 puntos (`list`) → `outro` con pregunta y el tema de la próxima semana.
 
 ### El primer minuto decide todo (dato real del canal, 13 nov 2026)
@@ -52,7 +53,7 @@ tiempo visto, 1:00. Por eso:
 - Al revisar el guion, léete solo el primer minuto: si en ese minuto no hay ni un dato sorprendente ni un ejemplo, reescríbelo.
 
 **Reglas de escritura** (voz de JP): español de México, tuteo, frases cortas, tono sereno, números con dígitos ("26%", "10,000 dólares"),
-decimales solo en pantalla. Una idea por pantalla: cada `say` ≤ 45 palabras (≈ 6–18 s). Total **1,150–1,400 palabras** (10–11.5 min al ritmo de lectura de JP, ~120 palabras/min).
+decimales solo en pantalla. Una idea por pantalla: cada `say` ≤ 45 palabras (≈ 6–18 s). Total **720–850 palabras** (6–7 min al ritmo de lectura de JP; cambio del 13 nov 2026, antes 9–11 min: la audiencia se va al minuto, así que el largo se concentra).
 Nunca recomendar comprar/vender; cerrar siempre con "contenido educativo, no asesoría financiera". Los `cue` son palabras del `say`
 de esa misma escena (evita números como cue si puedes).
 
@@ -157,11 +158,11 @@ Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, cor
    "Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa Studio.", 3–5 hashtags), lista de reproducción del
    pilar, comentario fijado (la pregunta del outro), pantalla final (video sugerido del mismo pilar) y el **guion para leer** completo
    (`python3 scripts/guion_lectura.py largos/$D`).
-2. **Short derivado** (miércoles; lo produce la tarea del MIÉRCOLES, no la del lunes): `videos/<miércoles>-<SLUG>/` con la skill `/short` en modo sin voz (30–50 s, la idea más poderosa,
-   sin ticker si es educativo: storyboard con `"slug"`, `hook` (con `kicker` y `title` propios), `statement`, `catalyst` ("DOM <día>" · video completo) y `outro`; ejemplo: `videos/2026-11-11-APPLE/`. El `outro` lleva
-   "Video completo el domingo en el canal"). En su `youtube.md`, recuerda enlazar el largo con "Video relacionado".
+2. **El puente al largo lo hace la Historia 3D del miércoles** (`/historia`), con el tema de este mismo largo: "Video relacionado" → este
+   video y comentario fijado con la liga. Ya no se produce el short derivado del miércoles (cambio del 13 nov 2026).
+
 3. Commit + push a la rama `costa-studio-finance` (sin `build/`, `images/_cand/` ni .wav). Si el push falla, entrega igual: MP4 y miniatura
    por el chat (SendUserFile) y el contenido de `youtube.md` pegado en el mensaje.
 4. Mensaje a JP: tema, duración, **el título y la descripción completos listos para copiar** (los bloques de "Para copiar y pegar"), rutas (MP4, miniatura, short) y recordatorio:
    "Graba tu voz con CapCut (importa el MP4 → Audio → Grabar → lee el teleprompter de principio a fin) y prográmalo
-   para el domingo 10:00. El short derivado, el miércoles 19:00 con 'Video relacionado' → este largo."
+   para el domingo 10:00. El miércoles 12:00 sale la Historia 3D de este mismo tema, con 'Video relacionado' → este largo."

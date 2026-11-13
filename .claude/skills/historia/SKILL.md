@@ -1,6 +1,6 @@
 ---
 name: historia
-description: Crea una "Historia 3D" vertical (75–90 s, YouTube Shorts / Reels / TikTok) que cuenta la historia de una empresa o de su fundador con maquetas de plastilina animadas, personajes que actúan, luz de cine, música y efectos — estilo Costa Diorama de Costa Studio Finance, lista para que JP solo grabe su voz. Úsala cuando digan "/historia", "haz la historia 3D de X", "video animado de Steve Jobs / Nike / Bimbo", "el video 3D de la semana", o cuando la tarea programada de los viernes lo pida.
+description: Crea una "Historia 3D" vertical (75–90 s, YouTube Shorts / Reels / TikTok) que cuenta la historia de una empresa o de su fundador con maquetas de plastilina animadas, personajes que actúan, luz de cine, música y efectos — estilo Costa Diorama de Costa Studio Finance, lista para que JP solo grabe su voz. Se hacen DOS por semana (miércoles y sábado). Úsala cuando digan "/historia", "haz la historia 3D de X", "video animado de Steve Jobs / Nike / Bimbo", "el video 3D de la semana", o cuando la tarea programada de los viernes lo pida.
 argument-hint: "<empresa o personaje> [enfoque opcional]"
 ---
 
@@ -14,9 +14,18 @@ escríbele en español, corto y claro. **Costo cero:** nada de vidIQ ni servicio
 Lee antes: `plan/PLAN.md` (§0 marca y conflictos de interés, §2 ritmo), `plan/banco-historias.md`, `plan/publicados.md`,
 `plan/clientes-agencia.md`, `plan/posiciones-jp.md`.
 
-**Ritmo (pedido por JP, 9 nov 2026): 1 historia por semana. Se produce el VIERNES (después del cierre de la bolsa) y se publica el SÁBADO a las 12:00 CDMX**
-(desde el 11 nov 2026 el sábado ya no sale otro short: la historia es la única pieza del día). Es la segunda excepción a la regla de "mismo día" (la otra es el
-largo): JP necesita un día para grabar su voz. La carpeta lleva la fecha de publicación: `videos/<sábado AAAA-MM-DD>-<SLUG>-historia/`.
+**Ritmo (cambio del 13 nov 2026, con los primeros datos reales): 2 historias por semana.** Es el formato con más alcance del canal (79% de
+las vistas y el mejor gancho), así que se duplicó:
+- **La del MIÉRCOLES 12:00** se produce el martes y cuenta la historia de la empresa o del personaje **del largo de ESE domingo**: es el
+  puente a los largos. Sustituye al antiguo short adelanto. Usa el cierre del lunes para la escena "Hoy" (un día de desfase no importa
+  en una historia).
+- **La del SÁBADO 12:00** se produce el viernes, después del cierre, y sale del banco de historias.
+**TODA historia manda a un largo:** en `youtube.md` deja indicado "Video relacionado" → el largo del tema más cercano y el comentario
+fijado con la liga. Sin ese puente, el alcance de las historias no se convierte en horas de reproducción.
+
+Las historias son la excepción a la regla de "mismo día" (junto con el largo): JP necesita un día para grabar su voz. La carpeta lleva
+la **fecha de publicación**: `videos/<AAAA-MM-DD>-<SLUG>-historia/` (el miércoles o el sábado, según cuál sea). El sábado la historia es
+la única pieza del día.
 **Plantilla y modelo de estilo:** `videos/2026-11-14-JOBS-historia/` (Steve Jobs: `story.js`, `guion.md`, `youtube.md`). Cópiala y adáptala.
 
 ### ✅ Checklist (revisa TODO antes de entregar)
@@ -41,6 +50,10 @@ mkdir -p videos/$ID && cp videos/2026-11-14-JOBS-historia/story.js videos/$ID/st
 Si ya existe `videos/$S-*-historia/*.mp4`, no hagas otra: reenvía esa.
 
 ## 1. Elegir el tema (sin preguntar, si JP no lo dio)
+**Si es la historia del MIÉRCOLES, el tema NO se elige:** es la empresa o el personaje del largo de ese domingo (mira
+`plan/calendario-largos.md`). Si el largo es educativo y no tiene empresa (por ejemplo "qué es una acción"), toma la empresa que ese largo
+usa de ejemplo. Lo de abajo aplica a la historia del SÁBADO.
+
 Toma una fila de `plan/banco-historias.md` que no esté en "Ya publicadas" ni en `publicados.md`. Prioridad:
 1. **Engancha con la semana:** la empresa del largo del domingo (`plan/calendario-largos.md`), del short de empresa del fin de semana
    o de la noticia de la semana (así los videos se empujan entre sí).

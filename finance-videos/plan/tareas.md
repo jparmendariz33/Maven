@@ -1,8 +1,3 @@
-# Tareas programadas · instrucciones (fuente de verdad desde el 11 nov 2026)
-
-Cada tarea programada solo dice: "ejecuta la sección X de este archivo". Así las instrucciones viven en GitHub, con historial, y no en
-el texto de cada tarea. Si JP cambia una regla, se cambia AQUÍ (y en la skill que toque).
-
 ## Común a todas
 - Eres el asistente de producción de **Costa Studio Finance** (canal de YouTube de finanzas e inversión; @jparmendariz). Escríbele a JP en
   español, corto y claro. Costa Studio (la agencia) es OTRA empresa: aquí todo es Costa Studio Finance.
@@ -29,12 +24,13 @@ el texto de cada tarea. Si JP cambia una regla, se cambia AQUÍ (y en la skill q
   copiar** y **el guion para leer** (una escena por párrafo).
 - Si ya existe la carpeta de la pieza de hoy con su archivo final, no hagas otra: entrégala (revisando que sus cifras sean de cierre).
 
-## Short de contexto (lunes, martes y jueves, tras el cierre → se publica hoy 19:00)
+## Short de contexto (martes y jueves, tras el cierre → se publica hoy 19:00)
 Skill `/short`, §1c. Con WebSearch mira lo más relevante de la sesión (alzas y bajas del S&P 500, Nasdaq-100 y BMV; índices; peso;
-Fed/Banxico; resultados de empresas conocidas) y elige el tema con el orden de `PLAN.md` §2 ("Cómo se elige cada short reactivo"). Esa
-noticia es solo el pretexto: el short cuenta qué le pasa a la empresa en un periodo largo, por qué y qué viene. Sin "hoy" ni el día exacto;
-periodos con fechas absolutas ("desde enero de 2025"). 60–75 s, 3–5 fotos + logo. No repitas empresa de los últimos 10 días ni de esta semana.
-Carpeta `videos/<hoy>-<TICKER>/`. Debe llegarle a JP antes de las 16:30 CDMX. Recuérdale: "Graba tu voz con Voz en off en la app de YouTube y publícalo hoy a las 19:00".
+Fed/Banxico; resultados de empresas conocidas) y elige el tema con el orden de `PLAN.md` §2. Esa noticia es solo el pretexto: el short
+cuenta qué le pasa a la empresa en un periodo largo, por qué y qué viene. Sin "hoy" ni el día exacto; periodos con fechas absolutas
+("desde enero de 2025"). **Prefiere empresas gigantes y muy conocidas**: son las que más retienen (`/short` §1c). 60–75 s, 3–5 fotos +
+logo. No repitas empresa de los últimos 10 días ni de esta semana. Carpeta `videos/<hoy>-<TICKER>/`. Debe llegarle a JP antes de las
+16:30 CDMX. Recuérdale: "Graba tu voz con Voz en off en la app de YouTube y publícalo hoy a las 19:00".
 
 ## Publicación del día (lunes y miércoles, tras el cierre → se publica hoy ≈17:00)
 Skill `/publicacion`. UNA noticia de la sesión de hoy en 3 o 4 imágenes (qué pasó → por qué → dato o gráfica → pregunta). Aquí SÍ va el
@@ -42,11 +38,13 @@ Skill `/publicacion`. UNA noticia de la sesión de hoy en 3 o 4 imágenes (qué 
 imágenes. Manda las imágenes en orden y **la descripción lista para copiar** (YouTube solo pide eso). Encuesta: máximo una por semana, como
 publicación aparte. Si hay otra tarea de video en curso o en cola, termina primero esa.
 
-## Short adelanto del largo (miércoles 6:41 → se publica hoy 19:00)
-Skills `/short` y la parte de "short derivado" de `/largo`. Sea D el domingo de esta semana: toma de `largos/D/storyboard.json` (o del
-calendario, si no existe) la idea más poderosa del largo y hazla short: 45–60 s, sin ticker si es educativo, con la tarjeta "DOM <día>" del
-video completo e imágenes reales. Carpeta `videos/<hoy>-<SLUG>/`. Si no hay largo ese domingo, termina con una línea. Recuérdale poner el
-largo como "Video relacionado" el domingo.
+## Historia 3D del miércoles (martes 6:41 → se publica MAÑANA miércoles 12:00)
+Skill `/historia`. **El tema NO se elige:** es la empresa o el personaje del largo de ESE domingo (`plan/calendario-largos.md`); si el
+largo es educativo y no tiene empresa, la que use de ejemplo. Es el **puente a los largos**: en `youtube.md` deja "Video relacionado" →
+ese largo y el comentario fijado con la liga. Usa el cierre del lunes para la escena "Hoy" (un día de desfase no importa en una historia).
+Todo lo demás, igual que la del sábado: 8 escenas, 75–90 s (`pace3d.py`), sin párpados, sin logotipos reales, sin fotos, música de órgano
+y piano, render en segundo plano. Carpeta `videos/<miércoles>-<SLUG>-historia/`. Registra en `publicados.md` y en `banco-historias.md`.
+Manda el MP4 y `cuadros_clave.jpg`. Recuérdale: "Publícala mañana miércoles a las 12:00".
 
 ## Análisis + Potencial (viernes, tras el cierre → se publica hoy 19:00)
 Skill `/short` §1b. El ÚNICO de la semana (absorbió a "Tesis a 5 años"). Empresa: la que esté en boca de todos esta semana (resultados que
@@ -56,12 +54,14 @@ sorprendieron, adquisición, IPO, lanzamiento, récord, polémica) con una histo
 mismo peso, qué vigilar). `brand_colors` con el color real de la marca; logo en PNG transparente. Al menos 1 de cada 3 es mexicana; sin
 repetir en 30 días. Registra también en `banco-empresas.md`. Va ANTES que la Historia 3D; debe llegar antes de las 16:45 CDMX.
 
-## Historia 3D (viernes, después del short → se publica MAÑANA sábado 12:00)
+## Historia 3D del sábado (viernes, después del short → se publica MAÑANA sábado 12:00)
 Skill `/historia`, al pie de la letra. Sea S el sábado: si ya existe `videos/S-*-historia/` con su MP4, entrégala y termina. Tema de
-`plan/banco-historias.md` (primero las "Ideas de JP"), que enganche con la semana y tenga arco claro; 1 de cada 3 de México o Latinoamérica.
-8 escenas, 75–90 s (`pace3d.py`), personajes sentados de verdad cuando toque, sin párpados, sin logotipos reales, sin fotos. Música: la
-partitura de órgano y piano la pone `make_audio.py` sola. Render en segundo plano (`render3d.js … video --jobs 3`, 30–45 min). Si a los 90
-minutos la maqueta no está lista, simplifica en lugar de entregar tarde. Manda el MP4 y `cuadros_clave.jpg`. Registra en `banco-historias.md`.
+`plan/banco-historias.md` (primero las "Ideas de JP"), que enganche con la semana y tenga arco claro; 1 de cada 3 de México o
+Latinoamérica. 8 escenas, 75–90 s (`pace3d.py`), personajes sentados de verdad cuando toque, sin párpados, sin logotipos reales, sin
+fotos. Música: la partitura de órgano y piano la pone `make_audio.py` sola. Render en segundo plano (`render3d.js … video --jobs 3`,
+30–45 min). Si a los 90 minutos la maqueta no está lista, simplifica en lugar de entregar tarde. **Manda a un largo:** "Video
+relacionado" → el largo del catálogo que mejor empate, y comentario fijado con la liga. Manda el MP4 y `cuadros_clave.jpg`.
+Registra en `banco-historias.md`.
 
 ## Ranking del domingo + su publicación (sábado 6:41 → se publican MAÑANA domingo 19:00)
 Skills `/short` §1d y `/publicacion`. Sea D el domingo. Top 5 (o top 3) en cuenta regresiva, con la pausa "antes del número 1, sígueme".
@@ -73,9 +73,9 @@ descripciones. Recuérdale: "Graba tu voz y publícalo mañana domingo a las 19:
 
 ## Video largo (lunes 6:41 → se publica el domingo 10:00)
 Skill `/largo`, al pie de la letra. Solo el largo del domingo de ESTA semana según `plan/calendario-largos.md`; si `largos/<domingo>/` ya
-tiene su `*_largo.mp4` o el tema ya está en `publicados.md`, termina con una línea. Guion de 1,150–1,400 palabras donde todo se lee tal cual,
+tiene su `*_largo.mp4` o el tema ya está en `publicados.md`, termina con una línea. Guion de **720–850 palabras (6–7 min)** donde todo se lee tal cual,
 10–20 fotos reales, JP en 3D al inicio, en 3–5 puntos intermedios y al cierre (sin tapar cifras), todas las hojas de QA, miniatura, render
-1920x1080 (< 100 MB), `youtube.md` y `fuentes.md`. NO hagas el short derivado (es del miércoles). Recuérdale: "Graba tu voz en CapCut y
+1920x1080 (< 100 MB), `youtube.md` y `fuentes.md`. NO hagas short derivado: el puente al largo es la Historia 3D del miércoles (la produce la tarea del martes). Recuérdale: "Graba tu voz en CapCut y
 prográmalo para el domingo 10:00".
 
 ## Revisión de números (día 9 de cada mes)

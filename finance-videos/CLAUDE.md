@@ -4,10 +4,10 @@ Costa Studio es una agencia de influencer marketing; **Costa Studio Finance** es
 marca. Firma en pantalla: logo + "FINANCE". Reglas de separación y sinergias: `plan/PLAN.md` §0. Nunca analizar una empresa que
 sea cliente de la agencia sin declararlo.
 
-**Videos largos (16:9, 9–11 min):** skill **`/largo`** (`../.claude/skills/largo/SKILL.md`), motor `engine/long.js`, carpetas
+**Videos largos (16:9, 6–7 min):** skill **`/largo`** (`../.claude/skills/largo/SKILL.md`), motor `engine/long.js`, carpetas
 `largos/<domingo AAAA-MM-DD>/`. Plan, calendario y metas en `plan/`. Costo cero: sin vidIQ; JP pone su voz (modo sin voz por defecto).
 
-**Historias 3D (verticales, 75–90 s, sábados 12:00):** skill **`/historia`** (`../.claude/skills/historia/SKILL.md`), motor `engine3d/`
+**Historias 3D (verticales, 75–90 s, miércoles y sábados 12:00):** skill **`/historia`** (`../.claude/skills/historia/SKILL.md`), motor `engine3d/`
 (Three.js: `lib.js` + `cine.js` con luz de cine y actores articulados), carpetas `videos/<sábado>-<SLUG>-historia/` con `story.js`.
 Flujo: `story.js` → `scripts/pace3d.py` → `engine3d/render3d.js --qa` → `make_audio.py` (música + efectos por acción) → `render3d.js video`.
 Ideas en `plan/banco-historias.md`. Aquí NO van fotos: todo es maqueta 3D propia, sin logotipos reales.
@@ -26,7 +26,11 @@ shorts = contexto que dura meses (sin "hoy"; `/short` §1c); historia 3D = alcan
 `videos|largos/<id>/images/` + `images/credits.json`. En el storyboard: escena `photo`, `bg_image`, `company.logo`, `news.image`.
 `build_timeline.py` las incrusta; el motor pone el pie de foto. Detalle en `/short` §2b. **Calidad (JP, 11 nov 2026):** solo fotos nítidas (≥ 1600 px), limpias, con el sujeto solo y sin ruido de fondo; nada de fotos de calle cargadas.
 
-**Ritmo (nov 2026):** un video por día, producido el MISMO día que se publica (`plan/PLAN.md` §2 "Regla de oro"; no repetir nada de `plan/publicados.md`): shorts lun/mar/jue de contexto, mié derivado del largo, vie Análisis + Potencial, **dom ranking** (el sábado solo sale la Historia 3D) + publicaciones lun/mié/dom. Música: partitura de órgano y piano en las historias; cama cálida en shorts y largos + largo los domingos + **1 Historia 3D los sábados 12:00** (se produce el viernes). Los videos con datos del día se hacen DESPUÉS del cierre de la bolsa (ver "Regla del cierre").
+**Ritmo (desde el 13 nov 2026, con los primeros datos reales del canal — `plan/PLAN.md` §2 y §2c):** **2 Historias 3D por semana**
+(miércoles y sábado 12:00; es el formato con más alcance y el puente a los largos) + shorts de contexto martes y jueves + Análisis +
+Potencial el viernes + **ranking el domingo** + **largo de 6–7 minutos** el domingo 10:00 + publicaciones lunes, miércoles y domingo.
+Los videos con datos del día se hacen DESPUÉS del cierre de la bolsa (ver "Regla del cierre"). Música: partitura de órgano y piano en las
+historias; cama cálida en shorts y largos.
 
 Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL.md`). Resumen del flujo:
 `setup.sh` → `market_close.py` (¿ya cerró?) → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →

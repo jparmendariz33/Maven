@@ -46,38 +46,31 @@ que se publica. Antes de producir, revisar `plan/publicados.md` para no repetir 
 las 19:00. Si JP da una idea durante el día, se prepara todo y se entrega una sola vez, ya con el cierre (detalle en `CLAUDE.md`).
 | Día (CDMX) | Qué se publica | Duración | Origen |
 |---|---|---|---|
-| **Lunes ≈17:00** | 📌 Publicación del día (3–4 imágenes) | — | Lo que pasó HOY + pregunta (skill `/publicacion`) |
-| **Lunes 19:00** | Short de contexto #1 | 60–75 s | La noticia de la sesión es el pretexto; cuenta algo que dure meses (§2b). Datos de cierre |
-| **Martes 19:00** | Short de contexto #2 | 60–75 s | Igual |
+| **Lunes ≈17:00** | 📌 Publicación del día (3–4 imágenes) | — | Lo que pasó HOY + pregunta (`/publicacion`). Ese día no sale video: se produce el largo |
+| **Martes 19:00** | Short de contexto #1 | 60–75 s | La noticia es el pretexto; cuenta algo que dure meses (§2b) |
+| **Miércoles 12:00** | 🎬 **Historia 3D #2** | 75–90 s | Del tema del largo de ese domingo: es el puente a los largos. Se produce el martes |
 | **Miércoles ≈17:00** | 📌 Publicación del día | — | Lo que pasó HOY + pregunta |
-| **Miércoles 19:00** | Short derivado del largo (adelanto: "el domingo, el video completo") | 45–60 s | Idea más poderosa del largo de la semana |
-| **Jueves 19:00** | Short de contexto #3 | 60–75 s | Igual que lunes y martes |
-| **Viernes 19:00** | Short **Análisis + Potencial** (único de la semana) | 75–85 s | Empresa caliente de la semana o una de [`banco-tesis.md`](banco-tesis.md) |
-| **Sábado 12:00** | 🎬 **Historia 3D** (única pieza del día) | 75–90 s | [`banco-historias.md`](banco-historias.md) · skill `/historia` · se produce el viernes |
-| **Domingo 10:00** | **Video largo atemporal** (16:9) | 9–11 min | Calendario de 55 semanas · se produce el lunes |
-| **Domingo 19:00** | Short **Ranking** (top 3 o top 5) + su 📌 publicación | 75–85 s | Se produce el SÁBADO en la mañana (`/short` §1d) |
+| **Jueves 19:00** | Short de contexto #2 | 60–75 s | Igual que el martes |
+| **Viernes 19:00** | Short **Análisis + Potencial** | 75–85 s | Empresa caliente de la semana o una de [`banco-tesis.md`](banco-tesis.md) |
+| **Sábado 12:00** | 🎬 **Historia 3D #1** | 75–90 s | [`banco-historias.md`](banco-historias.md) · se produce el viernes |
+| **Domingo 10:00** | **Video largo** (16:9) | **6–7 min** | Calendario de 55 semanas · se produce el lunes |
+| **Domingo 19:00** | Short **Ranking** + su 📌 publicación | 75–85 s | Se produce el sábado (`/short` §1d) |
 
-= **11 piezas por semana** desde el 11 nov 2026 (1 largo + 6 shorts + 1 Historia 3D + 3 publicaciones). JP graba voz en 8.
-(Cambio del 11 nov 2026, noche: "Tesis a 5 años" del sábado se fusionó con el Análisis + Potencial del viernes porque eran lo mismo; el
-sábado queda solo la Historia 3D; la mañana del sábado se usa para producir el ranking del domingo; la publicación del viernes se quitó para
-aligerar ese día. Publicaciones: lunes, miércoles y domingo.)
-(Cambio del 9 nov 2026: JP pidió sumar las historias animadas en 3D. Van 1 por semana, el sábado a las 12:00; ese día salen dos
-piezas, separadas 7 horas para que no compitan. Se revisa en el check-up de febrero: si las historias rinden más que los shorts
-normales, se sube a 2 por semana con una segunda los miércoles a las 12:00.)
-(Cambio del 6 nov 2026: antes eran 4 shorts por semana; JP pidió video diario y que los nuevos fueran análisis de empresas.)
-Los 3 reactivos son siempre de **acciones/temas distintos** en la semana y no repiten una empresa de los últimos 10 días.
-Regla de oro: **constancia > perfección.** Si una semana no puedes grabar, se publican los shorts y el largo se recorre una semana
-(nunca 2 semanas seguidas sin largo).
+= **10 piezas por semana** desde el 13 nov 2026 (1 largo + 4 shorts + **2 Historias 3D** + 3 publicaciones). JP graba voz en 7.
+(Cambio del 13 nov 2026, con los primeros datos reales: la Historia 3D concentra el 79% de las vistas y el mejor gancho del canal, así que
+sube a **2 por semana**; los shorts de contexto bajan de 3 a 2; el short adelanto del miércoles desaparece porque **la Historia 3D del
+miércoles hace ese trabajo mejor**; y los largos pasan de 9–11 a **6–7 minutos**, porque la audiencia se va al minuto. Ver
+`plan/checkups/2026-11-13-revision.md`.)
 
 ## 2b. Qué hace cada formato (replanteo acordado con JP el 11 nov 2026)
 Objetivo final: crecer la audiencia de finanzas e inversión y monetizar el canal. Cada formato tiene su trabajo:
 
 | Formato | Objetivo | Qué cuenta | Vigencia | Cuándo |
 |---|---|---|---|---|
-| Publicaciones (3–4 imágenes) | Conversación con quien ya sigue a JP | Lo que pasó HOY + una pregunta (dom: el ranking) | Un día | Lun y mié ≈17:00 (tras el cierre) + dom |
-| Shorts | Que lo descubra gente nueva | Una empresa y una idea: qué le pasa, por qué y qué viene | Meses | Diario 19:00 |
-| Historia 3D | Alcance y marca | La historia de una empresa o fundador | Años | Sáb 12:00 |
-| Largos | Horas de reproducción y búsqueda | Enseñar algo de inversión | Años | Dom 10:00 |
+| Publicaciones (3–4 imágenes) | Conversación con quien ya sigue a JP | Lo que pasó HOY + una pregunta (dom: el ranking) | Un día | Lun y mié ≈17:00 + dom |
+| Shorts | Que lo descubra gente nueva | Una empresa y una idea: qué le pasa, por qué y qué viene | Meses | Mar, jue, vie y dom 19:00 |
+| **Historia 3D (2 por semana)** | **El motor de alcance del canal** y puente a los largos | La historia de una empresa o fundador | Años | **Mié y sáb 12:00** |
+| Largos (6–7 min) | Horas de reproducción y búsqueda | Enseñar algo de inversión | Años | Dom 10:00 |
 
 - **Shorts de lunes, martes y jueves = shorts de contexto** (`/short` §1c): la noticia es el pretexto; sin "hoy" ni el día exacto, pero con el
   periodo anclado en fechas absolutas y largas ("desde enero de 2025"), para que en 5 años se entienda de qué época es.
@@ -87,6 +80,9 @@ Objetivo final: crecer la audiencia de finanzas e inversión y monetizar el cana
   "JP vigila", nunca "van a subir", nunca atados a un mes). Detalle: `/short` §1d.
 - **JP en 3D:** recorte chico sobre el tema (`/short` §2c). Shorts: gancho y cierre. Largos: inicio, 3–5 intermedios y cierre. Publicaciones: primera y última imagen.
 - **Los videos anteriores al 11 nov no se tocan.**
+- **Toda Historia 3D manda a un largo** (regla del 13 nov 2026): "Video relacionado" → el largo del tema más cercano y comentario fijado
+  con la liga. Es el único puente entre lo que jala alcance (historias) y lo que da horas de reproducción (largos). La del miércoles es
+  del tema del largo de ESE domingo; la del sábado, del largo del catálogo que mejor empate.
 - **Revisión cada 4 semanas** con los números de YouTube Studio de JP (`plan/metricas.md`): qué pegó, por qué, dónde se cae la audiencia,
   y si los shorts de contexto retienen más vistas que los de noticia. Horarios: no hay evidencia sólida de un mejor horario (investigación
   del 11 nov); se ajustan con el reporte "Cuándo están tus espectadores en YouTube" de JP.
@@ -165,20 +161,29 @@ Alternativa para el largo: si prefieres leer a tu ritmo, graba solo el audio ley
 ## 4. Formato del video largo
 Mismo estilo que los shorts (paleta Costa, Unbounded/Space Grotesk/Instrument Serif, mareas, grano, una idea por pantalla),
 en horizontal 1920x1080, con la firma **COSTA STUDIO FINANCE · by JP Armendáriz** y subtítulos-teleprompter abajo.
-1. **Gancho (0:00–0:30):** dato o pregunta + promesa ("en 10 minutos vas a saber…"). Sin saludo largo.
-2. **Contexto (0:30–1:30):** por qué le importa a tu dinero.
-3. **3–5 capítulos** de 1.5–2.5 min. Cada uno abre con una tarjeta de capítulo y sigue: idea → ejemplo con números reales →
+1. **Gancho (0:00–0:15):** un dato concreto o un ejemplo, nunca una definición ni un saludo. **El primer minuto decide todo**: la audiencia
+   se va ahí, dure el video 3 o 9 minutos (dato real del canal, 13 nov 2026).
+2. **Promesa (0:15–0:30):** la estructura en una línea ("en 6 minutos vas a saber qué mueve el precio, cómo leerlo y qué hacer con eso").
+   La presentación de JP va después y dura una frase.
+3. **3–4 capítulos** de 1.2–1.8 min. Cada uno abre con una tarjeta de capítulo y sigue: idea → ejemplo con números reales →
    gráfico → "lo que esto significa para ti".
-4. **Error común / mito** (≈1 min).
+4. **Error común / mito** (≈40 s).
 5. **Cierre:** resumen en 3 puntos + pregunta para comentarios + "Desde la costa, todo se ve con claridad." + CTA.
-- 1,150–1,400 palabras (≈ 120 palabras/min: ritmo cómodo para leer en voz alta). Frases cortas, tuteo, números con dígitos, cero sensacionalismo.
-- Pantallas: ~60–90 por video (una cada 6–10 s). Tipos: gancho, capítulo, frase, cifra grande, lista, comparación, barras,
+- **Duración: 6–7 minutos** (cambio del 13 nov 2026; antes 9–11). Mismas horas de reproducción, menos trabajo y mejor porcentaje de
+  retención, que es lo que el algoritmo mira para recomendar. Se revisa cuando el tiempo visto suba de forma sostenida arriba de 2 minutos.
+- **720–850 palabras** (≈ 120 palabras/min: ritmo cómodo para leer en voz alta). Frases cortas, tuteo, números con dígitos, cero sensacionalismo.
+- Pantallas: ~40–55 por video (una cada 6–10 s). Tipos: gancho, capítulo, frase, cifra grande, lista, comparación, barras,
   línea/precio, medidor (P/E, PEG, ROE), fórmula, línea de tiempo, cita, cierre.
 - Título con la búsqueda objetivo al inicio; capítulos con tiempos en la descripción; miniatura con máx. 4 palabras.
 - Siempre: "Contenido educativo. No es asesoría financiera." + fuentes reales + "Costa Studio Finance, by JP Armendáriz, es la
   división de finanzas de Costa Studio."
 
 ## 5. Metas: 1,000 suscriptores y 4,000 horas en 12 meses
+> **Revisar con datos (13 nov 2026).** La proyección de abajo asumía 1,100 vistas y 4 min por largo (73 h por video). Los primeros
+> números reales dan **1.65 h por video** y 4.9 horas acumuladas: unas 45 veces por debajo. El cuello de botella son las vistas y la
+> retención, no la cantidad de videos. Por eso el cambio a 2 Historias 3D por semana, largos de 6–7 min y el puente historia → largo.
+> Las cifras de la tabla se recalculan en la revisión del 9 de diciembre, ya con el efecto de esos cambios.
+
 - **YPP (anuncios):** 1,000 suscriptores + 4,000 horas públicas de videos largos en los últimos 365 días.
   Con 55 largos: ~73 h por video ≈ **1,100 vistas por video** con 4 min de retención media. Los shorts traen los suscriptores.
 - **Escalón previo** (~500 suscriptores): membresías, Super Thanks y compras. Verificar requisitos vigentes en cada check-up.
@@ -252,15 +257,15 @@ proyecto: **`costa-studio-finance`**. Por ahora las tareas corren dentro de la c
 (la única con permiso de escritura); cuando JP agregue el repo al entorno "Juan Pa" se pasan a sesiones nuevas y dejan de depender de ella.
 Las tareas originales siguen en pausa solo como respaldo.
 
-| Tarea activa | Cuándo | ID | Texto base (en pausa) |
-|---|---|---|---|
-| Short de contexto | Lun, mar y jue · 16:25 de Nueva York | trig_01YC6XSBjLTQC99azkzwABed | trig_01CnUTcJ3bevrqhQoUcnexqW |
-| Publicación del día | Lun y mié · 16:26 de Nueva York | trig_019nTN3FFZncYqTA7e5RFBRJ | — |
-| Short derivado (adelanto del largo) | Miércoles 6:41 | trig_011sLZh1asQNFXhKC4Tyu99z | trig_01CgPooCEzGfqDFb8XAbQQ14 |
-| Análisis + Potencial del viernes | Viernes · 16:25 de Nueva York | trig_01RFu1UMadn1pzisH5YpPuSa | trig_0195fwBGXcNMr4tAiS2yXVsF |
-| Historia 3D (se publica el sábado 12:00) | Viernes · 16:27 de Nueva York | trig_01FTeyhPd6NuwpkDqharo2Y2 | trig_01WiLjHyjJxTvYkRxBT6ZbUH |
-| Ranking del domingo + su publicación (se produce el sábado) | Sábado 6:41 | trig_01JLBXKzRJ2bicmH6SpWWwPS | trig_01QJCh2FaMNmfpP1SMLHn1E9 |
-| Producción del video largo | Lunes 6:41 | trig_012xeT5xAkvs2cXZ5uM4VNMp | trig_01PqPWwd22ymEiaN4zJynEAN |
-| Revisión de números (cada ~4 semanas) | Día 9 de cada mes 11:13 | trig_01KQNjkV65mHR52Wwr9rUTVD | — |
-| Check-up trimestral (config. anterior: no puede guardar en GitHub) | 4 feb, 4 may, 4 ago · 6:41 | trig_01DUUsYHU5STYp3ERkoYnnkU | — |
-| Re-plan anual (config. anterior: no puede guardar en GitHub) | 4 nov 2027 · 6:41 | trig_012FRZsfmRFvxMPNyMQJTHsq | — |
+| Tarea activa | Cuándo | ID |
+|---|---|---|
+| Short de contexto | Mar y jue · 16:25 de Nueva York | trig_01YC6XSBjLTQC99azkzwABed |
+| Publicación del día | Lun y mié · 16:26 de Nueva York | trig_019nTN3FFZncYqTA7e5RFBRJ |
+| **Historia 3D del miércoles** (puente al largo) | Martes 6:41 | trig_011sLZh1asQNFXhKC4Tyu99z |
+| Análisis + Potencial | Viernes · 16:25 de Nueva York | trig_01RFu1UMadn1pzisH5YpPuSa |
+| Historia 3D del sábado | Viernes · 16:27 de Nueva York | trig_01FTeyhPd6NuwpkDqharo2Y2 |
+| Ranking del domingo + su publicación | Sábado 6:41 | trig_01JLBXKzRJ2bicmH6SpWWwPS |
+| Video largo (6–7 min) | Lunes 6:41 | trig_012xeT5xAkvs2cXZ5uM4VNMp |
+| Revisión de números | Día 9 de cada mes 11:13 | trig_01KQNjkV65mHR52Wwr9rUTVD |
+| Check-up trimestral (config. anterior: no guarda en GitHub) | 4 feb, 4 may, 4 ago · 6:41 | trig_01DUUsYHU5STYp3ERkoYnnkU |
+| Re-plan anual (config. anterior: no guarda en GitHub) | 4 nov 2027 · 6:41 | trig_012FRZsfmRFvxMPNyMQJTHsq |
