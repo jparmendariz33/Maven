@@ -87,7 +87,8 @@ la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de
 (si las barras no llegan al resultado, hay un dato mal).
 - Shorts: escena `waterfall` (ver esquema). Largos: escena `cascade`. Publicaciones: descríbela en una imagen `dato` con viñetas, o usa la gráfica.
 - **Porcentajes SIEMPRE en pantalla (regla de JP, 12 nov 2026).** El motor pone en cada barra el **% sobre las ventas, grande**, y el monto
-  debajo, chico: "100% / $13,377" → "−46% / −$6,167" → "−33% / −$4,378" → "−3% / −$404" → "18% / $2,428". El porcentaje es lo que la
+  debajo, chico: "100% / $13,377" → "46% / −$6,167" → "33% / −$4,378" → "3% / −$404" → "18% / $2,428". **El porcentaje va SIN signo
+  negativo** (JP, 12 nov 2026): el color y la caída de la barra ya dicen que resta; el signo solo se queda en el monto. El porcentaje es lo que la
   gente entiende de un vistazo ("se le va casi la mitad en fabricar"); el monto da la prueba. Sale solo: no hay que calcularlo. Para
   apagarlo, `"percent": false` en la escena; para forzar un texto, `"pct": "−46%"` en un paso. Igual en los largos (escena `cascade`).
 - **En la voz, una sola vía por barra, nunca las dos** (regla de los números: decir "seis mil ciento sesenta y siete millones" Y "cuarenta
@@ -97,6 +98,17 @@ la utilidad neta, mostrando en qué se va cada parte. Es la forma más visual de
   - **Si los montos son difíciles de dimensionar** (miles de millones, empresa gigante, cifras en otra moneda): narra TODO en porcentajes
     ("de cada 100 pesos que vende, 46 se van en producir…") y deja los montos solo en pantalla.
   - **Si la empresa es chica o el monto es la noticia** (una pérdida, un récord): narra los montos y di el porcentaje solo al final.
+- **De dónde vienen las ventas: va DENTRO de la cascada, no en una escena aparte (JP, 12 nov 2026).** Cuando el negocio depende de un
+  producto, servicio o segmento, no le dediques otra pantalla: usa `callout` en la misma escena `waterfall`. La barra de ventas se parte
+  (la porción del segmento queda en color vivo y el resto se apaga) y en el hueco que deja la escalera aparece una tarjeta con el %, el
+  nombre y el detalle, unida por una línea punteada. El motor busca solo el hueco; si no cabe, no la dibuja.
+```json
+"callout": {"kicker": "De dónde vienen", "label": "Centros de datos", "value": 8546,
+            "sub": "$8,546 M · casi el doble que en 2025", "cue": "centros", "step": 0}
+```
+  `value` en la misma escala que los pasos; `step` es la barra que se parte (0 = ventas, por defecto); `cue`, la palabra del `say` donde
+  aparece. En el guion basta una frase: "…vendió 13 mil millones, y casi dos terceras partes vienen de centros de datos". Así una sola
+  escena contesta cuánto vendió, de dónde salió y cuánto quedó.
 - Escala fácil: "de cada $100 que vende" (porcentajes sobre ingresos) o en miles de millones, pero una sola escala por cascada.
 - Pasos típicos: ingresos → costo de lo vendido → gastos de operación (investigación, ventas, administración) → impuestos y otros → utilidad neta.
   Si la empresa pierde dinero, la última barra se muestra como pérdida y se dice claro.
@@ -347,7 +359,7 @@ Campos por tipo (todos opcionales salvo `type` y `say`; `theme` puede forzar `"b
 - `metric`: `kicker` ("Valuación · 1/3"), `label` ("P/E"), `fullname`, `value`, `decimals`, `prefix`, `suffix` ("x", "%"),
   `explain`, `scale` {"min","max","bands":[[a,b,"texto","tono?"]],"ref":{"value","label"}}, `verdict`, `verdict_tone`,
   `cue_value`, `cue_explain`, `cue_gauge`.
-- `waterfall` (cascada del estado de resultados): `kicker`, `title`, `subtitle`, `steps` [{"label" (corta, 2–3 palabras), "value", "kind":
+- `waterfall` (cascada del estado de resultados): `kicker`, `title`, `subtitle`, `callout` (de dónde vienen las ventas; ver §1e), `steps` [{"label" (corta, 2–3 palabras), "value", "kind":
   "total" | "minus" | "result", "text" (lo que se lee arriba de la barra, ej. "−$51"), "cue"}], `note`, `cue_note`. La primera es `total`
   (ingresos), las de en medio `minus` (lo que se va) y la última `result` (lo que queda). 4 a 6 barras; cada `cue` es una palabra DISTINTA
   del `say` (ojo: "5" también calza dentro de "51"; usa otra palabra).

@@ -537,6 +537,8 @@ R.waterfall = (s, t) => {
   const tl_ = s.title || ''; rise(tl_, 90, 470, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(tl_, F.d, 800, 72, 900), c: ink });
   if (s.subtitle) rise(s.subtitle, 90, 545, seg(t, s.t0 + .4, s.t0 + 1), { f: F.b, w: 500, s: 38, c: soft });
   const st = s.steps || [], n = st.length || 1, x0 = 96, x1 = 984, y0 = 720, y1 = 1290, gap = 22, bw = (x1 - x0 - gap * (n - 1)) / n;
+  const CO = s.callout ? { step: 0, ...s.callout } : null;
+  const col0 = dk ? B.mostaza : (BR ? B.marca : B0.azul);   // el dato de la empresa va en su color (§1b)   // callout: {label, value, sub?, kicker?, step?, cue} → parte la barra y pone la tarjeta
   let run = 0; const lv = st.map(p => { let a, b; if (p.kind === 'minus') { a = run; b = run - p.value; } else { a = 0; b = p.kind === 'result' && p.value == null ? run : p.value; } run = b; return [a, b]; });
   const mx = Math.max(1e-9, ...lv.flat()), py = v => y1 - (y1 - y0) * v / mx;
   C.save(); C.strokeStyle = dk ? rgba(B.arena, .35) : B.grid; C.lineWidth = 3; C.beginPath(); C.moveTo(x0 - 10, y1); C.lineTo(x1 + 10, y1); C.stroke(); C.restore();
@@ -544,12 +546,20 @@ R.waterfall = (s, t) => {
     const tc = typeof p.cue === 'number' ? p.cue : s.t0 + .8 + i * .6, k = ex(seg(t, tc, tc + .55)); if (k <= 0) return;
     const [a, b] = lv[i], x = x0 + i * (bw + gap), hi = py(Math.max(a, b)), lo = py(Math.min(a, b)), h = (lo - hi) * k, minus = p.kind === 'minus';
     const col = minus ? B.terracota : p.kind === 'result' ? B.musgo : (dk ? B.arena : B.azul), y = minus ? hi : lo - h;       // lo que se resta cae desde arriba; los totales crecen desde abajo
-    C.save(); C.fillStyle = col; rr(x, y, bw, Math.max(2, h), 12); C.fill(); C.restore();
+    C.save(); C.fillStyle = col; rr(x, y, bw, Math.max(2, h), 12); C.fill();
+    if (CO && CO.step === i && b > 0) {        // de dónde vienen las ventas: la porción del segmento queda viva y el resto se apaga
+      const ph = h * Math.min(1, CO.value / b), ytop = y + h - ph;
+      C.save(); C.beginPath(); C.rect(x, y, bw, Math.max(0, h - ph)); C.clip();
+      C.fillStyle = dk ? 'rgba(10,10,10,.42)' : rgba(B0.arena, .55); rr(x, y, bw, Math.max(2, h), 12); C.fill(); C.restore();
+      C.strokeStyle = dk ? rgba(B.negro, .55) : rgba(B0.arena, .9); C.lineWidth = 3;
+      C.beginPath(); C.moveTo(x, ytop); C.lineTo(x + bw, ytop); C.stroke(); CO._y = ytop + ph / 2; CO._x = x + bw;
+    }
+    C.restore();
     if (i < n - 1 && k > .9) { const yy = py(b); C.save(); C.strokeStyle = soft; C.lineWidth = 2; C.setLineDash([8, 8]); C.beginPath(); C.moveTo(x + bw, yy); C.lineTo(x + bw + gap, yy); C.stroke(); C.restore(); }
     // encima de cada barra: el PORCENTAJE sobre las ventas (lo que de verdad se entiende) y, más chico, el monto.
     const val = p.text || ((minus ? '−' : '') + '$' + fmtNum(Math.abs(p.kind === 'minus' ? p.value : b), 0));
     const base0 = lv[0] ? lv[0][1] : 0, pv = p.kind === 'minus' ? p.value : b;
-    const pct = s.percent === false ? null : (p.pct || (base0 ? (minus ? '−' : '') + Math.round(Math.abs(pv) / base0 * 100) + '%' : null));
+    const pct = s.percent === false ? null : (p.pct || (base0 ? Math.round(Math.abs(pv) / base0 * 100) + '%' : null));   // sin signo: el color y la caída ya dicen que resta (JP, 12 nov 2026)
     const ka = seg(t, tc + .25, tc + .6), pcol = minus ? B.terracota : p.kind === 'result' ? (dk ? '#DDE8B8' : B.musgo) : ink;
     if (pct) {
       txt(pct, x + bw / 2, hi - 20, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });
@@ -557,6 +567,39 @@ R.waterfall = (s, t) => {
     } else txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: pcol, a: ka });
     wrap(p.label || '', F.b, 500, 27, bw + gap - 4).slice(0, 2).forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * 32, { f: F.b, w: 500, s: 27, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
   });
+  // tarjeta de "de dónde viene": se coloca sola en el hueco que deja la escalera (arriba a la derecha)
+  if (CO && CO._x) {
+    const tc = typeof CO.cue === 'number' ? CO.cue : s.t0 + .8 + n * .6, k = seg(t, tc, tc + .5);
+    if (k > 0) {
+      let best = null;
+      for (let j = 1; j < n; j++) {                                   // de la columna j a la última: ¿cuánto espacio libre hay arriba?
+        const tops = lv.slice(j).map(([a2, b2]) => py(Math.max(a2, b2)) - 76), top = Math.min(...tops);
+        const cx0 = x0 + j * (bw + gap), w = x1 - cx0, h2 = top - 600;
+        if (w >= 316 && h2 >= 150) { const ar = w * h2; if (!best || ar > best.ar) best = { x: cx0 + 16, y: 600, w: w - 16, h: h2, ar }; }
+      }
+      if (best) {
+        // acomodo de arriba hacia abajo: kicker · % grande · nombre · detalle. El alto sale del contenido.
+        const pc = Math.round(CO.value / (lv[CO.step] ? lv[CO.step][1] : 1) * 100) + '%';
+        const iw = best.w - 44, ks = (CO.kicker || 'De dónde viene').toUpperCase();
+        const lsz = fit(CO.label || '', F.d, 600, 38, iw, 26), ll = wrap(CO.label || '', F.d, 600, lsz, iw).slice(0, 2);
+        let ssz = CO.sub ? fit(CO.sub, F.b, 500, 28, iw, 21) : 0, sl = CO.sub ? wrap(CO.sub, F.b, 500, ssz, iw).slice(0, 2) : [];
+        let bh = 44 + 80 + 46 + (ll.length - 1) * (lsz + 6) + (sl.length ? 30 + (sl.length - 1) * (ssz + 6) : 0) + 26;
+        if (bh > best.h) { sl = sl.slice(0, 1); bh = 44 + 80 + 46 + (ll.length - 1) * (lsz + 6) + (sl.length ? 30 : 0) + 26; }
+        bh = Math.min(bh, best.h); const by = best.y + (best.h - bh) / 2, cx = best.x + best.w / 2;
+        C.save(); C.globalAlpha *= k;
+        C.strokeStyle = soft; C.lineWidth = 2; C.setLineDash([7, 7]); C.beginPath(); C.moveTo(CO._x, CO._y); C.lineTo(best.x - 12, by + bh / 2); C.stroke(); C.setLineDash([]);
+        rr(best.x, by, best.w, bh, 22); C.fillStyle = dk ? rgba(B.arena, .1) : rgba(col0, .07); C.fill();
+        C.strokeStyle = dk ? rgba(B.arena, .45) : rgba(col0, .32); C.lineWidth = 3; rr(best.x, by, best.w, bh, 22); C.stroke();
+        let y2 = by + 44;
+        txt(ks, cx, y2, { f: F.b, w: 500, s: 23, ls: 3, al: 'center', c: soft });
+        y2 += 80; txt(pc, cx, y2, { f: F.d, w: 800, s: fit(pc, F.d, 800, 88, iw), al: 'center', c: col0 });
+        y2 += 46; ll.forEach((l, j) => txt(l, cx, y2 + j * (lsz + 6), { f: F.d, w: 600, s: lsz, al: 'center', c: ink }));
+        y2 += (ll.length - 1) * (lsz + 6) + 30;
+        sl.forEach((l, j) => txt(l, cx, y2 + j * (ssz + 6), { f: F.b, w: 500, s: ssz, al: 'center', c: soft }));
+        C.restore();
+      }
+    }
+  }
   if (s.note) { const tn = cueT(s, 'cue_note', .8 + n * .6 + .3); rise(s.note, 90, 1470, seg(t, tn, tn + .6), { f: F.s, w: 400, s: 64, c: dk ? B.mostaza : B.azul }); }
 };
 
