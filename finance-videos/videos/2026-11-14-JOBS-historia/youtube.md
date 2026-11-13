@@ -48,5 +48,12 @@ Ver `narration.txt` (una escena por párrafo).
 ## Al subir
 - Público: **No, no es contenido para niños**.
 - Contenido alterado o sintético: **No** (es animación evidente y la voz es tuya).
-- Video relacionado: el largo del domingo "Cómo leer un estado de resultados (con Apple)" en cuanto esté publicado.
-- Comentario fijado: "¿Genio irrepetible… o una empresa capaz de reinventarse?"
+- **Video relacionado (puente al largo, obligatorio):** "Cómo leer un estado de resultados en 10 minutos (con Apple)" — el largo
+  de MAÑANA domingo 15 nov, 10:00. En la app: Editar → Video relacionado → elígelo en cuanto esté publicado (si subes la historia
+  antes que el largo, déjalo pendiente y regrésale el domingo a mediodía).
+- **Comentario fijado** (cópialo tal cual y cambia `<LIGA>` por la del largo cuando exista):
+```
+¿Genio irrepetible… o una empresa capaz de reinventarse?
+
+Los números de los que te hablo (los $1,045 millones de pérdida de 1997 y el 53% del iPhone hoy) salen del estado de resultados de Apple. Si quieres aprender a leerlo tú mismo, aquí te lo explico en 10 minutos: <LIGA>
+```
