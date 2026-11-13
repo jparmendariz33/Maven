@@ -97,10 +97,12 @@ Lo que pasó hoy caduca mañana, y un short se sigue viendo durante meses. Por e
 el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exacto vive en las publicaciones: skill `/publicacion`.)
 - **Ángulo:** qué le está pasando a la empresa (el mes, el trimestre, el año), por qué, y qué viene o qué tiene planeado. Ej.: no "Nvidia
   cayó 5% hoy", sino "Nvidia lleva un mes cayendo: esto pasa y esto es lo que planea". O "Apple sacó X: esto es lo que puede implicar".
-- **Sin "hoy", "ayer", "esta mañana" ni el día exacto** en el título, el gancho y el guion.
-- **Pero SÍ ancla el periodo con fechas absolutas y largas (precisión de JP, 11 nov 2026):** "Nvidia viene cayendo desde enero de 2025",
-  "en 2026 lleva −30%", "desde su máximo de julio de 2026". Nunca relativas ("este mes", "este año", "en el último mes"): quien lo vea en
-  5 años debe saber de qué época habla el video sin sentir que es una noticia vieja. El día exacto de los datos va en la descripción.
+- **Nunca "hoy", "ayer", "esta mañana", "esta semana"** en el título, el gancho y el guion: eso es lo que hace que el video se sienta viejo mañana.
+- **SÍ fechas absolutas, y entre más concretas mejor (precisión de JP, 12 nov 2026):** un hecho puntual se dice con su fecha completa
+  ("el 12 de noviembre de 2026 renunció el fundador de Nvidia"); un periodo, con su marco ("viene cayendo desde enero de 2025", "en 2026
+  lleva −30%", "desde su máximo del 6 de octubre de 2026"). Una fecha exacta del pasado NO caduca: es justo lo que vuelve atemporal al video.
+  Lo que nunca va son las referencias relativas ("este mes", "este año", "en el último mes", "la semana pasada"), porque dependen de cuándo
+  se vea. Regla práctica: si alguien ve el short en 5 años, debe saber de qué época habla sin sentir que es una noticia caducada.
 - **Gancho con la cifra de periodo largo** (1 mes, 3 meses, en el año, desde el máximo), no con la del día.
 - **Lo que viene es el gancho:** el corazón del short es el porqué y, sobre todo, qué viene o qué tiene planeado la empresa. De vez en cuando
   (no siempre, que no se vuelva fórmula) úsalo para retener: "y lo que tiene planeado es lo interesante". Sin exagerar ni prometer de más.

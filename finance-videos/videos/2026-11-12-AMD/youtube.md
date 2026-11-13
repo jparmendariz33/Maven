@@ -9,7 +9,7 @@ AMD se duplicó en un año y Nvidia se quedó sin fundador #AMD #bolsa
 
 **Descripción** (en la app: "Mostrar más" → Descripción):
 ```
-La acción de AMD se duplicó en 12 meses. Y en noviembre de 2026, el fundador de Nvidia renunció de un día para otro. Aquí va qué trae AMD por dentro.
+La acción de AMD se duplicó en 12 meses. Y el 12 de noviembre de 2026, el fundador de Nvidia renunció de un día para otro. Aquí va qué trae AMD por dentro.
 
 📌 Los números (trimestre julio–septiembre de 2026, reporte 10-Q a la SEC)
 • Ventas: $13,377 M (+45% contra un año antes)
@@ -48,7 +48,7 @@ La acción de AMD se duplicó en 12 meses. Y ahora su rival más grande se qued�
 
 AMD hace chips: los de tu computadora y, cada vez más, los de inteligencia artificial.
 
-En noviembre de 2026, el fundador de Nvidia renunció. Entra su directora de finanzas como interina.
+El 12 de noviembre de 2026, el fundador de Nvidia renunció. Entra su directora de finanzas como interina.
 
 Pero venía de antes. En el trimestre vendió 13 mil millones de dólares. Fabricarlos costó 6 mil. Investigar y vender, 4 mil. Impuestos y demás, el resto. Y le quedaron 2 mil 400 limpios.
 
