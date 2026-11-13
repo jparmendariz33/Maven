@@ -1,0 +1,177 @@
+{
+ "ticker": "NU",
+ "mode": "empresa",
+ "title": "Nubank ganó mil millones en un trimestre: análisis y potencial a 5 años",
+ "brand_colors": {
+  "primary": "#820AD1",
+  "name": "Nubank"
+ },
+ "host": {
+  "logo": "images/logo.png",
+  "outfit": "polo",
+  "accessory": "ninguno",
+  "prop": "cafe"
+ },
+ "scenes": [
+  {
+   "type": "hook",
+   "host": {
+    "act": "escritorio",
+    "mood": "up"
+   },
+   "kicker": "NYSE · NU · ANÁLISIS + POTENCIAL",
+   "title": "Nubank ganó $1,092 millones en un trimestre",
+   "value": 11.8,
+   "prefix": "",
+   "decimals": 1,
+   "unit": "%",
+   "tone": "up",
+   "caption": "Ganancia récord. Y la acción reaccionó así.",
+   "cue_value": "subió",
+   "say": "Nubank ganó mil 92 millones de dólares en un trimestre, y la acción subió casi 12%.",
+   "signed": true
+  },
+  {
+   "type": "company",
+   "kicker": "La empresa",
+   "name": "Nubank",
+   "logo": "images/logo.png",
+   "line": "El banco sin sucursales más grande de América Latina",
+   "chips": [
+    {
+     "label": "Brasil · 120 M"
+    },
+    {
+     "label": "México · 16.6 M",
+     "cue": "México"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Clientes",
+     "value": "143 M",
+     "cue": "clientes"
+    }
+   ],
+   "say": "Es un banco sin sucursales: 143 millones de clientes, 16.6 en México."
+  },
+  {
+   "type": "statement",
+   "kicker": "Por qué está caliente",
+   "text": "Acaba de salir de América Latina.",
+   "emphasis": "América Latina.",
+   "sub": "Nu US arrancó en septiembre de 2026 y su cuenta global ya opera en 37 países.",
+   "say": "Y lo que movió la acción: acaba de salir de América Latina. Ya opera en 37 países."
+  },
+  {
+   "type": "waterfall",
+   "theme": "sand",
+   "kicker": "Trimestre jul–sep 2026 · reporte a la SEC",
+   "title": "De dónde sale su ganancia",
+   "subtitle": "De cada $100 que entran al banco",
+   "steps": [
+    {
+     "label": "Lo que entra",
+     "value": 100,
+     "kind": "total",
+     "cue": "entran"
+    },
+    {
+     "label": "Pagar intereses",
+     "value": 29,
+     "kind": "minus",
+     "cue": "intereses"
+    },
+    {
+     "label": "Préstamos que no le pagan",
+     "value": 29,
+     "kind": "minus",
+     "cue": "préstamos"
+    },
+    {
+     "label": "Operar el banco e impuestos",
+     "value": 23,
+     "kind": "minus",
+     "cue": "operar"
+    },
+    {
+     "label": "Ganancia",
+     "value": 19,
+     "kind": "result",
+     "cue": "quedan"
+    }
+   ],
+   "note": "Ingresos del trimestre: $5,820 M",
+   "cue_note": "limpios",
+   "say": "De cada 100 que entran, 29 se van en intereses y 29 en préstamos que no le pagan. Otros 23 en operar e impuestos. Le quedan 19 limpios."
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "kicker": "¿Está cara?",
+   "text": "Se paga a 16 veces sus ganancias.",
+   "emphasis": "16",
+   "sub": "Y sigue 30% abajo de su máximo de enero de 2026.",
+   "say": "¿Está cara? Se paga a 16 veces sus ganancias, 30% abajo de su máximo de enero de 2026."
+  },
+  {
+   "type": "statement",
+   "kicker": "El motor a 5 años",
+   "text": "México es su siguiente Brasil.",
+   "emphasis": "Brasil.",
+   "sub": "16.6 millones de clientes y su primer trimestre completo como banco.",
+   "say": "A cinco años el motor es México: apenas lleva un trimestre completo operando como banco."
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "kicker": "Su ventaja",
+   "text": "Gasta 19 centavos por cada $100 que gana.",
+   "emphasis": "19 centavos",
+   "sub": "Sin sucursales, servir a un cliente más casi no le cuesta.",
+   "say": "Su ventaja: sin sucursales, un cliente más casi no le cuesta."
+  },
+  {
+   "type": "news",
+   "kicker": "Los riesgos",
+   "headline": "Está prestando más y más caro",
+   "source": "Nu Holdings · reporte 6-K (SEC), 12 nov 2026",
+   "bullets": [
+    {
+     "text": "Morosidad a 90 días: 7.3%",
+     "sub": "venía de 6.9% el trimestre anterior",
+     "cue": "morosidad",
+     "tone": "down"
+    },
+    {
+     "text": "Depende de que el brasileño pague",
+     "sub": "si la economía se frena, pega aquí primero",
+     "cue": "frena",
+     "tone": "down"
+    }
+   ],
+   "say": "Los riesgos: la morosidad subió a 7.3%. Si Brasil se frena, pega aquí primero."
+  },
+  {
+   "type": "catalyst",
+   "kicker": "Qué vigilar",
+   "date": "FEB 2027",
+   "label": "El próximo reporte",
+   "sub": "Si la morosidad se estaciona o sigue subiendo",
+   "cue_date": "febrero",
+   "say": "Voy a estar viendo el reporte de febrero de 2027: si la morosidad se estaciona."
+  },
+  {
+   "type": "outro",
+   "host": {
+    "act": "cierre"
+   },
+   "question_a": "¿Banco del futuro",
+   "question_b": "o préstamo caro?",
+   "cue_a": "futuro",
+   "cue_b": "caro",
+   "sources": "Nu Holdings, reporte 6-K (SEC) · Yahoo Finance",
+   "say": "¿Tú lo ves como el banco del futuro o como un préstamo caro? Te leo."
+  }
+ ]
+}

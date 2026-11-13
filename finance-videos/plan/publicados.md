@@ -19,6 +19,7 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 | dom 8 nov 2026 · 19:00 | Short Análisis + Potencial | Becle / José Cuervo: cayó 12%, ¿tiene futuro a 5 años? (CUERVO) | `videos/2026-11-08-CUERVO/` |
 | lun 9 nov 2026 · 19:00 | Short reactivo | Nvidia cayó 4.3% mientras las otras 6 grandes tecnológicas subieron: el consejo investiga a su CEO (NVDA; pedido por JP) | `videos/2026-11-09-NVDA/` |
 | mar 10 nov 2026 · 19:00 | Short reactivo | Take-Two, la dueña de GTA, subió 8.3% aunque perdió dinero: preventas de GTA VI "sin precedentes" (TTWO) | `videos/2026-11-10-TTWO/` |
+| vie 13 nov 2026 · 19:00 | Short Análisis + Potencial | Nubank ganó $1,092 M en un trimestre y salió de América Latina (NU) | `videos/2026-11-13-NU/` |
 | jue 12 nov 2026 · 19:00 | Short de contexto | AMD se duplicó en un año y Nvidia se quedó sin fundador (AMD) | `videos/2026-11-12-AMD/` |
 | mié 11 nov 2026 · 19:00 | Short derivado | De cada $100 que le pagas a Apple, casi $28 son ganancia (adelanto del largo; rehecho el 11 nov con JP en 3D y guion nuevo) | `videos/2026-11-11-APPLE/` |
 | sáb 14 nov 2026 · 12:00 | Historia 3D | Steve Jobs: lo sacaron de su propia empresa (Apple) · con la partitura de órgano y piano | `videos/2026-11-14-JOBS-historia/` |

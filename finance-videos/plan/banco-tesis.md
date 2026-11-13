@@ -28,3 +28,4 @@ Tickers de Yahoo Finance (verifícalos con `fetch_data.py`).
 ## Ya analizadas (no repetir en 60 días)
 | Fecha | Empresa | Carpeta |
 |---|---|---|
+| 13 nov 2026 | Nu Holdings (Nubank) | `videos/2026-11-13-NU/` |
