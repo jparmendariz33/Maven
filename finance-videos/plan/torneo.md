@@ -31,7 +31,7 @@ Las cifras del estado de resultados salen SIEMPRE del reporte oficial; los ratio
 ## 3. Cómo se reparte el tiempo (short de 100–120 s)
 JP autorizó que dure más: "no pasa nada si este video dura más; hay que ser concisos pero completos".
 ```
-0:00–0:10  Gancho: las 5 compiten, 5 métricas, una gana   (logos al fondo)
+0:00–0:10  Gancho: "Rankeando 5 acciones." + subtítulo "5 rondas, un ganador."  (logos al fondo)
 0:10–0:26  Ronda 1 · Crecimiento de ventas      + minigráfica
 0:26–0:42  Ronda 2 · Utilidad de operación      + minigráfica
 0:42–0:56  Ronda 3 · Margen de operación
@@ -40,6 +40,17 @@ JP autorizó que dure más: "no pasa nada si este video dura más; hay que ser c
 1:26–1:42  Tabla final y ganadora
 1:42–1:50  Cierre: ¿coincides?
 ```
+
+## 3a. El gancho de los primeros 3 segundos (JP, 14 nov 2026)
+**La primera pantalla dice la ACCIÓN, grande; el resultado va de subtítulo.** No al revés.
+```
+Rankeando 5 acciones.        ← título grande, es lo que el canal HACE
+5 rondas, un ganador.        ← subtítulo, el resultado que se promete
+```
+"5 rondas, un ganador" **no puede ser el título**: no tiene gancho porque no dice qué se está haciendo ni de qué.
+Lo que engancha es el verbo: *rankeando*. Variantes válidas del título grande: "Rankeando 5 acciones",
+"Rankeando nuestras acciones favoritas", "Rankeando las 5 más grandes de la bolsa". El subtítulo casi no cambia.
+Los cinco logos van al fondo, tenues, para que se vea de quiénes se habla sin leer una lista.
 
 ## 3b. Cómo se ve (muestra aprobada el 14 nov 2026)
 Las dos escenas nuevas ya están en el motor y probadas:
