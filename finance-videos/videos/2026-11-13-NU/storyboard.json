@@ -68,42 +68,43 @@
    "theme": "sand",
    "kicker": "Trimestre jul–sep 2026 · reporte a la SEC",
    "title": "De dónde sale su ganancia",
-   "subtitle": "De cada $100 que entran al banco",
+   "subtitle": "Julio–septiembre de 2026 · millones de dólares",
    "steps": [
     {
-     "label": "Lo que entra",
-     "value": 100,
+     "label": "Ingresos",
+     "value": 5820,
      "kind": "total",
-     "cue": "entran"
+     "cue": "ingresos"
     },
     {
      "label": "Pagar intereses",
-     "value": 29,
+     "value": 1688,
      "kind": "minus",
      "cue": "intereses"
     },
     {
      "label": "Préstamos que no le pagan",
-     "value": 29,
+     "value": 1688,
      "kind": "minus",
      "cue": "préstamos"
     },
     {
      "label": "Operar el banco e impuestos",
-     "value": 23,
+     "value": 1352,
      "kind": "minus",
      "cue": "operar"
     },
     {
      "label": "Ganancia",
-     "value": 19,
+     "value": 1092,
      "kind": "result",
-     "cue": "quedan"
+     "cue": "ganancia"
     }
    ],
-   "note": "Ingresos del trimestre: $5,820 M",
-   "cue_note": "limpios",
-   "say": "De cada 100 que entran, 29 se van en intereses y 29 en préstamos que no le pagan. Otros 23 en operar e impuestos. Le quedan 19 limpios."
+   "note": "Le queda 19 centavos de cada dólar",
+   "cue_note": "ganancia",
+   "say": "De 5,820 millones que entraron, 1,688 se fueron en intereses y otros tantos en préstamos que no le pagan. Después de operar y de impuestos, quedaron 1,092 millones de ganancia.",
+   "unit": "M"
   },
   {
    "type": "statement",

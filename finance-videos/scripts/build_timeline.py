@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import load, norm, tokens, brand
 
 OFFSET = 0.45   # segundos de silencio antes de que empiece la voz
-TAIL = 2.2      # segundos después de la última palabra
+TAIL = 1.4      # segundos después de la última palabra (era 2.2: el remate se sentía muerto — JP, 14 nov 2026)
 
 
 def align(script_toks, wh):

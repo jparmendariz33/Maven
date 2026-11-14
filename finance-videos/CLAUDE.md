@@ -62,6 +62,16 @@ El motor tiene que aguantar cualquier largo de texto: **nunca** se arregla un en
 - Nada se dibuja en una Y fija si arriba hay texto de largo variable: cada bloque cuelga de donde terminó el anterior.
 - Antes de entregar, barrido del MP4 completo (un cuadro cada 3 s en contacto), no solo `qa.jpg`. Receta en `/short` §4.
 
+## Regla del aire (JP, 14 nov 2026 — oyó demasiadas pausas en el short de Nubank)
+El cambio de pantalla **absorbe** la pausa del punto final, no se le suma: antes se encadenaban 0.6 s + 0.6 s y quedaba 1.2 s de
+silencio entre TODAS las escenas (13 s muertos en un short de 88). Ahora el hueco es el mayor de los dos (`no_voice.py`), y la cola
+después de la última palabra es de 1.4 s, no 2.2 (`build_timeline.py` → `TAIL`). Si un video se pasa de formato, lo primero que se
+revisa es el aire, no el guion.
+
+## Regla de las cascadas (JP, 14 nov 2026)
+**Siempre con los montos reales; nunca normalizados a $100.** Con base 100 el porcentaje y el monto dicen lo mismo y la fila de
+montos sobra. La escala va en el subtítulo y en `"unit"` de la escena. Detalle en `/short` §1e.
+
 ## Regla de los números (descubierta en nov 2026 — aplica a TODO: shorts, largos, voz propia o de IA)
 Un número mide pocos caracteres pero tarda mucho en decirse: "45" son 2 caracteres y se dice "cuarenta y cinco";
 "1950" → "mil novecientos cincuenta" (8 sílabas); "46%" → "cuarenta y seis por ciento"; "$45,765" → 20 sílabas.

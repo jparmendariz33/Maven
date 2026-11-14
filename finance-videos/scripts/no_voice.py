@@ -9,7 +9,7 @@ Cómo calcula el ritmo (para que nunca "corra" en partes con números):
   antes de contar ("1950" → "mil novecientos cincuenta" = 8 sílabas; "46%" → "cuarenta y seis por ciento").
 - Velocidad por defecto: 5.2 sílabas/s al hablar (≈ 120 palabras por minuto con pausas, cómodo para leer en voz alta; la media del español es ~130 ppm;
   un locutor profesional va a 150–160). Pausas para respirar: coma 0.3 s, dos puntos/punto y coma 0.4 s, punto 0.6 s,
-  "..." 0.7 s, entre pantallas 0.9 s (largos) / 0.6 s (shorts), y 1.2 s extra antes de cada capítulo.
+  "..." 0.7 s y, entre pantallas, 0.9 s (largos) / 0.6 s (shorts) que ABSORBEN la pausa del punto final en vez de sumarse.
 """
 import sys, os, json, re, unicodedata
 sys.path.insert(0, os.path.dirname(__file__))
@@ -71,16 +71,17 @@ def main(vdir, sps=None):
     LONG = sb.get('format') == 'long'
     sps = float(sps) if sps else 5.2
     SCENE = .9 if LONG else .6
-    t, words = 0.0, []
+    t, words, last_p = 0.0, [], 0.0
     for si, s in enumerate(sb['scenes']):
-        if si: t += SCENE + (1.2 if s.get('type') == 'chapter' else 0)
+        # el cambio de pantalla ABSORBE la pausa del punto final; antes se sumaban (0.6 + 0.6 = 1.2 s
+        # de aire entre TODAS las escenas, que es lo que JP oyó el 14 nov 2026). Ahora el hueco es el
+        # mayor de los dos, nunca la suma.
+        if si: t += max(0.0, SCENE - last_p) + (1.2 if s.get('type') == 'chapter' else 0)
         for w in tokens(s.get('say', '')):
             d = max(.22, syllables(spoken(w)) / sps)
             words.append([round(t, 3), round(t + d, 3), w]); t += d
-            if w.endswith('...') or w.endswith('…'): t += .7
-            elif w[-1] in '.?!': t += .6
-            elif w[-1] in ':;': t += .4
-            elif w[-1] == ',': t += .3
+            p = .7 if (w.endswith('...') or w.endswith('…')) else .6 if w[-1] in '.?!' else .4 if w[-1] in ':;' else .3 if w[-1] == ',' else 0.0
+            t += p; last_p = p
     os.makedirs(os.path.join(vdir, 'build'), exist_ok=True); os.makedirs(os.path.join(vdir, 'audio'), exist_ok=True)
     json.dump({'words': words, 'source': f'estimado (sin voz, {sps} sílabas/s)'}, open(os.path.join(vdir, 'build', 'whisper.json'), 'w'), ensure_ascii=False)
     open(os.path.join(vdir, 'audio', 'NO_VOICE'), 'w').write(f'{sps}\n')

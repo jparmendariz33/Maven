@@ -363,7 +363,7 @@ R.price = (s, t) => {
   const first = S[0][1], lastv = S[S.length - 1][1];
   const pt = s.title || `De $${fmtNum(first, 0)} a $${fmtNum(lastv, 0)}`;
   rise(pt, 90, 480, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(pt, F.d, 800, 84, 900) });
-  if (s.subtitle) rise(s.subtitle, 90, 545, seg(t, s.t0 + .4, s.t0 + 1), { f: F.b, w: 500, s: 40, c: B.g3 });
+  if (s.subtitle) rise(s.subtitle, 90, 545, seg(t, s.t0 + .4, s.t0 + 1), { f: F.b, w: 500, s: fit(s.subtitle, F.b, 500, 40, 900, 26), c: B.g3 });
   const box = { x0: 90, x1: 930, y0: 760, y1: 1200 };
   const marks = (s.annotations || []).map(a => ({ ...a, i: idxOf(S, a.date), t: typeof a.cue === 'number' ? a.cue : s.t0 + 1.5 }));
   const endT = typeof s.cue_end === 'number' ? s.cue_end : Math.max(...marks.map(m => m.t), s.t0 + 1) + 1.2;
@@ -456,8 +456,8 @@ R.bars = (s, t) => {
     if (last && s.note) { const k = seg(t, cueT(s, 'cue_note', 3.4), cueT(s, 'cue_note', 3.4) + .5); if (k > 0) { C.save(); C.globalAlpha *= k; C.fillStyle = B.mostaza; C.fillRect(cx - gw / 2 + 6, base + 62, gw - 12, 5); C.restore(); } }
   });
   if (s.note) { const tc = cueT(s, 'cue_note', 3.4);
-    rise(s.note, 90, 1340, seg(t, tc, tc + .6), { f: F.d, w: 600, s: 52, c: toneC(s.note_tone || 'up') });
-    if (s.note_sub) rise(s.note_sub, 90, 1400, seg(t, tc + .2, tc + .8), { f: F.b, w: 500, s: 36, c: B.g4 }); }
+    rise(s.note, 90, 1340, seg(t, tc, tc + .6), { f: F.d, w: 600, s: fit(s.note, F.d, 600, 52, 900, 32), c: toneC(s.note_tone || 'up') });
+    if (s.note_sub) rise(s.note_sub, 90, 1400, seg(t, tc + .2, tc + .8), { f: F.b, w: 500, s: fit(s.note_sub, F.b, 500, 36, 900, 24), c: B.g4 }); }
 };
 
 R.metric = (s, t) => {
@@ -522,7 +522,7 @@ R.photo = (s, t) => {
     const ink = photoInk();
     if (s.kicker) kicker(s.kicker, 90, y0 - 110, s.t0 + .2, t, ink);
     riseLines(tl, 90, y0, lh, cueT(s, 'cue_title', .35), t, { f: F.d, w: 800, s: s.size || 80, c: ink });
-    if (s.caption) rise(s.caption, 90, y0 + (tl.length - 1) * lh + 86, seg(t, cueT(s, 'cue_caption', .8), cueT(s, 'cue_caption', .8) + .6), { f: F.s, w: 400, s: 62, c: B.mostaza });
+    if (s.caption) rise(s.caption, 90, y0 + (tl.length - 1) * lh + 86, seg(t, cueT(s, 'cue_caption', .8), cueT(s, 'cue_caption', .8) + .6), { f: F.s, w: 400, s: fit(s.caption, F.s, 400, 62, 900, 38), c: B.mostaza });
     credit(s, s.image, 990, 1555, ink, 'right', .7 * seg(t, s.t0 + .5, s.t0 + 1));
   } else if (lay === 'card') {
     if (s.kicker) kicker(s.kicker, 90, 360, s.t0 + .1, t, B.negro);
@@ -552,7 +552,7 @@ R.waterfall = (s, t) => {
   const dk = isDarkBg(themeOf(s)), ink = dk ? B.arena : B.negro, soft = dk ? rgba(B.arena, .7) : B.g4;
   kicker(s.kicker || 'De los ingresos a la utilidad', 90, 360, s.t0 + .1, t, ink);
   const tl_ = s.title || ''; rise(tl_, 90, 470, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(tl_, F.d, 800, 72, 900), c: ink });
-  if (s.subtitle) rise(s.subtitle, 90, 545, seg(t, s.t0 + .4, s.t0 + 1), { f: F.b, w: 500, s: 38, c: soft });
+  if (s.subtitle) rise(s.subtitle, 90, 545, seg(t, s.t0 + .4, s.t0 + 1), { f: F.b, w: 500, s: fit(s.subtitle, F.b, 500, 38, 900, 26), c: soft });
   const st = s.steps || [], n = st.length || 1, x0 = 96, x1 = 984, y0 = 720, y1 = 1290, gap = 22, bw = (x1 - x0 - gap * (n - 1)) / n;
   const ROJO = mix(B0.terracota, '#C0241C', .55);   // lo que resta: terracota de la casa, llevado al rojo
   const CO = s.callout ? { step: 0, ...s.callout } : null;
@@ -587,13 +587,14 @@ R.waterfall = (s, t) => {
     if (i < n - 1 && k > .9) { const yy = py(b); C.save(); C.strokeStyle = soft; C.lineWidth = 2; C.setLineDash([8, 8]); C.beginPath(); C.moveTo(x + bw, yy); C.lineTo(x + bw + gap, yy); C.stroke(); C.restore(); }
     // encima de cada barra: el PORCENTAJE sobre las ventas (lo que de verdad se entiende) y, más chico, el monto.
     const base0 = lv[0] ? lv[0][1] : 0, pv = p.kind === 'minus' ? p.value : b, neg = minus || pv < 0;
-    const val = p.text || (neg ? '($' + fmtNum(Math.abs(pv), 0) + ')' : '$' + fmtNum(Math.abs(pv), 0));   // negativo = paréntesis, nunca signo; positivo = limpio
+    const uu = s.unit ? ' ' + s.unit : '';                                                                 // "M" / "mil M": los montos van en su escala real, nunca normalizados a 100 (JP, 14 nov 2026)
+    const val = p.text || (neg ? '($' + fmtNum(Math.abs(pv), 0) + uu + ')' : '$' + fmtNum(Math.abs(pv), 0) + uu);   // negativo = paréntesis, nunca signo; positivo = limpio
     const pct = s.percent === false ? null : (p.pct || (base0 ? Math.round(Math.abs(pv) / base0 * 100) + '%' : null));   // sin signo: el color y la caída ya dicen que resta (JP, 12 nov 2026)
     const ka = seg(t, tc + .25, tc + .6), pcol = dk ? (p.kind === 'result' ? '#DDE8B8' : col) : toward(col, B.negro, B0.arena, 2.6);   // cada % en el color de su barra
     if (pct) {
       const cxp = x + bw / 2;
       txt(pct, cxp, hi - 52, { f: F.d, w: 800, s: fit(pct, F.d, 800, p.kind === 'result' ? 52 : 44, bw + gap - 6, 26), al: 'center', c: pcol, a: ka });           // % arriba
-      txt(val, cxp, hi - 18, { f: F.s, w: 400, s: fit(val, F.s, 400, 25, bw + gap - 6, 16), al: 'center', c: soft, a: ka });                                      // monto debajo, chico y en itálica
+      txt(val, cxp, hi - 18, { f: F.s, w: 400, s: fit(val, F.s, 400, 29, bw + gap - 6, 20), al: 'center', c: soft, a: ka });                                      // monto debajo, chico y en itálica
     } else txt(val, x + bw / 2, hi - 18, { f: F.d, w: 800, s: fit(val, F.d, 800, p.kind === 'result' ? 46 : 38, bw + gap - 6, 22), al: 'center', c: pcol, a: ka });
     const lb = fitLines(p.label || '', F.b, 500, 27, bw + gap - 20, 2, 18);   // cabe entero o se achica; nunca se corta (13 nov 2026)
     lb.lines.forEach((l, j) => txt(l, x + bw / 2, y1 + 46 + j * Math.round(lb.size * 1.2), { f: F.b, w: 500, s: lb.size, al: 'center', c: ink, a: seg(t, tc, tc + .4) }));
@@ -611,7 +612,7 @@ R.waterfall = (s, t) => {
       C.save(); C.globalAlpha *= k2 * .9; contain(lim, hole.x + (hole.w - z) / 2, hole.y + (hole.h - z) / 2, z, z); C.restore();
     }
   }
-  if (s.note) { const tn = cueT(s, 'cue_note', .8 + n * .6 + .3); rise(s.note, 90, 1470, seg(t, tn, tn + .6), { f: F.s, w: 400, s: 64, c: dk ? B.mostaza : B.azul }); }
+  if (s.note) { const tn = cueT(s, 'cue_note', .8 + n * .6 + .3); rise(s.note, 90, 1470, seg(t, tn, tn + .6), { f: F.s, w: 400, s: fit(s.note, F.s, 400, 64, 900, 36), c: dk ? B.mostaza : B.azul }); }
 };
 
 R.catalyst = (s, t) => {

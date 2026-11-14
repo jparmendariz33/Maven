@@ -89,12 +89,16 @@ cuadren (si las barras no llegan al resultado, hay un dato mal).
 - Pasos típicos: ingresos → costo de lo vendido → gastos de operación (investigación, ventas, administración) → impuestos y otros →
   utilidad neta. Si la empresa pierde dinero, la última barra se muestra como pérdida y se dice claro. 4 a 6 barras.
 - Todos los números salen del reporte oficial (10-K/10-Q/8-K o reporte a la BMV) y deben sumar: ingresos − todo lo que sale = utilidad neta.
-- Una sola escala por cascada: o todo en millones, o todo "de cada $100 que vende".
+- **SIEMPRE con los montos reales de la empresa; NUNCA normalizados a $100 (regla de JP, 14 nov 2026).** El ejemplo "de cada $100 que
+  entran" está prohibido: con base 100 el monto y el porcentaje dicen lo mismo (100% = $100, 29% = $29) y la fila de montos sobra. Con
+  cifras reales los dos renglones sí informan: el % es la proporción y el monto es el tamaño. Pon la escala en el subtítulo
+  ("Julio–septiembre de 2026 · millones de dólares") y `"unit": "M"` en la escena, para que las barras digan `$5,820 M`.
+- Una sola escala por cascada: todo en millones, o todo en miles de millones. Nunca mezcles.
 - En Análisis + Potencial va en la mitad de análisis ("cómo gana dinero").
 
 ### Cómo se ve (lo decidió JP el 12 nov 2026; el motor lo hace solo)
 - **Encima de cada barra, dos renglones:** arriba el **% sobre las ventas**, grande y en el color de su barra; debajo, pegado a la barra,
-  el **monto, chico y en itálica**.
+  el **monto real, chico y en itálica**. Los dos renglones solo se justifican con montos reales (ver arriba).
 - **Signos: nunca "−" ni "+".** Lo que resta va **entre paréntesis**: `($6,167)`. Lo positivo (los ingresos siempre, y la utilidad cuando
   la hay) va limpio: `$13,377`. Los porcentajes, siempre sin signo: `46%`, no `−46%`.
 - **Colores funcionales, NO los de la marca:** **azul** las ventas (y su desglose, en azul más claro), **rojo** todo lo que resta y

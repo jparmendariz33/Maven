@@ -13,7 +13,7 @@ Nubank acaba de reportar su mejor trimestre: ganó 1,092 millones de dólares, 3
 
 📌 Los números (trimestre julio–septiembre de 2026, reporte 6-K a la SEC del 12 de noviembre)
 • Ganancia neta: $1,092 M (récord) · Ingresos: $5,820 M
-• De cada $100 que entran: 29 se van en intereses, 29 en préstamos que no le pagan, 23 en operar e impuestos. Le quedan 19
+• De $5,820 M de ingresos: $1,688 M en intereses, $1,688 M en préstamos que no le pagan y $1,352 M en operar e impuestos. Quedan $1,092 M
 • 143 millones de clientes: casi 120 en Brasil, 16.6 en México y 6.1 en Colombia
 • Depósitos: $47,500 M · Rendimiento sobre capital: 32%
 • Se paga a 16 veces sus ganancias y sigue 30% abajo de su máximo del 28 de enero de 2026
