@@ -23,6 +23,15 @@ terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno p
 
 ### ✅ Checklist de estilo (reglas que pidió JP — revisa TODAS antes de entregar)
 
+#### 🏷️ El gancho SIEMPRE identifica a la empresa (JP, 14 nov 2026)
+La primera escena tiene que decir **de quién** habla desde el primer cuadro. El short de Nubank abría con el dato y sin
+ninguna marca. En el `hook` van una de estas dos, o las dos:
+- `"logo": "images/logo.png"` → el motor lo pone arriba a la derecha, con tarjeta blanca si el logo no contrasta con el
+  fondo (un logo morado sobre el morado de la marca desaparece) y siempre con tarjeta si hay foto a toda pantalla.
+- `"bg_image": "...", "bg_full": true` → la foto del tema a toda la pantalla.
+Si no hay ni logo ni foto, el gancho no sale: consigue al menos el logo (`fetch_images.py icon`, que casi siempre lo tiene).
+`"logo": false` lo apaga a propósito.
+
 #### 🔖 Regla del rótulo (JP, 14 nov 2026 — la más importante de las visuales)
 **Todo lo que se dice en la voz tiene que verse en pantalla, y ningún número puede quedar sin decir qué es.** El espectador
 no debe tener que adivinar, ni esperar a que lo digas, para entender una cifra. Dos defectos reales del short de Nubank:

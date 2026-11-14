@@ -235,6 +235,16 @@ const R = {};
 R.hook = (s, t) => {
   const lt = t - s.t0, ink = B.arena;
   kicker(s.kicker || `${D.exchange || ''} · ${D.ticker}`, 90, 360, s.t0 + .1, t, ink);
+  // Logo de la empresa arriba a la derecha: el gancho tiene que decir DE QUIÉN habla desde el primer cuadro
+  // (JP, 14 nov 2026 — el short de Nubank abría sin ninguna marca). Acepta "logo" propio o el del video.
+  const hlg = img(s.logo || (V.scenes.find(z => z.logo) || {}).logo);
+  if (hlg && s.logo !== false) { const k = seg(t, s.t0 + .2, s.t0 + .8); if (k > 0) {
+    C.save(); C.globalAlpha *= k; scaleAt(900, 330, .85 + .15 * back(k));
+    const hbg = BGB || (themeOf(s) === 'sand' ? B0.arena : B.azul);   // el fondo REAL de la escena, no una suposición
+    if (s.logo_card || s.bg_full || logoNeedsCard(s.logo, hlg, hbg)) {   // sobre foto a toda pantalla, siempre con tarjeta
+      rr(820, 250, 160, 160, 28); C.fillStyle = '#FFFFFF'; C.fill(); contain(hlg, 840, 270, 120, 120); }
+    else contain(hlg, 820, 250, 160, 160);
+    C.restore(); } }
   // layout en cascada: el título se acomoda primero y TODO lo demás cuelga de su última línea real.
   // (13 nov 2026: con un título de 4 líneas la cifra se encimaba encima del texto.)
   const COL = 900, BOT = 1150;                                     // 1150 = donde empieza JP en 3D

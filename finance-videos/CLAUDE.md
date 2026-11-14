@@ -55,6 +55,10 @@ la misma hora). Los datos son SIEMPRE los de cierre, lo más actualizados posibl
 - No dependen del cierre: el largo (atemporal), su short derivado del miércoles y los shorts de sábado y domingo (no hay mercado: usan
   el cierre del viernes).
 
+## El gancho identifica a la empresa (JP, 14 nov 2026)
+La primera escena lleva **siempre** el logo (`"logo"` en el `hook`, arriba a la derecha, con tarjeta blanca si no
+contrasta) o la foto del tema a toda pantalla, o las dos. Un gancho sin marca no dice de quién habla. Detalle en `/short` §0.
+
 ## Regla del rótulo (JP, 14 nov 2026)
 **Todo lo que dice la voz se ve en pantalla, y ningún número va sin decir qué es.** "Brasil · 120 M" no significa nada: va
 "Brasil · 120 M de clientes". "¿Está cara?" sin nombrar la acción es ambiguo: va "La acción se paga a 16 veces las ganancias".
