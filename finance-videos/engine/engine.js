@@ -296,6 +296,56 @@ R.statement = (s, t) => {
   if (s.sub) riseLines(wrap(s.sub, F.b, 500, 44, 820), 90, y0 + lines.length * lh + 50, 56, s.t0 + .9, t, { f: F.b, w: 500, s: 44, c: ink, a: .85 });
 };
 
+// ---------------- TORNEO: una ronda por métrica y la tabla final (plan/torneo.md) ----------------
+// Cada fila: logo · nombre · barra proporcional · valor rotulado · puntos. Gana el mayor, salvo invert:true (PEG).
+R.ronda = (s, t) => {
+  const dk = isDarkBg(themeOf(s)), ink = dk ? B.arena : B.negro, soft = dk ? rgba(B.arena, .7) : B.g4;
+  kicker(`RONDA ${s.round} DE ${s.rounds} · ${(s.unit_label || '').toUpperCase()}`, 90, 360, s.t0 + .1, t, ink);
+  const ti = s.title || ''; const tl2 = fitLines(ti, F.d, 800, 70, 900, 2, 44), tlh2 = Math.round(tl2.size * 1.14);
+  riseLines(tl2.lines, 90, 470, tlh2, s.t0 + .2, t, { f: F.d, w: 800, s: tl2.size, c: ink });
+  let yW = 470 + (tl2.lines.length - 1) * tlh2 + tl2.size * .30;   // todo cuelga del final real del título
+  if (s.why) { const wl = fitLines(s.why, F.b, 500, 40, 900, 2, 28), wlh = Math.round(wl.size * 1.3);
+    riseLines(wl.lines, 90, yW + 56, wlh, s.t0 + .4, t, { f: F.b, w: 500, s: wl.size, c: soft });
+    yW += 56 + (wl.lines.length - 1) * wlh; }
+  const rows = (s.rows || []).slice(0, 5), inv = !!s.invert;
+  const vals = rows.map(r => Math.abs(r.value)), mx = Math.max(1e-9, ...vals);
+  const y0 = Math.round(yW + 86), H2 = 152, x0 = 90, bx = 500, bw = 300;
+  rows.forEach((r, i) => {
+    const tc = typeof r.cue === 'number' ? r.cue : s.t0 + .9 + i * .45, k = ex(seg(t, tc, tc + .5)); if (k <= 0) return;
+    const y = y0 + i * H2, win = r.points === 5;
+    C.save(); C.globalAlpha *= Math.min(1, k * 1.2);
+    const lg = img(r.logo); if (lg) contain(lg, x0, y + 8, 104, 76);
+    txt(r.name, x0 + 118, y + 60, { f: F.d, w: 800, s: fit(r.name, F.d, 800, 38, 274, 22), c: ink });
+    const w = Math.max(6, bw * (Math.abs(r.value) / mx) * k);
+    rr(bx, y + 26, w, 44, 12); C.fillStyle = win ? B0.musgo : (dk ? B0.azulClaro : B0.azul); C.fill();
+    const vt = r.text || (r.value < 0 ? '(' + Math.abs(r.value) + (s.suffix || '') + ')' : r.value + (s.suffix || ''));
+    txt(vt, 886, y + 60, { f: F.d, w: 800, s: 36, al: 'right', c: r.value < 0 ? mix(B0.terracota, '#C0241C', .55) : ink });
+    C.beginPath(); C.arc(952, y + 48, 31, 0, 7); C.fillStyle = win ? B0.musgo : rgba(ink, .13); C.fill();
+    txt(String(r.points), 952, y + 60, { f: F.d, w: 800, s: 34, al: 'center', c: win ? B0.arena : ink });
+    C.restore();
+  });
+  if (inv) txt('Aquí gana el número más bajo', 984, y0 + rows.length * H2 + 30, { f: F.s, w: 400, s: 38, al: 'right', c: ink, a: .9 * seg(t, s.t0 + 1, s.t0 + 1.6) });
+};
+
+// Tabla de posiciones: una fila por empresa con sus puntos acumulados; la ganadora, destacada.
+R.tabla = (s, t) => {
+  const dk = isDarkBg(themeOf(s)), ink = dk ? B.arena : B.negro, soft = dk ? rgba(B.arena, .7) : B.g4;
+  kicker(s.kicker || 'TABLA FINAL', 90, 360, s.t0 + .1, t, ink);
+  const ti = s.title || 'El resultado'; rise(ti, 90, 480, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(ti, F.d, 800, 84, 900), c: ink });
+  const rows = (s.rows || []).slice().sort((a, b) => b.points - a.points).slice(0, 5);   // la tabla se ordena sola
+  rows.forEach((r, i) => {
+    const tc = typeof r.cue === 'number' ? r.cue : s.t0 + .8 + i * .4, k = ex(seg(t, tc, tc + .5)); if (k <= 0) return;
+    const y = 660 + i * 158, win = i === 0;
+    C.save(); C.globalAlpha *= Math.min(1, k * 1.2);
+    if (win) { rr(76, y - 10, 928, 132, 24); C.fillStyle = rgba(B0.musgo, .16); C.fill(); C.strokeStyle = rgba(B0.musgo, .6); C.lineWidth = 3; C.stroke(); }
+    txt(String(i + 1), 120, y + 76, { f: F.d, w: 800, s: 58, al: 'center', c: win ? B0.musgo : soft });
+    const lg = img(r.logo); if (lg) contain(lg, 176, y + 20, 96, 80);
+    txt(r.name, 296, y + 62, { f: F.d, w: 800, s: fit(r.name, F.d, 800, 44, 430, 26), c: ink });
+    txt(String(r.points) + ' pts', 984, y + 70, { f: F.d, w: 800, s: 54, al: 'right', c: win ? B0.musgo : ink });
+    C.restore();
+  });
+};
+
 R.company = (s, t) => {
   kicker(s.kicker || 'La empresa', 90, 360, s.t0 + .1, t, B.negro);
   const lg = img(s.logo);

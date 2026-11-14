@@ -193,7 +193,9 @@ el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exac
 > métrica), se reparten puntos 5-4-3-2-1 y al final hay tabla de posiciones y una ganadora. Métricas: crecimiento de
 > ventas, crecimiento de la utilidad **de operación**, margen de operación, ROE y PEG (en PEG gana el más bajo). En las
 > dos primeras rondas va una minigráfica de los últimos 5 trimestres: JP quiere ver la evolución, no solo el trimestre.
-> El título tiene que **prometer un resultado** ("Comparé 5 gigantes en 5 métricas: ganó una sola"), nunca "5 empresas que
+> **Título (elegido por JP el 14 nov 2026): `RANKEANDO 5 acciones: 5 rondas, un ganador`.** Es la plantilla: cambia el número
+> y el universo, nunca la estructura. Los tres ingredientes obligatorios: verbo en primera persona en MAYÚSCULAS, la palabra
+> **acciones** o **bolsa** explícita (sin ella el título no dice de qué se habla), y un resultado que se revela. Nunca "5 empresas que
 > estamos vigilando", que no dice nada. La ganadora es "la que gana en más métricas", **jamás** "la mejor para comprar".
 > Las cifras del estado de resultados salen del reporte oficial; los ratios de mercado se rotulan como tales.
 > Hasta el 15 nov 2026 se usó el formato de lista que describe el resto de esta sección, que sigue valiendo como respaldo.

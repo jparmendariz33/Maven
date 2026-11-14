@@ -41,11 +41,20 @@ JP autorizó que dure más: "no pasa nada si este video dura más; hay que ser c
 1:42–1:50  Cierre: ¿coincides?
 ```
 
+## 3b. Cómo se ve (muestra aprobada el 14 nov 2026)
+Las dos escenas nuevas ya están en el motor y probadas:
+- **`ronda`**: kicker "RONDA 1 DE 5 · CRECIMIENTO DE VENTAS", la pregunta como título, una línea de por qué importa y
+  cinco filas (logo · nombre · barra proporcional · valor rotulado · puntos en círculo). La ganadora de la ronda va en
+  verde. Con `"invert": true` (PEG) aparece "Aquí gana el número más bajo".
+- **`tabla`**: fondo claro para que los logos se lean, posiciones ordenadas solas por puntos y la ganadora en una
+  pastilla verde. El orden lo calcula el motor, no el storyboard.
+Todo el bloque cuelga del final real del título (regla de la maquetación), así que aguanta preguntas de dos líneas.
+
 ## 4. Qué hay que construir
 | # | Trabajo | Dónde |
 |---|---|---|
-| 1 | Escena `ronda`: título de la métrica, una línea de por qué importa, 5 filas (logo · nombre · barra · valor · puntos) y minigráfica opcional | `engine/engine.js` |
-| 2 | Escena `tabla`: posiciones acumuladas, ganadora destacada | `engine/engine.js` |
+| 1 | ~~Escena `ronda`~~ **hecha el 14 nov**: título de la métrica, una línea de por qué importa, 5 filas (logo · nombre · barra · valor · puntos) y minigráfica opcional | `engine/engine.js` |
+| 2 | ~~Escena `tabla`~~ **hecha el 14 nov**: posiciones acumuladas, ganadora destacada | `engine/engine.js` |
 | 3 | `scripts/torneo.py`: toma los tickers, arma las 5 métricas, calcula puntos y escribe el bloque del storyboard | `scripts/` |
 | 4 | Logos oficiales de cada empresa (no el catálogo monocromo) | `fetch_images.py` |
 | 5 | Versión para video largo: 8–10 rondas en 6–7 min, mismas reglas | skill `/largo` |
@@ -62,7 +71,15 @@ y siempre dicen que se habla de bolsa.
    ¿gigantes de qué?, ¿ganó una en qué? Tiene que aparecer "acciones", "en la bolsa" o "para invertir".
 3. **Un resultado que se revela al final**: "ganó una sola", "y ganó la que menos esperaba". Eso es lo que retiene.
 
-**Candidatos (en orden de lo que yo probaría):**
+**TÍTULO ELEGIDO (JP, 14 nov 2026):**
+
+> # RANKEANDO 5 acciones: 5 rondas, un ganador
+
+Tiene los tres ingredientes: verbo en primera persona en mayúsculas, dice **acciones** y promete un ganador.
+JP quitó "gigantes" porque alargaba sin aportar. Es la plantilla de los siguientes: cambia el número y el universo
+("RANKEANDO 5 acciones mexicanas", "RANKEANDO 5 acciones de IA"), nunca la estructura.
+
+**Otros candidatos, por si el tema pide otra cosa:**
 1. **COMPARÉ 5 de las acciones más grandes del mundo: ganó una sola**
 2. **Puse a COMPETIR 5 acciones en 5 métricas y hubo un ganador claro**
 3. **RANKEANDO 5 acciones gigantes: 5 rondas, un ganador**
