@@ -78,6 +78,14 @@ tiene su `*_largo.mp4` o el tema ya está en `publicados.md`, termina con una l�
 1920x1080 (< 100 MB), `youtube.md` y `fuentes.md`. NO hagas short derivado: el puente al largo es la Historia 3D del miércoles (la produce la tarea del martes). Recuérdale: "Graba tu voz en CapCut y
 prográmalo para el domingo 10:00".
 
+## Revisión de la hipótesis de duración (28 nov 2026, una sola vez)
+No produce video. JP decidió el 14 nov no cambiar el formato hasta tener evidencia sistemática. Lee
+`plan/checkups/2026-11-14-hipotesis.md` **antes** de mirar ningún dato: ahí está la predicción escrita de antemano y la regla de
+decisión. Pide a JP la tabla de YouTube Studio (video, duración, vistas, % reproducido, duración media), guárdala en
+`plan/datos/2026-11-28.md` y corre `python3 scripts/retencion.py plan/datos/2026-11-28.md`. Compara contra la predicción **sin
+reescribirla**: si falló, dilo. Si la variación de duraciones es menor a 20 s, la muestra no puede concluir y se dice eso, no se
+fuerza una conclusión. Escribe `plan/checkups/2026-11-28-revision.md` y manda 5 líneas: qué se predijo, qué pasó, y qué se decide.
+
 ## Revisión de números (día 9 de cada mes)
 No produce video. Si `plan/metricas.md` no tiene datos de las últimas 4 semanas, pídele a JP capturas de YouTube Studio (vistas y retención
 por video de 28 días; "Cuándo están tus espectadores en YouTube"; suscriptores y horas; alcance de publicaciones) y termina. Con datos: qué

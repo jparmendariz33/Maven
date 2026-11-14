@@ -64,6 +64,12 @@ aparte de 10 millones de vistas en 90 días, que está fuera de alcance). Las 37
 suscriptores, no horas. **El único formato que acerca la meta es el largo del domingo**, y de ese todavía no
 publicamos ninguno con el formato nuevo (el primero es el del 15 nov).
 
+### Decisión del 14 nov 2026 (JP)
+No se cambia nada durante una o dos semanas: la muestra es chica y la decisión se toma con evidencia sistemática,
+no con la primera señal. La predicción quedó **registrada de antemano** en `plan/checkups/2026-11-14-hipotesis.md`
+con su regla de decisión, para que al revisar no se acomode el relato al resultado. Revisión: **28 nov 2026**.
+Los datos de cada corte viven en `plan/datos/<fecha>.md` y se analizan con `scripts/retencion.py`.
+
 ## Historial (llenar cada mes)
 | Fecha | Suscriptores | Horas (365 d) | Vistas Shorts (28 d) | CTR miniaturas | Duración media largos | Mejor video |
 |---|---|---|---|---|---|---|
