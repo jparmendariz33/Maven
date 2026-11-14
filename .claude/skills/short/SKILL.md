@@ -188,6 +188,16 @@ el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exac
 - Sigue valiendo todo lo demás: datos de cierre verificados (Regla del cierre), no repetir empresas, fotos reales, nunca recomendación.
 - Los shorts de viernes, sábado y domingo (Análisis + Potencial) y el derivado del miércoles ya son atemporales: no cambian.
 
+## 1d. Formato RANKING → **TORNEO** (JP, 14 nov 2026). Plan completo: `finance-videos/plan/torneo.md`
+> **Desde el 22 nov 2026 el ranking dominical es un TORNEO, no una lista.** Las empresas compiten en 5 rondas (una por
+> métrica), se reparten puntos 5-4-3-2-1 y al final hay tabla de posiciones y una ganadora. Métricas: crecimiento de
+> ventas, crecimiento de la utilidad **de operación**, margen de operación, ROE y PEG (en PEG gana el más bajo). En las
+> dos primeras rondas va una minigráfica de los últimos 5 trimestres: JP quiere ver la evolución, no solo el trimestre.
+> El título tiene que **prometer un resultado** ("Comparé 5 gigantes en 5 métricas: ganó una sola"), nunca "5 empresas que
+> estamos vigilando", que no dice nada. La ganadora es "la que gana en más métricas", **jamás** "la mejor para comprar".
+> Las cifras del estado de resultados salen del reporte oficial; los ratios de mercado se rotulan como tales.
+> Hasta el 15 nov 2026 se usó el formato de lista que describe el resto de esta sección, que sigue valiendo como respaldo.
+
 ## 1d. Formato RANKING (top 3 o top 5) — idea de JP, 11 nov 2026
 Cuenta regresiva: del último lugar al número 1. Sirve para shorts, publicaciones y, de vez en cuando, un largo.
 - **Estructura del short:** gancho ("Las 5 … de 2026") → #5 → #4 → #3 → #2 → **pausa antes del #1** ("Antes del número 1: sígueme, que cada

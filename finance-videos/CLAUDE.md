@@ -55,6 +55,11 @@ la misma hora). Los datos son SIEMPRE los de cierre, lo más actualizados posibl
 - No dependen del cierre: el largo (atemporal), su short derivado del miércoles y los shorts de sábado y domingo (no hay mercado: usan
   el cierre del viernes).
 
+## El ranking del domingo es un TORNEO (JP, 14 nov 2026, estrena el 22 nov)
+Las empresas compiten en 5 rondas (ventas, utilidad de operación, margen, ROE y PEG), con puntos 5-4-3-2-1, minigráfica
+de evolución en las dos primeras y tabla final con una ganadora. El título promete un resultado; "5 empresas que estamos
+vigilando" no dice nada. Plan de acción completo en `plan/torneo.md`; reglas en `/short` §1d.
+
 ## El gancho identifica a la empresa (JP, 14 nov 2026)
 La primera escena lleva **siempre** el logo (`"logo"` en el `hook`, arriba a la derecha, con tarjeta blanca si no
 contrasta) o la foto del tema a toda pantalla, o las dos. Un gancho sin marca no dice de quién habla. Detalle en `/short` §0.
