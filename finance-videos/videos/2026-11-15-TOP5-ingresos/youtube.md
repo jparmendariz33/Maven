@@ -20,7 +20,7 @@ Cinco empresas que en Costa Studio Finance estamos vigilando, ordenadas por cuá
 
 🧵 En varias, la utilidad neta y el negocio cuentan historias distintas. Eso solo se ve si bajas del primer renglón del estado de resultados.
 
-⚠️ Costa Studio Finance tiene posición en Aeropuertos del Pacífico y en Mercado Libre.
+⚠️ En lo personal tengo posición en Aeropuertos del Pacífico y en Mercado Libre.
 
 ¿Cuál vigilarías tú? Te leo en los comentarios 👇
 
@@ -56,5 +56,5 @@ Ver `narration.txt`.
 
 ## Verificación y conflicto de interés
 Ver `summary.md`: cada cifra con su documento oficial. **Declaraste que tienes Aeropuertos del Pacífico y Mercado Libre**,
-así que el video lo dice en pantalla (chip en esas dos escenas y línea de fuentes del cierre) y la descripción también.
+así que el video lo dice en pantalla (chip "En lo personal tengo posición" en esas dos escenas y línea de fuentes del cierre) y la descripción también.
 Confirma o corrige `plan/posiciones-jp.md`.

@@ -92,7 +92,7 @@
      "cue": "pasajeros"
     },
     {
-     "label": "Costa Studio Finance tiene posición"
+     "label": "En lo personal tengo posición"
     }
    ],
    "stats": [
@@ -162,7 +162,7 @@
      "label": "Envíos gratis y crédito"
     },
     {
-     "label": "Costa Studio Finance tiene posición"
+     "label": "En lo personal tengo posición"
     }
    ],
    "stats": [
@@ -191,7 +191,7 @@
    "question_b": "tú?",
    "cue_a": "vigilarías",
    "cue_b": "tú",
-   "sources": "Costa Studio Finance tiene posición en Aeropuertos del Pacífico y Mercado Libre · Reportes del 3T 2026",
+   "sources": "En lo personal tengo posición en Aeropuertos del Pacífico y Mercado Libre · Reportes del 3T 2026",
    "say": "En varias, la utilidad neta y el negocio cuentan historias distintas. ¿Cuál vigilarías tú?"
   }
  ]

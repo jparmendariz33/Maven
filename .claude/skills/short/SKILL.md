@@ -202,7 +202,8 @@ Cuenta regresiva: del último lugar al número 1. Sirve para shorts, publicacion
 - **Quien vigila es el canal, no JP (pedido de JP, 11 nov 2026):** en rankings y listas de seguimiento el sujeto es SIEMPRE "Costa Studio
   Finance" ("estamos vigilando", "en Costa Studio Finance seguimos de cerca…"); no digas "JP vigila", "yo vigilo" ni su nombre. Cada puesto
   lleva por qué se vigila Y su riesgo, con el mismo peso. Es una lista de seguimiento, no de compra: dilo una vez en el video y en la descripción.
-  Si alguna empresa está en `posiciones-jp.md`, se declara como "Costa Studio Finance tiene posición en <empresa>".
+  **Excepción al sujeto (JP, 14 nov 2026):** la declaración de conflicto de interés va en PRIMERA PERSONA, porque la posición es
+  de JP y no del canal: **"En lo personal tengo posición en <empresa>"**. Todo lo demás del ranking sigue siendo "Costa Studio Finance".
 - **Vigencia:** evita rankings atados a un mes ("para diciembre"); caducan en semanas. Mejor "de 2026", "de los últimos 12 meses", "de la década".
 - **vidIQ para elegir tema y título (permitido por JP el 11 nov 2026; única excepción a "costo cero"):** carga con ToolSearch
   `select:mcp__vidIQ__vidiq_balance,mcp__vidIQ__vidiq_keyword_research,mcp__vidIQ__vidiq_outliers`. Mira el saldo (`vidiq_balance`, gratis);

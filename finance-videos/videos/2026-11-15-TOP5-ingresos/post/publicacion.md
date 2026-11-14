@@ -14,7 +14,7 @@ En varias de estas, la utilidad neta y el negocio cuentan historias distintas. E
 
 ¿Cuál vigilarías tú? Te leo 👇
 
-⚠️ Costa Studio Finance tiene posición en Aeropuertos del Pacífico y en Mercado Libre.
+⚠️ En lo personal tengo posición en Aeropuertos del Pacífico y en Mercado Libre.
 
 Fuentes: reportes del 3T 2026 a la SEC (Amazon, Alphabet, Spotify, Mercado Libre, Grupo Aeroportuario del Pacífico).
 Contenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Armendáriz.
