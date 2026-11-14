@@ -50,11 +50,35 @@ JP autorizó que dure más: "no pasa nada si este video dura más; hay que ser c
 | 4 | Logos oficiales de cada empresa (no el catálogo monocromo) | `fetch_images.py` |
 | 5 | Versión para video largo: 8–10 rondas en 6–7 min, mismas reglas | skill `/largo` |
 
-## 5. Títulos (el mensaje concreto)
-- **Comparé 5 gigantes en 5 métricas: ganó una sola**
-- **Puse a competir a 5 empresas. Esto dijeron los números**
-- **5 empresas, 5 métricas, un ganador**
-- Para la versión larga: **El torneo de las 6 acciones: 10 rondas, un ganador**
+## 5. Títulos — la fórmula, no una lista suelta
+Referencia: los títulos de Pepe Nieves ("Mi nueva APUESTA en BOLSA", "No puedo parar de COMPRAR esta acción",
+"RANKEANDO la mejor APP para invertir", "MI MAYOR APUESTA"). **No prometen un dato: prometen que algo se va a resolver**,
+y siempre dicen que se habla de bolsa.
+
+**Los tres ingredientes, y los tres tienen que estar:**
+1. **Un verbo en primera persona**, en MAYÚSCULAS: COMPARÉ, RANKEÉ, ENFRENTÉ, PUSE A COMPETIR. El canal hizo algo, no
+   "estamos vigilando" (que no es una acción, es una actitud).
+2. **Decir que son ACCIONES o BOLSA, explícito.** El error de "5 gigantes" y "5 métricas" es que no dicen de qué:
+   ¿gigantes de qué?, ¿ganó una en qué? Tiene que aparecer "acciones", "en la bolsa" o "para invertir".
+3. **Un resultado que se revela al final**: "ganó una sola", "y ganó la que menos esperaba". Eso es lo que retiene.
+
+**Candidatos (en orden de lo que yo probaría):**
+1. **COMPARÉ 5 de las acciones más grandes del mundo: ganó una sola**
+2. **Puse a COMPETIR 5 acciones en 5 métricas y hubo un ganador claro**
+3. **RANKEANDO 5 acciones gigantes: 5 rondas, un ganador**
+4. **¿Cuál de estas 5 ACCIONES aguanta mejor los números?**
+5. **El TORNEO de las 5 acciones más grandes de la bolsa**
+6. **ENFRENTÉ 5 acciones en 5 rondas y ganó la que menos esperaba** ← solo si de verdad sorprende el resultado
+
+**Lo que no se usa nunca:**
+- "5 empresas que estamos vigilando" y parientes: no prometen nada y no dicen de qué se habla.
+- Nada con comprar, vender, "va a subir" ni "la mejor para invertir tu dinero": eso sí es recomendación.
+  "La mejor **en estas 5 métricas**" sí se puede, porque el criterio está dicho y es verificable.
+- Títulos atados a un mes ("para diciembre"): caducan en semanas.
+
+**Cómo se elige el definitivo:** se escriben 3 con la fórmula, se corre `vidiq_score_title` si hay créditos
+(renuevan el 4 de dic) y, si no, gana el que diga el resultado con menos palabras. El título se decide **antes**
+de escribir el guion, porque el gancho de los primeros 3 segundos tiene que prometer lo mismo que el título.
 
 ## 6. Calendario
 - **Dom 15 nov:** sale el ranking que ya está, con el título nuevo ("5 gigantes: ¿en cuáles crece el negocio?").
