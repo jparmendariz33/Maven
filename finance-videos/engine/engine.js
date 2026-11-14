@@ -309,7 +309,7 @@ R.ronda = (s, t) => {
     yW += 56 + (wl.lines.length - 1) * wlh; }
   const rows = (s.rows || []).slice(0, 5), inv = !!s.invert;
   const vals = rows.map(r => Math.abs(r.value)), mx = Math.max(1e-9, ...vals);
-  const y0 = Math.round(yW + 86), H2 = 152, x0 = 90, bx = 500, bw = 300;
+  const y0 = Math.round(yW + 86), H2 = 152, x0 = 90, bx = 476, bw = 236;   // barra más corta: el valor va fuera y no se encima (JP, 14 nov 2026)
   rows.forEach((r, i) => {
     const tc = typeof r.cue === 'number' ? r.cue : s.t0 + .9 + i * .45, k = ex(seg(t, tc, tc + .5)); if (k <= 0) return;
     const y = y0 + i * H2, win = r.points === 5;

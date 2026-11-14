@@ -1,4 +1,10 @@
 ---
+
+> **Gancho de texto en el primer segundo (JP aprobó probarlo el 14 nov 2026).** La maqueta 3D tarda en leerse y
+> mucha gente empieza sin sonido: el primer segundo tiene que llevar **la frase del gancho escrita en pantalla**, no solo
+> en la voz. En la historia de Steve Jobs se quedó a mirar el 27.84% (7 de cada 10 deslizaron), mientras que quien se
+> quedaba veía el 51.76%: el problema no era la historia, era el primer segundo. Se prueba en la próxima historia 3D y
+> se compara contra ese 27.84% en la revisión del 28 de noviembre.
 name: historia
 description: Crea una "Historia 3D" vertical (75–90 s, YouTube Shorts / Reels / TikTok) que cuenta la historia de una empresa o de su fundador con maquetas de plastilina animadas, personajes que actúan, luz de cine, música y efectos — estilo Costa Diorama de Costa Studio Finance, lista para que JP solo grabe su voz. Se hacen DOS por semana (miércoles y sábado). Úsala cuando digan "/historia", "haz la historia 3D de X", "video animado de Steve Jobs / Nike / Bimbo", "el video 3D de la semana", o cuando la tarea programada de los viernes lo pida.
 argument-hint: "<empresa o personaje> [enfoque opcional]"

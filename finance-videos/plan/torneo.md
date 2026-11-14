@@ -9,16 +9,28 @@
 - **No hay ganador.** Sin un resultado al final, el video no tiene a dónde llegar y el espectador no tiene por qué quedarse.
 
 ## 2. El formato nuevo
-Las 5 empresas **compiten** en 5 rondas, una por métrica. En cada ronda se ordenan y se reparten puntos
+Las 5 empresas **compiten** en 6 rondas, una por métrica. En cada ronda se ordenan y se reparten puntos
 (**5 al 1º, 4 al 2º, 3, 2 y 1**; empate = mismos puntos). Al final, tabla de posiciones y una ganadora.
 
-| Ronda | Métrica | La pregunta que responde | Fuente |
-|---|---|---|---|
-| 1 | Crecimiento de ventas (a/a) | ¿El negocio está creciendo? | Reporte trimestral (SEC/BMV) |
-| 2 | Crecimiento de la utilidad **de operación** | ¿Crece lo que gana operando, no lo que le pasó con sus inversiones? | Reporte trimestral |
-| 3 | Margen de operación | De cada peso que entra, ¿cuánto le queda? | Reporte trimestral |
-| 4 | ROE | ¿Qué tan bien usa el dinero de sus accionistas? | Datos de mercado (Yahoo) |
-| 5 | PEG | ¿Está cara para lo que crece? **Aquí gana el más bajo.** | Datos de mercado (Yahoo) |
+| Ronda | Métrica | La pregunta que responde | Gana | Fuente |
+|---|---|---|---|---|
+| 1 | Crecimiento de ventas (a/a) | ¿El negocio está creciendo? | el mayor | Reporte trimestral |
+| 2 | Crecimiento de la utilidad **de operación** | ¿Crece lo que gana operando, o solo lo que le pasó con sus inversiones? | el mayor | Reporte trimestral |
+| 3 | Margen de operación | De cada peso que entra, ¿cuánto le queda? | el mayor | Reporte trimestral |
+| 4 | ROE | ¿Qué tan bien usa el dinero de sus accionistas? | el mayor | Datos de mercado |
+| 5 | **Deuda sobre capital** | ¿Aguantaría un mal año, o va muy apalancada? | **el menor** | Datos de mercado |
+| 6 | PEG | ¿Está cara para lo que crece? | **el menor** | Datos de mercado |
+
+**Son 6 rondas, no 5 (JP, 14 nov 2026: "no pasa nada si dura casi 2 minutos").** Con 5 faltaba la pata de **solidez
+financiera**: una empresa puede ganar en crecimiento, margen, ROE y valuación y estar ahogada en deuda. La ronda de
+deuda es la que vuelve el torneo interesante — en la muestra, Mercado Libre gana casi todo y aquí sale último
+(197 contra 5 de Spotify). Las seis cubren: crecer (1 y 2), ganar (3), usar bien el capital (4), aguantar (5) y
+cuánto cuesta (6). Duración: ~1:55.
+
+**Sobre la idea de una ronda de "narrativa" (JP la propuso; NO se hace como ronda).** No es puntuable sin inventarse
+el criterio, y una nota subjetiva presentada como dato rompe la regla de "datos verificados". Pero el contexto sí hace
+falta, así que va en otro lado: **una escena de presentación de 12 s antes de la ronda 1**, con una línea factual por
+empresa ("Spotify: 306 millones de suscriptores de pago"). Informa sin fingir que es medible.
 
 **Evolución en el tiempo:** en las rondas 1 y 2, cada empresa lleva una minigráfica de sus últimos 5 trimestres.
 Es lo que pidió JP y es lo que separa "creció este trimestre" de "viene creciendo".
@@ -32,13 +44,15 @@ Las cifras del estado de resultados salen SIEMPRE del reporte oficial; los ratio
 JP autorizó que dure más: "no pasa nada si este video dura más; hay que ser concisos pero completos".
 ```
 0:00–0:10  Gancho: "Rankeando 5 acciones." + subtítulo "5 rondas, un ganador."  (logos al fondo)
-0:10–0:26  Ronda 1 · Crecimiento de ventas      + minigráfica
-0:26–0:42  Ronda 2 · Utilidad de operación      + minigráfica
-0:42–0:56  Ronda 3 · Margen de operación
-0:56–1:10  Ronda 4 · ROE
-1:10–1:26  Ronda 5 · PEG
-1:26–1:42  Tabla final y ganadora
-1:42–1:50  Cierre: ¿coincides?
+0:08–0:20  Quiénes compiten: una línea factual por empresa
+0:20–0:36  Ronda 1 · Crecimiento de ventas        + minigráfica
+0:36–0:52  Ronda 2 · Utilidad de operación        + minigráfica
+0:52–1:06  Ronda 3 · Margen de operación
+1:06–1:20  Ronda 4 · ROE
+1:20–1:34  Ronda 5 · Deuda sobre capital (gana el menor)
+1:34–1:48  Ronda 6 · PEG (gana el menor)
+1:48–2:02  Tabla final y ganadora
+2:02–2:10  Cierre: ¿coincides?
 ```
 
 ## 3a. El gancho de los primeros 3 segundos (JP, 14 nov 2026)
