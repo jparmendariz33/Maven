@@ -72,41 +72,12 @@
    "say": "Vamos a ver cuatro niveles: los ingresos, el margen bruto, los gastos de operación y, al final, la utilidad neta y la utilidad por acción. Y te voy a decir dónde encontrar todo esto gratis."
   },
   {
-   "type": "bignum",
-   "kicker": "¿Por qué Apple?",
-   "label": "Valor en bolsa de Apple (4 nov 2026)",
-   "value": 5.08,
-   "prefix": "$",
-   "suffix": " billones",
-   "decimals": 2,
-   "tone": "blue",
-   "sub": "Una de las empresas más valiosas del mundo. Y su estado de resultados es de los más claros para aprender.",
-   "cue_value": "vale",
-   "cue_sub": "claros",
-   "say": "¿Por qué Apple? Porque hoy vale más de 5 billones de dólares en la bolsa, es de las empresas más valiosas del mundo, y su estado de resultados es de los más claros para aprender.",
-   "bg_image": "images/apple_park.jpg"
-  },
-  {
-   "type": "personal",
-   "kicker": "Costa Studio Finance",
-   "title": "¿Alguna vez has leído un estado de resultados?",
-   "say": "Soy JP Armendáriz, esto es Costa Studio Finance, y antes de empezar, una pregunta: ¿alguna vez has leído un estado de resultados? Si te suena a cosa de contadores, tranquilo: en unos minutos lo vas a leer sin problema."
-  },
-  {
    "type": "chapter",
    "number": 1,
    "title": "Ingresos: lo que vende",
    "sub": "La primera línea",
    "chapter_name": "Ingresos",
    "say": "Empecemos por arriba, por la primera línea de la hoja: los ingresos."
-  },
-  {
-   "type": "statement",
-   "theme": "sand",
-   "kicker": "Un detalle",
-   "text": "El año fiscal de Apple termina en septiembre, no en diciembre.",
-   "emphasis": "septiembre,",
-   "say": "Un detalle antes de los números. Cada empresa elige cuándo cierra su año. El de Apple, su año fiscal, termina en septiembre, no en diciembre. Por eso su año 2026 va de octubre de 2025 a septiembre de 2026."
   },
   {
    "type": "bignum",
@@ -122,46 +93,6 @@
    "say": "En su año fiscal 2026, que terminó en septiembre, Apple vendió 479,000 millones de dólares, 15% más que el año anterior. Es la primera línea del estado de resultados. También se le llama ventas."
   },
   {
-   "type": "donut",
-   "kicker": "¿De dónde viene el dinero?",
-   "title": "Ingresos por categoría",
-   "center": "$479 mil M",
-   "cue_donut": "viene",
-   "slices": [
-    {
-     "label": "iPhone",
-     "value": 254.1,
-     "tone": "blue",
-     "cue": "iPhone"
-    },
-    {
-     "label": "Servicios",
-     "value": 123.3,
-     "tone": "accent",
-     "cue": "servicios"
-    },
-    {
-     "label": "Mac",
-     "value": 37.9,
-     "tone": "up",
-     "cue": "Mac"
-    },
-    {
-     "label": "Accesorios y wearables",
-     "value": 35.6,
-     "tone": "down",
-     "cue": "accesorios"
-    },
-    {
-     "label": "iPad",
-     "value": 27.9,
-     "tone": "ink",
-     "cue": "iPad"
-    }
-   ],
-   "say": "¿De dónde viene ese dinero? Más de la mitad, del iPhone. Le siguen los servicios: la App Store, iCloud, Apple Music. Después la Mac, los accesorios como los AirPods, y el iPad."
-  },
-  {
    "type": "bignum",
    "kicker": "Fortaleza y riesgo",
    "label": "Parte de las ventas de Apple que viene del iPhone",
@@ -173,20 +104,6 @@
    "cue_sub": "nota",
    "say": "Que más de la mitad de las ventas venga de un solo producto es una fortaleza, porque es un éxito enorme. Pero también es un riesgo: si un año el iPhone se vende menos, se nota en todo el estado de resultados.",
    "bg_image": "images/iphone.jpg"
-  },
-  {
-   "type": "statement",
-   "theme": "sand",
-   "kicker": "La primera pregunta",
-   "text": "¿Crecen los ingresos año con año?",
-   "emphasis": "Crecen",
-   "say": "La primera pregunta que te haces al ver esta línea es: ¿están creciendo? Un negocio que deja de vender más, tarde o temprano deja de ganar más. Apple creció 15% este año."
-  },
-  {
-   "type": "statement",
-   "text": "Los ingresos dicen cuánto vende. No cuánto gana.",
-   "emphasis": "gana.",
-   "say": "Pero ojo: los ingresos solo te dicen cuánto vende una empresa, no cuánto gana. Una empresa puede vender muchísimo y aun así perder dinero. Por eso hay que seguir bajando."
   },
   {
    "type": "chapter",
@@ -239,52 +156,11 @@
    "say": "En otras palabras: de cada 100 dólares que vende, le quedan casi 49 después de pagar lo que cuesta fabricar. Eso es un margen bruto de casi 49%."
   },
   {
-   "type": "compare",
-   "kicker": "El secreto de Apple",
-   "title": "Margen bruto por tipo de negocio",
-   "items": [
-    {
-     "label": "Productos",
-     "value": "39%",
-     "sub": "iPhone, Mac, iPad, accesorios: fabricar cuesta mucho.",
-     "cue": "productos"
-    },
-    {
-     "label": "Servicios",
-     "value": "76%",
-     "sub": "App Store, iCloud, Apple Music: cada venta extra cuesta muy poco.",
-     "highlight": true,
-     "cue": "servicios"
-    }
-   ],
-   "say": "Y aquí está el secreto de Apple. En sus productos, el margen bruto es de 39%. En sus servicios, de 76%. Vender una suscripción más cuesta mucho menos que fabricar un teléfono más."
-  },
-  {
    "type": "statement",
    "theme": "sand",
    "text": "Los servicios son 26% de lo que vende, pero 40% de su margen bruto.",
    "emphasis": "40%",
    "say": "Por eso, aunque los servicios son apenas una cuarta parte de lo que vende Apple, aportan el 40% de su margen bruto. Pesan mucho más en lo que gana que en lo que vende."
-  },
-  {
-   "type": "bignum",
-   "kicker": "Servicios",
-   "label": "Crecimiento de los servicios de Apple en un año",
-   "value": 13,
-   "signed": true,
-   "suffix": "%",
-   "tone": "up",
-   "sub": "De $109,158 M a $123,301 M",
-   "cue_value": "creciendo:",
-   "say": "Y los servicios siguen creciendo: 13% en un año. Para Apple, cada usuario nuevo de iPhone es también un posible cliente de iCloud, de Apple Music o de la App Store por muchos años."
-  },
-  {
-   "say": "Un margen bruto alto suele significar poder de precio: la gente está dispuesta a pagar más por tu producto que lo que te cuesta hacerlo. Es una de las señales de una ventaja competitiva.",
-   "type": "photo",
-   "image": "images/apple_store.jpg",
-   "layout": "full",
-   "title": "Un margen bruto alto suele significar poder de precio.",
-   "kicker": "Apple Store · Quinta Avenida"
   },
   {
    "type": "chapter",
@@ -393,12 +269,6 @@
    "say": "Y mira esto: las ventas de Apple crecieron 15%, pero la utilidad de operación creció 19%. Cuando las ventas suben más rápido que los gastos, la utilidad crece todavía más. A eso se le llama apalancamiento operativo."
   },
   {
-   "type": "personal",
-   "kicker": "Pregúntate",
-   "title": "¿Qué negocio crees que gana más por cada $100?",
-   "say": "Ahora piénsalo tú: de las empresas que usas todos los días, ¿cuál crees que se queda con más dinero de cada 100 que vende? ¿Tu banco, tu supermercado, tu app favorita? Escríbelo en los comentarios."
-  },
-  {
    "type": "chapter",
    "number": 4,
    "title": "Utilidad neta y por acción",
@@ -444,56 +314,45 @@
    "say": "A la utilidad de operación se le suman o restan otros ingresos y gastos, como intereses, y se le restan los impuestos: 27,000 millones. Lo que queda es la utilidad neta: 132,000 millones de dólares."
   },
   {
-   "type": "bignum",
-   "kicker": "Impuestos",
-   "label": "Tasa de impuestos efectiva de Apple en 2026",
-   "value": 17,
-   "suffix": "%",
-   "tone": "blue",
-   "sub": "$27,062 M de impuestos sobre $159,237 M de utilidad antes de impuestos",
-   "cue_value": "tasa",
-   "say": "Por cierto, esos 27,000 millones de impuestos equivalen a una tasa efectiva de 17% sobre su utilidad antes de impuestos. Las empresas globales pagan impuestos en muchos países, y esa tasa cambia de año a año."
-  },
-  {
    "type": "cascade",
-   "kicker": "Apple · por cada $100 vendidos",
+   "kicker": "Apple · año fiscal 2026 · millones de dólares",
    "title": "El estado de resultados completo",
    "prefix": "$",
-   "decimals": 1,
+   "decimals": 0,
    "items": [
     {
-     "label": "Ventas",
-     "value": 100,
+     "label": "Ventas netas",
+     "value": 478834,
      "cue": "Empiezas"
     },
     {
-     "label": "Fabricar",
-     "value": 51.2,
+     "label": "Costo de ventas",
+     "value": 245232,
      "cue": "Fabricar"
     },
     {
-     "label": "Investigar",
-     "value": 9.6,
-     "cue": "Investigar,"
+     "label": "Investigación y desarrollo",
+     "value": 45765,
+     "cue": "Investigar"
     },
     {
-     "label": "Vender y administrar",
-     "value": 6.2,
+     "label": "Venta y administración",
+     "value": 29774,
      "cue": "Vender"
     },
     {
      "label": "Impuestos y otros",
-     "value": 5.4,
+     "value": 25888,
      "cue": "Impuestos"
     },
     {
      "label": "Utilidad neta",
-     "value": 27.6,
+     "value": 132175,
      "kind": "total",
      "cue": "quedan"
     }
    ],
-   "say": "Así se ve completo, por cada 100 dólares. Empiezas con 100. Fabricar cuesta 51. Investigar, casi 10. Vender y administrar, 6. Impuestos y otros, 5. Y quedan casi 28 de utilidad neta."
+   "say": "Así se ve completo, en millones de dólares. Empiezas con 479 mil millones de ventas. Fabricar cuesta 245 mil. Investigar, 46 mil. Vender y administrar, 30 mil. Impuestos y otros, 26 mil. Y quedan 132 mil millones de utilidad neta."
   },
   {
    "type": "table",
@@ -543,40 +402,6 @@
     ]
    ],
    "say": "Y así se ve en el reporte real, con los dos últimos años lado a lado. Ya lo puedes leer: ventas, costo de ventas, margen bruto, los dos gastos de operación, la utilidad de operación y, abajo, la utilidad neta."
-  },
-  {
-   "type": "bignum",
-   "kicker": "Utilidad por acción (diluida)",
-   "label": "Apple · año fiscal 2026",
-   "value": 8.98,
-   "prefix": "$",
-   "decimals": 2,
-   "tone": "up",
-   "sub": "+20% vs. 2025 ($7.46). La utilidad total creció 18%.",
-   "cue_value": "acción:",
-   "cue_sub": "Subió",
-   "say": "Y si divides esa utilidad entre todas las acciones de Apple, obtienes la utilidad por acción: casi 9 dólares por acción. Subió 20%, más que la utilidad total, que subió 18%."
-  },
-  {
-   "type": "statement",
-   "theme": "sand",
-   "kicker": "¿Por qué dice \"diluida\"?",
-   "text": "Diluida: cuenta también las acciones que podrían emitirse.",
-   "emphasis": "podrían",
-   "say": "Verás que dice utilidad diluida. Significa que cuenta también las acciones que la empresa podría emitir, por ejemplo las que da a sus empleados como parte de su sueldo. Es la cifra más conservadora."
-  },
-  {
-   "say": "¿Por qué creció más? Porque Apple compra sus propias acciones y las retira. Hoy hay casi 2% menos acciones que hace un año, así que la utilidad se reparte entre menos rebanadas.",
-   "type": "photo",
-   "image": "images/tim_cook.jpg",
-   "layout": "split",
-   "title": "Creció más porque hay menos acciones.",
-   "kicker": "Recompras",
-   "caption": "Tim Cook, CEO de Apple",
-   "focus": [
-    0.38,
-    0.5
-   ]
   },
   {
    "type": "statement",
@@ -680,33 +505,6 @@
     }
    ],
    "say": "¿Y dónde encuentras todo esto gratis? En la sección de relaciones con inversionistas de cada empresa. Las de Estados Unidos lo publican en la SEC, en reportes llamados 10-K y 10-Q. Las mexicanas, en la Bolsa Mexicana de Valores."
-  },
-  {
-   "type": "list",
-   "theme": "sand",
-   "kicker": "Ejercicio para esta semana",
-   "title": "Elige una empresa que conozcas y busca 3 números",
-   "items": [
-    {
-     "text": "Sus ventas de los últimos 3 años",
-     "sub": "¿Crecen?",
-     "cue": "ventas",
-     "tone": "blue"
-    },
-    {
-     "text": "Su margen de operación",
-     "sub": "¿Cuánto queda de cada $100?",
-     "cue": "margen",
-     "tone": "accent"
-    },
-    {
-     "text": "Su utilidad por acción",
-     "sub": "¿Sube más o menos que la utilidad total?",
-     "cue": "acción",
-     "tone": "up"
-    }
-   ],
-   "say": "Te dejo un ejercicio para esta semana. Elige una empresa que conozcas y busca tres números: sus ventas de los últimos tres años, su margen de operación y su utilidad por acción. En 15 minutos vas a entenderla mejor que mucha gente."
   },
   {
    "type": "list",

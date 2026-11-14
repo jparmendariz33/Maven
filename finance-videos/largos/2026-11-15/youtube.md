@@ -2,21 +2,21 @@
 Archivos: `estado-de-resultados-apple_largo.mp4` · `miniatura.jpg` · Lista: **Leer empresas: estados financieros y métricas**
 
 ## Títulos (elige uno)
-1. **Cómo leer un estado de resultados en 10 minutos (con Apple)** ← recomendado
+1. **Cómo leer un estado de resultados en 7 minutos (con Apple)** ← recomendado
 2. Cómo leer el estado de resultados de una empresa: ejemplo real con Apple
 3. Estado de resultados explicado fácil: cuánto gana Apple de cada $100
 
 ## Descripción
 ```
-De cada $100 que le pagas a Apple, ¿cuánto se queda de ganancia? Aprende a leer un estado de resultados de arriba hacia abajo, con los números reales del año fiscal 2026 de Apple.
+De cada $100 que le pagas a Apple, ¿cuánto se queda de ganancia? Aprende a leer un estado de resultados de arriba hacia abajo, con las cifras reales del año fiscal 2026 de Apple: $478,834 millones de ventas y $132,175 millones de utilidad neta.
 
 ⏱️ Capítulos
 0:00 Introducción
-1:18 Ingresos
-3:09 Margen bruto
-4:51 Gastos de operación
-6:45 Utilidad neta y por acción
-9:11 Lo que no te dice
+0:43 Ingresos
+1:26 Margen bruto
+2:17 Gastos de operación
+3:51 Utilidad neta y por acción
+5:13 Lo que no te dice
 
 📊 Datos clave (Apple, año fiscal 2026, terminado el 26 sep 2026)
 • Ventas: $478,834 M (+15%) · Margen bruto: 48.8% (productos 39%, servicios 76%)
@@ -54,7 +54,7 @@ pregunta a la audiencia. Baja la música original a ~30% → Exportar 1080p.
 ## Guion para leer
 De cada 100 dólares que le pagas a Apple por un iPhone, una Mac o una suscripción, la empresa se queda con casi 28 de ganancia. ¿Cómo lo sé? Con una sola hoja.
 
-Esa hoja se llama estado de resultados. Y hoy vas a aprender a leerla en 10 minutos, de arriba hacia abajo, con los números reales de Apple.
+Esa hoja se llama estado de resultados. Y hoy vas a aprender a leerla en 7 minutos, de arriba hacia abajo, con los números reales de Apple.
 
 Vamos a ver cuatro niveles: los ingresos, el margen bruto, los gastos de operación y, al final, la utilidad neta y la utilidad por acción. Y te voy a decir dónde encontrar todo esto gratis.
 

@@ -190,8 +190,13 @@ el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exac
 
 ## 1d. Formato RANKING → **TORNEO** (JP, 14 nov 2026). Plan completo: `finance-videos/plan/torneo.md`
 > **Desde el 22 nov 2026 el ranking dominical es un TORNEO, no una lista.** Las empresas compiten en 5 rondas (una por
-> métrica), se reparten puntos 5-4-3-2-1 y al final hay tabla de posiciones y una ganadora. Métricas: crecimiento de
-> ventas, crecimiento de la utilidad **de operación**, margen de operación, ROE y PEG (en PEG gana el más bajo). En las
+> métrica), se reparten puntos 5-4-3-2-1 y al final hay tabla de posiciones y una ganadora. **Son 6 rondas** (JP, 14 nov):
+> 1 crecimiento de ventas · 2 crecimiento de la utilidad **de operación** · 3 margen de operación · 4 ROE ·
+> 5 **deuda sobre capital** · 6 PEG. En las dos últimas **gana el número más bajo** (`"invert": true`). La de deuda es
+> obligatoria: sin ella el torneo premia crecer sin ver si la empresa aguanta, y es la que suele voltear el resultado.
+> **Nada de una ronda de "narrativa"**: no es puntuable sin inventar el criterio y mezcla opinión con dato. El contexto
+> va en una escena de presentación de ~12 s antes de la ronda 1, con una línea factual por empresa. Duración ~1:55:
+> JP autorizó pasarse de los 85 s en este formato. En las
 > dos primeras rondas va una minigráfica de los últimos 5 trimestres: JP quiere ver la evolución, no solo el trimestre.
 > **Título y gancho (JP, 14 nov 2026).** Título de YouTube: `RANKEANDO 5 acciones: 5 rondas, un ganador`.
 > **En pantalla van separados:** el título grande de la primera escena es la ACCIÓN ("Rankeando 5 acciones.") y
