@@ -4,7 +4,7 @@
 
 **Título** (69 de 100 caracteres):
 ```
-5 empresas que estamos vigilando: venden más y ganan menos #inversiones
+5 gigantes: ¿en cuáles crece el negocio de verdad? #inversiones
 ```
 
 **Descripción**:
@@ -33,7 +33,7 @@ Costa Studio Finance, by JP Armendáriz.
 ```
 
 **Títulos alternativos:**
-- Su utilidad cayó… y su negocio no. 5 empresas que estamos vigilando
+- Su utilidad cayó… y su negocio no: 5 empresas gigantes
 - 5 empresas que estamos vigilando y por qué #Amazon #Alphabet
 
 ## Al subir

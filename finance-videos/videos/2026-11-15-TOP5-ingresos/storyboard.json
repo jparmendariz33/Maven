@@ -13,10 +13,17 @@
     "pos": "br",
     "size": 430
    },
-   "text": "5 empresas que estamos vigilando.",
-   "emphasis": "vigilando.",
-   "sub": "Ordenadas por cuánto crecieron sus ventas. No es lista de compra.",
-   "say": "A ver: 5 empresas que en Costa Studio Finance estamos vigilando, ordenadas por cuánto crecieron sus ventas."
+   "text": "5 gigantes: ¿en cuáles crece el negocio?",
+   "emphasis": "el negocio?",
+   "sub": "Porque en varias, la utilidad cayó y el negocio no.",
+   "say": "A ver: 5 empresas gigantes. En cuáles crece el negocio de verdad, porque en varias la utilidad cayó y el negocio no.",
+   "logos": [
+    "images/logo_amazon.png",
+    "images/logo_spotify.png",
+    "images/logo_gap.png",
+    "images/logo_google.png",
+    "images/logo_meli.png"
+   ]
   },
   {
    "type": "company",
@@ -111,7 +118,8 @@
      "cue": "puente"
     }
    ],
-   "say": "Número 3: Aeropuertos del Pacífico, 22%. Ojo: con menos pasajeros. Lo que creció fue su puente a San Diego."
+   "say": "Número 3: Aeropuertos del Pacífico, 22%. Ojo: con menos pasajeros. Lo que creció fue su puente a San Diego.",
+   "logo": "images/logo_gap.png"
   },
   {
    "type": "company",
@@ -178,7 +186,8 @@
      "cue": "operación"
     }
    ],
-   "say": "Y el número 1: Mercado Libre, 45%. Aquí al revés: la que bajó fue su utilidad de operación, por envíos gratis y crédito."
+   "say": "Y el número 1: Mercado Libre, 45%. Aquí al revés: la que bajó fue su utilidad de operación, por envíos gratis y crédito.",
+   "logo": "images/logo_meli.png"
   },
   {
    "type": "outro",

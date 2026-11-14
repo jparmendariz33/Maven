@@ -169,7 +169,7 @@ function logoNeedsCard(k, im, bgc) {
     g.drawImage(im, 0, 0, 48, 48); const d = g.getImageData(0, 0, 48, 48).data; let r = 0, gg = 0, b = 0, n = 0;
     for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 128) { r += d[i]; gg += d[i + 1]; b += d[i + 2]; n++; }
     logoTone[k] = n ? toHex([r / n, gg / n, b / n]) : null; }
-  return !logoTone[k] || contrast(logoTone[k], bgc) < 1.6;
+  return !logoTone[k] || contrast(logoTone[k], bgc) < 1.22;   // solo si es casi invisible (JP, 14 nov 2026: la tarjeta se veía como fondo blanco pegado)
 }
 const kb = (s, t) => 1.04 + .09 * seg(t, s.t0, s.t1 + .6);           // zoom lento tipo Ken Burns
 const focus = s => s.focus || [.5, .5];
@@ -268,7 +268,19 @@ R.hook = (s, t) => {
   if (s.question) { const tq = cueT(s, 'cue_question', 3); rise(s.question, 90, 1300, seg(t, tq - .1, tq + .5), { f: F.s, w: 400, s: 150, c: B.mostaza }); }
 };
 
+// fila de logos muy tenues y desenfocados al fondo: llena el espacio de la apertura sin competir con el texto
+function logoWall(s, t) {
+  const ls = (s.logos || []).map(img).filter(Boolean); if (!ls.length) return;
+  const k = seg(t, s.t0 + .2, s.t0 + 1.4); if (k <= 0) return;
+  const n = ls.length, cw = W / n, y = 1430;
+  C.save(); C.globalAlpha *= .3 * k; C.filter = 'blur(2px)';
+  ls.forEach((im, i) => { const z = 210, cx = cw * (i + .5), dy = y + (i % 2 ? 52 : -52) + (1 - ex(k)) * 40;
+    contain(im, cx - z / 2, dy - z / 2, z, z); });
+  C.restore();
+}
+
 R.statement = (s, t) => {
+  logoWall(s, t);
   const th = themeOf(s), dk = th === 'blue' || th === 'brand', ink = dk ? B.arena : B.negro, em = dk ? B.mostaza : B.azul;
   if (s.kicker) kicker(s.kicker, 90, 520, s.t0 + .1, t, ink);
   const size = s.size || 84, lines = wrap(s.text, F.d, 600, size, 900), lh = size * 1.22;

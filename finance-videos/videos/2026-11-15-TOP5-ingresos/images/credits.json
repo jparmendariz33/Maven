@@ -24,15 +24,23 @@
   "kind": "logo"
  },
  "images/logo_spotify.png": {
-  "title": "spotify",
-  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
-  "source_url": "https://simpleicons.org/?q=spotify",
+  "credit": "Logo: marca registrada de Spotify AB · sala de prensa de Spotify",
+  "source_url": "https://newsroom.spotify.com/media-kit/",
   "kind": "logo"
  },
  "images/logo_google.png": {
-  "title": "google",
-  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
-  "source_url": "https://simpleicons.org/?q=google",
+  "credit": "Logo: marca registrada de Google LLC · sala de prensa de Google",
+  "source_url": "https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+  "kind": "logo"
+ },
+ "images/logo_meli.png": {
+  "credit": "Logo: marca registrada de MercadoLibre, Inc. · sitio oficial",
+  "source_url": "https://www.mercadolibre.com",
+  "kind": "logo"
+ },
+ "images/logo_gap.png": {
+  "credit": "Logo: marca registrada de Grupo Aeroportuario del Pacífico · sitio oficial",
+  "source_url": "https://www.aeropuertosgap.com.mx",
   "kind": "logo"
  }
 }
