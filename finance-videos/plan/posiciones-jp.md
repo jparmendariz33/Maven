@@ -6,4 +6,8 @@ no afirman nada sobre las posiciones de JP. **Solo JP llena esta tabla.**
 
 | Empresa | Ticker | Desde | Notas |
 |---|---|---|---|
-| _(llenar)_ | | | |
+| Grupo Aeroportuario del Pacífico | GAPB.MX / PAC | (sin fecha) | Lo dijo JP en la conversación del 14 nov 2026 |
+| Mercado Libre | MELI | (sin fecha) | Lo dijo JP en la conversación del 14 nov 2026 |
+
+> Estas dos las anoté yo con lo que JP dijo el 14 de noviembre de 2026 ("esa es una que yo tengo en mi portafolio").
+> **JP: confirma o corrige esta tabla**, porque de ella depende lo que se declara en pantalla. Falta la fecha de cada una.

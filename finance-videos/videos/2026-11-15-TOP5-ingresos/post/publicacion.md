@@ -4,19 +4,21 @@
 ```
 5 empresas que en Costa Studio Finance estamos vigilando, ordenadas por cuánto crecieron sus ventas en el trimestre de julio a septiembre de 2026. Es una lista de seguimiento, no de compra.
 
-#5 Liverpool · +2.2%. Lo que crece es su negocio inmobiliario (+16.3%), no la ropa (+1.1%). El pero: su cartera vencida subió a 5.2%.
-#4 Walmex · +3.0%. Pero su utilidad neta cayó 6.1%, porque los gastos crecieron más rápido que las ventas.
-#3 Grupo Aeroportuario del Pacífico · +21.8%… con 1.4% menos pasajeros. Lo que creció fue el puente peatonal a San Diego.
-#2 Volaris · +32.4% y su primer trimestre de mil millones de dólares. Aun así perdió 26.5 millones, por el combustible.
-#1 Mercado Libre · +45.1%, 10,750 millones de dólares en un trimestre. Pero su ganancia de operación bajó, de 724 a 676 millones.
+#5 Amazon · ventas +12%. Su nube AWS creció 39% y su utilidad de operación subió 61%. Su utilidad neta bajó 2%, pero por una ganancia extraordinaria del año pasado, no por el negocio.
+#4 Spotify · ventas +16.3%, con 306 millones de suscriptores de pago. Su utilidad neta cayó 42% por impuestos e intereses; la de operación subió 15%.
+#3 Aeropuertos del Pacífico · ingresos +21.8%… con 1.4% menos pasajeros. Lo que creció fue su puente peatonal a San Diego.
+#2 Alphabet · ventas +25% y su nube creció 103%. Su utilidad neta cayó 25% por una pérdida en inversiones; la de operación subió 30%.
+#1 Mercado Libre · ventas +45.1%. Aquí al revés: la que bajó fue su utilidad de operación, de $724 M a $676 M, por envíos gratis y crédito.
 
-El hilo que las une: en las cinco, la ganancia creció menos que las ventas. Por eso el primer renglón del estado de resultados nunca es el resultado.
+En varias de estas, la utilidad neta y el negocio cuentan historias distintas. Eso solo se ve si bajas del primer renglón del estado de resultados.
 
 ¿Cuál vigilarías tú? Te leo 👇
 
-Fuentes: reportes del tercer trimestre de 2026 presentados a la SEC (Mercado Libre, Volaris, GAP) y a la BMV (Walmex, Liverpool).
+⚠️ Costa Studio Finance tiene posición en Aeropuertos del Pacífico y en Mercado Libre.
+
+Fuentes: reportes del 3T 2026 a la SEC (Amazon, Alphabet, Spotify, Mercado Libre, Grupo Aeroportuario del Pacífico).
 Contenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Armendáriz.
-#inversiones #bolsa #MercadoLibre #Walmex #Volaris
+#inversiones #bolsa #Amazon #Alphabet #MercadoLibre
 ```
 
 Imágenes (en este orden): 01.png, 02.png, 03.png, 04.png

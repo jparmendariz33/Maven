@@ -22,6 +22,23 @@ terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno p
 **Modelo de estilo:** `videos/2026-11-07-ABNB/` (el favorito de JP) y, para el formato y los colores de empresa, `videos/2026-11-08-CUERVO/`.
 
 ### ✅ Checklist de estilo (reglas que pidió JP — revisa TODAS antes de entregar)
+
+#### 🔖 Regla del rótulo (JP, 14 nov 2026 — la más importante de las visuales)
+**Todo lo que se dice en la voz tiene que verse en pantalla, y ningún número puede quedar sin decir qué es.** El espectador
+no debe tener que adivinar, ni esperar a que lo digas, para entender una cifra. Dos defectos reales del short de Nubank:
+- Los chips decían `Brasil · 120 M` y `México · 16.6 M`. ¿120 millones de qué? De pesos, de usuarios, de dólares. Debía decir
+  **`Brasil · 120 M de clientes`**. Un número suelto no significa nada.
+- La escena decía "Se paga a 16 veces sus ganancias" con el gancho "¿Está cara?", **sin nombrar la acción**. ¿Cara la empresa,
+  el producto, la tarjeta? Debía ser **"La acción se paga a 16 veces las ganancias"**.
+
+Cómo se cumple:
+1. **Cada cifra lleva su unidad y su sujeto** en la misma línea: "Clientes: 143 M", "Ventas del trimestre: +12%",
+   "Utilidad de operación: $676 M", "Pasajeros: −1.4%". Nunca "143 M" solo, nunca "+12%" solo.
+2. **Distingue las utilidades.** "Utilidad" a secas es ambiguo: escribe **utilidad de operación** o **utilidad neta**. En 2026
+   muchas empresas tienen la neta distorsionada por ganancias o pérdidas en inversiones; confundirlas cambia la conclusión.
+3. **Si la voz lo dice, la pantalla lo muestra.** Al terminar el storyboard, lee `narration.txt` en voz alta contra `qa.jpg`:
+   cada dato hablado debe tener su rótulo visible en la escena que le toca. Si solo está en la voz, falta en pantalla.
+4. **Al revés también:** si en pantalla hay un número que la voz no explica, debe bastarse solo con su rótulo.
 - **JP en 3D (§2c), obligatorio:** solo en el gancho y en el cierre, chico y recortado, sobre la foto del tema a pantalla completa (`bg_full`). Nada 3D en medio. Varía acto y vestuario respecto al short anterior.
 - **Short reactivo = short de contexto (§1c):** sin "hoy" ni fecha en el título, el gancho y el guion; la noticia es el pretexto, el ángulo dura meses.
 1. **Un video por día**, hecho el mismo día, que se publica **siempre a las 19:00 CDMX**. **Regla del cierre:** los datos son los de
@@ -169,6 +186,8 @@ Cuenta regresiva: del último lugar al número 1. Sirve para shorts, publicacion
   número grande en el `kicker` ("#5") y UN dato que explique por qué está ahí. Top 3 si los datos necesitan más aire; top 5 si son de una línea.
 - **El criterio manda y se dice en pantalla.** Todo ranking se ordena por un dato verificable: crecimiento de ingresos, margen, rendimiento en
   el año, caída desde el máximo, dividendo, valor de mercado, flujo libre… Di el criterio en el gancho y la fecha de corte en la descripción.
+- **Mezcla de mercados (JP, 14 nov 2026):** la audiencia es internacional. **A lo más 1 de cada 3** empresas del ranking es mexicana,
+  y solo si tiene algo que contar; el resto, marcas que se reconozcan en toda Latinoamérica y España. Ya no hay cuota mínima de mexicanas.
 - **Nunca "las que van a subir" ni "las mejores para comprar".** Eso es recomendación y predicción. En su lugar: "las 5 que más crecieron este
   año", "las 5 más castigadas del S&P 500" o, el favorito de JP, **"5 empresas que Costa Studio Finance está vigilando y por qué"**.
 - **Quien vigila es el canal, no JP (pedido de JP, 11 nov 2026):** en rankings y listas de seguimiento el sujeto es SIEMPRE "Costa Studio

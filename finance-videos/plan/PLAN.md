@@ -102,7 +102,11 @@ todos ahora y qué tan cara o rentable es. **Solo empresas que ya coticen en bol
 S-1/F-1/prospecto presentado; feedback de JP, 8 nov 2026). Nunca privadas sin IPO en puerta, startups ni cripto. Si es pre-IPO, se usan
 las cifras del prospecto y se dice claro que aún no cotiza. Prioridad: (1) noticia de la semana (resultados que sorprendieron,
 adquisición, IPO, expansión, lanzamiento, polémica, récord); (2) marca cotidiana para la audiencia; (3) búsquedas en YouTube.
-Al menos 1 de cada 3 es mexicana. Sin repetir empresas en 30 días ni las de los reactivos de esa semana. Banco de ideas y
+**Mezcla de mercados (JP, 14 nov 2026):** la audiencia del canal es más internacional de lo que suponíamos, así que las empresas
+mexicanas dejan de ser el centro. Se usan cuando tienen algo que de verdad contar, no por cuota. Antes esto decía "al menos 1 de
+cada 3 es mexicana" y se leía como un piso que empujaba a llenar de mexicanas; ahora es **a lo más 1 de cada 3**, y el resto son
+empresas que cualquiera en Latinoamérica o España reconozca (Amazon, Alphabet, Spotify, Mercado Libre…). Sin repetir empresas en
+30 días ni las de los reactivos de esa semana. Banco de ideas y
 registro: [`banco-empresas.md`](banco-empresas.md). Estructura: skill `/short` §1b.
 
 **Formato "Análisis + Potencial" (8 nov 2026, pedido por JP):** cada short de empresa es mitad análisis (qué hace, por qué está en

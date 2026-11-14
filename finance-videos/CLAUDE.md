@@ -55,6 +55,11 @@ la misma hora). Los datos son SIEMPRE los de cierre, lo más actualizados posibl
 - No dependen del cierre: el largo (atemporal), su short derivado del miércoles y los shorts de sábado y domingo (no hay mercado: usan
   el cierre del viernes).
 
+## Regla del rótulo (JP, 14 nov 2026)
+**Todo lo que dice la voz se ve en pantalla, y ningún número va sin decir qué es.** "Brasil · 120 M" no significa nada: va
+"Brasil · 120 M de clientes". "¿Está cara?" sin nombrar la acción es ambiguo: va "La acción se paga a 16 veces las ganancias".
+Distingue siempre **utilidad de operación** de **utilidad neta**. Detalle y checklist en `/short` §0.
+
 ## Regla de la maquetación (13 nov 2026, tras el defecto que encontró JP en el short de Nubank)
 El motor tiene que aguantar cualquier largo de texto: **nunca** se arregla un encimado acortando el guion.
 - `fitLines(txt, f, w, size, maxW, maxLines, min)` achica hasta que quepa. `wrap(...).slice(0, n)` tira palabras en

@@ -643,12 +643,18 @@ R.outro = (s, t) => {
   if (kc > 0) { const label = s.cta || V.brand.cta, w = tw(label, F.b, 700, 40) + 90;
     C.save(); C.globalAlpha *= kc; scaleAt(540, 1110, .9 + .1 * back(kc));
     rr(540 - w / 2, 1060, w, 96, 48); C.fillStyle = ink; C.fill(); txt(label, 540, 1122, { f: F.b, w: 700, s: 40, al: 'center', c: B.azul }); C.restore(); }
-  const kd = seg(t, tl + .8, tl + 1.3);
+  // el pie del cierre (handle, fuentes, aviso y la declaración de conflicto) cuelga del FINAL de la escena, no de la
+  // última palabra: con la cola corta se quedaba sin aparecer (14 nov 2026). Mínimo ~2.6 s a plena vista.
+  const tEnd = s.t1 || (tl + 3), kd = seg(t, Math.max(s.t0 + .5, Math.min(tl + .8, tEnd - 2.6)), Math.max(s.t0 + 1, Math.min(tl + 1.3, tEnd - 2.1)));
   if (V.brand.handle) txt(V.brand.handle, 540, 1230, { f: F.d, w: 600, s: 40, al: 'center', c: ink, a: kd });
   if (V.brand.name) txt(V.brand.name.toUpperCase() + (V.brand.byline ? '  ·  ' + V.brand.byline.toUpperCase() : ''), 540, 1278, { f: F.d, w: 800, s: 19, ls: 3, al: 'center', c: B.mostaza, a: kd });
-  txt(s.sources ? 'Datos: ' + s.sources : 'Datos: Yahoo Finance', 540, 1330, { f: F.b, w: 400, s: 28, al: 'center', c: ink, a: kd * .85 });
-  txt(V.brand.disclaimer, 540, 1372, { f: F.b, w: 400, s: 28, al: 'center', c: ink, a: kd * .85 });
-  if (s.disclosure) txt(s.disclosure, 540, 1414, { f: F.b, w: 700, s: 28, al: 'center', c: B.mostaza, a: kd });
+  const src = s.sources ? 'Datos: ' + s.sources : 'Datos: Yahoo Finance';
+  txt(src, 540, 1330, { f: F.b, w: 400, s: fit(src, F.b, 400, 28, 940, 20), al: 'center', c: ink, a: kd * .85 });
+  txt(V.brand.disclaimer, 540, 1372, { f: F.b, w: 400, s: fit(V.brand.disclaimer, F.b, 400, 28, 940, 20), al: 'center', c: ink, a: kd * .85 });
+  // declaración de conflicto de interés: tiene que LEERSE. Se parte en dos líneas y va en pastilla (JP, 14 nov 2026).
+  // una sola línea, debajo del aviso legal, con fit para que nunca se corte. La declaración FUERTE va como chip en la
+  // escena de cada empresa, que es donde el espectador la necesita (14 nov 2026).
+  if (s.disclosure) txt(s.disclosure, 540, 1414, { f: F.b, w: 700, s: fit(s.disclosure, F.b, 700, 28, 900, 18), al: 'center', c: B.mostaza, a: kd });
 };
 
 // ---------------- subtítulos ----------------

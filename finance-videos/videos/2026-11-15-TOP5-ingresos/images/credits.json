@@ -16,5 +16,23 @@
   "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
   "source_url": "https://simpleicons.org/?q=aeromexico",
   "kind": "logo"
+ },
+ "images/logo_amazon.png": {
+  "title": "amazon",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=amazon",
+  "kind": "logo"
+ },
+ "images/logo_spotify.png": {
+  "title": "spotify",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=spotify",
+  "kind": "logo"
+ },
+ "images/logo_google.png": {
+  "title": "google",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=google",
+  "kind": "logo"
  }
 }
