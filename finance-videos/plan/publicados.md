@@ -24,6 +24,7 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 | mié 11 nov 2026 · 19:00 | Short derivado | De cada $100 que le pagas a Apple, casi $28 son ganancia (adelanto del largo; rehecho el 11 nov con JP en 3D y guion nuevo) | `videos/2026-11-11-APPLE/` |
 | sáb 14 nov 2026 · 12:00 | Historia 3D | Steve Jobs: lo sacaron de su propia empresa (Apple) · con la partitura de órgano y piano | `videos/2026-11-14-JOBS-historia/` |
 | dom 15 nov 2026 · 10:00 | Largo | Cómo leer un estado de resultados (con Apple) | `largos/2026-11-15/` |
+| dom 15 nov 2026 · 19:00 | Short RANKING + publicación | 5 empresas que Costa Studio Finance está vigilando: venden más y ganan menos (LIVEPOL, WALMEX, GAP, VOLAR, MELI) | `videos/2026-11-15-TOP5-ingresos/` |
 
 **No programado:** `videos/2026-11-09-SPCX-historia/` (primera Historia 3D, SpaceX: animatic sin voz y versión con música; hecha con el motor 3D v1). `videos/extra-ACCION/` (short del largo "¿Qué es una acción?", que ya se publicó). Solo si JP lo pide.
 

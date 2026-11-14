@@ -1,0 +1,20 @@
+{
+ "images/logo_walmart.png": {
+  "title": "walmart",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=walmart",
+  "kind": "logo"
+ },
+ "images/logo_mercadopago.png": {
+  "title": "mercadopago",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=mercadopago",
+  "kind": "logo"
+ },
+ "images/logo_aeromexico.png": {
+  "title": "aeromexico",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=aeromexico",
+  "kind": "logo"
+ }
+}

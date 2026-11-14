@@ -65,3 +65,8 @@ empresa en 30 días ni una de los shorts reactivos de esa semana; revisar `clien
 |---|---|---|---|
 | 7 nov 2026 | Airbnb | ABNB | `videos/2026-11-07-ABNB` |
 | 8 nov 2026 | Becle (José Cuervo) | CUERVO.MX | `videos/2026-11-08-CUERVO` |
+
+## Usadas en rankings (para no repetir más de 2 del ranking anterior)
+| Domingo | Ranking | Empresas |
+|---|---|---|
+| 15 nov 2026 | 5 que estamos vigilando: venden más y ganan menos | Liverpool, Walmex, GAP, Volaris, Mercado Libre |

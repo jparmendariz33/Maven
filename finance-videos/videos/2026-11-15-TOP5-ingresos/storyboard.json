@@ -1,0 +1,178 @@
+{
+ "slug": "2026-11-15-TOP5-ingresos",
+ "format": "short",
+ "scenes": [
+  {
+   "type": "statement",
+   "kicker": "RANKING · COSTA STUDIO FINANCE",
+   "host": {
+    "act": "piensa",
+    "mood": "neutral",
+    "outfit": "sueter",
+    "accessory": "lentes",
+    "pos": "br",
+    "size": 430
+   },
+   "text": "5 empresas que estamos vigilando.",
+   "emphasis": "vigilando.",
+   "sub": "Ordenadas por cuánto crecieron sus ventas. Es lista de seguimiento, no de compra.",
+   "say": "A ver: 5 empresas que en Costa Studio Finance estamos vigilando, ordenadas por cuánto crecieron sus ventas."
+  },
+  {
+   "type": "company",
+   "theme": "sand",
+   "kicker": "#5 · EL PUERTO DE LIVERPOOL",
+   "name": "Liverpool",
+   "line": "Vende 2.2% más, pero lo que crece es el casero, no la tienda.",
+   "chips": [
+    {
+     "label": "Inmobiliario +16.3%",
+     "cue": "inmobiliario"
+    },
+    {
+     "label": "Ropa +1.1%",
+     "cue": "ropa"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Ingresos del trimestre",
+     "value": "$49,115 M",
+     "cue": "Liverpool"
+    },
+    {
+     "label": "El pero: cartera vencida",
+     "value": "5.2%",
+     "tone": "down",
+     "cue": "vencida"
+    }
+   ],
+   "say": "Número 5: Liverpool, 2.2%. Crece su negocio inmobiliario, no la ropa. El pero: su cartera vencida subió a 5.2%."
+  },
+  {
+   "type": "company",
+   "kicker": "#4 · WALMART DE MÉXICO",
+   "name": "Walmex",
+   "logo": "images/logo_walmart.png",
+   "line": "El termómetro del consumo en México: 3% más de ventas.",
+   "chips": [
+    {
+     "label": "Ingresos: $248,828 M"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Ventas del trimestre",
+     "value": "+3.0%",
+     "cue": "Walmart"
+    },
+    {
+     "label": "El pero: utilidad neta",
+     "value": "−6.1%",
+     "tone": "down",
+     "cue": "bajó"
+    }
+   ],
+   "say": "Número 4: Walmart de México, 3%. Pero su utilidad bajó 6.1%: los gastos crecieron más rápido que las ventas."
+  },
+  {
+   "type": "company",
+   "theme": "sand",
+   "kicker": "#3 · GRUPO AEROPORTUARIO DEL PACÍFICO",
+   "name": "Los aeropuertos",
+   "line": "Guadalajara, Tijuana, Los Cabos: 21.8% más ingresos.",
+   "chips": [
+    {
+     "label": "Pasajeros −1.4%",
+     "cue": "pasajeros"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Ingresos del trimestre",
+     "value": "+21.8%",
+     "cue": "aeropuertos"
+    },
+    {
+     "label": "El puente a San Diego",
+     "value": "$775 M",
+     "cue": "puente"
+    }
+   ],
+   "say": "Número 3: los aeropuertos de Guadalajara y Tijuana, 21.8%. Ojo: con 1.4% menos pasajeros. Creció por un puente a San Diego."
+  },
+  {
+   "type": "company",
+   "kicker": "#2 · VOLARIS",
+   "name": "Volaris",
+   "line": "Su primer trimestre de mil millones de dólares.",
+   "chips": [
+    {
+     "label": "Combustible: el golpe",
+     "cue": "combustible"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Ingresos del trimestre",
+     "value": "+32.4%",
+     "cue": "Volaris"
+    },
+    {
+     "label": "El pero: perdió",
+     "value": "$26.5 M",
+     "tone": "down",
+     "cue": "perdió"
+    }
+   ],
+   "say": "Número 2: Volaris, 32.4%. Su primer trimestre de mil millones de dólares. Y aun así perdió dinero, por el combustible."
+  },
+  {
+   "type": "statement",
+   "text": "Antes del número 1: sígueme.",
+   "emphasis": "sígueme.",
+   "sub": "Cada semana hay uno de estos.",
+   "say": "Antes del número 1: sígueme, que cada semana hay uno de estos."
+  },
+  {
+   "type": "company",
+   "theme": "sand",
+   "kicker": "#1 · MERCADO LIBRE",
+   "name": "Mercado Libre",
+   "line": "$10,750 millones de dólares en un solo trimestre.",
+   "chips": [
+    {
+     "label": "Envíos gratis y crédito"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Ingresos del trimestre",
+     "value": "+45.1%",
+     "cue": "Mercado"
+    },
+    {
+     "label": "El pero: ganancia de operación",
+     "value": "−6.5%",
+     "tone": "down",
+     "cue": "operación"
+    }
+   ],
+   "say": "Número 1: Mercado Libre, 45.1%. Pero su ganancia de operación bajó: de 724 a 676 millones."
+  },
+  {
+   "type": "outro",
+   "host": {
+    "act": "cierre",
+    "outfit": "sueter",
+    "accessory": "lentes"
+   },
+   "question_a": "¿Cuál vigilarías",
+   "question_b": "tú?",
+   "cue_a": "vigilarías",
+   "cue_b": "tú",
+   "sources": "Reportes 3T26 a la SEC y a la BMV · cierre del 13 nov 2026",
+   "say": "En las cinco, la ganancia creció menos que las ventas. ¿Cuál vigilarías tú?"
+  }
+ ]
+}

@@ -282,10 +282,13 @@ R.company = (s, t) => {
       rr(700, 300, 230, 230, 34); C.fillStyle = '#FFFFFF'; C.fill(); C.strokeStyle = B.grid; C.lineWidth = 2; C.stroke(); contain(lg, 726, 326, 178, 178); }
     else contain(lg, 700, 300, 230, 230);
     C.restore(); } }
-  riseLines(wrap(s.name || D.short_name || D.name, F.d, 800, 96, lg ? 580 : 900), 90, 490, 110, s.t0 + .2, t, { f: F.d, w: 800, s: lg ? fit(s.name || D.short_name || D.name, F.d, 800, 96, 580, 64) : 96, c: B.marca });
+  // el nombre manda: lo de abajo cuelga de su última línea real (con nombres de 2 líneas se encimaba — 14 nov 2026)
+  const nm = fitLines(s.name || D.short_name || D.name, F.d, 800, 96, lg ? 580 : 900, 2, 56), nlh = Math.round(nm.size * 1.15);
+  riseLines(nm.lines, 90, 490, nlh, s.t0 + .2, t, { f: F.d, w: 800, s: nm.size, c: B.marca });
+  const yN = Math.max(586, 490 + (nm.lines.length - 1) * nlh + nm.size * .30);   // 586 = la posición de siempre con una sola línea
   const ll = wrap(s.line || '', F.b, 500, 46, 880);
-  riseLines(ll, 90, 640, 60, s.t0 + .6, t, { f: F.b, w: 500, s: 46, c: B.g3 });
-  let y = 700 + ll.length * 60, x = 90;
+  riseLines(ll, 90, yN + 54, 60, s.t0 + .6, t, { f: F.b, w: 500, s: 46, c: B.g3 });
+  let y = yN + 114 + ll.length * 60, x = 90;
   (s.chips || []).forEach((c, i) => {
     const label = typeof c === 'string' ? c : c.label, tc = typeof c === 'object' && typeof c.cue === 'number' ? c.cue : s.t0 + 1.2 + i * .25;
     const k = seg(t, tc, tc + .45); const w = tw(label, F.b, 700, 38) + 64;
