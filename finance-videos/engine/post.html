@@ -20,8 +20,10 @@ function tw(s, o) { C.save(); C.font = `${o.it ? 'italic ' : ''}${o.w || 500} ${
 function wrap(s, o, max) { const out = []; let cur = ''; for (const w of String(s).split(' ')) { const t = cur ? cur + ' ' + w : w; if (tw(t, o) > max && cur) { out.push(cur); cur = w; } else cur = t; } if (cur) out.push(cur); return out; }
 function para(s, x, y, o, max, lh) { const ls = wrap(s, o, max); ls.forEach((l, i) => T(l, x, y + i * lh, o)); return y + ls.length * lh; }
 function cover(im, fx = .5, fy = .5) { const k = Math.max(S / im.naturalWidth, S / im.naturalHeight), w = im.naturalWidth * k, h = im.naturalHeight * k; C.drawImage(im, (S - w) * fx, (S - h) * fy, w, h); }
-window.drawSlide = async ({ s, i, n, brand, image, logo, series, sources }) => {
+window.drawSlide = async ({ s, i, n, brand, image, logo, logos, series, sources }) => {
   const im = await load(image), lg = await load(logo), host = await load(s._host);
+  const LG = []; for (const u of (logos || [])) { const a = await load(u); if (a) LG.push(a); }
+  const fitIn = (a, x, y, w, h) => { const k = Math.min(w / a.naturalWidth, h / a.naturalHeight); C.drawImage(a, x + (w - a.naturalWidth * k) / 2, y + (h - a.naturalHeight * k) / 2, a.naturalWidth * k, a.naturalHeight * k); };
   const dark = !!im || s.theme === 'azul', ink = dark ? B.arena : B.negro, f = s.focus || [.5, .5];
   C.clearRect(0, 0, S, S); C.fillStyle = s.theme === 'azul' ? B.azul : B.arena; C.fillRect(0, 0, S, S);
   if (im) { C.save(); C.filter = 'saturate(.92) contrast(1.05)'; cover(im, f[0], f[1]); C.restore();
@@ -33,6 +35,7 @@ window.drawSlide = async ({ s, i, n, brand, image, logo, series, sources }) => {
   let y = 250;
   if (s.kicker) { C.fillStyle = ink; C.fillRect(70, y - 12, 44, 3); T(s.kicker.toUpperCase(), 130, y, { s: 24, ls: 4, c: ink }); y += 80; }
   if (s.type === 'portada') {
+    if (LG.length) { const cw = 940 / LG.length; LG.forEach((a, k) => fitIn(a, 70 + cw * k, y - 20, cw - 16, 104)); y += 150; }
     y = para(s.title, 70, y + 30, { f: F.d, w: 800, s: s.size || 84, c: ink }, 940, (s.size || 84) * 1.14) + 20;
     if (s.sub) para(s.sub, 70, y + 20, { s: 42, c: ink, a: .92 }, 720, 54);
   } else if (s.type === 'dato') {
@@ -41,6 +44,24 @@ window.drawSlide = async ({ s, i, n, brand, image, logo, series, sources }) => {
     if (s.text) y = para(s.text, 70, y + 20, { s: 44, c: ink }, 940, 58) + 16;
     (s.bullets || []).forEach((b, k) => { C.fillStyle = dark ? B.mostaza : B.azul; C.beginPath(); C.arc(88, y + 8, 18, 0, 7); C.fill(); T(String(k + 1), 88, y + 17, { w: 700, s: 24, al: 'center', c: dark ? B.negro : B.arena });
       y = para(b, 126, y + 20, { s: 40, c: ink }, 880, 52) + 22; });
+  } else if (s.type === 'rondas') {
+    if (s.title) y = para(s.title, 70, y, { f: F.d, w: 800, s: 54, c: ink }, 940, 64) + 6;
+    if (s.sub) { y = para(s.sub, 70, y + 18, { s: 34, c: ink, a: .8 }, 940, 44) + 10; }
+    const rows = (s.rows || []).slice(0, 5), inv = !!s.invert;
+    const mx = Math.max(1e-9, ...rows.map(r => Math.abs(r.value)));
+    const H = Math.min(92, (986 - y) / Math.max(1, rows.length));
+    rows.forEach((r, k) => {
+      const ry = y + 14 + k * H, win = r.points === 5, a = LG[r.logo_i];
+      if (a) fitIn(a, 74, ry + 4, 104, 54);
+      let ns = 34; while (tw(r.name, { f: F.d, w: 800, s: ns }) > 262 && ns > 20) ns -= 2;
+      T(r.name, 196, ry + 44, { f: F.d, w: 800, s: ns, c: ink });
+      const bw = Math.max(6, 230 * (Math.abs(r.value) / mx));
+      C.beginPath(); C.roundRect(482, ry + 14, bw, 34, 10); C.fillStyle = win ? B.musgo : B.azul; C.fill();
+      T(r.text || (r.value + (s.suffix || '')), 880, ry + 44, { f: F.d, w: 800, s: 36, al: 'right', c: ink });
+      C.beginPath(); C.arc(950, ry + 32, 28, 0, 7); C.fillStyle = win ? B.musgo : 'rgba(10,10,10,.12)'; C.fill();
+      T(String(r.points), 950, ry + 44, { f: F.d, w: 800, s: 30, al: 'center', c: win ? B.arena : ink });
+    });
+
   } else if (s.type === 'grafica') {
     if (s.title) y = para(s.title, 70, y, { f: F.d, w: 800, s: 62, c: ink }, 940, 72);
     if (s.sub) { T(s.sub, 70, y + 16, { s: 38, c: ink, a: .8 }); y += 50; }

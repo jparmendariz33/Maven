@@ -11,42 +11,159 @@
    "type": "portada",
    "kicker": "Torneo · Costa Studio Finance",
    "title": "Rankeando 5 acciones",
-   "size": 84,
+   "size": 78,
    "sub": "6 rondas, un ganador.",
+   "logos": [
+    "images/logo_amazon.png",
+    "images/logo_spotify.png",
+    "images/logo_gap.png",
+    "images/logo_google.png",
+    "images/logo_meli.png"
+   ],
    "host": {
     "act": "piensa",
     "mood": "neutral"
-   }
+   },
+   "host_size": 300
   },
   {
-   "type": "dato",
-   "kicker": "Rondas 1 a 3",
-   "title": "Crecer, ganar operando y el margen",
-   "bullets": [
-    "Ventas: gana Mercado Libre (+45.1%). Último, Amazon (+12%)",
-    "Utilidad de operación: gana Amazon (+61%). Mercado Libre cae: la suya bajó 6.5%",
-    "Margen de operación: gana Aeropuertos del Pacífico con 43.3%; Mercado Libre, 6.3%"
+   "type": "rondas",
+   "kicker": "Ronda 1 de 6",
+   "title": "¿Quién vende más que hace un año?",
+   "sub": "Crecimiento de ventas · trimestre jul–sep 2026",
+   "suffix": "%",
+   "logos": [
+    "images/logo_amazon.png",
+    "images/logo_spotify.png",
+    "images/logo_gap.png",
+    "images/logo_google.png",
+    "images/logo_meli.png"
+   ],
+   "rows": [
+    {
+     "name": "Mercado Libre",
+     "logo_i": 4,
+     "value": 45.1,
+     "points": 5
+    },
+    {
+     "name": "Alphabet",
+     "logo_i": 3,
+     "value": 25.0,
+     "points": 4
+    },
+    {
+     "name": "Aeropuertos",
+     "logo_i": 2,
+     "value": 21.8,
+     "points": 3
+    },
+    {
+     "name": "Spotify",
+     "logo_i": 1,
+     "value": 16.3,
+     "points": 2
+    },
+    {
+     "name": "Amazon",
+     "logo_i": 0,
+     "value": 12.0,
+     "points": 1
+    }
    ]
   },
   {
-   "type": "dato",
-   "kicker": "Rondas 4 a 6",
-   "title": "Capital, deuda y precio",
-   "bullets": [
-    "Retorno sobre capital (ROE): gana Alphabet con 44.3%",
-    "Deuda sobre capital: gana Spotify con 5.2%; Mercado Libre debe 197.4%",
-    "PEG: gana Mercado Libre con 0.8, la más barata para lo que crece"
+   "type": "rondas",
+   "kicker": "Ronda 5 de 6",
+   "title": "¿Quién aguantaría un mal año?",
+   "sub": "Deuda sobre capital. Gana el número más bajo.",
+   "suffix": "%",
+   "invert": true,
+   "logos": [
+    "images/logo_amazon.png",
+    "images/logo_spotify.png",
+    "images/logo_gap.png",
+    "images/logo_google.png",
+    "images/logo_meli.png"
+   ],
+   "rows": [
+    {
+     "name": "Spotify",
+     "logo_i": 1,
+     "value": 5.2,
+     "points": 5
+    },
+    {
+     "name": "Alphabet",
+     "logo_i": 3,
+     "value": 22.2,
+     "points": 4
+    },
+    {
+     "name": "Amazon",
+     "logo_i": 0,
+     "value": 49.7,
+     "points": 3
+    },
+    {
+     "name": "Aeropuertos",
+     "logo_i": 2,
+     "value": 117.0,
+     "points": 2
+    },
+    {
+     "name": "Mercado Libre",
+     "logo_i": 4,
+     "value": 197.4,
+     "points": 1
+    }
    ]
   },
   {
-   "type": "pregunta",
-   "kicker": "Gana ALPHABET con 25 de 30 puntos",
-   "question": "¿Coincides con el resultado?",
-   "size": 84,
-   "cta": "Te leo en los comentarios 👇",
-   "host": {
-    "act": "cierre"
-   }
+   "type": "rondas",
+   "kicker": "Tabla final · 6 rondas",
+   "title": "Gana Alphabet con 25 de 30",
+   "sub": "Mercado Libre arrasa en ventas y termina última: crecer rápido no es ser un buen negocio.",
+   "suffix": " pts",
+   "logos": [
+    "images/logo_amazon.png",
+    "images/logo_spotify.png",
+    "images/logo_gap.png",
+    "images/logo_google.png",
+    "images/logo_meli.png"
+   ],
+   "rows": [
+    {
+     "name": "Alphabet",
+     "logo_i": 3,
+     "value": 25,
+     "points": 5
+    },
+    {
+     "name": "Aeropuertos",
+     "logo_i": 2,
+     "value": 19,
+     "points": 4
+    },
+    {
+     "name": "Amazon",
+     "logo_i": 0,
+     "value": 17,
+     "points": 3
+    },
+    {
+     "name": "Spotify",
+     "logo_i": 1,
+     "value": 16,
+     "points": 2
+    },
+    {
+     "name": "Mercado Libre",
+     "logo_i": 4,
+     "value": 14,
+     "points": 1
+    }
+   ]
   }
  ],
  "text": "Puse a competir a 5 acciones en 6 rondas, una por métrica. Puntos de 5 a 1 en cada una. Esto salió.\n\n🥇 Alphabet · 25 puntos de 30\n🥈 Aeropuertos del Pacífico · 19\n🥉 Amazon · 17\n4º Spotify · 16\n5º Mercado Libre · 14\n\nLas rondas:\n1. Crecimiento de ventas → Mercado Libre, +45.1%\n2. Crecimiento de la utilidad de operación → Amazon, +61% (la de Mercado Libre bajó 6.5%)\n3. Margen de operación → Aeropuertos del Pacífico, 43.3%\n4. Retorno sobre capital (ROE) → Alphabet, 44.3%\n5. Deuda sobre capital → Spotify, 5.2% (Mercado Libre debe 197.4%)\n6. PEG → Mercado Libre, 0.8\n\nLo interesante: Mercado Libre arrasa en la primera ronda y termina última. Crecer rápido no es lo mismo que ser un buen negocio. Gana Alphabet por no fallar en ninguna.\n\n⚠️ En lo personal tengo posición en Aeropuertos del Pacífico y en Mercado Libre.\nEsto no es una recomendación de compra: es un ranking según seis métricas que puedes verificar tú mismo.\n\nFuentes: reportes del 3T 2026 a la SEC (Amazon, Alphabet, Spotify, Mercado Libre, Grupo Aeroportuario del Pacífico). ROE, deuda sobre capital y PEG: datos de mercado al cierre del 13 de noviembre de 2026.\nContenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Armendáriz.\n#inversiones #bolsa #Alphabet #MercadoLibre #Amazon"

@@ -272,10 +272,9 @@ R.hook = (s, t) => {
 function logoWall(s, t) {
   const ls = (s.logos || []).map(img).filter(Boolean); if (!ls.length) return;
   const k = seg(t, s.t0 + .2, s.t0 + 1.4); if (k <= 0) return;
-  const n = ls.length, cw = W / n, y = 1430;
-  C.save(); C.globalAlpha *= .3 * k; C.filter = 'blur(2px)';
-  ls.forEach((im, i) => { const z = 210, cx = cw * (i + .5), dy = y + (i % 2 ? 52 : -52) + (1 - ex(k)) * 40;
-    contain(im, cx - z / 2, dy - z / 2, z, z); });
+  const n = ls.length, x0 = 70, tw2 = W - 140, cw = tw2 / n, y = 1070, h = 92;
+  C.save(); C.globalAlpha *= .95 * k;
+  ls.forEach((im, i) => contain(im, x0 + cw * i + 8, y + (1 - ex(k)) * 24, cw - 16, h));
   C.restore();
 }
 

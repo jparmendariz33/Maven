@@ -35,7 +35,7 @@ const dataURL = f => 'data:image/' + (f.toLowerCase().endsWith('.png') ? 'png' :
   await pg.goto('file://' + path.join(ROOT, 'engine', 'post.html'));
   await pg.evaluate(async () => { await Promise.all(['800 40px Unbounded', '600 40px Unbounded', '500 40px "Space Grotesk"', '700 40px "Space Grotesk"', 'italic 400 40px "Instrument Serif"'].map(f => document.fonts.load(f))); });
   for (const [i, s] of P.slides.entries()) {
-    const payload = { s, i, n, brand, image: img(s.image), logo: img(P.logo), series: s.type === 'grafica' ? (data.series || []) : null, sources: P.sources || '' };
+    const payload = { s, i, n, brand, image: img(s.image), logo: img(P.logo), logos: (s.logos || []).map(img), series: s.type === 'grafica' ? (data.series || []) : null, sources: P.sources || '' };
     const png = await pg.evaluate(p => window.drawSlide(p), payload);
     fs.writeFileSync(path.join(out, String(i + 1).padStart(2, '0') + '.png'), Buffer.from(png.split(',')[1], 'base64'));
   }
