@@ -272,9 +272,20 @@ R.hook = (s, t) => {
 function logoWall(s, t) {
   const ls = (s.logos || []).map(img).filter(Boolean); if (!ls.length) return;
   const k = seg(t, s.t0 + .2, s.t0 + 1.4); if (k <= 0) return;
-  const n = ls.length, x0 = 70, tw2 = W - 140, cw = tw2 / n, y = 1070, h = 92;
+  const lay = s.logo_layout || 'fila';
   C.save(); C.globalAlpha *= .95 * k;
-  ls.forEach((im, i) => contain(im, x0 + cw * i + 8, y + (1 - ex(k)) * 24, cw - 16, h));
+  const dy = (1 - ex(k)) * 24;
+  if (lay === 'bloque') {            // 3 arriba + 2 abajo, grandes, a la izquierda de JP
+    const fil = [ls.slice(0, 3), ls.slice(3)];
+    fil.forEach((row, r) => { const cw = 630 / 3, y = 1046 + r * 158, off = 70 + (row.length === 3 ? 0 : cw / 2);
+      row.forEach((im, i) => contain(im, off + cw * i + 10, y + dy, cw - 20, 124)); });
+  } else if (lay === 'esparcido') {  // escalonados, aprovechando el hueco libre
+    const pos = [[70, 1032, 250], [330, 1122, 230], [84, 1218, 215], [320, 1306, 235], [548, 1024, 215]];
+    ls.forEach((im, i) => { const q = pos[i % pos.length]; contain(im, q[0], q[1] + dy, q[2], q[2] * .5); });
+  } else {
+    const n = ls.length, cw = (W - 140) / n, y = 1070;
+    ls.forEach((im, i) => contain(im, 70 + cw * i + 8, y + dy, cw - 16, 92));
+  }
   C.restore();
 }
 

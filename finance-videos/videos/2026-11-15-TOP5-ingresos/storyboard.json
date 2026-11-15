@@ -39,7 +39,7 @@
      "cue": "Spotify"
     },
     {
-     "text": "Aeropuertos del Pacífico · tengo posición",
+     "text": "Aeropuertos del Pacífico",
      "sub": "Guadalajara, Tijuana y Los Cabos",
      "cue": "Aeropuertos"
     },
@@ -48,7 +48,7 @@
      "cue": "Alphabet"
     },
     {
-     "text": "Mercado Libre · tengo posición",
+     "text": "Mercado Libre",
      "sub": "$10,750 M de ventas en un trimestre",
      "cue": "Mercado"
     }
@@ -356,7 +356,7 @@
    "question_b": "el resultado?",
    "cue_a": "Coincides",
    "cue_b": "resultado",
-   "sources": "En lo personal tengo posición en Aeropuertos del Pacífico y Mercado Libre · Reportes del 3T 2026",
+   "sources": "Reportes del 3T 2026 a la SEC · datos de mercado al 13 nov 2026",
    "say": "Crecer rápido no es lo mismo que ser un buen negocio. ¿Coincides con el resultado?"
   }
  ]

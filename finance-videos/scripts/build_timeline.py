@@ -124,6 +124,9 @@ def main(vdir):
         if isinstance(o, dict):
             for k, v in o.items():
                 if k in ('image', 'bg_image', 'logo') and isinstance(v, str): used.add(v)
+                elif k == 'logos' and isinstance(v, list):
+                    for u in v:
+                        if isinstance(u, str): used.add(u)
                 else: grab_imgs(v)
         elif isinstance(o, list):
             for v in o: grab_imgs(v)
