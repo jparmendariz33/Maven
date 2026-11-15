@@ -214,11 +214,11 @@
   {
    "type": "dato",
    "kicker": "La conclusión",
-   "title": "Crecer rápido no es ser un buen negocio",
+   "title": "Ninguna gana en todo",
    "bullets": [
-    "Mercado Libre gana la ronda de ventas por mucho (+45.1%) y termina última",
-    "La hunden el margen (6.3%), el ROE y la deuda: debe 197% de su capital",
-    "Alphabet gana sin ganar casi nada: no falla en ninguna"
+    "Mercado Libre lidera en ventas (+45.1%) y es la más barata para lo que crece",
+    "Pero queda al final en margen, en ROE y en deuda: ahí pierde el torneo",
+    "Alphabet casi no gana rondas; gana el torneo por no fallar en ninguna"
    ],
    "host": {
     "act": "cierre"
@@ -226,5 +226,5 @@
    "host_size": 200
   }
  ],
- "text": "Puse a competir a 5 acciones en 6 rondas, una por métrica. Puntos de 5 a 1 en cada una. Esto salió.\n\n🥇 Alphabet · 25 puntos de 30\n🥈 Aeropuertos del Pacífico · 19\n🥉 Amazon · 17\n4º Spotify · 16\n5º Mercado Libre · 14\n\nLas rondas:\n1. Crecimiento de ventas → Mercado Libre, +45.1%\n2. Crecimiento de la utilidad de operación → Amazon, +61% (la de Mercado Libre bajó 6.5%)\n3. Margen de operación → Aeropuertos del Pacífico, 43.3%\n4. Retorno sobre capital (ROE) → Alphabet, 44.3%\n5. Deuda sobre capital → Spotify, 5.2% (Mercado Libre debe 197.4%)\n6. PEG → Mercado Libre, 0.8\n\nLo interesante: Mercado Libre arrasa en la primera ronda y termina última. Crecer rápido no es lo mismo que ser un buen negocio. Gana Alphabet por no fallar en ninguna.\n\n⚠️ En lo personal tengo posición en Aeropuertos del Pacífico y en Mercado Libre.\nEsto no es una recomendación de compra: es un ranking según seis métricas que puedes verificar tú mismo.\n\nFuentes: reportes del 3T 2026 a la SEC (Amazon, Alphabet, Spotify, Mercado Libre, Grupo Aeroportuario del Pacífico). ROE, deuda sobre capital y PEG: datos de mercado al cierre del 13 de noviembre de 2026.\nContenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Armendáriz.\n#inversiones #bolsa #Alphabet #MercadoLibre #Amazon"
+ "text": "Puse a competir a 5 acciones en 6 rondas, una por métrica. Puntos de 5 a 1 en cada una. Esto salió.\n\n🥇 Alphabet · 25 puntos de 30\n🥈 Aeropuertos del Pacífico · 19\n🥉 Amazon · 17\n4º Spotify · 16\n5º Mercado Libre · 14\n\nLas rondas:\n1. Crecimiento de ventas → Mercado Libre, +45.1%\n2. Crecimiento de la utilidad de operación → Amazon, +61% (la de Mercado Libre bajó 6.5%)\n3. Margen de operación → Aeropuertos del Pacífico, 43.3%\n4. Retorno sobre capital (ROE) → Alphabet, 44.3%\n5. Deuda sobre capital → Spotify, 5.2% (Mercado Libre debe 197.4%)\n6. PEG → Mercado Libre, 0.8\n\nLo interesante: ninguna gana en todo. Mercado Libre lidera en ventas y en PEG, pero queda al final en margen, ROE y deuda. Alphabet casi no gana rondas y aun así gana el torneo, por no fallar en ninguna. Por eso una sola métrica no alcanza.\n\n⚠️ En lo personal tengo posición en Aeropuertos del Pacífico y en Mercado Libre.\nEsto no es una recomendación de compra: es un ranking según seis métricas que puedes verificar tú mismo.\n\nFuentes: reportes del 3T 2026 a la SEC (Amazon, Alphabet, Spotify, Mercado Libre, Grupo Aeroportuario del Pacífico). ROE, deuda sobre capital y PEG: datos de mercado al cierre del 13 de noviembre de 2026.\nContenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Armendáriz.\n#inversiones #bolsa #Alphabet #MercadoLibre #Amazon"
 }
