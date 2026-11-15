@@ -24,7 +24,7 @@
     "act": "piensa",
     "mood": "neutral"
    },
-   "host_size": 300
+   "host_size": 250
   },
   {
    "type": "rondas",
@@ -41,33 +41,79 @@
    ],
    "rows": [
     {
-     "name": "Mercado Libre",
+     "name": "",
      "logo_i": 4,
      "value": 45.1,
      "points": 5
     },
     {
-     "name": "Alphabet",
+     "name": "",
      "logo_i": 3,
      "value": 25.0,
      "points": 4
     },
     {
-     "name": "Aeropuertos",
+     "name": "",
      "logo_i": 2,
      "value": 21.8,
      "points": 3
     },
     {
-     "name": "Spotify",
+     "name": "",
      "logo_i": 1,
      "value": 16.3,
      "points": 2
     },
     {
-     "name": "Amazon",
+     "name": "",
      "logo_i": 0,
      "value": 12.0,
+     "points": 1
+    }
+   ]
+  },
+  {
+   "type": "rondas",
+   "kicker": "Ronda 3 de 6",
+   "title": "¿Cuánto le queda de cada peso?",
+   "sub": "Margen de operación",
+   "suffix": "%",
+   "logos": [
+    "images/logo_amazon.png",
+    "images/logo_spotify.png",
+    "images/logo_gap.png",
+    "images/logo_google.png",
+    "images/logo_meli.png"
+   ],
+   "rows": [
+    {
+     "name": "",
+     "logo_i": 2,
+     "value": 43.3,
+     "points": 5
+    },
+    {
+     "name": "",
+     "logo_i": 3,
+     "value": 31.8,
+     "points": 4
+    },
+    {
+     "name": "",
+     "logo_i": 0,
+     "value": 13.9,
+     "points": 3
+    },
+    {
+     "name": "",
+     "logo_i": 1,
+     "value": 13.5,
+     "points": 2
+    },
+    {
+     "name": "",
+     "logo_i": 4,
+     "value": 6.3,
      "points": 1
     }
    ]
@@ -88,31 +134,31 @@
    ],
    "rows": [
     {
-     "name": "Spotify",
+     "name": "",
      "logo_i": 1,
      "value": 5.2,
      "points": 5
     },
     {
-     "name": "Alphabet",
+     "name": "",
      "logo_i": 3,
      "value": 22.2,
      "points": 4
     },
     {
-     "name": "Amazon",
+     "name": "",
      "logo_i": 0,
      "value": 49.7,
      "points": 3
     },
     {
-     "name": "Aeropuertos",
+     "name": "",
      "logo_i": 2,
      "value": 117.0,
      "points": 2
     },
     {
-     "name": "Mercado Libre",
+     "name": "",
      "logo_i": 4,
      "value": 197.4,
      "points": 1
@@ -123,7 +169,7 @@
    "type": "rondas",
    "kicker": "Tabla final · 6 rondas",
    "title": "Gana Alphabet con 25 de 30",
-   "sub": "Mercado Libre arrasa en ventas y termina última: crecer rápido no es ser un buen negocio.",
+   "sub": "Suma de las seis rondas",
    "suffix": " pts",
    "logos": [
     "images/logo_amazon.png",
@@ -134,36 +180,50 @@
    ],
    "rows": [
     {
-     "name": "Alphabet",
+     "name": "",
      "logo_i": 3,
      "value": 25,
      "points": 5
     },
     {
-     "name": "Aeropuertos",
+     "name": "",
      "logo_i": 2,
      "value": 19,
      "points": 4
     },
     {
-     "name": "Amazon",
+     "name": "",
      "logo_i": 0,
      "value": 17,
      "points": 3
     },
     {
-     "name": "Spotify",
+     "name": "",
      "logo_i": 1,
      "value": 16,
      "points": 2
     },
     {
-     "name": "Mercado Libre",
+     "name": "",
      "logo_i": 4,
      "value": 14,
      "points": 1
     }
    ]
+  },
+  {
+   "type": "dato",
+   "kicker": "La conclusión",
+   "title": "Crecer rápido no es ser un buen negocio",
+   "bullets": [
+    "Mercado Libre gana la ronda de ventas por mucho (+45.1%) y termina última",
+    "La hunden el margen (6.3%), el ROE y la deuda: debe 197% de su capital",
+    "Alphabet gana sin ganar casi nada: no falla en ninguna"
+   ],
+   "host": {
+    "act": "cierre"
+   },
+   "host_size": 200
   }
  ],
  "text": "Puse a competir a 5 acciones en 6 rondas, una por métrica. Puntos de 5 a 1 en cada una. Esto salió.\n\n🥇 Alphabet · 25 puntos de 30\n🥈 Aeropuertos del Pacífico · 19\n🥉 Amazon · 17\n4º Spotify · 16\n5º Mercado Libre · 14\n\nLas rondas:\n1. Crecimiento de ventas → Mercado Libre, +45.1%\n2. Crecimiento de la utilidad de operación → Amazon, +61% (la de Mercado Libre bajó 6.5%)\n3. Margen de operación → Aeropuertos del Pacífico, 43.3%\n4. Retorno sobre capital (ROE) → Alphabet, 44.3%\n5. Deuda sobre capital → Spotify, 5.2% (Mercado Libre debe 197.4%)\n6. PEG → Mercado Libre, 0.8\n\nLo interesante: Mercado Libre arrasa en la primera ronda y termina última. Crecer rápido no es lo mismo que ser un buen negocio. Gana Alphabet por no fallar en ninguna.\n\n⚠️ En lo personal tengo posición en Aeropuertos del Pacífico y en Mercado Libre.\nEsto no es una recomendación de compra: es un ranking según seis métricas que puedes verificar tú mismo.\n\nFuentes: reportes del 3T 2026 a la SEC (Amazon, Alphabet, Spotify, Mercado Libre, Grupo Aeroportuario del Pacífico). ROE, deuda sobre capital y PEG: datos de mercado al cierre del 13 de noviembre de 2026.\nContenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Armendáriz.\n#inversiones #bolsa #Alphabet #MercadoLibre #Amazon"

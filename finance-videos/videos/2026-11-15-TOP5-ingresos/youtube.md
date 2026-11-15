@@ -54,8 +54,9 @@ Mercado Libre gana la ronda de ventas por mucho… y termina última. Eso solo s
 Hoy subí un video de 7 minutos donde te enseño a leer un estado de resultados de arriba a abajo, con Apple: <LIGA>
 ```
 
-## 📌 Publicación — 4 imágenes
-`post/01.png` … `post/04.png`; texto en `post/publicacion.md`.
+## 📌 Publicación — 6 imágenes
+`post/01.png` … `post/06.png`; texto en `post/publicacion.md`. Portada · ronda 1 (ventas) · ronda 3 (margen) · ronda 5 (deuda) · tabla final · conclusión.
+⚠️ YouTube puede limitar el carrusel a 5 imágenes: si no te deja subir las 6, quita la de margen (`03.png`).
 
 ## Las seis rondas y sus puntos
 | | Ventas | Util. oper. | Margen | ROE | Deuda | PEG | **Total** |

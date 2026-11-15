@@ -35,9 +35,9 @@ window.drawSlide = async ({ s, i, n, brand, image, logo, logos, series, sources 
   let y = 250;
   if (s.kicker) { C.fillStyle = ink; C.fillRect(70, y - 12, 44, 3); T(s.kicker.toUpperCase(), 130, y, { s: 24, ls: 4, c: ink }); y += 80; }
   if (s.type === 'portada') {
-    if (LG.length) { const cw = 940 / LG.length; LG.forEach((a, k) => fitIn(a, 70 + cw * k, y - 20, cw - 16, 104)); y += 150; }
     y = para(s.title, 70, y + 30, { f: F.d, w: 800, s: s.size || 84, c: ink }, 940, (s.size || 84) * 1.14) + 20;
-    if (s.sub) para(s.sub, 70, y + 20, { s: 42, c: ink, a: .92 }, 720, 54);
+    if (s.sub) y = para(s.sub, 70, y + 20, { s: 42, c: ink, a: .92 }, 720, 54);
+    if (LG.length) { const cw = 730 / LG.length; LG.forEach((a, k) => fitIn(a, 70 + cw * k + 6, y + 54, cw - 18, 92)); }   // acaba antes de JP
   } else if (s.type === 'dato') {
     if (s.title) y = para(s.title, 70, y, { f: F.d, w: 800, s: 54, c: ink }, 940, 64) + 10;
     if (s.big) { let sz = 210; while (tw(s.big, { f: F.d, w: 800, s: sz }) > 940 && sz > 90) sz -= 10; T(s.big, 70, y + sz * .82, { f: F.d, w: 800, s: sz, c: s.tone === 'down' ? B.terracota : s.tone === 'up' ? (dark ? '#DDE8B8' : B.musgo) : (dark ? B.arena : B.azul) }); y += sz + 40; }
@@ -52,14 +52,12 @@ window.drawSlide = async ({ s, i, n, brand, image, logo, logos, series, sources 
     const H = Math.min(92, (986 - y) / Math.max(1, rows.length));
     rows.forEach((r, k) => {
       const ry = y + 14 + k * H, win = r.points === 5, a = LG[r.logo_i];
-      if (a) fitIn(a, 74, ry + 4, 104, 54);
-      let ns = 34; while (tw(r.name, { f: F.d, w: 800, s: ns }) > 262 && ns > 20) ns -= 2;
-      T(r.name, 196, ry + 44, { f: F.d, w: 800, s: ns, c: ink });
-      const bw = Math.max(6, 230 * (Math.abs(r.value) / mx));
-      C.beginPath(); C.roundRect(482, ry + 14, bw, 34, 10); C.fillStyle = win ? B.musgo : B.azul; C.fill();
-      T(r.text || (r.value + (s.suffix || '')), 880, ry + 44, { f: F.d, w: 800, s: 36, al: 'right', c: ink });
-      C.beginPath(); C.arc(950, ry + 32, 28, 0, 7); C.fillStyle = win ? B.musgo : 'rgba(10,10,10,.12)'; C.fill();
-      T(String(r.points), 950, ry + 44, { f: F.d, w: 800, s: 30, al: 'center', c: win ? B.arena : ink });
+      if (a) fitIn(a, 74, ry + 2, 168, 58);   // sin nombre: el logo identifica (JP, 15 nov 2026)
+      const bw = Math.max(8, 395 * (Math.abs(r.value) / mx));
+      C.beginPath(); C.roundRect(276, ry + 14, bw, 34, 10); C.fillStyle = win ? B.musgo : B.azul; C.fill();
+      T(r.text || (r.value + (s.suffix || '')), 884, ry + 44, { f: F.d, w: 800, s: 38, al: 'right', c: ink });
+      C.beginPath(); C.arc(952, ry + 32, 28, 0, 7); C.fillStyle = win ? B.musgo : 'rgba(10,10,10,.12)'; C.fill();
+      T(String(r.points), 952, ry + 44, { f: F.d, w: 800, s: 30, al: 'center', c: win ? B.arena : ink });
     });
 
   } else if (s.type === 'grafica') {

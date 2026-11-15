@@ -28,7 +28,7 @@ Contenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Arm
 #inversiones #bolsa #Alphabet #MercadoLibre #Amazon
 ```
 
-Imágenes (en este orden): 01.png, 02.png, 03.png, 04.png
+Imágenes (en este orden): 01.png, 02.png, 03.png, 04.png, 05.png, 06.png
 
 ## Cómo publicarla
 YouTube → Crear → Crear publicación → Imagen → sube las imágenes en orden → pega el texto → Publicar.
