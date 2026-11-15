@@ -4,190 +4,346 @@
  "scenes": [
   {
    "type": "statement",
-   "kicker": "RANKING · COSTA STUDIO FINANCE",
-   "host": {
-    "act": "piensa",
-    "mood": "neutral",
-    "outfit": "sueter",
-    "accessory": "lentes",
-    "pos": "br",
-    "size": 430
-   },
-   "text": "5 gigantes: ¿en cuáles crece el negocio?",
-   "emphasis": "el negocio?",
-   "sub": "Porque en varias, la utilidad cayó y el negocio no.",
-   "say": "A ver: 5 empresas gigantes. En cuáles crece el negocio de verdad, porque en varias la utilidad cayó y el negocio no.",
+   "text": "Rankeando 5 acciones.",
+   "emphasis": "5 acciones.",
+   "sub": "6 rondas, un ganador.",
    "logos": [
     "images/logo_amazon.png",
     "images/logo_spotify.png",
     "images/logo_gap.png",
     "images/logo_google.png",
     "images/logo_meli.png"
-   ]
+   ],
+   "host": {
+    "act": "piensa",
+    "mood": "neutral",
+    "outfit": "sueter",
+    "accessory": "lentes",
+    "size": 430
+   },
+   "say": "Rankeando 5 acciones: 6 rondas y un ganador. Y la que arrasa en la primera ronda termina última."
   },
   {
-   "type": "company",
+   "type": "news",
    "theme": "sand",
-   "kicker": "#5 · AMAZON",
-   "name": "Amazon",
-   "logo": "images/logo_amazon.png",
-   "line": "Su nube, AWS, creció 39% y dejó el mejor margen de operación de su historia.",
-   "chips": [
+   "kicker": "LAS CINCO QUE COMPITEN",
+   "headline": "Quiénes entran al torneo",
+   "source": "Reportes del 3T 2026 a la SEC",
+   "bullets": [
     {
-     "label": "Margen de operación: 13.9%"
-    }
-   ],
-   "stats": [
-    {
-     "label": "Ventas del trimestre",
-     "value": "+12%",
+     "text": "Amazon · su nube AWS creció 39%",
      "cue": "Amazon"
     },
     {
-     "label": "Utilidad de operación",
-     "value": "+61%"
-    },
-    {
-     "label": "Utilidad neta",
-     "value": "−2%",
-     "tone": "down",
-     "cue": "neta"
-    }
-   ],
-   "say": "Número 5: Amazon, 12%. Su nube creció 39%. Su utilidad neta bajó, pero por una inversión, no por el negocio."
-  },
-  {
-   "type": "company",
-   "kicker": "#4 · SPOTIFY",
-   "name": "Spotify",
-   "logo": "images/logo_spotify.png",
-   "line": "306 millones de suscriptores de pago, 9% más que hace un año.",
-   "chips": [
-    {
-     "label": "Usuarios activos: 788 M"
-    }
-   ],
-   "stats": [
-    {
-     "label": "Ventas del trimestre",
-     "value": "+16.3%",
+     "text": "Spotify · 306 M de suscriptores de pago",
      "cue": "Spotify"
     },
     {
-     "label": "Utilidad de operación",
-     "value": "+15.5%",
-     "cue": "operación"
-    },
-    {
-     "label": "Utilidad neta",
-     "value": "−42%",
-     "tone": "down",
-     "cue": "cayó"
-    }
-   ],
-   "say": "Número 4: Spotify, 16%. Ya son 306 millones de suscriptores de pago. Su utilidad neta cayó, pero no la de operación."
-  },
-  {
-   "type": "company",
-   "theme": "sand",
-   "kicker": "#3 · GRUPO AEROPORTUARIO DEL PACÍFICO",
-   "name": "Aeropuertos del Pacífico",
-   "line": "Guadalajara, Tijuana y Los Cabos.",
-   "chips": [
-    {
-     "label": "Pasajeros: −1.4%",
-     "cue": "pasajeros"
-    },
-    {
-     "label": "En lo personal tengo posición"
-    }
-   ],
-   "stats": [
-    {
-     "label": "Ingresos del trimestre",
-     "value": "+21.8%",
+     "text": "Aeropuertos del Pacífico · tengo posición",
+     "sub": "Guadalajara, Tijuana y Los Cabos",
      "cue": "Aeropuertos"
     },
     {
-     "label": "Utilidad neta",
-     "value": "+8.1%"
-    },
-    {
-     "label": "El puente peatonal a San Diego",
-     "value": "$775 M",
-     "cue": "puente"
-    }
-   ],
-   "say": "Número 3: Aeropuertos del Pacífico, 22%. Ojo: con menos pasajeros. Lo que creció fue su puente a San Diego.",
-   "logo": "images/logo_gap.png"
-  },
-  {
-   "type": "company",
-   "kicker": "#2 · ALPHABET",
-   "name": "Alphabet",
-   "logo": "images/logo_google.png",
-   "line": "La dueña de Google. Su nube creció 103% en un año.",
-   "chips": [
-    {
-     "label": "Google Cloud: $30,709 M de ventas"
-    }
-   ],
-   "stats": [
-    {
-     "label": "Ventas del trimestre",
-     "value": "+25%",
+     "text": "Alphabet · la dueña de Google",
      "cue": "Alphabet"
     },
     {
-     "label": "Utilidad de operación",
-     "value": "+30%",
-     "cue": "operación"
-    },
-    {
-     "label": "Utilidad neta",
-     "value": "−25%",
-     "tone": "down",
-     "cue": "neta"
-    }
-   ],
-   "say": "Número 2: Alphabet, 25%. Su nube creció 103%. Su utilidad neta cayó por una pérdida en inversiones; la de operación subió."
-  },
-  {
-   "type": "statement",
-   "text": "Antes del número 1: sígueme.",
-   "emphasis": "sígueme.",
-   "sub": "Cada semana hay uno de estos.",
-   "say": "Antes del número 1: sígueme."
-  },
-  {
-   "type": "company",
-   "theme": "sand",
-   "kicker": "#1 · MERCADO LIBRE",
-   "name": "Mercado Libre",
-   "line": "$10,750 millones de dólares de ventas en un solo trimestre.",
-   "chips": [
-    {
-     "label": "Envíos gratis y crédito"
-    },
-    {
-     "label": "En lo personal tengo posición"
-    }
-   ],
-   "stats": [
-    {
-     "label": "Ventas del trimestre",
-     "value": "+45.1%",
+     "text": "Mercado Libre · tengo posición",
+     "sub": "$10,750 M de ventas en un trimestre",
      "cue": "Mercado"
-    },
-    {
-     "label": "Utilidad de operación",
-     "value": "−6.5%",
-     "tone": "down",
-     "cue": "operación"
     }
    ],
-   "say": "Y el número 1: Mercado Libre, 45%. Aquí al revés: la que bajó fue su utilidad de operación, por envíos gratis y crédito.",
-   "logo": "images/logo_meli.png"
+   "say": "Compiten Amazon, Spotify, Aeropuertos del Pacífico, Alphabet y Mercado Libre. En dos tengo posición y te lo digo desde ahora."
+  },
+  {
+   "type": "ronda",
+   "round": 1,
+   "rounds": 6,
+   "unit_label": "crecimiento de ventas",
+   "suffix": "%",
+   "title": "¿Quién vende más que hace un año?",
+   "why": "Si las ventas no crecen, lo demás da igual.",
+   "rows": [
+    {
+     "name": "Mercado Libre",
+     "logo": "images/logo_meli.png",
+     "value": 45.1,
+     "points": 5
+    },
+    {
+     "name": "Alphabet",
+     "logo": "images/logo_google.png",
+     "value": 25.0,
+     "points": 4
+    },
+    {
+     "name": "Aeropuertos",
+     "logo": "images/logo_gap.png",
+     "value": 21.8,
+     "points": 3
+    },
+    {
+     "name": "Spotify",
+     "logo": "images/logo_spotify.png",
+     "value": 16.3,
+     "points": 2
+    },
+    {
+     "name": "Amazon",
+     "logo": "images/logo_amazon.png",
+     "value": 12.0,
+     "points": 1
+    }
+   ],
+   "say": "Ronda 1, crecimiento de ventas. Arrasa Mercado Libre con 45%."
+  },
+  {
+   "type": "ronda",
+   "round": 2,
+   "rounds": 6,
+   "unit_label": "utilidad de operación",
+   "suffix": "%",
+   "title": "¿Y quién gana más operando?",
+   "why": "Es lo que deja el negocio, antes de inversiones e impuestos.",
+   "rows": [
+    {
+     "name": "Amazon",
+     "logo": "images/logo_amazon.png",
+     "value": 61.0,
+     "points": 5
+    },
+    {
+     "name": "Alphabet",
+     "logo": "images/logo_google.png",
+     "value": 30.0,
+     "points": 4
+    },
+    {
+     "name": "Aeropuertos",
+     "logo": "images/logo_gap.png",
+     "value": 21.6,
+     "points": 3
+    },
+    {
+     "name": "Spotify",
+     "logo": "images/logo_spotify.png",
+     "value": 15.5,
+     "points": 2
+    },
+    {
+     "name": "Mercado Libre",
+     "logo": "images/logo_meli.png",
+     "value": -6.5,
+     "points": 1
+    }
+   ],
+   "say": "Ronda 2, la utilidad de operación. Manda Amazon con 61%, y Mercado Libre se cae: la suya bajó.",
+   "theme": "sand"
+  },
+  {
+   "type": "ronda",
+   "round": 3,
+   "rounds": 6,
+   "unit_label": "margen de operación",
+   "suffix": "%",
+   "title": "¿Cuánto le queda de cada peso?",
+   "why": "El margen dice qué tan buen negocio es, no qué tan grande.",
+   "rows": [
+    {
+     "name": "Aeropuertos",
+     "logo": "images/logo_gap.png",
+     "value": 43.3,
+     "points": 5
+    },
+    {
+     "name": "Alphabet",
+     "logo": "images/logo_google.png",
+     "value": 31.8,
+     "points": 4
+    },
+    {
+     "name": "Amazon",
+     "logo": "images/logo_amazon.png",
+     "value": 13.9,
+     "points": 3
+    },
+    {
+     "name": "Spotify",
+     "logo": "images/logo_spotify.png",
+     "value": 13.5,
+     "points": 2
+    },
+    {
+     "name": "Mercado Libre",
+     "logo": "images/logo_meli.png",
+     "value": 6.3,
+     "points": 1
+    }
+   ],
+   "say": "Ronda 3, margen de operación. Gana Aeropuertos del Pacífico: de cada 100 pesos le quedan 43."
+  },
+  {
+   "type": "ronda",
+   "round": 4,
+   "rounds": 6,
+   "unit_label": "retorno sobre capital",
+   "suffix": "%",
+   "title": "¿Quién usa mejor el dinero de sus dueños?",
+   "why": "El ROE mide cuánto gana por cada peso de los accionistas.",
+   "rows": [
+    {
+     "name": "Alphabet",
+     "logo": "images/logo_google.png",
+     "value": 44.3,
+     "points": 5
+    },
+    {
+     "name": "Spotify",
+     "logo": "images/logo_spotify.png",
+     "value": 35.8,
+     "points": 4
+    },
+    {
+     "name": "Amazon",
+     "logo": "images/logo_amazon.png",
+     "value": 27.4,
+     "points": 3
+    },
+    {
+     "name": "Aeropuertos",
+     "logo": "images/logo_gap.png",
+     "value": 26.7,
+     "points": 2
+    },
+    {
+     "name": "Mercado Libre",
+     "logo": "images/logo_meli.png",
+     "value": 26.2,
+     "points": 1
+    }
+   ],
+   "say": "Ronda 4, el retorno sobre capital. Alphabet, con 44%.",
+   "theme": "sand"
+  },
+  {
+   "type": "ronda",
+   "round": 5,
+   "rounds": 6,
+   "unit_label": "deuda sobre capital",
+   "suffix": "%",
+   "title": "¿Quién aguantaría un mal año?",
+   "why": "Por cada 100 pesos de capital propio, cuánto debe. Gana el más bajo.",
+   "rows": [
+    {
+     "name": "Spotify",
+     "logo": "images/logo_spotify.png",
+     "value": 5.2,
+     "points": 5
+    },
+    {
+     "name": "Alphabet",
+     "logo": "images/logo_google.png",
+     "value": 22.2,
+     "points": 4
+    },
+    {
+     "name": "Amazon",
+     "logo": "images/logo_amazon.png",
+     "value": 49.7,
+     "points": 3
+    },
+    {
+     "name": "Aeropuertos",
+     "logo": "images/logo_gap.png",
+     "value": 117.0,
+     "points": 2
+    },
+    {
+     "name": "Mercado Libre",
+     "logo": "images/logo_meli.png",
+     "value": 197.4,
+     "points": 1
+    }
+   ],
+   "say": "Ronda 5, deuda sobre capital. Aquí gana el más bajo, y es Spotify. Mercado Libre se va al fondo.",
+   "invert": true
+  },
+  {
+   "type": "ronda",
+   "round": 6,
+   "rounds": 6,
+   "unit_label": "PEG",
+   "suffix": "",
+   "title": "¿Quién está más barata para lo que crece?",
+   "why": "El PEG compara el precio con el crecimiento.",
+   "rows": [
+    {
+     "name": "Mercado Libre",
+     "logo": "images/logo_meli.png",
+     "value": 0.8,
+     "points": 5
+    },
+    {
+     "name": "Aeropuertos",
+     "logo": "images/logo_gap.png",
+     "value": 1.1,
+     "points": 4
+    },
+    {
+     "name": "Alphabet",
+     "logo": "images/logo_google.png",
+     "value": 1.1,
+     "points": 4
+    },
+    {
+     "name": "Amazon",
+     "logo": "images/logo_amazon.png",
+     "value": 1.2,
+     "points": 2
+    },
+    {
+     "name": "Spotify",
+     "logo": "images/logo_spotify.png",
+     "value": 1.6,
+     "points": 1
+    }
+   ],
+   "say": "Ronda 6, el PEG. Otra vez Mercado Libre: es la más barata para lo que crece.",
+   "invert": true,
+   "theme": "sand"
+  },
+  {
+   "type": "tabla",
+   "title": "El ganador",
+   "kicker": "TABLA FINAL · 6 RONDAS",
+   "rows": [
+    {
+     "name": "Alphabet",
+     "logo": "images/logo_google.png",
+     "points": 25
+    },
+    {
+     "name": "Aeropuertos",
+     "logo": "images/logo_gap.png",
+     "points": 19
+    },
+    {
+     "name": "Amazon",
+     "logo": "images/logo_amazon.png",
+     "points": 17
+    },
+    {
+     "name": "Spotify",
+     "logo": "images/logo_spotify.png",
+     "points": 16
+    },
+    {
+     "name": "Mercado Libre",
+     "logo": "images/logo_meli.png",
+     "points": 14
+    }
+   ],
+   "say": "Tabla final: gana Alphabet con 25 de 30. Y Mercado Libre, la que arrasó en ventas, termina última."
   },
   {
    "type": "outro",
@@ -196,12 +352,12 @@
     "outfit": "sueter",
     "accessory": "lentes"
    },
-   "question_a": "¿Cuál vigilarías",
-   "question_b": "tú?",
-   "cue_a": "vigilarías",
-   "cue_b": "tú",
+   "question_a": "¿Coincides con",
+   "question_b": "el resultado?",
+   "cue_a": "Coincides",
+   "cue_b": "resultado",
    "sources": "En lo personal tengo posición en Aeropuertos del Pacífico y Mercado Libre · Reportes del 3T 2026",
-   "say": "En varias, la utilidad neta y el negocio cuentan historias distintas. ¿Cuál vigilarías tú?"
+   "say": "Crecer rápido no es lo mismo que ser un buen negocio. ¿Coincides con el resultado?"
   }
  ]
 }

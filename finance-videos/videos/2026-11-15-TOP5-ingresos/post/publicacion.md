@@ -1,24 +1,31 @@
-# Publicación · 5 empresas que Costa Studio Finance está vigilando (domingo 15 nov 2026)
+# Publicación · RANKEANDO 5 acciones: 6 rondas, un ganador (domingo 15 nov 2026)
 
 ## ✅ Texto para copiar y pegar
 ```
-5 empresas que en Costa Studio Finance estamos vigilando, ordenadas por cuánto crecieron sus ventas en el trimestre de julio a septiembre de 2026. Es una lista de seguimiento, no de compra.
+Puse a competir a 5 acciones en 6 rondas, una por métrica. Puntos de 5 a 1 en cada una. Esto salió.
 
-#5 Amazon · ventas +12%. Su nube AWS creció 39% y su utilidad de operación subió 61%. Su utilidad neta bajó 2%, pero por una ganancia extraordinaria del año pasado, no por el negocio.
-#4 Spotify · ventas +16.3%, con 306 millones de suscriptores de pago. Su utilidad neta cayó 42% por impuestos e intereses; la de operación subió 15%.
-#3 Aeropuertos del Pacífico · ingresos +21.8%… con 1.4% menos pasajeros. Lo que creció fue su puente peatonal a San Diego.
-#2 Alphabet · ventas +25% y su nube creció 103%. Su utilidad neta cayó 25% por una pérdida en inversiones; la de operación subió 30%.
-#1 Mercado Libre · ventas +45.1%. Aquí al revés: la que bajó fue su utilidad de operación, de $724 M a $676 M, por envíos gratis y crédito.
+🥇 Alphabet · 25 puntos de 30
+🥈 Aeropuertos del Pacífico · 19
+🥉 Amazon · 17
+4º Spotify · 16
+5º Mercado Libre · 14
 
-En varias de estas, la utilidad neta y el negocio cuentan historias distintas. Eso solo se ve si bajas del primer renglón del estado de resultados.
+Las rondas:
+1. Crecimiento de ventas → Mercado Libre, +45.1%
+2. Crecimiento de la utilidad de operación → Amazon, +61% (la de Mercado Libre bajó 6.5%)
+3. Margen de operación → Aeropuertos del Pacífico, 43.3%
+4. Retorno sobre capital (ROE) → Alphabet, 44.3%
+5. Deuda sobre capital → Spotify, 5.2% (Mercado Libre debe 197.4%)
+6. PEG → Mercado Libre, 0.8
 
-¿Cuál vigilarías tú? Te leo 👇
+Lo interesante: Mercado Libre arrasa en la primera ronda y termina última. Crecer rápido no es lo mismo que ser un buen negocio. Gana Alphabet por no fallar en ninguna.
 
 ⚠️ En lo personal tengo posición en Aeropuertos del Pacífico y en Mercado Libre.
+Esto no es una recomendación de compra: es un ranking según seis métricas que puedes verificar tú mismo.
 
-Fuentes: reportes del 3T 2026 a la SEC (Amazon, Alphabet, Spotify, Mercado Libre, Grupo Aeroportuario del Pacífico).
+Fuentes: reportes del 3T 2026 a la SEC (Amazon, Alphabet, Spotify, Mercado Libre, Grupo Aeroportuario del Pacífico). ROE, deuda sobre capital y PEG: datos de mercado al cierre del 13 de noviembre de 2026.
 Contenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Armendáriz.
-#inversiones #bolsa #Amazon #Alphabet #MercadoLibre
+#inversiones #bolsa #Alphabet #MercadoLibre #Amazon
 ```
 
 Imágenes (en este orden): 01.png, 02.png, 03.png, 04.png
