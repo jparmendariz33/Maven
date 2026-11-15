@@ -37,7 +37,9 @@ window.drawSlide = async ({ s, i, n, brand, image, logo, logos, series, sources 
   if (s.type === 'portada') {
     y = para(s.title, 70, y + 30, { f: F.d, w: 800, s: s.size || 84, c: ink }, 940, (s.size || 84) * 1.14) + 20;
     if (s.sub) y = para(s.sub, 70, y + 20, { s: 42, c: ink, a: .92 }, 720, 54);
-    if (LG.length) { const cw = 730 / LG.length; LG.forEach((a, k) => fitIn(a, 70 + cw * k + 6, y + 54, cw - 18, 92)); }   // acaba antes de JP
+    if (LG.length) { const fil = [LG.slice(0, 3), LG.slice(3)], cw = 600 / 3;   // 3 arriba + 2 abajo, como en el short
+      fil.forEach((row, r) => { const ry = y + 70 + r * 128, off = 70 + (row.length === 3 ? 0 : cw / 2);
+        row.forEach((a, k) => fitIn(a, off + cw * k + 8, ry, cw - 16, 104)); }); }
   } else if (s.type === 'dato') {
     if (s.title) y = para(s.title, 70, y, { f: F.d, w: 800, s: 54, c: ink }, 940, 64) + 10;
     if (s.big) { let sz = 210; while (tw(s.big, { f: F.d, w: 800, s: sz }) > 940 && sz > 90) sz -= 10; T(s.big, 70, y + sz * .82, { f: F.d, w: 800, s: sz, c: s.tone === 'down' ? B.terracota : s.tone === 'up' ? (dark ? '#DDE8B8' : B.musgo) : (dark ? B.arena : B.azul) }); y += sz + 40; }

@@ -21,7 +21,8 @@
     "accessory": "lentes",
     "size": 430
    },
-   "say": "Rankeando 5 acciones: 6 rondas y un ganador. Y la que arrasa en la primera ronda termina última."
+   "say": "Rankeando 5 acciones: 6 rondas y un ganador. Y la que arrasa en la primera ronda termina última.",
+   "logo_layout": "bloque"
   },
   {
    "type": "news",

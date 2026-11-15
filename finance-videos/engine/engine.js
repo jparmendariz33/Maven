@@ -277,8 +277,8 @@ function logoWall(s, t) {
   const dy = (1 - ex(k)) * 24;
   if (lay === 'bloque') {            // 3 arriba + 2 abajo, grandes, a la izquierda de JP
     const fil = [ls.slice(0, 3), ls.slice(3)];
-    fil.forEach((row, r) => { const cw = 630 / 3, y = 1046 + r * 158, off = 70 + (row.length === 3 ? 0 : cw / 2);
-      row.forEach((im, i) => contain(im, off + cw * i + 10, y + dy, cw - 20, 124)); });
+    fil.forEach((row, r) => { const cw = 630 / 3, y = 1128 + r * 162, off = 70 + (row.length === 3 ? 0 : cw / 2);
+      row.forEach((im, i) => contain(im, off + cw * i + 10, y + dy, cw - 20, 124)); });   // abajo del subtítulo y arriba de los subtítulos de voz
   } else if (lay === 'esparcido') {  // escalonados, aprovechando el hueco libre
     const pos = [[70, 1032, 250], [330, 1122, 230], [84, 1218, 215], [320, 1306, 235], [548, 1024, 215]];
     ls.forEach((im, i) => { const q = pos[i % pos.length]; contain(im, q[0], q[1] + dy, q[2], q[2] * .5); });
