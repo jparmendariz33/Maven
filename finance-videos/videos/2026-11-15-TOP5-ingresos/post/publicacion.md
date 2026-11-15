@@ -18,7 +18,7 @@ Las rondas:
 5. Deuda sobre capital → Spotify, 5.2% (Mercado Libre debe 197.4%)
 6. PEG → Mercado Libre, 0.8
 
-Lo interesante: ninguna gana en todo. Mercado Libre lidera en ventas y en PEG, pero queda al final en margen, ROE y deuda. Alphabet casi no gana rondas y aun así gana el torneo, por no fallar en ninguna. Por eso una sola métrica no alcanza.
+Lo interesante: el que más crece no es el que mejor aguanta. Mercado Libre gana la ronda de ventas por mucho y termina última, porque pierde margen, ROE y deuda. Alphabet casi no gana rondas y se lleva el torneo por no fallar en ninguna.
 
 ⚠️ En lo personal tengo posición en Aeropuertos del Pacífico y en Mercado Libre.
 Esto no es una recomendación de compra: es un ranking según seis métricas que puedes verificar tú mismo.
