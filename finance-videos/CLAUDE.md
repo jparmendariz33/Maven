@@ -60,6 +60,23 @@ Las empresas compiten en 5 rondas (ventas, utilidad de operación, margen, ROE y
 de evolución en las dos primeras y tabla final con una ganadora. El título promete un resultado; "5 empresas que estamos
 vigilando" no dice nada. Plan de acción completo en `plan/torneo.md`; reglas en `/short` §1d.
 
+## Regla de los logos (JP, 15 nov 2026)
+- **Siempre el logo oficial de la empresa**, bajado de su propia sala de prensa o sitio (gstatic para Google, newsroom de
+  Spotify, el sitio de cada mexicana). El catálogo de iconos monocromo solo como último recurso: da la "G" en vez de la
+  palabra Google y pierde el color de marca. Crédito en `images/credits.json`.
+- **Nada de tarjeta blanca** salvo que el logo sea casi invisible sobre el fondo (umbral de contraste 1.22). Una tarjeta
+  blanca se lee como "PNG mal recortado".
+- **Varios logos juntos van en bloque 3 + 2, no en fila.** En fila de cinco quedan diminutos. En el gancho del short el
+  bloque va a la altura del personaje (y≈1128), nunca pegado al subtítulo ni encima de los subtítulos de la voz.
+  Lo controla `"logo_layout": "bloque" | "fila" | "esparcido"` en la escena.
+
+## Regla del cierre de un ranking (JP, 15 nov 2026)
+La última frase es **un principio general, nunca un veredicto sobre una acción**. "El crecimiento es una métrica, no una
+tesis" sirve; "Mercado Libre no es buena inversión" o "no es buen momento para entrar" son recomendación y están
+prohibidas. La buena señal: la frase sigue siendo cierta en el torneo del domingo siguiente, con otras empresas.
+Tampoco frases tajantes de más ("crecer rápido no es ser un buen negocio" se descartó por injusta con quien lidera
+en ventas y en PEG).
+
 ## El gancho identifica a la empresa (JP, 14 nov 2026)
 La primera escena lleva **siempre** el logo (`"logo"` en el `hook`, arriba a la derecha, con tarjeta blanca si no
 contrasta) o la foto del tema a toda pantalla, o las dos. Un gancho sin marca no dice de quién habla. Detalle en `/short` §0.

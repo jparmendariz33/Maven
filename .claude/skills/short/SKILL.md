@@ -23,6 +23,23 @@ terminar agrega el short ahí. `narration.txt` = los `say` del storyboard, uno p
 
 ### ✅ Checklist de estilo (reglas que pidió JP — revisa TODAS antes de entregar)
 
+#### 🖼️ Logos: oficiales, sin tarjeta y en bloque (JP, 15 nov 2026)
+1. **Bájalos de la fuente oficial de cada empresa** (sala de prensa, gstatic, el sitio corporativo), no del catálogo
+   monocromo: ése da la "G" en vez de la palabra Google y pierde el color. Anota el crédito en `images/credits.json`.
+2. **Sin tarjeta blanca** salvo que el logo sea casi invisible sobre el fondo. Se lee como un PNG mal recortado.
+3. **Varios logos van en bloque 3 + 2** (`"logo_layout": "bloque"`), nunca los cinco en fila: quedan diminutos.
+   En el gancho el bloque va a la altura del personaje, separado del subtítulo y por encima de los subtítulos de la voz.
+
+#### 🧾 Declaración de posición: dónde va y dónde no (JP, 15 nov 2026)
+Si JP tiene la empresa, se declara **en la voz** (y por tanto en los subtítulos) **y en la descripción**. En pantalla
+como chip solo si él lo pide: la repetición en cada escena satura. Él decidió que con decirlo basta.
+
+#### 🎯 La frase de cierre de un ranking (JP, 15 nov 2026)
+Un **principio general**, nunca un veredicto sobre una acción. Vale "El crecimiento es una métrica, no una tesis";
+no vale "X no es buena inversión" ni "no es buen momento para entrar". Prueba: ¿la frase sigue siendo cierta en el
+torneo del domingo siguiente, con otras empresas? Si sí, sirve. Evita también el filo injusto: se descartó
+"crecer rápido no es ser un buen negocio" porque castigaba a quien lidera en ventas y en valuación.
+
 #### 🏷️ El gancho SIEMPRE identifica a la empresa (JP, 14 nov 2026)
 La primera escena tiene que decir **de quién** habla desde el primer cuadro. El short de Nubank abría con el dato y sin
 ninguna marca. En el `hook` van una de estas dos, o las dos:

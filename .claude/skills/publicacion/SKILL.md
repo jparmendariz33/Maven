@@ -1,4 +1,16 @@
 ---
+
+> ## Lo aprendido el 15 nov 2026 (publicación del primer torneo)
+> - **Las láminas no son párrafos.** Si una lámina es una lista de viñetas con cifras, conviértela en gráfica: el tipo
+>   `rondas` dibuja logo · barra proporcional · valor · puntos, igual que el video. JP: "es mucho texto, le falta la parte visual".
+> - **No repitas el nombre si ya está el logo.** En las filas va solo el logo; poner "Spotify" junto a su logo amontona
+>   y obliga a encoger la barra.
+> - **Siempre una lámina de conclusión al final**, con el remate del video. Antes terminaba en la pregunta y se sentía cortada.
+> - **De 3–4 láminas se puede pasar a 6** si el tema lo pide (JP lo autorizó). Ojo: YouTube suele limitar el carrusel a 5;
+>   si no deja subir todas, se quita la lámina menos esencial y se dice en `youtube.md`.
+> - **Los logos de la portada van en bloque 3 + 2 debajo del subtítulo**, no en fila y no encima del texto.
+> - Cada lámina se revisa contra el personaje 3D: es lo que más se encima (`host_size` baja a 200–250 cuando hay texto largo).
+
 name: publicacion
 description: Crea una publicación de YouTube (pestaña Publicaciones) de 3–4 imágenes cuadradas que cuenta UNA noticia del día del mercado, en el estilo Costa Studio Finance, con el personaje 3D de JP recortado en la primera y la última imagen, más el texto y una encuesta para copiar. Úsala cuando digan "/publicacion", "haz la publicación de hoy", "post de la noticia", o cuando la tarea programada de lunes, miércoles y viernes lo pida.
 ---
