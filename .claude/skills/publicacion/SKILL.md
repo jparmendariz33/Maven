@@ -4,7 +4,9 @@
 > - **Las láminas no son párrafos.** Si una lámina es una lista de viñetas con cifras, conviértela en gráfica: el tipo
 >   `rondas` dibuja logo · barra proporcional · valor · puntos, igual que el video. JP: "es mucho texto, le falta la parte visual".
 > - **No repitas el nombre si ya está el logo.** En las filas va solo el logo; poner "Spotify" junto a su logo amontona
->   y obliga a encoger la barra.
+>   y obliga a encoger la barra. **Matiz (16 nov 2026):** eso vale con marcas que cualquiera reconoce (Amazon, Google,
+>   Spotify). Con logos que no se identifican solos — el óvalo rojo de Oracle, el círculo de Palantir — el nombre vuelve:
+>   `"show_names": true` en la lámina. La prueba es si tú reconoces la empresa tapando el texto.
 > - **Siempre una lámina de conclusión al final**, con el remate del video. Antes terminaba en la pregunta y se sentía cortada.
 > - **De 3–4 láminas se puede pasar a 6** si el tema lo pide (JP lo autorizó). Ojo: YouTube suele limitar el carrusel a 5;
 >   si no deja subir todas, se quita la lámina menos esencial y se dice en `youtube.md`.

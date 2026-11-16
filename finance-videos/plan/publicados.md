@@ -31,4 +31,5 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 ## Publicaciones (pestaña Publicaciones de YouTube; skill `/publicacion`)
 | Fecha | Tema | Carpeta |
 |---|---|---|
+| lun 16 nov 2026 | La IA cayó un día antes de que Nvidia reporte (Nasdaq −2.49%, chips −5.28%) | `videos/2026-11-16-POST-IA/` |
 | mié 11 nov 2026 (entregada el 12) | CoreWeave subió 25% y levantó a los chips: Micron, Arm y Dell ≈ +12% (CRWV) | `videos/2026-11-11-POST-CRWV/` |

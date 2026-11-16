@@ -1,0 +1,26 @@
+{
+ "images/logo_nvidia.png": {
+  "title": "nvidia",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=nvidia",
+  "kind": "logo"
+ },
+ "images/logo_amd.png": {
+  "title": "amd",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=amd",
+  "kind": "logo"
+ },
+ "images/logo_oracle.png": {
+  "title": "oracle",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=oracle",
+  "kind": "logo"
+ },
+ "images/logo_palantir.png": {
+  "title": "palantir",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=palantir",
+  "kind": "logo"
+ }
+}

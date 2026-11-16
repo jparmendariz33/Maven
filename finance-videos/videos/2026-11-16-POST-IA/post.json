@@ -1,0 +1,100 @@
+{
+ "title": "Lunes 16 nov 2026 · La IA cayó un día antes de Nvidia",
+ "host": {
+  "outfit": "blazer",
+  "accessory": "ninguno",
+  "prop": "ninguno"
+ },
+ "sources": "Yahoo Finance · cierre del 16 nov 2026",
+ "slides": [
+  {
+   "type": "portada",
+   "kicker": "Lunes 16 de noviembre",
+   "title": "Mañana reporta Nvidia. Hoy el mercado se adelantó.",
+   "size": 66,
+   "sub": "El Nasdaq cayó 2.49% y los chips, el doble.",
+   "logos": [
+    "images/logo_nvidia.png",
+    "images/logo_amd.png",
+    "images/logo_oracle.png",
+    "images/logo_palantir.png"
+   ],
+   "host": {
+    "act": "senala",
+    "mood": "down"
+   },
+   "host_size": 250
+  },
+  {
+   "type": "rondas",
+   "kicker": "Cierre de hoy",
+   "title": "Lo que más cayó",
+   "sub": "Variación del lunes 16 de noviembre",
+   "logos": [
+    "images/logo_nvidia.png",
+    "images/logo_amd.png",
+    "images/logo_oracle.png",
+    "images/logo_palantir.png"
+   ],
+   "rows": [
+    {
+     "name": "AMD",
+     "logo_i": 1,
+     "value": 5.58,
+     "text": "−5.58%"
+    },
+    {
+     "name": "Oracle",
+     "logo_i": 2,
+     "value": 4.99,
+     "text": "−4.99%"
+    },
+    {
+     "name": "Palantir",
+     "logo_i": 3,
+     "value": 4.52,
+     "text": "−4.52%"
+    },
+    {
+     "name": "Nvidia",
+     "logo_i": 0,
+     "value": 4.12,
+     "text": "−4.12%"
+    }
+   ],
+   "show_names": true
+  },
+  {
+   "type": "dato",
+   "kicker": "El dato",
+   "title": "Los chips cayeron el doble que el Nasdaq",
+   "bullets": [
+    "Índice de semiconductores (SOX): −5.28% hoy",
+    "Nasdaq Composite: −2.49% · S&P 500: −1.92%",
+    "Y el índice de chips ya está 34.33% abajo de su máximo de 12 meses: esto no empezó hoy"
+   ]
+  },
+  {
+   "type": "dato",
+   "kicker": "Qué pasa mañana",
+   "title": "Nvidia reporta el martes 17",
+   "bullets": [
+    "Es la empresa más grande del índice de chips y arrastra al resto",
+    "Llega 34.73% abajo de su máximo y con el escándalo de su fundador encima",
+    "Las notas del día lo dicen claro: el mercado se está posicionando antes del reporte"
+   ]
+  },
+  {
+   "type": "pregunta",
+   "kicker": "Tu turno",
+   "question": "¿Corrección sana o se está desinflando la IA?",
+   "size": 80,
+   "cta": "Te leo en los comentarios 👇",
+   "host": {
+    "act": "cierre"
+   },
+   "host_size": 230
+  }
+ ],
+ "text": "Hoy lunes 16 de noviembre cayó todo lo que huele a inteligencia artificial, y los chips cayeron el doble que el mercado.\n\n📉 El cierre\n• Nasdaq Composite: −2.49% (24,509.76)\n• S&P 500: −1.92% (7,416.59)\n• Índice de semiconductores (SOX): −5.28%\n\nLas más golpeadas: AMD −5.58%, Oracle −4.99%, Palantir −4.52% y Nvidia −4.12%.\n\n🗓️ El porqué está en el calendario: **Nvidia reporta mañana martes 17**. Es la empresa más grande del índice de chips, llega 34.73% abajo de su máximo y con el escándalo de su fundador encima. Las notas de la jornada apuntan a lo mismo: el mercado se posicionó antes del reporte.\n\nUn dato para no leer el día aislado: el índice de semiconductores ya está 34.33% abajo de su máximo de 12 meses. Esto no empezó hoy.\n\n¿Tú cómo lo ves: corrección sana o se está desinflando la IA? Te leo 👇\n\nFuentes: precios de cierre del 16 de noviembre de 2026 (Yahoo Finance) y notas de la jornada.\nContenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Armendáriz.\n#Nvidia #IA #bolsa #inversiones"
+}
