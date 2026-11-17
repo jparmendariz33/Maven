@@ -11,7 +11,8 @@ Qué hace:
    Arregla concordancias comunes ("uno millón" → "un millón", "quinientos empresas" → "quinientas empresas").
 2. SIGLAS Y NOMBRES como se dicen: S&P 500 → "es and pi quinientos", CNBV → nombre completo, Nasdaq → "Násdak",
    "by JP" → "de Jota Pe". Agrega aquí las que falten (diccionario PRON).
-3. COSTO: vidIQ cobra 14 créditos por cada 1,000 caracteres de CADA envío, redondeando hacia arriba (máx. 5,000 por envío).
+3. COSTO: vidIQ cobra 28 créditos por cada 1,000 caracteres de CADA envío, redondeando hacia arriba (máx. 5,000 por envío).
+   (Eran 14 hasta nov 2026; la tarifa subió y el cálculo viejo subestimaba el gasto a la mitad.)
    Busca el corte entre escenas que use menos bloques y, a igual costo, más piezas (rehacer una pieza sale más barato).
 Nunca pongas en boca de la voz de IA "soy JP": usa una presentación de marca ("Bienvenido a Costa Studio Finance…").
 """
@@ -55,10 +56,10 @@ def main(d, credits=None):
     units = sum(math.ceil(c['chars'] / 1000) for c in chunks)
     json.dump(chunks, open(os.path.join(d, 'tts_chunks.json'), 'w'), ensure_ascii=False, indent=1)
     total = sum(L) + 2 * (n - 1)
-    print(f'{total} caracteres para la voz · {len(chunks)} piezas · {units} bloques = {units * 14} créditos')
-    for c in chunks: print(f"  pieza {c['n']}: {c['chars']} caracteres ({math.ceil(c['chars'] / 1000) * 14} créditos)")
-    if credits is not None and units * 14 > int(credits):
-        falta = total - (int(credits) // 14) * 1000
+    print(f'{total} caracteres para la voz · {len(chunks)} piezas · {units} bloques = {units * 28} créditos')
+    for c in chunks: print(f"  pieza {c['n']}: {c['chars']} caracteres ({math.ceil(c['chars'] / 1000) * 28} créditos)")
+    if credits is not None and units * 28 > int(credits):
+        falta = total - (int(credits) // 28) * 1000
         print(f'⚠️  No alcanzan {credits} créditos: recorta al menos ~{falta} caracteres (o espera la renovación).')
 
 

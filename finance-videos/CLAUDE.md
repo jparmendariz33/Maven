@@ -126,8 +126,12 @@ Un número mide pocos caracteres pero tarda mucho en decirse: "45" son 2 caracte
 
 ## Reglas
 - **Voz de JP:** todo guion se escribe con el tono de `plan/voz-jp.md` (conversado, suyo, sin frases que suenen a IA). Léelo antes de redactar.
-- No generar voz sin aprobación del guion (cuesta créditos de vidIQ: 14 por cada 1,000 caracteres; plan de 150/mes,
-  se renueva el día 4 de cada mes).
+- No generar voz sin aprobación del guion. **Plan Boost desde el 16 nov 2026: 2,000 créditos al mes, se renuevan el 17.**
+  La voz cuesta **28 créditos por cada 1,000 caracteres** (eran 14; la tarifa subió). Un largo de 7 min ≈ 5,000
+  caracteres ≈ 141 créditos. **Antes de gastar en el guion completo, genera siempre una muestra de 10–15 s** y que JP
+  la apruebe (JP, 16 nov 2026).
+- **Voces en español del catálogo:** no hay ninguna mexicana. Francisco (`EK54is7sa3aPFLD9BwCC`) es la única masculina
+  latinoamericana y es la más cercana a la voz de JP; Andrea es colombiana, Antonio y Carolina son de España.
 - Datos siempre verificados; nunca recomendaciones de compra/venta.
 - Para cambiar el estilo, editar `brand.json` / `engine.js` y probar con `videos/ejemplo-SE` (re-render sin gastar créditos:
   `build_timeline.py` → `make_audio.py` → `render.js`).
