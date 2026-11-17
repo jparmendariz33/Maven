@@ -103,6 +103,12 @@ revisa es el aire, no el guion.
 **Siempre con los montos reales; nunca normalizados a $100.** Con base 100 el porcentaje y el monto dicen lo mismo y la fila de
 montos sobra. La escala va en el subtítulo y en `"unit"` de la escena. Detalle en `/short` §1e.
 
+## Regla del reloj con voz de IA (16 nov 2026)
+La voz de IA lee a ~150 palabras/min; `no_voice.py` presupuesta 120 para la voz de JP. **El mismo guion sale ~25% más
+corto con IA**: el largo de Apple pasó de 6:52 (teleprompter) a 5:21 (Francisco). Si un largo tiene que durar 6–7 min
+con voz de IA, el guion necesita ~25% más contenido. Y nunca escribas la duración dentro del guion ("en 10 minutos"):
+cambia con cada recorte y con la voz, y hay que regenerar audio para corregirla (ya pasó dos veces).
+
 ## Regla de los números (descubierta en nov 2026 — aplica a TODO: shorts, largos, voz propia o de IA)
 Un número mide pocos caracteres pero tarda mucho en decirse: "45" son 2 caracteres y se dice "cuarenta y cinco";
 "1950" → "mil novecientos cincuenta" (8 sílabas); "46%" → "cuarenta y seis por ciento"; "$45,765" → 20 sílabas.
