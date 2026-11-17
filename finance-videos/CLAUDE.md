@@ -103,6 +103,16 @@ revisa es el aire, no el guion.
 **Siempre con los montos reales; nunca normalizados a $100.** Con base 100 el porcentaje y el monto dicen lo mismo y la fila de
 montos sobra. La escala va en el subtítulo y en `"unit"` de la escena. Detalle en `/short` §1e.
 
+## Regla del guion hablado (JP, 17 nov 2026 — "suena muy robotizado")
+Con voz de IA, **lo que suena a robot casi nunca es la voz: es el guion**. El primer short narrado se escribió en prosa
+de leer y rompía `plan/voz-jp.md` en cuatro cosas a la vez: frases de tráiler, la estructura "no es X, es Y", cero
+muletillas y el cierre prohibido "¿X… o Y?". La IA leyó texto robótico de forma robótica.
+- **Lee `plan/voz-jp.md` ANTES de escribir cualquier guion narrado**, y pasa la prueba final de esa guía.
+- Lo que da entonación: arranques ("A ver…", "Ahora…", "Ojo"), conectores hablados ("o sea", "pues", "entonces"),
+  preguntas al que escucha ("¿no?", "¿sabes?"), frases de largo desigual y puntos suspensivos donde de verdad se respira.
+- Los signos de admiración y las pausas con "…" cambian la entonación de la voz: úsalos donde JP los diría, no de adorno.
+- El guion hablado sale ~15% más largo que el escrito con los mismos datos: las muletillas ocupan. Contémplalo.
+
 ## Regla de la toma única (JP, 17 nov 2026)
 **La voz de IA se genera en UNA sola llamada, nunca por piezas.** Cada envío tiene su propia entonación y energía, así
 que en los cortes se oye un cambio de voz; JP lo notó en el largo de Apple, justo donde terminaba cada pieza. El límite

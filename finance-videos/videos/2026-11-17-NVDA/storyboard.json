@@ -21,7 +21,7 @@
    "signed": false,
    "caption": "Y su acción sigue 35% abajo de su máximo.",
    "cue_value": "doble",
-   "say": "Nvidia acaba de reportar y vendió el doble que hace un año. Su acción sigue 35% abajo de su máximo. Las dos cosas son ciertas."
+   "say": "A ver… Nvidia acaba de reportar y vendió el doble que hace un año. El doble, ¿eh? Y aun así su acción sigue 35% abajo de su máximo."
   },
   {
    "type": "company",
@@ -40,7 +40,7 @@
     {
      "label": "Ingresos del trimestre",
      "value": "$115,800 M",
-     "cue": "ingresos"
+     "cue": "millones"
     },
     {
      "label": "Crecimiento de ingresos",
@@ -53,7 +53,7 @@
      "cue": "utilidad"
     }
    ],
-   "say": "Sus ingresos del trimestre fueron 115,800 millones de dólares, 103% más que un año antes. Los centros de datos crecieron 110%. Y su utilidad neta subió 105%."
+   "say": "Los números, rapidito: 115,800 millones de dólares en un solo trimestre. O sea, 103% más que hace un año. Los centros de datos, que es donde está todo el negocio de la inteligencia artificial, crecieron 110. Y la utilidad neta, pues también se duplicó."
   },
   {
    "type": "statement",
@@ -61,16 +61,16 @@
    "text": "Duplicó todo. Y la acción no.",
    "emphasis": "Y la acción no.",
    "sub": "Cerró el 17 de noviembre en $155.46, un 35% abajo de su máximo de los últimos 12 meses.",
-   "say": "O sea: duplicó ingresos y duplicó utilidad. Y aun así la acción cerró 35% abajo de su máximo."
+   "say": "Entonces sí, duplicó todo. Y la acción… nada. Cerró el 17 de noviembre 35% abajo de su máximo."
   },
   {
    "type": "statement",
    "theme": "sand",
    "kicker": "POR QUÉ PASA ESTO",
-   "text": "El precio no paga lo que hiciste.",
-   "emphasis": "no paga",
-   "sub": "Paga la diferencia entre lo que hiciste y lo que ya se esperaba que hicieras.",
-   "say": "Y aquí está lo que vale la pena entender, porque no es solo de Nvidia. El precio de una acción no paga lo que la empresa hizo. Paga la diferencia entre lo que hizo y lo que ya se esperaba que hiciera."
+   "text": "El mercado ya traía un número en la cabeza.",
+   "emphasis": "en la cabeza.",
+   "sub": "Lo que mueve el precio es qué tanto te alejas de ese número, para arriba o para abajo.",
+   "say": "Ahora, ¿por qué pasa esto? Pues porque el mercado ya traía un número en la cabeza desde antes del reporte. Y lo que mueve el precio es qué tanto te alejas de ese número, ¿sabes?, para arriba o para abajo."
   },
   {
    "type": "statement",
@@ -78,7 +78,7 @@
    "text": "Si esperaban 100 y entregas 103, decepcionas.",
    "emphasis": "decepcionas.",
    "sub": "Aunque 103 sea el mejor número de tu historia.",
-   "say": "Si el mercado esperaba cien y entregas ciento tres, para el precio eso puede ser una decepción. Aunque ciento tres sea el mejor número de tu historia."
+   "say": "Ponle que esperaban cien y entregaste 103. Súper bien, ¿no? Pues para el precio puede ser una decepción. Aunque 103 sea tu mejor número en la historia."
   },
   {
    "type": "catalyst",
@@ -87,7 +87,7 @@
    "label": "La guía: $130,000 M",
    "sub": "Y quién queda como director general: hoy el puesto lo ocupa Colette Kress de forma interina.",
    "cue_date": "guía",
-   "say": "Lo que yo vigilaría: la guía del próximo trimestre, 130,000 millones, y quién queda de director general. Hoy el puesto es interino."
+   "say": "Yo lo que voy a estar viendo son dos cosas: la guía del próximo trimestre, que son 130,000 millones, y quién se queda de director general, porque ahorita el puesto está interino."
   },
   {
    "type": "outro",
@@ -96,12 +96,12 @@
     "outfit": "blazer",
     "accessory": "ninguno"
    },
-   "question_a": "¿Lo que esperabas",
-   "question_b": "o lo que pasó?",
-   "cue_a": "esperabas",
-   "cue_b": "pasó",
+   "question_a": "¿Tú qué opinas?",
+   "question_b": "",
+   "cue_a": "opinas",
+   "cue_b": "opinas",
    "sources": "Nvidia, reporte a la SEC del 17 nov 2026 · Yahoo Finance",
-   "say": "Cuando veas que una acción baja con buenos números, acuérdate de esto. ¿Qué estaba en el precio: lo que esperabas o lo que pasó?"
+   "say": "Así que la próxima vez que veas una acción caer con buenos números… pues ya sabes por dónde va. ¿Tú qué opinas?"
   }
  ]
 }
