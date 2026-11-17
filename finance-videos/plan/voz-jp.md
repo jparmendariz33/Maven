@@ -6,6 +6,12 @@ algo a un amigo listo que no trabaja en finanzas, en versión un poco más cuida
 > Base de esta guía: los mensajes de JP en el chat (pocos y dictados). Es un primer retrato, no definitivo. Cuando JP grabe voces,
 > transcribe 2–3 y afina esta guía con sus frases reales.
 
+> ## ⚠️ Esta guía es para cuando GRABA JP (17 nov 2026)
+> Con **voz de IA** NO se usan sus muletillas: puestas en otra voz suenan actuadas y demasiado informales. JP lo
+> corrigió el 17 de noviembre. En los videos narrados por IA se mantiene el registro limpio de siempre y lo humano
+> se consigue con prosodia (pausas con `…`, frases de largo desigual, preguntas genuinas). Ver `CLAUDE.md`,
+> "Regla de la voz humana con IA".
+
 ## Cómo habla JP
 - **Conversado, mexicano, directo.** Dice las cosas como le salen y luego las aclara: "o sea…", "ahora bien…", "a ver…".
 - **Arranques:** "A ver", "Oye", "Ojo", "Mira", "Ahora sí".

@@ -103,15 +103,27 @@ revisa es el aire, no el guion.
 **Siempre con los montos reales; nunca normalizados a $100.** Con base 100 el porcentaje y el monto dicen lo mismo y la fila de
 montos sobra. La escala va en el subtítulo y en `"unit"` de la escena. Detalle en `/short` §1e.
 
-## Regla del guion hablado (JP, 17 nov 2026 — "suena muy robotizado")
-Con voz de IA, **lo que suena a robot casi nunca es la voz: es el guion**. El primer short narrado se escribió en prosa
-de leer y rompía `plan/voz-jp.md` en cuatro cosas a la vez: frases de tráiler, la estructura "no es X, es Y", cero
-muletillas y el cierre prohibido "¿X… o Y?". La IA leyó texto robótico de forma robótica.
-- **Lee `plan/voz-jp.md` ANTES de escribir cualquier guion narrado**, y pasa la prueba final de esa guía.
-- Lo que da entonación: arranques ("A ver…", "Ahora…", "Ojo"), conectores hablados ("o sea", "pues", "entonces"),
-  preguntas al que escucha ("¿no?", "¿sabes?"), frases de largo desigual y puntos suspensivos donde de verdad se respira.
-- Los signos de admiración y las pausas con "…" cambian la entonación de la voz: úsalos donde JP los diría, no de adorno.
-- El guion hablado sale ~15% más largo que el escrito con los mismos datos: las muletillas ocupan. Contémplalo.
+## Regla de la voz humana con IA (JP, 17 nov 2026 — las dos correcciones del mismo día)
+JP corrigió dos veces el mismo short y las dos juntas dan la regla:
+
+1. **"Suena muy robotizado."** Cierto, pero el problema casi nunca es la voz: es que el guion esté escrito para leerse.
+2. **"Demasiadas muletillas, se ve demasiado informal."** Al reescribirlo con "a ver", "o sea", "¿sabes?", "¡súper bien!"
+   quedó peor: informal y falso.
+
+**La conclusión: `plan/voz-jp.md` describe cómo habla JP cuando LÉE ÉL.** Sus muletillas suenan naturales porque son
+suyas y las dice con su propio ritmo. Puestas en una voz de IA suenan actuadas. **Con narración de IA se mantiene el
+registro escrito de siempre —limpio, profesional, una idea por frase— y lo humano se consigue con la PROSODIA, no con
+palabras de relleno.**
+
+Qué sí mueve la entonación de la voz, y dónde ponerlo:
+- **`…` para respirar**, 2 o 3 veces en un short, justo antes del dato que importa. No en cada línea.
+- **Frases de largo desigual.** Una corta de golpe, luego una larga que explica. El monótono viene de frases iguales.
+- **Signos de interrogación reales** (una pregunta genuina, no retórica en cadena): suben el tono al final.
+- **Alargar una vocal, una sola vez por video** y solo si la palabra lo pide (`muchíiisimo`). Dos veces ya es caricatura.
+- **Comas donde de verdad se pausa al hablar**, aunque la gramática no las pida.
+
+Qué NO se usa con voz de IA: "a ver", "o sea", "pues", "¿sabes?", "¿no?", "¡súper!", exclamaciones de entusiasmo.
+Esas se quedan para cuando grabe JP.
 
 ## Regla de la toma única (JP, 17 nov 2026)
 **La voz de IA se genera en UNA sola llamada, nunca por piezas.** Cada envío tiene su propia entonación y energía, así
