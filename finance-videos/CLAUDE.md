@@ -103,6 +103,13 @@ revisa es el aire, no el guion.
 **Siempre con los montos reales; nunca normalizados a $100.** Con base 100 el porcentaje y el monto dicen lo mismo y la fila de
 montos sobra. La escala va en el subtítulo y en `"unit"` de la escena. Detalle en `/short` §1e.
 
+## Regla de la toma única (JP, 17 nov 2026)
+**La voz de IA se genera en UNA sola llamada, nunca por piezas.** Cada envío tiene su propia entonación y energía, así
+que en los cortes se oye un cambio de voz; JP lo notó en el largo de Apple, justo donde terminaba cada pieza. El límite
+de un envío son **5,000 caracteres**: si el guion no cabe, se recorta el guion, no se parte el audio. Ojo: `tts_prep.py`
+parte en piezas para el flujo viejo; usa su texto concatenado con `\n\n` y mándalo completo. Y borra `voice_raw.mp3`
+antes de reprocesar: `process_voice.py` lo reutiliza si existe y ignora las piezas nuevas.
+
 ## Regla del reloj con voz de IA (16 nov 2026)
 La voz de IA lee a ~150 palabras/min; `no_voice.py` presupuesta 120 para la voz de JP. **El mismo guion sale ~25% más
 corto con IA**: el largo de Apple pasó de 6:52 (teleprompter) a 5:21 (Francisco). Si un largo tiene que durar 6–7 min

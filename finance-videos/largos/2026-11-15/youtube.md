@@ -6,7 +6,7 @@ Archivos: `estado-de-resultados-apple_largo.mp4` · `miniatura.jpg` · Lista: **
 2. Cómo leer el estado de resultados de una empresa: ejemplo real con Apple
 3. Estado de resultados explicado fácil: cuánto gana Apple de cada $100
 
-## ⚠️ Este video YA LLEVA VOZ (Francisco, vidIQ). No hay que grabar nada.
+## ⚠️ Este video YA LLEVA VOZ (Francisco, vidIQ, una sola toma). No hay que grabar nada.
 
 ## Descripción
 ```
@@ -15,10 +15,10 @@ De cada $100 que le pagas a Apple, ¿cuánto se queda de ganancia? Aprende a lee
 ⏱️ Capítulos
 0:00 Introducción
 0:32 Ingresos
-1:05 Margen bruto
-1:44 Gastos de operación
-2:58 Utilidad neta y por acción
-4:01 Lo que no te dice
+1:03 Margen bruto
+1:43 Gastos de operación
+2:52 Utilidad neta y por acción
+3:56 Lo que no te dice
 
 📊 Datos clave (Apple, año fiscal 2026, terminado el 26 sep 2026)
 • Ventas: $478,834 M (+15%) · Margen bruto: 48.8% (productos 39%, servicios 76%)
