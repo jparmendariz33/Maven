@@ -1,0 +1,96 @@
+{
+ "title": "Miércoles 18 nov 2026 · Nvidia reportó récord y la acción cayó",
+ "host": {
+  "outfit": "blazer",
+  "accessory": "ninguno",
+  "prop": "ninguno"
+ },
+ "sources": "Yahoo Finance, cierre del 18 nov 2026 · Nvidia, 8-K a la SEC del 17 nov",
+ "slides": [
+  {
+   "type": "portada",
+   "kicker": "Miércoles 18 de noviembre",
+   "title": "Nvidia reportó el mejor trimestre de su historia. Y la acción cayó.",
+   "size": 62,
+   "sub": "Hoy bajó 2.89%. El Nasdaq, ese mismo día, subió.",
+   "logos": [
+    "images/logo_nvidia.png"
+   ],
+   "host": {
+    "act": "piensa",
+    "mood": "down"
+   },
+   "host_size": 250
+  },
+  {
+   "type": "rondas",
+   "kicker": "Cierre de hoy",
+   "title": "El mercado subió. Nvidia no.",
+   "sub": "Variación del miércoles 18 de noviembre",
+   "logos": [
+    "images/logo_nvidia.png",
+    "images/logo_amazon.png",
+    "images/logo_broadcom.png"
+   ],
+   "show_names": true,
+   "rows": [
+    {
+     "name": "Amazon",
+     "logo_i": 1,
+     "value": 3.82,
+     "text": "+3.82%"
+    },
+    {
+     "name": "Broadcom",
+     "logo_i": 2,
+     "value": 3.64,
+     "text": "+3.64%"
+    },
+    {
+     "name": "Nasdaq",
+     "logo_i": 99,
+     "value": 0.42,
+     "text": "+0.42%"
+    },
+    {
+     "name": "Nvidia",
+     "logo_i": 0,
+     "value": -2.89,
+     "text": "−2.89%"
+    }
+   ]
+  },
+  {
+   "type": "dato",
+   "kicker": "Lo que reportó ayer",
+   "title": "Y no fue un mal trimestre. Fue el mejor.",
+   "bullets": [
+    "Ingresos: $115,800 millones, 103% más que hace un año",
+    "Utilidad neta: $65,287 millones, 105% más",
+    "Guía para el próximo trimestre: $130,000 millones"
+   ]
+  },
+  {
+   "type": "dato",
+   "kicker": "El detalle que importa",
+   "title": "No fue el mercado. Fue Nvidia.",
+   "bullets": [
+    "El Nasdaq cerró en verde el mismo día: +0.42%",
+    "Nvidia cerró en $150.96 y ya está 36.9% abajo de su máximo de 12 meses",
+    "Ayer estaba 35.0% abajo. Reportó un récord y se alejó más de su máximo"
+   ]
+  },
+  {
+   "type": "pregunta",
+   "kicker": "La idea",
+   "question": "El precio no paga el resultado. Paga la sorpresa.",
+   "size": 66,
+   "cta": "¿Tú lo ves igual? Te leo en los comentarios 👇",
+   "host": {
+    "act": "cierre"
+   },
+   "host_size": 210
+  }
+ ],
+ "text": "Ayer Nvidia reportó el mejor trimestre de su historia. Hoy su acción cayó 2.89%.\n\n📊 Lo que reportó (trimestre cerrado el 25 de octubre, presentado a la SEC el 17 de noviembre)\n• Ingresos: $115,800 M, 103% más que hace un año\n• Utilidad neta: $65,287 M, 105% más\n• Guía para el próximo trimestre: $130,000 M\n\n📉 Y hoy cerró en $150.96, un 36.9% abajo de su máximo de los últimos 12 meses. Ayer estaba 35.0% abajo: reportó un récord y se alejó más.\n\n🔍 El detalle que lo explica: hoy no fue un mal día de mercado. El Nasdaq cerró en verde, +0.42%. Amazon subió 3.82% y Broadcom 3.64%. O sea que la caída fue de Nvidia, no del mercado.\n\n🧠 La idea, que sirve para cualquier empresa: el precio de una acción no paga el resultado, paga la sorpresa. Cuando el mercado ya esperaba algo extraordinario, entregarlo no alcanza.\n\n¿Tú lo ves igual? Te leo 👇\n\nFuentes: Nvidia, reporte del 3T del año fiscal 2027 a la SEC (17 nov 2026) · precios de cierre del 18 de noviembre de 2026, Yahoo Finance.\nContenido educativo. No es asesoría financiera. Costa Studio Finance, by JP Armendáriz.\n#Nvidia #bolsa #inversiones"
+}

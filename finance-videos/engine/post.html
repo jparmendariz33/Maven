@@ -61,7 +61,7 @@ window.drawSlide = async ({ s, i, n, brand, image, logo, logos, series, sources 
         T(r.name, 192, ry + 44, { f: F.d, w: 800, s: ns, c: ink }); }
       const bx2 = nm ? 360 : 276, bmax = nm ? 310 : 395;
       const bw = Math.max(8, bmax * (Math.abs(r.value) / mx));
-      C.beginPath(); C.roundRect(bx2, ry + 14, bw, 34, 10); C.fillStyle = win ? B.musgo : B.azul; C.fill();
+      C.beginPath(); C.roundRect(bx2, ry + 14, bw, 34, 10); C.fillStyle = win ? B.musgo : (r.value < 0 ? B.terracota : B.azul); C.fill();   // negativo en rojo, no en azul
       T(r.text || (r.value + (s.suffix || '')), 884, ry + 44, { f: F.d, w: 800, s: 38, al: 'right', c: ink });
       if (r.points != null) {   // sin puntos cuando la lámina no es un torneo
         C.beginPath(); C.arc(952, ry + 32, 28, 0, 7); C.fillStyle = win ? B.musgo : 'rgba(10,10,10,.12)'; C.fill();
