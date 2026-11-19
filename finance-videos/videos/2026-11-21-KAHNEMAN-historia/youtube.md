@@ -1,7 +1,9 @@
-# Historia 3D · Kahneman y Tversky: por qué aguantas la que pierde (sábado 21 nov 2026 · publicar 12:00)
+# Historia 3D · Kahneman y Tversky: por qué aguantas la que pierde
+**Publicar: JUEVES 20 nov 2026, 12:00** (JP la adelantó del sábado para calentar motores hacia el largo del domingo)
 
 **Este video YA LLEVA VOZ** (Francisco, vidIQ, una sola toma). No hay que grabar nada.
-Duración 54.9 s · 8 escenas · 127 palabras · animación original en 3D.
+Duración 63.9 s · 10 escenas · 150 palabras · animación original en 3D.
+Cierra con pregunta, como todas las historias, y **avisa en pantalla (pizarrón) que el domingo sale el largo**.
 Música al 60% del nivel de la voz (pedido de JP). Guion reescrito para que se entienda sin saber de finanzas.
 
 ## ✅ Para copiar y pegar
@@ -25,7 +27,9 @@ En 1979, dos psicólogos publicaron un artículo en una revista de economía y c
 
 🧠 La idea que te llevas: al invertir, tu peor enemigo no es el mercado. Eres tú.
 
-¿Te ha pasado? ¿Has aguantado una que pierde más tiempo del que deberías? Te leo 👇
+📅 Este domingo a las 10:00 sale el video completo: por qué tu cerebro te hace perder dinero.
+
+¿Cuál fue la última acción que vendiste demasiado pronto? Te leo 👇
 
 Fuentes: Kahneman y Tversky, Econometrica (1979), DOI 10.2307/1914185 · Tversky y Kahneman, Journal of Risk and Uncertainty (1992), DOI 10.1007/BF00122574 · Shefrin y Statman, The Journal of Finance (1985), DOI 10.1111/j.1540-6261.1985.tb05002.x · Odean, The Journal of Finance (1998), DOI 10.1111/0022-1082.00072 · The Nobel Prize, premio de Ciencias Económicas 2002 (api.nobelprize.org)
 Animación original en 3D. Caricatura editorial; no son retratos ni logotipos reales.
