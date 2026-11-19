@@ -299,7 +299,7 @@ const scenes = [
     } },
 
   { id: 'apuesta', world: 'apuesta', d: 9, sfx: [[.45, 'pop'], [1.1, 'pop'], [1.6, 'shine', .7]], year: '1979',
-    cap: 'Ellos hicieron una pregunta muy simple: ¿prefieres 100 dólares seguros, o un volado: 200 o nada?',
+    cap: 'Ellos hicieron una pregunta: ¿prefieres 100 dólares seguros, o un volado: 200 o nada?',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
       const a1 = L.eio(L.seg(p, .04, .3)), a2 = L.eio(L.seg(p, .26, .52)), g2 = L.eio(L.seg(p, .34, .56));
