@@ -166,18 +166,20 @@ const worlds = {
     const cuerpo = rbox(1.12, 2.2, .16, .2, clay2('#2A2E38', .5)); tel.add(cuerpo);
     const pant = L.plaque(.99, 1.98, (g, W2, H2) => {
       g.fillStyle = '#0E1424'; g.fillRect(0, 0, W2, H2);
-      g.fillStyle = '#8FA8FF'; g.font = '700 30px \"Space Grotesk\"'; g.textAlign = 'left';
-      g.fillText('TU PORTAFOLIO', 26, 54);
-      const pts = [62, 58, 64, 49, 53, 40, 33, 36, 24, 18], x0 = 26, x1 = W2 - 26, y0 = 110, y1 = H2 - 190;
-      g.strokeStyle = 'rgba(255,255,255,.08)'; g.lineWidth = 2;
-      for (let i = 0; i <= 3; i++) { const y = y0 + (y1 - y0) * i / 3; g.beginPath(); g.moveTo(x0, y); g.lineTo(x1, y); g.stroke(); }
-      const mn = Math.min(...pts), mx = Math.max(...pts);
-      const X = i => x0 + i * (x1 - x0) / (pts.length - 1), Y = v => y1 - ((v - mn) / (mx - mn)) * (y1 - y0);
-      g.strokeStyle = '#E09277'; g.lineWidth = 11; g.lineJoin = 'round'; g.lineCap = 'round';
-      g.beginPath(); pts.forEach((v, i) => i ? g.lineTo(X(i), Y(v)) : g.moveTo(X(i), Y(v))); g.stroke();
-      g.fillStyle = '#E09277'; g.beginPath(); g.arc(X(pts.length - 1), Y(pts[pts.length - 1]), 15, 0, 7); g.fill();
-      g.font = '800 92px Unbounded'; g.fillText('−40%', 26, H2 - 92);
-      g.fillStyle = '#9AA3B8'; g.font = '600 30px \"Space Grotesk\"'; g.fillText('en lo que va del año', 26, H2 - 44);
+      g.textAlign = 'left';
+      g.fillStyle = '#8FA8FF'; g.font = '700 28px \"Space Grotesk\"'; g.fillText('TU PORTAFOLIO', 24, 48);
+      g.fillStyle = '#E09277'; g.font = '800 76px Unbounded'; g.fillText('−12%', 24, 136);
+      g.fillStyle = '#9AA3B8'; g.font = '600 26px \"Space Grotesk\"'; g.fillText('en lo que va del año', 24, 176);
+      // posiciones: sin nombres de empresas reales, para no insinuar ninguna recomendación
+      const filas = [['TECNOLOGÍA', 38, 1], ['CONSUMO', 12, 1], ['ENERGÍA', -24, -1], ['BANCOS', -41, -1]];
+      filas.forEach(([n, v, sg], k) => {
+        const y = 268 + k * 136, col = sg > 0 ? '#BBD08A' : '#E09277';
+        g.fillStyle = '#F4F1E8'; g.font = '600 32px \"Space Grotesk\"'; g.fillText(n, 24, y);
+        g.fillStyle = col; g.font = '800 36px Unbounded'; g.textAlign = 'right';
+        g.fillText((v > 0 ? '+' : '−') + Math.abs(v) + '%', W2 - 24, y); g.textAlign = 'left';
+        g.fillStyle = 'rgba(255,255,255,.07)'; g.fillRect(24, y + 22, W2 - 48, 14);
+        g.fillStyle = col; g.fillRect(24, y + 22, (W2 - 48) * Math.abs(v) / 45, 14);
+      });
     }, 420);
     pant.position.z = .09; tel.add(pant);
     return { ...w, inv, tel };
@@ -222,7 +224,7 @@ const scenes = [
     } },
 
   { id: 'supuesto', world: 'estudio', d: 7, sfx: [[.4, 'ticks', .45, .5]], year: '1979',
-    cap: 'Hasta entonces, la economía daba por hecho que decides con una calculadora en la cabeza.',
+    cap: 'Hasta entonces se pensaba que, con el dinero, todos hacemos cuentas mentales y elegimos lo que más nos conviene.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
       const cp = L.back(L.seg(p, .2, .52)), enc = L.eio(L.seg(p, .58, .84));
@@ -238,11 +240,11 @@ const scenes = [
     },
     overlay(lt, t, L) {
       const ink = L.B.negro; L.scrim(L.C, 0, 905, .88, '233,223,198');
-      head(L, 'Lo que se daba por hecho', ['Que decides', 'como una', 'calculadora'], 'Suponía que siempre eliges lo que te conviene', ink, lt, L.B.azul);
+      head(L, 'Lo que se daba por hecho', ['Que haces', 'cuentas mentales', 'y eliges lo mejor'], 'Que con el dinero somos fríos y calculadores', ink, lt, L.B.azul);
     } },
 
   { id: 'apuesta', world: 'apuesta', d: 9, sfx: [[.45, 'pop'], [1.1, 'pop'], [1.6, 'shine', .7]], year: '1979',
-    cap: 'Ellos hicieron una pregunta simple: ¿prefieres ganar 100 dólares seguros, o lanzar una moneda por 200?',
+    cap: 'Ellos hicieron una pregunta muy simple: ¿prefieres 100 dólares seguros, o un volado: 200 o nada?',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
       const a1 = L.eio(L.seg(p, .04, .3)), a2 = L.eio(L.seg(p, .26, .52)), g2 = L.eio(L.seg(p, .34, .56));
@@ -263,7 +265,7 @@ const scenes = [
     } },
 
   { id: 'balanza', world: 'balanza', d: 9.5, sfx: [[.5, 'shine', .7], [1.3, 'fall', .8]], year: 'LA CLAVE',
-    cap: 'Y encontraron algo que lo cambió todo: perder 100 duele casi el doble de lo que gusta ganar 100.',
+    cap: 'Y encontraron algo que lo cambió todo: perder 100 dólares duele casi el doble de lo que gusta ganarlos.',
     update(w, lt, t, L) {
       const p = P(lt, this), tip = L.eio(L.seg(p, .34, .82));
       w.beam.rotation.z = -tip * .18;
@@ -288,7 +290,7 @@ const scenes = [
     } },
 
   { id: 'bolsa', world: 'mercado', d: 9, sfx: [[.3, 'ticks', .5, .6], [1.2, 'pop']], year: 'EN LA BOLSA', ink: '#EBE6BA',
-    cap: 'Por eso aguantas la acción que va perdiendo, y vendes la que va ganando.',
+    cap: 'Por eso, cuando inviertes, aguantas la que va perdiendo y vendes la que va ganando.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       const agarra = L.eio(L.seg(p, .14, .46)), vende = L.eio(L.seg(p, .5, .84));
@@ -331,7 +333,7 @@ const scenes = [
     } },
 
   { id: 'tversky', world: 'nobel', d: 9, sfx: [[.8, 'fall', .6]], year: '1996', ink: '#EBE6BA',
-    cap: 'Amos Tversky había muerto en 1996. El Nobel no se entrega póstumo, así que no pudo compartirlo.',
+    cap: 'Amos Tversky había muerto en 1996. El Nobel no se le da a quien ya murió, así que no pudo compartirlo.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       w.medalla.scale.setScalar(.001); w.silla.visible = true;
@@ -345,11 +347,11 @@ const scenes = [
     },
     overlay(lt, t, L) {
       const ink = '#EBE6BA'; L.scrim(L.C, 0, 800, .64, '20,15,38');
-      head(L, 'El que faltó', ['Tversky murió', 'en 1996'], 'El Nobel no se entrega póstumo', ink, lt, L.B.terracota);
+      head(L, 'El que faltó', ['Tversky murió', 'en 1996'], 'El Nobel no se le da a quien ya murió', ink, lt, L.B.terracota);
     } },
 
   { id: 'cierre', world: 'cierre', d: 8, sfx: [[.5, 'shine', .6]], year: 'HOY',
-    cap: 'Tu peor enemigo invirtiendo no está en la pantalla. Está de este lado.',
+    cap: 'Al invertir, tu peor enemigo no es el mercado. Eres tú.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       const entra = L.back(L.seg(p, .04, .34)), voltea = L.eio(L.seg(p, .52, .82));
@@ -365,7 +367,7 @@ const scenes = [
     },
     overlay(lt, t, L) {
       const ink = L.B.negro; L.scrim(L.C, 0, 895, .82, '235,230,186');
-      head(L, 'Finanzas conductuales', ['Tu peor enemigo', 'no está en', 'la pantalla'], 'Está de este lado', ink, lt, L.B.azul);
+      head(L, 'Finanzas conductuales', ['Tu peor enemigo', 'no es el mercado.', 'Eres tú'], 'Lo difícil no son los números', ink, lt, L.B.azul);
     } },
 ];
 
