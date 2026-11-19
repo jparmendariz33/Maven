@@ -48,10 +48,38 @@ const worlds = {
     // pizarrón con la fórmula
     const bo = rbox(6.6, 3.4, .22, .08, clay2('#2E3B33', .55)); bo.position.set(0, 3.5, -6.5); w.scene.add(bo);
     const mrc = rbox(6.9, 3.7, .12, .06, clay2('#6B4A33', .75)); mrc.position.set(0, 3.5, -6.62); w.scene.add(mrc);
-    const eq = L.label3d('ECONOMETRICA · 1979', 3.2, .5, { bg: null, ink: '#E6DFC4', font: '800 58px Unbounded', ls: 3, pw: 1024 });
-    eq.position.set(0, 4.25, -6.36); w.scene.add(eq);
-    const curva = L.label3d('ganar  ·  perder', 2.4, .38, { bg: null, ink: '#9FB08C', font: '600 70px "Space Grotesk"', pw: 1024 });
-    curva.position.set(0, 2.9, -6.36); w.scene.add(curva);
+    // lo escrito en el pizarrón se revela de izquierda a derecha, como si lo estuvieran escribiendo:
+    // cada trozo va en un grupo anclado a su borde izquierdo y se descubre escalando en x
+    const escribe = (txt, ancho, alto, x, y, dibuja, pw) => {
+      const pl = L.plaque(ancho, alto, dibuja, pw);
+      pl.material.transparent = true; pl.material.depthWrite = false;   // si no, el alfa del lienzo se dibuja negro
+      const g = new THREE.Group(); pl.position.x = ancho / 2; g.add(pl);
+      g.position.set(x - ancho / 2, y, -6.36); g.scale.x = .001; w.scene.add(g); return g;
+    };
+    const GIS = '#E6DFC4';
+    const eq = escribe('ECONOMETRICA', 3.3, .52, 0, 4.3, (g, W2, H2) => {
+      g.textAlign = 'left'; g.fillStyle = GIS; g.font = '800 52px Unbounded'; g.letterSpacing = '3px';
+      g.fillText('ECONOMETRICA · 1979', 6, H2 * .62);
+    }, 1024);
+    const titulo = escribe('Prospect Theory', 2.5, .46, 0, 3.62, (g, W2, H2) => {
+      g.textAlign = 'left'; g.fillStyle = GIS; g.font = 'italic 600 54px "Instrument Serif"';
+      g.fillText('"Prospect Theory"', 6, H2 * .66);
+      g.strokeStyle = GIS; g.lineWidth = 3.5; g.lineCap = 'round'; g.globalAlpha = .85;
+      g.beginPath(); g.moveTo(8, H2 * .9);
+      for (let x = 8; x <= W2 - 20; x += 14) g.lineTo(x, H2 * .9 + Math.sin(x * .1) * 2);
+      g.stroke();
+    }, 1024);
+    // el supuesto viejo, dibujado: una recta: ganar y perder pesan igual
+    const curva = escribe('recta', 3.4, 1.0, 0, 2.62, (g, W2, H2) => {
+      const m = 26; g.strokeStyle = GIS; g.lineWidth = 3; g.lineCap = 'round'; g.globalAlpha = .55;
+      g.beginPath(); g.moveTo(m, H2 / 2); g.lineTo(W2 - m, H2 / 2); g.stroke();            // eje horizontal
+      g.beginPath(); g.moveTo(W2 / 2, m); g.lineTo(W2 / 2, H2 - m); g.stroke();            // eje vertical
+      g.globalAlpha = 1; g.lineWidth = 6;
+      g.beginPath(); g.moveTo(m + 10, H2 - m - 6); g.lineTo(W2 - m - 10, m + 6); g.stroke(); // la recta
+      g.fillStyle = GIS; g.font = '600 30px "Space Grotesk"'; g.globalAlpha = .8;
+      g.textAlign = 'right'; g.fillText('perder', W2 / 2 - 18, H2 - 14);
+      g.textAlign = 'left'; g.fillText('ganar', W2 / 2 + 18, 34);
+    }, 1024);
     desk(L, w, 0, -1.4);
     const kah = L.actor(KAH_79); kah.position.set(-1.6, 0, .3); kah.rotation.y = .42; w.scene.add(kah);
     const tve = L.actor(TVE_79); tve.position.set(1.6, 0, .3); tve.rotation.y = -.42; w.scene.add(tve);
@@ -62,7 +90,7 @@ const worlds = {
     const cscr = rbox(.86, .4, .06, .03, clay2('#9FB08C', .35, .5)); cscr.position.set(0, .48, .13); calc.add(cscr);
     for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
       const b = rbox(.2, .16, .05, .02, clay2('#CFC4A6', .7)); b.position.set(-.28 + c * .28, .02 - r * .26, .13); calc.add(b); }
-    return { ...w, kah, tve, bo, eq, curva, calc };
+    return { ...w, kah, tve, bo, eq, titulo, curva, calc };
   },
 
   // 3 · la apuesta: dos cartas y una moneda
@@ -227,8 +255,9 @@ const scenes = [
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
       const escribe = L.seg(p, .02, .46), vuelta = L.eio(L.seg(p, .5, .7));
-      w.eq.scale.setScalar(Math.max(.001, L.back(L.seg(p, .12, .42))));          // el título aparece al escribirlo
-      w.curva.scale.setScalar(Math.max(.001, L.eio(L.seg(p, .42, .62))));
+      w.eq.scale.x = Math.max(.001, L.eio(L.seg(p, .1, .4)));                     // se va escribiendo
+      w.titulo.scale.x = Math.max(.001, L.eio(L.seg(p, .42, .74)));
+      w.curva.scale.x = .001;
       w.kah.position.x = L.lerp(-1.95, -1.45, vuelta);                            // da un paso hacia Tversky
       w.kah.rotation.y = L.lerp(-.1, .5, vuelta);
       L.pose(w.kah, { walk: vuelta > .02 && vuelta < .98 ? q * 6 : null, amp: .3,
@@ -251,7 +280,9 @@ const scenes = [
     cap: 'Hasta entonces se pensaba que, con el dinero, todos hacemos cuentas mentales y elegimos lo que más nos conviene.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
-      const cp = L.back(L.seg(p, .2, .52)), enc = L.eio(L.seg(p, .58, .84));
+      const cp = L.back(L.seg(p, .34, .62)), enc = L.eio(L.seg(p, .62, .88));
+      w.eq.scale.x = 1; w.titulo.scale.x = 1;
+      w.curva.scale.x = Math.max(.001, L.eio(L.seg(p, .06, .4)));                   // se dibuja la recta
       w.calc.scale.setScalar(Math.max(.001, cp));
       w.calc.rotation.set(Math.sin(t * 1.1) * .12, Math.sin(t * .85) * .45, Math.sin(t * .7) * .07);
       w.calc.position.y = 3.05 + Math.sin(t * 1.5) * .14;                          // flota

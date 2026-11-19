@@ -28,9 +28,25 @@ shorts = contexto que dura meses (sin "hoy"; `/short` §1c); historia 3D = alcan
 `videos|largos/<id>/images/` + `images/credits.json`. En el storyboard: escena `photo`, `bg_image`, `company.logo`, `news.image`.
 `build_timeline.py` las incrusta; el motor pone el pie de foto. Detalle en `/short` §2b. **Calidad (JP, 11 nov 2026):** solo fotos nítidas (≥ 1600 px), limpias, con el sujeto solo y sin ruido de fondo; nada de fotos de calle cargadas.
 
-**Ritmo (desde el 13 nov 2026, con los primeros datos reales del canal — `plan/PLAN.md` §2 y §2c):** **2 Historias 3D por semana**
-(miércoles y sábado 12:00; es el formato con más alcance y el puente a los largos) + shorts de contexto martes y jueves + Análisis +
-Potencial el viernes + **ranking el domingo** + **largo de 6–7 minutos** el domingo 10:00 + publicaciones lunes, miércoles y domingo.
+**Ritmo (vigente desde el 20 nov 2026 — JP lo reordenó para que la semana EMPUJE hacia el largo del domingo):**
+
+| Día | 12:00 | 19:00 | Otro |
+|---|---|---|---|
+| Lunes | — | — | Publicación |
+| Martes | **Historia 3D** (tema libre, del banco) | — | — |
+| Miércoles | — | — | Publicación |
+| **Jueves** | **Historia 3D puente** — anuncia el largo del domingo | — | — |
+| **Viernes** | — | **Short de contexto** | — |
+| **Sábado** | — | **Análisis + Potencial** | — |
+| Domingo | **Largo 10:00** | **Ranking / torneo** | Publicación |
+
+Qué cambió y por qué (JP, 19 nov 2026): las historias pasan a **martes y jueves** porque son el formato con más alcance y
+sirven de calentamiento; **la del jueves es la puente** y lleva una escena con un pizarrón que anuncia el largo del domingo
+("ESTE DOMINGO 10:00" + el título). El **short de contexto se va al viernes**, que es cuando ya cerró la semana y el
+contexto está completo, y **Análisis + Potencial al sábado**. Antes eran: historias miércoles y sábado, shorts de contexto
+martes y jueves, A+P el viernes.
+**La regla que nace de esto:** si la historia del jueves promete el largo en pantalla, ese largo deja de ser negociable.
+Por eso el borrador del largo empieza el lunes anterior (ver "Regla del borrador anticipado").
 Los videos con datos del día se hacen DESPUÉS del cierre de la bolsa (ver "Regla del cierre"). Música: partitura de órgano y piano en las
 historias; cama cálida en shorts y largos.
 

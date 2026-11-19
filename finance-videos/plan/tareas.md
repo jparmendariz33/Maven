@@ -1,3 +1,8 @@
+> **Calendario vigente (20 nov 2026).** Lun: publicación · Mar: historia 3D (tema libre) · Mié: publicación ·
+> **Jue: historia 3D puente, que anuncia el largo** · **Vie: short de contexto** · **Sáb: Análisis + Potencial** ·
+> Dom: largo 10:00 + torneo 19:00 + publicación. Detalle y porqué en `CLAUDE.md`.
+> ⚠️ Las tareas programadas (cron) todavía disparan con los días viejos: hay que reprogramarlas.
+
 ## Común a todas
 - Eres el asistente de producción de **Costa Studio Finance** (canal de YouTube de finanzas e inversión; @jparmendariz). Escríbele a JP en
   español, corto y claro. Costa Studio (la agencia) es OTRA empresa: aquí todo es Costa Studio Finance.
@@ -24,7 +29,7 @@
   copiar** y **el guion para leer** (una escena por párrafo).
 - Si ya existe la carpeta de la pieza de hoy con su archivo final, no hagas otra: entrégala (revisando que sus cifras sean de cierre).
 
-## Short de contexto (martes y jueves, tras el cierre → se publica hoy 19:00)
+## Short de contexto (VIERNES, tras el cierre → se publica hoy 19:00) · calendario nuevo del 20 nov 2026
 Skill `/short`, §1c. Con WebSearch mira lo más relevante de la sesión (alzas y bajas del S&P 500, Nasdaq-100 y BMV; índices; peso;
 Fed/Banxico; resultados de empresas conocidas) y elige el tema con el orden de `PLAN.md` §2. Esa noticia es solo el pretexto: el short
 cuenta qué le pasa a la empresa en un periodo largo, por qué y qué viene. Sin "hoy" ni el día exacto; periodos con fechas absolutas
@@ -38,15 +43,15 @@ Skill `/publicacion`. UNA noticia de la sesión de hoy en 3 o 4 imágenes (qué 
 imágenes. Manda las imágenes en orden y **la descripción lista para copiar** (YouTube solo pide eso). Encuesta: máximo una por semana, como
 publicación aparte. Si hay otra tarea de video en curso o en cola, termina primero esa.
 
-## Historia 3D del miércoles (martes 6:41 → se publica MAÑANA miércoles 12:00)
+## Historia 3D PUENTE (miércoles 6:41 → se publica MAÑANA jueves 12:00) · calendario nuevo del 20 nov 2026
 Skill `/historia`. **El tema NO se elige:** es la empresa o el personaje del largo de ESE domingo (`plan/calendario-largos.md`); si el
 largo es educativo y no tiene empresa, la que use de ejemplo. Es el **puente a los largos**: en `youtube.md` deja "Video relacionado" →
 ese largo y el comentario fijado con la liga. Usa el cierre del lunes para la escena "Hoy" (un día de desfase no importa en una historia).
 Todo lo demás, igual que la del sábado: 8 escenas, 75–90 s (`pace3d.py`), sin párpados, sin logotipos reales, sin fotos, música de órgano
 y piano, render en segundo plano. Carpeta `videos/<miércoles>-<SLUG>-historia/`. Registra en `publicados.md` y en `banco-historias.md`.
-Manda el MP4 y `cuadros_clave.jpg`. Recuérdale: "Publícala mañana miércoles a las 12:00".
+Manda el MP4 y `cuadros_clave.jpg`. Recuérdale: "Publícala mañana jueves a las 12:00".
 
-## Análisis + Potencial (viernes, tras el cierre → se publica hoy 19:00)
+## Análisis + Potencial (SÁBADO, tras el cierre → se publica hoy 19:00) · calendario nuevo del 20 nov 2026
 Skill `/short` §1b. El ÚNICO de la semana (absorbió a "Tesis a 5 años"). Empresa: la que esté en boca de todos esta semana (resultados que
 sorprendieron, adquisición, IPO, lanzamiento, récord, polémica) con una historia de largo plazo creíble; si ninguna lo amerita, una de
 `plan/banco-tesis.md` (primero las "Ideas de JP"; sin repetir en 60 días; anótala en "Ya analizadas"). 12 escenas, 75–85 s: mitad análisis
@@ -54,7 +59,7 @@ sorprendieron, adquisición, IPO, lanzamiento, récord, polémica) con una histo
 mismo peso, qué vigilar). `brand_colors` con el color real de la marca; logo en PNG transparente. Al menos 1 de cada 3 es mexicana; sin
 repetir en 30 días. Registra también en `banco-empresas.md`. Va ANTES que la Historia 3D; debe llegar antes de las 16:45 CDMX.
 
-## Historia 3D del sábado (viernes, después del short → se publica MAÑANA sábado 12:00)
+## Historia 3D de tema libre (lunes 6:41 → se publica MAÑANA martes 12:00) · calendario nuevo del 20 nov 2026
 Skill `/historia`, al pie de la letra. Sea S el sábado: si ya existe `videos/S-*-historia/` con su MP4, entrégala y termina. Tema de
 `plan/banco-historias.md` (primero las "Ideas de JP"), que enganche con la semana y tenga arco claro; 1 de cada 3 de México o
 Latinoamérica. 8 escenas, 75–90 s (`pace3d.py`), personajes sentados de verdad cuando toque, sin párpados, sin logotipos reales, sin
@@ -75,7 +80,7 @@ descripciones. Recuérdale: "Graba tu voz y publícalo mañana domingo a las 19:
 Skill `/largo`, al pie de la letra. Solo el largo del domingo de ESTA semana según `plan/calendario-largos.md`; si `largos/<domingo>/` ya
 tiene su `*_largo.mp4` o el tema ya está en `publicados.md`, termina con una línea. Guion de **720–850 palabras (6–7 min)** donde todo se lee tal cual,
 10–20 fotos reales, JP en 3D al inicio, en 3–5 puntos intermedios y al cierre (sin tapar cifras), todas las hojas de QA, miniatura, render
-1920x1080 (< 100 MB), `youtube.md` y `fuentes.md`. NO hagas short derivado: el puente al largo es la Historia 3D del miércoles (la produce la tarea del martes). Recuérdale: "Graba tu voz en CapCut y
+1920x1080 (< 100 MB), `youtube.md` y `fuentes.md`. NO hagas short derivado: el puente al largo es la Historia 3D del JUEVES (la produce la tarea del miércoles). Recuérdale: "Graba tu voz en CapCut y
 prográmalo para el domingo 10:00".
 
 ## Revisión de la hipótesis de duración (28 nov 2026, una sola vez)
