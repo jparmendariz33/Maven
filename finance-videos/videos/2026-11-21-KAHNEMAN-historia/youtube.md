@@ -19,7 +19,7 @@ En 1979, dos psicólogos publicaron un artículo en una revista de economía y c
 
 📌 Los datos
 • 1979: Daniel Kahneman y Amos Tversky publican "Prospect Theory" en Econometrica (vol. 47, núm. 2, pp. 263–291)
-• Hasta entonces se pensaba que, con el dinero, todos hacemos cuentas mentales y elegimos lo que más nos conviene
+• Hasta entonces se daba por hecho que, cuando usas tu dinero, comparas y siempre te quedas con la mejor opción
 • Su hallazgo: perder duele más de lo que gusta ganar la misma cantidad. En su estudio de 1992 midieron esa diferencia en unas 2.25 veces
 • En la bolsa eso tiene nombre: efecto disposición, aguantar la acción que pierde y vender la que gana (Shefrin y Statman, 1985; confirmado por Odean en 1998 con 10,000 cuentas reales)
 • 9 de octubre de 2002: Kahneman recibe el Nobel de Economía, la mitad del premio, "por haber integrado hallazgos de la investigación psicológica en la ciencia económica, especialmente sobre el juicio humano y la toma de decisiones bajo incertidumbre". La otra mitad fue para Vernon L. Smith
@@ -55,7 +55,7 @@ Costa Studio Finance, by JP Armendáriz.
 ```
 Perder duele casi el doble de lo que gusta ganar. Kahneman y Tversky lo midieron en 1979, y por eso aguantas la acción que pierde.
 
-Mañana sale el video completo de la serie de finanzas conductuales: por qué tu cerebro te hace perder dinero. <LIGA>
+Este domingo a las 10:00 sale el video completo de la serie de finanzas conductuales: por qué tu cerebro te hace perder dinero. <LIGA>
 ```
 
 ## Qué se afirma y qué no
