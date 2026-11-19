@@ -92,10 +92,15 @@ def reverb(buf, secs=2.8, mix=.3):
 def score(T0, DUR):
     """La partitura (sin efectos): estéreo (2, n), ya con reverb y crescendo. La usa make_audio.py en TODAS las historias 3D."""
     n = int((DUR + 1) * SR); mus = np.zeros((2, n))
-    S = lambda i: T0[i] if i < len(T0) else DUR
-    # intensidad por tramo de la historia (0..1), interpolada suave
-    keys = [(0, .35), (S(1), .45), (S(2), .62), (S(3), .75), (S(4), .82), (S(5), 1.0), (S(6) - .5, 1.0), (S(6) + 1.5, .45),
-            (S(6) + .68 * (S(7) - S(6)), .6), (S(7), .85), (DUR - 1.5, .7), (DUR, 0)]
+    N = len(T0)
+    S = lambda i: T0[i] if 0 <= i < N else DUR
+    # El arco se cuenta DESDE EL FINAL, no desde el principio: con 8 escenas da lo mismo que antes, pero una
+    # historia de 10 ya no deja el acorde de cierre colgado 15 s (JP lo oyó el 20 nov 2026).
+    CLIMAX, CAIDA, SUBE = S(N - 3), S(N - 2), S(N - 1)
+    # y el órgano final dura ~5.5 s pase lo que pase, nunca lo que sobre de la última escena
+    CIERRE = max(SUBE, DUR - 5.5)
+    keys = [(0, .35), (S(1), .45), (S(2), .62), (S(3), .75), (S(4), .82), (CLIMAX, 1.0), (CAIDA - .5, 1.0), (CAIDA + 1.5, .45),
+            (CAIDA + .68 * (CIERRE - CAIDA), .6), (CIERRE, .85), (DUR - 1.5, .7), (DUR, 0)]
     inten = lambda t: float(np.interp(t, [k[0] for k in keys], [k[1] for k in keys]))
     BRIGHT = [(-1, 50, 53, 57), (-1, 50, 53, 58), (-1, 48, 53, 57), (-1, 48, 52, 55)]   # Dm  B♭  F  C (voces)
     BASS = [38, 34, 41, 36]
@@ -105,11 +110,11 @@ def score(T0, DUR):
     nb = int(DUR / BAR) + 1
     for b in range(nb):
         t = b * BAR; k = inten(t)
-        dark = S(6) - .3 <= t < S(7) - .3
+        dark = CAIDA - .3 <= t < CIERRE - .3
         ch, bs = (DARK, DBASS) if dark else (BRIGHT, BASS)
         c = ch[b % 4]; tones = [c[1], c[2], c[3], c[1] + 12, c[2] + 12]
-        if t >= S(7) - .3:      # cierre: un solo acorde largo de órgano (Dm add9) que se apaga
-            if t < S(7) + BAR: [add(mus, organ(mtof(m), DUR - t + .5, .1 + .04 * (m > 60)), t, p) for m, p in [(38, 0), (50, -.3), (57, .3), (62, -.2), (64, .2), (69, 0)]]
+        if t >= CIERRE - .3:    # cierre: un solo acorde largo de órgano (Dm add9) que se apaga
+            if t < CIERRE + BAR: [add(mus, organ(mtof(m), DUR - t + .5, .1 + .04 * (m > 60)), t, p) for m, p in [(38, 0), (50, -.3), (57, .3), (62, -.2), (64, .2), (69, 0)]]
             for i in range(16):
                 tt_ = t + i * S16
                 if tt_ < DUR - 2: add(mus, piano(mtof(tones[PAT[i]] + 12), 1.8, .16), tt_, -.4 + .8 * (i % 2))

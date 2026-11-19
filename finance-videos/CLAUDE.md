@@ -232,6 +232,21 @@ del rótulo: que llegue pronto a la zona visible (y_px 800–1650) y se quede ah
 desaparezca bajo la voz. Verifica siempre después de mezclar: pico por debajo de −0.5 dBFS y ninguna palabra con el
 audio tapado.
 
+## La partitura se ancla al FINAL, no a la escena 7 (JP, 20 nov 2026)
+`music3d.py` se escribió para historias de 8 escenas y colgaba su acorde de cierre en `S(7)`. En la historia de
+Kahneman, que acabó con 10 escenas, eso dejó **16 segundos de un órgano sostenido** después de que la música ya había
+terminado: JP lo describió como "aturde". Ahora el arco se cuenta **desde el final** (`S(N-3)`, `S(N-2)`, `S(N-1)`) y
+el acorde de cierre entra en `max(S(N-1), DUR - 5.5)`, así que dura ~5.5 s con cualquier número de escenas (con 8 da
+exactamente lo mismo que antes). **Al cambiar el número de escenas, revisa el balance de la mezcla otra vez**: con la
+partitura más densa al final, el mismo `--musica` subió del 61% al 71%.
+Cómo se verifica sin oír: mide los ataques de piano por segundo en los últimos 20 s (`music3d.score(...)`, picos por
+encima de 2.5× la media del segundo). Si los últimos segundos marcan "solo órgano", el cierre está colgado.
+
+## Cambiar solo el audio no exige volver a renderizar (20 nov 2026)
+Si el arreglo es de mezcla —nivel de música, aire, partitura— el video no cambia. Se rehace `make_audio.py` y se
+sustituye la pista con `ffmpeg -i video.mp4 -i audio/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k
+-shortest salida.mp4`. El flujo de video se copia tal cual, así que son segundos en vez de los ~35 min de un render.
+
 ## Gráficas y portafolios dentro del 3D (19 nov 2026)
 `L.plaque(ancho, alto, dibuja, pw)` da un plano con una textura de canvas: con eso se dibujan **gráficas de línea de
 verdad** dentro de la escena, que es lo que JP pidió para la escena de la bolsa. El helper `grafica()` de la historia
