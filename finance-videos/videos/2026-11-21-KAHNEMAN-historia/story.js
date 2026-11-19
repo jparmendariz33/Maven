@@ -69,16 +69,16 @@ const worlds = {
       for (let x = 8; x <= W2 - 20; x += 14) g.lineTo(x, H2 * .9 + Math.sin(x * .1) * 2);
       g.stroke();
     }, 1024);
-    // el supuesto viejo, dibujado: una recta: ganar y perder pesan igual
-    const curva = escribe('recta', 3.4, 1.0, 0, 2.62, (g, W2, H2) => {
-      const m = 26; g.strokeStyle = GIS; g.lineWidth = 3; g.lineCap = 'round'; g.globalAlpha = .55;
-      g.beginPath(); g.moveTo(m, H2 / 2); g.lineTo(W2 - m, H2 / 2); g.stroke();            // eje horizontal
-      g.beginPath(); g.moveTo(W2 / 2, m); g.lineTo(W2 / 2, H2 - m); g.stroke();            // eje vertical
-      g.globalAlpha = 1; g.lineWidth = 6;
-      g.beginPath(); g.moveTo(m + 10, H2 - m - 6); g.lineTo(W2 - m - 10, m + 6); g.stroke(); // la recta
-      g.fillStyle = GIS; g.font = '600 30px "Space Grotesk"'; g.globalAlpha = .8;
-      g.textAlign = 'right'; g.fillText('perder', W2 / 2 - 18, H2 - 14);
-      g.textAlign = 'left'; g.fillText('ganar', W2 / 2 + 18, 34);
+    // el supuesto viejo, dibujado: entre dos cantidades siempre eliges la mayor
+    const curva = escribe('eleccion', 3.4, 1.0, 0, 2.62, (g, W2, H2) => {
+      g.textAlign = 'center'; g.fillStyle = GIS; g.font = '800 72px Unbounded';
+      g.fillText('$100', 280, 190);
+      g.fillText('$120', 700, 190);
+      g.strokeStyle = GIS; g.lineCap = 'round'; g.lineJoin = 'round'; g.globalAlpha = .9;
+      g.lineWidth = 6; g.beginPath(); g.ellipse(700, 168, 148, 82, 0, 0, 7); g.stroke();   // lo encierra
+      g.lineWidth = 13; g.beginPath();                                                      // y lo palomea
+      g.moveTo(892, 150); g.lineTo(926, 190); g.lineTo(1000, 86); g.stroke();
+      g.globalAlpha = 1;
     }, 1024);
     desk(L, w, 0, -1.4);
     const kah = L.actor(KAH_79); kah.position.set(-1.6, 0, .3); kah.rotation.y = .42; w.scene.add(kah);
@@ -276,8 +276,8 @@ const scenes = [
       L.tag('Amos Tversky', w.tve, w.cam, L.seg(lt, 3.4, 4.0), 3.0);
     } },
 
-  { id: 'supuesto', world: 'estudio', d: 7, sfx: [[.4, 'ticks', .45, .5]], year: '1979',
-    cap: 'Hasta entonces se pensaba que, con el dinero, todos hacemos cuentas mentales y elegimos lo que más nos conviene.',
+  { id: 'supuesto', world: 'estudio', trans: 'cont', d: 7, sfx: [[.4, 'ticks', .45, .5]], year: '1979',
+    cap: 'Hasta entonces se daba por hecho algo muy simple: que cuando usas tu dinero, siempre eliges la mejor opción.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
       const cp = L.back(L.seg(p, .34, .62)), enc = L.eio(L.seg(p, .62, .88));
@@ -290,12 +290,12 @@ const scenes = [
         head: [-.08, -.3 + cp * .16, 0], lid: Math.max(.1, L.blink(q, 3)), brow: .1 + cp * .4, smile: .2, talk: talk * .7 });
       L.pose(w.tve, { armL: [1.0 * enc, -.55 * enc - .2, 1.15 * enc + .3], armR: [1.0 * enc, .55 * enc + .2, 1.15 * enc + .3],
         head: [.08 - enc * .06, .2, 0], lid: Math.max(.2, L.blink(q, 6)), brow: -.1 + enc * .7, smile: .1, bob: enc * .05 });
-      cam(w, mixv([1.6, 4.1, 13.0], [-.6, 3.8, 11.4], L.eio(p)), mixv([0, 4.75, -5], [0, 4.55, -5.5], L.eio(p)));
+      cam(w, mixv([.3, 2.9, 14.2], [-.6, 3.8, 11.4], L.eio(p)), mixv([.1, 3.4, -1], [0, 4.55, -5.5], L.eio(p)));
       w.focusOn(cp > .4 ? w.calc : w.bo, 1.0); w.aperture = .0002;
     },
     overlay(lt, t, L) {
       const ink = L.B.negro; L.scrim(L.C, 0, 905, .88, '233,223,198');
-      head(L, 'Lo que se daba por hecho', ['Que haces', 'cuentas mentales', 'y eliges lo mejor'], 'Que con el dinero somos fríos y calculadores', ink, lt, L.B.azul);
+      head(L, 'Lo que se daba por hecho', ['Cuando usas', 'tu dinero, siempre', 'eliges lo mejor'], 'Sin dudar y sin miedo', ink, lt, L.B.azul);
     } },
 
   { id: 'apuesta', world: 'apuesta', d: 9, sfx: [[.45, 'pop'], [1.1, 'pop'], [1.6, 'shine', .7]], year: '1979',
@@ -387,7 +387,7 @@ const scenes = [
       L.tag('Daniel Kahneman', w.kah, w.cam, L.seg(lt, 2.4, 3.0), 3.0);
     } },
 
-  { id: 'tversky', world: 'nobel', d: 9, sfx: [[.8, 'fall', .6]], year: '1996', ink: '#EBE6BA',
+  { id: 'tversky', world: 'nobel', trans: 'cont', d: 9, sfx: [[.8, 'fall', .6]], year: '1996', ink: '#EBE6BA',
     cap: 'Amos Tversky había muerto en 1996. El Nobel no se le da a quien ya murió, así que no pudo compartirlo.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
@@ -397,7 +397,7 @@ const scenes = [
       L.pose(w.kah, { armR: [.3 - baja * .26, .2, .3], armL: [.3 - baja * .26, -.2, .3],
         head: [.04 + baja * .24, mira * .5, 0], lean: baja * .07, bob: -baja * .055,
         lid: Math.max(.3 + baja * .3, L.blink(q, 4)), brow: -.3 - baja * .35, smile: -.2 - baja * .35 });
-      cam(w, mixv([-.3, 3.4, 12.8], [.5, 3.1, 10.6], L.eio(p)), mixv([.1, 2.4, -.6], [.95, 2.2, -.6], L.eio(p)));
+      cam(w, mixv([-.4, 3.3, 9.4], [.5, 3.1, 10.6], L.eio(p)), mixv([-.3, 2.5, -1.4], [.95, 2.2, -.6], L.eio(p)));
       w.focusOn(mira > .5 ? w.silla : w.kah, 1.1); w.aperture = .00026;
     },
     overlay(lt, t, L) {
@@ -426,17 +426,17 @@ const scenes = [
     } },
 
   // 9 · el aviso del largo del domingo
-  { id: 'aviso', world: 'cierre', d: 6, sfx: [[.3, 'pop'], [.4, 'shine', .6]], year: 'EL DOMINGO',
+  { id: 'aviso', world: 'cierre', trans: 'cont', d: 6, sfx: [[.3, 'pop'], [.4, 'shine', .6]], year: 'EL DOMINGO',
     cap: 'Este domingo subimos el video completo: por qué tu cerebro te hace perder dinero.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.tel.scale.setScalar(.001);
-      const sale = L.back(L.seg(p, .1, .42));
+      w.tel.scale.setScalar(Math.max(.001, 1 - L.eio(L.seg(p, 0, .2))));          // el teléfono se va, no desaparece
+      const sale = L.back(L.seg(p, .14, .46));
       w.aviso.scale.setScalar(Math.max(.001, sale));
       w.aviso.position.y = 2.7 + Math.sin(t * 1.2) * .03;
       L.pose(w.inv, { armL: [1.25 * sale + .15, -.52, .5], armR: [.28, .2, .3],   // lo señala
         head: [-.04, -.34 * sale, 0], lid: Math.max(.15, L.blink(q, 3)), brow: .35, smile: .55, bob: sale * .02 });
-      cam(w, mixv([-.3, 3.5, 13.4], [.2, 3.3, 11.8], L.eio(p)), mixv([-.3, 2.7, -1.4], [-.2, 2.6, -1.4], L.eio(p)));
+      cam(w, mixv([.55, 2.9, 8.2], [.2, 3.3, 11.8], L.eio(p)), mixv([1.1, 2.3, -1.2], [-.2, 2.6, -1.4], L.eio(p)));
       w.focusOn(sale > .4 ? w.aviso : w.inv, 1.1); w.aperture = .00024;
     },
     overlay(lt, t, L) {
@@ -445,16 +445,17 @@ const scenes = [
     } },
 
   // 10 · el cierre de la casa: una pregunta, como en todas las historias
-  { id: 'cierre-pregunta', world: 'cierre', d: 6.5, sfx: [[.1, 'shine', .5]], year: null,
+  { id: 'cierre-pregunta', world: 'cierre', trans: 'cont', d: 6.5, sfx: [[.1, 'shine', .5]], year: null,
     cap: '¿Cuál fue la última acción que vendiste demasiado pronto?',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.tel.scale.setScalar(.001); w.aviso.scale.setScalar(.001);
+      w.tel.scale.setScalar(.001);
+      w.aviso.scale.setScalar(Math.max(.001, 1 - L.eio(L.seg(p, 0, .18))));        // el pizarrón se va igual
       const pre = L.eio(L.seg(p, .2, .6));
       L.pose(w.inv, { armL: [.55 * pre + .28, -.62 * pre - .18, .62 * pre + .28],  // abre las manos preguntando
         armR: [.55 * pre + .28, .62 * pre + .18, .62 * pre + .28],
         head: [-.05 - pre * .05, 0, 0], lid: Math.max(.15, L.blink(q, 4)), brow: .2 + pre * .4, smile: .3 });
-      cam(w, mixv([-.3, 3.1, 10.6], [.1, 3.0, 12.4], L.eio(p)), mixv([.9, 2.4, -1.2], [.9, 2.5, -1.2], L.eio(p)));
+      cam(w, mixv([.2, 3.3, 11.8], [.1, 3.0, 12.4], L.eio(p)), mixv([-.2, 2.6, -1.4], [.9, 2.5, -1.2], L.eio(p)));
       w.focusOn(w.inv, 1.2); w.aperture = .00026;
     },
     overlay(lt, t, L) {
