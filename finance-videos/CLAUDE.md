@@ -149,6 +149,20 @@ cinco vueltas. Los cuatro defectos que salieron, con su causa real:
 Para calcular distancia: con el vertical, `media_altura = tan(25°) × distancia` y `media_anchura = media_altura × 0.5625`.
 Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
 
+## Regla del borrador anticipado (JP, 19 nov 2026)
+**Todo lo atemporal se trabaja en borrador días antes, no el día de publicarlo.** Los largos, las historias 3D y los
+rankings no dependen del cierre de la bolsa, así que no hay ninguna razón para empezarlos el mismo día. Lo que se
+adelanta: **el guion, el storyboard y capturas de cómo se vería**, y se le mandan a JP para que corrija con calma.
+Lo que NO se adelanta: generar la voz y renderizar — eso se ejecuta el día que toca, ya con todo aprobado y corregido.
+Así el día de publicar es solo ejecución, no diseño.
+- **Largo del domingo:** borrador desde el lunes anterior (guion + visuales + fuentes verificadas).
+- **Historia 3D:** borrador en cuanto se sepa el tema (sale del largo de ese domingo).
+- **Ranking / torneo:** la mecánica y las empresas, en borrador; solo las cifras de mercado esperan al cierre.
+- **Shorts de contexto y Análisis + Potencial:** la empresa, el ángulo y el guion se adelantan con las cifras
+  pendientes; al cerrar la bolsa se rellenan los números y se revisa que el ángulo siga siendo cierto.
+Cuando una pieza atemporal se produce el mismo día, se pierde la vuelta de correcciones de JP, que es justo donde
+estos videos mejoran. La de Kahneman necesitó cinco vueltas de encuadre y tres de guion.
+
 ## Regla de la aprobación visual antes de producir (JP, 19 nov 2026 — aplica a TODO formato)
 **Antes de renderizar cualquier pieza —y SIEMPRE antes de generar voz— JP tiene que ver capturas de las escenas.**
 No es un trámite: los créditos de voz son el recurso escaso del canal y un render son ~30 min de máquina. Una
