@@ -22,6 +22,22 @@ function desk(L, w, x, z, col) {
   return top;
 }
 
+// gráfica de línea dibujada sobre una textura; va dentro de un grupo anclado a la IZQUIERDA
+// para poder revelarla escalando en x (se ve como si la línea se fuera trazando)
+const grafica = (L, w, h, pts, col, bg) => {
+  const pl = L.plaque(w, h, (g, W2, H2) => {
+    if (bg) { g.fillStyle = bg; g.fillRect(0, 0, W2, H2); }
+    g.strokeStyle = 'rgba(255,255,255,.09)'; g.lineWidth = 2;
+    for (let i = 1; i < 4; i++) { g.beginPath(); g.moveTo(0, H2 * i / 4); g.lineTo(W2, H2 * i / 4); g.stroke(); }
+    const mn = Math.min(...pts), mx = Math.max(...pts), r = (mx - mn) || 1;
+    const X = i => 16 + i * (W2 - 46) / (pts.length - 1), Y = v => H2 - 20 - ((v - mn) / r) * (H2 - 42);
+    g.strokeStyle = col; g.lineWidth = Math.max(6, H2 * .055); g.lineJoin = 'round'; g.lineCap = 'round';
+    g.beginPath(); pts.forEach((v, i) => i ? g.lineTo(X(i), Y(v)) : g.moveTo(X(i), Y(v))); g.stroke();
+    g.fillStyle = col; g.beginPath(); g.arc(X(pts.length - 1), Y(pts[pts.length - 1]), Math.max(8, H2 * .075), 0, 7); g.fill();
+  }, 512);
+  const grp = new L.THREE.Group(); pl.position.x = w / 2; grp.add(pl); return grp;
+};
+
 const worlds = {
   // 1 y 2 · 1979: el despacho de la universidad
   estudio(L) {
@@ -106,13 +122,18 @@ const worlds = {
     w.vig = .5;
     const esc = rbox(7.0, 2.9, .3, .12, clay2('#141A2E', .35, .4)); esc.position.set(0, 4.0, -4.4); w.scene.add(esc);
     const marco = rbox(7.3, 3.2, .18, .08, clay2('#2E3448', .6)); marco.position.set(0, 4.0, -4.52); w.scene.add(marco);
-    const fila = (y, txt, col) => { const t = L.label3d(txt, 3.8, .36, { bg: null, ink: col, font: '800 54px Unbounded', ls: 1, pw: 1024 });
+    const fila = (y, txt, col) => { const t = L.label3d(txt, 2.5, .3, { bg: null, ink: col, font: '800 44px Unbounded', ls: 1, pw: 1024 });
       t.position.set(0, y, -4.22); w.scene.add(t); return t; };
     const verde = fila(4.62, 'LA QUE GANA   +40%', '#BBD08A');
     const roja = fila(3.52, 'LA QUE PIERDE   −40%', '#E09277');
+    verde.position.x = -1.15; roja.position.x = -1.15;                   // etiqueta a la izquierda, gráfica a la derecha
+    const gv = grafica(L, 1.95, .66, [9, 11, 10, 13, 12, 16, 19, 18, 24, 29], '#BBD08A');
+    gv.position.set(.38, 4.62, -4.2); w.scene.add(gv);
+    const gr = grafica(L, 1.95, .66, [29, 27, 28, 23, 24, 19, 16, 17, 12, 9], '#E09277');
+    gr.position.set(.38, 3.52, -4.2); w.scene.add(gr);
     desk(L, w, 0, -1.8, '#3A3F4A');
     const inv = L.actor(INVER); inv.position.set(0, 0, 1.1); inv.rotation.y = Math.PI; w.scene.add(inv);
-    return { ...w, verde, roja, inv, esc };
+    return { ...w, verde, roja, inv, esc, gv, gr };
   },
 
   // 6 y 7 · 2002: el Nobel
@@ -137,14 +158,29 @@ const worlds = {
 
   // 8 · cierre
   cierre(L) {
-    const { clay2, rbox } = L;
+    const { THREE, clay2, rbox } = L;
     const w = L.cineWorld({ bg: '#EBE6BA', bg2: '#D8CE98', floor: '#CFC4A6', fog: [45, 120], hemi: .6, key: 3.0, keyPos: [-10, 13, 10], rim: 2.3, fill: .45 });
-    const esp = rbox(2.6, 3.4, .22, .12, clay2('#9FB0C8', .3, .45)); esp.position.set(0, 2.5, -3.2); w.scene.add(esp);
-    const mrc = rbox(2.9, 3.7, .12, .08, clay2('#8A5F45', .7)); mrc.position.set(0, 2.5, -3.32); w.scene.add(mrc);
-    const inv = L.actor(INVER); inv.position.set(0, 0, -.6); w.scene.add(inv);
-    // el reflejo: el mismo personaje dentro del espejo, de frente
-    const refl = L.actor(INVER); refl.position.set(0, .95, -3.0); refl.scale.setScalar(.92); w.scene.add(refl);
-    return { ...w, inv, esp, refl };
+    const inv = L.actor(INVER); inv.position.set(1.15, 0, -1.2); inv.rotation.y = -.26; w.scene.add(inv);
+    // el teléfono con el portafolio: lo que mira el inversionista
+    const tel = new THREE.Group(); tel.position.set(-1.05, 1.85, -.2); tel.rotation.set(.04, .3, -.05); w.scene.add(tel);
+    const cuerpo = rbox(1.12, 2.2, .16, .2, clay2('#2A2E38', .5)); tel.add(cuerpo);
+    const pant = L.plaque(.99, 1.98, (g, W2, H2) => {
+      g.fillStyle = '#0E1424'; g.fillRect(0, 0, W2, H2);
+      g.fillStyle = '#8FA8FF'; g.font = '700 30px \"Space Grotesk\"'; g.textAlign = 'left';
+      g.fillText('TU PORTAFOLIO', 26, 54);
+      const pts = [62, 58, 64, 49, 53, 40, 33, 36, 24, 18], x0 = 26, x1 = W2 - 26, y0 = 110, y1 = H2 - 190;
+      g.strokeStyle = 'rgba(255,255,255,.08)'; g.lineWidth = 2;
+      for (let i = 0; i <= 3; i++) { const y = y0 + (y1 - y0) * i / 3; g.beginPath(); g.moveTo(x0, y); g.lineTo(x1, y); g.stroke(); }
+      const mn = Math.min(...pts), mx = Math.max(...pts);
+      const X = i => x0 + i * (x1 - x0) / (pts.length - 1), Y = v => y1 - ((v - mn) / (mx - mn)) * (y1 - y0);
+      g.strokeStyle = '#E09277'; g.lineWidth = 11; g.lineJoin = 'round'; g.lineCap = 'round';
+      g.beginPath(); pts.forEach((v, i) => i ? g.lineTo(X(i), Y(v)) : g.moveTo(X(i), Y(v))); g.stroke();
+      g.fillStyle = '#E09277'; g.beginPath(); g.arc(X(pts.length - 1), Y(pts[pts.length - 1]), 15, 0, 7); g.fill();
+      g.font = '800 92px Unbounded'; g.fillText('−40%', 26, H2 - 92);
+      g.fillStyle = '#9AA3B8'; g.font = '600 30px \"Space Grotesk\"'; g.fillText('en lo que va del año', 26, H2 - 44);
+    }, 420);
+    pant.position.z = .09; tel.add(pant);
+    return { ...w, inv, tel };
   },
 };
 
@@ -197,7 +233,7 @@ const scenes = [
         head: [-.08, -.3 + cp * .16, 0], lid: Math.max(.1, L.blink(q, 3)), brow: .1 + cp * .4, smile: .2, talk: talk * .7 });
       L.pose(w.tve, { armL: [1.0 * enc, -.55 * enc - .2, 1.15 * enc + .3], armR: [1.0 * enc, .55 * enc + .2, 1.15 * enc + .3],
         head: [.08 - enc * .06, .2, 0], lid: Math.max(.2, L.blink(q, 6)), brow: -.1 + enc * .7, smile: .1, bob: enc * .05 });
-      cam(w, mixv([1.6, 3.6, 13.0], [-.6, 3.3, 11.4], L.eio(p)), mixv([0, 4.2, -5], [0, 4.0, -5.5], L.eio(p)));
+      cam(w, mixv([1.6, 4.1, 13.0], [-.6, 3.8, 11.4], L.eio(p)), mixv([0, 4.75, -5], [0, 4.55, -5.5], L.eio(p)));
       w.focusOn(cp > .4 ? w.calc : w.bo, 1.0); w.aperture = .0002;
     },
     overlay(lt, t, L) {
@@ -256,13 +292,17 @@ const scenes = [
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       const agarra = L.eio(L.seg(p, .14, .46)), vende = L.eio(L.seg(p, .5, .84));
-      w.roja.position.set(Math.sin(t * 11) * .04 * agarra, 3.52 - agarra * .12, -4.22);
-      w.verde.position.set(L.lerp(0, 6.2, vende), 4.62 + vende * .5, -4.22);         // la que gana se va
-      w.verde.scale.setScalar(Math.max(.04, 1 - vende * .75));
+      const traza = L.eio(L.seg(p, .04, .4));                                      // la línea se va trazando
+      w.gr.scale.set(Math.max(.001, traza), 1, 1);
+      w.roja.position.set(-1.15 + Math.sin(t * 11) * .04 * agarra, 3.52 - agarra * .12, -4.22);
+      const fuera = L.lerp(0, 7.8, vende), chico = Math.max(.04, 1 - vende * .75);   // la que gana se va, con su gráfica
+      w.verde.position.set(-1.15 + fuera, 4.62 + vende * .5, -4.22); w.verde.scale.setScalar(chico);
+      w.gv.position.set(.38 + fuera, 4.62 + vende * .5, -4.2);
+      w.gv.scale.set(Math.max(.001, traza) * chico, chico, chico);
       L.pose(w.inv, { armL: [1.3 * agarra + .15, -.45, .5], armR: [1.05 * vende + .2, .42, .5],
         head: [-.18 - vende * .08, L.lerp(-.24, .34, vende), 0], lean: agarra * .06,
         lid: Math.max(.25, L.blink(q, 3)), brow: -.6, smile: -.45 });
-      cam(w, mixv([-.4, 3.5, 12.6], [.4, 3.3, 10.8], L.eio(p)), mixv([0, 4.0, -4], [0, 3.8, -4], L.eio(p)));
+      cam(w, mixv([-.4, 3.6, 14.2], [.4, 3.4, 12.4], L.eio(p)), mixv([0, 4.0, -4], [0, 3.85, -4], L.eio(p)));
       w.focusOn(w.esc, 1.0); w.aperture = .00022;
     },
     overlay(lt, t, L) {
@@ -312,12 +352,16 @@ const scenes = [
     cap: 'Tu peor enemigo invirtiendo no está en la pantalla. Está de este lado.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      const sube = L.eio(L.seg(p, .38, .7));
-      const base = { head: [-.05, 0, 0], lid: Math.max(.15, L.blink(q, 3)), brow: .1 + sube * .3, smile: .25 };
-      L.pose(w.inv, { ...base, armR: [1.45 * sube + .3, .25, .35], armL: [.3, -.2, .3] });
-      L.pose(w.refl, { ...base, armL: [1.45 * sube + .3, -.25, .35], armR: [.3, .2, .3] });   // el espejo invierte el lado
-      cam(w, mixv([-.5, 3.2, 11.5], [.2, 3.0, 9.4], L.eio(p)), mixv([0, 2.6, -2], [0, 2.5, -2], L.eio(p)));
-      w.focusOn(sube > .4 ? w.refl : w.inv, 1.0); w.aperture = .00022;
+      const entra = L.back(L.seg(p, .04, .34)), voltea = L.eio(L.seg(p, .52, .82));
+      w.tel.scale.setScalar(Math.max(.001, entra));
+      w.tel.position.set(-1.05, 1.85 + Math.sin(t * 1.3) * .04, -.2);
+      w.tel.rotation.y = .3 - voltea * .12;
+      L.pose(w.inv, { armL: [1.05 - voltea * .25, -.5, .95], armR: [.28, .2, .3],   // sostiene el teléfono y luego alza la vista
+        head: [L.lerp(.26, -.06, voltea), L.lerp(-.5, .16, voltea), 0], lean: .04 - voltea * .04,
+        lid: Math.max(.15, L.blink(q, 3)), brow: L.lerp(-.35, .25, voltea), smile: L.lerp(-.3, .3, voltea) });
+      // la cámara abre con el teléfono y acaba en su cara: el enemigo no está en la pantalla
+      cam(w, mixv([-1.15, 3.1, 11.2], [.55, 2.9, 8.2], L.eio(p)), mixv([-.6, 2.5, -1.2], [1.1, 2.3, -1.2], L.eio(p)));
+      w.focusOn(voltea > .45 ? w.inv : w.tel, 1.0); w.aperture = .00022;
     },
     overlay(lt, t, L) {
       const ink = L.B.negro; L.scrim(L.C, 0, 895, .82, '235,230,186');
