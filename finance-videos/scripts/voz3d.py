@@ -30,31 +30,54 @@ def norm(w):
 
 
 def aire(vdir, W, caps, seg):
-    """Mete `seg` segundos de silencio en el hueco entre escenas y corre los tiempos."""
+    """Mete `seg` segundos de silencio en el hueco entre escenas y corre los tiempos.
+
+    Primero se calculan TODOS los puntos de corte sobre la línea de tiempo original (la del wav que
+    se va a rebanar) y hasta el final se corren los tiempos de las palabras. Si se mezclan las dos
+    líneas de tiempo, cada corte se desplaza por los anteriores y el silencio acaba cayendo dentro
+    de una palabra: eso cortaba el audio en la primera versión de la historia de Kahneman.
+    """
     import wave as wv, numpy as np
-    wd = W['words']; n = [len(c.split()) for c in caps]
-    cuts, k = [], 0
-    for c in n[:-1]:
-        k += c
-        cuts.append(min(max(k - 1, 0), len(wd) - 2))                        # última palabra de cada escena
+    wd = W['words']; cuts, k = [], 0
+    for c in caps[:-1]:
+        k += len(c.split()); cuts.append(min(max(k - 1, 0), len(wd) - 2))    # última palabra de cada escena
+    mids = []
+    for i in cuts:                                                           # línea de tiempo ORIGINAL
+        g0, g1 = wd[i][1], wd[i + 1][0]
+        if g1 < g0: sys.exit(f'❌ las palabras se enciman en {g0:.2f}s: no se puede meter aire ahí')
+        mids.append((g0 + g1) / 2)            # si whisper las pega (g1 == g0) el corte cae justo al terminar la palabra
+
     wf = wv.open(os.path.join(vdir, 'audio', 'voice.wav'), 'rb')
     ch, sw, sr, nf = wf.getnchannels(), wf.getsampwidth(), wf.getframerate(), wf.getnframes()
     a = np.frombuffer(wf.readframes(nf), dtype=np.int16).reshape(-1, ch); wf.close()
     pad = np.zeros((int(seg * sr), ch), dtype=np.int16)
-    out, prev, shift = [], 0, 0.0
-    for i in cuts:
-        mid = (wd[i][1] + wd[i + 1][0]) / 2 + shift                         # punto medio del silencio real
-        j = min(max(int(mid * sr), prev), len(a))
+    # el corte se pega al punto MÁS CALLADO de la onda cerca del límite: los tiempos de whisper son
+    # aproximados y la cola de la última palabra suele seguir sonando después de su t1
+    m1 = np.abs(a.astype(np.float32).mean(1)); win = max(1, int(.02 * sr)); busca = int(.3 * sr)
+    out, prev = [], 0
+    for mid in mids:
+        c = int(mid * sr)
+        lo, hi = max(prev, c - busca), min(len(a) - win, c + busca)
+        if hi > lo:
+            e = np.add.reduceat(m1[lo:hi + win], np.arange(0, hi - lo, win))   # energía por ventana de 20 ms
+            c = lo + int(np.argmin(e)) * win
+        j = min(max(c, prev), len(a))
         out += [a[prev:j], pad]; prev = j
-        for w in wd[i + 1:]: w[0] += seg; w[1] += seg
-        shift += seg
     out.append(a[prev:])
     b = np.concatenate(out)
     o = wv.open(os.path.join(vdir, 'audio', 'voice.wav'), 'wb')
     o.setnchannels(ch); o.setsampwidth(sw); o.setframerate(sr); o.writeframes(b.tobytes()); o.close()
+
+    for n, i in enumerate(cuts):                                             # ahora sí: cada palabra se corre
+        for w in wd[i + 1:]: w[0] += seg; w[1] += seg
     W['duration'] = len(b) / sr
     json.dump(W, open(os.path.join(vdir, 'build', 'whisper.json'), 'w'), ensure_ascii=False)
-    print(f'aire: +{seg}s en {len(cuts)} cortes → voz {W["duration"]:.1f}s')
+
+    rms = lambda x: float(np.sqrt((x.astype(float) ** 2).mean())) if len(x) else 0.0
+    m = b.mean(1)
+    malas = [w for w in wd if rms(m[int(w[0] * sr):int(w[1] * sr)]) < 120]
+    if malas: sys.exit(f'❌ {len(malas)} palabras quedaron sin audio en su lugar (p. ej. "{malas[0][2]}"): el aire cayó mal')
+    print(f'aire: +{seg}s en {len(cuts)} cortes → voz {W["duration"]:.1f}s · todas las palabras con audio en su lugar')
     return W
 
 

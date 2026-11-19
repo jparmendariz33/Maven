@@ -40,7 +40,13 @@ const worlds = {
     const kah = L.actor(KAH_79); kah.position.set(-1.6, 0, .3); kah.rotation.y = .42; w.scene.add(kah);
     const tve = L.actor(TVE_79); tve.position.set(1.6, 0, .3); tve.rotation.y = -.42; w.scene.add(tve);
     w.scene.add(L.tree(-6.2, -3.0, 1.3, '#8E9A5E'));
-    return { ...w, kah, tve, bo };
+    // calculadora que aparece sobre el pizarrón en la escena 2
+    const calc = new THREE.Group(); calc.position.set(2.45, 3.05, -5.6); calc.scale.setScalar(.001); w.scene.add(calc);
+    const cbody = rbox(1.15, 1.55, .22, .09, clay2('#3A4255', .5)); calc.add(cbody);
+    const cscr = rbox(.86, .4, .06, .03, clay2('#9FB08C', .35, .5)); cscr.position.set(0, .48, .13); calc.add(cscr);
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
+      const b = rbox(.2, .16, .05, .02, clay2('#CFC4A6', .7)); b.position.set(-.28 + c * .28, .02 - r * .26, .13); calc.add(b); }
+    return { ...w, kah, tve, bo, eq, curva, calc };
   },
 
   // 3 · la apuesta: dos cartas y una moneda
@@ -65,7 +71,7 @@ const worlds = {
     const coin = mesh(new THREE.CylinderGeometry(.42, .42, .09, 30), clay2(B.mostaza, .35, .55));
     coin.position.set(3.5, 1.95, .2); coin.rotation.z = Math.PI / 2; coin.scale.setScalar(.001); w.scene.add(coin);
     const kah = L.actor(KAH_79); kah.position.set(-4.3, 0, 1.6); kah.rotation.y = .55; w.scene.add(kah);
-    return { ...w, segura, volado, coin, kah };
+    return { ...w, segura, volado, coin, kah, mesa };
   },
 
   // 4 · la balanza: perder pesa el doble
@@ -83,22 +89,27 @@ const worlds = {
       const blk = rbox(1.1, .9, 1.1, .1, clay2(col, .5)); blk.position.y = .5; g.add(blk);
       const tx = L.label3d(label, 1.5, .4, { bg: null, ink: '#F4F1E8', font: '800 76px Unbounded', pw: 1024 }); tx.position.set(0, .5, .58); blk.add(tx);
       return { g, blk }; };
+    // monedas que caen sobre el plato de PERDER y lo hunden
+    const monedas = [];
+    for (let i = 0; i < 6; i++) {
+      const c = mesh(new THREE.CylinderGeometry(.34, .34, .1, 24), clay2(B.mostaza, .3, .6));
+      c.visible = false; w.scene.add(c); monedas.push(c); }
     const gana = plato(-1, 'GANAR', L.B.musgo);
     const pierde = plato(1, 'PERDER', L.B.terracota);
-    return { ...w, beam, gana, pierde };
+    return { ...w, beam, gana, pierde, monedas };
   },
 
   // 5 · el inversionista frente a la pantalla
   mercado(L) {
     const { THREE, B, clay2, rbox } = L;
-    const w = L.cineWorld({ bg: '#22346A', bg2: '#0F1838', floor: '#39405A', fog: [32, 95], hemi: .34, sky: '#9DB4FF', ground: '#2A2F45', key: 1.1, keyPos: [-9, 12, 9], keyCol: '#A9BEFF', rim: 1.0, rimCol: '#8FA8FF', fill: .25 });
+    const w = L.cineWorld({ bg: '#22346A', bg2: '#0F1838', floor: '#39405A', fog: [32, 95], hemi: .52, sky: '#9DB4FF', ground: '#2A2F45', key: 2.0, keyPos: [-9, 12, 9], keyCol: '#A9BEFF', rim: 1.7, rimCol: '#8FA8FF', fill: .44 });
     w.vig = .5;
-    const esc = rbox(7.0, 4.0, .3, .12, clay2('#141A2E', .35, .4)); esc.position.set(0, 4.0, -4.4); w.scene.add(esc);
-    const marco = rbox(7.3, 4.3, .18, .08, clay2('#2E3448', .6)); marco.position.set(0, 4.0, -4.52); w.scene.add(marco);
+    const esc = rbox(7.0, 2.9, .3, .12, clay2('#141A2E', .35, .4)); esc.position.set(0, 4.0, -4.4); w.scene.add(esc);
+    const marco = rbox(7.3, 3.2, .18, .08, clay2('#2E3448', .6)); marco.position.set(0, 4.0, -4.52); w.scene.add(marco);
     const fila = (y, txt, col) => { const t = L.label3d(txt, 3.8, .36, { bg: null, ink: col, font: '800 54px Unbounded', ls: 1, pw: 1024 });
       t.position.set(0, y, -4.22); w.scene.add(t); return t; };
-    const verde = fila(4.9, 'LA QUE GANA   +40%', '#BBD08A');
-    const roja = fila(3.3, 'LA QUE PIERDE   −40%', '#E09277');
+    const verde = fila(4.62, 'LA QUE GANA   +40%', '#BBD08A');
+    const roja = fila(3.52, 'LA QUE PIERDE   −40%', '#E09277');
     desk(L, w, 0, -1.8, '#3A3F4A');
     const inv = L.actor(INVER); inv.position.set(0, 0, 1.1); inv.rotation.y = Math.PI; w.scene.add(inv);
     return { ...w, verde, roja, inv, esc };
@@ -116,7 +127,7 @@ const worlds = {
     medalla.rotation.x = Math.PI / 2; medalla.position.set(-2.4, 3.2, -1.6); medalla.scale.setScalar(.001); w.scene.add(medalla);
     const kah = L.actor(KAH_02); kah.position.set(0, 0, -.4); w.scene.add(kah);
     // la silla que queda vacía
-    const silla = new THREE.Group(); silla.position.set(3.2, 0, -.6); w.scene.add(silla);
+    const silla = new THREE.Group(); silla.position.set(2.15, 0, -.9); w.scene.add(silla);
     const as = rbox(1.1, .14, 1.0, .06, clay2('#8A5F45', .6)); as.position.y = 1.0; silla.add(as);
     const re = rbox(1.1, 1.4, .14, .06, clay2('#8A5F45', .6)); re.position.set(0, 1.7, -.45); silla.add(re);
     [[-.45, -.4], [.45, -.4], [-.45, .4], [.45, .4]].forEach(([a, b]) => {
@@ -131,7 +142,9 @@ const worlds = {
     const esp = rbox(2.6, 3.4, .22, .12, clay2('#9FB0C8', .3, .45)); esp.position.set(0, 2.5, -3.2); w.scene.add(esp);
     const mrc = rbox(2.9, 3.7, .12, .08, clay2('#8A5F45', .7)); mrc.position.set(0, 2.5, -3.32); w.scene.add(mrc);
     const inv = L.actor(INVER); inv.position.set(0, 0, -.6); w.scene.add(inv);
-    return { ...w, inv, esp };
+    // el reflejo: el mismo personaje dentro del espejo, de frente
+    const refl = L.actor(INVER); refl.position.set(0, .95, -3.0); refl.scale.setScalar(.92); w.scene.add(refl);
+    return { ...w, inv, esp, refl };
   },
 };
 
@@ -151,8 +164,17 @@ const scenes = [
     cap: 'En 1979, dos psicólogos publicaron un artículo en una revista de economía.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
-      L.pose(w.kah, { armR: [1.15, .35, .45], armL: [.15, .2, .3], head: [-.08, -.3, 0], lid: Math.max(.1, L.blink(q, 2)), brow: .35, smile: .4, talk: talk * .8 });
-      L.pose(w.tve, { armL: [1.05, -.3, .5], armR: [.15, -.2, .3], head: [-.05, .34, 0], lid: Math.max(.1, L.blink(q, 4)), brow: .3, smile: .5 });
+      const escribe = L.seg(p, .02, .46), vuelta = L.eio(L.seg(p, .5, .7));
+      w.eq.scale.setScalar(Math.max(.001, L.back(L.seg(p, .12, .42))));          // el título aparece al escribirlo
+      w.curva.scale.setScalar(Math.max(.001, L.eio(L.seg(p, .42, .62))));
+      w.kah.position.x = L.lerp(-1.95, -1.45, vuelta);                            // da un paso hacia Tversky
+      w.kah.rotation.y = L.lerp(-.1, .5, vuelta);
+      L.pose(w.kah, { walk: vuelta > .02 && vuelta < .98 ? q * 6 : null, amp: .3,
+        armR: [L.lerp(1.5 + Math.sin(q * 6.5) * .22, .25, vuelta), L.lerp(.3 + Math.cos(q * 6.5) * .12, .2, vuelta), .4],
+        armL: [.15, .2, .3], head: [L.lerp(-.2, -.02, vuelta), L.lerp(-.5, .42, vuelta), 0],
+        lid: Math.max(.1, L.blink(q, 2)), brow: .35, smile: L.lerp(.3, .65, vuelta), talk: talk * .8 });
+      L.pose(w.tve, { armL: [L.lerp(.3, 1.0, vuelta), -.3, .5], armR: [.15, -.2, .3],
+        head: [Math.sin(q * 2.1) * .1 * vuelta, .34, 0], lid: Math.max(.1, L.blink(q, 4)), brow: .3 + vuelta * .3, smile: .4 + vuelta * .4 });
       cam(w, mixv([-.9, 3.2, 17.5], [.3, 2.9, 14.2], L.eio(p)), mixv([0, 3.6, -1], [.1, 3.4, -1], L.eio(p)));
       w.focusOn(w.kah, 1.4); w.aperture = .00026;
     },
@@ -167,27 +189,37 @@ const scenes = [
     cap: 'Hasta entonces, la economía daba por hecho que decides con una calculadora en la cabeza.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
-      L.pose(w.kah, { armR: [.9, .5, .9], armL: [.2, .2, .3], head: [-.02, -.18, 0], lid: Math.max(.1, L.blink(q, 3)), brow: .1, smile: .2, talk: talk * .7 });
-      L.pose(w.tve, { armL: [.3, -.2, .4], armR: [.2, -.2, .3], head: [.08, .2, 0], lid: Math.max(.2, L.blink(q, 6)), brow: -.1, smile: .1 });
+      const cp = L.back(L.seg(p, .2, .52)), enc = L.eio(L.seg(p, .58, .84));
+      w.calc.scale.setScalar(Math.max(.001, cp));
+      w.calc.rotation.set(Math.sin(t * 1.1) * .12, Math.sin(t * .85) * .45, Math.sin(t * .7) * .07);
+      w.calc.position.y = 3.05 + Math.sin(t * 1.5) * .14;                          // flota
+      L.pose(w.kah, { armR: [L.lerp(.6, 1.35, cp), L.lerp(.3, .62, cp), .55], armL: [.2, .2, .3],
+        head: [-.08, -.3 + cp * .16, 0], lid: Math.max(.1, L.blink(q, 3)), brow: .1 + cp * .4, smile: .2, talk: talk * .7 });
+      L.pose(w.tve, { armL: [1.0 * enc, -.55 * enc - .2, 1.15 * enc + .3], armR: [1.0 * enc, .55 * enc + .2, 1.15 * enc + .3],
+        head: [.08 - enc * .06, .2, 0], lid: Math.max(.2, L.blink(q, 6)), brow: -.1 + enc * .7, smile: .1, bob: enc * .05 });
       cam(w, mixv([1.6, 3.6, 13.0], [-.6, 3.3, 11.4], L.eio(p)), mixv([0, 4.2, -5], [0, 4.0, -5.5], L.eio(p)));
-      w.focusOn(w.bo, 1.0); w.aperture = .0002;
+      w.focusOn(cp > .4 ? w.calc : w.bo, 1.0); w.aperture = .0002;
     },
     overlay(lt, t, L) {
-      const ink = L.B.negro; L.scrim(L.C, 0, 760, .78, '233,223,198');
+      const ink = L.B.negro; L.scrim(L.C, 0, 905, .88, '233,223,198');
       head(L, 'Lo que se daba por hecho', ['Que decides', 'como una', 'calculadora'], 'Suponía que siempre eliges lo que te conviene', ink, lt, L.B.azul);
     } },
 
   { id: 'apuesta', world: 'apuesta', d: 9, sfx: [[.45, 'pop'], [1.1, 'pop'], [1.6, 'shine', .7]], year: '1979',
     cap: 'Ellos hicieron una pregunta simple: ¿prefieres ganar 100 dólares seguros, o lanzar una moneda por 200?',
     update(w, lt, t, L) {
-      const p = P(lt, this), q = L.on2(t), d = this.t1 - this.t0, talk = L.talkAt(L.CAPS, q);
-      w.segura.scale.setScalar(Math.max(.001, L.back(L.seg(lt, .45 * d / 9, .45 * d / 9 + .45))));
-      w.volado.scale.setScalar(Math.max(.001, L.back(L.seg(lt, 1.1 * d / 9, 1.1 * d / 9 + .45))));
-      const cs = L.pop(lt, 1.6 * d / 9, .5); w.coin.scale.setScalar(Math.max(.001, cs));
-      w.coin.rotation.y = t * 7.5; w.coin.position.y = 1.6 + Math.abs(Math.sin(t * 3.2)) * .5 * cs;
-      L.pose(w.kah, { armR: [1.2, .3, .5], armL: [1.1, -.3, .5], head: [-.14, 0, 0], lid: Math.max(.1, L.blink(q, 2)), brow: .5, smile: .5, talk: talk * .8 });
+      const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
+      const a1 = L.eio(L.seg(p, .04, .3)), a2 = L.eio(L.seg(p, .26, .52)), g2 = L.eio(L.seg(p, .34, .56));
+      w.segura.position.x = L.lerp(-9, -2.0, a1); w.segura.scale.setScalar(Math.max(.001, a1));
+      w.volado.position.x = L.lerp(9, 2.0, a2); w.volado.scale.setScalar(Math.max(.001, a2));
+      const vol = L.seg(p, .56, .9);                                               // el volado: sube, gira y cae
+      w.coin.scale.setScalar(Math.max(.001, L.pop(lt, .56 * (this.t1 - this.t0), .3)));
+      w.coin.position.set(3.5, 1.55 + Math.sin(vol * Math.PI) * 3.1, .2);
+      w.coin.rotation.x = vol * 38; w.coin.rotation.z = Math.PI / 2;
+      L.pose(w.kah, { armR: [1.2, L.lerp(.7, -.15, g2), .45], armL: [.25, .2, .3],
+        head: [-.12, L.lerp(.3, -.34, g2), 0], lid: Math.max(.1, L.blink(q, 2)), brow: .5, smile: .5, talk: talk * .8 });
       cam(w, mixv([-.5, 5.0, 19.8], [.2, 4.6, 17.4], L.eio(p)), mixv([0, 2.2, -.6], [0, 2.1, -.6], L.eio(p)));
-      w.focusOn(w.segura, .8); w.aperture = .00022;
+      w.focusOn(p < .5 ? w.segura : w.volado, .8); w.aperture = .00022;
     },
     overlay(lt, t, L) {
       const ink = L.B.negro; L.scrim(L.C, 0, 720, .72, '235,230,186');
@@ -197,15 +229,25 @@ const scenes = [
   { id: 'balanza', world: 'balanza', d: 9.5, sfx: [[.5, 'shine', .7], [1.3, 'fall', .8]], year: 'LA CLAVE',
     cap: 'Y encontraron algo que lo cambió todo: perder 100 duele casi el doble de lo que gusta ganar 100.',
     update(w, lt, t, L) {
-      const p = P(lt, this), tip = L.eio(L.seg(p, .32, .78));
+      const p = P(lt, this), tip = L.eio(L.seg(p, .34, .82));
       w.beam.rotation.z = -tip * .18;
-      w.pierde.blk.scale.set(1 + tip * .6, 1 + tip * .7, 1 + tip * .6);
-      w.pierde.blk.position.y = .5 + tip * .36;
+      // las monedas se apilan ENCIMA del bloque rojo: adentro no se verían
+      w.pierde.g.updateWorldMatrix(true, false);
+      const pw = new L.THREE.Vector3().setFromMatrixPosition(w.pierde.g.matrixWorld);
+      const alto = (.5 + tip * .3) + .45 * (1 + tip * .6);                          // tapa del bloque
+      w.monedas.forEach((c, i) => {
+        const k = L.ex(L.seg(p, .18 + i * .05, .18 + i * .05 + .2));
+        c.visible = k > 0;
+        c.position.set(pw.x + (i % 2 ? .22 : -.22), L.lerp(pw.y + alto + 7, pw.y + alto + .09 + Math.floor(i / 2) * .13, k),
+          pw.z + (i < 2 ? -.2 : i < 4 ? 0 : .2));
+        c.rotation.z = (1 - k) * 2.6; });
+      w.pierde.blk.scale.set(1 + tip * .5, 1 + tip * .6, 1 + tip * .5);
+      w.pierde.blk.position.y = .5 + tip * .3;
       cam(w, mixv([-.4, 5.8, 20.8], [.3, 5.5, 18.7], L.eio(p)), mixv([0, 4.8, -.8], [0, 4.6, -.8], L.eio(p)));
       w.focusOn(w.pierde.blk, 1.2); w.aperture = .00024;
     },
     overlay(lt, t, L) {
-      const ink = L.B.negro; L.scrim(L.C, 0, 760, .8, '240,201,164');
+      const ink = L.B.negro; L.scrim(L.C, 0, 895, .84, '240,201,164');
       head(L, 'Lo que descubrieron', ['Perder duele', 'el doble de lo', 'que gusta ganar'], 'Con la misma cantidad de dinero', ink, lt, L.B.terracota);
     } },
 
@@ -213,11 +255,14 @@ const scenes = [
     cap: 'Por eso aguantas la acción que va perdiendo, y vendes la que va ganando.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      const agarra = L.eio(L.seg(p, .35, .8));
-      L.pose(w.inv, { armL: [1.25 * agarra + .15, -.45, .5], armR: [.2, .25, .3], head: [-.18, -.22 * agarra, 0],
+      const agarra = L.eio(L.seg(p, .14, .46)), vende = L.eio(L.seg(p, .5, .84));
+      w.roja.position.set(Math.sin(t * 11) * .04 * agarra, 3.52 - agarra * .12, -4.22);
+      w.verde.position.set(L.lerp(0, 6.2, vende), 4.62 + vende * .5, -4.22);         // la que gana se va
+      w.verde.scale.setScalar(Math.max(.04, 1 - vende * .75));
+      L.pose(w.inv, { armL: [1.3 * agarra + .15, -.45, .5], armR: [1.05 * vende + .2, .42, .5],
+        head: [-.18 - vende * .08, L.lerp(-.24, .34, vende), 0], lean: agarra * .06,
         lid: Math.max(.25, L.blink(q, 3)), brow: -.6, smile: -.45 });
-      w.verde.position.x = L.lerp(0, 1.1, agarra);
-      cam(w, mixv([-.3, 3.8, 15.0], [.4, 3.6, 12.8], L.eio(p)), mixv([0, 4.2, -4], [0, 4.0, -4], L.eio(p)));
+      cam(w, mixv([-.4, 3.5, 12.6], [.4, 3.3, 10.8], L.eio(p)), mixv([0, 4.0, -4], [0, 3.8, -4], L.eio(p)));
       w.focusOn(w.esc, 1.0); w.aperture = .00022;
     },
     overlay(lt, t, L) {
@@ -228,13 +273,16 @@ const scenes = [
   { id: 'nobel', world: 'nobel', d: 8.5, sfx: [[.6, 'shine', .9], [1.4, 'pop']], year: '2002', ink: '#EBE6BA',
     cap: 'En 2002, Daniel Kahneman ganó el Nobel de Economía. Y era psicólogo, no economista.',
     update(w, lt, t, L) {
-      const p = P(lt, this), q = L.on2(t), d = this.t1 - this.t0;
-      const m = L.back(L.seg(lt, .6 * d / 8.5, .6 * d / 8.5 + .6));
-      w.medalla.scale.setScalar(Math.max(.001, m)); w.medalla.rotation.z = t * .7;
+      const p = P(lt, this), q = L.on2(t);
+      const k = L.eio(L.seg(p, .04, .36)), anda = p > .04 && p < .36, md = L.eio(L.seg(p, .32, .56));
+      w.kah.position.set(L.lerp(-3.3, 0, k), 0, L.lerp(-1.7, -.4, k)); w.kah.rotation.y = L.lerp(.5, 0, k);
+      w.medalla.scale.setScalar(Math.max(.001, L.back(L.seg(p, .3, .46))));
+      w.medalla.position.set(-1.05, L.lerp(6.0, 2.75, md), -1.3); w.medalla.rotation.z = t * .7;
       w.silla.visible = false;
-      L.pose(w.kah, { armR: [.35, .2, .3], armL: [.35, -.2, .3], head: [-.06, 0, 0], lid: Math.max(.1, L.blink(q, 3)), brow: .4, smile: .8 });
+      L.pose(w.kah, { walk: anda ? q * 6.5 : null, amp: .42, armR: [.35, .2, .3], armL: [.35, -.2, .3],
+        head: [L.lerp(-.02, -.24, md), 0, 0], lid: Math.max(.1, L.blink(q, 3)), brow: .3 + md * .4, smile: .5 + md * .4, bob: md * .03 });
       cam(w, mixv([-1.4, 3.6, 11.5], [-.4, 3.3, 9.4], L.eio(p)), mixv([-.6, 2.6, -1.4], [-.3, 2.5, -1.4], L.eio(p)));
-      w.focusOn(w.medalla, .9); w.aperture = .00024;
+      w.focusOn(md > .5 ? w.medalla : w.kah, .9); w.aperture = .00024;
     },
     overlay(lt, t, L, s, w) {
       const ink = '#EBE6BA'; L.scrim(L.C, 0, 780, .62, '20,15,38');
@@ -247,10 +295,13 @@ const scenes = [
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       w.medalla.scale.setScalar(.001); w.silla.visible = true;
-      const mira = L.eio(L.seg(p, .3, .7));
-      L.pose(w.kah, { armR: [.3, .2, .3], armL: [.3, -.2, .3], head: [.04, mira * .62, 0], lid: Math.max(.3, L.blink(q, 4)), brow: -.3, smile: -.2 });
-      cam(w, mixv([-.2, 3.2, 12.0], [.4, 2.9, 9.8], L.eio(p)), mixv([.3, 2.4, -.6], [.7, 2.2, -.6], L.eio(p)));
-      w.focusOn(w.silla, 1.1); w.aperture = .00026;
+      const mira = L.eio(L.seg(p, .2, .58)), baja = L.eio(L.seg(p, .58, .92));
+      w.kah.rotation.y = mira * .48;
+      L.pose(w.kah, { armR: [.3 - baja * .26, .2, .3], armL: [.3 - baja * .26, -.2, .3],
+        head: [.04 + baja * .24, mira * .5, 0], lean: baja * .07, bob: -baja * .055,
+        lid: Math.max(.3 + baja * .3, L.blink(q, 4)), brow: -.3 - baja * .35, smile: -.2 - baja * .35 });
+      cam(w, mixv([-.3, 3.4, 12.8], [.5, 3.1, 10.6], L.eio(p)), mixv([.1, 2.4, -.6], [.95, 2.2, -.6], L.eio(p)));
+      w.focusOn(mira > .5 ? w.silla : w.kah, 1.1); w.aperture = .00026;
     },
     overlay(lt, t, L) {
       const ink = '#EBE6BA'; L.scrim(L.C, 0, 800, .64, '20,15,38');
@@ -261,12 +312,15 @@ const scenes = [
     cap: 'Tu peor enemigo invirtiendo no está en la pantalla. Está de este lado.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      L.pose(w.inv, { armR: [.3, .2, .3], armL: [.3, -.2, .3], head: [-.05, 0, 0], lid: Math.max(.15, L.blink(q, 3)), brow: .1, smile: .25 });
+      const sube = L.eio(L.seg(p, .38, .7));
+      const base = { head: [-.05, 0, 0], lid: Math.max(.15, L.blink(q, 3)), brow: .1 + sube * .3, smile: .25 };
+      L.pose(w.inv, { ...base, armR: [1.45 * sube + .3, .25, .35], armL: [.3, -.2, .3] });
+      L.pose(w.refl, { ...base, armL: [1.45 * sube + .3, -.25, .35], armR: [.3, .2, .3] });   // el espejo invierte el lado
       cam(w, mixv([-.5, 3.2, 11.5], [.2, 3.0, 9.4], L.eio(p)), mixv([0, 2.6, -2], [0, 2.5, -2], L.eio(p)));
-      w.focusOn(w.esp, 1.0); w.aperture = .00022;
+      w.focusOn(sube > .4 ? w.refl : w.inv, 1.0); w.aperture = .00022;
     },
     overlay(lt, t, L) {
-      const ink = L.B.negro; L.scrim(L.C, 0, 780, .78, '235,230,186');
+      const ink = L.B.negro; L.scrim(L.C, 0, 895, .82, '235,230,186');
       head(L, 'Finanzas conductuales', ['Tu peor enemigo', 'no está en', 'la pantalla'], 'Está de este lado', ink, lt, L.B.azul);
     } },
 ];

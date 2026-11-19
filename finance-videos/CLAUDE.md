@@ -147,6 +147,24 @@ cinco vueltas. Los cuatro defectos que salieron, con su causa real:
 Para calcular distancia: con el vertical, `media_altura = tan(25°) × distancia` y `media_anchura = media_altura × 0.5625`.
 Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
 
+## Regla de la aprobación visual antes de renderizar (JP, 19 nov 2026)
+**Antes de renderizar una historia 3D —y antes de generar la voz— JP tiene que ver capturas de cómo va a quedar.**
+Un render completo son ~30 min de máquina y la voz cuesta créditos: no se gasta nada de eso sin su visto bueno.
+El entregable para aprobar es la hoja de `render3d.js <carpeta> --qa` (2 cuadros por escena, gratis y rápida) más
+cuadros sueltos con `--at <segundos>` de los momentos con acción. Hasta que JP diga que sí, no se renderiza el video.
+
+## Regla del dinamismo en 3D (JP, 19 nov 2026 — vio la primera historia de Kahneman)
+"Los personajes no están haciendo mucho." Una escena donde solo se mueve la cámara está mal, aunque el encuadre sea
+perfecto. La referencia es la historia de Steve Jobs: en cada escena **pasa algo**. La lista de lo que hay que mover:
+- **El personaje actúa**: camina (`walk` + `position`), gira (`rotation.y`), voltea a ver lo que importa (`head`),
+  se le caen los hombros (`lean`, `bob`), se encoge de hombros, señala. No basta con `talk`.
+- **Un objeto cambia de estado por una causa**: las monedas CAEN sobre el plato y por eso la balanza se hunde; las
+  cartas ENTRAN deslizándose; la que gana SE VA volando; la medalla BAJA; el reflejo IMITA al personaje.
+- **Los rótulos del mundo 3D aparecen cuando se dicen**, no están puestos desde el cuadro uno.
+Dos trampas que ya costaron un render: un objeto que cae sobre otro acaba DENTRO de él si no se calcula la tapa
+(usa `getWorldPosition` del grupo, no las coordenadas locales), y lo que baja desde arriba del cuadro pasa por detrás
+del rótulo: que llegue pronto a la zona visible (y_px 800–1650) y se quede ahí, en vez de animar el recorrido completo.
+
 ## Regla de la voz de IA en historias 3D (19 nov 2026)
 Una historia 3D con voz de IA **no usa `pace3d.py`** (que estima por sílabas para la voz de JP). Usa `scripts/voz3d.py`,
 que sincroniza escenas y subtítulos con los tiempos reales de `build/whisper.json`. El flujo completo:
