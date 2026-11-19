@@ -1,7 +1,8 @@
 # Historia 3D · Kahneman y Tversky: por qué aguantas la que pierde (sábado 21 nov 2026 · publicar 12:00)
 
 **Este video YA LLEVA VOZ** (Francisco, vidIQ, una sola toma). No hay que grabar nada.
-Duración 51.7 s · 8 escenas · 120 palabras · animación original en 3D.
+Duración 54.9 s · 8 escenas · 127 palabras · animación original en 3D.
+Música al 60% del nivel de la voz (pedido de JP). Guion reescrito para que se entienda sin saber de finanzas.
 
 ## ✅ Para copiar y pegar
 
@@ -16,13 +17,13 @@ En 1979, dos psicólogos publicaron un artículo en una revista de economía y c
 
 📌 Los datos
 • 1979: Daniel Kahneman y Amos Tversky publican "Prospect Theory" en Econometrica (vol. 47, núm. 2, pp. 263–291)
-• Hasta entonces la economía suponía que decidimos como una calculadora: siempre lo que más nos conviene
+• Hasta entonces se pensaba que, con el dinero, todos hacemos cuentas mentales y elegimos lo que más nos conviene
 • Su hallazgo: perder duele más de lo que gusta ganar la misma cantidad. En su estudio de 1992 midieron esa diferencia en unas 2.25 veces
 • En la bolsa eso tiene nombre: efecto disposición, aguantar la acción que pierde y vender la que gana (Shefrin y Statman, 1985; confirmado por Odean en 1998 con 10,000 cuentas reales)
 • 9 de octubre de 2002: Kahneman recibe el Nobel de Economía, la mitad del premio, "por haber integrado hallazgos de la investigación psicológica en la ciencia económica, especialmente sobre el juicio humano y la toma de decisiones bajo incertidumbre". La otra mitad fue para Vernon L. Smith
 • Amos Tversky había muerto el 2 de junio de 1996. El Nobel no se entrega de forma póstuma, así que no aparece entre los galardonados
 
-🧠 La idea que te llevas: tu peor enemigo invirtiendo casi nunca está en la pantalla.
+🧠 La idea que te llevas: al invertir, tu peor enemigo no es el mercado. Eres tú.
 
 ¿Te ha pasado? ¿Has aguantado una que pierde más tiempo del que deberías? Te leo 👇
 
