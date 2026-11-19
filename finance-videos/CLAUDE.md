@@ -132,6 +132,34 @@ de un envío son **5,000 caracteres**: si el guion no cabe, se recorta el guion,
 parte en piezas para el flujo viejo; usa su texto concatenado con `\n\n` y mándalo completo. Y borra `voice_raw.mp3`
 antes de reprocesar: `process_voice.py` lo reutiliza si existe y ignora las piezas nuevas.
 
+## Regla del encuadre 3D (19 nov 2026 — historia de Kahneman)
+La hoja de revisión (`render3d.js <carpeta> --qa`) es obligatoria y casi nunca pasa a la primera: la de Kahneman necesitó
+cinco vueltas. Los cuatro defectos que salieron, con su causa real:
+- **Texto cortado en una etiqueta 3D.** No es el encuadre: `label3d` dibuja sobre un canvas de `pw` píxeles (1024 por
+  defecto) y el texto que no cabe se recorta. "ECONOMETRICA · 1979" a 86px con `ls: 3` mide ~1,070 px y perdía letras en
+  los dos extremos. Regla: `caracteres × 0.62 × tamaño + ls × caracteres ≤ pw`. Baja la fuente, no el ancho del plano.
+- **Objeto pegado al rótulo.** Para BAJAR algo en el cuadro, el `lookAt` va ARRIBA del objeto, no abajo (es al revés de lo
+  que parece). La zona segura de un vertical es de ~800 a ~1650 px de 1920: apunta a `centro_del_objeto + 0.25 × media_altura`.
+- **Texto acostado que no se ve.** Un `label3d` plano sobre una mesa se lee pésimo en vertical y con la cámara baja
+  desaparece. Las cartas de la apuesta se volvieron **placas verticales de frente a cámara** y se leyeron a la primera.
+- **Personaje fuera de cuadro.** Si la cámara panea y el personaje está quieto, se sale. Mueve el `target` lo mismo que el
+  personaje, o no lo muevas.
+Para calcular distancia: con el vertical, `media_altura = tan(25°) × distancia` y `media_anchura = media_altura × 0.5625`.
+Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
+
+## Regla de la voz de IA en historias 3D (19 nov 2026)
+Una historia 3D con voz de IA **no usa `pace3d.py`** (que estima por sílabas para la voz de JP). Usa `scripts/voz3d.py`,
+que sincroniza escenas y subtítulos con los tiempos reales de `build/whisper.json`. El flujo completo:
+1. Sacar los `cap:` de story.js y convertir números a palabras **conservando la puntuación** (`¿ ? , .`): `spoken()` sola
+   se come los signos y la voz pierde la entonación de pregunta. `voz3d.py` documenta el convertidor.
+2. **Una sola llamada** a `vidiq_voiceover_generate` (regla de la toma única) → `audio/voice_raw.mp3`.
+3. `storyboard.json` con `{"format":"long"}` en la carpeta, para que `process_voice.py` deje el ritmo natural
+   (tempo 1.0, pausas amplias) en vez del recorte agresivo de short. Sin eso, la historia sale acelerada.
+4. `voz3d.py <carpeta> --aire 0.7` — Francisco lee a ~162 palabras/min, demasiado rápido para una historia: `--aire`
+   mete silencio **entre escenas, nunca dentro de una frase**, y deja ~145 palabras/min. Kahneman: 46.8 s → 51.7 s.
+5. `make_audio.py` → `render3d.js`.
+Ojo: `--aire` se aplica una sola vez sobre `voice.wav`; para repetirlo hay que volver a correr `process_voice.py`.
+
 ## Regla del reloj con voz de IA (16 nov 2026)
 La voz de IA lee a ~150 palabras/min; `no_voice.py` presupuesta 120 para la voz de JP. **El mismo guion sale ~25% más
 corto con IA**: el largo de Apple pasó de 6:52 (teleprompter) a 5:21 (Francisco). Si un largo tiene que durar 6–7 min

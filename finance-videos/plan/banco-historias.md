@@ -42,3 +42,4 @@ son una guía: **verifícalos con fuente primaria antes de usarlos.**
 |---|---|---|
 | (primera, 9 nov 2026) | SpaceX: de casi quebrar a la IPO más grande de la historia (SPCX) | `videos/2026-11-09-SPCX-historia/` (animatic y versión con música) |
 | sáb 14 nov 2026 · 12:00 | Steve Jobs: lo sacaron de su propia empresa (Apple, AAPL) | `videos/2026-11-14-JOBS-historia/` |
+| sáb 21 nov 2026 · 12:00 | Kahneman y Tversky: perder duele el doble (finanzas conductuales) | `videos/2026-11-21-KAHNEMAN-historia/` |
