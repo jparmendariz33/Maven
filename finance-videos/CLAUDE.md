@@ -249,7 +249,16 @@ que sincroniza escenas y subtítulos con los tiempos reales de `build/whisper.js
 3. `storyboard.json` con `{"format":"long"}` en la carpeta, para que `process_voice.py` deje el ritmo natural
    (tempo 1.0, pausas amplias) en vez del recorte agresivo de short. Sin eso, la historia sale acelerada.
 4. `voz3d.py <carpeta> --aire 0.7` — Francisco lee a ~162 palabras/min, demasiado rápido para una historia: `--aire`
-   mete silencio **entre escenas, nunca dentro de una frase**, y deja ~145 palabras/min. Kahneman: 46.8 s → 51.7 s.
+   mete silencio **entre escenas, nunca dentro de una frase**, y deja ~145 palabras/min.
+   Tres cosas que costaron varias vueltas y por eso están como están (19–20 nov 2026):
+   - Los límites entre escenas salen de la **alineación con difflib**, no de contar palabras por escena. Whisper no
+     parte igual que el guion (oye "Amostversky", escribe "1979" donde el guion dice el año en palabras), así que
+     contar desplazaba los cortes a media frase y el silencio caía dentro de una palabra.
+   - El corte se **pega al punto más callado de la onda** cerca del límite: los tiempos de whisper son aproximados y
+     la cola de la última palabra suele seguir sonando después de su t1.
+   - Si no hay ningún punto callado cerca, ese corte **se salta**. Mejor una escena sin aire que una palabra partida.
+   Al final `voz3d.py` verifica que toda palabra **anclada** tenga audio donde dice tenerlo y truena si no. Solo las
+   ancladas: las interpoladas no tienen tiempo real contra el cual comparar y daban falsas alarmas.
 5. `make_audio.py` → `render3d.js`.
 Ojo: `--aire` se aplica una sola vez sobre `voice.wav`; para repetirlo hay que volver a correr `process_voice.py`.
 

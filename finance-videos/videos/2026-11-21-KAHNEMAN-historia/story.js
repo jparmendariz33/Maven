@@ -241,8 +241,11 @@ const worlds = {
 // ---------------------------------------------------------------- escenas
 const head = (L, k1, title, sub, ink, lt, col, pronto) => {
   L.kicker(k1, 360, L.seg(lt, pronto ? .02 : .1, pronto ? .3 : .5), ink);
+  // a 78px caben ~18 caracteres en los 900 px útiles: si una línea se pasa, TODO el bloque se achica
+  const largo = Math.max(...title.map(l => l.length));
+  const ts = largo > 18 ? Math.max(54, Math.floor(78 * 18 / largo)) : 78;
   title.forEach((ln, i) => L.rise(ln, 90, 470 + i * 96, L.seg(lt, (pronto ? .04 : .25) + i * .1, (pronto ? .42 : .8) + i * .1),
-    { f: L.F.d, w: 800, s: 78, c: i === title.length - 1 && col ? col : ink }));
+    { f: L.F.d, w: 800, s: ts, c: i === title.length - 1 && col ? col : ink }));
   // el sub es de una sola línea: a 38px caben ~46 caracteres en los 990px útiles, así que se encoge solo
   if (sub) L.rise(sub, 90, 470 + title.length * 96 - 26, L.seg(lt, pronto ? .5 : .7, pronto ? 1.0 : 1.2),
     { s: sub.length > 46 ? Math.max(27, Math.floor(38 * 46 / sub.length)) : 38, c: ink, a: .8 });
@@ -277,7 +280,7 @@ const scenes = [
     } },
 
   { id: 'supuesto', world: 'estudio', trans: 'cont', d: 7, sfx: [[.4, 'ticks', .45, .5]], year: '1979',
-    cap: 'Hasta entonces se daba por hecho algo muy simple: que cuando usas tu dinero, siempre eliges la mejor opción.',
+    cap: 'Hasta entonces se daba por hecho algo muy simple: que cuando usas tu dinero, comparas y siempre te quedas con la mejor opción.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
       const cp = L.back(L.seg(p, .34, .62)), enc = L.eio(L.seg(p, .62, .88));
@@ -295,7 +298,7 @@ const scenes = [
     },
     overlay(lt, t, L) {
       const ink = L.B.negro; L.scrim(L.C, 0, 905, .88, '233,223,198');
-      head(L, 'Lo que se daba por hecho', ['Cuando usas', 'tu dinero, siempre', 'eliges lo mejor'], 'Sin dudar y sin miedo', ink, lt, L.B.azul);
+      head(L, 'Lo que se daba por hecho', ['Cuando usas', 'tu dinero, comparas', 'y eliges lo mejor'], 'Sin dudar y sin miedo', ink, lt, L.B.azul);
     } },
 
   { id: 'apuesta', world: 'apuesta', d: 9, sfx: [[.45, 'pop'], [1.1, 'pop'], [1.6, 'shine', .7]], year: '1979',
