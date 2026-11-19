@@ -2,7 +2,7 @@
 **Publicar: JUEVES 20 nov 2026, 12:00** (JP la adelantó del sábado para calentar motores hacia el largo del domingo)
 
 **Este video YA LLEVA VOZ** (Francisco, vidIQ, una sola toma). No hay que grabar nada.
-Duración 63.9 s · 10 escenas · 150 palabras · animación original en 3D.
+Duración 64.6 s · 10 escenas · 152 palabras · animación original en 3D.
 Cierra con pregunta, como todas las historias, y **avisa en pantalla (pizarrón) que el domingo sale el largo**.
 Música al 60% del nivel de la voz (pedido de JP). Guion reescrito para que se entienda sin saber de finanzas.
 
