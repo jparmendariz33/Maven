@@ -140,7 +140,9 @@ const head = (L, k1, title, sub, ink, lt, col, pronto) => {
   L.kicker(k1, 360, L.seg(lt, pronto ? .02 : .1, pronto ? .3 : .5), ink);
   title.forEach((ln, i) => L.rise(ln, 90, 470 + i * 96, L.seg(lt, (pronto ? .04 : .25) + i * .1, (pronto ? .42 : .8) + i * .1),
     { f: L.F.d, w: 800, s: 78, c: i === title.length - 1 && col ? col : ink }));
-  if (sub) L.rise(sub, 90, 470 + title.length * 96 - 26, L.seg(lt, pronto ? .5 : .7, pronto ? 1.0 : 1.2), { s: 38, c: ink, a: .8 });
+  // el sub es de una sola línea: a 38px caben ~46 caracteres en los 990px útiles, así que se encoge solo
+  if (sub) L.rise(sub, 90, 470 + title.length * 96 - 26, L.seg(lt, pronto ? .5 : .7, pronto ? 1.0 : 1.2),
+    { s: sub.length > 46 ? Math.max(27, Math.floor(38 * 46 / sub.length)) : 38, c: ink, a: .8 });
 };
 
 const scenes = [
@@ -172,7 +174,7 @@ const scenes = [
     },
     overlay(lt, t, L) {
       const ink = L.B.negro; L.scrim(L.C, 0, 760, .78, '233,223,198');
-      head(L, 'Lo que se daba por hecho', ['Que decides', 'como una', 'calculadora'], 'La economía suponía que siempre eliges lo que más te conviene', ink, lt, L.B.azul);
+      head(L, 'Lo que se daba por hecho', ['Que decides', 'como una', 'calculadora'], 'Suponía que siempre eliges lo que te conviene', ink, lt, L.B.azul);
     } },
 
   { id: 'apuesta', world: 'apuesta', d: 9, sfx: [[.45, 'pop'], [1.1, 'pop'], [1.6, 'shine', .7]], year: '1979',
@@ -252,7 +254,7 @@ const scenes = [
     },
     overlay(lt, t, L) {
       const ink = '#EBE6BA'; L.scrim(L.C, 0, 800, .64, '20,15,38');
-      head(L, 'El que faltó', ['Tversky murió', 'en 1996'], 'El Nobel no se entrega póstumo: Kahneman lo recibió solo', ink, lt, L.B.terracota);
+      head(L, 'El que faltó', ['Tversky murió', 'en 1996'], 'El Nobel no se entrega póstumo', ink, lt, L.B.terracota);
     } },
 
   { id: 'cierre', world: 'cierre', d: 8, sfx: [[.5, 'shine', .6]], year: 'HOY',
