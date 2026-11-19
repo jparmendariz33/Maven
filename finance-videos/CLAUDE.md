@@ -9,7 +9,9 @@ sea cliente de la agencia sin declararlo.
 
 **Historias 3D (verticales, 75–90 s, miércoles y sábados 12:00):** skill **`/historia`** (`../.claude/skills/historia/SKILL.md`), motor `engine3d/`
 (Three.js: `lib.js` + `cine.js` con luz de cine y actores articulados), carpetas `videos/<sábado>-<SLUG>-historia/` con `story.js`.
-Flujo: `story.js` → `scripts/pace3d.py` → `engine3d/render3d.js --qa` → `make_audio.py` (música + efectos por acción) → `render3d.js video`.
+Flujo CON voz de IA (el de ahora): `story.js` → `render3d.js --qa` + cuadros `--at` → **capturas a JP y su OK** → voz en UNA toma →
+`process_voice.py` → `scripts/voz3d.py --aire 0.7` → `make_audio.py` (partitura al 60% de la voz) → `render3d.js`.
+Sin voz de IA (JP graba encima): igual pero con `scripts/pace3d.py` en lugar de la voz y `voz3d.py`.
 Ideas en `plan/banco-historias.md`. Aquí NO van fotos: todo es maqueta 3D propia, sin logotipos reales.
 
 **JP en 3D (anfitrión del canal; aprobado el 11 nov 2026, obligatorio):** el personaje 3D de JP sale como recorte con fondo transparente,
@@ -147,11 +149,39 @@ cinco vueltas. Los cuatro defectos que salieron, con su causa real:
 Para calcular distancia: con el vertical, `media_altura = tan(25°) × distancia` y `media_anchura = media_altura × 0.5625`.
 Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
 
-## Regla de la aprobación visual antes de renderizar (JP, 19 nov 2026)
-**Antes de renderizar una historia 3D —y antes de generar la voz— JP tiene que ver capturas de cómo va a quedar.**
-Un render completo son ~30 min de máquina y la voz cuesta créditos: no se gasta nada de eso sin su visto bueno.
-El entregable para aprobar es la hoja de `render3d.js <carpeta> --qa` (2 cuadros por escena, gratis y rápida) más
-cuadros sueltos con `--at <segundos>` de los momentos con acción. Hasta que JP diga que sí, no se renderiza el video.
+## Regla de la aprobación visual antes de producir (JP, 19 nov 2026 — aplica a TODO formato)
+**Antes de renderizar cualquier pieza —y SIEMPRE antes de generar voz— JP tiene que ver capturas de las escenas.**
+No es un trámite: los créditos de voz son el recurso escaso del canal y un render son ~30 min de máquina. Una
+corrección detectada en una captura cuesta cero; la misma corrección detectada en el MP4 cuesta otra voz y otro render.
+- **Historias 3D:** hoja de `render3d.js <carpeta> --qa` (2 cuadros por escena, gratis y rápida) + cuadros sueltos con
+  `--at <segundos>` de cada momento con acción. Mándale las dos cosas, con una leyenda que diga qué pasa en cada una.
+- **Shorts, largos y publicaciones:** lo mismo con `render.js --qa` / las imágenes del post, antes de pedir la voz.
+- En las capturas, **di qué está pendiente de aprobación**. Si los rótulos todavía traen el texto viejo porque la frase
+  no está decidida, se avisa; si no, JP revisa creyendo que ya es definitivo.
+- Hasta que JP diga que sí, no se genera voz ni se renderiza.
+
+## Regla de la eficiencia en créditos (JP, 19 nov 2026)
+vidIQ cobra **28 créditos por cada bloque de 1,000 caracteres, redondeando hacia arriba**. Un guion de 1,010 caracteres
+cuesta el doble que uno de 990. Antes de mandar la voz, **mide el texto ya convertido a palabras habladas** y di en
+cuántos bloques cae y cuánto margen queda; si está apenas encima de un múltiplo de 1,000, recorta ahí. La historia de
+Kahneman quedó en 791 caracteres: un bloque, 28 créditos, el mínimo posible para una toma única.
+Lo demás que ahorra créditos: la toma única ya es lo más barato (no partir en piezas), **`voice_raw.mp3` no se borra
+nunca** (reprocesar la mezcla, el ritmo y el render sale gratis a partir de él), y todo lo que no sea el texto hablado
+—nivel de música, aire entre escenas, encuadres, animación— se ajusta y se re-renderiza **sin gastar un solo crédito**.
+
+## Regla de que se entienda sin saber nada (JP, 19 nov 2026)
+"Este tipo de videos deben ser súper digeribles para cualquier público, incluso los que no sepan de finanzas, de
+economía, de cualquier edad." El filtro: **si la frase le pide al espectador que deduzca algo, está mal.** Las que
+cayeron en la historia de Kahneman y por qué:
+- "decides con **una calculadora en la cabeza**" → metáfora que hay que descifrar. Quedó: "todos hacemos **cuentas
+  mentales** y elegimos lo que más nos conviene".
+- "tu peor enemigo no está en la pantalla, **está de este lado**" → "de este lado" es espacial y abstracto. Quedó:
+  "**no es el mercado. Eres tú**".
+- "el Nobel **no se entrega póstumo**" → palabra culta. Quedó: "**no se le da a quien ya murió**".
+- "lanzar una moneda por 200" → quedó "**un volado: 200 o nada**", que además calca lo que dicen las cartas en pantalla.
+Y el remate: **la imagen tiene que decir lo mismo que la frase, al mismo tiempo.** "Eres tú" no se entendía con un
+espejo (el reflejo se leía como otra persona detrás); se entiende con un teléfono que muestra el portafolio y una
+cámara que se mueve de la pantalla a su cara. Si hace falta explicar la escena, la escena está mal.
 
 ## Regla del dinamismo en 3D (JP, 19 nov 2026 — vio la primera historia de Kahneman)
 "Los personajes no están haciendo mucho." Una escena donde solo se mueve la cámara está mal, aunque el encuadre sea
@@ -164,6 +194,21 @@ perfecto. La referencia es la historia de Steve Jobs: en cada escena **pasa algo
 Dos trampas que ya costaron un render: un objeto que cae sobre otro acaba DENTRO de él si no se calcula la tapa
 (usa `getWorldPosition` del grupo, no las coordenadas locales), y lo que baja desde arriba del cuadro pasa por detrás
 del rótulo: que llegue pronto a la zona visible (y_px 800–1650) y se quede ahí, en vez de animar el recorrido completo.
+
+## Regla de la mezcla (JP, 19 nov 2026)
+**La música va al 60% del nivel de la voz, medido, no a ojo.** Estaba en 8% y JP casi no la oía. Lo controla
+`make_audio.py --musica N`, y la mezcla imprime el balance real en dB durante los tramos hablados: para las historias
+3D, `--musica 2.50` da el 60%. El ducking de la historia es más suave que el de un short, para que la partitura no
+desaparezca bajo la voz. Verifica siempre después de mezclar: pico por debajo de −0.5 dBFS y ninguna palabra con el
+audio tapado.
+
+## Gráficas y portafolios dentro del 3D (19 nov 2026)
+`L.plaque(ancho, alto, dibuja, pw)` da un plano con una textura de canvas: con eso se dibujan **gráficas de línea de
+verdad** dentro de la escena, que es lo que JP pidió para la escena de la bolsa. El helper `grafica()` de la historia
+de Kahneman es reutilizable: mete el plano en un grupo anclado a la IZQUIERDA, así que **escalando el grupo en x la
+línea se va trazando** de izquierda a derecha mientras habla la voz.
+Un portafolio en pantalla (teléfono, monitor) va **por sectores, nunca con nombres de empresas reales**: un portafolio
+con tickers reales se lee como que estamos diciendo qué comprar, y eso está prohibido.
 
 ## Regla de la voz de IA en historias 3D (19 nov 2026)
 Una historia 3D con voz de IA **no usa `pace3d.py`** (que estima por sílabas para la voz de JP). Usa `scripts/voz3d.py`,

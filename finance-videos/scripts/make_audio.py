@@ -112,7 +112,7 @@ SFX = {'pop': sfx_pop, 'whoosh': sfx_whoosh, 'door': sfx_door, 'steps': sfx_step
        'shine': sfx_shine, 'ticks': sfx_ticks, 'applause': sfx_applause, 'vote': sfx_vote, 'thud': lambda g=1, d=0: thud(.8 * g), 'wave': lambda g=1, d=0: wave_sfx(.9, g)}
 
 
-def main(vdir, MUS=.34):
+def main(vdir, MUS=None):
     tl = json.load(open(os.path.join(vdir, 'build', 'timeline.json')))
     LONG = tl.get('format') == 'long'
     T = tl['duration']; n = int(T * SR); fx = np.zeros(n, np.float32); mus = np.zeros(n, np.float32)
@@ -185,6 +185,7 @@ def main(vdir, MUS=.34):
         fo2 = int(1.8 * SR); st[:, -fo2:] *= np.linspace(1, 0, fo2)
         # el ducking de la historia es más suave: JP quiere OÍR la partitura, no que desaparezca bajo la voz
         duck_st = 1 - (1 - duck) * (.32 / .6)
+        if MUS is None: MUS = 2.50            # 60% del nivel de la voz (JP, 19 nov 2026)
         st *= MUS * duck_st; mus[:] = 0
         print(f'historia 3D: partitura de órgano y piano al {MUS * 100:.0f}%')
     fx = fx / (np.abs(fx).max() + 1e-9) * (.22 if not voice.any() else .34)
@@ -202,5 +203,5 @@ def main(vdir, MUS=.34):
 
 if __name__ == '__main__':
     av = sys.argv[1:]
-    mu = float(av[av.index('--musica') + 1]) if '--musica' in av else .34
+    mu = float(av[av.index('--musica') + 1]) if '--musica' in av else None   # None = 2.50 en historias (60%)
     main(av[0], mu)
