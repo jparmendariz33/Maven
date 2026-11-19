@@ -112,7 +112,7 @@ SFX = {'pop': sfx_pop, 'whoosh': sfx_whoosh, 'door': sfx_door, 'steps': sfx_step
        'shine': sfx_shine, 'ticks': sfx_ticks, 'applause': sfx_applause, 'vote': sfx_vote, 'thud': lambda g=1, d=0: thud(.8 * g), 'wave': lambda g=1, d=0: wave_sfx(.9, g)}
 
 
-def main(vdir):
+def main(vdir, MUS=.34):
     tl = json.load(open(os.path.join(vdir, 'build', 'timeline.json')))
     LONG = tl.get('format') == 'long'
     T = tl['duration']; n = int(T * SR); fx = np.zeros(n, np.float32); mus = np.zeros(n, np.float32)
@@ -182,16 +182,25 @@ def main(vdir):
     if STORY:   # historias 3D: partitura de órgano y piano en estéreo, en lugar de la cama cálida
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import music3d
         sc = music3d.score([s['t0'] for s in tl['scenes']], T)[:, :n]; st[:, :sc.shape[1]] = sc
-        fo2 = int(1.8 * SR); st[:, -fo2:] *= np.linspace(1, 0, fo2); st *= .34 * duck; mus[:] = 0
-        print('historia 3D: partitura de órgano y piano')
+        fo2 = int(1.8 * SR); st[:, -fo2:] *= np.linspace(1, 0, fo2)
+        # el ducking de la historia es más suave: JP quiere OÍR la partitura, no que desaparezca bajo la voz
+        duck_st = 1 - (1 - duck) * (.32 / .6)
+        st *= MUS * duck_st; mus[:] = 0
+        print(f'historia 3D: partitura de órgano y piano al {MUS * 100:.0f}%')
     fx = fx / (np.abs(fx).max() + 1e-9) * (.22 if not voice.any() else .34)
     voice = voice / (np.abs(voice).max() + 1e-9) * .92
     mix = np.tanh((voice + mus + fx + st) * 1.02); mix /= np.abs(mix).max() * 1.06      # (2, n): la partitura conserva su estéreo
+    if STORY and voice.any():                                                          # balance medido, no a ojo
+        hab = np.abs(voice) > np.abs(voice).max() * .06                                # tramos donde de verdad habla
+        db = lambda x: 20 * np.log10(np.sqrt((x ** 2).mean()) + 1e-9)
+        vdb, mdb = db(voice[hab]), db(st.mean(0)[hab])
+        print(f'  balance hablando: voz {vdb:+.1f} dB · música {mdb:+.1f} dB · música a {10 ** ((mdb - vdb) / 20) * 100:.0f}% de la voz')
     pcm = (mix.T * 32767).astype('<i2')
     o = wave.open(os.path.join(vdir, 'audio', 'mix.wav'), 'wb'); o.setnchannels(2); o.setsampwidth(2); o.setframerate(SR); o.writeframes(pcm.tobytes()); o.close()
     print(f'mezcla lista: {T:.1f}s')
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2: sys.exit(__doc__)
-    main(sys.argv[1])
+    av = sys.argv[1:]
+    mu = float(av[av.index('--musica') + 1]) if '--musica' in av else .34
+    main(av[0], mu)
