@@ -183,17 +183,28 @@ const worlds = {
     }, 420);
     pant.position.z = .09; tel.add(pant);
     // cartel del aviso del largo del domingo
-    const aviso = new THREE.Group(); aviso.position.set(-1.45, 2.65, -3.6); aviso.rotation.y = .22;
+    const aviso = new THREE.Group(); aviso.position.set(-1.45, 2.7, -3.6); aviso.rotation.y = .2;
     aviso.scale.setScalar(.001); w.scene.add(aviso);
-    const acard = rbox(1.45, .95, .12, .1, clay2('#2F5CB4', .5)); aviso.add(acard);
-    const atxt = L.plaque(1.3, .82, (g, W2, H2) => {
-      g.fillStyle = '#2F5CB4'; g.fillRect(0, 0, W2, H2);
+    const amrc = rbox(1.78, 1.2, .1, .07, clay2('#6B4A33', .72)); amrc.position.z = -.06; aviso.add(amrc);
+    const acard = rbox(1.6, 1.02, .12, .05, clay2('#2E3B33', .55)); aviso.add(acard);
+    // lienzo real 520 x 520*.95/1.55 = 319 px: todo el texto cabe dentro
+    const atxt = L.plaque(1.46, .89, (g, W2, H2) => {
+      const gis = '#E6DFC4';
+      g.fillStyle = '#2E3B33'; g.fillRect(0, 0, W2, H2);
       g.textAlign = 'center';
-      g.fillStyle = '#EBE6BA'; g.font = '800 38px Unbounded'; g.fillText('ESTE DOMINGO', W2 / 2, 72);
-      g.fillStyle = '#C3D8EC'; g.font = '700 24px "Space Grotesk"'; g.fillText('10:00 · video nuevo', W2 / 2, 110);
-      g.fillStyle = '#EBE6BA'; g.font = '800 34px Unbounded';
-      ['Por qué tu cerebro', 'te hace perder dinero'].forEach((l, i) => g.fillText(l, W2 / 2, 180 + i * 46));
-    }, 480);
+      g.fillStyle = gis; g.font = '600 25px "Space Grotesk"'; g.letterSpacing = '4px';
+      g.fillText('ESTE', W2 / 2, 52); g.letterSpacing = '0px';
+      g.font = '800 54px Unbounded'; g.fillText('DOMINGO', W2 / 2, 108);
+      // subrayado a mano, con el temblor del gis
+      g.strokeStyle = gis; g.lineWidth = 5; g.lineCap = 'round'; g.globalAlpha = .9;
+      const x0 = W2 / 2 - 128, x1 = W2 / 2 + 128;
+      g.beginPath(); g.moveTo(x0, 126);
+      for (let x = x0; x <= x1; x += 16) g.lineTo(x, 126 + Math.sin(x * .09) * 2.2);
+      g.stroke(); g.globalAlpha = 1;
+      g.font = '600 21px "Space Grotesk"'; g.fillText('10:00 · video nuevo', W2 / 2, 164);
+      g.font = 'italic 600 33px "Instrument Serif"';
+      ['Por qué tu cerebro', 'te hace perder dinero'].forEach((l, k) => g.fillText(l, W2 / 2, 216 + k * 42));
+    }, 520);
     atxt.position.z = .07; aviso.add(atxt);
     return { ...w, inv, tel, aviso };
   },
@@ -391,7 +402,7 @@ const scenes = [
       w.tel.scale.setScalar(.001);
       const sale = L.back(L.seg(p, .1, .42));
       w.aviso.scale.setScalar(Math.max(.001, sale));
-      w.aviso.position.y = 2.65 + Math.sin(t * 1.2) * .04;
+      w.aviso.position.y = 2.7 + Math.sin(t * 1.2) * .03;
       L.pose(w.inv, { armL: [1.25 * sale + .15, -.52, .5], armR: [.28, .2, .3],   // lo señala
         head: [-.04, -.34 * sale, 0], lid: Math.max(.15, L.blink(q, 3)), brow: .35, smile: .55, bob: sale * .02 });
       cam(w, mixv([-.3, 3.5, 13.4], [.2, 3.3, 11.8], L.eio(p)), mixv([-.3, 2.7, -1.4], [-.2, 2.6, -1.4], L.eio(p)));
