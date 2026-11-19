@@ -12,7 +12,7 @@
    "kicker": "Miércoles 18 de noviembre",
    "title": "Nvidia reportó el mejor trimestre de su historia. Y la acción cayó.",
    "size": 62,
-   "sub": "Hoy bajó 2.89%. El Nasdaq, ese mismo día, subió.",
+   "sub": "Ese día bajó 2.89%. El Nasdaq, al mismo tiempo, subió.",
    "logos": [
     "images/logo_nvidia.png"
    ],
@@ -24,7 +24,7 @@
   },
   {
    "type": "rondas",
-   "kicker": "Cierre de hoy",
+   "kicker": "Cierre del miércoles",
    "title": "El mercado subió. Nvidia no.",
    "sub": "Variación del miércoles 18 de noviembre",
    "logos": [
@@ -62,7 +62,7 @@
   },
   {
    "type": "dato",
-   "kicker": "Lo que reportó ayer",
+   "kicker": "Lo que reportó el martes",
    "title": "Y no fue un mal trimestre. Fue el mejor.",
    "bullets": [
     "Ingresos: $115,800 millones, 103% más que hace un año",
@@ -77,7 +77,7 @@
    "bullets": [
     "El Nasdaq cerró en verde el mismo día: +0.42%",
     "Nvidia cerró en $150.96 y ya está 36.9% abajo de su máximo de 12 meses",
-    "Ayer estaba 35.0% abajo. Reportó un récord y se alejó más de su máximo"
+    "El martes estaba 35.0% abajo. Reportó un récord y se alejó más de su máximo"
    ]
   },
   {
