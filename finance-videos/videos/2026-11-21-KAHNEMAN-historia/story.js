@@ -182,7 +182,20 @@ const worlds = {
       });
     }, 420);
     pant.position.z = .09; tel.add(pant);
-    return { ...w, inv, tel };
+    // cartel del aviso del largo del domingo
+    const aviso = new THREE.Group(); aviso.position.set(-1.45, 2.65, -3.6); aviso.rotation.y = .22;
+    aviso.scale.setScalar(.001); w.scene.add(aviso);
+    const acard = rbox(1.45, .95, .12, .1, clay2('#2F5CB4', .5)); aviso.add(acard);
+    const atxt = L.plaque(1.3, .82, (g, W2, H2) => {
+      g.fillStyle = '#2F5CB4'; g.fillRect(0, 0, W2, H2);
+      g.textAlign = 'center';
+      g.fillStyle = '#EBE6BA'; g.font = '800 38px Unbounded'; g.fillText('ESTE DOMINGO', W2 / 2, 72);
+      g.fillStyle = '#C3D8EC'; g.font = '700 24px "Space Grotesk"'; g.fillText('10:00 · video nuevo', W2 / 2, 110);
+      g.fillStyle = '#EBE6BA'; g.font = '800 34px Unbounded';
+      ['Por qué tu cerebro', 'te hace perder dinero'].forEach((l, i) => g.fillText(l, W2 / 2, 180 + i * 46));
+    }, 480);
+    atxt.position.z = .07; aviso.add(atxt);
+    return { ...w, inv, tel, aviso };
   },
 };
 
@@ -368,6 +381,47 @@ const scenes = [
     overlay(lt, t, L) {
       const ink = L.B.negro; L.scrim(L.C, 0, 895, .82, '235,230,186');
       head(L, 'Finanzas conductuales', ['Tu peor enemigo', 'no es el mercado.', 'Eres tú'], 'Lo difícil no son los números', ink, lt, L.B.azul);
+    } },
+
+  // 9 · el aviso del largo del domingo
+  { id: 'aviso', world: 'cierre', d: 6, sfx: [[.3, 'pop'], [.4, 'shine', .6]], year: 'EL DOMINGO',
+    cap: 'Este domingo subimos el video completo: por qué tu cerebro te hace perder dinero.',
+    update(w, lt, t, L) {
+      const p = P(lt, this), q = L.on2(t);
+      w.tel.scale.setScalar(.001);
+      const sale = L.back(L.seg(p, .1, .42));
+      w.aviso.scale.setScalar(Math.max(.001, sale));
+      w.aviso.position.y = 2.65 + Math.sin(t * 1.2) * .04;
+      L.pose(w.inv, { armL: [1.25 * sale + .15, -.52, .5], armR: [.28, .2, .3],   // lo señala
+        head: [-.04, -.34 * sale, 0], lid: Math.max(.15, L.blink(q, 3)), brow: .35, smile: .55, bob: sale * .02 });
+      cam(w, mixv([-.3, 3.5, 13.4], [.2, 3.3, 11.8], L.eio(p)), mixv([-.3, 2.7, -1.4], [-.2, 2.6, -1.4], L.eio(p)));
+      w.focusOn(sale > .4 ? w.aviso : w.inv, 1.1); w.aperture = .00024;
+    },
+    overlay(lt, t, L) {
+      const ink = L.B.negro; L.scrim(L.C, 0, 760, .8, '235,230,186');
+      head(L, 'Lo que sigue', ['El video completo', 'este domingo'], 'Finanzas conductuales · 10:00', ink, lt, L.B.azul);
+    } },
+
+  // 10 · el cierre de la casa: una pregunta, como en todas las historias
+  { id: 'cierre-pregunta', world: 'cierre', d: 6.5, sfx: [[.1, 'shine', .5]], year: null,
+    cap: '¿Cuál fue la última acción que vendiste demasiado pronto?',
+    update(w, lt, t, L) {
+      const p = P(lt, this), q = L.on2(t);
+      w.tel.scale.setScalar(.001); w.aviso.scale.setScalar(.001);
+      const pre = L.eio(L.seg(p, .2, .6));
+      L.pose(w.inv, { armL: [.55 * pre + .28, -.62 * pre - .18, .62 * pre + .28],  // abre las manos preguntando
+        armR: [.55 * pre + .28, .62 * pre + .18, .62 * pre + .28],
+        head: [-.05 - pre * .05, 0, 0], lid: Math.max(.15, L.blink(q, 4)), brow: .2 + pre * .4, smile: .3 });
+      cam(w, mixv([-.3, 3.1, 10.6], [.1, 3.0, 12.4], L.eio(p)), mixv([.9, 2.4, -1.2], [.9, 2.5, -1.2], L.eio(p)));
+      w.focusOn(w.inv, 1.2); w.aperture = .00026;
+    },
+    overlay(lt, t, L) {
+      const a = L.B.negro; L.scrim(L.C, 0, 900, .72, '235,230,186');
+      L.rise('¿Cuál fue la última', 540, 430, L.seg(lt, .15, .8), { f: L.F.s, it: 1, s: 100, c: a, al: 'center' });
+      L.rise('que vendiste', 540, 548, L.seg(lt, .85, 1.45), { f: L.F.s, it: 1, s: 94, c: L.B.azul, al: 'center' });
+      L.rise('demasiado pronto?', 540, 648, L.seg(lt, 1.05, 1.65), { f: L.F.s, it: 1, s: 94, c: L.B.azul, al: 'center' });
+      L.rise('Desde la costa, todo se ve con claridad.', 540, 742, L.seg(lt, 1.8, 2.4), { f: L.F.s, it: 1, s: 42, c: a, al: 'center', a: .85 });
+      L.txt('Contenido educativo · No es asesoría financiera', 540, 1790, { s: 26, c: a, al: 'center', a: .6 * L.seg(lt, 2, 2.6) });
     } },
 ];
 
