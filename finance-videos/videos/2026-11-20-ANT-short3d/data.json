@@ -1,0 +1,189 @@
+{
+ "ticker": "ANT",
+ "name": "Anthropic, PBC",
+ "short_name": "Anthropic, PBC Class A Common Stock",
+ "exchange": "NasdaqGS",
+ "currency": "USD",
+ "sector": "Technology",
+ "industry": "Software - Application",
+ "business_summary": "Anthropic, PBC develops and maintains advanced artificial intelligence (AI) models in the United States and internationally. The company's Claude Platform lets developers and businesses build, manage, and deploy agentic AI applications on infrastructure. Its direct applications and integrations include Claude Code, a coding agent that handles multi-step software development tasks; Claude Cowork, a work agent that has computer-use capability and enables it to work with professionals on end-to-end business tasks; Claude.ai, a conversational product for enterprises, teams, and individuals; Claude Security, a defensive cybersecurity product; Claude Duet, a proactive agent that monitors connected applications, provide daily briefings, perform tasks, and builds web applications while operating on a cloud-based virtual machine; Claude Tag, a collaborative agent that works alongside teams in productivity tools; Claude Design, which enables users to create polished designs, prototypes, presentations, and other visual work through natural language conversation and direct editing; and Claude Science, an AI workbench for scientific research that brings literature analysis, data processing, and manuscript preparation into a single desktop environment. The company serves financial services, healthcare, life sciences, law, and education industries. Anthropic, PBC was incorporated in 2021 and is based in San Francisco, California.",
+ "as_of": "2026-11-20",
+ "fetched_at": "2026-11-20T21:26:37+00:00",
+ "price": 88.91,
+ "high_52w": 115.1,
+ "low_52w": 83.05,
+ "close_high_1y": {
+  "date": "2026-11-19",
+  "close": 97.17
+ },
+ "close_low_1y": {
+  "date": "2026-11-20",
+  "close": 88.91
+ },
+ "change_pct": {
+  "1d": -8.5,
+  "5s": null,
+  "15s": null,
+  "1m": null,
+  "3m": null,
+  "6m": null,
+  "1y": -8.5,
+  "ytd": -8.5,
+  "from_1y_high": -8.5
+ },
+ "biggest_moves_60s": [
+  {
+   "date": "2026-11-20",
+   "close": 88.91,
+   "pct": -8.5,
+   "volume": 395307616,
+   "vol_x": 395307616.0
+  }
+ ],
+ "metrics": {
+  "market_cap": 1175358406656,
+  "pe_trailing": null,
+  "pe_forward": -1324.2479,
+  "peg": null,
+  "peg_source": "yahoo",
+  "roe": null,
+  "profit_margin": 0.0,
+  "revenue_growth_yoy": 11.269,
+  "earnings_growth_yoy": null,
+  "eps_trailing": -9.49,
+  "beta": null,
+  "dividend_yield": 0.0,
+  "debt_to_equity": 1767.527,
+  "free_cash_flow": null,
+  "target_mean_price": 118.92667,
+  "recommendation": "buy",
+  "analysts": 6
+ },
+ "next_earnings": null,
+ "quarterly": [
+  {
+   "period": "2025-09-30",
+   "revenue": 1382000000.0,
+   "net_income": -12138000000.0,
+   "eps": null
+  },
+  {
+   "period": "2025-12-31",
+   "revenue": 2040000000.0,
+   "net_income": -16858000000.0,
+   "eps": null
+  },
+  {
+   "period": "2026-09-30",
+   "revenue": 16956000000.0,
+   "net_income": -23291000000.0,
+   "eps": null
+  }
+ ],
+ "annual": [
+  {
+   "period": "2023-12-31",
+   "revenue": 41000000.0,
+   "net_income": -1531000000.0,
+   "eps": null
+  },
+  {
+   "period": "2024-12-31",
+   "revenue": 386000000.0,
+   "net_income": -8309000000.0,
+   "eps": null
+  },
+  {
+   "period": "2025-12-31",
+   "revenue": 4585000000.0,
+   "net_income": -41965000000.0,
+   "eps": null
+  }
+ ],
+ "news_seed": [
+  {
+   "date": "2026-11-20",
+   "title": "Anthropic IPO fails to calm AI jitters as tech stocks plummet",
+   "publisher": "AFP",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/tech-takes-beating-ai-trade-030257717.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "6 reasons stocks are falling, and what you should do about it",
+   "publisher": "CBS News",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/6-reasons-stocks-falling-162750620.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "$1,000 in Anthropic or Bitcoin: Which Could Be Worth More by 2030?",
+   "publisher": "24/7 Wall St.",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/1-000-anthropic-bitcoin-could-211200531.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "Stocks enter correction territory, driven by a deepening tech rout",
+   "publisher": "CBS News",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/stocks-enter-correction-territory-driven-210818388.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "Market Chatter: Anthropic IPO Saw More Retail Investor Demand Than SpaceX Debut",
+   "publisher": "MT Newswires",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/market-chatter-anthropic-ipo-saw-210814854.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "ProShares ANTU and ANTY ETFs Targeting 2x and -2x Daily Returns of Anthropic to Begin Trading November 23",
+   "publisher": "Business Wire",
+   "link": "https://finance.yahoo.com/markets/options/articles/proshares-antu-anty-etfs-targeting-210500261.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "Zscaler Partners with Frontier Model Providers to Help Enterprises Safely Embrace AI and Stop AI-Driven Attacks",
+   "publisher": "GlobeNewswire",
+   "link": "https://finance.yahoo.com/technology/ai/articles/zscaler-partners-frontier-model-providers-210500595.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "Stock market today: Dow and S&P 500 enter correction, Nasdaq sinks 5% to erase 2026 gains as AI trade melts down",
+   "publisher": "Yahoo Finance",
+   "link": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-19-dow-sp-500-nasdaq-anthropic-nvidia-141644188.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "Wall St ends sharply lower on AI selloff, S&P 500, Dow in correction",
+   "publisher": "Reuters",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-slip-anthropic-104746137.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "What You Own When You Buy ANT Onchain",
+   "publisher": "Bankless",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/own-buy-ant-onchain-205657278.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "Sector Update: Tech Stocks Tumble Late Afternoon",
+   "publisher": "MT Newswires",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-tumble-afternoon-205448210.html"
+  },
+  {
+   "date": "2026-11-20",
+   "title": "Update: S&P 500, Dow Slide Into Correction Territory as Investors Seek Treasury Cover Amid Big-Tech Plunge",
+   "publisher": "MT Newswires",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/p-500-dow-slide-correction-205308024.html"
+  }
+ ],
+ "series": [
+  [
+   "2026-11-19",
+   97.17,
+   857312300
+  ],
+  [
+   "2026-11-20",
+   88.91,
+   395307616
+  ]
+ ]
+}
