@@ -100,6 +100,31 @@ Un video que nadie ve no sirve por bien hecho que esté, así que el gancho se t
   cifra con escala ("perdió 104 mil millones y casi no perdió dinero"), un resultado prometido ("gana Alphabet, 25 de 30").
 - Sigue vigente que el gancho **identifica a la empresa** (logo o foto): enganchar y decir de quién hablas no compiten.
 
+## El gancho se investiga antes de escribirlo (JP, 20 nov 2026)
+JP tumbó mi gancho del short de Anthropic —"perdió 104 mil millones y casi no perdió dinero"— por dos razones: repite
+"perdió" dos veces y, sobre todo, **no estaba construido sobre la noticia**. Yo lo saqué de los datos del prospecto
+sin haber leído un solo titular. Al buscarlos, el titular que dominó en todo el mundo era otro y yo ni lo tenía:
+**fue la salida a bolsa más grande de la historia**, 81.3 mil millones, y le quitó el récord a SpaceX.
+
+**La regla: antes de escribir la primera frase de cualquier pieza sobre una noticia, se buscan los titulares reales.**
+No para copiarlos: para saber qué ya oyó el espectador y qué no.
+1. **Busca en español y en inglés** (los titulares mexicanos y los gringos no destacan lo mismo; El Financiero y CNN
+   en Español importan más para nuestro público que CNBC).
+2. **Apunta qué dijeron TODOS.** Ese es el hecho que el espectador reconoce, y es con lo que se abre: si no reconoce
+   la historia en los primeros 3 segundos, no sabe de qué le hablas y desliza.
+3. **Apunta qué dijo CASI NADIE.** Ese es el cuerpo del video y la razón para quedarse. Es nuestra ventaja: no
+   competimos por dar la noticia primero, competimos por darla completa.
+4. **La fórmula del gancho: lo que ya oyeron + el giro que no.** "Le quitó el récord a SpaceX" (lo oyeron) "y cerró
+   ganando la mitad de lo que abrió" (no lo oyeron). El cuerpo entra después con lo que nadie contó.
+5. **Las cifras en las que los medios NO coinciden son una alerta roja**, no un dato. En Anthropic el valor de
+   mercado iba de 1.5 a 2 billones según quién lo contara, y el monto levantado era 81.3 o 107.3 mil millones según
+   si se cuenta una colocación privada. Esas se verifican con fuente primaria o se omiten (regla del número que no se
+   puede verificar). Las que sí coinciden en todos lados y además cuadran con el documento original son las seguras.
+6. **Mejor si el gancho engancha con algo del canal.** SpaceX es nuestro video con más retención (86.5% se quedó a
+   mirar): abrir con "le quitó el récord a SpaceX" le habla a gente que ya vio eso.
+Esto **no** cambia la jerarquía de fuentes: los titulares sirven para elegir el ángulo, los números siguen saliendo de
+la fuente primaria. Un titular es una pista de qué contar, nunca la fuente de una cifra.
+
 ## El gancho identifica a la empresa (JP, 14 nov 2026)
 La primera escena lleva **siempre** el logo (`"logo"` en el `hook`, arriba a la derecha, con tarjeta blanca si no
 contrasta) o la foto del tema a toda pantalla, o las dos. Un gancho sin marca no dice de quién habla. Detalle en `/short` §0.

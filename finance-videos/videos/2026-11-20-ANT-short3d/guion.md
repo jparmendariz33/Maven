@@ -25,11 +25,34 @@ se dispara, el short sigue siendo cierto.
 | De eso, cambio de valor de notas convertibles y SAFEs | **$94,300 M** (no es efectivo) | 424(b)(4) SEC |
 | Margen de operación 3T 2026 | **−3%** (−224% un año antes) | 424(b)(4) SEC |
 
+## Lo que dijeron los medios (investigado el 19 nov — regla del gancho investigado)
+**Lo que dijeron TODOS** (con esto se abre, es lo que el espectador reconoce):
+- **La salida a bolsa más grande de la historia: 81.3 mil millones de dólares, le quitó el récord a SpaceX** (75 mil
+  millones, junio 2026). Al Jazeera, Silicon Republic, Motley Fool, Reuters vía La Nación, CBS, CNBC.
+- **Subió 17%** — el titular más repetido en español: El Financiero, La Nación, CNN en Español.
+- **Abrió +34%** — el que usaron CNBC y Morningstar.
+
+**Lo que dijo CASI NADIE** (esto es el cuerpo, la razón para quedarse):
+- Que cerró **13% abajo de donde abrió**: la mitad de la ganancia del día se borró.
+- Que la pérdida de **$104,039 M es casi toda contable** y el margen de operación fue de **−3%**.
+
+**Cifras en las que los medios NO coinciden → alerta roja, no se usan:**
+- **Valor de mercado:** 1.5 billones (CNN en Español) · 1.76 (CNN) · 1.8 (El Financiero, CNBC) · ~2 (totalmente
+  diluido). Ya lo habíamos omitido en la publicación de hoy; se sigue omitiendo.
+- **Monto levantado:** 81.3 mil millones (la mayoría) o 107.3 (Gizmodo, contando una colocación privada de 26 mil
+  millones y acciones de los fundadores). **Usamos 81.3 y comparamos base contra base** con los 75 mil millones de
+  SpaceX, que es la comparación que sí es pareja. Y el 81.3 cuadra con el prospecto ($81,340 M brutos).
+
+**El enganche con el canal:** SpaceX es nuestro video con más retención (86.5% se quedó a mirar). Abrir con "le quitó
+el récord a SpaceX" le habla a gente que ya vio eso.
+
 ## El gancho, en tres capas (regla del 20 nov)
-- **Voz, en 0.0 s:** "Perdió 104 mil millones de dólares en nueve meses. Y casi no perdió dinero."
-- **Texto en pantalla, en DOS TIEMPOS** (regla del 20 nov, del short de @DesarmadoYoutube): entra
-  `PERDIÓ $104,039 MILLONES` solo; ~0.3 s después cae debajo, **en el color de acento**, `Y CASI NO PERDIÓ DINERO`.
-  El remate se revela, no aparece junto con el resto.
+- **Voz, en 0.0 s:** "Le quitó el récord a SpaceX. Abrió ganando 34%… y cerró ganando 17."
+  (El anterior —"perdió 104 mil millones y casi no perdió dinero"— lo tumbó JP el 19 nov: repetía "perdió" y estaba
+  construido sobre el dato del prospecto, no sobre la noticia. Las dos cifras de este salen de precios: $83 → $111.50
+  es +34.3%, $83 → $97.17 es +17.1%.)
+- **Texto en pantalla, en DOS TIEMPOS:** entra `LE QUITÓ EL RÉCORD A SPACEX` solo; ~0.3 s después cae debajo, **en el
+  color de acento**, `ABRIÓ EN +34% · CERRÓ EN +17%`.
 - **Música:** entra con cuerpo (36%), ya corregido en `music3d.py`.
 - Identifica a la empresa: logo oficial de Anthropic arriba a la derecha, en la capa editorial (en el mundo 3D no va
   ningún logotipo real, como siempre).
@@ -51,8 +74,8 @@ La columna **toma** usa la tabla de `/historia` §4 (`fov` 30°, `media_altura =
 
 | # | Mundo | Toma | dist · altura · ángulo | Lo que PASA | Rótulo |
 |---|---|---|---|---|---|
-| 1 gancho | B | **Detalle** → se abre a entero | 1.6 → 10 · 1.2 · 0° | Un bloque solo llena el cuadro; la cámara se aleja y aparece la torre entera, con el inversionista diminuto al pie | `PERDIÓ $104,039 MILLONES` / `Y CASI NO PERDIÓ DINERO` |
-| 2 salida | A | **General** | 21 · 6.0 · picado −12° | El piso visto desde arriba; el tablero del fondo se enciende | `19 DE NOVIEMBRE DE 2026` / `Anthropic sale a la bolsa` |
+| 1 gancho | A | **Detalle** → se abre a general | 1.6 → 20 · 1.2 · 0° | Arranca cerradísimo en la línea del precio trazándose en el tablero; la cámara se aleja de golpe y aparece el piso entero | `LE QUITÓ EL RÉCORD A SPACEX` → (0.3 s) `ABRIÓ EN +34% · CERRÓ EN +17%` |
+| 2 el récord | A | **Entero, picado** | 10 · 6.0 · −12° | Dos columnas de bloques crecen lado a lado: la de SpaceX se para en 75, la otra la rebasa y sigue hasta 81 | `81,300 MILLONES DE DÓLARES` / `La salida a bolsa más grande de la historia` |
 | 3 precios | A | **Medio** | 4.4 · 2.2 · 0° | La línea se traza: sube a 111, baja a 97. El inversionista la sigue con la cabeza | `COLOCÓ EN $83 · ABRIÓ EN $111.50` / `Cerró su primer día en $97.17` |
 | 4 titular | A | **Contrapicado entero** | 9 · 0.9 · +18° | Cae desde arriba una plancha de periódico que tapa el tablero; se ve enorme desde abajo | `SUBIÓ 17%` |
 | 5 la otra cuenta | A | **Primer plano** (único) | 3.7 · 2.1 · 0° | La cara del inversionista; detrás, desenfocado, el tablero. `fov` a 22 para cerrar sin deformar | `CONTRA EL PRECIO DE APERTURA` / `cerró 13% abajo` |
@@ -62,15 +85,17 @@ La columna **toma** usa la tabla de `/historia` §4 (`fov` 30°, `media_altura =
 | 9 cierre | C | **Medio** | 4.4 · 2.2 · 0° | JP en 3D entra a cuadro y cierra | La pregunta + lema + aviso legal + **"Guion asistido por Claude, producto de Anthropic"** |
 
 ## Narración (lo que se manda a la voz, en UNA toma)
-1. Perdió 104 mil millones de dólares en nueve meses. Y casi no perdió dinero.
-2. El 19 de noviembre de 2026, Anthropic salió a la bolsa.
-3. Vendió sus acciones en 83 dólares. Abrieron en 111… y el primer día cerró en 97.
-4. Casi todos los titulares dijeron lo mismo: subió 17%.
-5. Contra el precio de venta, es cierto. Contra el precio al que abrió, cerró 13% abajo.
-6. Ahora, la pérdida: 104 mil millones de dólares.
-7. De esa cifra, 94 mil millones nunca salieron de la caja. Son un ajuste en los libros, no dinero gastado. Nadie firmó un cheque por ese dinero.
-8. ¿Y el negocio? De cada 100 dólares que vendió, perdió 3. Un año antes perdía 224.
-9. La utilidad neta te dice qué quedó hasta abajo. No te dice cómo va el negocio. ¿Cuántas veces te has quedado solo con el titular?
+1. Le quitó el récord a SpaceX. Abrió ganando 34%… y cerró ganando 17.
+2. El 19 de noviembre de 2026, Anthropic salió a la bolsa y levantó 81 mil millones de dólares. Nunca una empresa había levantado tanto.
+3. Vendió sus acciones en 83 dólares. Abrieron en 111 y cerraron en 97.
+4. Casi todos los titulares se quedaron con ese 17%.
+5. Pero en el documento que entregó a la bolsa hay otra cifra: perdió 104 mil millones de dólares en nueve meses.
+6. De esa cifra, 94 mil millones nunca salieron de la caja. Son un ajuste en los libros. Nadie firmó un cheque.
+7. ¿Y el negocio? De cada 100 dólares que vendió, perdió 3. Un año antes perdía 224.
+8. La utilidad neta te dice qué quedó hasta abajo. No te dice cómo va el negocio.
+9. ¿Cuántas veces te has quedado solo con el titular?
+
+**752 caracteres = 1 bloque = 28 créditos** (248 de margen). ~53 s de voz, ~66 s de video.
 
 ## Marca `ilustrativo`: aquí no lleva ninguna
 Regla nueva del 20 nov: todo número proyectado o de ejemplo se marca en pantalla. **En este short no hay ninguno.**

@@ -29,6 +29,16 @@ mkdir -p largos/$D/data
 ```
 Si `largos/$D/*_largo.mp4` ya existe, no lo rehagas.
 
+### Antes del gancho: busca los titulares (JP, 20 nov 2026)
+**Obligatorio en toda pieza sobre una noticia, ANTES de escribir la primera frase.** Busca en español y en inglés
+(El Financiero y CNN en Español pesan más para nuestro público que CNBC). Anota tres listas:
+- **Lo que dijeron TODOS** → con eso se ABRE. Si el espectador no reconoce la historia en 3 segundos, desliza.
+- **Lo que dijo CASI NADIE** → ese es el cuerpo y la razón para quedarse.
+- **Las cifras en las que los medios NO coinciden** → alerta roja: se verifican con fuente primaria o se omiten.
+**La fórmula: lo que ya oyeron + el giro que no.** Y si engancha con algo que el canal ya publicó, mejor.
+Los titulares eligen el ÁNGULO; los números siguen saliendo de la fuente primaria. Un titular nunca es la fuente de
+una cifra.
+
 ## 1. Investigar y verificar (WebSearch; fuentes primarias cuando se pueda)
 - Toma de `calendario-largos.md` la semana $D: título, búsqueda objetivo, gancho, capítulos, visuales y datos a verificar. (La columna
   "short derivado" quedó obsoleta el 13 nov 2026: ese puente lo hace ahora la **Historia 3D del JUEVES**, con el mismo tema del largo.)

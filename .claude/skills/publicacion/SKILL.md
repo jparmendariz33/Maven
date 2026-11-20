@@ -46,6 +46,16 @@ tema** y reutiliza su carpeta (datos, fotos y logo ya verificados). Si no, elige
 short reactivo, `plan/PLAN.md` §2), crea `videos/<hoy>-<TICKER>/`, corre `fetch_data.py` y baja 2–3 fotos reales + logo con `fetch_images.py`
 (reglas de `/short` §2b: licencias libres, mira cada imagen, nunca IA de marcas o personas reales).
 
+### Antes del gancho: busca los titulares (JP, 20 nov 2026)
+**Obligatorio en toda pieza sobre una noticia, ANTES de escribir la primera frase.** Busca en español y en inglés
+(El Financiero y CNN en Español pesan más para nuestro público que CNBC). Anota tres listas:
+- **Lo que dijeron TODOS** → con eso se ABRE. Si el espectador no reconoce la historia en 3 segundos, desliza.
+- **Lo que dijo CASI NADIE** → ese es el cuerpo y la razón para quedarse.
+- **Las cifras en las que los medios NO coinciden** → alerta roja: se verifican con fuente primaria o se omiten.
+**La fórmula: lo que ya oyeron + el giro que no.** Y si engancha con algo que el canal ya publicó, mejor.
+Los titulares eligen el ÁNGULO; los números siguen saliendo de la fuente primaria. Un titular nunca es la fuente de
+una cifra.
+
 ## 1. Escribir `videos/$ID/post.json` (3 o 4 imágenes; nunca más, nunca menos)
 Cada publicación cuenta UNA cosa, en este orden: **qué pasó → por qué → el dato o la gráfica → pregunta a la audiencia.**
 ```json

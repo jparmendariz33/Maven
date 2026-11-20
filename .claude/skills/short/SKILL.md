@@ -113,6 +113,16 @@ bash scripts/setup.sh
 ```
 Crea `.venv` (numpy + faster-whisper). ffmpeg y Playwright ya vienen en el contenedor.
 
+### Antes del gancho: busca los titulares (JP, 20 nov 2026)
+**Obligatorio en toda pieza sobre una noticia, ANTES de escribir la primera frase.** Busca en español y en inglés
+(El Financiero y CNN en Español pesan más para nuestro público que CNBC). Anota tres listas:
+- **Lo que dijeron TODOS** → con eso se ABRE. Si el espectador no reconoce la historia en 3 segundos, desliza.
+- **Lo que dijo CASI NADIE** → ese es el cuerpo y la razón para quedarse.
+- **Las cifras en las que los medios NO coinciden** → alerta roja: se verifican con fuente primaria o se omiten.
+**La fórmula: lo que ya oyeron + el giro que no.** Y si engancha con algo que el canal ya publicó, mejor.
+Los titulares eligen el ÁNGULO; los números siguen saliendo de la fuente primaria. Un titular nunca es la fuente de
+una cifra.
+
 ## 1. Datos (sin preguntar)
 **Primero: `python3 scripts/market_close.py`.** Si dice ABIERTO, adelanta investigación, imágenes y guion (sin cifras de precio) y
 corre `python3 scripts/market_close.py --wait` en segundo plano; `fetch_data.py`, las cifras del guion y el render van DESPUÉS del
