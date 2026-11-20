@@ -176,6 +176,90 @@ reusa mundos (día/noche del mismo edificio); 3–5 mundos por historia; no uses
 `vote` (golpe seco), `ticks` (contador; ponle duración), `coins`, `rise` (algo sale bien), `fall` (algo sale mal), `shine` (revelación),
 `applause`, `wave`. Cada acción visible lleva su efecto, en la misma fracción de la escena en la que ocurre. 3–7 por escena, no más.
 
+### Gramática de plano: la cámara cambia de tamaño, no solo de sitio (JP, 20 nov 2026)
+JP vio un short de @SoySR.J y dijo: "todas las tomas son a la misma altura de la persona, la toma no cambia, mantiene
+el mismo tamaño la persona". **Lo medí en la historia de Kahneman y tenía razón exacta:**
+
+| | Kahneman, 10 escenas |
+|---|---|
+| Ángulo de cámara | entre **−1.9° y +7.8°** — las diez |
+| Distancia al sujeto | 9.4 a 21.6 (mediana 15.2) |
+| El personaje ocupa | **20–33% del alto del cuadro**, siempre |
+| Primeros planos · detalles · picados · contrapicados | **cero** |
+
+Siete mundos distintos con su color y su luz, y aun así se siente estático, porque **son diez variaciones del mismo
+plano medio a la altura de los ojos**. Nunca se ve una cara de cerca, nunca se ve un objeto de cerca.
+
+**La regla: en una historia de 8–10 escenas tiene que haber al menos un plano de cada familia, y dos escenas
+seguidas nunca comparten tamaño de plano.** La cámara es narración: el tamaño del plano dice qué sientes.
+
+El motor tiene `fov = 30°`, así que **`media_altura = tan(15°) × distancia = 0.268 × distancia`** y
+`media_anchura = media_altura × 0.5625`. Un personaje de pie mide **2.85 unidades** (pies en y=0, cabeza en y≈2.12,
+coronilla en 2.85). De ahí sale la tabla, que es la que hay que usar:
+
+| Plano | Distancia | El sujeto ocupa | Para qué sirve | Altura de cámara |
+|---|---|---|---|---|
+| **General** | ~21 | 25% | situar el lugar; la primera vez que se ve un mundo | 4–7 |
+| **Entero** | ~10 | 55% | el personaje actúa con todo el cuerpo (camina, se encoge) | 2.5–3.5 |
+| **Americano** (rodillas arriba) | ~5.2 | 75% | dos personajes conversando | 2.2–2.8 |
+| **Medio** (cintura arriba) | ~4.4 | 78% | la frase importante, cuando hay que ver el gesto | 2.0–2.4 |
+| **Primer plano** (la cara) | ~3.7 | 70% | el golpe emocional. UNO por historia, no más | 2.0–2.3 |
+| **Detalle** (objeto de ~0.5) | ~1.6 | 60% | la moneda, la medalla, la carta, la mano | la del objeto |
+
+Y los ángulos, que son lo que de verdad cambia el tono:
+- **Nivel de ojos** (cámara y ≈ 2.1, ángulo ~0°) — neutro. Es el único que usamos hoy. Está bien para conversar.
+- **Contrapicado** (cámara y 0.6–1.2, mirando ARRIBA) — el sujeto se agranda. Para el Nobel, el logro, la autoridad.
+- **Picado** (cámara y 6–9, mirando ABAJO) — el sujeto se empequeñece. Para la pérdida, el error, sentirse chico
+  frente al mercado.
+- **Cenital** (cámara justo encima, mirando recto abajo) — convierte la escena en un esquema. Para las cartas de la
+  apuesta, un tablero, un portafolio sobre una mesa.
+
+Tres cosas que hay que cuidar al usar esto:
+- **Un primer plano con `fov` 30 a distancia 3.7 deforma poco**, pero si te acercas más de 3 la nariz crece. Para
+  acercarte más, baja el `fov` (teleobjetivo) en vez de meter la cámara: `w.cam.fov = 18; w.cam.updateProjectionMatrix()`.
+- **En plano cerrado el fondo se ve vacío.** Mete algo a media distancia (el pizarrón, una lámpara, otra persona
+  desenfocada) o el plano se lee como un error.
+- Sigue vigente que para **BAJAR** algo en el cuadro el `lookAt` va **ARRIBA** del objeto, y la zona segura del
+  vertical es y_px 800–1650.
+
+### Mundos que se construyen, no fondos pintados (JP, 20 nov 2026)
+Lo otro que JP señaló del short de referencia: ahí la ciudad **se va construyendo** mientras habla la voz. Nuestros
+siete mundos de Kahneman son **piso + pared al fondo** con distinto color: cambian de paleta, no de arquitectura.
+- Un mundo necesita **tres profundidades**: algo pegado a cámara (de refilón, desenfocado), el sujeto, y algo al
+  fondo. Con una sola capa el 3D se ve plano y da igual que sea 3D.
+- **Que el mundo haga algo durante la escena**: los edificios suben del suelo uno a uno, la mesa se llena, la gente
+  entra, la luz pasa de día a noche. No tiene que ser caro: `scale.y` de 0 a 1 escalonado con un retraso por objeto
+  ya da la sensación de que se construye.
+- Un mundo nuevo entra con la ola (`L.tide()`); dentro del mismo mundo va `trans: 'cont'` con las cámaras encadenadas.
+
+### El contador: para historias cuyo tema ES un número (JP, 20 nov 2026)
+Del mismo short de @SoySR.J: "¿cuántas veces hay que doblar un papel para llegar a la Luna?". Lleva **dos fichas fijas
+arriba que nunca se van** y suben con la voz — `DOBLECES 0 → 1 → 2 → 10 → 20 → 30` y `GROSOR 0,1 mm → 0,2 mm → 10,2 cm
+→ 104,9 m → 107 km` — mientras **el mundo cambia de escala para que el número quepa**: escritorio → la taza → una
+ciudad → la Tierra desde el espacio, con el objeto clavado en el mismo punto de la pantalla.
+
+Funciona porque el espectador no se queda por la historia: **se queda porque quiere ver hasta dónde llega el número.**
+
+**Cuándo se usa:** solo cuando el tema ES una cantidad que crece o se encoge. En una biografía (Kahneman, Jobs) **no
+va** — ahí lo que falta es la gramática de plano de arriba, no un contador. JP lo dijo así: depende del tipo de video.
+
+Las cuatro que están en el banco listas para usarlo:
+
+| Contador | Historia | El mundo va de |
+|---|---|---|
+| `AÑOS` / `VALOR` | $1,000 al 10% anual durante 30 años | la mesa → el cuarto → el edificio |
+| `AÑOS` / `LO QUE COMPRA $100` | La inflación, al revés | el carrito lleno → casi vacío |
+| `AÑOS` / `TUYO` vs `DE LA COMISIÓN` | El 1% anual, con DOS contadores compitiendo | dos columnas que se separan |
+| `SEGUNDOS` / `CONTADO` | Cuánto tardas en contar un billón de dólares | el reloj → el calendario → siglos |
+
+**Cómo se hace, con lo que ya existe:** las fichas son dos `L.label3d` en la capa editorial 2D (las mismas de la ficha
+del año), dibujadas en cada cuadro con el valor interpolado del tiempo; el salto de escala es un cambio de `world` con
+la ola, o `trans: 'cont'` alejando la cámara si el objeto se queda fijo. Tres reglas:
+- **El contador no se va nunca**, ni en el gancho ni en el cierre. Es el hilo.
+- **El número sube cuando la voz lo dice**, no antes. Y lleva su `sfx` (`ticks`).
+- **Cada salto de escala necesita una referencia conocida** en cuadro (una taza, una persona, un edificio): un número
+  grande sin con qué compararlo no impresiona, confunde.
+
 ### Gráficas y pantallas dentro de la maqueta (19 nov 2026)
 `L.plaque(ancho, alto, dibuja, pw)` da un plano con textura de canvas: con eso se dibujan **gráficas de línea de verdad** dentro de
 la escena. Mete el plano en un grupo anclado a la IZQUIERDA y **escalando el grupo en x la línea se va trazando** mientras habla la

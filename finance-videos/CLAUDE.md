@@ -260,8 +260,38 @@ cinco vueltas. Los cuatro defectos que salieron, con su causa real:
   desaparece. Las cartas de la apuesta se volvieron **placas verticales de frente a cámara** y se leyeron a la primera.
 - **Personaje fuera de cuadro.** Si la cámara panea y el personaje está quieto, se sale. Mueve el `target` lo mismo que el
   personaje, o no lo muevas.
-Para calcular distancia: con el vertical, `media_altura = tan(25°) × distancia` y `media_anchura = media_altura × 0.5625`.
+Para calcular distancia: con el vertical, **`media_altura = tan(15°) × distancia = 0.268 × distancia`** y
+`media_anchura = media_altura × 0.5625`. (Hasta el 20 nov 2026 aquí decía `tan(25°)`, que era un error mío: el `fov`
+del motor es **30°** —`cine.js:82`, `lib.js:52`, nunca se modifica—, así que el semiángulo es 15°. Con tan(25°) salía
+un cuadro 74% más grande del real, te creías con aire que no tenías y el objeto quedaba cortado: esa es la causa de
+varias de las cinco vueltas de encuadre de Kahneman. Comprobado contra `miniatura.jpg`: la fórmula predice que el
+personaje ocupa el 33% del alto y medido ocupa el 34%; con tan(25°) habría predicho 19%.)
 Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
+
+## La cámara también narra: gramática de plano (JP, 20 nov 2026)
+JP trajo un short de @SoySR.J y dijo: "todas las tomas son a la misma altura de la persona, la toma no cambia,
+mantiene el mismo tamaño la persona". **Medido en la historia de Kahneman, tenía razón exacta:** las 10 escenas van
+entre **−1.9° y +7.8°** de ángulo, a distancias de 9.4 a 21.6, con el personaje ocupando siempre el **20–33% del alto
+del cuadro**. Cero primeros planos, cero detalles, cero picados, cero contrapicados. Siete mundos de distinto color y
+aun así se siente estático: son diez variaciones del mismo plano medio.
+**La regla: en una historia de 8–10 escenas va al menos un plano de cada familia (general, entero, medio, primer
+plano, detalle) y dos escenas seguidas nunca comparten tamaño de plano.** El tamaño del plano dice qué sentir:
+contrapicado agranda (el Nobel, el logro), picado empequeñece (la pérdida, el error), cenital convierte la escena en
+un esquema (las cartas, un portafolio sobre la mesa). La tabla con las distancias y alturas exactas está en
+`/historia` §4. Para acercarte más que el primer plano, **baja el `fov`** (`w.cam.fov = 18`), no metas la cámara: a
+menos de 3 unidades la cara se deforma. Y en plano cerrado mete algo a media distancia, o el fondo se lee vacío.
+Lo mismo con los mundos: los nuestros son **piso + pared** repintados. Un mundo necesita tres profundidades (algo
+pegado a cámara, el sujeto, algo al fondo) y **hacer algo durante la escena** — que los edificios suban del suelo
+escalonados con `scale.y`, que la mesa se llene, que la luz pase de día a noche.
+
+## El contador, para historias cuyo tema ES un número (JP, 20 nov 2026)
+Del mismo short ("¿cuántas veces hay que doblar un papel para llegar a la Luna?"): dos fichas fijas arriba que nunca
+se van y suben con la voz (`DOBLECES 0→30`, `GROSOR 0,1 mm→107 km`) mientras el mundo cambia de escala para que el
+número quepa, con el objeto clavado en el mismo punto de la pantalla. Funciona porque el espectador **se queda para
+ver hasta dónde llega el número**, no por la historia.
+**Solo se usa cuando el tema ES una cantidad que crece o se encoge** (interés compuesto, inflación, el 1% de comisión,
+cuánto tardas en contar un billón). En una biografía NO va: ahí lo que falta es la gramática de plano, no un contador.
+JP lo dijo así: depende del tipo de video. Reglas y los cuatro temas listos, en `/historia` §4.
 
 ## Regla del dinamismo en 3D (JP, 19 nov 2026 — vio la primera historia de Kahneman)
 "Los personajes no están haciendo mucho." Una escena donde solo se mueve la cámara está mal, aunque el encuadre sea

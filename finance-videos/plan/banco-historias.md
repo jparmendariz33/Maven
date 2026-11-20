@@ -14,6 +14,21 @@ son una guía: **verifícalos con fuente primaria antes de usarlos.**
 | Mark Zuckerberg · Meta | META | De un dormitorio en Harvard a 3,000 millones de usuarios; la apuesta del metaverso y el giro a la IA |
 | _(agrega aquí las que quieras)_ | | |
 
+## Historias con CONTADOR (formato nuevo, 20 nov 2026)
+No son biografías: el protagonista es **un número que crece o se encoge**, con dos fichas fijas arriba que suben con
+la voz y un mundo que cambia de escala para que quepa (`/historia` §4). Nacen del short de @SoySR.J que trajo JP el
+20 nov. **No se le pone contador a una biografía**: ahí lo que falta es la gramática de plano, no un contador.
+
+| Contador en pantalla | La historia | El mundo va de | Verificar |
+|---|---|---|---|
+| `AÑOS` / `VALOR` | $1,000 al 10% anual durante 30 años: los primeros 10 años casi no se ve nada y los últimos 5 valen más que los primeros 20 | la mesa → el cuarto → el edificio | aritmética simple; nombrar que 10% es un supuesto, no una promesa |
+| `AÑOS` / `LO QUE COMPRA $100` | La inflación contada al revés: el mismo billete comprando cada vez menos | el carrito lleno → casi vacío | INEGI (INPC) para México; serie oficial, no estimada |
+| `AÑOS` / `TUYO` vs `DE LA COMISIÓN` | El 1% anual de comisión, con DOS contadores compitiendo en pantalla | dos columnas que se separan | aritmética; sin nombrar ninguna administradora real |
+| `SEGUNDOS` / `CONTADO` | Cuánto tarda una persona en contar un billón de dólares, a un dólar por segundo | el reloj → el calendario → siglos | aritmética; aclarar billón español (10^12), no el inglés |
+
+El del **interés compuesto** es el primero que se debe hacer: es el mecanismo exacto del papel doblado y además es lo
+más buscado por quien empieza a invertir.
+
 ## Propuestas de Claude (JP puede quitar o agregar)
 | Personaje / empresa | Ticker | El arco en una línea (verificar) |
 |---|---|---|
