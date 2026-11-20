@@ -349,6 +349,20 @@ con el que se anota el objeto en la escena.** Detalle en `/historia` §4.
 También el **arco de luz**: ese video pasa de noche y termina en una gasolinera iluminada con gente. Si la historia
 tiene un problema y una salida, **el mundo del problema va más oscuro que el de la salida**, y el cambio se ve.
 
+## "Construido desde cero": derivar el mecanismo (20 nov 2026)
+Segundo video de @DesarmadoYoutube, 227 mil likes: *"Ese techo del estadio NO tiene ni una columna"*. No explica un
+estadio, **lo construye, y cada problema nuevo obliga a inventar la siguiente pieza**: cancha + gente → *solo la
+primera fila ve* → escalones → *las esquinas quedan vacías* → cerrar el anillo → *llueve* → techo con columnas →
+*hay quien ve detrás de un poste* → lo cuelgas. El título promete el final y la última frase lo entrega.
+**Cada frase es un problema o su arreglo, encadenados con "pero" y "así que". Nada más**: ni presentación, ni
+recapitulación, ni cierre de relleno. 116 palabras para nueve pasos.
+Es el formato natural de casi todo lo que enseñamos y no lo teníamos (`¿por qué existe la bolsa?`, `¿por qué existe
+un banco?`, `¿qué es una acción?`). **Tropicalizado:** el problema en **terracota**, la pieza que lo resuelve en
+**mostaza**, y la pieza nueva se resalta en mostaza cuando aparece y se apaga cuando ya es parte del mundo. El
+**cenital es la regla** y el **3D a la altura de la gente es la consecuencia**: se alternan a propósito. Y el
+entorno mete el siguiente problema (empieza a llover), no la voz. Detalle en `/historia` §4.
+**Ojo con el reloj:** caben nueve pasos en 45 s porque van a 203 palabras/min. A nuestras 145 la cadena no cabe.
+
 ## El contador, para historias cuyo tema ES un número (JP, 20 nov 2026)
 Del mismo short ("¿cuántas veces hay que doblar un papel para llegar a la Luna?"): dos fichas fijas arriba que nunca
 se van y suben con la voz (`DOBLECES 0→30`, `GROSOR 0,1 mm→107 km`) mientras el mundo cambia de escala para que el

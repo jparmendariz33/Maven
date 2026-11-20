@@ -29,6 +29,22 @@ la voz y un mundo que cambia de escala para que quepa (`/historia` §4). Nacen d
 El del **interés compuesto** es el primero que se debe hacer: es el mecanismo exacto del papel doblado y además es lo
 más buscado por quien empieza a invertir.
 
+## Formato "construido desde cero" (20 nov 2026)
+No explica el mecanismo: **lo construye, y cada problema obliga a inventar la siguiente pieza** (`/historia` §4).
+El título promete el final y la última frase lo entrega. Cada frase es un problema o su arreglo, encadenados con
+"pero" y "así que". **Es el formato natural de casi todo lo que enseñamos y no lo teníamos.**
+
+| El título (promete el final) | La cadena |
+|---|---|
+| "Nadie te devuelve este dinero, y aun así se lo das" | tienes un negocio y te falta dinero → *pides prestado, pero hay que devolverlo vaya bien o mal* → vendes un pedazo → *pero quien te lo compró querrá salir algún día* → hace falta dónde revenderlo → **eso es la bolsa** |
+| "Tu banco presta tu dinero y por eso te paga" | guardas el dinero en casa → *te lo pueden robar* → lo dejas con alguien → *ahí parado no sirve de nada* → ese alguien nota que casi nadie lo saca el mismo día → lo presta y te da una parte → *pero si todos lo piden a la vez…* → **por eso existe la reserva** |
+| "Pagas por algo que esperas no usar nunca" | un accidente te arruina → *ahorrar solo para eso cuesta demasiado* → se juntan mil que corren el mismo riesgo → cada quien pone poco → *pero el que ya chocó querría entrar* → se cobra según el riesgo → **eso es un seguro** |
+| "Comprar 500 empresas con el dinero de una comida" | quieres no depender de una sola empresa → *comprar 500 por separado cuesta una fortuna en comisiones* → alguien las compra y vende pedacitos del paquete → *pero ¿cómo sales?* → el paquete cotiza en la bolsa → **eso es un ETF** |
+| "La inflación no sube los precios: baja tu dinero" | el pan cuesta más cada año → *parece que el pan vale más* → pero el mismo pan es el mismo pan → lo que cambió es cuántos pesos hay → **no sube el pan, baja el peso** |
+
+Ojo con el reloj: la cadena de nueve pasos del video de referencia cabe en 45 s porque va a 203 palabras/min. A
+nuestras 145 caben cuatro o cinco pasos. **Antes de hacer el primero de estos hay que resolver la velocidad.**
+
 ## Formato "lo peor que puedes hacer" (20 nov 2026)
 Condición + error + la consecuencia que se ve + qué sí hacer + pregunta (`/historia` §4). Máximo dos errores por
 video. **Un error que evitar no es recomendación de compra ni de venta**, así que este formato nos abre tema que

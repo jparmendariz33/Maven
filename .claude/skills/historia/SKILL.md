@@ -288,6 +288,46 @@ palabra, se nombra: `supone 10% anual · ilustrativo`. Un número real NUNCA la 
 se pone en todo deja de distinguir nada. Nos aplica en cuanto hagamos el interés compuesto: "$1,000 al 10%" no es un
 dato, es un supuesto nuestro. Y no legitima proyectar el precio de una acción: eso sigue prohibido.
 
+### "Construido desde cero": el formato que deriva el mecanismo (JP, 20 nov 2026)
+El segundo video de @DesarmadoYoutube (227 mil likes): *"Ese techo del estadio NO tiene ni una columna"*. **No
+explica un estadio: lo construye delante de ti, y cada problema nuevo obliga a inventar la siguiente pieza.**
+
+> cancha + gente alrededor → *pero solo la primera fila ve* → cada fila un escalón → *pero las esquinas quedan
+> vacías y los de las orillas ven de lado* → doblas las tribunas hasta cerrar el anillo → *pero llueve y 70,000
+> personas se mojan* → techo sobre columnas → *pero a alguien le toca ver detrás de un poste* → quitas las columnas
+> de enfrente y lo cuelgas. **Y ahí está el título contestado.**
+
+**Cómo se escribe:** cada frase es **un problema o su arreglo**, encadenados con *pero* y *así que*. Nada más. No hay
+presentación, no hay recapitulación, no hay "y eso es todo": si una frase no plantea un problema ni lo resuelve,
+sobra. Son 116 palabras para nueve pasos.
+**El título promete el final y el video lo entrega en la última frase.** El gancho no es una cifra: es una
+imposibilidad ("un techo sin columnas"), y te quedas a ver cómo se resuelve.
+
+**Para qué nos sirve:** es el formato natural de casi todo lo que enseñamos, y no lo teníamos.
+`¿Por qué existe la bolsa?` → tienes un negocio y te falta dinero → *pides prestado, pero hay que devolverlo vaya
+bien o mal* → vendes un pedazo → *pero quien te lo compró va a querer salir algún día* → hace falta dónde
+revenderlo → **eso es la bolsa**. Más candidatos en `plan/banco-historias.md`.
+
+**Tropicalizado a Costa Studio** — qué cambia y qué se queda:
+- **Los colores son los nuestros, con significado fijo:** el problema en **terracota `#BB6F58`**, la pieza que lo
+  resuelve en **mostaza `#C7A317`**, lo neutro en arena y negro. Ellos usan rojo y verde lima; el papel es el mismo
+  y ya tenemos esos dos colores en la marca. **La palabra del rótulo va del color de lo que se señala en la escena.**
+- **La pieza nueva se resalta en mostaza en cuanto aparece** (ellos pintan el anillo del techo de lima encima del
+  3D), y se apaga al color normal en la escena siguiente, cuando ya es parte del mundo.
+- **Plano cenital y plano en 3D se alternan a propósito:** el cenital es **la regla** (la geometría, por qué las
+  esquinas quedan vacías), el 3D es **cómo se siente** (ver el partido de lado). Cada vez que toca una regla,
+  cenital; cada vez que toca una consecuencia, 3D a la altura de la gente.
+- **El entorno mete el siguiente problema:** empieza a llover y por eso hace falta el techo. No lo anuncia la voz,
+  lo anuncia el mundo. En nuestras maquetas: que se nuble, que entre gente, que se haga de noche.
+- **Dos tipos de recuadro:** el cuadrado con esquema abstracto (ya anotado) y la **lupa circular**, que amplía un
+  detalle de la estructura sin salir de la escena. La lupa es para un detalle físico; el cuadrado, para una regla.
+- **Lo que NO copiamos:** su aspecto (ilustración plana, cielo azul de plantilla, monigotes de palo). El nuestro es
+  plastilina mate con luz de cine. Copiamos el método, no la cara.
+
+**Una advertencia de reloj:** este formato mete nueve pasos en 45 segundos porque va a **203 palabras/min**. A las
+145 nuestras no cabe la cadena: o se queda en cuatro pasos y pierde la gracia, o se acelera la voz. **Es el formato
+que más depende de que JP decida la velocidad** (ver la nota pendiente en la regla de la voz de IA).
+
 ### Formato "lo peor que puedes hacer" (20 nov 2026)
 El short de las 206 mil likes abre así: *"Si un coche te sigue de noche, lo peor que puedes hacer es…"*. Condición
 que le puede pasar a cualquiera + un error que quizá estés cometiendo. Engancha porque te acusa.
