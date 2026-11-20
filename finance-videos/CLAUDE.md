@@ -365,6 +365,10 @@ Los cinco motores, con la tabla de cuándo va cada uno y qué NO mezclar, en `/h
 como "alejas la toma y luego la vuelves a alejar a la ciudad") · **lo peor que puedes hacer** (un error común) ·
 **el desmontaje** (un titular que casi todos creen y la cuenta dice otra cosa — el motor más usado de este canal,
 aunque no estaba escrito).
+**No son una jaula.** Salieron de seis videos de dos canales. Cuando una historia no quepa en ninguno, **se le
+inventa el motor a esa historia y se anota**, en vez de forzarla al que menos mal le quede (JP, 20 nov 2026). Lo que
+no cambia nunca es la estructura de la casa: el gancho de 3 s en tres capas, que se entienda sin saber nada, la
+gramática de plano, el cierre con pregunta y los límites editoriales.
 
 ## "Construido desde cero": derivar el mecanismo (20 nov 2026)
 Segundo video de @DesarmadoYoutube, 227 mil likes: *"Ese techo del estadio NO tiene ni una columna"*. No explica un

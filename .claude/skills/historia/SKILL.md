@@ -319,6 +319,12 @@ dato, es un supuesto nuestro. Y no legitima proyectar el precio de una acción: 
 ### ─────── LOS CINCO MOTORES: escoge UNO ───────
 Uno por video, y el borrador dice cuál y por qué. Ver la tabla del selector, arriba.
 
+**Los cinco motores no son una jaula (JP, 20 nov 2026).** Salieron de seis videos de dos canales: es poca muestra.
+Cuando una historia no quepa en ninguno, **se le inventa el motor a esa historia y se anota aquí con su nombre**, en
+vez de forzarla al que menos mal le quede. JP: *"si hay alguna otra forma para ese video, pues adelante, crear una
+nueva vía."* Lo que no cambia nunca es la estructura de la casa: el gancho de 3 segundos en tres capas, que se
+entienda sin saber nada, la gramática de plano, el cierre con pregunta y los límites editoriales.
+
 ### "Construido desde cero": el formato que deriva el mecanismo (JP, 20 nov 2026)
 El segundo video de @DesarmadoYoutube (227 mil likes): *"Ese techo del estadio NO tiene ni una columna"*. **No
 explica un estadio: lo construye delante de ti, y cada problema nuevo obliga a inventar la siguiente pieza.**
