@@ -249,3 +249,86 @@ decidiendo a ciegas.
 4. **El gancho**, con la métrica real en la mano y midiendo solo tráfico orgánico.
 5. **Apostar por búsqueda**: es el tráfico de más calidad y el más desatendido. Elegir los temas de los largos con
    `keyword_research` en vez de por intuición.
+
+---
+
+# 8. PLAN DEFINITIVO (20 nov 2026, con la extensión conectada)
+**Esta sección sustituye el orden de prioridades de las secciones 3, 6.4 y 7.6.** Ya no hay que suponer nada:
+la extensión de vidIQ funciona y entregó el dato que faltaba.
+
+## 8.1 JP tenía razón sobre el gancho, y ahora está medido
+
+`stayedToWatchPercentage` = de cada 100 personas a las que YouTube les enseñó el Short en el feed, cuántas no
+deslizaron. **Es, literalmente, la métrica del gancho.**
+
+| Pieza | Se queda | Impresiones en el feed |
+|---|---:|---:|
+| Apple "$28 de cada $100" | **93.3%** | 105 |
+| SpaceX | **86.5%** | 1,164 |
+| Steve Jobs | **60.9%** | 773 |
+| Meta · GTA · Nvidia −9% · Vistra · Nvidia −6% · Airbnb · AMD | 43–52% | 25–224 |
+| Nvidia contexto | 36.5% | 63 |
+| Cuervo | 31.1% | 119 |
+| **Kahneman** | **20.8%** | 24 |
+| **Torneo** | **19.8%** | 116 |
+| **Nubank** | **5.9%** | 1,158 |
+| **Promedio del canal** | **49.0%** | 4,258 |
+
+**El caso que lo prueba todo:** YouTube le dio **1,164** impresiones a SpaceX y **1,158** a Nubank — prácticamente la
+misma oportunidad. SpaceX retuvo al **86.5%** y Nubank al **5.9%**. Mismo canal, misma semana, misma distribución
+inicial. La única diferencia fue el gancho.
+
+**Y sobre Kahneman: 20.83%.** JP lo dijo viendo el video, sin datos. Tenía razón.
+
+### El patrón: qué distingue un gancho de 90% de uno de 6%
+
+| Funcionan (60–93%) | Fallan (6–31%) |
+|---|---|
+| Apple, SpaceX, Steve Jobs: **algo que el espectador ya conoce** | Nubank, Becle: **una empresa que no ubica** |
+| Abren con una **contradicción o una cifra con escala** ("casi quiebra… y luego la IPO más grande", "$28 de cada $100") | Abren con **contexto** ("En 1979, dos psicólogos publicaron un artículo") o con el **formato** ("RANKEANDO 5 acciones: 6 rondas") |
+| La primera frase **es una idea completa** | La primera frase **prepara** una idea que llega después |
+
+**Regla operativa, ya en CLAUDE.md:** los tres segundos iniciales llevan algo conocido + una contradicción o cifra
+con escala, en una frase que se entiende sola. Nada de presentar el tema ni anunciar el formato.
+**Meta medible: ninguna pieza por debajo del 49% del canal; objetivo 70%.**
+
+## 8.2 Sobre la publicidad: recomiendo pararla
+
+JP la paga para acelerar la monetización. Los números dicen que no la acerca:
+
+**1. Las vistas pagadas no cuentan para el umbral.** Varias guías especializadas coinciden en que el tiempo de
+reproducción de campañas pagadas queda excluido de las 4,000 horas. ⚠️ **No encontré la página oficial de YouTube que
+lo confirme**, así que lo doy como muy probable, no como seguro. Vale la pena que JP lo verifique en la ayuda de
+YouTube antes de gastar un peso más, porque de esto depende todo lo demás.
+
+**2. Aun contándolas, los umbrales están lejísimos.** Monetizar pide 1,000 suscriptores **y además** 4,000 horas en
+12 meses **o** 10 millones de vistas de Shorts en 90 días. Hoy: ~21 horas y ~11,800 vistas en 28 días. Ni con
+publicidad se cierra esa brecha.
+
+**3. Los suscriptores comprados no ven los videos.** Este es el dato que más me preocupa: **402 suscriptores
+produjeron 16 vistas en 28 días**, con 12.96% de retención — el peor número de todas las fuentes de tráfico. YouTube
+mide cómo responden tus suscriptores a lo que subes. Una base que no abre nada **empeora** la distribución futura.
+
+**4. El motor orgánico sí funciona y no necesita dinero.** 49% de retención en el feed, 86.5% en el mejor short. Lo
+que falta no es alcance comprado: es que más piezas se parezcan a SpaceX y al short de Apple.
+
+**Si JP quiere seguir usando ads, la forma útil es otra:** presupuesto pequeño para **probar ganchos**, no para
+comprar suscriptores. Dos versiones del mismo short con primeros 3 segundos distintos, y el ganador define el patrón.
+Eso sí compra información.
+
+## 8.3 El orden, ya definitivo
+
+| # | Qué | Por qué ahora |
+|---|---|---|
+| **1** | **Parar la publicidad** (o reconvertirla a prueba de ganchos) | Está gastando dinero en la única palanca que no acerca la monetización, y la base de suscriptores comprada empeora la distribución |
+| **2** | **Sincronizar skills y cron con el calendario real** | Es lo único roto: mañana viernes toca short de contexto y el skill cree que es jueves |
+| **3** | **Sección del gancho en los 4 skills**, con la tabla de arriba y la meta de 49% mínimo | Es la palanca con evidencia más fuerte del canal |
+| **4** | **Miniatura propia en cada short e historia**, generada en el render | Hoy YouTube escoge frames de en medio (Kahneman muestra la escena 7). Gratis y nadie lo está haciendo |
+| **5** | **Medir `shorts_stayed_to_watch` cada semana** (5 créditos) y anotarlo por pieza | Convierte el gancho en algo que se ajusta con datos |
+| **6** | **Apostar por búsqueda con `keyword_research`** para elegir temas de largos | 68.4% de retención y 61 s de duración: el mejor tráfico del canal, hoy elegido por intuición |
+| **7** | Reorganizar CLAUDE.md y los skills (el "por qué" y el "cómo") | Trabajo de fondo, sin prisa |
+
+## 8.4 Qué revisar el 28 de noviembre
+La revisión ya agendada compara la próxima historia contra el 27.84% de Jobs. **Cámbiese la métrica**: ahora se
+compara `stayedToWatchPercentage` contra el **49% del canal** y el **86.5% de SpaceX**, que es el techo demostrado.
+Y se mide **solo tráfico orgánico**, separando la publicidad.
