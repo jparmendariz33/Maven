@@ -41,6 +41,16 @@ normalmente tenemos cerrado. Todos piden verificación de las cifras antes de us
 | "Si una acción lleva 10 días subiendo, lo peor que puedes hacer es…" | entrar porque ya subió | el escalón que se rompe justo cuando pisas |
 | "Si tu banco te ofrece un fondo, lo peor que puedes hacer es…" | no preguntar la comisión | dos columnas que se separan año con año |
 
+**El cuerpo es un PROTOCOLO, no una lista de errores** (así es el video de referencia: dos errores y luego el 70%
+del tiempo es qué sí hacer, paso por paso, y **cada paso dice por qué en una frase concreta**).
+Ejemplo para el de la caída del 20%: 1) mira en cuánto tiempo vas a necesitar ese dinero — si es en más de cinco
+años, la caída de hoy no te toca; 2) apunta por qué compraste lo que compraste — si la razón sigue viva, no pasó
+nada; 3) quita la app de la pantalla de inicio — mirar el precio diez veces al día no cambia el precio, cambia tus
+nervios; 4) si no puedes dormir, el problema no es la caída, es que arriesgaste de más.
+**El límite:** el protocolo es de CONDUCTA, nunca de asignación. "Pregunta la comisión", "revisa tu plazo", "apunta
+tu razón" están bien. "Compra más", "vende", "cámbiate a X" son recomendación y están prohibidos. Este formato es
+justo donde más fácil se resbala uno, porque suena a consejo útil.
+
 ## Propuestas de Claude (JP puede quitar o agregar)
 | Personaje / empresa | Ticker | El arco en una línea (verificar) |
 |---|---|---|

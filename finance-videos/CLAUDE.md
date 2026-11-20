@@ -337,6 +337,18 @@ Dos cosas del short de @DesarmadoYoutube (206 mil likes, el más visto de los tr
 (De ese short NO copiamos el aspecto: es plano, de pocos polígonos y de noche. El nuestro es plastilina mate con luz
 de cine y ya es reconocible; cambiarlo por parecernos a alguien sería tirar lo único que es nuestro.)
 
+## Anotar encima de la maqueta (20 nov 2026)
+Del video completo de @DesarmadoYoutube. Cuatro herramientas para explicar un mecanismo sin que la voz lo describa:
+**trayectoria dibujada** (línea luminosa sobre el 3D; verde el protagonista, rojo la amenaza), **etiqueta que
+APUNTA** (píldora con línea punteada hasta la parte exacta que nombra), **anillo de foco** (círculo alrededor de lo
+que importa en ese segundo) y **recuadro esquema** abajo a la izquierda (el concepto dibujado abstracto mientras la
+maqueta enseña la cosa real: las dos a la vez, y por eso se entiende a la primera). La cuarta es la que más nos
+sirve para un mecanismo financiero. La segunda mejora nuestra regla del rótulo: en vez de nombrar el dato en el
+titular, se señala la cosa. **Y las amarra una regla: el color de la palabra resaltada del rótulo es el mismo color
+con el que se anota el objeto en la escena.** Detalle en `/historia` §4.
+También el **arco de luz**: ese video pasa de noche y termina en una gasolinera iluminada con gente. Si la historia
+tiene un problema y una salida, **el mundo del problema va más oscuro que el de la salida**, y el cambio se ve.
+
 ## El contador, para historias cuyo tema ES un número (JP, 20 nov 2026)
 Del mismo short ("¿cuántas veces hay que doblar un papel para llegar a la Luna?"): dos fichas fijas arriba que nunca
 se van y suben con la voz (`DOBLECES 0→30`, `GROSOR 0,1 mm→107 km`) mientras el mundo cambia de escala para que el
@@ -439,7 +451,8 @@ que sincroniza escenas y subtítulos con los tiempos reales de `build/whisper.js
    ancladas: las interpoladas no tienen tiempo real contra el cual comparar y daban falsas alarmas.
 5. `make_audio.py` → `render3d.js`.
 **Pendiente de calibrar con el oído de JP (20 nov 2026):** JP trajo tres shorts de referencia que le gustan y los tres
-van mucho más rápido que nosotros — **190, 177 y 194 palabras/min** (el de 194 tiene 206 mil likes), contra las **145**
+van mucho más rápido que nosotros — **190, 177 y 197 palabras/min** — y el de 197 no es un arranque: son 150 palabras en 46 s del video
+completo, el de las 206 mil likes —, contra las **145**
 que deja `--aire 0.7`. Tres de tres ya es un patrón, no una muestra. El `0.7` lo elegí yo por criterio propio y la
 evidencia dice que me quedé corto. **No lo cambio sin que JP oiga las versiones**, porque es su canal y su oído; y
 probarlo es gratis: `--aire` se aplica sobre `voice.wav`, que sale de `voice_raw.mp3`, que ya está pagado.

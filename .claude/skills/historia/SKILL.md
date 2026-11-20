@@ -252,6 +252,35 @@ Del short de @DesarmadoYoutube (206 mil likes, el más visto de los que trajo JP
 - **Lo que NO copiamos:** el aspecto (plano, pocos polígonos, de noche). El nuestro es plastilina mate con luz de
   cine y ya es reconocible. Parecernos a alguien es tirar lo único que es nuestro.
 
+### Anotar encima de la maqueta: las cuatro herramientas (JP, 20 nov 2026)
+Del video completo de @DesarmadoYoutube (206 mil likes). **Es lo más aprovechable de todo lo que trajo JP**, porque
+resuelve algo que a nosotros nos cuesta: explicar un mecanismo sin que la voz tenga que describirlo.
+
+1. **Trayectoria dibujada.** Una línea luminosa encima del 3D marca el recorrido: **verde lima el del protagonista,
+   rojo el de la amenaza**. Se entiende sin una palabra. En finanzas: el camino de un peso entre cuentas, la línea
+   de un precio, lo que entra contra lo que sale.
+2. **Etiqueta que APUNTA.** Píldoras (`placa`, `modelo`, `color`) con una línea punteada hasta la parte exacta del
+   coche que nombran. Esto mejora nuestra regla del rótulo: hoy ponemos "Brasil · 120 M de clientes" en el titular;
+   es mejor una píldora señalando **la cosa**. Para las partes de un estado de resultados, de un recibo, de una
+   gráfica, es justo lo que falta.
+3. **Anillo de foco.** Un círculo o elipse alrededor de lo que importa en ese segundo (la cabeza del conductor para
+   "manos libres", el coche entero para "por dónde vas"). Barato y dirige la mirada.
+4. **Recuadro esquema, abajo a la izquierda.** Un cuadrito con borde blanco y fondo oscuro donde el mismo concepto
+   se dibuja **abstracto**: las tres vueltas a la derecha como un cuadrado punteado con los puntos 1, 2 y 3. La
+   maqueta enseña la cosa real; el recuadro enseña la regla. Las dos a la vez, y por eso se entiende a la primera.
+   Es la herramienta que más nos sirve para un mecanismo financiero.
+
+**Y la regla que las amarra: el color de la palabra es el color del objeto.** En ese video la palabra resaltada del
+rótulo va en verde lima, el mismo verde lima de la trayectoria, de las píldoras y del anillo. La palabra y la cosa
+quedan ligadas sin explicarlo. Nosotros ya tenemos el mostaza de la palabra activa: **que el acento del rótulo y el
+color de lo que se anota en la escena sean el mismo, siempre.**
+
+### El arco de luz (20 nov 2026)
+Ese video entero pasa de noche, oscuro, y termina en una gasolinera **iluminada y con gente**. La luz carga la
+emoción: oscuro es el problema, claro es la salida. No hace falta copiar la paleta nocturna —la nuestra es
+plastilina cálida— pero sí el arco: **si la historia tiene un problema y una salida, el mundo del problema va más
+oscuro que el de la salida**, y el cambio se ve.
+
 ### Números que ilustran: la marca `ilustrativo` (20 nov 2026)
 En ese short el velocímetro sube a 150 y lleva pegado, chiquito, `km/h · ilustrativo`. **Todo número proyectado,
 simulado o de ejemplo lleva esa palabra en la ficha, en pantalla, no en la descripción.** Si el supuesto cabe en una
@@ -263,9 +292,15 @@ dato, es un supuesto nuestro. Y no legitima proyectar el precio de una acción: 
 El short de las 206 mil likes abre así: *"Si un coche te sigue de noche, lo peor que puedes hacer es…"*. Condición
 que le puede pasar a cualquiera + un error que quizá estés cometiendo. Engancha porque te acusa.
 En finanzas es terreno seguro y nuestro: **un error que evitar no es una recomendación de compra ni de venta**, así
-que esquiva la regla que nos cierra la puerta en casi todo lo demás. La estructura: condición → el error → la
-consecuencia que SE VE → qué sí hacer → la pregunta. Dos errores por video como máximo ("y lo segundo:"), no cinco.
-Candidatos en `plan/banco-historias.md`.
+que esquiva la regla que nos cierra la puerta en casi todo lo demás. **La estructura real, viendo el video completo:** no son solo errores. Son **dos errores (máximo) y luego un
+PROTOCOLO numerado de qué sí hacer**, y el protocolo es el 70% del video: comprueba → da la vuelta a una glorieta →
+pon los seguros y llama al 911 → di placa, color y modelo → maneja normal a una estación de policía → si no hay, a
+un lugar abierto. **Cada paso dice POR QUÉ en una frase concreta**: "es el último lugar donde alguien que te sigue
+quiere que lo vean". Un paso sin su porqué se olvida.
+**El límite que no se cruza en finanzas:** el protocolo tiene que ser de CONDUCTA, nunca de asignación. "Revisa en
+cuánto tiempo vas a necesitar ese dinero", "pregunta la comisión antes de firmar", "apunta por qué compraste" son
+procedimiento y están bien. "Compra más", "vende", "cámbiate a X" son recomendación y están prohibidos — y este
+formato es justo donde más fácil se resbala uno, porque suena a consejo útil. Candidatos en `plan/banco-historias.md`.
 
 ### El contador: para historias cuyo tema ES un número (JP, 20 nov 2026)
 Del mismo short de @SoySR.J: "¿cuántas veces hay que doblar un papel para llegar a la Luna?". Lleva **dos fichas fijas
