@@ -332,3 +332,102 @@ Eso sí compra información.
 La revisión ya agendada compara la próxima historia contra el 27.84% de Jobs. **Cámbiese la métrica**: ahora se
 compara `stayedToWatchPercentage` contra el **49% del canal** y el **86.5% de SpaceX**, que es el techo demostrado.
 Y se mide **solo tráfico orgánico**, separando la publicidad.
+
+---
+
+# 9. EXPLORACIÓN COMPLETA DEL PROYECTO (20 nov 2026)
+JP pidió revisar todos los archivos y dejar el proyecto lo más ordenado posible. Esto es lo que hay y qué está mal.
+
+## 9.1 Inventario
+
+| Dónde | Qué es | Líneas | Estado |
+|---|---|---:|---|
+| `CLAUDE.md` | Contexto y reglas acumuladas | 376 | **Al día**, pero ya son **34 reglas** y nadie lee 376 líneas completas |
+| `.claude/skills/short` | Procedimiento del short | 548 | **Desactualizado** |
+| `.claude/skills/historia` | Procedimiento de la historia 3D | 204 | **Desactualizado** |
+| `.claude/skills/largo` | Procedimiento del largo | 168 | **Desactualizado** |
+| `.claude/skills/publicacion` | Procedimiento de la publicación | 80 | Desactualizado |
+| `plan/PLAN.md` | Estrategia y ritmo | 275 | **Desactualizado y contradice a CLAUDE.md** |
+| `plan/calendario-largos.md` | 55 semanas de largos | 911 | Al día (pero su gancho del 22 nov no servía) |
+| `plan/tareas.md` | Instrucciones de los cron | 99 | Actualizado hoy, pero **los cron reales no** |
+| `plan/metricas.md` | Métricas del canal | 76 | **Obsoleto**: datos del 13–14 nov, superados por los de vidIQ |
+| `plan/torneo.md`, `banco-*.md`, `voz-jp.md`, `publicados.md`, `posiciones-jp.md`, `clientes-agencia.md` | Apoyo | 8–135 | Al día, salvo los días del calendario en los bancos |
+| `plan/plan-skills-20nov.md` + 2 borradores | Este plan y borradores | 476 | Trabajo en curso |
+| `scripts/` | 21 scripts del pipeline | — | Al día |
+
+## 9.2 Los cinco problemas, por gravedad
+
+### 🔴 1. Las reglas nuevas NO están donde se ejecutan
+Los skills son lo que se sigue al correr `/historia` o `/short`. Medí cuántas de las reglas de esta semana aparecen
+en ellos:
+
+| Regla | En cuántos de los 4 skills |
+|---|---|
+| Dinamismo en 3D | **0** |
+| Aprobación visual antes de producir | **0** |
+| Borrador anticipado | **0** |
+| Eficiencia en créditos | **0** |
+| Flujo de `voz3d.py` | **0** |
+| Encuadre 3D | 1 |
+| Cierre con pregunta | 1 |
+
+**Es decir: si mañana se ejecuta `/historia`, no aplicaría casi nada de lo que corregimos esta semana.**
+
+### 🔴 2. Tres archivos dicen cosas distintas sobre lo mismo
+- `PLAN.md` §2: historias **miércoles y sábado**, shorts de contexto **martes y jueves**, A+P **viernes**.
+- `CLAUDE.md`: historias **martes y jueves**, short de contexto **viernes**, A+P **sábado**.
+- Los skills: los días viejos.
+- `PLAN.md` dice **"nada se produce con semanas de anticipación"**; `CLAUDE.md` tiene la **regla del borrador
+  anticipado**, que dice justo lo contrario.
+- `PLAN.md` dice **"JP graba voz en 7"** piezas; desde el 17 de nov usamos voz de IA.
+
+### 🟠 3. El plan pide 10 piezas por semana y no se están entregando
+`PLAN.md` define 10 piezas semanales. La semana del 16 al 22 de noviembre se entregaron 4, y lo que se cayó fue
+**el largo y el torneo**: justo los dos que alimentan búsqueda y horas de reproducción.
+📊 *Y los datos dicen que el volumen no es lo que funciona: SpaceX solo generó más vistas que las diez piezas más
+pequeñas juntas. Una pieza con 86% de gancho vale más que cinco con 20%.*
+**Recomiendo bajar el ritmo** y proponer un calendario que sí se cumpla.
+
+### 🟠 4. `metricas.md` está obsoleto y es engañoso
+Tiene la retención del 13–14 de noviembre, calculada con los datos que ahora sabemos que estaban mal (vistas de la
+primera hora, sin separar publicidad). Hay que reemplazarlo por la medición real de vidIQ.
+
+### 🟡 5. CLAUDE.md creció sin estructura
+34 reglas en orden cronológico, sin agrupar. Funciona como bitácora, pero ya no como referencia rápida.
+
+## 9.3 La reorganización que propongo
+
+**Tres documentos con un trabajo cada uno, y nada duplicado:**
+
+| Documento | Trabajo | Qué cambia |
+|---|---|---|
+| **`plan/anatomia-formatos.md`** ← *ya creado* | **El QUÉ**: la lista de lo que debe llevar cada formato | **Nuevo.** Es la referencia única. Cada skill lo cita en vez de repetirlo |
+| **`.claude/skills/*/SKILL.md`** | **El CÓMO**: el procedimiento paso a paso | Se sincronizan con la operación real y abren citando la anatomía |
+| **`CLAUDE.md`** | **El PORQUÉ**: la bitácora de decisiones y su evidencia | Se agrupa en 6 bloques temáticos en vez de 34 reglas sueltas |
+
+Y además:
+- **`plan/PLAN.md`**: se corrige el ritmo, se quita la regla de "nada con anticipación" y lo de que JP graba voz.
+- **`plan/metricas.md`**: se reemplaza con la medición de vidIQ y se vuelve el registro semanal del gancho.
+- **Bancos**: corregir los días en los encabezados.
+- **Cron**: reprogramar a los días nuevos.
+
+## 9.4 Cómo entra vidIQ Boost en la operación
+
+| Cuándo | Qué se usa | Costo | Para qué |
+|---|---|---:|---|
+| Al elegir el tema del largo (lunes) | `keyword_research` | ~5–15 | La búsqueda retiene 68.4%: es el tráfico que más importa y hoy se elige a ciegas |
+| Al titular el largo | `score_title` / `generate_titles` | bajo | El título decide la búsqueda |
+| Al producir voz | `voiceover_generate` | 28/pieza | Lo que ya hacemos |
+| **Cada lunes** | **`shorts_stayed_to_watch`** | **5** | **El tablero del gancho**: se anota por pieza y se compara contra 49% |
+| Cada lunes | `channel_analytics` top_videos + traffic_sources | 10 | Separar pagado de orgánico |
+| Al planear la semana | `outliers` | ~5–15 | Qué formatos pegan en finanzas en español |
+
+**Presupuesto: ~390 de 2,000 créditos al mes.** Sobra margen para investigación, que es donde el canal decide a ciegas.
+
+## 9.5 Orden de ejecución propuesto
+1. **Sincronizar los 4 skills** con la operación real + que cada uno abra citando `anatomia-formatos.md`. *(lo más urgente)*
+2. **Corregir `PLAN.md`** (ritmo, anticipación, voz) y **proponer un calendario realista**.
+3. **Reprogramar los cron.**
+4. **Reemplazar `metricas.md`** por el tablero semanal del gancho.
+5. **Agrupar `CLAUDE.md`** en bloques temáticos.
+6. **Miniatura propia** en el render de shorts e historias.
