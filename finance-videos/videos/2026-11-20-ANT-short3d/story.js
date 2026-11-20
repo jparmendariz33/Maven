@@ -52,22 +52,22 @@ const worlds = {
   // ───────────── A · EL PISO (azul noche) · escenas 1–4 ─────────────
   piso(L) {
     const { THREE, clay2, rbox } = L;
-    const w = L.cineWorld({ bg: '#1B2742', bg2: '#0A0F1E', floor: '#28314C', fog: [30, 90], hemi: .5,
-      sky: '#9DB4FF', ground: '#232A40', key: 2.7, keyPos: [-9, 13, 10], keyCol: '#CFE0FF',
-      rim: 2.3, rimPos: [8, 9, -5], rimCol: '#8FA8FF', fill: .42 });
+    const w = L.cineWorld({ bg: '#A85634', bg2: '#4A2112', floor: '#8A4426', fog: [30, 90], hemi: .52,
+      sky: '#FFC79A', ground: '#5A2A17', key: 2.9, keyPos: [-9, 13, 10], keyCol: '#FFD9B0',
+      rim: 2.3, rimPos: [8, 9, -5], rimCol: '#FF9E66', fill: .44 });
     // FONDO: muro + tablero de 4.4 de ancho (a d=16 ocupa el 91% del ancho del cuadro)
-    const muro = rbox(22, 14, .5, .1, clay2('#141C33', .9)); muro.position.set(0, 6.5, -9.6); w.scene.add(muro);
-    const marco = rbox(4.78, 3.18, .26, .08, clay2('#0A101E', .66)); marco.position.set(0, 4.7, -9.25); w.scene.add(marco);
-    const linea = grafica(L, 4.4, 2.8, PRECIO, MOSTAZA, '#0A101E');
+    const muro = rbox(22, 14, .5, .1, clay2('#C0683F', .92)); muro.position.set(0, 6.5, -9.6); w.scene.add(muro);
+    const marco = rbox(4.78, 3.18, .26, .08, clay2('#3A1A0D', .62)); marco.position.set(0, 4.7, -9.25); w.scene.add(marco);
+    const linea = grafica(L, 4.4, 2.8, PRECIO, MOSTAZA, '#2E140A');
     linea.position.set(-2.2, 4.7, -9.06); linea.scale.x = .001; w.scene.add(linea);
     // MEDIO: el inversionista, a un lado para no tapar el tablero
     const inv = L.actor(INVER); inv.position.set(-2.35, 0, -7.4); inv.rotation.y = Math.PI * .95; w.scene.add(inv);
     // las dos columnas del récord (escena 2): juntas miden 4.3 de ancho
-    const cSx = torre(L, 5, .92, .50, GRIS, -1.12, -6.2);
+    const cSx = torre(L, 5, .92, .50, '#E8DCC6', -1.12, -6.2);
     const cAn = torre(L, 6, .92, .50, AZUL,  1.12, -6.2); w.scene.add(cSx); w.scene.add(cAn);
     const eti = (txt, ink) => { const e = L.label3d(txt, 1.42, .68, { bg: null, ink, font: '800 40px Unbounded', pw: 430 });
       e.material.transparent = true; e.material.depthWrite = false; e.scale.setScalar(.001); w.scene.add(e); return e; };
-    const eSx = eti('SpaceX\n$75 mil M', GRIS), eAn = eti('ANT\n$81.3 mil M', '#BFD2FF');
+    const eSx = eti('SpaceX\n$75 mil M', '#F0E6D2'), eAn = eti('ANT\n$81.3 mil M', '#CFE0FF');
     eSx.position.set(-1.12, 2.92, -6.0); eAn.position.set(1.12, 3.42, -6.0);
     // la plancha de periódico que CAE y tapa el tablero (escena 4): 3.9 de ancho
     const diario = new THREE.Group(); diario.position.set(0, 4.8, -8.5); diario.scale.setScalar(.001); w.scene.add(diario);
@@ -85,8 +85,8 @@ const worlds = {
     }, 620);
     dtx.position.z = .09; diario.add(dtx);
     // PRIMER PLANO: esquina de escritorio con una pantallita, pegada a cámara
-    const esq = rbox(3.4, .18, 2.2, .06, clay2('#1C2640', .5)); esq.position.set(2.9, 1.25, 4.6); w.scene.add(esq);
-    const mon = rbox(1.3, .82, .09, .04, clay2('#0A101E', .5)); mon.position.set(2.7, 1.75, 4.1); mon.rotation.y = -.35; w.scene.add(mon);
+    const esq = rbox(3.4, .18, 2.2, .06, clay2('#7A3A20', .5)); esq.position.set(2.9, 1.25, 4.6); w.scene.add(esq);
+    const mon = rbox(1.3, .82, .09, .04, clay2('#2E140A', .5)); mon.position.set(2.7, 1.75, 4.1); mon.rotation.y = -.35; w.scene.add(mon);
     return { ...w, linea, inv, cSx, cAn, eSx, eAn, diario };
   },
 
