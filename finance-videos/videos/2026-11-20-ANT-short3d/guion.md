@@ -25,6 +25,21 @@ se dispara, el short sigue siendo cierto.
 | De eso, cambio de valor de notas convertibles y SAFEs | **$94,300 M** (no es efectivo) | 424(b)(4) SEC |
 | Margen de operación 3T 2026 | **−3%** (−224% un año antes) | 424(b)(4) SEC |
 
+## Motor narrativo elegido: **EL DESMONTAJE** (y por qué, y qué NO lleva)
+Regla del 20 nov: un motor por video, y el borrador dice cuál y por qué.
+**Es un desmontaje** porque la historia es exactamente eso: un titular que todo el mundo repitió ("subió 17%",
+"la salida a bolsa más grande de la historia") y una cuenta que dice otra cosa. El gancho usa el titular ajeno tal
+cual para que se reconozca en 3 segundos, y el cuerpo le va quitando capas.
+**Su imagen única de la diferencia** es la torre de la escena 7: se construye hasta $104,039 M y nueve de cada diez
+bloques se vuelven translúcidos y se van. Una sola imagen, como pide el motor.
+**Lo que NO lleva, a propósito:**
+- **Contador:** no hay una cantidad que crezca; el mecanismo es una resta. (El contador va en el del interés compuesto.)
+- **Construido desde cero:** no estamos derivando un mecanismo, estamos desarmando una noticia.
+- **El alejamiento:** competiría con la torre, que ya es el efecto de escala del video.
+- **Lo peor que puedes hacer:** no hay un error del espectador que corregir.
+**De la base sí va todo:** gramática de plano (una toma de cada familia), mundos con tres profundidades, rótulo en
+dos tiempos en el gancho, la consecuencia que se ve, y el arco de luz (el piso de noche → el mostrador claro).
+
 ## Lo que dijeron los medios (investigado el 19 nov — regla del gancho investigado)
 **Lo que dijeron TODOS** (con esto se abre, es lo que el espectador reconoce):
 - **La salida a bolsa más grande de la historia: 81.3 mil millones de dólares, le quitó el récord a SpaceX** (75 mil

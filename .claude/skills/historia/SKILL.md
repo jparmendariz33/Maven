@@ -186,6 +186,34 @@ reusa mundos (día/noche del mismo edificio); 3–5 mundos por historia; no uses
 `vote` (golpe seco), `ticks` (contador; ponle duración), `coins`, `rise` (algo sale bien), `fall` (algo sale mal), `shine` (revelación),
 `applause`, `wave`. Cada acción visible lleva su efecto, en la misma fracción de la escena en la que ocurre. 3–7 por escena, no más.
 
+### ⚠️ PRIMERO LA HISTORIA, DESPUÉS LA TÉCNICA (JP, 20 nov 2026)
+JP lo dijo viendo que en un solo día le metí ocho técnicas a este skill: *"cada video va a ser distinto… no es que
+tengas que meter todo en todos los videos, sino agarrar lo que más te sirva para cierto tipo de videos."*
+**El orden no se invierte nunca:**
+1. Escribes la historia que quieres contar, en prosa, sin pensar en recursos.
+2. Preguntas **qué tipo de historia es**.
+3. Eliges **UN motor narrativo** de los cinco de abajo, y **dices por qué** en el borrador que le mandas a JP.
+4. Los recursos de "la base" van en todos. De los demás, **máximo dos**, y solo si la historia los pide.
+
+**Una historia a la que hay que meterle un recurso para que funcione no está bien contada.** Si el guion en prosa
+no se sostiene leído en voz alta, ningún contador lo salva.
+
+| Si la historia es… | El motor | Por qué | Lo que NO va |
+|---|---|---|---|
+| **una cantidad que crece o se encoge** hasta volverse absurda | **El contador** | el espectador se queda para ver hasta dónde llega el número | no le pongas "construido desde cero": la cadena de problemas compite con el número |
+| **cómo funciona algo** que todos usan y nadie sabe por qué es así | **Construido desde cero** | cada problema obliga a inventar la siguiente pieza, y el título se contesta al final | sin contador: aquí no hay una cifra protagonista |
+| **un hecho humano que necesita contexto** para pesar | **El alejamiento** | la cámara sale de la persona al cuarto, del cuarto a la ciudad: el dato se siente, no se explica | sin recuadro esquema: romperías el único efecto que tiene |
+| **un error que mucha gente comete** | **Lo peor que puedes hacer** | te acusa en el gancho y luego te da el protocolo | ojo con el límite: protocolo de CONDUCTA, nunca de asignación |
+| **un titular que casi todos creen** y la cuenta dice otra cosa | **El desmontaje** | abres con lo que ya oyeron y lo desarmas pieza por pieza | no necesita contador ni cadena: necesita UNA imagen de la diferencia |
+
+**El alejamiento** (el que JP describió así: *"tomas de una persona, pero luego alejas la toma y luego la vuelves a
+alejar a la ciudad"*): la misma cosa vista a tres escalas, encadenadas sin corte (`trans: 'cont'`), con la persona
+clavada en el mismo punto de la pantalla mientras el mundo crece alrededor. Sirve cuando el dato es grande y
+abstracto y hay que volverlo humano — o al revés, cuando es íntimo y hay que enseñar que le pasa a millones.
+Se distingue del **contador** en que aquí no hay un número subiendo: lo que cambia es **a qué distancia estás**.
+
+### ─────── LA BASE: esto va en TODOS los videos ───────
+
 ### Gramática de plano: la cámara cambia de tamaño, no solo de sitio (JP, 20 nov 2026)
 JP vio un short de @SoySR.J y dijo: "todas las tomas son a la misma altura de la persona, la toma no cambia, mantiene
 el mismo tamaño la persona". **Lo medí en la historia de Kahneman y tenía razón exacta:**
@@ -288,6 +316,9 @@ palabra, se nombra: `supone 10% anual · ilustrativo`. Un número real NUNCA la 
 se pone en todo deja de distinguir nada. Nos aplica en cuanto hagamos el interés compuesto: "$1,000 al 10%" no es un
 dato, es un supuesto nuestro. Y no legitima proyectar el precio de una acción: eso sigue prohibido.
 
+### ─────── LOS CINCO MOTORES: escoge UNO ───────
+Uno por video, y el borrador dice cuál y por qué. Ver la tabla del selector, arriba.
+
 ### "Construido desde cero": el formato que deriva el mecanismo (JP, 20 nov 2026)
 El segundo video de @DesarmadoYoutube (227 mil likes): *"Ese techo del estadio NO tiene ni una columna"*. **No
 explica un estadio: lo construye delante de ti, y cada problema nuevo obliga a inventar la siguiente pieza.**
@@ -341,6 +372,31 @@ quiere que lo vean". Un paso sin su porqué se olvida.
 cuánto tiempo vas a necesitar ese dinero", "pregunta la comisión antes de firmar", "apunta por qué compraste" son
 procedimiento y están bien. "Compra más", "vende", "cámbiate a X" son recomendación y están prohibidos — y este
 formato es justo donde más fácil se resbala uno, porque suena a consejo útil. Candidatos en `plan/banco-historias.md`.
+
+### El desmontaje: agarrar el titular y abrirlo (20 nov 2026)
+El motor más común de este canal, aunque no lo teníamos escrito: **abres con lo que todos oyeron y lo desarmas.**
+Es el del short de Anthropic ("le quitó el récord a SpaceX… y cerró ganando la mitad de lo que abrió") y el de
+"reportó récord y la acción cayó".
+- **El gancho es el titular ajeno, dicho tal cual**, para que el espectador reconozca la historia en 3 segundos.
+  Sale de la investigación de titulares (§ "Antes del gancho").
+- **El cuerpo es lo que casi nadie contó**, y llega por partes: cada escena quita una capa.
+- **Necesita UNA imagen de la diferencia**, no muchas: la torre que se deshace, las dos columnas que se separan,
+  la línea que sube y vuelve a bajar. Si hacen falta dos imágenes para ver la diferencia, el guion está confuso.
+- **No lleva contador ni cadena de problemas:** no hay número que crezca ni mecanismo que derivar.
+- **El cierre es un principio general**, nunca un veredicto sobre la empresa (regla del cierre de un ranking).
+
+### El alejamiento: la misma cosa a tres escalas (JP, 20 nov 2026)
+JP: *"tomas de una persona, pero luego alejas la toma y luego la vuelves a alejar a la ciudad."*
+Tres escalas de lo mismo, **encadenadas sin corte** (`trans: 'cont'`, cámaras encadenadas) y con el sujeto clavado
+en el mismo punto de la pantalla mientras el mundo crece a su alrededor. El dato no se explica: se siente.
+- **Hacia afuera**, cuando algo íntimo resulta ser masivo: una persona mirando su teléfono → la misma escena con
+  cien personas iguales → la ciudad entera haciendo lo mismo.
+- **Hacia adentro**, cuando una cifra enorme hay que volverla humana: el edificio de la empresa → una oficina →
+  el recibo de una persona.
+- **Cada escala necesita una referencia conocida** en cuadro (una persona, un coche, una casa), o el salto no se
+  lee como escala, se lee como otra escena.
+- **Va con la gramática de plano**, no contra ella: cada escala es un tamaño de plano distinto, y de eso se trata.
+- **No le metas recuadro esquema ni contador.** El alejamiento es un solo efecto y compite con todo lo demás.
 
 ### El contador: para historias cuyo tema ES un número (JP, 20 nov 2026)
 Del mismo short de @SoySR.J: "¿cuántas veces hay que doblar un papel para llegar a la Luna?". Lleva **dos fichas fijas

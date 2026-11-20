@@ -349,6 +349,23 @@ con el que se anota el objeto en la escena.** Detalle en `/historia` §4.
 También el **arco de luz**: ese video pasa de noche y termina en una gasolinera iluminada con gente. Si la historia
 tiene un problema y una salida, **el mundo del problema va más oscuro que el de la salida**, y el cambio se ve.
 
+## Primero la historia, después la técnica (JP, 20 nov 2026)
+En un solo día le metí ocho recursos nuevos al skill de historias y JP puso el freno: *"cada video va a ser
+distinto… no es que tengas que meter todo en todos los videos, sino agarrar lo que más te sirva para cierto tipo de
+videos."* Tenía razón: leídos en fila, los recursos parecen una lista de pendientes y el riesgo es producir videos
+que son un muestrario en vez de una historia.
+**El orden no se invierte nunca:** (1) escribes la historia en prosa, sin pensar en recursos; (2) preguntas qué tipo
+de historia es; (3) eliges **UN motor narrativo** y **dices por qué en el borrador**; (4) los recursos de la base
+van en todos, de los demás **máximo dos**.
+**Una historia a la que hay que meterle un recurso para que funcione no está bien contada.** Si el guion en prosa no
+se sostiene leído en voz alta, ningún contador lo salva.
+Los cinco motores, con la tabla de cuándo va cada uno y qué NO mezclar, en `/historia` §4:
+**el contador** (una cantidad que crece hasta volverse absurda) · **construido desde cero** (cómo funciona algo) ·
+**el alejamiento** (un hecho humano que necesita contexto: la misma cosa a tres escalas, que es lo que JP describió
+como "alejas la toma y luego la vuelves a alejar a la ciudad") · **lo peor que puedes hacer** (un error común) ·
+**el desmontaje** (un titular que casi todos creen y la cuenta dice otra cosa — el motor más usado de este canal,
+aunque no estaba escrito).
+
 ## "Construido desde cero": derivar el mecanismo (20 nov 2026)
 Segundo video de @DesarmadoYoutube, 227 mil likes: *"Ese techo del estadio NO tiene ni una columna"*. No explica un
 estadio, **lo construye, y cada problema nuevo obliga a inventar la siguiente pieza**: cancha + gente → *solo la
