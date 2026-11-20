@@ -13,6 +13,7 @@ const story = (await import(storyURL)).default;
 
 await Promise.all(['800 40px Unbounded', '600 40px Unbounded', '500 40px "Space Grotesk"', '700 40px "Space Grotesk"', 'italic 400 40px "Instrument Serif"'].map(f => document.fonts.load(f)));
 await L.loadLogo(new URL('../assets/brand/logo_mask_small.png', import.meta.url).href);
+if (story.images) await L.loadImgs(story.images, storyURL);   // logos oficiales declarados por el story
 
 // tiempos: si existe build/timing.js (generado desde la voz real) manda; si no, duraciones estimadas del guion
 let timing = null;

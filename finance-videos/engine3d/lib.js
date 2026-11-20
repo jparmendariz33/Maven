@@ -189,6 +189,28 @@ export function kicker(s, y, k, ink) {
   if (k <= 0) return; C.save(); C.globalAlpha *= k; C.fillStyle = ink; C.fillRect(90, y - 11, 46 * ex(k), 3);
   txt(s.toUpperCase(), 154, y, { s: 28, ls: 4, c: ink }); C.restore();
 }
+// IMÁGENES REALES en el mundo 3D (logos oficiales de empresa). Hasta el 20 nov el motor 3D solo sabía
+// cargar la máscara de marca; los shorts sí llevan logo oficial, así que hacía falta un cargador de verdad.
+// Se precargan en player.js desde `images: {clave: 'archivo.png'}` del story, relativo a la carpeta del video.
+export const IMGS = {};
+export async function loadImgs(map, base) {
+  await Promise.all(Object.entries(map || {}).map(async ([k, f]) => {
+    const im = new Image(); im.src = new URL(f, base).href;
+    try { await im.decode(); IMGS[k] = im; } catch (e) { console.log('no cargó la imagen ' + f); } })); }
+// plano con el logo recortado (alfa respetado). `pad` deja aire alrededor para que no toque el borde.
+export function imgPlane(key, w, h, { pad = .08, emissive = 0 } = {}) {
+  const im = IMGS[key], pw = 512, ph = Math.round(pw * h / w);
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshStandardMaterial({
+    roughness: .9, transparent: true, depthWrite: false, map: canvasTex((g, W2, H2) => {
+      if (!im) return;
+      const d = Math.min(W2, H2) * (1 - pad * 2), e = Math.min(d / im.width, d / im.height);
+      g.drawImage(im, (W2 - im.width * e) / 2, (H2 - im.height * e) / 2, im.width * e, im.height * e);
+    }, pw, ph) }));
+  if (emissive) { m.material.emissive = new THREE.Color(0xFFFFFF);
+    m.material.emissiveMap = m.material.map; m.material.emissiveIntensity = emissive; }
+  return m;
+}
+
 let logo = null; const tinted = {};
 export async function loadLogo(src) { logo = new Image(); logo.src = src; await logo.decode(); }
 export function chrome(ink) {
