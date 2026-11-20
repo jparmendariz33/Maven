@@ -1,0 +1,64 @@
+{
+ "title": "Anthropic salió a bolsa: el debut más grande de la historia",
+ "host": true,
+ "sources": "SEC (424-B4) y Yahoo Finance, 19 nov 2026",
+ "slides": [
+  {
+   "type": "portada",
+   "kicker": "Jueves 19 de noviembre",
+   "title": "Anthropic salió a bolsa. Abrió +34% y cerró con la mitad.",
+   "size": 60,
+   "sub": "Es la salida a bolsa más grande de la historia: recaudó $81,340 millones.",
+   "logos": [
+    "images/logo_anthropic.png"
+   ],
+   "host": {
+    "act": "piensa",
+    "mood": "up"
+   },
+   "host_size": 215
+  },
+  {
+   "type": "dato",
+   "kicker": "El día, en números",
+   "title": "Quien compró en la salida ganó. Quien compró en la apertura, no.",
+   "bullets": [
+    "Precio de salida: $83.00 por acción",
+    "Abrió en $111.50, un 34% arriba. Máximo del día: $115.10",
+    "Cerró en $97.17: +17% contra la salida, 13% abajo de su apertura",
+    "Ese mismo día el Nasdaq cayó 2.25%"
+   ]
+  },
+  {
+   "type": "dato",
+   "kicker": "El número que engaña",
+   "title": "Perdió $104 mil millones. Y casi no perdió dinero operando.",
+   "bullets": [
+    "Pérdida neta de enero a septiembre: $104,039 millones",
+    "Pero su margen de operación del trimestre fue de −3%, contra −224% un año antes",
+    "$94,300 millones de eso no son dinero que salió: es el cambio de valor de sus notas convertibles, que subió porque la empresa vale más"
+   ]
+  },
+  {
+   "type": "dato",
+   "kicker": "Por qué le interesa al mercado",
+   "title": "En 2023 vendió $41 millones en todo el año.",
+   "bullets": [
+    "Ingresos de todo 2023: $41 millones",
+    "Ingresos solo del tercer trimestre de 2026: $17,000 millones",
+    "Contra el mismo trimestre del año pasado: 1,127% más"
+   ]
+  },
+  {
+   "type": "pregunta",
+   "kicker": "La idea",
+   "question": "La utilidad neta no siempre dice cómo le fue al negocio.",
+   "size": 64,
+   "cta": "¿Tú en qué te fijas primero de un reporte? Te leo 👇",
+   "host": {
+    "act": "cierre"
+   },
+   "host_size": 210
+  }
+ ]
+}
