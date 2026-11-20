@@ -27,7 +27,9 @@ se dispara, el short sigue siendo cierto.
 
 ## El gancho, en tres capas (regla del 20 nov)
 - **Voz, en 0.0 s:** "Perdió 104 mil millones de dólares en nueve meses. Y casi no perdió dinero."
-- **Texto en pantalla, cuadro 1:** `PERDIÓ $104,039 MILLONES` / `Y CASI NO PERDIÓ DINERO`
+- **Texto en pantalla, en DOS TIEMPOS** (regla del 20 nov, del short de @DesarmadoYoutube): entra
+  `PERDIÓ $104,039 MILLONES` solo; ~0.3 s después cae debajo, **en el color de acento**, `Y CASI NO PERDIÓ DINERO`.
+  El remate se revela, no aparece junto con el resto.
 - **Música:** entra con cuerpo (36%), ya corregido en `music3d.py`.
 - Identifica a la empresa: logo oficial de Anthropic arriba a la derecha, en la capa editorial (en el mundo 3D no va
   ningún logotipo real, como siempre).
@@ -55,7 +57,7 @@ La columna **toma** usa la tabla de `/historia` §4 (`fov` 30°, `media_altura =
 | 4 titular | A | **Contrapicado entero** | 9 · 0.9 · +18° | Cae desde arriba una plancha de periódico que tapa el tablero; se ve enorme desde abajo | `SUBIÓ 17%` |
 | 5 la otra cuenta | A | **Primer plano** (único) | 3.7 · 2.1 · 0° | La cara del inversionista; detrás, desenfocado, el tablero. `fov` a 22 para cerrar sin deformar | `CONTRA EL PRECIO DE APERTURA` / `cerró 13% abajo` |
 | 6 la torre | B | **General** | 22 · 7.0 · 0° | La torre se construye bloque a bloque mientras habla, hasta salirse por arriba del cuadro | `PÉRDIDA NETA · 9 MESES DE 2026` / `$104,039 millones` |
-| 7 el humo | B | **Entero** | 10 · 3.0 · 0° | **El momento del video:** 9 de cada 10 bloques se vuelven translúcidos y se van flotando; queda un muñón chaparrito | `$94,300 MILLONES NO SALIERON DE LA CAJA` / `Es un ajuste en los libros` |
+| 7 el humo | B | **Entero** | 10 · 3.0 · 0° | **El momento del video:** 9 de cada 10 bloques se vuelven translúcidos y se van flotando; queda un muñón chaparrito | `$94,300 MILLONES NO SALIERON DE LA CAJA` / `Es un ajuste en los libros`  ← la consecuencia se VE, no se nombra |
 | 8 el negocio | C | **Cenital** | 6 · justo encima · −90° | Vista de pájaro del mostrador: entran 100 monedas por un lado, salen 97 por el otro | `DE CADA $100 QUE VENDIÓ, PERDIÓ $3` / `Un año antes perdía $224` |
 | 9 cierre | C | **Medio** | 4.4 · 2.2 · 0° | JP en 3D entra a cuadro y cierra | La pregunta + lema + aviso legal + **"Guion asistido por Claude, producto de Anthropic"** |
 
@@ -69,6 +71,11 @@ La columna **toma** usa la tabla de `/historia` §4 (`fov` 30°, `media_altura =
 7. De esa cifra, 94 mil millones nunca salieron de la caja. Son un ajuste en los libros, no dinero gastado. Nadie firmó un cheque por ese dinero.
 8. ¿Y el negocio? De cada 100 dólares que vendió, perdió 3. Un año antes perdía 224.
 9. La utilidad neta te dice qué quedó hasta abajo. No te dice cómo va el negocio. ¿Cuántas veces te has quedado solo con el titular?
+
+## Marca `ilustrativo`: aquí no lleva ninguna
+Regla nueva del 20 nov: todo número proyectado o de ejemplo se marca en pantalla. **En este short no hay ninguno.**
+Las nueve cifras son hechos del prospecto ante la SEC o precios de cierre: todas llevan fuente, ninguna lleva marca.
+Es justo el caso que la regla quiere distinguir.
 
 ## Lo que este short NO hace
 - No dice si la acción está cara o barata, ni si conviene comprarla. El cierre es un principio general.

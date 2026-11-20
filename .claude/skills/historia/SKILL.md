@@ -232,6 +232,31 @@ siete mundos de Kahneman son **piso + pared al fondo** con distinto color: cambi
   ya da la sensación de que se construye.
 - Un mundo nuevo entra con la ola (`L.tide()`); dentro del mismo mundo va `trans: 'cont'` con las cámaras encadenadas.
 
+### El rótulo que se revela, y la consecuencia que se ve (JP, 20 nov 2026)
+Del short de @DesarmadoYoutube (206 mil likes, el más visto de los que trajo JP):
+- **Remate en dos tiempos.** Entra `lo peor:` solo; ~0.3 s después cae debajo, **en el color de acento**, `pisar a
+  fondo`. No es un subtítulo, es un reveal. `head()` dibuja el título completo de golpe y en el momento del golpe eso
+  se desperdicia. **Una o dos veces por video** —gancho y remate—, nunca en todas las escenas o deja de pegar.
+- **La consecuencia se ve.** Dice "el que termina abrazado a un poste eres tú" **y el coche choca**: estrellas,
+  parabrisas roto, la equis. Si el guion nombra una consecuencia mala, la maqueta la enseña pasando.
+- **Lo que NO copiamos:** el aspecto (plano, pocos polígonos, de noche). El nuestro es plastilina mate con luz de
+  cine y ya es reconocible. Parecernos a alguien es tirar lo único que es nuestro.
+
+### Números que ilustran: la marca `ilustrativo` (20 nov 2026)
+En ese short el velocímetro sube a 150 y lleva pegado, chiquito, `km/h · ilustrativo`. **Todo número proyectado,
+simulado o de ejemplo lleva esa palabra en la ficha, en pantalla, no en la descripción.** Si el supuesto cabe en una
+palabra, se nombra: `supone 10% anual · ilustrativo`. Un número real NUNCA la lleva: ahí va la fuente, y si la marca
+se pone en todo deja de distinguir nada. Nos aplica en cuanto hagamos el interés compuesto: "$1,000 al 10%" no es un
+dato, es un supuesto nuestro. Y no legitima proyectar el precio de una acción: eso sigue prohibido.
+
+### Formato "lo peor que puedes hacer" (20 nov 2026)
+El short de las 206 mil likes abre así: *"Si un coche te sigue de noche, lo peor que puedes hacer es…"*. Condición
+que le puede pasar a cualquiera + un error que quizá estés cometiendo. Engancha porque te acusa.
+En finanzas es terreno seguro y nuestro: **un error que evitar no es una recomendación de compra ni de venta**, así
+que esquiva la regla que nos cierra la puerta en casi todo lo demás. La estructura: condición → el error → la
+consecuencia que SE VE → qué sí hacer → la pregunta. Dos errores por video como máximo ("y lo segundo:"), no cinco.
+Candidatos en `plan/banco-historias.md`.
+
 ### El contador: para historias cuyo tema ES un número (JP, 20 nov 2026)
 Del mismo short de @SoySR.J: "¿cuántas veces hay que doblar un papel para llegar a la Luna?". Lleva **dos fichas fijas
 arriba que nunca se van** y suben con la voz — `DOBLECES 0 → 1 → 2 → 10 → 20 → 30` y `GROSOR 0,1 mm → 0,2 mm → 10,2 cm

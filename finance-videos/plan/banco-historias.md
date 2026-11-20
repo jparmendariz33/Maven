@@ -29,6 +29,18 @@ la voz y un mundo que cambia de escala para que quepa (`/historia` §4). Nacen d
 El del **interés compuesto** es el primero que se debe hacer: es el mecanismo exacto del papel doblado y además es lo
 más buscado por quien empieza a invertir.
 
+## Formato "lo peor que puedes hacer" (20 nov 2026)
+Condición + error + la consecuencia que se ve + qué sí hacer + pregunta (`/historia` §4). Máximo dos errores por
+video. **Un error que evitar no es recomendación de compra ni de venta**, así que este formato nos abre tema que
+normalmente tenemos cerrado. Todos piden verificación de las cifras antes de usarlas.
+
+| El gancho | El error | La consecuencia que se ve |
+|---|---|---|
+| "Si el mercado cae 20%, lo peor que puedes hacer es…" | vender todo y quedarte fuera | la gráfica rebota sin ti; tu silla vacía frente a la pantalla |
+| "Si acabas de recibir tu aguinaldo, lo peor que puedes hacer es…" | meterlo todo de golpe en una sola cosa | la torre de un solo bloque que se cae |
+| "Si una acción lleva 10 días subiendo, lo peor que puedes hacer es…" | entrar porque ya subió | el escalón que se rompe justo cuando pisas |
+| "Si tu banco te ofrece un fondo, lo peor que puedes hacer es…" | no preguntar la comisión | dos columnas que se separan año con año |
+
 ## Propuestas de Claude (JP puede quitar o agregar)
 | Personaje / empresa | Ticker | El arco en una línea (verificar) |
 |---|---|---|

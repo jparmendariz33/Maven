@@ -205,6 +205,20 @@ se confirma con **al menos dos fuentes independientes del mismo día**. En la pu
 **Y antes de escribir: comprueba la fecha en hora de México, no la del contenedor**, que corre en UTC. Por eso dije
 "ayer" de algo que había pasado ese mismo día.
 
+## Un número que ilustra se marca "ilustrativo" en pantalla (20 nov 2026)
+Del short de @DesarmadoYoutube que trajo JP: el velocímetro que sube a 150 lleva pegado, chiquito, **`km/h ·
+ilustrativo`**. No es el dato de un coche real y lo dicen ellos mismos, sin que nadie se los pida.
+Nos hacía falta. Nuestra regla era "todo número lleva fuente", y tapaba un hueco: **un número que no es un dato sino
+una simulación no tiene fuente que citar, y aun así lo vamos a poner en pantalla.** Pasa en cuanto hagamos la
+historia del interés compuesto: "$1,000 al 10% anual" no es un dato de nada, es un supuesto que elegimos nosotros.
+- Todo número **proyectado, simulado o de ejemplo** lleva la palabra **`ilustrativo`** pegada a la cifra, en chico,
+  en la misma ficha. No en la descripción: en pantalla.
+- Si el supuesto se puede nombrar en una palabra, se nombra: `supone 10% anual · ilustrativo`.
+- Un número **real** nunca lleva la marca: ahí va la fuente. La marca distingue las dos cosas, y si se pone en todo
+  deja de distinguir nada.
+- Esto **no** convierte una proyección en algo publicable por sí solo: sigue prohibido proyectar el precio de una
+  acción. Es para aritmética neutra (interés compuesto, inflación, una comisión), no para pronósticos.
+
 ## Una publicación nunca dice "hoy" ni "ayer" (20 nov 2026)
 JP no alcanzó a subir la publicación de Nvidia el día que se hizo, y al día siguiente "hoy bajó 2.89%" y "lo que
 reportó ayer" ya eran falsas. **En publicaciones y en sus textos las fechas van explícitas** ("el martes", "el
@@ -283,6 +297,20 @@ menos de 3 unidades la cara se deforma. Y en plano cerrado mete algo a media dis
 Lo mismo con los mundos: los nuestros son **piso + pared** repintados. Un mundo necesita tres profundidades (algo
 pegado a cámara, el sujeto, algo al fondo) y **hacer algo durante la escena** — que los edificios suban del suelo
 escalonados con `scale.y`, que la mesa se llene, que la luz pase de día a noche.
+
+## El rótulo se revela en dos tiempos, y la consecuencia se VE (20 nov 2026)
+Dos cosas del short de @DesarmadoYoutube (206 mil likes, el más visto de los tres que trajo JP):
+- **El rótulo no es un subtítulo: es un remate en dos tiempos.** Primero entra `lo peor:` solo. Un instante después
+  cae debajo, **en rojo**, `pisar a fondo`. La frase importante no aparece de golpe con el resto del texto; **se
+  revela**. Nuestro `head()` dibuja el título entero de una vez, y para el golpe de la historia eso lo desperdicia.
+  Úsalo **una o dos veces por video**, en el gancho y en el remate: la primera línea en el color de siempre, la
+  segunda entrando ~0.3 s después en el color de acento. En todas las demás escenas, el rótulo normal.
+- **La consecuencia se ve, no se nombra.** Dice "el que termina abrazado a un poste eres tú" y **el coche choca**:
+  estrellas girando, parabrisas roto, la equis. Nuestra regla del dinamismo pide que un objeto cambie de estado por
+  una causa; esto es el escalón siguiente y aplica a todo video sobre un error: **si el guion nombra una consecuencia
+  mala, la maqueta tiene que enseñarla pasando.** La torre que se deshace del short de Anthropic es justo eso.
+(De ese short NO copiamos el aspecto: es plano, de pocos polígonos y de noche. El nuestro es plastilina mate con luz
+de cine y ya es reconocible; cambiarlo por parecernos a alguien sería tirar lo único que es nuestro.)
 
 ## El contador, para historias cuyo tema ES un número (JP, 20 nov 2026)
 Del mismo short ("¿cuántas veces hay que doblar un papel para llegar a la Luna?"): dos fichas fijas arriba que nunca
@@ -385,6 +413,11 @@ que sincroniza escenas y subtítulos con los tiempos reales de `build/whisper.js
    Al final `voz3d.py` verifica que toda palabra **anclada** tenga audio donde dice tenerlo y truena si no. Solo las
    ancladas: las interpoladas no tienen tiempo real contra el cual comparar y daban falsas alarmas.
 5. `make_audio.py` → `render3d.js`.
+**Pendiente de calibrar con el oído de JP (20 nov 2026):** JP trajo tres shorts de referencia que le gustan y los tres
+van mucho más rápido que nosotros — **190, 177 y 194 palabras/min** (el de 194 tiene 206 mil likes), contra las **145**
+que deja `--aire 0.7`. Tres de tres ya es un patrón, no una muestra. El `0.7` lo elegí yo por criterio propio y la
+evidencia dice que me quedé corto. **No lo cambio sin que JP oiga las versiones**, porque es su canal y su oído; y
+probarlo es gratis: `--aire` se aplica sobre `voice.wav`, que sale de `voice_raw.mp3`, que ya está pagado.
 Ojo: `--aire` se aplica una sola vez sobre `voice.wav`; para repetirlo hay que volver a correr `process_voice.py`.
 
 ## Cambiar solo el audio no exige volver a renderizar (20 nov 2026)
