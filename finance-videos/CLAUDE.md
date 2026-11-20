@@ -165,6 +165,65 @@ cinco vueltas. Los cuatro defectos que salieron, con su causa real:
 Para calcular distancia: con el vertical, `media_altura = tan(25°) × distancia` y `media_anchura = media_altura × 0.5625`.
 Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
 
+## Regla del gancho (JP, 20 nov 2026 — la más importante del canal)
+"Creo que la primera parte es muy buena, pero no engancha. Hay que enganchar en 3 o 5 segundos."
+**No es opinión: está medido.** En la historia de Steve Jobs solo el **27.84%** se quedó a mirar —7 de cada 10
+deslizaron— pero quien se quedaba veía el **51.76%**. El contenido no era el problema; el primer segundo sí.
+Un video que nadie ve no sirve por bien hecho que esté, así que el gancho se trabaja **antes** que el resto del guion.
+- **Shorts e historias 3D: 3 segundos.** En ese tiempo tiene que haber (1) una frase escrita en pantalla que valga por
+  sí sola sin sonido, y (2) una razón concreta para no deslizar: una cifra que choque, una contradicción, una pregunta
+  que el espectador se haya hecho. Nunca una presentación ("hoy vamos a hablar de…") ni un contexto previo.
+- **Largos: hasta 15 s**, pero la promesa concreta va en los primeros 5.
+- **Publicaciones:** el gancho es el título de la primera lámina. Mismo filtro.
+- **El filtro, antes de escribir nada más:** si la primera frase se puede cambiar por la de otro video del canal sin que
+  se note, no es un gancho. Y si hay que esperar a la segunda frase para entender por qué importa, tampoco.
+- Lo que SÍ engancha, por orden de lo que ha funcionado: una contradicción ("reportó récord y la acción cayó"), una
+  cifra con escala ("perdió 104 mil millones y casi no perdió dinero"), un resultado prometido ("gana Alphabet, 25 de 30").
+- Sigue vigente que el gancho **identifica a la empresa** (logo o foto): enganchar y decir de quién hablas no compiten.
+
+## Las historias cierran con una PREGUNTA (convención de la casa, 19 nov 2026)
+Lo tenía la historia de Steve Jobs ("¿Genio irrepetible… o una empresa capaz de reinventarse?") y a la de Kahneman se
+me olvidó: terminaba con una afirmación y se acababa. La escena de cierre es propia y lleva **la pregunta centrada en
+serif itálica, la línea "Desde la costa, todo se ve con claridad." y el aviso legal**. Si la historia es el puente a un
+largo, va **antes** una escena de aviso (pizarrón "ESTE DOMINGO 10:00" + el título) y la pregunta cierra al final.
+
+## La ola solo va entre lugares distintos (20 nov 2026)
+La transición `L.tide()` —la ola con espuma— es de marca y está bien para **cambiar de sitio**. Entre dos escenas que
+pasan en el MISMO mundo se siente como un parche en medio de una toma. En esas va **`trans: 'cont'`** en la escena que
+sigue, y además hay que **encadenar las cámaras**: la posición y el objetivo con que arranca cada escena continuada
+son los que tenía la anterior al terminar. Sin eso, quitar la ola deja un corte seco. Y en un plano continuo los
+objetos **se encogen** para salir, no desaparecen de golpe.
+
+## Los rótulos se ajustan solos (20 nov 2026)
+Ni el título ni el subtítulo de `head()` se arreglan acortando el texto (regla de la maquetación). A 78 px caben ~18
+caracteres por línea en los 900 px útiles: si una línea se pasa, **todo el bloque se achica** (mínimo 54). El subtítulo
+hace lo mismo a partir de ~46 caracteres. Y el degradado (`scrim`) tiene que llegar ~60 px más abajo que la última
+línea: si no, el subtítulo cae sobre la escena y, con un fondo oscuro detrás, desaparece.
+
+## Una publicación nunca dice "hoy" ni "ayer" (20 nov 2026)
+JP no alcanzó a subir la publicación de Nvidia el día que se hizo, y al día siguiente "hoy bajó 2.89%" y "lo que
+reportó ayer" ya eran falsas. **En publicaciones y en sus textos las fechas van explícitas** ("el martes", "el
+miércoles 18", "en lo que va del año"), para que sigan siendo ciertas el día que se suban. En los shorts de contexto
+ya estaba prohibido por otra razón (que no envejezcan); aquí es por exactitud.
+
+## Un número que no se puede verificar no se publica (20 nov 2026)
+En el debut de Anthropic las fuentes daban valor de mercado entre 1.3 y 2 billones, el prospecto no publicaba cifra
+final y las acciones en circulación que sí reportaba excluían opciones y RSUs. **Se omitió el dato.** Calcularlo
+habría sido inventar precisión. Mejor una publicación sin la cifra más vistosa que una con un número que no aguanta.
+
+## Noticias: fuente primaria + al menos tres fuentes del día (JP, 20 nov 2026)
+Para una pieza sobre algo que pasó hoy: la **fuente primaria** (SEC, reporte de la empresa, la bolsa) manda, y encima
+se confirma con **al menos dos fuentes independientes del mismo día**. En la publicación de Anthropic: prospecto
+424(b)(4) ante la SEC + cierre de Yahoo Finance + cobertura de CNBC y CNN, todo del 19 de noviembre. Las tres se citan.
+**Y antes de escribir: comprueba la fecha en hora de México, no la del contenedor**, que corre en UTC. Por eso dije
+"ayer" de algo que había pasado ese mismo día.
+
+## Conflicto de interés: se declara aunque nadie pregunte (20 nov 2026)
+La publicación del debut de Anthropic la redactó Claude, que es un producto de Anthropic. Se le dijo a JP antes de
+escribir una línea y quedó anotado en `summary.md` y en `publicacion.md`. La regla del canal ya exige declarar las
+empresas que son clientes de la agencia; esto es lo mismo por el otro lado: **cualquier relación entre quien escribe
+y la empresa analizada se dice, y la decisión de publicarla o no es de JP.**
+
 ## Regla del borrador anticipado (JP, 19 nov 2026)
 **Todo lo atemporal se trabaja en borrador días antes, no el día de publicarlo.** Los largos, las historias 3D y los
 rankings no dependen del cierre de la bolsa, así que no hay ninguna razón para empezarlos el mismo día. Lo que se
