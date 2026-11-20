@@ -88,3 +88,77 @@ fuente primaria más tres fuentes del día (y comprobar la fecha en hora de Méx
 Y antes, en la misma sesión: el borrador anticipado · la aprobación por capturas · la eficiencia en créditos · que se
 entienda sin saber nada · el dinamismo en 3D · la mezcla al 60% · la partitura anclada al final · cambiar solo el
 audio sin renderizar · las gráficas con `L.plaque` · el flujo de `voz3d.py` con sus tres trampas.
+
+---
+
+# 6. Los números del canal (JP los pasó el 20 nov 2026) — y qué cambian del plan
+
+## 6.1 Dos cosas no cuadran, y conviene decirlas antes de concluir nada
+
+**a) Las 11,018 vistas y las 23.15 horas son incompatibles.** 23.15 h entre 11,018 vistas dan **7.6 segundos por
+vista**, pero Studio reporta una duración promedio de **30 s**. Si de verdad fueran 30 s, el tiempo de reproducción
+serían 91.8 horas, no 23.15: las dos cifras difieren **4 veces**. La explicación más probable es la que el propio
+reporte menciona — **el ajuste de conteo de vistas de YouTube del 16 de noviembre**, que empezó a contar como vista
+cualquier aparición en el feed de Shorts, no solo las reproducciones con intención.
+**Consecuencia práctica: el salto de "30–120 vistas" a 11,018 NO es comparable con lo de antes y no debe leerse como
+que el canal se disparó.** Las métricas confiables de este periodo son **tiempo de reproducción (23.15 h),
++366 suscriptores y 751 me gusta**, y esas tres sí son buenas.
+
+**b) La tabla suma 1,085 vistas y el canal reporta 11,018.** Encaja con la nota de que la tabla mide **la primera hora**
+de cada pieza. Eso la hace justa entre sí, pero significa que mide **cuánta distribución le dio YouTube al arrancar**,
+no qué tan bueno es el contenido.
+
+## 6.2 El hallazgo que cambia la prioridad
+
+Crucé vistas contra retención de las 14 piezas: **la correlación es NEGATIVA (r = −0.14)**. Lo mejor retenido es lo
+menos visto.
+
+| Pieza | Vistas (1ª h) | Retención |
+|---|---:|---:|
+| Nubank | **666** | 38.45% |
+| Jobs | 119 | 53.67% |
+| AMD vs Nvidia | 103 | **79.13%** |
+| Kahneman | 15 | **127.83%** (se repite) |
+| Meta | 8 | 76.25% |
+| GTA | 4 | 67.93% |
+
+**Esto obliga a matizar la conclusión del gancho.** El gancho sigue siendo necesario —el 27.84% de Jobs lo prueba—
+pero **hoy el cuello de botella no parece ser la retención: es la distribución.** Tenemos piezas que retienen 68%,
+76% y 79% y que casi nadie vio. Mejorar el gancho de un video que recibe 4 vistas no cambia nada.
+
+**Y falta el dato que lo resolvería: impresiones y CTR.** Sin eso no se puede distinguir entre
+"YouTube no lo mostró" y "lo mostró y nadie hizo clic" (que sería culpa de la miniatura y el título, no del gancho).
+**Es lo primero que le pediría a JP del próximo reporte.**
+
+## 6.3 Lo que sí se puede afirmar con esta muestra
+
+- **Solo 4 de las 14 piezas pasan de 50 vistas.** En las otras diez, los porcentajes salen de muestras de 4 a 18
+  vistas: no son concluyentes y no se debe planear sobre ellos. **Regla nueva: no se toma ninguna decisión de formato
+  con menos de 50 vistas en la pieza.**
+- **Nubank es la única referencia real**: 666 vistas, 38.45% de retención, 33 s de duración promedio. Es el número
+  a batir, y el formato a entender — es un short de empresa con cifra fuerte en el gancho.
+- **Kahneman al 127.83% significa que se repite**: la duración promedio (1:23) supera la del video (1:05). Es
+  excelente señal de que el contenido engancha a quien lo ve… pero con 15 vistas, es una señal, no una conclusión.
+- **El torneo (16.90%) es la peor retención de las piezas nuevas.** Con 14 vistas no es concluyente, pero coincide
+  con la hipótesis del gancho: una cuenta regresiva necesita prometer el resultado en los primeros 3 segundos.
+- **El largo de Apple tiene 1 vista en su primera hora.** Toda la estrategia de "las historias son el puente a los
+  largos" todavía **no tiene ninguna evidencia de estar funcionando**. Hay que medirlo explícitamente.
+- En la lista de largos aparecen dos videos en inglés ("The Porfiriato…", "The First $100,000") que **no son de esta
+  línea de contenido**; conviene saber si son del canal viejo, porque ensucian el promedio del canal.
+
+## 6.4 Cómo cambia el orden de prioridades
+
+| Antes | Ahora | Por qué |
+|---|---|---|
+| 1. Cron y skills | **1. Cron y skills** | Sigue igual: está roto hoy |
+| 2. El gancho | **2. Pedir impresiones y CTR** | Sin eso estamos optimizando a ciegas la mitad equivocada del embudo |
+| 3. Reorganizar | **3. El gancho** | Sigue siendo correcto y barato, pero ya no es evidente que sea el cuello de botella |
+| — | **4. Entender por qué Nubank sí se distribuyó** | Es la única pieza con distribución real: el título, la miniatura y el tema de ese short son la mejor pista que tenemos |
+| — | **5. Medir el puente historia → largo** | Es el supuesto central de todo el calendario nuevo y no está verificado |
+
+## 6.5 Qué pedirle a JP del próximo reporte
+1. **Impresiones y CTR** de cada pieza (es lo que falta para saber dónde está el problema).
+2. **Vistas totales, no solo de la primera hora**, para las piezas con más de una semana.
+3. **Fuentes de tráfico** (feed de Shorts, búsqueda, sugeridos, externos).
+4. Para los largos: **impresiones, CTR y retención a los 30 s**.
+5. Confirmación de si los dos videos en inglés son del canal viejo.
