@@ -61,6 +61,28 @@ dos tiempos en el gancho, la consecuencia que se ve, y el arco de luz (el piso d
 **El enganche con el canal:** SpaceX es nuestro video con más retención (86.5% se quedó a mirar). Abrir con "le quitó
 el récord a SpaceX" le habla a gente que ya vio eso.
 
+## Estado de resultados verificado · 9 meses a septiembre de 2026
+**Fuente:** Issuer Free Writing Prospectus (Regla 433) de Anthropic, PBC ante la SEC, 11 nov 2026, tabla de MD&A
+§5.5 "Results of Operations". **No es el 424(b)(4)**: es la misma información, pero se cita como lo que es.
+
+| Renglón (como lo imprime el documento) | 9M 2025 | 9M 2026 |
+|---|---|---|
+| Ingresos | 2,545 | **33,242** |
+| Total de gastos de operación | 7,769 | **34,502** |
+| **= Pérdida de operación** | (5,224) | **(1,260)** |
+| Intereses a favor | 239 | 2,359 |
+| Cambio de valor: notas convertibles, derivados y SAFEs | (20,107) | **(94,324)** |
+| Otros gastos, neto | (3) | (10,397) |
+| Impuestos | 12 | 417 |
+| **= Pérdida neta** | (25,107) | **(104,039)** |
+
+Cuadra exacto: −1,260 + 2,359 − 94,324 − 10,397 − 417 = **−104,039**.
+Márgenes: **−3.79%** en 2026 (de cada $100 perdió $3.79) y **−205%** en 2025 (perdía $205).
+
+**Tres cifras mías estaban mal y quedaron corregidas:** el ajuste era 94,300 (real **94,324**); "otras partidas
+−8,479" era **un residuo que inventé** y ahora son líneas reales agrupadas (**−8,455** = intereses +2,359, otros
+gastos −10,397, impuestos −417); y los márgenes eran 3.80 y 204 (reales **3.79** y **205**).
+
 ## El gancho, en tres capas (regla del 20 nov)
 - **Voz, en 0.0 s:** "Le quitó el récord a SpaceX. Abrió ganando 34%… y cerró ganando 17."
   (El anterior —"perdió 104 mil millones y casi no perdió dinero"— lo tumbó JP el 19 nov: repetía "perdió" y estaba

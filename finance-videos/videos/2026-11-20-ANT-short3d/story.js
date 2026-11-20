@@ -269,8 +269,8 @@ Object.assign(worlds, {
                         ['Operación\n−1,260', -1260, 'total']], 1.05, 4.0, 35000);
     wa.g.position.set(-1.05, .9, -4.2); w.scene.add(wa.g);
     // beat B · el salto: la operación es una rayita al lado del ajuste contable (escala 104,039)
-    const wb = cascada([['Operación\n−1,260', -1260, 'total'], ['Ajuste en libros\n−94,300', -94300, 'baja'],
-                        ['Otras partidas\n−8,479', -8479, 'baja'], ['PÉRDIDA NETA\n−104,039', -104039, 'total']],
+    const wb = cascada([['Operación\n−1,260', -1260, 'total'], ['Ajuste en libros\n−94,324', -94324, 'baja'],
+                        ['Intereses, otros\ne impuestos\n−8,455', -8455, 'baja'], ['PÉRDIDA NETA\n−104,039', -104039, 'total']],
                        .95, 4.4, 104039);
     wb.g.position.set(-1.42, 1.0, -4.2); wb.g.visible = false; w.scene.add(wb.g);
     const baja = L.actor(INV); baja.position.set(2.6, 0, -2.6); baja.rotation.y = -.5; w.scene.add(baja);
@@ -280,9 +280,9 @@ Object.assign(worlds, {
       g.strokeStyle = TERRA; g.lineWidth = 7; g.strokeRect(4, 4, W2 - 8, H2 - 8);
       g.textAlign = 'center'; g.fillStyle = '#5A2E14'; g.font = '700 34px "Space Grotesk"';
       g.fillText('DE CADA $100 QUE VENDIÓ', W2 / 2, 62);
-      g.fillStyle = TERRA; g.font = '800 72px Unbounded'; g.fillText('perdió $3.80', W2 / 2, 164);
+      g.fillStyle = TERRA; g.font = '800 72px Unbounded'; g.fillText('perdió $3.79', W2 / 2, 164);
       g.fillStyle = 'rgba(90,46,20,.62)'; g.font = '600 32px "Space Grotesk"';
-      g.fillText('un año antes perdía $204', W2 / 2, 222); }, 680);
+      g.fillText('un año antes perdía $205', W2 / 2, 222); }, 680);
     callout.material.emissiveIntensity = .3;
     callout.position.set(.4, 4.4, -3.4); callout.scale.setScalar(.001); w.scene.add(callout);
     return { ...w, pelda, alturas, trepa, wa, wb, baja, callout };
@@ -444,7 +444,7 @@ const scenes = [
 
   // 8 · EL CALLOUT dentro del waterfall (JP): de cada $100, perdió $3.80. Plano más cerrado.
   { id: 'callout', world: 'taller', d: 7, ink: TINTA, year: '2026', sfx: [[.14, 'shine', .5]],
-    cap: 'De cada 100 dólares que vendió, perdió 3.80. Un año antes perdía 204.',
+    cap: 'De cada 100 dólares que vendió, perdió 3.79. Un año antes perdía 205.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       w.pelda.forEach(g => g.scale.y = .001); w.trepa.visible = false;
@@ -475,7 +475,7 @@ const scenes = [
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .5, '224,165,113');
-      head(L, 'DE DÓNDE SALEN LOS $104,039 M', ['$94,300 millones', 'nunca salieron'], 'Un ajuste en los libros: nadie firmó un cheque', TINTA, p, TERRA);
+      head(L, 'DE DÓNDE SALEN LOS $104,039 M', ['$94,324 millones', 'nunca salieron'], 'Un ajuste en los libros: nadie firmó un cheque', TINTA, p, TERRA);
     } },
 
   // 10 · CIERRE — vuelve la plaza, ya sin nadie, y la pantalla lleva la pregunta. El bookend del gancho.
