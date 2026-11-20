@@ -162,3 +162,90 @@ pero **hoy el cuello de botella no parece ser la retención: es la distribución
 3. **Fuentes de tráfico** (feed de Shorts, búsqueda, sugeridos, externos).
 4. Para los largos: **impresiones, CTR y retención a los 30 s**.
 5. Confirmación de si los dos videos en inglés son del canal viejo.
+
+---
+
+# 7. Los datos reales de vidIQ (20 nov 2026) — y el hallazgo que lo cambia todo
+
+Consulté la API de vidIQ con la cuenta de JP. **Los números son muy distintos a los del reporte pegado**, porque
+aquel medía la primera hora de cada pieza. Costo: 20 créditos de 1,374 disponibles (plan **Boost**, 2,000 al mes,
+renueva el 17 de diciembre — no el plan básico).
+
+## 7.1 El 71% de las vistas del canal son PUBLICIDAD PAGADA
+
+| Fuente | Vistas | % | Con intención | Retención | Duración |
+|---|---:|---:|---:|---:|---:|
+| **Publicidad pagada** | **6,939** | **71%** | 1,207 | 16.5% | 22 s |
+| Feed de Shorts | 2,194 | 22% | 559 | **51.8%** | 41 s |
+| Página del canal | 305 | 3% | 192 | 31.2% | 30 s |
+| **Búsqueda de YouTube** | 293 | 3% | 107 | **68.4%** | **61 s** |
+| Resto | 53 | 1% | — | — | — |
+
+Y en el video más visto, SpaceX: **4,590 de sus 4,974 vistas (92%) vinieron de publicidad.** Solo 278 del feed.
+
+**Esto reordena todo el diagnóstico:**
+- El crecimiento aparente del canal es **comprado**, no orgánico. Las 11,018 vistas no miden el contenido.
+- El motor orgánico real son **2,845 vistas** (29%), y está **sano**: el feed de Shorts retiene 51.8% y la búsqueda
+  68.4% con 61 segundos de duración promedio.
+- La conclusión de la sección 6 ("el cuello de botella es la distribución") sigue siendo cierta, pero la causa es
+  otra: no es que YouTube no muestre el contenido, es que **el volumen que vemos no es distribución orgánica**.
+- **Pregunta abierta para JP: ¿quién está pagando esa publicidad y con qué objetivo?** Si es una campaña suya,
+  conviene separar las métricas pagadas de las orgánicas en cada revisión, porque mezcladas no dicen nada.
+
+## 7.2 El "% que se queda" por pieza, ya limpio
+
+`engagedViews / views` es la proporción que no deslizó. Ojo: la publicidad lo contamina hacia abajo.
+
+| Pieza | Vistas | Se queda |
+|---|---:|---:|
+| Nubank | 928 | **7%** |
+| SpaceX · Jobs (los dos con mucha publicidad) | 4,974 · 2,267 | 18% · 18% |
+| Torneo | 105 | 22% |
+| Apple "$28 de cada $100" | 320 | 28% |
+| Cuervo · Nvidia contexto · Meta · AMD · Nvidia −6% | 33–164 | 35–40% |
+| Nvidia −9% · Airbnb | 258 · 52 | 42% · 44% |
+| GTA · Vistra | 163 · 28 | **50%** |
+| **"¿Qué es una acción?" (LARGO)** | 188 | **87%** |
+
+**Dos cosas saltan:**
+1. **El largo "¿Qué es una acción?" tiene 87% de vistas con intención**, el mejor número del canal con diferencia.
+   Los largos sí retienen a quien llega; el problema es que llegan poquísimos.
+2. **El torneo (22%) y Nubank (7%) son los peores.** Coincide con la hipótesis del gancho.
+
+## 7.3 La búsqueda es el activo desaprovechado
+293 vistas, pero **68.4% de retención y 61 segundos de duración promedio**: es, de lejos, el tráfico de mejor calidad
+y el único que no se apaga. Y es justo donde juegan los largos. Hoy el canal produce 2 historias, 2 shorts y 3
+publicaciones por semana para el feed, y **un solo largo** para búsqueda.
+
+## 7.4 Falta conectar la extensión de vidIQ
+Los reportes que responderían la pregunta del gancho **con precisión** necesitan la extensión de navegador, y no está
+conectada. Son: **stayed-to-watch por Short** (cuántos se quedan en los primeros segundos, que es literalmente la
+métrica del gancho), **impresiones y CTR de miniatura**, y los **tests A/B de título y miniatura**.
+**Acción para JP:** instalar la extensión de vidIQ en Chrome, con la misma cuenta, y avisarme. Son 5 minutos y
+desbloquea lo más valioso de la suscripción.
+
+## 7.5 Cómo aprovechar el plan Boost (1,374 créditos hasta el 17 de diciembre)
+Lo que cuesta créditos y vale la pena, por orden:
+
+| Uso | Costo | Por qué |
+|---|---:|---|
+| **Voz de IA** de historias y shorts | 28 por pieza | Es lo que ya usamos; ~8 piezas al mes = 224 créditos |
+| **Revisión semanal de analítica** (top videos + fuentes) | 10 por semana | Para separar pagado de orgánico y medir el gancho |
+| **`keyword_research`** antes de elegir tema de largo | ~5–15 | La búsqueda es el mejor tráfico del canal y hoy elegimos temas sin consultar demanda |
+| **`outliers`** para ver qué pega en finanzas en español | ~5–15 | Ideas de formato con evidencia, no intuición |
+| **Voz del largo** | ~141 | Solo si JP decide que los largos lleven voz de IA |
+| **`generate_titles` / `score_title`** | bajo | Para los largos, donde el título decide la búsqueda |
+
+**Presupuesto propuesto al mes:** ~250 de voz + ~60 de analítica + ~80 de investigación = **~390 de 2,000.** Sobra
+muchísimo, así que lo sensato es **gastar más en investigación de temas y títulos**, que es donde el canal está
+decidiendo a ciegas.
+
+## 7.6 Qué cambia en las prioridades (versión final)
+
+1. **Preguntarle a JP por la publicidad.** Sin saber si es campaña suya y con qué objetivo, el 71% de los datos no se
+   puede interpretar.
+2. **Conectar la extensión de vidIQ** → desbloquea stayed-to-watch y CTR.
+3. **Cron y skills desactualizados** (sigue siendo lo único roto).
+4. **El gancho**, con la métrica real en la mano y midiendo solo tráfico orgánico.
+5. **Apostar por búsqueda**: es el tráfico de más calidad y el más desatendido. Elegir los temas de los largos con
+   `keyword_research` en vez de por intuición.
