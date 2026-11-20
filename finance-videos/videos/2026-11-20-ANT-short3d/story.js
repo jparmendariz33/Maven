@@ -19,7 +19,9 @@ const EQUIPO = [{ ...INV, shirt: '#C7A317', hair: '#4A3020', seed: 31 }, { ...IN
                 { ...INV, shirt: '#7E8C54', seed: 52 }, { ...INV, shirt: '#BB6F58', seed: 61 }];
 const ORADOR = { shirt: '#2B2B30', pants: '#23232A', shoes: '#1B1B1B', hair: '#3A2A1E', hairStyle: 'short', collar: 'suit', seed: 77 };
 
-const PRECIO = [83, 111.5, 115.1, 109, 103.5, 99.4, 101.2, 98.3, 97.17];
+// el recorrido real, media hora a media hora, de los DOS días (Yahoo Finance, velas de 30 min).
+// Empieza en la colocación de $83, abre en $111.50 y termina en el cierre del viernes: $88.91.
+const PRECIO = [83.0, 111.5, 105.03, 100.86, 96.69, 96.83, 95.75, 96.79, 96.34, 95.09, 96.91, 92.1, 86.94, 87.12, 87.74, 86.46, 84.38, 84.86, 85.23, 87.18, 87.92, 86.64, 87.36, 88.44, 88.91];
 
 // una pantalla que BRILLA sola (sin esto queda un cartel apagado)
 const pantalla = (L, w, h, dib, pw) => { const pl = L.plaque(w, h, dib, pw || 620);
@@ -57,11 +59,18 @@ const worlds = {
     // muro de pantallas detrás del podio
     const pant = pantalla(L, 4.3, 2.3, (g, W2, H2) => {
       g.fillStyle = '#1C0E05'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
-      g.fillStyle = CREMA; g.font = '800 150px Unbounded'; g.fillText('ANT', W2 / 2, 190);
-      g.fillStyle = '#9FD08A'; g.font = '800 72px Unbounded'; g.fillText('+34%', W2 / 2, 288);
-      g.fillStyle = '#FFD98A'; g.font = '700 24px "Space Grotesk"'; g.letterSpacing = '8px';
-      g.fillText('PRIMER DÍA DE COTIZACIÓN', W2 / 2, 360); g.letterSpacing = '0px'; }, 760);
-    pant.position.set(0, 5.0, -9.1); w.scene.add(pant);
+      // logo oficial (anthropic.com) + nombre, centrados como BLOQUE y medidos de verdad con
+      // measureText: calcular el ancho a ojo fue lo que cortó "Anthropic" en la vuelta anterior.
+      const im = L.IMGS.anthropic, LG = 92, GAP = 22;
+      g.font = '800 76px Unbounded'; g.textBaseline = 'alphabetic'; g.textAlign = 'left';
+      const wn = g.measureText('Anthropic').width, total = (im ? LG + GAP : 0) + wn, x0 = (W2 - total) / 2;
+      if (im) g.drawImage(im, x0, 62, LG, LG);
+      g.fillStyle = CREMA; g.fillText('Anthropic', x0 + (im ? LG + GAP : 0), 136);
+      g.textAlign = 'center';
+      g.fillStyle = '#9FD08A'; g.font = '800 68px Unbounded'; g.fillText('ANT   +34%', W2 / 2, 250);
+      g.fillStyle = '#FFD98A'; g.font = '700 22px "Space Grotesk"'; g.letterSpacing = '7px';
+      g.fillText('PRIMER DÍA DE COTIZACIÓN', W2 / 2, 322); g.letterSpacing = '0px'; }, 760);
+    pant.position.set(0, 4.3, -9.1); w.scene.add(pant);
     [[-3.3, 3.5], [3.3, 3.5]].forEach(([x, y], i) => { const l = letrero(L, 1.5, 2.6, 5 + i);
       l.position.set(x, y, -9.1); w.scene.add(l); });
     // el podio y quien habla
@@ -85,65 +94,99 @@ const worlds = {
     return { ...w, pant, orador, boton, gente, conf };
   },
 
-  // ───── 2 y 10 · TIMES SQUARE: fachadas ENTERAS de pantalla, el edificio en cuña, fuegos. ─────
-  // Investigado: la zonificación OBLIGA a cubrir las fachadas de anuncios luminosos; One Times Square
-  // es una cuña con un panel LED enorme; los letreros van apilados sin pared visible entre ellos.
+  // ───── 2 y 9 · NUEVA YORK: cielo azul, sol, nubes, edificios con ventanas y gente, coches ─────
+  // JP: "que tengan ventanas, luces, que haya gente, que se vean las sombras, coches, muchos edificios...
+  //      el fondo azul para que se vea como el cielo, nubes, el sol, literal una escena realista de NY".
+  // Times Square de verdad: las fachadas son pantallas por ley, el edificio en cuña, los letreros apilados.
   plaza(L) {
     const { THREE, clay2, rbox } = L;
-    const w = L.cineWorld({ bg: '#A85634', bg2: '#30120A', floor: '#3A2418', fog: [30, 104], hemi: .8,
-      sky: '#FFD2A2', ground: '#4A3020', key: 3.2, keyPos: [-9, 15, 11], keyCol: '#FFE3C0',
-      rim: 3.0, rimPos: [7, 10, -6], rimCol: '#FFB070', fill: .6 });
-    // la CUÑA del centro, tapizada de pantallas de arriba abajo
-    const cuna = new THREE.Group(); cuna.position.set(.1, 0, -13); w.scene.add(cuna);
-    const cuerpo = L.mesh(new THREE.CylinderGeometry(1.5, 1.9, 15, 3), clay2('#3A1A0C', .9));
+    const w = L.cineWorld({ bg: '#6FA8DC', bg2: '#2E5F96', floor: '#6A5A4A', fog: [50, 170], hemi: 1.15,
+      sky: '#BFE0FF', ground: '#8A7458', key: 4.2, keyPos: [-7, 18, 16], keyCol: '#FFF8EC',
+      rim: 2.0, rimPos: [8, 11, -6], rimCol: '#CFE4FF', fill: .95 });
+    // CIELO: sol y nubes de plastilina, bien arriba
+    const sol = L.mesh(new THREE.SphereGeometry(1.5, 22, 16), L.emit('#FFE9A8', 1.5));
+    sol.position.set(-7.5, 24, -26); w.scene.add(sol);
+    const nube = (x, y, z, s) => { const g = new THREE.Group();
+      [[0,0,0,1],[.9,-.15,.1,.72],[-.95,-.1,-.05,.66],[.35,.4,.05,.6]].forEach(([a,b,c,r]) => {
+        const e = L.mesh(new THREE.SphereGeometry(r, 18, 12), clay2('#FFFFFF', .98, .3));
+        e.position.set(a, b, c); g.add(e); });
+      g.position.set(x, y, z); g.scale.setScalar(s); w.scene.add(g); return g; };
+    const nubes = [nube(-9, 17.5, -19, 1.5), nube(6.5, 19.5, -21, 1.9), nube(1, 22.5, -24, 1.2)];
+    // EDIFICIOS: nueve, con ventanas y siluetas de gente dentro
+    const rb = L.rng(5);
+    const edificio = (x, z, anc, alt, prof, col, sem) => {
+      const e = rbox(anc, alt, prof, .1, clay2(col, .92)); e.position.set(x, alt / 2, z); w.scene.add(e);
+      const r = L.rng(sem), cols = Math.max(2, Math.round(anc / .62)), filas = Math.round(alt / .92);
+      for (let i = 0; i < cols; i++) for (let j = 1; j < filas; j++) {
+        const on = r() > .42;
+        const v = rbox(.34, .44, .05, .02, on ? L.emit('#FFE7B0', .55) : clay2('#3E4A5A', .7));
+        v.position.set(x - anc / 2 + .42 + i * ((anc - .84) / Math.max(1, cols - 1)), j * .92, z + prof / 2 + .03);
+        w.scene.add(v);
+        // silueta de alguien adentro, en algunas ventanas encendidas
+        if (on && r() > .62) { const si = rbox(.1, .2, .03, .02, clay2('#2A2018', .8));
+          si.position.set(v.position.x + (r() - .5) * .1, j * .92 - .04, z + prof / 2 + .06); w.scene.add(si); } }
+    };
+    [[-7.6,-15,2.6,11,2.4,'#C08A68',11],[-4.6,-18,2.4,15,2.2,'#A87254',12],[4.9,-14.5,2.8,9.5,2.4,'#CE9A78',13],
+     [7.8,-17,2.6,13,2.2,'#B07A5A',14],[-10.5,-21,3.0,17,2.6,'#96644A',15],[10.8,-20,2.8,15,2.4,'#A27052',16],
+     [-2.2,-24,2.4,20,2.2,'#8A5C42',17],[3.0,-25,2.6,22,2.4,'#7E5440',18]
+    ].forEach(a => edificio(...a));
+    // LA CUÑA con la pantalla (One Times Square)
+    const cuna = new THREE.Group(); cuna.position.set(.1, 0, -12.5); w.scene.add(cuna);
+    const cuerpo = L.mesh(new THREE.CylinderGeometry(1.5, 1.9, 15, 3), clay2('#8A5C40', .9));
     cuerpo.rotation.y = Math.PI; cuerpo.position.y = 7.5; cuna.add(cuerpo);
-    // el panel grande (el de ~100 m) y debajo, letreros apilados SIN pared entre ellos
-    const grande = pantalla(L, 2.5, 5.4, (g, W2, H2) => {
-      g.fillStyle = '#1C0E05'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
-      g.fillStyle = '#FFD98A'; g.font = '700 26px "Space Grotesk"'; g.letterSpacing = '8px';
-      g.fillText('SALE A BOLSA', W2 / 2, 120); g.letterSpacing = '0px';
-      g.fillStyle = CREMA; g.font = '800 128px Unbounded'; g.fillText('ANT', W2 / 2, 300);
-      g.fillStyle = '#9FD08A'; g.font = '800 86px Unbounded'; g.fillText('+34%', W2 / 2, 430);
-      g.fillStyle = 'rgba(240,230,210,.45)'; g.font = '600 26px "Space Grotesk"';
-      g.fillText('apertura  $111.50', W2 / 2, 495);
-      g.fillStyle = 'rgba(240,230,210,.28)'; g.font = '600 24px "Space Grotesk"';
-      g.fillText('19 · 11 · 2026', W2 / 2, 1120); }, 560);
-    grande.position.set(0, 9.2, 1.62); cuna.add(grande);
-    [[0, 4.6, 2.5, 3.0], [0, 2.2, 2.5, 2.0]].forEach(([x, y, aw, ah], i) => {
+    // la pantalla: FONDO NEGRO y el logo oficial al lado del ticker (JP)
+    const panel = (dib) => { const pl = pantalla(L, 2.5, 3.1, dib, 560); pl.position.set(0, 8.2, 1.62); cuna.add(pl); return pl; };
+    const grande = panel((g, W2, H2) => {
+      g.fillStyle = '#000000'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
+      const im = L.IMGS.anthropic;
+      if (im) { const d = 150; g.drawImage(im, (W2 - d) / 2, 60, d, d); }
+      g.fillStyle = '#F4EFE2'; g.font = '800 96px Unbounded'; g.fillText('ANT', W2 / 2, 300);
+      g.fillStyle = '#7FD08A'; g.font = '800 76px Unbounded'; g.fillText('+34%', W2 / 2, 400);
+      g.fillStyle = 'rgba(244,239,226,.5)'; g.font = '600 24px "Space Grotesk"';
+      g.fillText('apertura  $111.50  ·  19 nov 2026', W2 / 2, 452);
+      g.fillStyle = 'rgba(244,239,226,.3)'; g.font = '600 22px "Space Grotesk"';
+      g.fillText('SALE A BOLSA', W2 / 2, 650); });
+    // la pantalla del cierre: la pregunta ARRIBA, para que no choque con el ticker (JP)
+    const preg = panel((g, W2, H2) => {
+      g.fillStyle = '#000000'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
+      g.fillStyle = '#F4EFE2'; g.font = 'italic 600 58px "Instrument Serif"';
+      ['¿Cuántas veces', 'te has quedado', 'solo con', 'el titular?'].forEach((l, i) => g.fillText(l, W2 / 2, 120 + i * 74));
+      g.fillStyle = 'rgba(244,239,226,.38)'; g.font = '600 24px "Space Grotesk"';
+      g.fillText('Desde la costa, todo se ve con claridad.', W2 / 2, 470); });
+    preg.material.opacity = 0;
+    [[0, 5.4, 2.4, 1.9], [0, 3.2, 2.4, 1.7]].forEach(([x, y, aw, ah], i) => {
       const l = letrero(L, aw, ah, 21 + i); l.position.set(x, y, 1.62); cuna.add(l); });
-    // dos torres laterales, también cubiertas
-    [[-4.9, -11.5, 3.2, 13, 31], [5.2, -11, 3.0, 11, 44]].forEach(([x, z, aw, ah, sd]) => {
-      const t = rbox(aw + .3, ah, 2.4, .1, clay2('#30150A', .9)); t.position.set(x, ah / 2, z); w.scene.add(t);
-      for (let i = 0; i < 4; i++) { const h = ah / 4.6, l = letrero(L, aw, h, sd + i);
-        l.position.set(x, 1.4 + i * (h + .28), z + 1.22); w.scene.add(l); } });
-    // las escaleras rojas del TKTS, que es lo otro que identifica la plaza
-    for (let i = 0; i < 7; i++) { const e = rbox(4.2, .22, .42, .03, clay2('#C23A28', .35));
-      e.position.set(-.2, .18 + i * .2, 3.6 + i * .42); w.scene.add(e); }
+    // COCHES en la calle, cruzando
+    const coche = (col, x, z, dir) => { const g = new THREE.Group();
+      g.add(rbox(1.5, .42, .74, .12, clay2(col, .45)));
+      const t = rbox(.8, .34, .68, .1, clay2(col, .45)); t.position.set(-.1, .36, 0); g.add(t);
+      [[-.5,.33],[.5,.33],[-.5,-.33],[.5,-.33]].forEach(([a,b]) => {
+        const r2 = L.mesh(new THREE.CylinderGeometry(.17,.17,.1,14), clay2('#1A1410', .4));
+        r2.rotation.x = Math.PI/2; r2.position.set(a, -.17, b); g.add(r2); });
+      g.position.set(x, .3, z); g.rotation.y = dir < 0 ? Math.PI : 0; g.userData = { x0: x, dir };
+      w.scene.add(g); return g; };
+    const coches = [coche('#D8B84A', -9, -7.2, 1), coche('#C9542E', 2, -7.2, 1), coche('#E0D8C4', 9, -9.0, -1),
+                    coche('#D8B84A', -1, -9.0, -1), coche('#4A6E9A', -14, -7.2, 1)];
+    // las escaleras rojas del TKTS
+    for (let i = 0; i < 7; i++) { const e = rbox(4.0, .22, .42, .03, clay2('#C23A28', .35));
+      e.position.set(-.2, .18 + i * .2, 3.4 + i * .42); w.scene.add(e); }
     const gente = EQUIPO.map((o, i) => { const a = L.actor(o), x = [-2.9, -1.5, 1.6, 3.0][i];
-      a.position.set(x, 0, -7.6 + (i % 2) * .8); a.rotation.y = Math.PI + x * .05; w.scene.add(a); return a; });
-    // FUEGOS ARTIFICIALES (JP): tres estallidos escalonados, arriba
+      a.position.set(x, 0, -5.6 + (i % 2) * .8); a.rotation.y = Math.PI + x * .05; w.scene.add(a); return a; });
+    const solo = L.actor(INV); solo.position.set(.3, 0, -4.6); solo.rotation.y = Math.PI; solo.scale.setScalar(.001); w.scene.add(solo);
+    // FUEGOS: más grandes y saturados, porque de día tienen que pelear contra el cielo claro
     const fuegos = [0, 1, 2].map(i => { const g = new THREE.Group(), r = L.rng(90 + i);
-      g.position.set([-4.2, 1.8, 5.0][i], [12.5, 14.2, 11.6][i], -9 - i * 2);
-      for (let j = 0; j < 34; j++) { const p2 = L.mesh(new THREE.SphereGeometry(.09, 7, 6),
-          L.emit([MOSTAZA, '#FFD98A', TERRA, '#9FD08A'][i % 4], 1.6));
-        const th = r() * 6.283, ph = Math.acos(2 * r() - 1), v = .7 + r() * .5;
+      g.position.set([-5.2, 2.4, 6.4][i], [15.5, 17.5, 14.2][i], -10 - i * 2);
+      for (let j = 0; j < 44; j++) { const p2 = L.mesh(new THREE.SphereGeometry(.13, 8, 6),
+          L.emit(['#FFD24A', '#FF7A3C', '#FFF0B0', '#7FD08A'][i % 4], 2.4));
+        const th = r() * 6.283, ph = Math.acos(2 * r() - 1), v = .85 + r() * .6;
         p2.userData = { dx: Math.sin(ph) * Math.cos(th) * v, dy: Math.cos(ph) * v, dz: Math.sin(ph) * Math.sin(th) * v };
         g.add(p2); }
       w.scene.add(g); return g; });
-    // la pantalla del CIERRE: la misma torre, ya sin nadie, con la pregunta
-    const preg = pantalla(L, 2.5, 5.4, (g, W2, H2) => {
-      g.fillStyle = '#1C0E05'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
-      g.fillStyle = CREMA; g.font = 'italic 600 70px "Instrument Serif"';
-      ['¿Cuántas veces', 'te has quedado', 'solo con', 'el titular?'].forEach((l, i) => g.fillText(l, W2 / 2, 330 + i * 92));
-      g.fillStyle = 'rgba(240,230,210,.4)'; g.font = '600 26px "Space Grotesk"';
-      g.fillText('Desde la costa, todo se ve con claridad.', W2 / 2, 840); }, 560);
-    preg.position.set(0, 9.2, 1.63); preg.material.opacity = 0; cuna.add(preg);
-    const solo = L.actor(INV); solo.position.set(.3, 0, -6.4); solo.rotation.y = Math.PI; solo.scale.setScalar(.001); w.scene.add(solo);
     const conf = new THREE.Group(); w.scene.add(conf); const rc = L.rng(17);
-    for (let i = 0; i < 80; i++) { const c = rbox(.11, .11, .018, .01, clay2([MOSTAZA, CREMA, TERRA, AZUL][i % 4], .5));
-      c.userData = { x: -5 + rc() * 10, z: -9 + rc() * 6, y0: 9 + rc() * 7, sp: .9 + rc() * 1.1, r: rc() * 6 };
+    for (let i = 0; i < 90; i++) { const c = rbox(.12, .12, .02, .01, clay2([MOSTAZA, CREMA, TERRA, AZUL][i % 4], .5));
+      c.userData = { x: -6 + rc() * 12, z: -9 + rc() * 7, y0: 10 + rc() * 8, sp: .9 + rc() * 1.1, r: rc() * 6 };
       conf.add(c); }
-    return { ...w, grande, preg, solo, gente, fuegos, conf };
+    return { ...w, grande, preg, gente, solo, fuegos, conf, coches, nubes };
   },
 };
 
@@ -196,9 +239,9 @@ Object.assign(worlds, {
       const gr = new THREE.Group(); b.position.y = h / 2; gr.add(b); gr.position.set(x, 0, 0);
       gr.scale.y = .001; col.add(gr); return gr; };
     const bSx = barra(.85, 75, CREMA), bAn = barra(1.85, 81.3, AZUL);
-    const rot = (txt, x, ink) => { const e = L.label3d(txt, 1.35, .62, { bg: null, ink, font: '700 38px "Space Grotesk"', pw: 400 });
-      e.material.transparent = true; e.material.depthWrite = false; e.position.set(x, -.42, .1); e.scale.setScalar(.001); col.add(e); return e; };
-    const eSx = rot('SpaceX\n$75 mil M', .85, '#5A2E14'), eAn = rot('ANT\n$81.3 mil M', 1.85, '#1E3C7A');
+    const rot = (txt, x, ink) => { const e = L.label3d(txt, 1.5, .78, { bg: null, ink, font: '800 46px Unbounded', pw: 430 });
+      e.material.transparent = true; e.material.depthWrite = false; e.position.set(x, -.56, .1); e.scale.setScalar(.001); col.add(e); return e; };
+    const eSx = rot('SpaceX\n$75 mil M', .85, '#4A2410'), eAn = rot('Anthropic\n$81.3 mil M', 1.85, '#16346E');
     const uni = L.label3d('miles de millones de dólares', 1.9, .18, { bg: null, ink: '#8A5230', font: '600 34px "Space Grotesk"', pw: 520 });
     uni.material.transparent = true; uni.material.depthWrite = false; uni.rotation.z = Math.PI / 2;
     uni.position.set(-1.05, 2.2, 0); col.add(uni);
@@ -207,19 +250,23 @@ Object.assign(worlds, {
     vg.add(ejes(L, 3.0, 3.7, [[0, '$83'], [.5, '$100'], [1, '$118']]));
     const v = via(L, PRECIO, 3.0, 3.7); vg.add(v);
     const cart = carrito(L); vg.add(cart);
-    const pilo = L.actor(INV); pilo.scale.setScalar(.42); cart.add(pilo);
-    pilo.position.y = .38;
-    // LA MULTITUD CON EL MISMO PERIÓDICO
-    const diarios = [], lectores = EQUIPO.map((o, i) => {
-      const a = L.actor(o), x = [-1.95, -.65, .65, 1.95][i];
-      a.position.set(x, 0, -1.4 + (i % 2) * .55); a.rotation.y = Math.PI + x * .06; a.scale.setScalar(.001); w.scene.add(a);
-      const d = pantalla(L, .78, .56, (g, W2, H2) => {
-        g.fillStyle = '#EDE7D4'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
-        g.fillStyle = TERRA; g.font = '800 78px Unbounded'; g.fillText('+17%', W2 / 2, H2 / 2 + 26); }, 300);
-      d.material.emissiveIntensity = .25;
-      d.position.set(x, 1.62, -1.4 + (i % 2) * .55 + .45); d.rotation.x = -.35; d.scale.setScalar(.001);
-      w.scene.add(d); diarios.push(d); return a; });
-    return { ...w, col, bSx, bAn, eSx, eAn, vg, v, cart, pilo, lectores, diarios };
+    const pilo = L.actor(INV); pilo.scale.setScalar(.46); cart.add(pilo);
+    pilo.position.set(-.04, .30, 0); pilo.rotation.y = Math.PI / 2;   // de perfil, mirando hacia adelante
+    // MURO DE PANTALLAS: todas repitiendo el mismo +17%. Sustituye a la escena de los cuatro
+    // con cartulinas, que JP descartó entera ("se entrecortan, no se ven las caras, el fondo vacío").
+    const muroP = new THREE.Group(); muroP.position.set(0, 0, -5.2); w.scene.add(muroP);
+    const panes = [];
+    for (let i = 0; i < 6; i++) {
+      const cx = -1.45 + (i % 3) * 1.45, cy = 3.35 - Math.floor(i / 3) * 1.15;
+      const m = rbox(1.3, 1.0, .16, .05, clay2('#5A3018', .7)); m.position.set(cx, cy, 0); muroP.add(m);
+      const pl = pantalla(L, 1.18, .88, (g, W2, H2) => {
+        g.fillStyle = '#000000'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
+        g.fillStyle = '#7FD08A'; g.font = '800 104px Unbounded'; g.fillText('+17%', W2 / 2, H2 / 2 + 36);
+        g.fillStyle = 'rgba(244,239,226,.34)'; g.font = '600 20px "Space Grotesk"';
+        g.fillText('ANT · primer día', W2 / 2, H2 - 22); }, 300);
+      pl.position.set(cx, cy, .1); pl.material.opacity = 0; muroP.add(pl); panes.push(pl); }
+    const mira = L.actor(INV); mira.position.set(.2, 0, -2.4); mira.rotation.y = Math.PI; mira.scale.setScalar(.001); w.scene.add(mira);
+    return { ...w, col, bSx, bAn, eSx, eAn, vg, v, cart, pilo, muroP, panes, mira };
   },
 });
 
@@ -289,6 +336,50 @@ Object.assign(worlds, {
   },
 });
 
+// ───────────────────────────────────────────────────────────────────────────────
+// WATERFALL en la CAPA 2D, con el formato de los videos explicativos (JP, 20 nov 2026):
+// porcentaje grande arriba, monto chico debajo, conectores punteados, etiqueta al pie.
+// El 3D de atrás solo pone el mundo y el personaje; la gráfica se dibuja encima, nítida.
+// pasos: [{et, val, tipo:'sube'|'baja'|'total'}]  ·  k: 0..1 cuántos pasos ya entraron
+const cascada2D = (L, pasos, k, base, unidad) => {
+  const C = L.C, X0 = 92, X1 = 988, TOP = 846, BOT = 1322, n = pasos.length;
+  const hueco = 18, bw = (X1 - X0 - hueco * (n - 1)) / n;
+  // NIVELES acumulados, como en una cascada de verdad: cada barra va del nivel anterior al nuevo.
+  let run = 0; const lim = pasos.map(s2 => { let a, b;
+    if (s2.tipo === 'total') { a = 0; b = s2.val; run = s2.val; } else { a = run; b = run + s2.val; run = b; }
+    return [a, b]; });
+  // el rango se mapea COMPLETO al alto útil: si no, las barras negativas cuelgan fuera del cuadro
+  const todos = lim.flat().concat([0]), lo = Math.min(...todos), hi = Math.max(...todos), r = (hi - lo) || 1;
+  const py = v => BOT - (v - lo) / r * (BOT - TOP);
+  C.save();
+  C.strokeStyle = 'rgba(42,20,9,.3)'; C.lineWidth = 3;                 // la línea del cero
+  C.beginPath(); C.moveTo(X0 - 12, py(0)); C.lineTo(X1 + 12, py(0)); C.stroke();
+  pasos.forEach((s2, i) => {
+    const kk = L.ex(L.seg(k, i / n, (i + .8) / n)); if (kk <= 0) return;
+    const [a, b] = lim[i], x = X0 + i * (bw + hueco);
+    const ya = py(a), yb = py(b), h = Math.abs(yb - ya) * kk;
+    const y = yb < ya ? ya - h : ya;                                   // crece desde el nivel anterior
+    const col = s2.tipo === 'total' ? '#6E7C48' : (s2.val >= 0 ? MOSTAZA : TERRA);
+    C.fillStyle = col; C.beginPath(); C.roundRect(x, y, bw, Math.max(4, h), 10); C.fill();
+    if (kk > .92 && i < n - 1) { C.save(); C.strokeStyle = 'rgba(42,20,9,.36)'; C.lineWidth = 2; C.setLineDash([9, 8]);
+      C.beginPath(); C.moveTo(x + bw, py(b)); C.lineTo(x + bw + hueco, py(b)); C.stroke(); C.restore(); }
+    // DATA LABELS encima: el % sobre los ingresos en grande y el monto debajo, chico
+    const arriba = Math.min(ya, yb) - 12, ka = L.seg(k, (i + .3) / n, (i + .95) / n);
+    const pct = base ? (Math.round(Math.abs(s2.val) / base * 1000) / 10) + '%' : null;
+    const mto = (s2.val < 0 ? '(' : '') + '$' + Math.abs(s2.val).toLocaleString('en-US') + (unidad || '') + (s2.val < 0 ? ')' : '');
+    if (pct) { L.txt(pct, x + bw / 2, arriba - 32, { f: L.F.d, w: 800, s: s2.tipo === 'total' ? 44 : 38, al: 'center', c: col, a: ka });
+      L.txt(mto, x + bw / 2, arriba, { w: 400, s: 25, al: 'center', c: 'rgba(42,20,9,.7)', a: ka }); }
+    else L.txt(mto, x + bw / 2, arriba, { f: L.F.d, w: 800, s: 38, al: 'center', c: col, a: ka });
+    // AL PIE, bajo la zona de la gráfica: la etiqueta, achicándose hasta que quepa entera
+    const kl = L.seg(k, i / n, (i + .55) / n);
+    s2.et.split('\n').forEach((ln, j) => { let sz = 26;
+      C.font = '500 ' + sz + 'px "Space Grotesk"';
+      while (C.measureText(ln).width > bw + hueco - 6 && sz > 16) { sz--; C.font = '500 ' + sz + 'px "Space Grotesk"'; }
+      L.txt(ln, x + bw / 2, BOT + 48 + j * Math.round(sz * 1.25), { w: 500, s: sz, al: 'center', c: '#2A1409', a: kl }); });
+  });
+  C.restore();
+};
+
 // rótulo con autoajuste; `dos` = remate en dos tiempos
 const head = (L, k1, title, sub, ink, lt, col, pronto, dos) => {
   L.kicker(k1, 360, L.seg(lt, pronto ? .02 : .1, pronto ? .3 : .5), ink);
@@ -313,7 +404,7 @@ const scenes = [
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
       const k = L.eio(L.seg(p, .08, 1));
-      cam(w, mv([-1.4, 3.9, 14.2], [.5, 3.4, 11.4], k), mv([0, 3.9, -5.4], [0, 3.6, -5.4], k), 30);
+      cam(w, mv([-1.4, 3.6, 14.6], [.5, 3.2, 11.8], k), mv([0, 4.5, -5.4], [0, 4.2, -5.4], k), 30);
       const pulsa = L.eio(L.seg(p, .16, .3));
       w.boton.position.y = 1.16 - pulsa * .05 + (p > .36 ? .05 : 0);
       L.pose(w.orador, { talk, head: [0, .06, 0], armL: [.5, .3, .6], armR: [1.1 * L.seg(p, .3, .5), .4, .4], smile: .5, bob: Math.sin(q * 1.8) * .02 });
@@ -325,7 +416,7 @@ const scenes = [
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .66);
       head(L, 'ANTHROPIC · 19 DE NOVIEMBRE DE 2026', ['Le quitó el récord', 'a SpaceX'], null, ARENA, p, null, true, true);
-      L.rise('ABRIÓ EN +34%  ·  CERRÓ EN +17%', 90, 690, L.seg(p, .42, .66), { f: L.F.d, w: 800, s: 44, c: MOSTAZA });
+      L.rise('ABRIÓ EN +34%  ·  CERRÓ EN +17%', 90, 800, L.seg(p, .42, .66), { f: L.F.d, w: 800, s: 44, c: MOSTAZA });
     } },
 
   // 2 · TIMES SQUARE — otro lugar (va con ola), fachadas de pantallas y FUEGOS ARTIFICIALES.
@@ -334,9 +425,11 @@ const scenes = [
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-1.6, 4.4, 10.5], [.5, 5.2, 7.6], k), mv([.1, 10.2, -13], [.1, 10.6, -13], k), 30);
+      cam(w, mv([-1.2, 7.8, 16.5], [.25, 8.4, -.8], k), mv([.1, 9.4, -12.5], [.1, 8.5, -12.6], k), 30);
       w.grande.material.opacity = 1; w.preg.material.opacity = 0; w.solo.scale.setScalar(.001);
       caeConfeti(L, w.conf, q, L.seg(p, 0, 1), .55);
+      w.coches.forEach((c, i) => { c.position.x = ((c.userData.x0 + c.userData.dir * t * 2.4 + 18) % 36) - 18; });
+      w.nubes.forEach((n, i) => n.position.x += .004 * (1 + i * .3));
       w.fuegos.forEach((g, j) => { const e = L.seg(p, .1 + j * .22, .1 + j * .22 + .5);
         g.visible = e > .001 && e < .999;
         g.children.forEach(pt => { const u = pt.userData, r = e * 3.1;
@@ -356,7 +449,7 @@ const scenes = [
       const p = P(lt, this);
       const k = L.eio(L.seg(p, 0, 1));
       cam(w, mv([-.9, 3.6, 9.4], [.4, 3.4, 8.2], k), mv([0, 3.9, -5.6], [0, 3.75, -5.6], k), 30);
-      w.vg.visible = false; w.lectores.forEach(a => a.scale.setScalar(.001)); w.diarios.forEach(d => d.scale.setScalar(.001));
+      w.vg.visible = false; w.muroP.visible = false; w.mira.scale.setScalar(.001);
       w.bSx.scale.y = Math.max(.001, L.eio(L.seg(p, .14, .46)));
       w.bAn.scale.y = Math.max(.001, L.eio(L.seg(p, .4, .78)));
       w.eSx.scale.setScalar(Math.max(.001, L.back(L.seg(p, .4, .56))));
@@ -367,118 +460,118 @@ const scenes = [
       head(L, 'LA MÁS GRANDE DE LA HISTORIA', ['81,300 millones', 'de dólares'], 'Le ganó el récord a SpaceX, de junio', TINTA, p, MOSTAZA);
     } },
 
-  // 4 · EL PRECIO — el personaje va EN UN CARRITO sobre la vía (regla permanente, estilo SpaceX).
-  { id: 'precio', world: 'sala', d: 8, ink: TINTA, year: '2026', sfx: [[.58, 'fall', .6]],
-    cap: 'Vendió sus acciones en 83 dólares. Abrieron en 111… y el primer día cerraron en 97.',
+  // 4 · EL PRECIO — el personaje va SENTADO en el carrito, de perfil, por el recorrido REAL de
+  //     media hora en media hora de los dos días: de los 83 de colocación al cierre del viernes.
+  { id: 'precio', world: 'sala', d: 11, ink: TINTA, year: '2026', sfx: [[.66, 'fall', .6]],
+    cap: 'Vendió sus acciones en 83 dólares. Abrieron en 111… y el viernes cerraron en 88.91, con todo el mercado cayendo.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.col.visible = false; w.vg.visible = true;
-      w.lectores.forEach(a => a.scale.setScalar(.001)); w.diarios.forEach(d => d.scale.setScalar(.001));
+      w.col.visible = false; w.vg.visible = true; w.muroP.visible = false; w.mira.scale.setScalar(.001);
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-.6, 3.3, 10.2], [.4, 3.1, 9.0], k), mv([0, 3.5, -4.2], [0, 3.4, -4.2], k), 30);
-      const f = L.eio(L.seg(p, .1, .92)), pt = w.v.userData.at(f);
-      w.cart.position.set(pt.x, pt.y + .06, 0); w.cart.rotation.z = pt.a * .6;
-      L.pose(w.pilo, { armL: [1.5, .6, .3], armR: [1.5, .6, .3], head: [-.1, 0, 0],
-        smile: pt.a > 0 ? .6 : -.5, bob: Math.sin(q * 7) * .03, amp: .2 });
+      cam(w, mv([-.6, 3.3, 10.4], [.5, 3.1, 9.2], k), mv([0, 3.5, -4.2], [0, 3.4, -4.2], k), 30);
+      const f = L.eio(L.seg(p, .06, .94)), pt = w.v.userData.at(f);
+      w.cart.position.set(pt.x, pt.y + .06, 0); w.cart.rotation.z = Math.max(-.5, Math.min(.5, pt.a * .5));
+      L.pose(w.pilo, { sit: 1, armL: [1.0, .5, .9], armR: [1.0, .5, .9], head: [pt.a > 0 ? -.2 : .25, 0, 0],
+        smile: pt.a > 0 ? .6 : -.6, bob: Math.sin(q * 9) * .02, amp: .2 });
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .52, '196,122,74');
-      head(L, 'EL DÍA DEL DEBUT', ['Colocó en $83.', 'Abrió en $111.50'], 'Cerró su primer día en $97.17', TINTA, p, MOSTAZA);
+      head(L, 'DOS DÍAS EN LA BOLSA', ['Abrió en $111.50', 'el 19. El 20: $88.91'], 'El viernes cayó 8.5%, con el Nasdaq −5%: cayó todo el mercado', TINTA, p, TERRA);
     } },
 
-  // 5 · EL TITULAR — todos leyendo el MISMO periódico: así se ve "casi todos se quedaron con eso".
-  { id: 'titular', world: 'sala', d: 6, ink: TINTA, year: '2026', sfx: [[.2, 'pop', .5]],
+  // 5 · EL TITULAR — muro de pantallas repitiendo el mismo +17%. (La escena de las cartulinas la
+  //     descartó JP entera; esto dice lo mismo sin caras cortadas y con fondo lleno.)
+  { id: 'titular', world: 'sala', d: 7, ink: TINTA, year: '2026', sfx: [[.26, 'pop', .5]],
     cap: 'Casi todos los titulares se quedaron con ese 17%.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.col.visible = false; w.vg.visible = false;
+      w.col.visible = false; w.vg.visible = false; w.muroP.visible = true;
+      w.mira.scale.setScalar(1);
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-.6, 3.1, 14.6], [.5, 3.0, 13.0], k), mv([0, 2.9, -1.4], [0, 2.85, -1.4], k), 30);
-      w.lectores.forEach((a, i) => { const s2 = L.back(L.seg(p, .08 + i * .07, .32 + i * .07));
-        a.scale.setScalar(Math.max(.001, s2));
-        L.pose(a, { armL: [1.15, .34, .9], armR: [1.15, .34, .9], head: [-.3, 0, 0], smile: .35, bob: Math.sin(q * 1.6 + i) * .012 });
-        w.diarios[i].scale.setScalar(Math.max(.001, s2)); });
+      cam(w, mv([-.5, 3.0, 8.6], [.4, 2.9, 7.6], k), mv([0, 3.4, -5.2], [0, 3.3, -5.2], k), 30);
+      w.panes.forEach((pl, i) => pl.material.opacity = L.seg(p, .08 + i * .06, .26 + i * .06));
+      L.pose(w.mira, { head: [-.35, 0, 0], armL: [.12, .14, .12], armR: [.12, .14, .12], bob: Math.sin(q * 1.5) * .012 });
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .54, '196,122,74');
       head(L, 'LO QUE SE CONTÓ', ['Casi todos se', 'quedaron con eso'], null, TINTA, p, TERRA);
     } },
 
-  // 6 · LOS INGRESOS — el personaje SUBE la escalera, un escalón por año (regla permanente, estilo Jobs).
-  { id: 'ingresos', world: 'taller', d: 8, ink: TINTA, year: '2026', sfx: [[.74, 'rise', .55]],
+  // 6 · LOS INGRESOS — el personaje ESCALA la escalera: mirando hacia ella y con esfuerzo (JP),
+  //     no caminando de frente a cámara.
+  { id: 'ingresos', world: 'taller', d: 9, ink: TINTA, year: '2026', sfx: [[.78, 'rise', .55]],
     cap: 'Pero el documento que entregó a la bolsa cuenta otra cosa. En nueve meses vendió 33 mil millones.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.wa.g.visible = false; w.wb.g.visible = false; w.callout.scale.setScalar(.001); w.baja.visible = false;
+      w.baja.visible = false;
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-1.3, 3.2, 13.6], [.4, 3.6, 12.2], k), mv([-.1, 2.9, -4.6], [-.1, 3.2, -4.6], k), 30);
+      cam(w, mv([-1.1, 3.4, 12.8], [.5, 3.8, 11.4], k), mv([-.1, 3.2, -4.6], [-.1, 3.5, -4.6], k), 30);
       w.pelda.forEach((g, i) => g.scale.y = Math.max(.001, L.eio(L.seg(p, .1 + i * .14, .34 + i * .14))));
-      // sube escalón por escalón: cada tramo camina y luego brinca al siguiente
-      const prog = L.seg(p, .18, .9) * 3, i = Math.min(2, Math.floor(prog)), f = prog - i;
-      const y0 = i === 0 ? 0 : w.alturas[i - 1], y1 = w.alturas[i];
-      w.trepa.position.set(-.9 + Math.min(prog, 3) * 1.2 * .92, L.lerp(y0, y1, L.eio(Math.min(1, f * 1.6))), .95);
-      L.pose(w.trepa, { walk: q * 7, amp: .7, armL: [.7, .3, .5], armR: [.7, .3, .5], head: [-.15, 0, 0], lean: .1, smile: .4 });
+      const prog = L.seg(p, .18, .92) * 3, i = Math.min(2, Math.floor(prog)), f = prog - i;
+      const y0 = i === 0 ? 0 : w.alturas[i - 1], y1 = w.alturas[i], sube = L.eio(Math.min(1, f * 1.7));
+      w.trepa.visible = true;
+      w.trepa.position.set(-.9 + Math.min(prog, 3) * 1.2 * .92, L.lerp(y0, y1, sube), .95);
+      w.trepa.rotation.y = Math.PI / 2;                       // de perfil, mirando hacia la escalera
+      const brazo = 1.9 - Math.abs(Math.sin(f * Math.PI)) * .5;
+      L.pose(w.trepa, { walk: null, armL: [brazo, .34, .25], armR: [brazo - .35, .3, .5],
+        head: [-.42, -.25, 0], lean: .34, bob: Math.sin(q * 6) * .03, smile: -.2 });
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .5, '224,165,113');
       head(L, 'LO QUE DICE EL DOCUMENTO', ['Vendió $33,242', 'millones'], 'En los primeros nueve meses de 2026', TINTA, p, MOSTAZA);
     } },
 
-  // 7 · EL WATERFALL DEL NEGOCIO — ingresos − gastos = pérdida de operación. El personaje BAJA al final.
-  { id: 'cascada', world: 'taller', d: 8, ink: TINTA, year: '2026', sfx: [[.62, 'thud', .55]],
-    cap: 'Gastó 34 mil. Así que el negocio perdió 1,260 millones.',
+  // 7 · EL NEGOCIO — waterfall en la capa 2D con data labels, y el callout DENTRO de la misma
+  //     escena (JP: "esa escena y la anterior las juntaría, que solo se dé zoom al callout").
+  { id: 'cascada', world: 'taller', d: 13, ink: TINTA, year: '2026', sfx: [[.46, 'thud', .55]],
+    cap: 'Gastó 34 mil. Así que el negocio perdió 1,260 millones: de cada 100 dólares que vendió, perdió 3.79. Un año antes perdía 205.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.pelda.forEach(g => g.scale.y = .001); w.trepa.visible = false;
-      w.wa.g.visible = true; w.wb.g.visible = false; w.baja.visible = true; w.callout.scale.setScalar(.001);
-      const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-.8, 3.5, 9.8], [.4, 3.3, 8.6], k), mv([0, 3.7, -4.2], [0, 3.55, -4.2], k), 30);
-      w.wa.col.forEach((g, i) => g.scale.y = Math.max(.001, L.eio(L.seg(p, .1 + i * .2, .36 + i * .2))));
+      w.pelda.forEach(g => g.scale.y = .001); w.trepa.visible = false; w.baja.visible = true;
+      const k = L.eio(L.seg(p, .52, .9));                    // el acercamiento del callout, a media escena
+      cam(w, mv([-.7, 2.5, 9.4], [.2, 2.2, 7.0], k), mv([0, 2.2, -2.6], [.2, 2.0, -2.6], k), 30);
       L.pose(w.baja, { head: [-.2, -.5, 0], armL: [.3, .2, .3], armR: [.3, .2, .3],
-        lean: L.seg(p, .5, .8) * .16, bob: Math.sin(q * 1.6) * .012, smile: -.4 * L.seg(p, .5, .8) });
+        lean: L.seg(p, .3, .6) * .18, bob: Math.sin(q * 1.5) * .012, smile: -.45 * L.seg(p, .3, .6) });
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
-      L.scrim(L.C, 300, 1010, .5, '224,165,113');
-      head(L, 'EL NEGOCIO, SIN CONTABILIDAD', ['Gastó $34,502.', 'Perdió $1,260'], 'Ingresos menos gastos de operación', TINTA, p, TERRA);
+      L.scrim(L.C, 300, 700, .46, '224,165,113');
+      head(L, 'EL NEGOCIO, SIN CONTABILIDAD', ['Vendió 33,242.', 'Gastó 34,502'], null, TINTA, p, TERRA);
+      cascada2D(L, [{ et: 'Ingresos', val: 33242, tipo: 'sube' }, { et: 'Gastos de\noperación', val: -34502, tipo: 'baja' },
+                    { et: 'Pérdida de\noperación', val: -1260, tipo: 'total' }], L.seg(p, .1, .56), 33242, ' M');
+      // el callout, dentro de la misma escena
+      const kc = L.ex(L.seg(p, .58, .78));
+      if (kc > 0) { const C2 = L.C, bx = 120, by = 520, bw2 = 840, bh = 250;
+        C2.save(); C2.globalAlpha = kc; C2.fillStyle = '#FBF5E6';
+        C2.beginPath(); C2.roundRect(bx, by, bw2, bh, 18); C2.fill();
+        C2.strokeStyle = TERRA; C2.lineWidth = 6; C2.stroke(); C2.restore();
+        L.txt('DE CADA $100 QUE VENDIÓ', 540, by + 58, { w: 700, s: 32, al: 'center', c: '#5A2E14', a: kc });
+        L.txt('perdió $3.79', 540, by + 148, { f: L.F.d, w: 800, s: 76, al: 'center', c: TERRA, a: kc });
+        L.txt('un año antes perdía $205 de cada $100', 540, by + 206, { w: 600, s: 30, al: 'center', c: 'rgba(90,46,20,.66)', a: kc }); }
     } },
 
-  // 8 · EL CALLOUT dentro del waterfall (JP): de cada $100, perdió $3.80. Plano más cerrado.
-  { id: 'callout', world: 'taller', d: 7, ink: TINTA, year: '2026', sfx: [[.14, 'shine', .5]],
-    cap: 'De cada 100 dólares que vendió, perdió 3.79. Un año antes perdía 205.',
-    update(w, lt, t, L) {
-      const p = P(lt, this), q = L.on2(t);
-      w.pelda.forEach(g => g.scale.y = .001); w.trepa.visible = false;
-      w.wa.g.visible = true; w.wb.g.visible = false; w.baja.visible = true;
-      w.wa.col.forEach(g => g.scale.y = 1);
-      const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([.4, 3.3, 8.6], [.45, 4.1, 5.4], k), mv([0, 3.55, -4.2], [.4, 4.5, -3.4], k), 30);
-      w.callout.scale.setScalar(Math.max(.001, L.back(L.seg(p, .1, .34))));
-      L.pose(w.baja, { head: [0, -.6, 0], lean: .16, bob: Math.sin(q * 1.6) * .012, smile: -.3 });
-    },
-    overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
-      // sin head(): el callout de la maqueta YA dice la cifra, y repetirla la encimaba consigo misma
-      L.scrim(L.C, 300, 560, .42, '224,165,113');
-      L.kicker('EL MARGEN DE OPERACIÓN', 360, L.seg(p, .08, .4), TINTA);
-    } },
-
-  // 9 · EL SALTO — la pérdida de operación es una rayita al lado del ajuste contable.
-  { id: 'ajuste', world: 'taller', d: 9, ink: TINTA, year: '2026', sfx: [[.3, 'whoosh', .55]],
+  // 8 · EL SALTO — el mismo waterfall 2D, ahora con el ajuste contable que lo aplasta todo.
+  { id: 'ajuste', world: 'taller', d: 11, ink: TINTA, year: '2026', trans: 'cont', sfx: [[.3, 'whoosh', .55]],
     cap: '¿Y los 104 mil millones del titular? 94 mil nunca salieron de la caja: son un ajuste en los libros.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.pelda.forEach(g => g.scale.y = .001); w.trepa.visible = false; w.callout.scale.setScalar(.001);
-      w.wa.g.visible = false; w.wb.g.visible = true; w.baja.visible = true;
+      w.pelda.forEach(g => g.scale.y = .001); w.trepa.visible = false; w.baja.visible = true;
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-.7, 3.8, 12.4], [.5, 3.6, 11.0], k), mv([0, 4.1, -4.2], [0, 3.9, -4.2], k), 30);
-      w.wb.col.forEach((g, i) => g.scale.y = Math.max(.001, L.eio(L.seg(p, .06 + i * .17, .3 + i * .17))));
-      L.pose(w.baja, { head: [-.5, -.4, 0], lean: .1, armL: [.2, .18, .2], armR: [.2, .18, .2], bob: Math.sin(q * 1.6) * .012, smile: -.5 });
+      cam(w, mv([.2, 2.2, 7.0], [-.3, 2.6, 8.8], k), mv([.2, 2.0, -2.6], [0, 2.3, -2.6], k), 30);
+      L.pose(w.baja, { head: [-.55, -.35, 0], lean: .12, armL: [.2, .18, .2], armR: [.2, .18, .2],
+        bob: Math.sin(q * 1.5) * .012, smile: -.55 });
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
-      L.scrim(L.C, 300, 1010, .5, '224,165,113');
-      head(L, 'DE DÓNDE SALEN LOS $104,039 M', ['$94,324 millones', 'nunca salieron'], 'Un ajuste en los libros: nadie firmó un cheque', TINTA, p, TERRA);
+      L.scrim(L.C, 300, 700, .46, '224,165,113');
+      head(L, 'DE DÓNDE SALEN LOS $104,039 M', ['$94,324 millones', 'nunca salieron'], null, TINTA, p, TERRA);
+      cascada2D(L, [{ et: 'Pérdida de\noperación', val: -1260, tipo: 'total' },
+                    { et: 'Ajuste en\nlibros', val: -94324, tipo: 'baja' },
+                    { et: 'Intereses, otros\ne impuestos', val: -8455, tipo: 'baja' },
+                    { et: 'PÉRDIDA\nNETA', val: -104039, tipo: 'total' }], L.seg(p, .08, .78), 104039, ' M');
+      L.rise('Un ajuste en los libros: nadie firmó un cheque', 90, 672, L.seg(p, .5, .8),
+        { s: 34, c: 'rgba(42,20,9,.74)' });
     } },
 
-  // 10 · CIERRE — vuelve la plaza, ya sin nadie, y la pantalla lleva la pregunta. El bookend del gancho.
+  // 9 · CIERRE — vuelve la plaza, ya sin nadie, y la pantalla lleva la pregunta. El bookend del gancho.
   { id: 'pregunta', world: 'plaza', d: 8, ink: ARENA, year: '2026', sfx: [],
     cap: 'La utilidad neta te dice qué quedó hasta abajo. No te dice cómo va el negocio. ¿Cuántas veces te has quedado solo con el titular?',
     update(w, lt, t, L) {
@@ -487,10 +580,12 @@ const scenes = [
       w.grande.material.opacity = 1 - cam2; w.preg.material.opacity = cam2;
       w.conf.children.forEach(c => c.visible = false); w.fuegos.forEach(g => g.visible = false);
       w.gente.forEach(a => a.scale.setScalar(.001));
+      w.coches.forEach(c => { c.position.x = ((c.userData.x0 + c.userData.dir * t * 1.6 + 18) % 36) - 18; });
+      w.nubes.forEach((n, i) => n.position.x += .003 * (1 + i * .3));
       w.solo.scale.setScalar(1);
       L.pose(w.solo, { head: [-.3, 0, 0], armL: [.1, .12, .1], armR: [.1, .12, .1], bob: Math.sin(q * 1.4) * .012 });
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([.4, 4.0, 9.6], [.2, 4.6, 7.4], k), mv([.1, 10.0, -13], [.1, 9.6, -13], k), 30);
+      cam(w, mv([.4, 7.4, 6.2], [.25, 7.8, 3.4], k), mv([.1, 9.0, -12.5], [.1, 8.8, -12.5], k), 30);
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 1380, 1920, .72);
@@ -503,4 +598,4 @@ const scenes = [
     } },
 ];
 
-export default { id: '2026-11-20-ANT-short3d', title: 'Anthropic sale a la bolsa', tail: 1.3, worlds, scenes };
+export default { id: '2026-11-20-ANT-short3d', images: { anthropic: 'images/logo_anthropic.png' }, title: 'Anthropic sale a la bolsa', tail: 1.3, worlds, scenes };
