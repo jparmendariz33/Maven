@@ -1,4 +1,4 @@
-# Banco de empresas · shorts de análisis de empresa (vie, sáb y dom)
+# Banco de empresas · shorts de análisis de empresa (viernes, sábado y domingo)
 
 Lo revisa la tarea "Análisis de empresa" antes de elegir. **Primero manda la noticia de la semana** (resultados que sorprendieron,
 adquisición, IPO, expansión, lanzamiento, polémica, récord). Si ninguna empresa está en las noticias, se elige de esta lista una con

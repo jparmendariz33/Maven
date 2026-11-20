@@ -1,8 +1,17 @@
 ---
 name: largo
-description: Produce el video largo semanal (6–7 min, 16:9) de Costa Studio Finance, by JP Armendáriz, listo para que JP solo le ponga su voz — guion con datos verificados, storyboard, render 1920x1080 con teleprompter, miniatura, youtube.md y short derivado. Úsala cuando digan "/largo", "haz el video largo de la semana", "produce el video del domingo", o cuando la tarea programada de los lunes lo pida.
+description: Produce el video largo semanal (6–7 min, 16:9) de Costa Studio Finance, by JP Armendáriz, listo para que JP solo le ponga su voz — guion con datos verificados, storyboard, render 1920x1080 con teleprompter, miniatura y youtube.md. Úsala cuando digan "/largo", "haz el video largo de la semana", "produce el video del domingo", o cuando la tarea programada de los lunes lo pida.
 ---
-
+> # ⚠️ LEE ESTO PRIMERO: `finance-videos/plan/anatomia-formatos.md`
+> Ahí está **qué debe llevar** cada pieza. Este skill es **cómo** se hace.
+>
+> **El gancho:** hasta 15 s, pero **en los primeros 5 ya se dijo qué va a aprender el espectador**. Nada de presentarse
+> antes de prometer.
+> **El tema y el título se eligen con `keyword_research` de vidIQ, no por intuición** (20 nov 2026): la búsqueda es el
+> mejor tráfico del canal, con 68.4% de retención y 61 s de duración promedio, y hoy se elige a ciegas.
+>
+> **El largo NO es negociable:** la historia 3D del jueves anterior lo anuncia en pantalla con un pizarrón.
+> Su borrador (guion, visuales y fuentes verificadas) empieza **el lunes anterior**.
 > **Voz de JP (obligatorio en todo guion):** antes de escribir, lee `finance-videos/plan/voz-jp.md` y redacta con ese tono. El guion no debe sonar a IA.
 
 
@@ -10,7 +19,7 @@ description: Produce el video largo semanal (6–7 min, 16:9) de Costa Studio Fi
 
 Proyecto: `finance-videos/` (todo se ejecuta desde ahí: `cd finance-videos`). Usuario: **Juan Pablo Armendáriz (@jparmendariz)**;
 escríbele en español, corto y claro. Lee antes: `plan/PLAN.md` (§0 marca y conflictos de interés, §4 formato, §6b monetización),
-`plan/calendario-largos.md` y `plan/clientes-agencia.md`. **Costo cero:** no uses vidIQ ni servicios de pago.
+`plan/calendario-largos.md` y `plan/clientes-agencia.md`. **vidIQ sí se usa** para elegir tema y título (`keyword_research`, `score_title`); la voz de IA solo si JP la pide (~141 créditos).
 
 ## 0. Preparar
 ```bash
@@ -22,7 +31,7 @@ Si `largos/$D/*_largo.mp4` ya existe, no lo rehagas.
 
 ## 1. Investigar y verificar (WebSearch; fuentes primarias cuando se pueda)
 - Toma de `calendario-largos.md` la semana $D: título, búsqueda objetivo, gancho, capítulos, visuales y datos a verificar. (La columna
-  "short derivado" quedó obsoleta el 13 nov 2026: ese puente lo hace ahora la **Historia 3D del miércoles**, con el mismo tema del largo.)
+  "short derivado" quedó obsoleta el 13 nov 2026: ese puente lo hace ahora la **Historia 3D del JUEVES**, con el mismo tema del largo.)
 - Cada número del guion sale de una fuente que anotas en `largos/$D/fuentes.md` (URL + dato). México: Banxico, INEGI, CONSAR, SAT, CNBV, BMV.
   Empresas: reportes en la SEC o de la empresa. Estudios (Behavioral Finance): el paper original o una fuente académica seria;
   nada de estudios retractados.
@@ -159,10 +168,10 @@ Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, cor
    pilar, comentario fijado (la pregunta del outro), pantalla final (video sugerido del mismo pilar) y el **guion para leer** completo
    (`python3 scripts/guion_lectura.py largos/$D`).
 2. **El puente al largo lo hace la Historia 3D del miércoles** (`/historia`), con el tema de este mismo largo: "Video relacionado" → este
-   video y comentario fijado con la liga. Ya no se produce el short derivado del miércoles (cambio del 13 nov 2026).
+   video y comentario fijado con la liga. Ya no se produce el short derivado (cambio del 13 nov 2026): el puente es la Historia 3D del jueves.
 
 3. Commit + push a la rama `costa-studio-finance` (sin `build/`, `images/_cand/` ni .wav). Si el push falla, entrega igual: MP4 y miniatura
    por el chat (SendUserFile) y el contenido de `youtube.md` pegado en el mensaje.
 4. Mensaje a JP: tema, duración, **el título y la descripción completos listos para copiar** (los bloques de "Para copiar y pegar"), rutas (MP4, miniatura, short) y recordatorio:
    "Graba tu voz con CapCut (importa el MP4 → Audio → Grabar → lee el teleprompter de principio a fin) y prográmalo
-   para el domingo 10:00. El miércoles 12:00 sale la Historia 3D de este mismo tema, con 'Video relacionado' → este largo."
+   para el domingo 10:00. El jueves 12:00 sale la Historia 3D de este mismo tema, con 'Video relacionado' → este largo."

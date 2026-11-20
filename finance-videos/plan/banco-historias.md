@@ -1,4 +1,4 @@
-# Banco de historias · "Historia 3D" (sábados 12:00)
+# Banco de historias · "Historia 3D" (martes y jueves 12:00)
 
 Historias de empresas y de quienes las fundaron, contadas con maquetas animadas (skill `/historia`). Lo revisa la tarea "Historia 3D"
 los **viernes**: elige una fila que no esté en "Ya publicadas" ni en `publicados.md`. Prioridad: (1) que enganche con la semana (la

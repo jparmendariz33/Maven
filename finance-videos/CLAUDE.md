@@ -58,112 +58,25 @@ Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL
 empresa: no mezclar nombres). Las instrucciones de las tareas programadas están en `plan/tareas.md`. Un solo MP4 por pieza en GitHub
 (sin renders de prueba ni versiones alternas: el repo crece con cada video).
 
-## Regla del cierre (pedida por JP, 9 nov 2026 — aplica a TODO video que lleve datos de mercado)
-**Ningún video con precios, porcentajes del día o valor de mercado se termina ni se entrega antes del cierre de la sesión ordinaria
-de Wall Street** (16:00 de Nueva York = 15:00 CDMX en invierno y 14:00 CDMX durante el horario de verano de EE.UU.; la BMV cierra a
-la misma hora). Los datos son SIEMPRE los de cierre, lo más actualizados posible. JP publica a las 19:00, así que hay margen.
-- Antes de escribir una cifra: `python3 scripts/market_close.py` (CERRADO = usa los datos; ABIERTO = todavía no; SIN SESIÓN = fin de
-  semana o festivo: usa el último cierre y nombra ese día). `--wait` espera solo hasta 12 min después del cierre.
-- **Si JP da una idea durante el día** ("hoy haz el de Nvidia"): se adelanta todo lo que no depende del cierre (investigación,
-  fuentes, imágenes, guion con las cifras pendientes) y, al cerrar la bolsa, se bajan los datos finales, se ajusta el guion si el
-  movimiento cambió (si ya no es cierto, se reescribe), se renderiza y **se entrega UNA sola vez, ya final**. Nada de versiones
-  preliminares con datos intradía, salvo que JP las pida. En una sesión de chat: avísale que llega después del cierre y prográmalo
-  (`send_later` a las 16:20 de Nueva York, o `market_close.py --wait` en segundo plano).
-- Las tareas automáticas con datos del día corren a las **16:25 de Nueva York** (15:25 o 14:25 CDMX) y el video llega ~30 min después.
-- No dependen del cierre: el largo (atemporal), su short derivado del miércoles y los shorts de sábado y domingo (no hay mercado: usan
-  el cierre del viernes).
+---
 
-## El ranking del domingo es un TORNEO (JP, 14 nov 2026, estrena el 22 nov)
-Las empresas compiten en 5 rondas (ventas, utilidad de operación, margen, ROE y PEG), con puntos 5-4-3-2-1, minigráfica
-de evolución en las dos primeras y tabla final con una ganadora. El título promete un resultado; "5 empresas que estamos
-vigilando" no dice nada. Plan de acción completo en `plan/torneo.md`; reglas en `/short` §1d.
+## Cómo está ordenado esto
 
-## Regla de los logos (JP, 15 nov 2026)
-- **Siempre el logo oficial de la empresa**, bajado de su propia sala de prensa o sitio (gstatic para Google, newsroom de
-  Spotify, el sitio de cada mexicana). El catálogo de iconos monocromo solo como último recurso: da la "G" en vez de la
-  palabra Google y pierde el color de marca. Crédito en `images/credits.json`.
-- **Nada de tarjeta blanca** salvo que el logo sea casi invisible sobre el fondo (umbral de contraste 1.22). Una tarjeta
-  blanca se lee como "PNG mal recortado".
-- **Varios logos juntos van en bloque 3 + 2, no en fila.** En fila de cinco quedan diminutos. En el gancho del short el
-  bloque va a la altura del personaje (y≈1128), nunca pegado al subtítulo ni encima de los subtítulos de la voz.
-  Lo controla `"logo_layout": "bloque" | "fila" | "esparcido"` en la escena.
+Las reglas nacen de correcciones de JP y hasta el 20 nov 2026 estaban en orden cronológico, que no sirve para
+buscar. Ahora van en **seis bloques**, cada regla con su fecha intacta. Si añades una, va al bloque que le toca,
+no al final.
 
-## Regla del cierre de un ranking (JP, 15 nov 2026)
-La última frase es **un principio general, nunca un veredicto sobre una acción**. "El crecimiento es una métrica, no una
-tesis" sirve; "Mercado Libre no es buena inversión" o "no es buen momento para entrar" son recomendación y están
-prohibidas. La buena señal: la frase sigue siendo cierta en el torneo del domingo siguiente, con otras empresas.
-Tampoco frases tajantes de más ("crecer rápido no es ser un buen negocio" se descartó por injusta con quien lidera
-en ventas y en PEG).
+- **Bloque 1 — El gancho y el guion — qué se dice y en qué orden**
+- **Bloque 2 — Datos, fuentes y límites editoriales**
+- **Bloque 3 — Imagen: maquetación, 3D y miniatura**
+- **Bloque 4 — Audio: voz, aire y música**
+- **Bloque 5 — Producción: calendario, aprobaciones y créditos**
+- **Bloque 6 — El proyecto: estructura y reglas base**
 
-## El gancho identifica a la empresa (JP, 14 nov 2026)
-La primera escena lleva **siempre** el logo (`"logo"` en el `hook`, arriba a la derecha, con tarjeta blanca si no
-contrasta) o la foto del tema a toda pantalla, o las dos. Un gancho sin marca no dice de quién habla. Detalle en `/short` §0.
 
-## Regla del rótulo (JP, 14 nov 2026)
-**Todo lo que dice la voz se ve en pantalla, y ningún número va sin decir qué es.** "Brasil · 120 M" no significa nada: va
-"Brasil · 120 M de clientes". "¿Está cara?" sin nombrar la acción es ambiguo: va "La acción se paga a 16 veces las ganancias".
-Distingue siempre **utilidad de operación** de **utilidad neta**. Detalle y checklist en `/short` §0.
+---
 
-## Regla de la maquetación (13 nov 2026, tras el defecto que encontró JP en el short de Nubank)
-El motor tiene que aguantar cualquier largo de texto: **nunca** se arregla un encimado acortando el guion.
-- `fitLines(txt, f, w, size, maxW, maxLines, min)` achica hasta que quepa. `wrap(...).slice(0, n)` tira palabras en
-  silencio (así se perdieron "pagan" e "impuestos" en las etiquetas de una cascada): prohibido.
-- Nada se dibuja en una Y fija si arriba hay texto de largo variable: cada bloque cuelga de donde terminó el anterior.
-- Antes de entregar, barrido del MP4 completo (un cuadro cada 3 s en contacto), no solo `qa.jpg`. Receta en `/short` §4.
-
-## Regla del aire (JP, 14 nov 2026 — oyó demasiadas pausas en el short de Nubank)
-El cambio de pantalla **absorbe** la pausa del punto final, no se le suma: antes se encadenaban 0.6 s + 0.6 s y quedaba 1.2 s de
-silencio entre TODAS las escenas (13 s muertos en un short de 88). Ahora el hueco es el mayor de los dos (`no_voice.py`), y la cola
-después de la última palabra es de 1.4 s, no 2.2 (`build_timeline.py` → `TAIL`). Si un video se pasa de formato, lo primero que se
-revisa es el aire, no el guion.
-
-## Regla de las cascadas (JP, 14 nov 2026)
-**Siempre con los montos reales; nunca normalizados a $100.** Con base 100 el porcentaje y el monto dicen lo mismo y la fila de
-montos sobra. La escala va en el subtítulo y en `"unit"` de la escena. Detalle en `/short` §1e.
-
-## Regla de la voz humana con IA (JP, 17 nov 2026 — las dos correcciones del mismo día)
-JP corrigió dos veces el mismo short y las dos juntas dan la regla:
-
-1. **"Suena muy robotizado."** Cierto, pero el problema casi nunca es la voz: es que el guion esté escrito para leerse.
-2. **"Demasiadas muletillas, se ve demasiado informal."** Al reescribirlo con "a ver", "o sea", "¿sabes?", "¡súper bien!"
-   quedó peor: informal y falso.
-
-**La conclusión: `plan/voz-jp.md` describe cómo habla JP cuando LÉE ÉL.** Sus muletillas suenan naturales porque son
-suyas y las dice con su propio ritmo. Puestas en una voz de IA suenan actuadas. **Con narración de IA se mantiene el
-registro escrito de siempre —limpio, profesional, una idea por frase— y lo humano se consigue con la PROSODIA, no con
-palabras de relleno.**
-
-Qué sí mueve la entonación de la voz, y dónde ponerlo:
-- **`…` para respirar**, 2 o 3 veces en un short, justo antes del dato que importa. No en cada línea.
-- **Frases de largo desigual.** Una corta de golpe, luego una larga que explica. El monótono viene de frases iguales.
-- **Signos de interrogación reales** (una pregunta genuina, no retórica en cadena): suben el tono al final.
-- **Alargar una vocal, una sola vez por video** y solo si la palabra lo pide (`muchíiisimo`). Dos veces ya es caricatura.
-- **Comas donde de verdad se pausa al hablar**, aunque la gramática no las pida.
-
-Qué NO se usa con voz de IA: "a ver", "o sea", "pues", "¿sabes?", "¿no?", "¡súper!", exclamaciones de entusiasmo.
-Esas se quedan para cuando grabe JP.
-
-## Regla de la toma única (JP, 17 nov 2026)
-**La voz de IA se genera en UNA sola llamada, nunca por piezas.** Cada envío tiene su propia entonación y energía, así
-que en los cortes se oye un cambio de voz; JP lo notó en el largo de Apple, justo donde terminaba cada pieza. El límite
-de un envío son **5,000 caracteres**: si el guion no cabe, se recorta el guion, no se parte el audio. Ojo: `tts_prep.py`
-parte en piezas para el flujo viejo; usa su texto concatenado con `\n\n` y mándalo completo. Y borra `voice_raw.mp3`
-antes de reprocesar: `process_voice.py` lo reutiliza si existe y ignora las piezas nuevas.
-
-## Regla del encuadre 3D (19 nov 2026 — historia de Kahneman)
-La hoja de revisión (`render3d.js <carpeta> --qa`) es obligatoria y casi nunca pasa a la primera: la de Kahneman necesitó
-cinco vueltas. Los cuatro defectos que salieron, con su causa real:
-- **Texto cortado en una etiqueta 3D.** No es el encuadre: `label3d` dibuja sobre un canvas de `pw` píxeles (1024 por
-  defecto) y el texto que no cabe se recorta. "ECONOMETRICA · 1979" a 86px con `ls: 3` mide ~1,070 px y perdía letras en
-  los dos extremos. Regla: `caracteres × 0.62 × tamaño + ls × caracteres ≤ pw`. Baja la fuente, no el ancho del plano.
-- **Objeto pegado al rótulo.** Para BAJAR algo en el cuadro, el `lookAt` va ARRIBA del objeto, no abajo (es al revés de lo
-  que parece). La zona segura de un vertical es de ~800 a ~1650 px de 1920: apunta a `centro_del_objeto + 0.25 × media_altura`.
-- **Texto acostado que no se ve.** Un `label3d` plano sobre una mesa se lee pésimo en vertical y con la cámara baja
-  desaparece. Las cartas de la apuesta se volvieron **placas verticales de frente a cámara** y se leyeron a la primera.
-- **Personaje fuera de cuadro.** Si la cámara panea y el personaje está quieto, se sale. Mueve el `target` lo mismo que el
-  personaje, o no lo muevas.
-Para calcular distancia: con el vertical, `media_altura = tan(25°) × distancia` y `media_anchura = media_altura × 0.5625`.
-Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
+# 1. El gancho y el guion — qué se dice y en qué orden
 
 ## Regla del gancho (JP, 20 nov 2026 — la más importante del canal)
 "Creo que la primera parte es muy buena, pero no engancha. Hay que enganchar en 3 o 5 segundos."
@@ -187,30 +100,98 @@ Un video que nadie ve no sirve por bien hecho que esté, así que el gancho se t
   cifra con escala ("perdió 104 mil millones y casi no perdió dinero"), un resultado prometido ("gana Alphabet, 25 de 30").
 - Sigue vigente que el gancho **identifica a la empresa** (logo o foto): enganchar y decir de quién hablas no compiten.
 
+## El gancho identifica a la empresa (JP, 14 nov 2026)
+La primera escena lleva **siempre** el logo (`"logo"` en el `hook`, arriba a la derecha, con tarjeta blanca si no
+contrasta) o la foto del tema a toda pantalla, o las dos. Un gancho sin marca no dice de quién habla. Detalle en `/short` §0.
+
+## Regla del rótulo (JP, 14 nov 2026)
+**Todo lo que dice la voz se ve en pantalla, y ningún número va sin decir qué es.** "Brasil · 120 M" no significa nada: va
+"Brasil · 120 M de clientes". "¿Está cara?" sin nombrar la acción es ambiguo: va "La acción se paga a 16 veces las ganancias".
+Distingue siempre **utilidad de operación** de **utilidad neta**. Detalle y checklist en `/short` §0.
+
+## Regla de que se entienda sin saber nada (JP, 19 nov 2026)
+"Este tipo de videos deben ser súper digeribles para cualquier público, incluso los que no sepan de finanzas, de
+economía, de cualquier edad." El filtro: **si la frase le pide al espectador que deduzca algo, está mal.** Las que
+cayeron en la historia de Kahneman y por qué:
+- "decides con **una calculadora en la cabeza**" → metáfora que hay que descifrar. Quedó: "todos hacemos **cuentas
+  mentales** y elegimos lo que más nos conviene".
+- "tu peor enemigo no está en la pantalla, **está de este lado**" → "de este lado" es espacial y abstracto. Quedó:
+  "**no es el mercado. Eres tú**".
+- "el Nobel **no se entrega póstumo**" → palabra culta. Quedó: "**no se le da a quien ya murió**".
+- "lanzar una moneda por 200" → quedó "**un volado: 200 o nada**", que además calca lo que dicen las cartas en pantalla.
+Y el remate: **la imagen tiene que decir lo mismo que la frase, al mismo tiempo.** "Eres tú" no se entendía con un
+espejo (el reflejo se leía como otra persona detrás); se entiende con un teléfono que muestra el portafolio y una
+cámara que se mueve de la pantalla a su cara. Si hace falta explicar la escena, la escena está mal.
+
 ## Las historias cierran con una PREGUNTA (convención de la casa, 19 nov 2026)
 Lo tenía la historia de Steve Jobs ("¿Genio irrepetible… o una empresa capaz de reinventarse?") y a la de Kahneman se
 me olvidó: terminaba con una afirmación y se acababa. La escena de cierre es propia y lleva **la pregunta centrada en
 serif itálica, la línea "Desde la costa, todo se ve con claridad." y el aviso legal**. Si la historia es el puente a un
 largo, va **antes** una escena de aviso (pizarrón "ESTE DOMINGO 10:00" + el título) y la pregunta cierra al final.
 
-## La ola solo va entre lugares distintos (20 nov 2026)
-La transición `L.tide()` —la ola con espuma— es de marca y está bien para **cambiar de sitio**. Entre dos escenas que
-pasan en el MISMO mundo se siente como un parche en medio de una toma. En esas va **`trans: 'cont'`** en la escena que
-sigue, y además hay que **encadenar las cámaras**: la posición y el objetivo con que arranca cada escena continuada
-son los que tenía la anterior al terminar. Sin eso, quitar la ola deja un corte seco. Y en un plano continuo los
-objetos **se encogen** para salir, no desaparecen de golpe.
+## Regla del cierre de un ranking (JP, 15 nov 2026)
+La última frase es **un principio general, nunca un veredicto sobre una acción**. "El crecimiento es una métrica, no una
+tesis" sirve; "Mercado Libre no es buena inversión" o "no es buen momento para entrar" son recomendación y están
+prohibidas. La buena señal: la frase sigue siendo cierta en el torneo del domingo siguiente, con otras empresas.
+Tampoco frases tajantes de más ("crecer rápido no es ser un buen negocio" se descartó por injusta con quien lidera
+en ventas y en PEG).
 
-## Los rótulos se ajustan solos (20 nov 2026)
-Ni el título ni el subtítulo de `head()` se arreglan acortando el texto (regla de la maquetación). A 78 px caben ~18
-caracteres por línea en los 900 px útiles: si una línea se pasa, **todo el bloque se achica** (mínimo 54). El subtítulo
-hace lo mismo a partir de ~46 caracteres. Y el degradado (`scrim`) tiene que llegar ~60 px más abajo que la última
-línea: si no, el subtítulo cae sobre la escena y, con un fondo oscuro detrás, desaparece.
+## Regla de los números (descubierta en nov 2026 — aplica a TODO: shorts, largos, voz propia o de IA)
+Un número mide pocos caracteres pero tarda mucho en decirse: "45" son 2 caracteres y se dice "cuarenta y cinco";
+"1950" → "mil novecientos cincuenta" (8 sílabas); "46%" → "cuarenta y seis por ciento"; "$45,765" → 20 sílabas.
+- **Tiempos (teleprompter sin voz):** `scripts/no_voice.py` convierte cada número, %, $ y monto a palabras (`spoken()`) y mide
+  por SÍLABAS habladas, no por letras, a ~120 palabras/min. Nunca calcules tiempos por caracteres.
+- **Voz de IA:** `scripts/tts_prep.py` escribe los números como se pronuncian (y siglas: S&P 500, CNBV, Nasdaq, JP) antes de
+  enviarlos, para que la voz no lea "10,000" como "diez coma cero", y calcula el costo real en créditos.
+- **Guiones:** en `say` escribe números con dígitos (se ven bien en subtítulos y alinean con whisper); las herramientas hacen la
+  conversión. Si un tramo tiene muchas cifras seguidas, divídelo en más pantallas: se dice más lento de lo que parece.
 
-## Una publicación nunca dice "hoy" ni "ayer" (20 nov 2026)
-JP no alcanzó a subir la publicación de Nvidia el día que se hizo, y al día siguiente "hoy bajó 2.89%" y "lo que
-reportó ayer" ya eran falsas. **En publicaciones y en sus textos las fechas van explícitas** ("el martes", "el
-miércoles 18", "en lo que va del año"), para que sigan siendo ciertas el día que se suban. En los shorts de contexto
-ya estaba prohibido por otra razón (que no envejezcan); aquí es por exactitud.
+## Regla de la voz humana con IA (JP, 17 nov 2026 — las dos correcciones del mismo día)
+JP corrigió dos veces el mismo short y las dos juntas dan la regla:
+
+1. **"Suena muy robotizado."** Cierto, pero el problema casi nunca es la voz: es que el guion esté escrito para leerse.
+2. **"Demasiadas muletillas, se ve demasiado informal."** Al reescribirlo con "a ver", "o sea", "¿sabes?", "¡súper bien!"
+   quedó peor: informal y falso.
+
+**La conclusión: `plan/voz-jp.md` describe cómo habla JP cuando LÉE ÉL.** Sus muletillas suenan naturales porque son
+suyas y las dice con su propio ritmo. Puestas en una voz de IA suenan actuadas. **Con narración de IA se mantiene el
+registro escrito de siempre —limpio, profesional, una idea por frase— y lo humano se consigue con la PROSODIA, no con
+palabras de relleno.**
+
+Qué sí mueve la entonación de la voz, y dónde ponerlo:
+- **`…` para respirar**, 2 o 3 veces en un short, justo antes del dato que importa. No en cada línea.
+- **Frases de largo desigual.** Una corta de golpe, luego una larga que explica. El monótono viene de frases iguales.
+- **Signos de interrogación reales** (una pregunta genuina, no retórica en cadena): suben el tono al final.
+- **Alargar una vocal, una sola vez por video** y solo si la palabra lo pide (`muchíiisimo`). Dos veces ya es caricatura.
+- **Comas donde de verdad se pausa al hablar**, aunque la gramática no las pida.
+
+Qué NO se usa con voz de IA: "a ver", "o sea", "pues", "¿sabes?", "¿no?", "¡súper!", exclamaciones de entusiasmo.
+Esas se quedan para cuando grabe JP.
+
+## Regla del reloj con voz de IA (16 nov 2026)
+La voz de IA lee a ~150 palabras/min; `no_voice.py` presupuesta 120 para la voz de JP. **El mismo guion sale ~25% más
+corto con IA**: el largo de Apple pasó de 6:52 (teleprompter) a 5:21 (Francisco). Si un largo tiene que durar 6–7 min
+con voz de IA, el guion necesita ~25% más contenido. Y nunca escribas la duración dentro del guion ("en 10 minutos"):
+cambia con cada recorte y con la voz, y hay que regenerar audio para corregirla (ya pasó dos veces).
+
+---
+
+# 2. Datos, fuentes y límites editoriales
+
+## Regla del cierre (pedida por JP, 9 nov 2026 — aplica a TODO video que lleve datos de mercado)
+**Ningún video con precios, porcentajes del día o valor de mercado se termina ni se entrega antes del cierre de la sesión ordinaria
+de Wall Street** (16:00 de Nueva York = 15:00 CDMX en invierno y 14:00 CDMX durante el horario de verano de EE.UU.; la BMV cierra a
+la misma hora). Los datos son SIEMPRE los de cierre, lo más actualizados posible. JP publica a las 19:00, así que hay margen.
+- Antes de escribir una cifra: `python3 scripts/market_close.py` (CERRADO = usa los datos; ABIERTO = todavía no; SIN SESIÓN = fin de
+  semana o festivo: usa el último cierre y nombra ese día). `--wait` espera solo hasta 12 min después del cierre.
+- **Si JP da una idea durante el día** ("hoy haz el de Nvidia"): se adelanta todo lo que no depende del cierre (investigación,
+  fuentes, imágenes, guion con las cifras pendientes) y, al cerrar la bolsa, se bajan los datos finales, se ajusta el guion si el
+  movimiento cambió (si ya no es cierto, se reescribe), se renderiza y **se entrega UNA sola vez, ya final**. Nada de versiones
+  preliminares con datos intradía, salvo que JP las pida. En una sesión de chat: avísale que llega después del cierre y prográmalo
+  (`send_later` a las 16:20 de Nueva York, o `market_close.py --wait` en segundo plano).
+- Las tareas automáticas con datos del día corren a las **16:25 de Nueva York** (15:25 o 14:25 CDMX) y el video llega ~30 min después.
+- No dependen del cierre: el largo (atemporal), su short derivado del miércoles y los shorts de sábado y domingo (no hay mercado: usan
+  el cierre del viernes).
 
 ## Un número que no se puede verificar no se publica (20 nov 2026)
 En el debut de Anthropic las fuentes daban valor de mercado entre 1.3 y 2 billones, el prospecto no publicaba cifra
@@ -224,11 +205,166 @@ se confirma con **al menos dos fuentes independientes del mismo día**. En la pu
 **Y antes de escribir: comprueba la fecha en hora de México, no la del contenedor**, que corre en UTC. Por eso dije
 "ayer" de algo que había pasado ese mismo día.
 
+## Una publicación nunca dice "hoy" ni "ayer" (20 nov 2026)
+JP no alcanzó a subir la publicación de Nvidia el día que se hizo, y al día siguiente "hoy bajó 2.89%" y "lo que
+reportó ayer" ya eran falsas. **En publicaciones y en sus textos las fechas van explícitas** ("el martes", "el
+miércoles 18", "en lo que va del año"), para que sigan siendo ciertas el día que se suban. En los shorts de contexto
+ya estaba prohibido por otra razón (que no envejezcan); aquí es por exactitud.
+
 ## Conflicto de interés: se declara aunque nadie pregunte (20 nov 2026)
 La publicación del debut de Anthropic la redactó Claude, que es un producto de Anthropic. Se le dijo a JP antes de
 escribir una línea y quedó anotado en `summary.md` y en `publicacion.md`. La regla del canal ya exige declarar las
 empresas que son clientes de la agencia; esto es lo mismo por el otro lado: **cualquier relación entre quien escribe
 y la empresa analizada se dice, y la decisión de publicarla o no es de JP.**
+
+---
+
+# 3. Imagen: maquetación, 3D y miniatura
+
+## Regla de la maquetación (13 nov 2026, tras el defecto que encontró JP en el short de Nubank)
+El motor tiene que aguantar cualquier largo de texto: **nunca** se arregla un encimado acortando el guion.
+- `fitLines(txt, f, w, size, maxW, maxLines, min)` achica hasta que quepa. `wrap(...).slice(0, n)` tira palabras en
+  silencio (así se perdieron "pagan" e "impuestos" en las etiquetas de una cascada): prohibido.
+- Nada se dibuja en una Y fija si arriba hay texto de largo variable: cada bloque cuelga de donde terminó el anterior.
+- Antes de entregar, barrido del MP4 completo (un cuadro cada 3 s en contacto), no solo `qa.jpg`. Receta en `/short` §4.
+
+## Los rótulos se ajustan solos (20 nov 2026)
+Ni el título ni el subtítulo de `head()` se arreglan acortando el texto (regla de la maquetación). A 78 px caben ~18
+caracteres por línea en los 900 px útiles: si una línea se pasa, **todo el bloque se achica** (mínimo 54). El subtítulo
+hace lo mismo a partir de ~46 caracteres. Y el degradado (`scrim`) tiene que llegar ~60 px más abajo que la última
+línea: si no, el subtítulo cae sobre la escena y, con un fondo oscuro detrás, desaparece.
+
+## Regla de los logos (JP, 15 nov 2026)
+- **Siempre el logo oficial de la empresa**, bajado de su propia sala de prensa o sitio (gstatic para Google, newsroom de
+  Spotify, el sitio de cada mexicana). El catálogo de iconos monocromo solo como último recurso: da la "G" en vez de la
+  palabra Google y pierde el color de marca. Crédito en `images/credits.json`.
+- **Nada de tarjeta blanca** salvo que el logo sea casi invisible sobre el fondo (umbral de contraste 1.22). Una tarjeta
+  blanca se lee como "PNG mal recortado".
+- **Varios logos juntos van en bloque 3 + 2, no en fila.** En fila de cinco quedan diminutos. En el gancho del short el
+  bloque va a la altura del personaje (y≈1128), nunca pegado al subtítulo ni encima de los subtítulos de la voz.
+  Lo controla `"logo_layout": "bloque" | "fila" | "esparcido"` en la escena.
+
+## Regla de las cascadas (JP, 14 nov 2026)
+**Siempre con los montos reales; nunca normalizados a $100.** Con base 100 el porcentaje y el monto dicen lo mismo y la fila de
+montos sobra. La escala va en el subtítulo y en `"unit"` de la escena. Detalle en `/short` §1e.
+
+## Regla del encuadre 3D (19 nov 2026 — historia de Kahneman)
+La hoja de revisión (`render3d.js <carpeta> --qa`) es obligatoria y casi nunca pasa a la primera: la de Kahneman necesitó
+cinco vueltas. Los cuatro defectos que salieron, con su causa real:
+- **Texto cortado en una etiqueta 3D.** No es el encuadre: `label3d` dibuja sobre un canvas de `pw` píxeles (1024 por
+  defecto) y el texto que no cabe se recorta. "ECONOMETRICA · 1979" a 86px con `ls: 3` mide ~1,070 px y perdía letras en
+  los dos extremos. Regla: `caracteres × 0.62 × tamaño + ls × caracteres ≤ pw`. Baja la fuente, no el ancho del plano.
+- **Objeto pegado al rótulo.** Para BAJAR algo en el cuadro, el `lookAt` va ARRIBA del objeto, no abajo (es al revés de lo
+  que parece). La zona segura de un vertical es de ~800 a ~1650 px de 1920: apunta a `centro_del_objeto + 0.25 × media_altura`.
+- **Texto acostado que no se ve.** Un `label3d` plano sobre una mesa se lee pésimo en vertical y con la cámara baja
+  desaparece. Las cartas de la apuesta se volvieron **placas verticales de frente a cámara** y se leyeron a la primera.
+- **Personaje fuera de cuadro.** Si la cámara panea y el personaje está quieto, se sale. Mueve el `target` lo mismo que el
+  personaje, o no lo muevas.
+Para calcular distancia: con el vertical, `media_altura = tan(25°) × distancia` y `media_anchura = media_altura × 0.5625`.
+Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
+
+## Regla del dinamismo en 3D (JP, 19 nov 2026 — vio la primera historia de Kahneman)
+"Los personajes no están haciendo mucho." Una escena donde solo se mueve la cámara está mal, aunque el encuadre sea
+perfecto. La referencia es la historia de Steve Jobs: en cada escena **pasa algo**. La lista de lo que hay que mover:
+- **El personaje actúa**: camina (`walk` + `position`), gira (`rotation.y`), voltea a ver lo que importa (`head`),
+  se le caen los hombros (`lean`, `bob`), se encoge de hombros, señala. No basta con `talk`.
+- **Un objeto cambia de estado por una causa**: las monedas CAEN sobre el plato y por eso la balanza se hunde; las
+  cartas ENTRAN deslizándose; la que gana SE VA volando; la medalla BAJA; el reflejo IMITA al personaje.
+- **Los rótulos del mundo 3D aparecen cuando se dicen**, no están puestos desde el cuadro uno.
+Dos trampas que ya costaron un render: un objeto que cae sobre otro acaba DENTRO de él si no se calcula la tapa
+(usa `getWorldPosition` del grupo, no las coordenadas locales), y lo que baja desde arriba del cuadro pasa por detrás
+del rótulo: que llegue pronto a la zona visible (y_px 800–1650) y se quede ahí, en vez de animar el recorrido completo.
+
+## La ola solo va entre lugares distintos (20 nov 2026)
+La transición `L.tide()` —la ola con espuma— es de marca y está bien para **cambiar de sitio**. Entre dos escenas que
+pasan en el MISMO mundo se siente como un parche en medio de una toma. En esas va **`trans: 'cont'`** en la escena que
+sigue, y además hay que **encadenar las cámaras**: la posición y el objetivo con que arranca cada escena continuada
+son los que tenía la anterior al terminar. Sin eso, quitar la ola deja un corte seco. Y en un plano continuo los
+objetos **se encogen** para salir, no desaparecen de golpe.
+
+## Gráficas y portafolios dentro del 3D (19 nov 2026)
+`L.plaque(ancho, alto, dibuja, pw)` da un plano con una textura de canvas: con eso se dibujan **gráficas de línea de
+verdad** dentro de la escena, que es lo que JP pidió para la escena de la bolsa. El helper `grafica()` de la historia
+de Kahneman es reutilizable: mete el plano en un grupo anclado a la IZQUIERDA, así que **escalando el grupo en x la
+línea se va trazando** de izquierda a derecha mientras habla la voz.
+Un portafolio en pantalla (teléfono, monitor) va **por sectores, nunca con nombres de empresas reales**: un portafolio
+con tickers reales se lee como que estamos diciendo qué comprar, y eso está prohibido.
+
+## La miniatura la hace el render, no se saca del MP4 (20 nov 2026)
+Hasta hoy las historias 3D se subían sin miniatura propia y YouTube elegía un fotograma al azar. Ahora
+`render3d.js` saca **`miniatura.jpg` a 1080x1920 solo, al terminar el render**, volviendo a dibujar el cuadro del
+gancho en el motor (no extrayéndolo del MP4 ya comprimido, que llega lavado). Dos detalles que importan:
+- **Va sin la píldora del subtítulo.** El subtítulo del momento sale cortado a media frase ("dos psicólogos
+  publicaron un") y en una miniatura se lee como un error. Lo apaga `window.SIN_SUBS` en `lib.js`.
+- **El cuadro por defecto es el del gancho**, `min(2.2 s, fin de la escena 1 − 0.4)`: ya entró el rótulo completo y
+  los personajes están en cuadro. Para elegir otro: `node engine3d/render3d.js <carpeta> --mini <segundos> --hq`.
+Shorts y largos ya la tenían con `scripts/render.js <carpeta> --thumb` (1280x720, lámina diseñada con `renderThumb()`);
+esa sigue igual y se corre aparte.
+
+---
+
+# 4. Audio: voz, aire y música
+
+## Regla del aire (JP, 14 nov 2026 — oyó demasiadas pausas en el short de Nubank)
+El cambio de pantalla **absorbe** la pausa del punto final, no se le suma: antes se encadenaban 0.6 s + 0.6 s y quedaba 1.2 s de
+silencio entre TODAS las escenas (13 s muertos en un short de 88). Ahora el hueco es el mayor de los dos (`no_voice.py`), y la cola
+después de la última palabra es de 1.4 s, no 2.2 (`build_timeline.py` → `TAIL`). Si un video se pasa de formato, lo primero que se
+revisa es el aire, no el guion.
+
+## Regla de la mezcla (JP, 19 nov 2026)
+**La música va al 60% del nivel de la voz, medido, no a ojo.** Estaba en 8% y JP casi no la oía. Lo controla
+`make_audio.py --musica N`, y la mezcla imprime el balance real en dB durante los tramos hablados: para las historias
+3D, `--musica 2.50` da el 60%. El ducking de la historia es más suave que el de un short, para que la partitura no
+desaparezca bajo la voz. Verifica siempre después de mezclar: pico por debajo de −0.5 dBFS y ninguna palabra con el
+audio tapado.
+
+## La partitura se ancla al FINAL, no a la escena 7 (JP, 20 nov 2026)
+`music3d.py` se escribió para historias de 8 escenas y colgaba su acorde de cierre en `S(7)`. En la historia de
+Kahneman, que acabó con 10 escenas, eso dejó **16 segundos de un órgano sostenido** después de que la música ya había
+terminado: JP lo describió como "aturde". Ahora el arco se cuenta **desde el final** (`S(N-3)`, `S(N-2)`, `S(N-1)`) y
+el acorde de cierre entra en `max(S(N-1), DUR - 5.5)`, así que dura ~5.5 s con cualquier número de escenas (con 8 da
+exactamente lo mismo que antes). **Al cambiar el número de escenas, revisa el balance de la mezcla otra vez**: con la
+partitura más densa al final, el mismo `--musica` subió del 61% al 71%.
+Cómo se verifica sin oír: mide los ataques de piano por segundo en los últimos 20 s (`music3d.score(...)`, picos por
+encima de 2.5× la media del segundo). Si los últimos segundos marcan "solo órgano", el cierre está colgado.
+
+## Regla de la toma única (JP, 17 nov 2026)
+**La voz de IA se genera en UNA sola llamada, nunca por piezas.** Cada envío tiene su propia entonación y energía, así
+que en los cortes se oye un cambio de voz; JP lo notó en el largo de Apple, justo donde terminaba cada pieza. El límite
+de un envío son **5,000 caracteres**: si el guion no cabe, se recorta el guion, no se parte el audio. Ojo: `tts_prep.py`
+parte en piezas para el flujo viejo; usa su texto concatenado con `\n\n` y mándalo completo. Y borra `voice_raw.mp3`
+antes de reprocesar: `process_voice.py` lo reutiliza si existe y ignora las piezas nuevas.
+
+## Regla de la voz de IA en historias 3D (19 nov 2026)
+Una historia 3D con voz de IA **no usa `pace3d.py`** (que estima por sílabas para la voz de JP). Usa `scripts/voz3d.py`,
+que sincroniza escenas y subtítulos con los tiempos reales de `build/whisper.json`. El flujo completo:
+1. Sacar los `cap:` de story.js y convertir números a palabras **conservando la puntuación** (`¿ ? , .`): `spoken()` sola
+   se come los signos y la voz pierde la entonación de pregunta. `voz3d.py` documenta el convertidor.
+2. **Una sola llamada** a `vidiq_voiceover_generate` (regla de la toma única) → `audio/voice_raw.mp3`.
+3. `storyboard.json` con `{"format":"long"}` en la carpeta, para que `process_voice.py` deje el ritmo natural
+   (tempo 1.0, pausas amplias) en vez del recorte agresivo de short. Sin eso, la historia sale acelerada.
+4. `voz3d.py <carpeta> --aire 0.7` — Francisco lee a ~162 palabras/min, demasiado rápido para una historia: `--aire`
+   mete silencio **entre escenas, nunca dentro de una frase**, y deja ~145 palabras/min.
+   Tres cosas que costaron varias vueltas y por eso están como están (19–20 nov 2026):
+   - Los límites entre escenas salen de la **alineación con difflib**, no de contar palabras por escena. Whisper no
+     parte igual que el guion (oye "Amostversky", escribe "1979" donde el guion dice el año en palabras), así que
+     contar desplazaba los cortes a media frase y el silencio caía dentro de una palabra.
+   - El corte se **pega al punto más callado de la onda** cerca del límite: los tiempos de whisper son aproximados y
+     la cola de la última palabra suele seguir sonando después de su t1.
+   - Si no hay ningún punto callado cerca, ese corte **se salta**. Mejor una escena sin aire que una palabra partida.
+   Al final `voz3d.py` verifica que toda palabra **anclada** tenga audio donde dice tenerlo y truena si no. Solo las
+   ancladas: las interpoladas no tienen tiempo real contra el cual comparar y daban falsas alarmas.
+5. `make_audio.py` → `render3d.js`.
+Ojo: `--aire` se aplica una sola vez sobre `voice.wav`; para repetirlo hay que volver a correr `process_voice.py`.
+
+## Cambiar solo el audio no exige volver a renderizar (20 nov 2026)
+Si el arreglo es de mezcla —nivel de música, aire, partitura— el video no cambia. Se rehace `make_audio.py` y se
+sustituye la pista con `ffmpeg -i video.mp4 -i audio/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k
+-shortest salida.mp4`. El flujo de video se copia tal cual, así que son segundos en vez de los ~35 min de un render.
+
+---
+
+# 5. Producción: calendario, aprobaciones y créditos
 
 ## Regla del borrador anticipado (JP, 19 nov 2026)
 **Todo lo atemporal se trabaja en borrador días antes, no el día de publicarlo.** Los largos, las historias 3D y los
@@ -264,99 +400,14 @@ Lo demás que ahorra créditos: la toma única ya es lo más barato (no partir e
 nunca** (reprocesar la mezcla, el ritmo y el render sale gratis a partir de él), y todo lo que no sea el texto hablado
 —nivel de música, aire entre escenas, encuadres, animación— se ajusta y se re-renderiza **sin gastar un solo crédito**.
 
-## Regla de que se entienda sin saber nada (JP, 19 nov 2026)
-"Este tipo de videos deben ser súper digeribles para cualquier público, incluso los que no sepan de finanzas, de
-economía, de cualquier edad." El filtro: **si la frase le pide al espectador que deduzca algo, está mal.** Las que
-cayeron en la historia de Kahneman y por qué:
-- "decides con **una calculadora en la cabeza**" → metáfora que hay que descifrar. Quedó: "todos hacemos **cuentas
-  mentales** y elegimos lo que más nos conviene".
-- "tu peor enemigo no está en la pantalla, **está de este lado**" → "de este lado" es espacial y abstracto. Quedó:
-  "**no es el mercado. Eres tú**".
-- "el Nobel **no se entrega póstumo**" → palabra culta. Quedó: "**no se le da a quien ya murió**".
-- "lanzar una moneda por 200" → quedó "**un volado: 200 o nada**", que además calca lo que dicen las cartas en pantalla.
-Y el remate: **la imagen tiene que decir lo mismo que la frase, al mismo tiempo.** "Eres tú" no se entendía con un
-espejo (el reflejo se leía como otra persona detrás); se entiende con un teléfono que muestra el portafolio y una
-cámara que se mueve de la pantalla a su cara. Si hace falta explicar la escena, la escena está mal.
+## El ranking del domingo es un TORNEO (JP, 14 nov 2026, estrena el 22 nov)
+Las empresas compiten en 5 rondas (ventas, utilidad de operación, margen, ROE y PEG), con puntos 5-4-3-2-1, minigráfica
+de evolución en las dos primeras y tabla final con una ganadora. El título promete un resultado; "5 empresas que estamos
+vigilando" no dice nada. Plan de acción completo en `plan/torneo.md`; reglas en `/short` §1d.
 
-## Regla del dinamismo en 3D (JP, 19 nov 2026 — vio la primera historia de Kahneman)
-"Los personajes no están haciendo mucho." Una escena donde solo se mueve la cámara está mal, aunque el encuadre sea
-perfecto. La referencia es la historia de Steve Jobs: en cada escena **pasa algo**. La lista de lo que hay que mover:
-- **El personaje actúa**: camina (`walk` + `position`), gira (`rotation.y`), voltea a ver lo que importa (`head`),
-  se le caen los hombros (`lean`, `bob`), se encoge de hombros, señala. No basta con `talk`.
-- **Un objeto cambia de estado por una causa**: las monedas CAEN sobre el plato y por eso la balanza se hunde; las
-  cartas ENTRAN deslizándose; la que gana SE VA volando; la medalla BAJA; el reflejo IMITA al personaje.
-- **Los rótulos del mundo 3D aparecen cuando se dicen**, no están puestos desde el cuadro uno.
-Dos trampas que ya costaron un render: un objeto que cae sobre otro acaba DENTRO de él si no se calcula la tapa
-(usa `getWorldPosition` del grupo, no las coordenadas locales), y lo que baja desde arriba del cuadro pasa por detrás
-del rótulo: que llegue pronto a la zona visible (y_px 800–1650) y se quede ahí, en vez de animar el recorrido completo.
+---
 
-## Regla de la mezcla (JP, 19 nov 2026)
-**La música va al 60% del nivel de la voz, medido, no a ojo.** Estaba en 8% y JP casi no la oía. Lo controla
-`make_audio.py --musica N`, y la mezcla imprime el balance real en dB durante los tramos hablados: para las historias
-3D, `--musica 2.50` da el 60%. El ducking de la historia es más suave que el de un short, para que la partitura no
-desaparezca bajo la voz. Verifica siempre después de mezclar: pico por debajo de −0.5 dBFS y ninguna palabra con el
-audio tapado.
-
-## La partitura se ancla al FINAL, no a la escena 7 (JP, 20 nov 2026)
-`music3d.py` se escribió para historias de 8 escenas y colgaba su acorde de cierre en `S(7)`. En la historia de
-Kahneman, que acabó con 10 escenas, eso dejó **16 segundos de un órgano sostenido** después de que la música ya había
-terminado: JP lo describió como "aturde". Ahora el arco se cuenta **desde el final** (`S(N-3)`, `S(N-2)`, `S(N-1)`) y
-el acorde de cierre entra en `max(S(N-1), DUR - 5.5)`, así que dura ~5.5 s con cualquier número de escenas (con 8 da
-exactamente lo mismo que antes). **Al cambiar el número de escenas, revisa el balance de la mezcla otra vez**: con la
-partitura más densa al final, el mismo `--musica` subió del 61% al 71%.
-Cómo se verifica sin oír: mide los ataques de piano por segundo en los últimos 20 s (`music3d.score(...)`, picos por
-encima de 2.5× la media del segundo). Si los últimos segundos marcan "solo órgano", el cierre está colgado.
-
-## Cambiar solo el audio no exige volver a renderizar (20 nov 2026)
-Si el arreglo es de mezcla —nivel de música, aire, partitura— el video no cambia. Se rehace `make_audio.py` y se
-sustituye la pista con `ffmpeg -i video.mp4 -i audio/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k
--shortest salida.mp4`. El flujo de video se copia tal cual, así que son segundos en vez de los ~35 min de un render.
-
-## Gráficas y portafolios dentro del 3D (19 nov 2026)
-`L.plaque(ancho, alto, dibuja, pw)` da un plano con una textura de canvas: con eso se dibujan **gráficas de línea de
-verdad** dentro de la escena, que es lo que JP pidió para la escena de la bolsa. El helper `grafica()` de la historia
-de Kahneman es reutilizable: mete el plano en un grupo anclado a la IZQUIERDA, así que **escalando el grupo en x la
-línea se va trazando** de izquierda a derecha mientras habla la voz.
-Un portafolio en pantalla (teléfono, monitor) va **por sectores, nunca con nombres de empresas reales**: un portafolio
-con tickers reales se lee como que estamos diciendo qué comprar, y eso está prohibido.
-
-## Regla de la voz de IA en historias 3D (19 nov 2026)
-Una historia 3D con voz de IA **no usa `pace3d.py`** (que estima por sílabas para la voz de JP). Usa `scripts/voz3d.py`,
-que sincroniza escenas y subtítulos con los tiempos reales de `build/whisper.json`. El flujo completo:
-1. Sacar los `cap:` de story.js y convertir números a palabras **conservando la puntuación** (`¿ ? , .`): `spoken()` sola
-   se come los signos y la voz pierde la entonación de pregunta. `voz3d.py` documenta el convertidor.
-2. **Una sola llamada** a `vidiq_voiceover_generate` (regla de la toma única) → `audio/voice_raw.mp3`.
-3. `storyboard.json` con `{"format":"long"}` en la carpeta, para que `process_voice.py` deje el ritmo natural
-   (tempo 1.0, pausas amplias) en vez del recorte agresivo de short. Sin eso, la historia sale acelerada.
-4. `voz3d.py <carpeta> --aire 0.7` — Francisco lee a ~162 palabras/min, demasiado rápido para una historia: `--aire`
-   mete silencio **entre escenas, nunca dentro de una frase**, y deja ~145 palabras/min.
-   Tres cosas que costaron varias vueltas y por eso están como están (19–20 nov 2026):
-   - Los límites entre escenas salen de la **alineación con difflib**, no de contar palabras por escena. Whisper no
-     parte igual que el guion (oye "Amostversky", escribe "1979" donde el guion dice el año en palabras), así que
-     contar desplazaba los cortes a media frase y el silencio caía dentro de una palabra.
-   - El corte se **pega al punto más callado de la onda** cerca del límite: los tiempos de whisper son aproximados y
-     la cola de la última palabra suele seguir sonando después de su t1.
-   - Si no hay ningún punto callado cerca, ese corte **se salta**. Mejor una escena sin aire que una palabra partida.
-   Al final `voz3d.py` verifica que toda palabra **anclada** tenga audio donde dice tenerlo y truena si no. Solo las
-   ancladas: las interpoladas no tienen tiempo real contra el cual comparar y daban falsas alarmas.
-5. `make_audio.py` → `render3d.js`.
-Ojo: `--aire` se aplica una sola vez sobre `voice.wav`; para repetirlo hay que volver a correr `process_voice.py`.
-
-## Regla del reloj con voz de IA (16 nov 2026)
-La voz de IA lee a ~150 palabras/min; `no_voice.py` presupuesta 120 para la voz de JP. **El mismo guion sale ~25% más
-corto con IA**: el largo de Apple pasó de 6:52 (teleprompter) a 5:21 (Francisco). Si un largo tiene que durar 6–7 min
-con voz de IA, el guion necesita ~25% más contenido. Y nunca escribas la duración dentro del guion ("en 10 minutos"):
-cambia con cada recorte y con la voz, y hay que regenerar audio para corregirla (ya pasó dos veces).
-
-## Regla de los números (descubierta en nov 2026 — aplica a TODO: shorts, largos, voz propia o de IA)
-Un número mide pocos caracteres pero tarda mucho en decirse: "45" son 2 caracteres y se dice "cuarenta y cinco";
-"1950" → "mil novecientos cincuenta" (8 sílabas); "46%" → "cuarenta y seis por ciento"; "$45,765" → 20 sílabas.
-- **Tiempos (teleprompter sin voz):** `scripts/no_voice.py` convierte cada número, %, $ y monto a palabras (`spoken()`) y mide
-  por SÍLABAS habladas, no por letras, a ~120 palabras/min. Nunca calcules tiempos por caracteres.
-- **Voz de IA:** `scripts/tts_prep.py` escribe los números como se pronuncian (y siglas: S&P 500, CNBV, Nasdaq, JP) antes de
-  enviarlos, para que la voz no lea "10,000" como "diez coma cero", y calcula el costo real en créditos.
-- **Guiones:** en `say` escribe números con dígitos (se ven bien en subtítulos y alinean con whisper); las herramientas hacen la
-  conversión. Si un tramo tiene muchas cifras seguidas, divídelo en más pantallas: se dice más lento de lo que parece.
+# 6. El proyecto: estructura y reglas base
 
 ## Estructura
 - `assets/brand/brand.json` — marca: colores, handle, tagline, CTA, aviso legal, voz (id de Daniel).

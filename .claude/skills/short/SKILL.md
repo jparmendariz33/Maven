@@ -3,7 +3,20 @@ name: short
 description: Crea un short vertical (YouTube Shorts / Reels / TikTok) con el análisis de una acción o de una empresa "caliente" (modo empresa), con fotos reales (logo, sucursales, productos), en el estilo de marca Costa Studio Finance, subtítulos-teleprompter y música. Úsala cuando el usuario diga "/short AAPL", "hazme el short de Tesla", "analiza la empresa X", "short de empresa", etc.
 argument-hint: "<TICKER o nombre de la empresa> [enfoque opcional]"
 ---
-
+> # ⚠️ LEE ESTO PRIMERO: `finance-videos/plan/anatomia-formatos.md`
+> Ahí está **qué debe llevar** cada pieza. Este skill es **cómo** se hace.
+>
+> **El gancho decide todo, y está medido (20 nov 2026).** SpaceX retuvo al **86.5%** y Nubank al **5.9%** con la misma
+> cantidad de impresiones del feed. El torneo sacó **19.8%** abriendo con "RANKEANDO 5 acciones: 6 rondas": el formato
+> no es un gancho, el resultado sí ("gana Alphabet, 25 de 30").
+> **Los 3 primeros segundos son tres capas juntas** — la narración (la primera frase hablada ES el gancho, sin rampa,
+> con la cifra en las primeras 8 palabras), el texto en pantalla y la música con cuerpo — **más el logo o la foto de
+> la empresa**. **Meta ≥49% de stayed-to-watch, objetivo 70%.**
+>
+> **Calendario vigente (20 nov 2026):** short de contexto el **VIERNES** 19:00 · Análisis + Potencial el **SÁBADO**
+> 19:00 · torneo el **DOMINGO** 19:00. Las historias 3D van martes y jueves.
+>
+> **Antes de generar voz o renderizar: capturas a JP y su OK.** Y **miniatura propia** en cada short.
 > **Voz de JP (obligatorio en todo guion):** antes de escribir, lee `finance-videos/plan/voz-jp.md` y redacta con ese tono. El guion no debe sonar a IA.
 
 
@@ -183,7 +196,7 @@ ciento" es el doble de tiempo). Elige según el caso:
 - **Si el monto es la noticia** (una pérdida, un récord): narra los montos y di el porcentaje solo al final.
 - El desglose del `callout` cabe en una frase: "…vendió 13 mil millones, y casi dos terceras partes vienen de centros de datos".
 
-## 1c. Short reactivo = short de CONTEXTO (lunes, martes y jueves — plan del 11 nov 2026)
+## 1c. Short reactivo = short de CONTEXTO (VIERNES — calendario del 20 nov 2026)
 Lo que pasó hoy caduca mañana, y un short se sigue viendo durante meses. Por eso la noticia del día es solo el PRETEXTO para elegir el tema;
 el short cuenta algo que siga siendo cierto dentro de 3 meses. (Lo del día exacto vive en las publicaciones: skill `/publicacion`.)
 - **Ángulo:** qué le está pasando a la empresa (el mes, el trimestre, el año), por qué, y qué viene o qué tiene planeado. Ej.: no "Nvidia
@@ -245,9 +258,9 @@ Cuenta regresiva: del último lugar al número 1. Sirve para shorts, publicacion
 - **vidIQ para elegir tema y título (permitido por JP el 11 nov 2026; única excepción a "costo cero"):** carga con ToolSearch
   `select:mcp__vidIQ__vidiq_balance,mcp__vidIQ__vidiq_keyword_research,mcp__vidIQ__vidiq_outliers`. Mira el saldo (`vidiq_balance`, gratis);
   con `vidiq_keyword_research` compara 3–5 ideas de ranking (volumen y competencia en español) y, si alcanza, `vidiq_outliers` para ver qué
-  rankings de finanzas han pegado. **Tope: 15 créditos por ranking.** vidIQ solo ayuda a decidir QUÉ ranking hacer y cómo titularlo; el
+  rankings de finanzas han pegado. **Tope: 15 créditos por ranking.** vidIQ ayuda a decidir QUÉ hacer y cómo titularlo; el
   ranking en sí sale de datos financieros verificados. Si no hay saldo o la herramienta falla, sigue sin ella. Di en el mensaje final
-  cuántos créditos usaste y cuántos quedan. No uses vidIQ para nada más (ni voz, ni guion, ni miniaturas).
+  cuántos créditos usaste y cuántos quedan. Desde el 17 nov 2026 la voz de IA SÍ se usa (28 créditos por pieza bajo 1,000 caracteres, en una sola toma).
 - **Cuándo: se publica el DOMINGO 19:00 y se produce el SÁBADO en la mañana** (para que JP tenga un día para grabar). La carpeta lleva la
   fecha del domingo. El short del domingo es un ranking (en lugar del Análisis + Potencial de ese día) y va
   acompañado de su publicación de 4 imágenes: portada + puestos 5–4 + puestos 3–2 + el #1 con la pregunta (`/publicacion`). Alterna cada

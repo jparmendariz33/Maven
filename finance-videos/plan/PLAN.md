@@ -36,31 +36,40 @@ sobre finanzas e inversión: un proyecto aparte que aprovecha la marca y el esti
 análisis de empresas "calientes" el fin de semana). **Todos los videos llevan imágenes reales** (logo, sucursales, productos, sedes).
 Tú pones la voz (más genuino que IA); Claude hace la investigación, el guion, los gráficos y el render.
 
-## 2. Ritmo de publicación (fijo, todas las semanas)
-**Regla de oro (feedback de JP, 7 nov 2026): UN video por día, producido AUTOMÁTICAMENTE el MISMO día en que se publica.** Nada se
-produce con semanas de anticipación. Única excepción: el largo se produce el lunes para el domingo de ESA MISMA semana (para que
-JP tenga tiempo de grabar su voz). La carpeta lleva la fecha de publicación; "hoy" y "ayer" en el guion se cuentan desde el día en
-que se publica. Antes de producir, revisar `plan/publicados.md` para no repetir nada que ya esté en el canal.
-**Regla del cierre (feedback de JP, 9 nov 2026): los videos con datos de mercado se hacen DESPUÉS del cierre de la sesión ordinaria**
-(16:00 de Nueva York = 15:00 CDMX en invierno / 14:00 CDMX en el verano de EE.UU.), con los precios finales del día, y se publican a
-las 19:00. Si JP da una idea durante el día, se prepara todo y se entrega una sola vez, ya con el cierre (detalle en `CLAUDE.md`).
+## 2. Ritmo de publicación (vigente desde el 20 nov 2026)
+**Qué cambió y por qué.** El ritmo anterior (10 piezas semanales, todo producido el mismo día) no se estaba cumpliendo
+—la semana del 16 al 22 de noviembre se entregaron 4, y lo que se cayó fue el largo y el torneo— y los datos dicen que
+el volumen no es lo que funciona: **SpaceX solo generó más vistas que las diez piezas más pequeñas juntas.** Una pieza
+con 86% de gancho vale más que cinco con 20%.
+
 | Día (CDMX) | Qué se publica | Duración | Origen |
 |---|---|---|---|
-| **Lunes ≈17:00** | 📌 Publicación del día (3–4 imágenes) | — | Lo que pasó HOY + pregunta (`/publicacion`). Ese día no sale video: se produce el largo |
-| **Martes 19:00** | Short de contexto #1 | 60–75 s | La noticia es el pretexto; cuenta algo que dure meses (§2b) |
-| **Miércoles 12:00** | 🎬 **Historia 3D #2** | 75–90 s | Del tema del largo de ese domingo: es el puente a los largos. Se produce el martes |
-| **Miércoles ≈17:00** | 📌 Publicación del día | — | Lo que pasó HOY + pregunta |
-| **Jueves 19:00** | Short de contexto #2 | 60–75 s | Igual que el martes |
-| **Viernes 19:00** | Short **Análisis + Potencial** | 75–85 s | Empresa caliente de la semana o una de [`banco-tesis.md`](banco-tesis.md) |
-| **Sábado 12:00** | 🎬 **Historia 3D #1** | 75–90 s | [`banco-historias.md`](banco-historias.md) · se produce el viernes |
-| **Domingo 10:00** | **Video largo** (16:9) | **6–7 min** | Calendario de 55 semanas · se produce el lunes |
-| **Domingo 19:00** | Short **Ranking** + su 📌 publicación | 75–85 s | Se produce el sábado (`/short` §1d) |
+| **Lunes ≈17:00** | 📌 Publicación del día | — | Lo que pasó + pregunta (`/publicacion`). Ese día se produce el largo |
+| **Martes 12:00** | 🎬 **Historia 3D** (tema libre) | 60–90 s | [`banco-historias.md`](banco-historias.md) · se produce el lunes |
+| **Miércoles ≈17:00** | 📌 Publicación del día | — | Lo que pasó + pregunta |
+| **Jueves 12:00** | 🎬 **Historia 3D PUENTE** | 60–90 s | Del tema del largo de ESE domingo; lo **anuncia en pantalla** con el pizarrón |
+| **Viernes 19:00** | Short **de contexto** | 60–75 s | La semana ya cerró: el contexto está completo (§2b) |
+| **Sábado 19:00** | Short **Análisis + Potencial** | 75–85 s | Empresa de la semana o [`banco-tesis.md`](banco-tesis.md) |
+| **Domingo 10:00** | **Video largo** (16:9) | **6–7 min** | [`calendario-largos.md`](calendario-largos.md) · se produce desde el lunes |
+| **Domingo 19:00** | Short **torneo** + su 📌 publicación | 75–85 s | Se produce el sábado (`/short` §1d) |
 
-= **10 piezas por semana** desde el 13 nov 2026 (1 largo + 4 shorts + **2 Historias 3D** + 3 publicaciones). JP graba voz en 7.
-(Cambio del 13 nov 2026, con los primeros datos reales: la Historia 3D concentra el 79% de las vistas y el mejor gancho del canal, así que
-sube a **2 por semana**; los shorts de contexto bajan de 3 a 2; el short adelanto del miércoles desaparece porque **la Historia 3D del
-miércoles hace ese trabajo mejor**; y los largos pasan de 9–11 a **6–7 minutos**, porque la audiencia se va al minuto. Ver
-`plan/checkups/2026-11-13-revision.md`.)
+= **9 piezas por semana.** Si hay que recortar, **lo último que se cae es el largo del domingo**: la historia del
+jueves ya lo prometió en pantalla, y la búsqueda (68.4% de retención, 61 s de duración) es el mejor tráfico del canal.
+
+**Regla del borrador anticipado (JP, 19 nov 2026 — sustituye a la regla de "mismo día"):** todo lo atemporal —largos,
+historias 3D, rankings— se trabaja en **borrador días antes**: guion, storyboard y capturas, para que JP corrija con
+calma. Lo único que se ejecuta el día que toca es **generar la voz y renderizar**, ya con todo aprobado. Lo que sí
+espera al cierre son las cifras de mercado.
+
+**Regla del cierre (JP, 9 nov 2026):** los videos con datos de mercado se hacen DESPUÉS del cierre de Wall Street
+(16:00 de Nueva York = 15:00 CDMX en invierno / 14:00 en verano) y se publican a las 19:00. Detalle en `CLAUDE.md`.
+**Comprueba la fecha en hora de México, no la del contenedor, que corre en UTC.**
+
+**Voz:** desde el 17 nov 2026 las historias y los shorts llevan **voz de IA** (Francisco, vidIQ, una sola toma,
+28 créditos por pieza bajo 1,000 caracteres). JP ya no graba nada en esas piezas.
+
+**Antes de producir** revisa `plan/publicados.md` para no repetir, y **`plan/anatomia-formatos.md`** para saber qué
+debe llevar la pieza.
 
 ## 2b. Qué hace cada formato (replanteo acordado con JP el 11 nov 2026)
 Objetivo final: crecer la audiencia de finanzas e inversión y monetizar el canal. Cada formato tiene su trabajo:

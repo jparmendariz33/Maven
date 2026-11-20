@@ -216,6 +216,7 @@ export function bigWord(s, t, t0, col = B.negro, d = 1.1) {
 }
 // subtítulos: píldora oscura, palabra activa en mostaza (mismo estilo que el motor 2D)
 export function captions(CAPS, t) {
+  if (typeof window !== 'undefined' && window.SIN_SUBS) return;   // miniatura: el cuadro del gancho va sin la pildora del subtitulo
   let ci = -1; for (let i = 0; i < CAPS.length; i++) if (t >= CAPS[i][0][0] - .08) ci = i;
   if (ci < 0) return; const c = CAPS[ci], nextT = CAPS[ci + 1] ? CAPS[ci + 1][0][0] - .08 : Infinity, endT = Math.min(nextT, c[c.length - 1][1] + 1.0);
   if (t > endT) return; const a = seg(t, c[0][0] - .08, c[0][0] + .05) * (1 - seg(t, endT - .1, endT));

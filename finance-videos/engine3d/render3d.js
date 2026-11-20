@@ -43,6 +43,21 @@ const ROOT = path.resolve(__dirname, '..');
     await b.close(); return;
   }
 
+  // miniatura propia (regla del gancho, 20 nov 2026): el cuadro del gancho a 1080x1920, no un fotograma del MP4 comprimido.
+  //   node engine3d/render3d.js <carpeta> --mini [segundos]    (se corre solo al final del render completo, con --hq)
+  if (mode === '--mini') {
+    const dado = process.argv.slice(4).map(Number).find(x => !isNaN(x) && x > 0);
+    const e1 = TL[0] || { t0: 0, t1: 3 };
+    const t = dado != null ? dado : +Math.min(2.2, Math.max(.8, e1.t1 - .4)).toFixed(2);
+    await pg.evaluate(() => { window.SIN_SUBS = true; });
+    const png = path.join(build, 'mini_full.png'); fs.writeFileSync(png, await frame(t, 'png'));
+    const out = path.join(vdir, 'miniatura.jpg');
+    execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-i', png, '-vf', 'scale=1080:1920:flags=lanczos', '-q:v', '2', out]);
+    fs.unlinkSync(png);
+    console.log(`miniatura (gancho a ${t} s) → ${out}`);
+    await b.close(); return;
+  }
+
   const id = path.basename(vdir), mix = path.join(vdir, 'audio', 'mix.wav'), hasAudio = fs.existsSync(mix);
   const out = path.join(vdir, hasAudio ? `${id}.mp4` : `${id}_animatic.mp4`);
   const N = Math.round(DUR * FPS), s0 = Date.now(), arg = k => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : null; };
@@ -66,4 +81,6 @@ const ROOT = path.resolve(__dirname, '..');
   args.push('-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-movflags', '+faststart', tmp);
   execFileSync('ffmpeg', args, { stdio: 'inherit' }); fs.renameSync(tmp, out); parts.forEach(p => { fs.unlinkSync(p); try { fs.unlinkSync(p + '.progress'); } catch (e) {} });
   console.log(`listo en ${Math.round((Date.now() - s0) / 1000)} s → ${out}`);
+  try { execFileSync(process.execPath, [__filename, vdir, '--mini', '--hq'], { stdio: 'inherit' }); }
+  catch (e) { console.log('la miniatura no salio (el video si): ' + e.message); }
 })();

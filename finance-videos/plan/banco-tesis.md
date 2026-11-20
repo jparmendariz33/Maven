@@ -1,4 +1,4 @@
-# Banco de tesis · short "Tesis a 5 años" (sábados)
+# Banco de tesis · short "Análisis + Potencial" (sábados 19:00)
 
 Empresas con **potencial de largo plazo** que JP quiere analizar. Lo revisa la tarea "Análisis de empresa" los **sábados**: elige
 una que no se haya publicado en los últimos 60 días (tabla de abajo, `publicados.md` y `videos/`), de preferencia la que tenga el

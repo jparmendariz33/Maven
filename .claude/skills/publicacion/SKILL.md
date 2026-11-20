@@ -1,4 +1,20 @@
 ---
+name: publicacion
+description: Crea una publicación de YouTube (pestaña Publicaciones) de 3–4 imágenes cuadradas que cuenta UNA noticia del día del mercado, en el estilo Costa Studio Finance, con el personaje 3D de JP recortado en la primera y la última imagen, más el texto y una encuesta para copiar. Úsala cuando digan "/publicacion", "haz la publicación de hoy", "post de la noticia", o cuando la tarea programada de lunes, miércoles y viernes lo pida.
+---
+> # ⚠️ LEE ESTO PRIMERO: `finance-videos/plan/anatomia-formatos.md`
+> Ahí está **qué debe llevar** cada pieza. Este skill es **cómo** se hace.
+>
+> **La lámina 1 es el gancho** y pasa el mismo filtro de 3 segundos que un short: algo conocido + una contradicción o
+> una cifra con escala. Lleva el logo.
+> **Nunca "hoy" ni "ayer":** las fechas van explícitas ("el martes", "el miércoles 18"), porque JP puede subirla al día
+> siguiente y entonces "hoy bajó 2.89%" ya es falso (pasó el 19 nov 2026).
+> **Máximo 3 viñetas por lámina** o se desbordan.
+> **Noticias:** fuente primaria + al menos dos fuentes independientes del mismo día, las tres citadas. **Un número que
+> no se puede verificar no se publica.** Comprueba la fecha en hora de México, no la del contenedor (corre en UTC).
+> **Conflicto de interés:** cualquier relación entre quien escribe y la empresa analizada se declara.
+> **Antes de renderizar: capturas a JP.**
+
 
 > ## Lo aprendido el 15 nov 2026 (publicación del primer torneo)
 > - **Las láminas no son párrafos.** Si una lámina es una lista de viñetas con cifras, conviértela en gráfica: el tipo
@@ -12,11 +28,6 @@
 >   si no deja subir todas, se quita la lámina menos esencial y se dice en `youtube.md`.
 > - **Los logos de la portada van en bloque 3 + 2 debajo del subtítulo**, no en fila y no encima del texto.
 > - Cada lámina se revisa contra el personaje 3D: es lo que más se encima (`host_size` baja a 200–250 cuando hay texto largo).
-
-name: publicacion
-description: Crea una publicación de YouTube (pestaña Publicaciones) de 3–4 imágenes cuadradas que cuenta UNA noticia del día del mercado, en el estilo Costa Studio Finance, con el personaje 3D de JP recortado en la primera y la última imagen, más el texto y una encuesta para copiar. Úsala cuando digan "/publicacion", "haz la publicación de hoy", "post de la noticia", o cuando la tarea programada de lunes, miércoles y viernes lo pida.
----
-
 > **Voz de JP (obligatorio):** antes de escribir, lee `finance-videos/plan/voz-jp.md`. El texto no debe sonar a IA.
 
 # /publicacion — la noticia del día en 3–4 imágenes (Costa Studio Finance)

@@ -1,64 +1,76 @@
 ---
-
-> **Gancho de texto en el primer segundo (JP aprobó probarlo el 14 nov 2026).** La maqueta 3D tarda en leerse y
-> mucha gente empieza sin sonido: el primer segundo tiene que llevar **la frase del gancho escrita en pantalla**, no solo
-> en la voz. En la historia de Steve Jobs se quedó a mirar el 27.84% (7 de cada 10 deslizaron), mientras que quien se
-> quedaba veía el 51.76%: el problema no era la historia, era el primer segundo. Se prueba en la próxima historia 3D y
-> se compara contra ese 27.84% en la revisión del 28 de noviembre.
 name: historia
-description: Crea una "Historia 3D" vertical (75–90 s, YouTube Shorts / Reels / TikTok) que cuenta la historia de una empresa o de su fundador con maquetas de plastilina animadas, personajes que actúan, luz de cine, música y efectos — estilo Costa Diorama de Costa Studio Finance, lista para que JP solo grabe su voz. Se hacen DOS por semana (miércoles y sábado). Úsala cuando digan "/historia", "haz la historia 3D de X", "video animado de Steve Jobs / Nike / Bimbo", "el video 3D de la semana", o cuando la tarea programada de los viernes lo pida.
+description: Crea una "Historia 3D" vertical (75–90 s, YouTube Shorts / Reels / TikTok) que cuenta la historia de una empresa o de su fundador con maquetas de plastilina animadas, personajes que actúan, luz de cine, música y efectos — estilo Costa Diorama de Costa Studio Finance, con voz de IA ya puesta, lista para publicar. Se hacen DOS por semana (martes y jueves 12:00); la del jueves anuncia el largo del domingo. Úsala cuando digan "/historia", "haz la historia 3D de X", "video animado de Steve Jobs / Nike / Bimbo", "el video 3D de la semana", o cuando la tarea programada lo pida.
 argument-hint: "<empresa o personaje> [enfoque opcional]"
 ---
-
+> # ⚠️ LEE ESTO PRIMERO: `finance-videos/plan/anatomia-formatos.md`
+> Ahí está **qué debe llevar** cada pieza. Este skill es **cómo** se hace. No empieces sin leerlo.
+>
+> **El gancho decide todo, y está medido (20 nov 2026).** SpaceX retuvo al **86.5%** y Nubank al **5.9%** con la misma
+> cantidad de impresiones del feed (1,164 vs 1,158): el gancho fue la única diferencia. La de Kahneman sacó 20.8%
+> abriendo con "En 1979, dos psicólogos publicaron un artículo": eso es contexto, no gancho.
+> **Los primeros 3 segundos son tres capas juntas desde el cuadro 1** — la narración (la primera frase hablada ES el
+> gancho, sin rampa, con la cifra en las primeras 8 palabras), el texto en pantalla, y la música con cuerpo.
+> **Meta: ≥49% de stayed-to-watch. Objetivo: 70%.** Se mide cada lunes con vidIQ.
 > **Voz de JP (obligatorio en todo guion):** antes de escribir, lee `finance-videos/plan/voz-jp.md` y redacta con ese tono. El guion no debe sonar a IA.
 
 
 # /historia — historia 3D animada de una empresa o su fundador (Costa Studio Finance)
 
 Proyecto: `finance-videos/` (todo se ejecuta desde ahí: `cd finance-videos`). Usuario: **Juan Pablo Armendáriz (@jparmendariz)**;
-escríbele en español, corto y claro. **Costo cero:** nada de vidIQ ni servicios de pago; JP graba su voz encima (modo sin voz).
+escríbele en español, corto y claro. **Voz:** las historias llevan **voz de IA** (Francisco, vidIQ) desde el 17 nov 2026, en UNA
+sola toma. Cuesta 28 créditos si el texto hablado queda bajo 1,000 caracteres: mídelo antes de enviarlo.
 Lee antes: `plan/PLAN.md` (§0 marca y conflictos de interés, §2 ritmo), `plan/banco-historias.md`, `plan/publicados.md`,
 `plan/clientes-agencia.md`, `plan/posiciones-jp.md`.
 
-**Ritmo (cambio del 13 nov 2026, con los primeros datos reales): 2 historias por semana.** Es el formato con más alcance del canal (79% de
-las vistas y el mejor gancho), así que se duplicó:
-- **La del MIÉRCOLES 12:00** se produce el martes y cuenta la historia de la empresa o del personaje **del largo de ESE domingo**: es el
-  puente a los largos. Sustituye al antiguo short adelanto. Usa el cierre del lunes para la escena "Hoy" (un día de desfase no importa
-  en una historia).
-- **La del SÁBADO 12:00** se produce el viernes, después del cierre, y sale del banco de historias.
+**Ritmo (calendario del 20 nov 2026): 2 historias por semana, martes y jueves 12:00.** Es el formato con más alcance del canal:
+- **La del JUEVES 12:00** se produce el miércoles y cuenta la historia de la empresa o del personaje **del largo de ESE domingo**: es
+  el puente. Lleva una escena de aviso con el pizarrón ("ESTE DOMINGO 10:00" + el título del largo) antes de la pregunta de cierre.
+  **Si esa historia promete el largo en pantalla, el largo deja de ser negociable.**
+- **La del MARTES 12:00** se produce el lunes y sale del banco de historias.
 **TODA historia manda a un largo:** en `youtube.md` deja indicado "Video relacionado" → el largo del tema más cercano y el comentario
 fijado con la liga. Sin ese puente, el alcance de las historias no se convierte en horas de reproducción.
 
-Las historias son la excepción a la regla de "mismo día" (junto con el largo): JP necesita un día para grabar su voz. La carpeta lleva
-la **fecha de publicación**: `videos/<AAAA-MM-DD>-<SLUG>-historia/` (el miércoles o el sábado, según cuál sea). El sábado la historia es
-la única pieza del día.
+**Regla del borrador anticipado:** la historia es atemporal, así que el guion, el storyboard y las capturas se adelantan en cuanto se
+sabe el tema. Lo único que se ejecuta el día que toca es generar la voz y renderizar, ya con todo aprobado. La carpeta lleva la
+**fecha de publicación**: `videos/<AAAA-MM-DD>-<SLUG>-historia/`.
 **Plantilla y modelo de estilo:** `videos/2026-11-14-JOBS-historia/` (Steve Jobs: `story.js`, `guion.md`, `youtube.md`). Cópiala y adáptala.
 
 ### ✅ Checklist (revisa TODO antes de entregar)
 1. **Tema** del banco (o pedido por JP), sin repetir `publicados.md`; empresa que cotiza en bolsa o cerca de su IPO.
 2. **Datos verificados** con fuente primaria, anotados en `guion.md`. Citas siempre atribuidas ("según Jobs…").
-3. **Guion para leer despacio:** 8 escenas, 110–150 palabras, 75–90 s según `pace3d.py` (≈100 palabras/min con pausas).
-4. **Primer cuadro = miniatura:** quién + el dato o la frase, visibles desde t = 0.
+3. **Guion:** 8–10 escenas, 120–160 palabras, 60–90 s según `voz3d.py`. El texto hablado, bajo 1,000 caracteres.
+4. **Gancho de 3 segundos, tres capas** (narración + texto + música). Meta ≥49% de stayed-to-watch.
+4b. **Miniatura propia** con el frame del gancho: si no la subes, YouTube escoge un frame de en medio.
 5. **Arriba limpio:** el 40% superior de cada escena es fondo liso o lleva `L.scrim`; titular legible; nada tapa el logo ni la ficha del año.
-6. **Personajes vivos:** parpadean, hablan con el subtítulo (`talkAt`), caminan y gesticulan; animados a 12 cuadros/s (`on2`).
+6. **En cada escena PASA algo** (regla del dinamismo, JP 19 nov): el personaje actúa —camina, gira, voltea a ver lo que importa,
+   señala, se le caen los hombros— Y un objeto cambia de estado **por una causa**. Una escena donde solo se mueve la cámara está mal.
+6b. **Cada escena cambia de mundo o de situación.** Dos seguidas en el mismo sitio y con la misma acción son una sola escena larga.
+6c. **Transiciones:** la ola solo entre mundos distintos. Dentro del mismo mundo va `trans: 'cont'` con las cámaras encadenadas
+   (cada escena arranca donde terminó la anterior) y los objetos se encogen para salir, no desaparecen de golpe.
 7. **Música + efectos por acción** (`sfx` en cada escena) → `make_audio.py`. Nunca entregar un video mudo. **Todas las historias llevan la
    partitura de órgano y piano** (la de SpaceX, elegida por JP el 11 nov 2026); `make_audio.py` la pone sola. Los shorts y largos usan otra.
 8. **Sin logotipos reales** (los nombres van como texto) y **sin imágenes de IA de personas o marcas**: todo es maqueta 3D propia.
-9. **Entrega:** MP4 con audio + título y descripción listos + guion para leer + `publicados.md` y `banco-historias.md` actualizados.
+9. **Cierre:** la **pregunta** en serif itálica centrada + "Desde la costa, todo se ve con claridad." + aviso legal. Si es la historia
+   puente, antes va la escena del pizarrón con el aviso del largo.
+10. **Aprobación:** capturas a JP y su OK **ANTES** de generar voz y renderizar. Una corrección vista en una captura cuesta cero.
+11. **Entrega:** MP4 con audio + título y descripción + `publicados.md` y `banco-historias.md` actualizados.
 
 ## 0. Preparar
 ```bash
 bash scripts/setup.sh
-S=AAAA-MM-DD                       # sábado de publicación
+S=AAAA-MM-DD                       # martes o jueves de publicación
 ID=$S-SLUG-historia                # ej. 2026-11-21-NIKE-historia
 mkdir -p videos/$ID && cp videos/2026-11-14-JOBS-historia/story.js videos/$ID/story.js
 ```
 Si ya existe `videos/$S-*-historia/*.mp4`, no hagas otra: reenvía esa.
+**Modelo con todo lo nuevo aplicado:** `videos/2026-11-21-KAHNEMAN-historia/` (10 escenas, voz de IA, gráficas con `L.plaque`,
+plano continuo al final, pizarrón de aviso y pregunta de cierre).
 
 ## 1. Elegir el tema (sin preguntar, si JP no lo dio)
-**Si es la historia del MIÉRCOLES, el tema NO se elige:** es la empresa o el personaje del largo de ese domingo (mira
+**Si es la historia del JUEVES, el tema NO se elige:** es la empresa o el personaje del largo de ese domingo (mira
 `plan/calendario-largos.md`). Si el largo es educativo y no tiene empresa (por ejemplo "qué es una acción"), toma la empresa que ese largo
-usa de ejemplo. Lo de abajo aplica a la historia del SÁBADO.
+usa de ejemplo. Lo de abajo aplica a la historia del MARTES.
 
 Toma una fila de `plan/banco-historias.md` que no esté en "Ya publicadas" ni en `publicados.md`. Prioridad:
 1. **Engancha con la semana:** la empresa del largo del domingo (`plan/calendario-largos.md`), del short de empresa del fin de semana
@@ -78,7 +90,10 @@ Reglas duras:
   biografía autorizada o entrevista). Si solo hay fuentes secundarias para un dato, búscalo en dos y dilo con matiz, o quítalo.
 - Cuida los verbos: "lo sacaron" ≠ "lo despidieron"; "casi quiebra" necesita una cifra o una cita atribuida.
 - **Regla del cierre:** `python3 scripts/market_close.py` antes de bajar precios; si la bolsa sigue abierta, adelanta la maqueta y baja
-  los datos de "Hoy" al cierre (`--wait`). La historia del sábado usa el cierre del viernes.
+  los datos de "Hoy" al cierre (`--wait`). **Comprueba la fecha en hora de México, no la del contenedor**, que corre en UTC.
+- **Noticias:** fuente primaria + al menos dos fuentes independientes del mismo día, las tres citadas. **Un número que no se puede
+  verificar no se publica** (en el debut de Anthropic se omitió el valor de mercado porque las fuentes iban de 1.3 a 2 billones).
+- **Conflicto de interés:** cualquier relación entre quien escribe y la empresa analizada se declara, y JP decide.
 - Datos de hoy: `python3 scripts/fetch_data.py TICKER videos/$ID` (precio, valor de mercado, trimestres). Serie larga para la escena
   de la gráfica: `python3 scripts/fetch_series.py TICKER DESDE 1mo videos/$ID/serie.json` y pásala a `videos/$ID/series.js`
   (`export default [["AAAA-MM", cierre], ...]`). Si la gráfica abarca décadas, usa escala logarítmica y dilo en pantalla.
@@ -87,17 +102,21 @@ Reglas duras:
 ## 3. Guion (8 escenas; 7–9 si la historia lo pide)
 | # | Escena | Qué cuenta |
 |---|--------|-----------|
-| 1 | **Gancho** | Empieza por el momento más dramático (a media historia), con el protagonista y la frase que detiene el scroll |
+| 1 | **Gancho (3 s)** | La frase que detiene el scroll, dicha Y escrita Y con música desde el cuadro 1. Algo conocido + contradicción o cifra con escala. **Nunca contexto ni presentación** |
 | 2 | **Origen** | Dónde y cómo empezó, en chico (un garaje, un puesto, un préstamo) |
 | 3 | **Conflicto** | Qué salió mal o quién se opuso |
 | 4 | **Caída** | El punto más bajo, con UNA cifra |
 | 5 | **Regreso / apuesta** | La decisión que lo cambió |
 | 6 | **Giro** | Los productos o jugadas que funcionaron (máx. 3) |
 | 7 | **Hoy** | El dato actual verificado + la gráfica real dentro de la maqueta |
-| 8 | **Cierre** | Pregunta en dos partes + lema + aviso legal |
+| 8 | **Aviso** (solo la del jueves) | Pizarrón "ESTE DOMINGO 10:00" + el título del largo, y el personaje lo señala |
+| 9 | **Cierre** | La pregunta en serif itálica centrada + "Desde la costa, todo se ve con claridad." + aviso legal |
 
 **Reglas de escritura (para que JP lea despacio y con aire):**
-- Español de México, tuteo, frases cortas (≤ 14 palabras). 12–24 palabras por escena; **110–150 en total**.
+- Español de México, tuteo, frases cortas (≤ 14 palabras). 12–24 palabras por escena; **120–160 en total**.
+- **Que lo entienda cualquiera sin saber de finanzas.** Si una frase pide deducir algo, está mal: nada de palabras cultas
+  ("póstumo" → "no se le da a quien ya murió") ni metáforas que haya que descifrar ("una calculadora en la cabeza").
+- **La imagen dice lo mismo que la frase, al mismo tiempo.** Si hay que explicar la escena, la escena está mal.
 - **La puntuación ES el ritmo:** cada coma da 0.3 s, cada punto 0.75 s y los "..." 0.8 s. Usa puntos para separar ideas y "..." antes
   del remate. Nunca una escena de una sola frase larga sin pausas.
 - Números con dígitos ("1997", "1,000 millones", "53%"); máximo 2 cifras por escena (un número tarda mucho en decirse).
@@ -157,6 +176,12 @@ reusa mundos (día/noche del mismo edificio); 3–5 mundos por historia; no uses
 `vote` (golpe seco), `ticks` (contador; ponle duración), `coins`, `rise` (algo sale bien), `fall` (algo sale mal), `shine` (revelación),
 `applause`, `wave`. Cada acción visible lleva su efecto, en la misma fracción de la escena en la que ocurre. 3–7 por escena, no más.
 
+### Gráficas y pantallas dentro de la maqueta (19 nov 2026)
+`L.plaque(ancho, alto, dibuja, pw)` da un plano con textura de canvas: con eso se dibujan **gráficas de línea de verdad** dentro de
+la escena. Mete el plano en un grupo anclado a la IZQUIERDA y **escalando el grupo en x la línea se va trazando** mientras habla la
+voz. Un portafolio en pantalla va **por sectores, nunca con nombres de empresas reales**: con tickers reales se lee como que estamos
+diciendo qué comprar. Y activa `transparent = true` o el alfa del lienzo sale negro.
+
 ### Personajes: que no se vean raros (corrección de JP, 11 nov 2026)
 - **Sin párpados (JP, 11 nov 2026):** ningún personaje lleva párpados; los ojos van siempre abiertos y la expresión se da con cejas y boca (`lid` ya no hace nada).
 - **Sentados de verdad.** Los actores ya tienen rodillas: `L.pose(a, { sit: 1, bob: -.2 })` dobla cadera y rodilla. Todo el que esté en una
@@ -170,17 +195,36 @@ reusa mundos (día/noche del mismo edificio); 3–5 mundos por historia; no uses
 - Revisa en `qa.jpg` cada escena con gente: postura, que nadie atraviese muebles y que las caras se vean.
 
 ## 5. Ritmo, revisión, audio y render
+**Con voz de IA (el flujo de ahora):**
 ```bash
-python3 scripts/pace3d.py videos/$ID                 # tiempos al ritmo de JP → narration.txt, build/timing.js, build/timeline.json
 node engine3d/render3d.js videos/$ID --qa            # hoja de revisión build/qa.jpg (2 cuadros por escena) + build/sfx.json
-node engine3d/render3d.js videos/$ID --at 3.5 12     # cuadros sueltos a tamaño completo para revisar detalles
-.venv/bin/python scripts/make_audio.py videos/$ID    # música + efectos → audio/mix.wav (modo sin voz)
-node engine3d/render3d.js videos/$ID video --jobs 3  # → videos/$ID/$ID.mp4 con audio (≈45–60 min: lánzalo en segundo plano y sigue con youtube.md)
+node engine3d/render3d.js videos/$ID --at 3.5 12     # cuadros de cada momento con ACCIÓN, a tamaño completo
+#    ↑↑ MANDA ESTO A JP Y ESPERA SU OK. No se gasta voz ni render sin eso. ↑↑
+#    Mide el texto hablado: si pasa de 1,000 caracteres son 56 créditos en vez de 28.
+#    vidiq_voiceover_generate en UNA llamada (voz Francisco) → audio/voice_raw.mp3
+echo '{"format":"long"}' > videos/$ID/storyboard.json        # para que process_voice deje el ritmo natural
+.venv/bin/python scripts/process_voice.py videos/$ID         # → audio/voice.wav + build/whisper.json
+.venv/bin/python scripts/voz3d.py videos/$ID --aire 0.7      # sincroniza escenas y subtítulos con la voz real
+.venv/bin/python scripts/make_audio.py videos/$ID            # música al 60% de la voz (es el valor por defecto)
+node engine3d/render3d.js videos/$ID --jobs 3                # → $ID.mp4 (≈35 min: en segundo plano, y sigue con youtube.md)
+# al terminar saca SOLO la miniatura: videos/$ID/miniatura.jpg (1080x1920, el cuadro del gancho, sin subtítulo).
+node engine3d/render3d.js videos/$ID --mini 4.2 --hq          # solo si quieres OTRO cuadro que el del gancho
 ```
-- `pace3d.py` debe dar **75–90 s** y 95–110 palabras/min. Si pasa de 95 s, recorta el guion (no aceleres el ritmo).
-- **Mira `build/qa.jpg` y varios cuadros sueltos (Read)** antes de renderizar: texto encimado con la maqueta, personajes cortados
-  por el borde, caras en sombra, objetos que flotan o atraviesan otros, escenas vacías, datos correctos. Corrige y repite.
-- Si cambias un `cap`, vuelve a correr `pace3d.py` → `--qa` → `make_audio.py`.
+Sin voz de IA (si JP graba él): igual, pero `pace3d.py` en lugar de la voz, `process_voice.py` y `voz3d.py`.
+- **Si solo cambia el audio** (música, aire, mezcla), **no vuelvas a renderizar**: `ffmpeg -i $ID.mp4 -i audio/mix.wav
+  -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest salida.mp4`. Segundos en vez de 35 minutos.
+- `voz3d.py` debe dar **60–90 s** y ~145 palabras/min. Verifica que diga "todas las palabras con audio en su lugar".
+- **Mira `build/qa.jpg` y varios cuadros sueltos (Read)** antes de renderizar. La hoja casi nunca pasa a la primera: la de Kahneman
+  necesitó cinco vueltas. Lo que hay que cazar, con su causa:
+  - **Texto cortado en una etiqueta 3D:** no es el encuadre, es que `label3d` dibuja sobre un canvas de `pw` px y lo que no cabe se
+    recorta. Regla: `caracteres × 0.62 × tamaño + ls × caracteres ≤ pw`. Baja la fuente, no el ancho del plano.
+  - **Objeto pegado al rótulo:** para BAJAR algo en el cuadro el `lookAt` va ARRIBA del objeto (es al revés de lo que parece).
+    Zona segura del vertical: y 800–1650 de 1920.
+  - **Un objeto que cae sobre otro acaba DENTRO:** calcula la tapa con `getWorldPosition` del grupo, no con coordenadas locales.
+  - **Lo que baja desde arriba pasa por detrás del rótulo:** que llegue pronto a la zona visible y se quede ahí.
+  - **Una plaquita con fondo transparente sale negra:** `pl.material.transparent = true`.
+  - Distancias: `media_altura = tan(25°) × distancia`, `media_anchura = media_altura × 0.5625`.
+- Si cambias un `cap`, hay que regenerar la voz: **vuelve a pedirle el OK a JP antes de gastar los créditos**.
 - Al terminar: `ffprobe` (1080x1920, h264 + aac, duración) y revisa 3 cuadros del MP4. Copia `build/qa.jpg` a `cuadros_clave.jpg`.
 - `--hq` renderiza el 3D al 100% con sombras más suaves (2.5x más lento): solo si JP lo pide.
 
@@ -189,14 +233,15 @@ node engine3d/render3d.js videos/$ID video --jobs 3  # → videos/$ID/$ID.mp4 co
    primeros ~40, 2 hashtags) y descripción (1.ª línea con la historia y las palabras clave, "📌 Datos clave" en 4–6 viñetas, la
    pregunta del cierre, fuentes en una línea, "Animación original en 3D. Caricatura editorial; sin logotipos reales.", "Contenido
    educativo. No es asesoría financiera.", "Costa Studio Finance, by JP Armendáriz." y 3–5 hashtags con `#Shorts`). Debajo: 2 títulos
-   alternativos, fuentes completas y "Al subir" (no es para niños; contenido alterado/sintético = No: es animación evidente y la voz
-   es de JP; video relacionado = el largo o short de esa empresa; comentario fijado con la pregunta).
-2. Envía el MP4 con SendUserFile (display render) y `cuadros_clave.jpg`. En el mensaje pega SIEMPRE: título, descripción y **el guion
-   para leer** (`narration.txt`, una escena por párrafo). Recuérdale: "Graba tu voz con Voz en off en la app de YouTube, despacio,
-   siguiendo los subtítulos, y publícalo el sábado a las 12:00".
+   alternativos, fuentes completas y "Al subir" (no es para niños; **contenido alterado o sintético = Sí**, porque la narración es voz
+   generada; video relacionado = el largo de ese domingo; comentario fijado con la pregunta y la liga al largo).
+   Y una tabla de verificación: dato · fuente consultada · resultado, marcando con ⚠️ lo que solo tenga fuente secundaria.
+2. Envía el MP4 con SendUserFile (display render) y `cuadros_clave.jpg`. En el mensaje pega SIEMPRE título y descripción.
+   **El video YA LLEVA VOZ: no le pidas que grabe nada.** Recuérdale el día y la hora (martes o jueves, 12:00) y que suba la
+   **miniatura propia** (`videos/$ID/miniatura.jpg`, la saca el render solo): mándasela también con SendUserFile.
 3. Agrega la historia a `plan/publicados.md` (tabla "Programado") y a "Ya publicadas" de `plan/banco-historias.md`.
 4. Commit + push a la rama actual (`story.js`, `series.js`, `guion.md`, `narration.txt`, `youtube.md`, `cuadros_clave.jpg`, el MP4;
-   sin `build/` ni `.wav`). Si el push falla, no insistas: el video ya llegó por el chat; pega también `youtube.md` completo.
+   `miniatura.jpg`; sin `build/` ni `.wav`). Si el push falla, no insistas: el video ya llegó por el chat; pega también `youtube.md` completo.
 
 ## Estilo (no cambiar sin que JP lo pida)
 "Costa Diorama v2": maquetas de plastilina mate con huellas, luz de cine (principal cálida + contraluz + relleno), profundidad de
