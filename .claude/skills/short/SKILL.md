@@ -560,6 +560,16 @@ opinar (`ffmpeg -ss <seg> -i … -frames:v 1` y `convert … -crop`); a 300 px d
    a la rama actual. **Si el push falla** (p. ej. 403 porque la sesión no tiene el repo), no te detengas: el MP4 ya se envió por el
    chat; pega también el contenido completo de `youtube.md` en el mensaje final para que JP pueda publicar igual.
 
+### Gráficas con personaje y una sola paleta (JP, 20 nov 2026 — vale para todos los formatos)
+- **Ventas / algo que crece → el personaje SUBE escaleras**, un escalón por periodo (el estilo de Steve Jobs).
+- **Una curva con movimiento → el personaje va EN UN CARRITO** sobre la línea (el estilo de SpaceX).
+- **Comparar dos cantidades → columnas VERTICALES con eje X y eje Y visibles**, no barras horizontales.
+- **Una gráfica donde solo se mueve la línea está prohibida.**
+- **Un video entero lleva UNA paleta.** Los mundos cambian de luz y de valor, no de familia de color: naranja
+  profundo → naranja medio → naranja claro, nunca naranja → beige → blanco. Mira la hoja de QA entrecerrando los
+  ojos: si un cuadro parece de otro video, está mal.
+- **Máximo 6–8 efectos de sonido en toda la pieza**, ninguno repetido seguido, y la "ola" solo al cambiar de mundo.
+
 ## Estilo (no cambiar sin que el usuario lo pida)
 Marca: **Costa Studio Finance** (división de finanzas de la agencia Costa Studio). `brand.json` → `division: "FINANCE"` dibuja
 la firma logo + FINANCE + "by JP Armendáriz · @jparmendariz" en cada pantalla y "COSTA STUDIO FINANCE · BY JP ARMENDÁRIZ" en el

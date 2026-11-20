@@ -307,6 +307,52 @@ varias de las cinco vueltas de encuadre de Kahneman. Comprobado contra `miniatur
 personaje ocupa el 33% del alto y medido ocupa el 34%; con tan(25°) habría predicho 19%.)
 Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
 
+## Las gráficas llevan personaje, siempre (JP, 20 nov 2026 — regla permanente)
+JP, viendo la gráfica de precios del short de Anthropic: *"no me gusta. La gráfica que más me ha gustado que hemos
+hecho es la de SpaceX y Steve Jobs, en la que se ve a Jobs escalando las ventas y a Musk en un carrito. Te propongo
+que siempre mantengamos ese estilo."*
+**Dos convenciones de la casa, de aquí en adelante y en todos los formatos:**
+- **Ventas, ingresos, algo que crece año con año → el personaje SUBE unas escaleras**, y cada escalón es un año o un
+  periodo. La altura del escalón es el dato; el personaje da la escala.
+- **Una curva con movimiento (un precio, una sesión, una caída) → el personaje va EN UN CARRITO** sobre la línea:
+  sube con ella, se le cae encima cuando baja. La línea deja de ser un dibujo y se vuelve un recorrido.
+**Una gráfica donde solo se mueve la línea está prohibida.** Si el dato no admite ni escalera ni carrito, busca otra
+acción física antes de dibujar ejes sueltos: algo que el personaje haga o que le pase.
+Para **comparar dos cantidades** (no una evolución): **columnas verticales con eje X y eje Y visibles**, no barras
+horizontales ni bloques sueltos. JP lo pidió así para el récord de SpaceX contra Anthropic.
+
+## Un video entero tiene UNA paleta (JP, 20 nov 2026)
+*"El fondo de la nada aparece blanco y amarillo, cuando en realidad todo estaba siendo de color naranja. Cambió mucho
+hasta el fondo en diferentes escenas. Hay que ser constantes, y eso anótalo para todos los demás skills."*
+Tenía razón: el short de Anthropic empezaba en naranja quemado y a media pieza saltaba a beige y luego a crema casi
+blanco. Leído seguido, parecen tres videos pegados.
+**La regla: los mundos de un mismo video son variaciones de UNA paleta, no paletas distintas.** Cambia la luz y el
+valor (más oscuro, más claro), no la familia de color. El arco de luz sigue valiendo —el mundo del problema más
+oscuro que el de la salida— pero **dentro del mismo tono**: naranja profundo → naranja medio → naranja claro, nunca
+naranja → beige → blanco. Antes de renderizar, mira la hoja de QA **entrecerrando los ojos**: si un cuadro parece de
+otro video, está mal. Vale para historias, shorts, largos y publicaciones.
+
+## Menos efectos, y ninguno repetido (JP, 20 nov 2026)
+*"Hay muchos sonidos que se repiten, demasiados en el video."* Cierto, y la cuenta lo confirma: 18 efectos escritos
+en `story.js` **más** una "ola" automática en cada cambio de escena (`make_audio.py`) **más** un `pluck` por cada
+`cue`. En 87 segundos eso es un efecto cada dos segundos y medio.
+- **Máximo 6–8 efectos en todo un short o una historia**, no 3–7 por escena como decía antes `/historia`.
+- **Ninguno se repite dos veces seguidas**, y la "ola" de transición va solo cuando se cambia de MUNDO, no entre dos
+  escenas del mismo sitio.
+- El efecto se gana su lugar: suena cuando algo **golpea, cae, se rompe o aparece de golpe**. Un movimiento suave no
+  lleva efecto.
+- El silencio también es un recurso: un par de segundos sin nada antes del dato que importa pega más que un `shine`.
+
+## Si sale un lugar real, investiga cómo se ve (JP, 20 nov 2026)
+*"No se parece mucho a Nueva York; busca fotos de Times Square e inténtalo replicar lo más posible."* Yo hice
+edificios de ladrillo con ventanitas y UNA pantalla, que es como se ve cualquier plaza, no Times Square.
+Lo que de verdad lo define, verificado: **las fachadas enteras son pantallas, por ley** —la norma de zonificación
+obliga a los edificios de la plaza a llevar miles de metros de anuncios luminosos—, el edificio en cuña de One Times
+Square con un panel LED de ~100 metros de alto, letreros apilados unos sobre otros sin pared visible entre ellos, y
+las **escaleras rojas translúcidas del TKTS**. No es una plaza con una pantalla: es una plaza hecha de pantallas.
+**La regla: antes de maquetar un lugar reconocible, busca cómo es y quédate con los tres o cuatro rasgos que lo hacen
+identificable.** Si la maqueta no se reconoce sin rótulo, no es ese lugar, es una plaza genérica.
+
 ## La cámara también narra: gramática de plano (JP, 20 nov 2026)
 JP trajo un short de @SoySR.J y dijo: "todas las tomas son a la misma altura de la persona, la toma no cambia,
 mantiene el mismo tamaño la persona". **Medido en la historia de Kahneman, tenía razón exacta:** las 10 escenas van

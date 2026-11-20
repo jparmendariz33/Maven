@@ -21,6 +21,16 @@ Proyecto: `finance-videos/` (todo se ejecuta desde ahí: `cd finance-videos`). U
 escríbele en español, corto y claro. Lee antes: `plan/PLAN.md` (§0 marca y conflictos de interés, §4 formato, §6b monetización),
 `plan/calendario-largos.md` y `plan/clientes-agencia.md`. **vidIQ sí se usa** para elegir tema y título (`keyword_research`, `score_title`); la voz de IA solo si JP la pide (~141 créditos).
 
+### Gráficas con personaje y una sola paleta (JP, 20 nov 2026 — vale para todos los formatos)
+- **Ventas / algo que crece → el personaje SUBE escaleras**, un escalón por periodo (el estilo de Steve Jobs).
+- **Una curva con movimiento → el personaje va EN UN CARRITO** sobre la línea (el estilo de SpaceX).
+- **Comparar dos cantidades → columnas VERTICALES con eje X y eje Y visibles**, no barras horizontales.
+- **Una gráfica donde solo se mueve la línea está prohibida.**
+- **Un video entero lleva UNA paleta.** Los mundos cambian de luz y de valor, no de familia de color: naranja
+  profundo → naranja medio → naranja claro, nunca naranja → beige → blanco. Mira la hoja de QA entrecerrando los
+  ojos: si un cuadro parece de otro video, está mal.
+- **Máximo 6–8 efectos de sonido en toda la pieza**, ninguno repetido seguido, y la "ola" solo al cambiar de mundo.
+
 ## 0. Preparar
 ```bash
 bash scripts/setup.sh

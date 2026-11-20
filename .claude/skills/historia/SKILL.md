@@ -499,6 +499,16 @@ Sin voz de IA (si JP graba él): igual, pero `pace3d.py` en lugar de la voz, `pr
 4. Commit + push a la rama actual (`story.js`, `series.js`, `guion.md`, `narration.txt`, `youtube.md`, `cuadros_clave.jpg`, el MP4;
    `miniatura.jpg`; sin `build/` ni `.wav`). Si el push falla, no insistas: el video ya llegó por el chat; pega también `youtube.md` completo.
 
+### Gráficas con personaje y una sola paleta (JP, 20 nov 2026 — vale para todos los formatos)
+- **Ventas / algo que crece → el personaje SUBE escaleras**, un escalón por periodo (el estilo de Steve Jobs).
+- **Una curva con movimiento → el personaje va EN UN CARRITO** sobre la línea (el estilo de SpaceX).
+- **Comparar dos cantidades → columnas VERTICALES con eje X y eje Y visibles**, no barras horizontales.
+- **Una gráfica donde solo se mueve la línea está prohibida.**
+- **Un video entero lleva UNA paleta.** Los mundos cambian de luz y de valor, no de familia de color: naranja
+  profundo → naranja medio → naranja claro, nunca naranja → beige → blanco. Mira la hoja de QA entrecerrando los
+  ojos: si un cuadro parece de otro video, está mal.
+- **Máximo 6–8 efectos de sonido en toda la pieza**, ninguno repetido seguido, y la "ola" solo al cambiar de mundo.
+
 ## Estilo (no cambiar sin que JP lo pida)
 "Costa Diorama v2": maquetas de plastilina mate con huellas, luz de cine (principal cálida + contraluz + relleno), profundidad de
 campo, personajes cabezones articulados a 12 cuadros/s, misma capa editorial de los shorts (logo, ficha del año, etiqueta, titular
