@@ -170,9 +170,15 @@ Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se i
 **No es opinión: está medido.** En la historia de Steve Jobs solo el **27.84%** se quedó a mirar —7 de cada 10
 deslizaron— pero quien se quedaba veía el **51.76%**. El contenido no era el problema; el primer segundo sí.
 Un video que nadie ve no sirve por bien hecho que esté, así que el gancho se trabaja **antes** que el resto del guion.
-- **Shorts e historias 3D: 3 segundos.** En ese tiempo tiene que haber (1) una frase escrita en pantalla que valga por
-  sí sola sin sonido, y (2) una razón concreta para no deslizar: una cifra que choque, una contradicción, una pregunta
-  que el espectador se haya hecho. Nunca una presentación ("hoy vamos a hablar de…") ni un contexto previo.
+- **Shorts e historias 3D: 3 segundos, y el gancho son TRES CAPAS juntas** (JP, 20 nov 2026):
+  1. **La narración.** La primera frase hablada ES el gancho: sin entrada, sin respiración previa, la voz arranca
+     antes de 0.1 s. La cifra o la contradicción cae en las primeras 8 palabras.
+  2. **El texto en pantalla**, desde el cuadro 1, que se basta solo porque mucha gente ve en silencio — lo cual no
+     quiere decir que el video vaya mudo.
+  3. **La música**, con cuerpo desde el cuadro 1. Hasta el 20 nov entraba al 15% de su máximo y crecía: el gancho
+     era la parte con menos música del video. Ahora `music3d.py` entra al 36% y se asienta.
+  Y el contenido: una cifra que choque, una contradicción, algo que el espectador ya conoce. Nunca una presentación
+  ("hoy vamos a hablar de…") ni un contexto previo.
 - **Largos: hasta 15 s**, pero la promesa concreta va en los primeros 5.
 - **Publicaciones:** el gancho es el título de la primera lámina. Mismo filtro.
 - **El filtro, antes de escribir nada más:** si la primera frase se puede cambiar por la de otro video del canal sin que

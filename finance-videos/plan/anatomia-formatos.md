@@ -9,10 +9,33 @@ Cada punto marcado con 📊 está respaldado por datos del canal (medición del 
 
 ## 🎬 HISTORIA 3D (vertical · 60–90 s · martes y jueves 12:00)
 
-### Los primeros 3 segundos — el gancho
+### Los primeros 3 segundos — el gancho: TRES CAPAS A LA VEZ
 📊 *SpaceX retuvo al 86.5% y Nubank al 5.9% con la misma cantidad de impresiones del feed (1,164 vs 1,158). El gancho
 es la única variable que explica esa diferencia.*
-- **Frase escrita en pantalla desde el cuadro 1**, legible sin sonido.
+
+El gancho **no es solo el texto**. Son tres cosas que tienen que llegar juntas desde el cuadro 1 (JP, 20 nov 2026):
+
+**1. Qué se dice y cómo se dice — la narración.**
+- **La primera frase hablada ES la frase del gancho.** No hay frase de entrada, ni respiración previa, ni rampa.
+  La voz arranca antes de 0.1 s diciendo lo que importa.
+- **La cifra o la contradicción cae en las primeras 8 palabras.** Si llega en la segunda frase, llega tarde.
+- **Frase corta de golpe, luego una larga que explica.** El monótono viene de frases iguales.
+- Con voz de IA: registro limpio, sin muletillas, y la prosodia hace el trabajo. Un `…` para respirar **después**
+  del dato, nunca antes.
+
+**2. Lo que se ve — el texto en pantalla.**
+- Frase escrita **desde el cuadro 1**, grande. Tiene que entenderse **aunque el espectador vea en silencio**
+  (muchos lo hacen) — lo cual **no significa que el video vaya mudo**: significa que el texto se basta solo.
+- Dice **lo mismo que la voz, al mismo tiempo**.
+
+**3. Lo que se oye de fondo — la música.**
+- 📊 *Hasta el 20 nov la partitura entraba al 15% de su máximo y crecía: el gancho era la parte con MENOS música de
+  todo el video, justo donde se decide si el espectador se queda. Corregido: ahora entra al 36% y se asienta para
+  dejar sitio al crescendo.*
+- **La música entra desde el cuadro 1**, con cuerpo, y se asienta en cuanto empieza el desarrollo.
+- El fundido de entrada es de 0.18 s, no de 0.4: casi medio segundo de silencio al arranque es medio segundo perdido.
+
+**El contenido del gancho, en cualquiera de las tres capas:**
 - Nombra **algo que el espectador ya conoce** (Apple, SpaceX, un personaje famoso). Si el tema es desconocido, el
   gancho se ancla a algo que sí lo sea.
 - Abre con **una contradicción** ("casi quiebra… y luego la IPO más grande") **o una cifra con escala**

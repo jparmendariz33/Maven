@@ -99,7 +99,10 @@ def score(T0, DUR):
     CLIMAX, CAIDA, SUBE = S(N - 3), S(N - 2), S(N - 1)
     # y el órgano final dura ~5.5 s pase lo que pase, nunca lo que sobre de la última escena
     CIERRE = max(SUBE, DUR - 5.5)
-    keys = [(0, .35), (S(1), .45), (S(2), .62), (S(3), .75), (S(4), .82), (CLIMAX, 1.0), (CAIDA - .5, 1.0), (CAIDA + 1.5, .45),
+    # El GANCHO entra con música, no en silencio (JP, 20 nov 2026): antes el arco empezaba en .35 y los primeros
+    # 3 s quedaban al 15% del máximo de la pieza, justo donde se decide si el espectador se queda.
+    asienta = min(2.2, S(1) * .55)                      # entra fuerte y se asienta para dejar sitio al crescendo
+    keys = [(0, .62), (asienta, .50), (S(1), .52), (S(2), .64), (S(3), .76), (S(4), .84), (CLIMAX, 1.0), (CAIDA - .5, 1.0), (CAIDA + 1.5, .45),
             (CAIDA + .68 * (CIERRE - CAIDA), .6), (CIERRE, .85), (DUR - 1.5, .7), (DUR, 0)]
     inten = lambda t: float(np.interp(t, [k[0] for k in keys], [k[1] for k in keys]))
     BRIGHT = [(-1, 50, 53, 57), (-1, 50, 53, 58), (-1, 48, 53, 57), (-1, 48, 52, 55)]   # Dm  B♭  F  C (voces)
