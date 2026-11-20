@@ -323,6 +323,33 @@ Lo mismo con los mundos: los nuestros son **piso + pared** repintados. Un mundo 
 pegado a cámara, el sujeto, algo al fondo) y **hacer algo durante la escena** — que los edificios suban del suelo
 escalonados con `scale.y`, que la mesa se llene, que la luz pase de día a noche.
 
+## Un cambio de escena tiene que VERSE como un cambio de escena (JP, 20 nov 2026)
+JP vio el short de Anthropic: *"la primera escena y la segunda sí se distingue que son dos escenas distintas,
+porque hay un cambio repentino en el movimiento de cabeza de la persona. Cada vez que hagamos un cambio de escena,
+tienen que hacer cambios de escena."* Tenía razón: yo había encadenado cuatro escenas seguidas en el mismo mundo
+con `trans: 'cont'` y cámaras continuas, y el único indicio del corte era que al personaje le saltaba la cabeza.
+Eso no se lee como una escena nueva: se lee como un error de render.
+**La regla: entre dos escenas consecutivas tiene que cambiar el LUGAR o el TAMAÑO DEL PLANO, y de forma visible.**
+Un desplazamiento pequeño de cámara dentro del mismo encuadre no es un corte; si eso es todo lo que cambia, **las dos
+escenas son una sola** y hay que fundirlas, o darle a la segunda otro mundo u otro tamaño de plano.
+`trans: 'cont'` sigue siendo correcto para una toma continua, pero continuo no quiere decir parecido: en el short de
+Anthropic las escenas 1 y 2 siguen encadenadas y ahora la cámara pasa de **plano general de la plaza** a **la pantalla
+llenando el cuadro**. Es continuo y aun así es inconfundible.
+
+## El gancho se ve antes de entenderse (JP, 20 nov 2026)
+Mi primera escena era un plano detalle de la línea del precio que se abría a general. JP: *"se ve espantoso… se ve
+algo totalmente en zoom pero no se logra distinguir qué es, y cuando haces el zoom out tampoco entiendes qué tiene
+que ver con la historia."* El defecto de fondo: **elegí el plano por la gramática (quería un detalle en la lista) en
+vez de por lo que la imagen tenía que decir.** Un plano detalle de algo abstracto no es un gancho, es un acertijo.
+**El primer cuadro tiene que ser una imagen que cualquiera reconozca al instante**, y para eso sirve la iconografía
+del tema: JP propuso *"literal cuando tocan la campana en la bolsa, o cuando presionan el botón en el Nasdaq, y todo
+el equipo empieza a celebrar; o Times Square, la pantalla famosa donde aparece cuando una acción sale a bolsa."*
+Quedó así: plaza al atardecer, la pantalla de la torre encendida con el ticker, confeti y el equipo con los brazos
+arriba. **Y hay que ser creativos con las escenas**: antes de aceptar un encuadre, pregunta qué imagen del mundo real
+cuenta ese momento sin una sola palabra. Si la respuesta es "una gráfica", busca otra vez.
+Detalle técnico: una pantalla de la calle **tiene que brillar sola** (`material.emissive` + `emissiveMap` con la
+misma textura). Iluminada solo por las luces de la escena queda como un cartel apagado.
+
 ## El rótulo se revela en dos tiempos, y la consecuencia se VE (20 nov 2026)
 Dos cosas del short de @DesarmadoYoutube (206 mil likes, el más visto de los tres que trajo JP):
 - **El rótulo no es un subtítulo: es un remate en dos tiempos.** Primero entra `lo peor:` solo. Un instante después

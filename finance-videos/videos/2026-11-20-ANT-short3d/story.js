@@ -49,7 +49,78 @@ const torre = (L, n, anc, alt, col, x, z) => {
 };
 
 const worlds = {
-  // ───────────── A · EL PISO (azul noche) · escenas 1–4 ─────────────
+  // ───────────── P · LA PLAZA (el debut, estilo Times Square) · escenas 1–2 ─────────────
+  // JP (20 nov): "como primera toma pondría literal cuando tocan la campana... o Times Square,
+  // la pantalla famosa donde aparece cuando una acción sale a bolsa". Es legible desde el cuadro 1.
+  plaza(L) {
+    const { THREE, clay2, rbox } = L;
+    const w = L.cineWorld({ bg: '#C2662F', bg2: '#3E1A0C', floor: '#4A3528', fog: [30, 100], hemi: .82,
+      sky: '#FFD2A2', ground: '#4A3020', key: 3.4, keyPos: [-9, 15, 11], keyCol: '#FFE3C0',
+      rim: 3.0, rimPos: [7, 10, -6], rimCol: '#FFB070', fill: .62 });
+    // FONDO: tres fachadas con ventanas encendidas + la torre de la pantalla
+    const ventanas = (anc, alt, x, z, col, sem) => {
+      const e = rbox(anc, alt, 2.2, .1, clay2(col, .9)); e.position.set(x, alt / 2, z); w.scene.add(e);
+      const r = L.rng(sem); for (let i = 0; i < 46; i++) { const v = rbox(.2, .3, .06, .02,
+        r() > .45 ? L.emit('#FFE3A8', .75) : clay2('#6A4028', .7));
+        v.position.set(x - anc / 2 + .45 + (i % 4) * (anc - .9) / 3, 1.1 + Math.floor(i / 4) * .78, z + 1.14);
+        if (v.position.y < alt - .4) w.scene.add(v); } };
+    ventanas(3.4, 9, -4.6, -13.5, '#8A4A2A', 3);
+    ventanas(3.0, 7, 4.8, -13.0, '#7A3F24', 9);
+    const torre = rbox(4.6, 13, 2.4, .12, clay2('#6E3920', .9)); torre.position.set(.2, 6.5, -12.6); w.scene.add(torre);
+    // LA PANTALLA: 3.5 de ancho (a d=13 llena el 89% del cuadro)
+    const marco = rbox(3.8, 5.2, .3, .08, clay2('#2A1409', .6)); marco.position.set(.2, 7.4, -11.3); w.scene.add(marco);
+    const lam = (dib) => { const pl = L.plaque(3.5, 4.9, dib, 620);
+      pl.material.transparent = true; pl.material.depthWrite = false;
+      // una pantalla de verdad brilla: sin esto queda un cartel oscuro mal iluminado
+      pl.material.emissive = new THREE.Color(0xFFFFFF);
+      pl.material.emissiveMap = pl.material.map; pl.material.emissiveIntensity = 1.15;
+      pl.position.set(.2, 7.4, -11.12); w.scene.add(pl); return pl; };
+    // estado 1: sale a bolsa
+    const panA = lam((g, W2, H2) => {
+      g.fillStyle = '#1C0E05'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
+      g.fillStyle = '#FFD98A'; g.font = '700 30px "Space Grotesk"'; g.letterSpacing = '9px';
+      g.fillText('SALE A BOLSA', W2 / 2, 120); g.letterSpacing = '0px';
+      g.fillStyle = '#F4EFE2'; g.font = '800 128px Unbounded'; g.fillText('ANT', W2 / 2, 300);
+      g.fillStyle = '#9FD08A'; g.font = '800 92px Unbounded'; g.fillText('+34%', W2 / 2, 450);
+      g.fillStyle = 'rgba(244,239,226,.5)'; g.font = '600 28px "Space Grotesk"';
+      g.fillText('apertura  $111.50', W2 / 2, 520);
+      g.fillStyle = 'rgba(244,239,226,.3)'; g.font = '600 26px "Space Grotesk"';
+      g.fillText('19 · 11 · 2026', W2 / 2, 790); });
+    // estado 2: el récord, dos barras en la misma pantalla
+    const panB = lam((g, W2, H2) => {
+      g.fillStyle = '#1C0E05'; g.fillRect(0, 0, W2, H2); g.textAlign = 'left';
+      const x0 = 46, anc = W2 - 92, esc = v => anc * v / 81.3;
+      g.fillStyle = '#FFD98A'; g.font = '700 28px "Space Grotesk"'; g.letterSpacing = '6px';
+      g.fillText('LA MÁS GRANDE DE LA HISTORIA', x0, 90); g.letterSpacing = '0px';
+      const fila = (y, etq, val, v, col) => {
+        g.fillStyle = '#F4EFE2'; g.font = '700 30px "Space Grotesk"'; g.fillText(etq, x0, y - 18);
+        g.fillStyle = 'rgba(244,239,226,.1)'; g.fillRect(x0, y, anc, 78);
+        g.fillStyle = col; g.fillRect(x0, y, esc(v), 78);
+        g.fillStyle = '#120803'; g.font = '800 44px Unbounded'; g.textAlign = 'right';
+        g.fillText(val, x0 + esc(v) - 20, y + 56); g.textAlign = 'left'; };
+      fila(220, 'SpaceX · junio 2026', '$75 mil M', 75, '#E8DCC6');
+      fila(400, 'ANT · noviembre 2026', '$81.3 mil M', 81.3, '#7FA9F0');
+      g.fillStyle = 'rgba(244,239,226,.42)'; g.font = '600 26px "Space Grotesk"';
+      g.fillText('monto colocado, base contra base', x0, 790); });
+    panB.material.opacity = 0;
+    // MEDIO: el equipo celebrando
+    const gente = [-2.6, -1.3, 1.5, 2.8].map((x, i) => { const a = L.actor(
+      [INVER, { ...INVER, shirt: '#C7A317', hair: '#4A3020', seed: 31 },
+       { ...INVER, shirt: '#E8DCC6', pants: '#3A2A1E', seed: 44 }, { ...INVER, shirt: '#7E8C54', seed: 52 }][i]);
+      a.position.set(x * 1.25, 0, -8.2 + (i % 2) * .8); a.rotation.y = Math.PI + x * .05; w.scene.add(a); return a; });
+    // confeti
+    const conf = new THREE.Group(); w.scene.add(conf);
+    const rc = L.rng(17);
+    for (let i = 0; i < 90; i++) { const c = rbox(.12, .12, .02, .01,
+      clay2(['#C7A317', '#E8DCC6', '#BB6F58', '#7FA9F0'][i % 4], .5));
+      c.userData = { x: -5 + rc() * 10, z: -9 + rc() * 6, y0: 9 + rc() * 7, sp: .9 + rc() * 1.1, r: rc() * 6 };
+      conf.add(c); }
+    // PRIMER PLANO: el filo de una banqueta, pegado a cámara
+    const banq = rbox(14, .3, 1.6, .06, clay2('#5A4030', .7)); banq.position.set(0, .15, 2.4); w.scene.add(banq);
+    return { ...w, panA, panB, gente, conf };
+  },
+
+  // ───────────── A · LA SALA DEL TABLERO · escenas 3–4 ─────────────
   piso(L) {
     const { THREE, clay2, rbox } = L;
     const w = L.cineWorld({ bg: '#A85634', bg2: '#4A2112', floor: '#8A4426', fog: [30, 90], hemi: .52,
@@ -165,15 +236,25 @@ const head = (L, k1, title, sub, ink, lt, col, pronto, dos) => {
 };
 
 const scenes = [
-  // 1 · GANCHO — DETALLE de la línea (d≈2.4) que se abre a GENERAL (d≈16). Texto desde el cuadro 1, en dos tiempos.
-  { id: 'gancho', world: 'piso', d: 7, ink: ARENA, year: '2026', sfx: [[.02, 'ticks', .5, .35], [.55, 'whoosh', .7]],
+  // 1 · GANCHO — PLANO GENERAL de la plaza: la pantalla se enciende, cae confeti, el equipo celebra.
+  //     (Antes era un detalle de la línea del precio: JP, con razón, dijo que no se entendía qué era
+  //      ni qué tenía que ver con la historia. Esto se lee en el cuadro 1 sin una palabra.)
+  { id: 'gancho', world: 'plaza', d: 7, ink: ARENA, year: '2026', sfx: [[.04, 'applause', .55, .5], [.3, 'shine', .7], [.5, 'pop', .5]],
     cap: 'Le quitó el récord a SpaceX. Abrió ganando 34%… y cerró ganando 17.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.linea.scale.x = 1;                                   // ya trazada: el detalle abre sobre la caída
-      const k = L.eio(L.seg(p, .26, 1));
-      cam(w, mv([1.05, 4.58, -6.1], [0, 4.9, 6.9], k), mv([1.05, 4.58, -9.06], [0, 3.6, -7.4], k), 30);
-      L.pose(w.inv, { head: [0, 0, 0], armL: [.1, .12, .1], armR: [.1, .12, .1], bob: Math.sin(q * 1.6) * .012 });
+      const k = L.eio(L.seg(p, .1, 1));
+      cam(w, mv([-1.2, 4.9, 17.6], [.4, 5.4, 14.6], k), mv([.2, 8.2, -11], [.2, 8.5, -11], k), 30);
+      w.panA.material.opacity = L.seg(p, .02, .18); w.panB.material.opacity = 0;
+      // el confeti cae y se mece
+      const kc = L.seg(p, .12, 1);
+      w.conf.children.forEach((c, i) => { const u = c.userData, y = u.y0 - kc * u.sp * 26 - i * .04;
+        c.visible = y > .1 && y < 13; c.position.set(u.x + Math.sin(q * 1.4 + u.r) * .5, y, u.z);
+        c.rotation.set(q * 2 + u.r, q * 1.6 + u.r, 0); });
+      // el equipo levanta los brazos escalonado
+      w.gente.forEach((a, i) => { const s2 = L.eio(L.seg(p, .04 + i * .05, .3 + i * .05));
+        L.pose(a, { armL: [2.1 * s2, .5, .2], armR: [2.1 * s2, .5, .2], head: [-.2 * s2, 0, 0],
+          bob: Math.sin(q * 5 + i) * .07 * s2, amp: .2, walk: null }); });
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .66);
@@ -181,19 +262,21 @@ const scenes = [
       L.rise('ABRIÓ EN +34%  ·  CERRÓ EN +17%', 90, 690, L.seg(p, .42, .66), { f: L.F.d, w: 800, s: 44, c: MOSTAZA });
     } },
 
-  // 2 · EL RÉCORD — ENTERO EN PICADO (d≈16, +30°). Dos columnas crecen; la de ANT rebasa a la de SpaceX.
-  { id: 'record', world: 'piso', d: 8, ink: ARENA, year: '2026', trans: 'cont',
-    sfx: [[.14, 'thud', .6], [.46, 'thud', .6], [.72, 'rise', .7]],
+  // 2 · EL RÉCORD — la cámara ENTRA a la pantalla y cambia de lámina: dos barras, base contra base.
+  //     El cambio de plano es grande (general → la pantalla llenando el cuadro), para que se lea como corte.
+  { id: 'record', world: 'plaza', d: 8, ink: ARENA, year: '2026', trans: 'cont',
+    sfx: [[.18, 'whoosh', .5], [.34, 'pop', .6], [.62, 'rise', .7]],
     cap: 'El 19 de noviembre de 2026, Anthropic salió a la bolsa y levantó 81 mil millones de dólares. Nunca una empresa había levantado tanto.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.linea.scale.x = Math.max(.001, 1 - L.seg(p, 0, .18));   // la gráfica se apaga: aquí manda el récord
-      const k = L.eio(L.seg(p, 0, .34));                        // llega RÁPIDO a las columnas
-      cam(w, mv([0, 4.9, 6.9], [0, 4.6, 5.4], k), mv([0, 3.6, -7.4], [0, 2.25, -6.2], k), 30);
-      const sub = (g, kk) => g.children.forEach((b, i) => b.scale.setScalar(Math.max(.001, L.back(L.seg(kk, i * .12, i * .12 + .3)))));
-      sub(w.cSx, L.seg(p, .12, .52)); sub(w.cAn, L.seg(p, .36, .84));
-      [[w.eSx, .42], [w.eAn, .68]].forEach(([e, t0]) => e.scale.setScalar(Math.max(.001, L.back(L.seg(p, t0, t0 + .2)))));
-      L.pose(w.inv, { head: [0, .3, 0], bob: Math.sin(q * 1.6) * .012 });
+      const k = L.eio(L.seg(p, 0, .5));
+      cam(w, mv([.4, 5.4, 14.6], [.2, 7.6, 1.2], k), mv([.2, 8.5, -11], [.2, 8.0, -11.1], k), 30);
+      const cam2 = L.seg(p, .26, .4);            // la lámina cambia a media entrada
+      w.panA.material.opacity = 1 - cam2; w.panB.material.opacity = cam2;
+      const kc = L.seg(p, 0, .5);
+      w.conf.children.forEach((c, i) => { const u = c.userData, y = u.y0 - 26 - kc * u.sp * 14 - i * .04;
+        c.visible = y > .1 && y < 13; c.position.y = y; });
+      w.gente.forEach((a, i) => L.pose(a, { armL: [.9, .4, .3], armR: [.9, .4, .3], bob: Math.sin(q * 3 + i) * .04, amp: .2 }));
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .64);
@@ -201,16 +284,16 @@ const scenes = [
     } },
 
   // 3 · LOS PRECIOS — MEDIO sobre el tablero (d≈16). La línea sube a 111 y se cae a 97.
-  { id: 'precios', world: 'piso', d: 8, ink: ARENA, year: '2026', trans: 'cont',
+  { id: 'precios', world: 'piso', d: 8, ink: ARENA, year: '2026',
     sfx: [[.2, 'rise', .6], [.54, 'fall', .7]],
     cap: 'Vendió sus acciones en 83 dólares. Abrieron en 111 y cerraron en 97.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.linea.scale.x = L.eio(L.seg(p, .18, .62));              // vuelve a trazarse cuando se habla de precios
-      [w.cSx, w.cAn].forEach(g => g.children.forEach(b => b.scale.setScalar(Math.max(.001, 1 - L.seg(p, 0, .2)))));
-      [w.eSx, w.eAn].forEach(e => e.scale.setScalar(Math.max(.001, 1 - L.seg(p, 0, .16))));
-      const k = L.eio(L.seg(p, .06, .96));
-      cam(w, mv([0, 4.6, 5.4], [0, 4.8, 6.6], k), mv([0, 2.25, -6.2], [0, 4.7, -9.1], k), 30);
+      w.linea.scale.x = L.eio(L.seg(p, .1, .66));               // la línea se traza con la voz
+      [w.cSx, w.cAn].forEach(g => g.children.forEach(b => b.scale.setScalar(.001)));   // el récord ya se contó
+      [w.eSx, w.eAn].forEach(e => e.scale.setScalar(.001));
+      const k = L.eio(L.seg(p, 0, 1));
+      cam(w, mv([-.8, 4.9, 7.4], [.5, 4.7, 6.2], k), mv([0, 4.75, -9.1], [0, 4.6, -9.1], k), 30);
       L.pose(w.inv, { head: [0, 0, 0], bob: Math.sin(q * 1.6) * .012 });
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
