@@ -270,7 +270,9 @@ R.hook = (s, t) => {
     else contain(hlg, lx, ly, LW, LW);
     C.restore(); } }
   if (cp) riseLines(cp.lines, 90, yV + 46 + cp.size * .62, Math.round(cp.size * 1.22), tv + .8, t, { f: F.b, w: 500, s: cp.size, c: ink });
-  if (s.question) { const tq = cueT(s, 'cue_question', 3); rise(s.question, 90, 1300, seg(t, tq - .1, tq + .5), { f: F.s, w: 400, s: 150, c: B.mostaza }); }
+  // La pregunta se achica para caber a la IZQUIERDA de JP en 3D (empieza en x≈690): a 150 px fijos
+  // una pregunta de más de ~10 caracteres le quedaba detrás (JP, 21 nov 2026).
+  if (s.question) { const tq = cueT(s, 'cue_question', 3); rise(s.question, 90, 1300, seg(t, tq - .1, tq + .5), { f: F.s, w: 400, s: fit(s.question, F.s, 400, 150, 580, 64), c: B.mostaza }); }
 };
 
 // fila de logos muy tenues y desenfocados al fondo: llena el espacio de la apertura sin competir con el texto
@@ -529,9 +531,12 @@ R.news = (s, t) => {
     C.fillStyle = bf; C.beginPath(); C.arc(116, y - 15, 26, 0, 7); C.fill();
     txt(String(i + 1), 116, y - 3, { f: F.d, w: 800, s: 28, al: 'center', c: BR ? inkOn(bf) : B.arena });
     lines.forEach((l, j) => txt(l, 170, y + j * 56, { f: F.b, w: 700, s: 46 }));
-    if (b.sub) txt(b.sub, 170, y + lines.length * 56 - 4, { f: F.b, w: 400, s: 34, c: B.g4, a: seg(t, tc + .4, tc + .9) });
+    // El sub se partía: se dibujaba en UNA línea con txt() mientras el texto de arriba sí usaba wrap(),
+    // así que cualquier sub largo se salía por la derecha (JP, 21 nov 2026 — regla de la maquetación).
+    const subl = b.sub ? wrap(b.sub, F.b, 400, 34, 820) : [];
+    subl.forEach((l, j) => txt(l, 170, y + lines.length * 56 - 4 + j * 42, { f: F.b, w: 400, s: 34, c: B.g4, a: seg(t, tc + .4, tc + .9) }));
     C.restore();
-    y += lines.length * 56 + (b.sub ? 70 : 30) + 40;
+    y += lines.length * 56 + (b.sub ? 70 + (subl.length - 1) * 42 : 30) + 40;
   });
   if (s.source) txt('Fuente: ' + s.source, 90, Math.min(1540, Math.max(y + 20, 1380)), { f: F.b, w: 500, s: 28, c: B.g4, a: seg(t, s.t0 + 1, s.t0 + 1.5) });
 };
