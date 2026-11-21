@@ -36,7 +36,7 @@
    "type": "company",
    "theme": "sand",
    "kicker": "La empresa",
-   "name": "ASUR",
+   "name": false,
    "logo": "images/logo.png",
    "line": "Opera aeropuertos, no aviones",
    "chips": [
@@ -86,7 +86,7 @@
    "text": "Y aun así quedó plano.",
    "emphasis": "plano.",
    "sub": "57.2 millones de pasajeros, apenas 0.7% menos.",
-   "say": "Y aun así el grupo quedó casi igual: −0.7%."
+   "say": "Y aun así el grupo quedó casi igual: bajó 0.7%."
   },
   {
    "type": "statement",

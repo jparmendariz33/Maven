@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from no_voice import spoken
 
 PRON = {'S&P 500': 'es and pi quinientos', 'S&P': 'es and pi', 'CNBV': 'Comisión Nacional Bancaria y de Valores', 'Nasdaq': 'Násdak',
-        'by JP Armendáriz': 'de Jota Pe Armendáriz', 'JP Armendáriz': 'Jota Pe Armendáriz', 'BMV': 'be eme uve', 'SAT': 'sat', 'IPC': 'i pe ce', 'ETF': 'i ti ef', 'ETFs': 'i ti efs'}
+        'by JP Armendáriz': 'de Jota Pe Armendáriz', 'JP Armendáriz': 'Jota Pe Armendáriz', 'BMV': 'be eme uve', 'SAT': 'sat', 'IPC': 'i pe ce', 'ETF': 'i ti ef', 'ETFs': 'i ti efs', 'ASUR': 'Asur', 'ADR': 'a de erre', 'PEG': 'peg', 'ROE': 'erre o e'}
 FIX = [('uno millón', 'un millón'), ('uno mil', 'un mil'), ('veintiuno millones', 'veintiún millones'),
        ('quinientos empresas', 'quinientas empresas'), ('doscientos empresas', 'doscientas empresas'), ('trescientos empresas', 'trescientas empresas')]
 

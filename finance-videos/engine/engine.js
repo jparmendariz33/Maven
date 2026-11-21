@@ -237,14 +237,10 @@ R.hook = (s, t) => {
   kicker(s.kicker || `${D.exchange || ''} · ${D.ticker}`, 90, 360, s.t0 + .1, t, ink);
   // Logo de la empresa arriba a la derecha: el gancho tiene que decir DE QUIÉN habla desde el primer cuadro
   // (JP, 14 nov 2026 — el short de Nubank abría sin ninguna marca). Acepta "logo" propio o el del video.
-  const hlg = img(s.logo || (V.scenes.find(z => z.logo) || {}).logo);
-  if (hlg && s.logo !== false) { const k = seg(t, s.t0 + .2, s.t0 + .8); if (k > 0) {
-    C.save(); C.globalAlpha *= k; scaleAt(900, 330, .85 + .15 * back(k));
-    const hbg = BGB || (themeOf(s) === 'sand' ? B0.arena : B.azul);   // el fondo REAL de la escena, no una suposición
-    if (s.logo_card || s.bg_full || logoNeedsCard(s.logo, hlg, hbg)) {   // sobre foto a toda pantalla, siempre con tarjeta
-      rr(820, 250, 160, 160, 28); C.fillStyle = '#FFFFFF'; C.fill(); contain(hlg, 840, 270, 120, 120); }
-    else contain(hlg, 820, 250, 160, 160);
-    C.restore(); } }
+  // El logo ya NO va arriba a la derecha: ahí quedaba chico y perdía protagonismo (JP, 21 nov 2026).
+  // Va grande, al lado de la cifra del gancho, que es donde se posa la vista. Se dibuja más abajo,
+  // cuando ya se conoce la posición de la cifra (yV).
+  const hlg = img(s.logo || (V.scenes.find(z => z.logo) || {}).logo), conLogo = !!hlg && s.logo !== false;
   // layout en cascada: el título se acomoda primero y TODO lo demás cuelga de su última línea real.
   // (13 nov 2026: con un título de 4 líneas la cifra se encimaba encima del texto.)
   const COL = 900, BOT = 1150;                                     // 1150 = donde empieza JP en 3D
@@ -255,15 +251,24 @@ R.hook = (s, t) => {
   const tv = cueT(s, 'cue_value', .9), k = eo(seg(t, tv, tv + 1.4));
   const v = (s.value || 0) * k, dec = s.decimals ?? 1;
   const str = (s.prefix || '') + (s.value < 0 ? '−' : s.signed ? '+' : '') + Math.abs(v).toFixed(dec) + (s.unit ?? '%');
-  const cp = s.caption ? fitLines(s.caption, F.b, 500, 54, COL, 2, 38) : null;   // el pie también se parte en vez de salirse
+  const LW = 250, COLV = conLogo ? COL - LW - 40 : COL;   // ancho útil: el logo ocupa la derecha de la cifra Y del pie
+  const cp = s.caption ? fitLines(s.caption, F.b, 500, 54, COLV, 2, 38) : null;   // el pie también se parte en vez de salirse
   const capH = cp ? cp.lines.length * Math.round(cp.size * 1.22) + 46 : 0;
-  let size = 230; while (tw(str, F.d, 800, size) > COL && size > 120) size -= 10;
+  let size = 230; while (tw(str, F.d, 800, size) > COLV && size > 120) size -= 10;
   while (size > 112 && yT + 44 + size * 1.0 + capH > BOT) size -= 6;  // que la cifra Y el pie quepan antes de JP
   const yV = yT + 44 + size * .78;
   const a = seg(t, tv - .1, tv + .3);
   C.save(); C.globalAlpha *= a; scaleAt(90, yV - size * .3, .94 + .06 * ex(seg(t, tv, tv + .6)));
   txt(str, 90, yV, { f: F.d, w: 800, s: size, c: BGB ? ink : s.tone === 'down' ? '#F3C3B4' : s.tone === 'up' ? '#DDE8B8' : ink });
   C.restore();
+  if (conLogo) { const k = seg(t, s.t0 + .2, s.t0 + .8); if (k > 0) {
+    const lx = W - 90 - LW, lcy = yV - size * .30, ly = lcy - LW / 2;
+    C.save(); C.globalAlpha *= k; scaleAt(lx + LW / 2, lcy, .85 + .15 * back(k));
+    const hbg = BGB || (themeOf(s) === 'sand' ? B0.arena : B.azul);   // el fondo REAL de la escena, no una suposición
+    if (s.logo_card || s.bg_full || logoNeedsCard(s.logo, hlg, hbg)) {
+      rr(lx, ly, LW, LW, 34); C.fillStyle = '#FFFFFF'; C.fill(); contain(hlg, lx + 26, ly + 26, LW - 52, LW - 52); }
+    else contain(hlg, lx, ly, LW, LW);
+    C.restore(); } }
   if (cp) riseLines(cp.lines, 90, yV + 46 + cp.size * .62, Math.round(cp.size * 1.22), tv + .8, t, { f: F.b, w: 500, s: cp.size, c: ink });
   if (s.question) { const tq = cueT(s, 'cue_question', 3); rise(s.question, 90, 1300, seg(t, tq - .1, tq + .5), { f: F.s, w: 400, s: 150, c: B.mostaza }); }
 };
@@ -359,15 +364,30 @@ R.tabla = (s, t) => {
 R.company = (s, t) => {
   kicker(s.kicker || 'La empresa', 90, 360, s.t0 + .1, t, B.negro);
   const lg = img(s.logo);
-  if (lg) { const k = seg(t, s.t0 + .25, s.t0 + .85); if (k > 0) { C.save(); C.globalAlpha *= k; scaleAt(815, 415, .85 + .15 * back(k));
+  // "name": false → el LOGO es el nombre: va grande en el lugar del texto, y no se escribe la palabra.
+  // Tener el logo y el nombre escrito al lado repetía lo mismo dos veces (JP, 21 nov 2026).
+  const logoEsNombre = s.name === false && !!lg;
+  if (lg && !logoEsNombre) { const k = seg(t, s.t0 + .25, s.t0 + .85); if (k > 0) { C.save(); C.globalAlpha *= k; scaleAt(815, 415, .85 + .15 * back(k));
     if (s.logo_card || logoNeedsCard(s.logo, lg, themeOf(s) === 'dark' ? B0.azul : B0.arena)) {
       rr(700, 300, 230, 230, 34); C.fillStyle = '#FFFFFF'; C.fill(); C.strokeStyle = B.grid; C.lineWidth = 2; C.stroke(); contain(lg, 726, 326, 178, 178); }
     else contain(lg, 700, 300, 230, 230);
     C.restore(); } }
-  // el nombre manda: lo de abajo cuelga de su última línea real (con nombres de 2 líneas se encimaba — 14 nov 2026)
-  const nm = fitLines(s.name || D.short_name || D.name, F.d, 800, 96, lg ? 580 : 900, 2, 56), nlh = Math.round(nm.size * 1.15);
-  riseLines(nm.lines, 90, 490, nlh, s.t0 + .2, t, { f: F.d, w: 800, s: nm.size, c: B.marca });
-  const yN = Math.max(586, 490 + (nm.lines.length - 1) * nlh + nm.size * .30);   // 586 = la posición de siempre con una sola línea
+  let yN;
+  if (logoEsNombre) {
+    const k = seg(t, s.t0 + .2, s.t0 + .8);
+    if (k > 0) { C.save(); C.globalAlpha *= k; scaleAt(90 + 250, 478, .9 + .1 * back(k));
+      // y 410: por debajo del rótulo, que va en 360 (si arranca antes, el logo se le encima)
+      if (s.logo_card || logoNeedsCard(s.logo, lg, themeOf(s) === 'dark' ? B0.azul : B0.arena)) {
+        rr(90, 408, 540, 150, 28); C.fillStyle = '#FFFFFF'; C.fill(); C.strokeStyle = B.grid; C.lineWidth = 2; C.stroke(); contain(lg, 118, 430, 484, 106); }
+      else contain(lg, 90, 412, 500, 142);
+      C.restore(); }
+    yN = 586;
+  } else {
+    // el nombre manda: lo de abajo cuelga de su última línea real (con nombres de 2 líneas se encimaba — 14 nov 2026)
+    const nm = fitLines(s.name || D.short_name || D.name, F.d, 800, 96, lg ? 580 : 900, 2, 56), nlh = Math.round(nm.size * 1.15);
+    riseLines(nm.lines, 90, 490, nlh, s.t0 + .2, t, { f: F.d, w: 800, s: nm.size, c: B.marca });
+    yN = Math.max(586, 490 + (nm.lines.length - 1) * nlh + nm.size * .30);   // 586 = la posición de siempre con una sola línea
+  }
   const ll = wrap(s.line || '', F.b, 500, 46, 880);
   riseLines(ll, 90, yN + 54, 60, s.t0 + .6, t, { f: F.b, w: 500, s: 46, c: B.g3 });
   let y = yN + 114 + ll.length * 60, x = 90;
