@@ -46,3 +46,41 @@ así que esas cifras quedan fuera del video. Las de arriba sí están verificada
 - **No se usa el objetivo de analistas** que trae `data.json` ($328): precios objetivo prohibidos.
 - Los dos riesgos van con el mismo peso que el motor.
 - El cierre es un principio general, no una recomendación.
+
+---
+
+# ⚠️ HALLAZGO DEL 21 NOV 2026 — EL VIDEO ENTREGADO ESTÁ MAL
+
+JP señaló que ASUR tiene aeropuertos en Brasil y otros países. Tenía razón. Verificado con fuente primaria.
+
+## Lo que ASUR es HOY (y el video dice mal)
+**Comunicado propio de ASUR:** "ASUR CONCLUYE LA ADQUISICIÓN DE LA PARTICIPACIÓN DE MOTIVA EN AEROPUERTOS DE
+BRASIL, ECUADOR, COSTA RICA Y CURAÇAO". Compró el 100% de Companhia de Participações em Concessões (CPC),
+subsidiaria de Motiva (antes CCR). Contrato firmado el 18 nov 2025; cierre el 1 sep 2026.
+- **+20 aeropuertos**: 17 en Brasil y 3 entre Ecuador, Costa Rica y Curaçao.
+- Precio reportado por la prensa: ~US$992 millones / R$5,187 millones. **Secundaria: falta confirmarlo en el
+  comunicado o el reporte trimestral.**
+- ASUR opera ahora en **SIETE países**: México, Colombia, Puerto Rico, Brasil, Ecuador, Costa Rica y Curaçao.
+
+**Comunicado de tráfico de OCTUBRE 2026 (ya publicado, más nuevo que el que usé):** reporta por país —
+Puerto Rico +4.8%, Colombia +2.8%, Brasil +0.9%, Ecuador +0.2%, México −5.4%, Costa Rica −6.6%, Curazao −3.5%.
+Confirma que los siete países ya están en el reporte mensual.
+
+## Los tres errores del video entregado
+1. **Factual:** dice "En México, Colombia y Puerto Rico". Son siete países y 20 aeropuertos más desde el 1 sep 2026.
+2. **Viejo:** usé el comunicado de tráfico de septiembre existiendo ya el de octubre (regla del cierre: datos lo más
+   actualizados posible).
+3. **Visual:** 9 escenas `statement` seguidas. La tabla de 12 escenas de `/short` §1b pide `photo`, `news`, `bars`
+   (ingresos y utilidad por trimestre) y `metric`. El video quedó siendo puro texto, sin una sola gráfica.
+
+## Causa raíz (para no repetirlo)
+- Construí sobre `business_summary` de `data.json`, que es el perfil de Yahoo y está **desactualizado**: lista solo
+  México, Colombia y Puerto Rico. Nunca abrí la sala de prensa de ASUR. **`data.json` no es fuente primaria para
+  lo que la empresa ES; solo para precios y múltiplos.**
+- Escribí el storyboard sin abrir la tabla de 12 escenas de `/short` §1b. Por eso salieron 9 `statement`.
+
+## El ángulo que sale de esto (mejor que el entregado)
+La tensión que el video reporta sin explicar — ingresos +18.9% y utilidad +2.1%, más deuda nueva — **tiene causa:
+ASUR se acaba de comprar 20 aeropuertos**. Eso es el video: no "Cancún se cae", sino "Cancún se cae y aun así
+ASUR creció, porque dejó de ser una empresa mexicana". Falta verificar si la deuda de 1,800 millones financió
+la compra (lo di por hecho de Aerostar, sin confirmarlo).
