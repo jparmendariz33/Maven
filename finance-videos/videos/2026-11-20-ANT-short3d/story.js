@@ -261,11 +261,11 @@ Object.assign(worlds, {
       const m = rbox(1.3, 1.0, .16, .05, clay2('#5A3018', .7)); m.position.set(cx, cy, 0); muroP.add(m);
       const pl = pantalla(L, 1.18, .88, (g, W2, H2) => {
         g.fillStyle = '#000000'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
-        g.fillStyle = '#7FD08A'; g.font = '800 104px Unbounded'; g.fillText('+17%', W2 / 2, H2 / 2 + 36);
-        g.fillStyle = 'rgba(244,239,226,.34)'; g.font = '600 20px "Space Grotesk"';
-        g.fillText('ANT · primer día', W2 / 2, H2 - 22); }, 300);
+        g.fillStyle = '#7FD08A'; g.font = '800 62px Unbounded'; g.fillText('+17%', W2 / 2, H2 / 2 + 14);
+        g.fillStyle = 'rgba(244,239,226,.3)'; g.font = '600 17px "Space Grotesk"';
+        g.fillText('ANT · primer día', W2 / 2, H2 - 26); }, 300);
       pl.position.set(cx, cy, .1); pl.material.opacity = 0; muroP.add(pl); panes.push(pl); }
-    const mira = L.actor(INV); mira.position.set(.2, 0, -2.4); mira.rotation.y = Math.PI; mira.scale.setScalar(.001); w.scene.add(mira);
+    const mira = L.actor(INV); mira.position.set(1.35, 0, -3.5); mira.rotation.y = Math.PI; mira.scale.setScalar(.001); w.scene.add(mira);
     return { ...w, col, bSx, bAn, eSx, eAn, vg, v, cart, pilo, muroP, panes, mira };
   },
 });
@@ -378,7 +378,7 @@ const scenes = [
       w.col.visible = false; w.vg.visible = false; w.muroP.visible = true;
       w.mira.scale.setScalar(1);
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-.5, 3.0, 8.6], [.4, 2.9, 7.6], k), mv([0, 3.4, -5.2], [0, 3.3, -5.2], k), 30);
+      cam(w, mv([-.6, 3.3, 11.4], [.4, 3.2, 10.2], k), mv([0, 3.5, -5.2], [0, 3.4, -5.2], k), 30);
       w.panes.forEach((pl, i) => pl.material.opacity = L.seg(p, .08 + i * .06, .26 + i * .06));
       L.pose(w.mira, { head: [-.35, 0, 0], armL: [.12, .14, .12], armR: [.12, .14, .12], bob: Math.sin(q * 1.5) * .012 });
     },
