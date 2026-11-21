@@ -35,9 +35,12 @@ def main(vdir):
     print(txt); print('\n' + '-' * 60)
     print(f'Escenas: {len(sb["scenes"])} | Caracteres: {n} | Duración estimada del video: {est:.0f} s | Costo de voz: {credits} créditos')
     ok = True
+    # La ventana de duración depende del formato: "Análisis + Potencial" (mode "empresa")
+    # son 12 escenas de 75–85 s por especificación (/short §1b); el short de contexto, 45–60 s.
+    lo, hi = (70, 88) if sb.get('mode') == 'empresa' else (45, 60)
     if n > 1000: print('⚠️  Pasa de 1,000 caracteres: costaría el doble. Recorta el guion.'); ok = False
-    if est < 45: print('⚠️  Quedaría de menos de 45 s. Agrega un poco de contenido.'); ok = False
-    if est > 60: print('⚠️  Quedaría de más de 60 s. Recorta el guion.'); ok = False
+    if est < lo: print(f'⚠️  Quedaría de menos de {lo} s. Agrega un poco de contenido.'); ok = False
+    if est > hi: print(f'⚠️  Quedaría de más de {hi} s. Recorta el guion.'); ok = False
     for i, s in enumerate(sb['scenes']):
         if not s.get('say'): print(f'⚠️  La escena {i} ({s["type"]}) no tiene narración.'); ok = False
     print('✅ Guion listo para generar la voz.' if ok else '❌ Ajusta el guion antes de generar la voz.')
