@@ -270,116 +270,6 @@ Object.assign(worlds, {
   },
 });
 
-Object.assign(worlds, {
-  // ───── 6 a 9 · EL TALLER: la escalera de ingresos y el waterfall ─────
-  taller(L) {
-    const { THREE, clay2, rbox } = L;
-    const w = L.cineWorld({ bg: '#E0A571', bg2: '#A05C30', floor: '#C98A58', fog: [38, 120], hemi: .86,
-      sky: '#FFE6C8', ground: '#8A5230', key: 3.4, keyPos: [-10, 15, 11], keyCol: '#FFF0DC',
-      rim: 2.4, rimPos: [8, 9, -5], rimCol: '#FFC48A', fill: .64 });
-    const muro = rbox(28, 20, .5, .1, clay2('#D69A66', .94)); muro.position.set(0, 9, -9); w.scene.add(muro);
-
-    // ESCALERA DE INGRESOS (regla: ventas → el personaje SUBE escaleras, un escalón por periodo)
-    const esc = new THREE.Group(); esc.position.set(-1.9, 0, -4.6); w.scene.add(esc);
-    const ING = [[2024, 1.0], [2025, 4.1], [2026, 33.242]];      // miles de millones, 9 meses en 2026
-    const alturas = ING.map(([, v]) => .35 + Math.sqrt(v / 33.242) * 2.55);   // raíz: si no, los dos primeros no se ven
-    const pelda = ING.map(([a, v], i) => { const h = alturas[i];
-      const b = rbox(1.15, h, 1.3, .05, clay2(i === 2 ? MOSTAZA : '#C08A5E', .6));
-      const g = new THREE.Group(); b.position.y = h / 2; g.add(b); g.position.set(i * 1.2, 0, 0);
-      g.scale.y = .001; esc.add(g);
-      const e = L.label3d(String(a) + (i === 2 ? '\n$33,242 M' : ''), 1.1, i === 2 ? .5 : .24,
-        { bg: null, ink: '#5A2E14', font: '700 40px "Space Grotesk"', pw: 330 });
-      e.material.transparent = true; e.material.depthWrite = false;
-      e.position.set(i * 1.2, -.3, .7); esc.add(e); return g; });
-    const trepa = L.actor(INV); trepa.position.set(-.9, 0, .95); esc.add(trepa);
-
-    // WATERFALL (JP: "hay que hacerlo como un waterfall, ingresos, costos, utilidades")
-    // Dos escalas, porque el ajuste contable aplasta todo lo demás: primero el negocio, luego el salto.
-    const cascada = (datos, anc, alt, tope) => {
-      const g = new THREE.Group(); let acum = 0;
-      const col = datos.map(([etq, val, tipo], i) => {
-        const y0 = tipo === 'total' ? 0 : acum, y1 = tipo === 'total' ? val : acum + val;
-        if (tipo !== 'total') acum += val;
-        const a0 = Math.min(y0, y1) / tope * alt, a1 = Math.max(y0, y1) / tope * alt, h = Math.max(.05, a1 - a0);
-        const c = val >= 0 && tipo !== 'total' ? MOSTAZA : (tipo === 'total' ? '#8A5230' : TERRA);
-        const b = rbox(anc * .62, h, .5, .04, clay2(c, .6));
-        const gr = new THREE.Group(); b.position.y = h / 2; gr.add(b);
-        gr.position.set(i * anc, a0, 0); gr.scale.y = .001; g.add(gr);
-        const e = L.label3d(etq, anc * .96, .46, { bg: null, ink: '#5A2E14', font: '700 34px "Space Grotesk"', pw: 330 });
-        e.material.transparent = true; e.material.depthWrite = false;
-        e.position.set(i * anc, -.42, .3); g.add(e);
-        return gr; });
-      return { g, col };
-    };
-    // beat A · el negocio: ingresos − gastos = pérdida de operación (escala 35,000)
-    const wa = cascada([['Ingresos\n33,242', 33242, 'sube'], ['Gastos\n−34,502', -34502, 'baja'],
-                        ['Operación\n−1,260', -1260, 'total']], 1.05, 4.0, 35000);
-    wa.g.position.set(-1.05, .9, -4.2); w.scene.add(wa.g);
-    // beat B · el salto: la operación es una rayita al lado del ajuste contable (escala 104,039)
-    const wb = cascada([['Operación\n−1,260', -1260, 'total'], ['Ajuste en libros\n−94,324', -94324, 'baja'],
-                        ['Intereses, otros\ne impuestos\n−8,455', -8455, 'baja'], ['PÉRDIDA NETA\n−104,039', -104039, 'total']],
-                       .95, 4.4, 104039);
-    wb.g.position.set(-1.42, 1.0, -4.2); wb.g.visible = false; w.scene.add(wb.g);
-    const baja = L.actor(INV); baja.position.set(2.6, 0, -2.6); baja.rotation.y = -.5; w.scene.add(baja);
-    // CALLOUT (JP: "eso valdría la pena ponerlo como un call out en el waterfall")
-    const callout = pantalla(L, 2.6, 1.35, (g, W2, H2) => {
-      g.fillStyle = '#FBF5E6'; g.fillRect(0, 0, W2, H2);
-      g.strokeStyle = TERRA; g.lineWidth = 7; g.strokeRect(4, 4, W2 - 8, H2 - 8);
-      g.textAlign = 'center'; g.fillStyle = '#5A2E14'; g.font = '700 34px "Space Grotesk"';
-      g.fillText('DE CADA $100 QUE VENDIÓ', W2 / 2, 62);
-      g.fillStyle = TERRA; g.font = '800 72px Unbounded'; g.fillText('perdió $3.79', W2 / 2, 164);
-      g.fillStyle = 'rgba(90,46,20,.62)'; g.font = '600 32px "Space Grotesk"';
-      g.fillText('un año antes perdía $205', W2 / 2, 222); }, 680);
-    callout.material.emissiveIntensity = .3;
-    callout.position.set(.4, 4.4, -3.4); callout.scale.setScalar(.001); w.scene.add(callout);
-    return { ...w, pelda, alturas, trepa, wa, wb, baja, callout };
-  },
-});
-
-// ───────────────────────────────────────────────────────────────────────────────
-// WATERFALL en la CAPA 2D, con el formato de los videos explicativos (JP, 20 nov 2026):
-// porcentaje grande arriba, monto chico debajo, conectores punteados, etiqueta al pie.
-// El 3D de atrás solo pone el mundo y el personaje; la gráfica se dibuja encima, nítida.
-// pasos: [{et, val, tipo:'sube'|'baja'|'total'}]  ·  k: 0..1 cuántos pasos ya entraron
-const cascada2D = (L, pasos, k, base, unidad) => {
-  const C = L.C, X0 = 92, X1 = 988, TOP = 846, BOT = 1322, n = pasos.length;
-  const hueco = 18, bw = (X1 - X0 - hueco * (n - 1)) / n;
-  // NIVELES acumulados, como en una cascada de verdad: cada barra va del nivel anterior al nuevo.
-  let run = 0; const lim = pasos.map(s2 => { let a, b;
-    if (s2.tipo === 'total') { a = 0; b = s2.val; run = s2.val; } else { a = run; b = run + s2.val; run = b; }
-    return [a, b]; });
-  // el rango se mapea COMPLETO al alto útil: si no, las barras negativas cuelgan fuera del cuadro
-  const todos = lim.flat().concat([0]), lo = Math.min(...todos), hi = Math.max(...todos), r = (hi - lo) || 1;
-  const py = v => BOT - (v - lo) / r * (BOT - TOP);
-  C.save();
-  C.strokeStyle = 'rgba(42,20,9,.3)'; C.lineWidth = 3;                 // la línea del cero
-  C.beginPath(); C.moveTo(X0 - 12, py(0)); C.lineTo(X1 + 12, py(0)); C.stroke();
-  pasos.forEach((s2, i) => {
-    const kk = L.ex(L.seg(k, i / n, (i + .8) / n)); if (kk <= 0) return;
-    const [a, b] = lim[i], x = X0 + i * (bw + hueco);
-    const ya = py(a), yb = py(b), h = Math.abs(yb - ya) * kk;
-    const y = yb < ya ? ya - h : ya;                                   // crece desde el nivel anterior
-    const col = s2.tipo === 'total' ? '#6E7C48' : (s2.val >= 0 ? MOSTAZA : TERRA);
-    C.fillStyle = col; C.beginPath(); C.roundRect(x, y, bw, Math.max(4, h), 10); C.fill();
-    if (kk > .92 && i < n - 1) { C.save(); C.strokeStyle = 'rgba(42,20,9,.36)'; C.lineWidth = 2; C.setLineDash([9, 8]);
-      C.beginPath(); C.moveTo(x + bw, py(b)); C.lineTo(x + bw + hueco, py(b)); C.stroke(); C.restore(); }
-    // DATA LABELS encima: el % sobre los ingresos en grande y el monto debajo, chico
-    const arriba = Math.min(ya, yb) - 12, ka = L.seg(k, (i + .3) / n, (i + .95) / n);
-    const pct = base ? (Math.round(Math.abs(s2.val) / base * 1000) / 10) + '%' : null;
-    const mto = (s2.val < 0 ? '(' : '') + '$' + Math.abs(s2.val).toLocaleString('en-US') + (unidad || '') + (s2.val < 0 ? ')' : '');
-    if (pct) { L.txt(pct, x + bw / 2, arriba - 32, { f: L.F.d, w: 800, s: s2.tipo === 'total' ? 44 : 38, al: 'center', c: col, a: ka });
-      L.txt(mto, x + bw / 2, arriba, { w: 400, s: 25, al: 'center', c: 'rgba(42,20,9,.7)', a: ka }); }
-    else L.txt(mto, x + bw / 2, arriba, { f: L.F.d, w: 800, s: 38, al: 'center', c: col, a: ka });
-    // AL PIE, bajo la zona de la gráfica: la etiqueta, achicándose hasta que quepa entera
-    const kl = L.seg(k, i / n, (i + .55) / n);
-    s2.et.split('\n').forEach((ln, j) => { let sz = 26;
-      C.font = '500 ' + sz + 'px "Space Grotesk"';
-      while (C.measureText(ln).width > bw + hueco - 6 && sz > 16) { sz--; C.font = '500 ' + sz + 'px "Space Grotesk"'; }
-      L.txt(ln, x + bw / 2, BOT + 48 + j * Math.round(sz * 1.25), { w: 500, s: sz, al: 'center', c: '#2A1409', a: kl }); });
-  });
-  C.restore();
-};
-
 // rótulo con autoajuste; `dos` = remate en dos tiempos
 const head = (L, k1, title, sub, ink, lt, col, pronto, dos) => {
   L.kicker(k1, 360, L.seg(lt, pronto ? .02 : .1, pronto ? .3 : .5), ink);
@@ -476,7 +366,7 @@ const scenes = [
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .52, '196,122,74');
-      head(L, 'DOS DÍAS EN LA BOLSA', ['Abrió en $111.50', 'el 19. El 20: $88.91'], 'El viernes cayó 8.5%, con el Nasdaq −5%: cayó todo el mercado', TINTA, p, TERRA);
+      head(L, 'DOS DÍAS EN LA BOLSA', ['Abrió en $111.50.', 'Cerró en $88.91'], 'El viernes cayó 8.5%, con el Nasdaq −5%: cayó todo el mercado', TINTA, p, TERRA);
     } },
 
   // 5 · EL TITULAR — muro de pantallas repitiendo el mismo +17%. (La escena de las cartulinas la
@@ -497,87 +387,13 @@ const scenes = [
       head(L, 'LO QUE SE CONTÓ', ['Casi todos se', 'quedaron con eso'], null, TINTA, p, TERRA);
     } },
 
-  // 6 · LOS INGRESOS — el personaje ESCALA la escalera: mirando hacia ella y con esfuerzo (JP),
-  //     no caminando de frente a cámara.
-  { id: 'ingresos', world: 'taller', d: 9, ink: TINTA, year: '2026', sfx: [[.78, 'rise', .55]],
-    cap: 'Pero el documento que entregó a la bolsa cuenta otra cosa. En nueve meses vendió 33 mil millones.',
+  // 6 · CIERRE — vuelve la plaza. La pregunta va ARRIBA, en la capa de texto: ponerla sobre la
+  //     pantalla la encimaba con el logo y el +34% (JP).
+  { id: 'pregunta', world: 'plaza', d: 9, ink: ARENA, year: '2026', sfx: [],
+    cap: 'Un titular cuenta un día. La empresa sigue ahí el lunes. ¿Cuántas veces te has quedado solo con el titular?',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.baja.visible = false;
-      const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-1.1, 3.4, 12.8], [.5, 3.8, 11.4], k), mv([-.1, 3.2, -4.6], [-.1, 3.5, -4.6], k), 30);
-      w.pelda.forEach((g, i) => g.scale.y = Math.max(.001, L.eio(L.seg(p, .1 + i * .14, .34 + i * .14))));
-      const prog = L.seg(p, .18, .92) * 3, i = Math.min(2, Math.floor(prog)), f = prog - i;
-      const y0 = i === 0 ? 0 : w.alturas[i - 1], y1 = w.alturas[i], sube = L.eio(Math.min(1, f * 1.7));
-      w.trepa.visible = true;
-      w.trepa.position.set(-.9 + Math.min(prog, 3) * 1.2 * .92, L.lerp(y0, y1, sube), .95);
-      w.trepa.rotation.y = Math.PI / 2;                       // de perfil, mirando hacia la escalera
-      const brazo = 1.9 - Math.abs(Math.sin(f * Math.PI)) * .5;
-      L.pose(w.trepa, { walk: null, armL: [brazo, .34, .25], armR: [brazo - .35, .3, .5],
-        head: [-.42, -.25, 0], lean: .34, bob: Math.sin(q * 6) * .03, smile: -.2 });
-    },
-    overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
-      L.scrim(L.C, 300, 1010, .5, '224,165,113');
-      head(L, 'LO QUE DICE EL DOCUMENTO', ['Vendió $33,242', 'millones'], 'En los primeros nueve meses de 2026', TINTA, p, MOSTAZA);
-    } },
-
-  // 7 · EL NEGOCIO — waterfall en la capa 2D con data labels, y el callout DENTRO de la misma
-  //     escena (JP: "esa escena y la anterior las juntaría, que solo se dé zoom al callout").
-  { id: 'cascada', world: 'taller', d: 13, ink: TINTA, year: '2026', sfx: [[.46, 'thud', .55]],
-    cap: 'Gastó 34 mil. Así que el negocio perdió 1,260 millones: de cada 100 dólares que vendió, perdió 3.79. Un año antes perdía 205.',
-    update(w, lt, t, L) {
-      const p = P(lt, this), q = L.on2(t);
-      w.pelda.forEach(g => g.scale.y = .001); w.trepa.visible = false; w.baja.visible = true;
-      const k = L.eio(L.seg(p, .52, .9));                    // el acercamiento del callout, a media escena
-      cam(w, mv([-.7, 2.5, 9.4], [.2, 2.2, 7.0], k), mv([0, 2.2, -2.6], [.2, 2.0, -2.6], k), 30);
-      L.pose(w.baja, { head: [-.2, -.5, 0], armL: [.3, .2, .3], armR: [.3, .2, .3],
-        lean: L.seg(p, .3, .6) * .18, bob: Math.sin(q * 1.5) * .012, smile: -.45 * L.seg(p, .3, .6) });
-    },
-    overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
-      L.scrim(L.C, 300, 700, .46, '224,165,113');
-      head(L, 'EL NEGOCIO, SIN CONTABILIDAD', ['Vendió 33,242.', 'Gastó 34,502'], null, TINTA, p, TERRA);
-      cascada2D(L, [{ et: 'Ingresos', val: 33242, tipo: 'sube' }, { et: 'Gastos de\noperación', val: -34502, tipo: 'baja' },
-                    { et: 'Pérdida de\noperación', val: -1260, tipo: 'total' }], L.seg(p, .1, .56), 33242, ' M');
-      // el callout, dentro de la misma escena
-      const kc = L.ex(L.seg(p, .58, .78));
-      if (kc > 0) { const C2 = L.C, bx = 120, by = 520, bw2 = 840, bh = 250;
-        C2.save(); C2.globalAlpha = kc; C2.fillStyle = '#FBF5E6';
-        C2.beginPath(); C2.roundRect(bx, by, bw2, bh, 18); C2.fill();
-        C2.strokeStyle = TERRA; C2.lineWidth = 6; C2.stroke(); C2.restore();
-        L.txt('DE CADA $100 QUE VENDIÓ', 540, by + 58, { w: 700, s: 32, al: 'center', c: '#5A2E14', a: kc });
-        L.txt('perdió $3.79', 540, by + 148, { f: L.F.d, w: 800, s: 76, al: 'center', c: TERRA, a: kc });
-        L.txt('un año antes perdía $205 de cada $100', 540, by + 206, { w: 600, s: 30, al: 'center', c: 'rgba(90,46,20,.66)', a: kc }); }
-    } },
-
-  // 8 · EL SALTO — el mismo waterfall 2D, ahora con el ajuste contable que lo aplasta todo.
-  { id: 'ajuste', world: 'taller', d: 11, ink: TINTA, year: '2026', trans: 'cont', sfx: [[.3, 'whoosh', .55]],
-    cap: '¿Y los 104 mil millones del titular? 94 mil nunca salieron de la caja: son un ajuste en los libros.',
-    update(w, lt, t, L) {
-      const p = P(lt, this), q = L.on2(t);
-      w.pelda.forEach(g => g.scale.y = .001); w.trepa.visible = false; w.baja.visible = true;
-      const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([.2, 2.2, 7.0], [-.3, 2.6, 8.8], k), mv([.2, 2.0, -2.6], [0, 2.3, -2.6], k), 30);
-      L.pose(w.baja, { head: [-.55, -.35, 0], lean: .12, armL: [.2, .18, .2], armR: [.2, .18, .2],
-        bob: Math.sin(q * 1.5) * .012, smile: -.55 });
-    },
-    overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
-      L.scrim(L.C, 300, 700, .46, '224,165,113');
-      head(L, 'DE DÓNDE SALEN LOS $104,039 M', ['$94,324 millones', 'nunca salieron'], null, TINTA, p, TERRA);
-      cascada2D(L, [{ et: 'Pérdida de\noperación', val: -1260, tipo: 'total' },
-                    { et: 'Ajuste en\nlibros', val: -94324, tipo: 'baja' },
-                    { et: 'Intereses, otros\ne impuestos', val: -8455, tipo: 'baja' },
-                    { et: 'PÉRDIDA\nNETA', val: -104039, tipo: 'total' }], L.seg(p, .08, .78), 104039, ' M');
-      L.rise('Un ajuste en los libros: nadie firmó un cheque', 90, 672, L.seg(p, .5, .8),
-        { s: 34, c: 'rgba(42,20,9,.74)' });
-    } },
-
-  // 9 · CIERRE — vuelve la plaza, ya sin nadie, y la pantalla lleva la pregunta. El bookend del gancho.
-  { id: 'pregunta', world: 'plaza', d: 8, ink: ARENA, year: '2026', sfx: [],
-    cap: 'La utilidad neta te dice qué quedó hasta abajo. No te dice cómo va el negocio. ¿Cuántas veces te has quedado solo con el titular?',
-    update(w, lt, t, L) {
-      const p = P(lt, this), q = L.on2(t);
-      const cam2 = L.seg(p, .3, .48);
-      w.grande.material.opacity = 1 - cam2; w.preg.material.opacity = cam2;
+      w.grande.material.opacity = 1; w.preg.material.opacity = 0;      // la pantalla conserva el ticker
       w.conf.children.forEach(c => c.visible = false); w.fuegos.forEach(g => g.visible = false);
       w.gente.forEach(a => a.scale.setScalar(.001));
       w.coches.forEach(c => { c.position.x = ((c.userData.x0 + c.userData.dir * t * 1.6 + 18) % 36) - 18; });
@@ -585,16 +401,22 @@ const scenes = [
       w.solo.scale.setScalar(1);
       L.pose(w.solo, { head: [-.3, 0, 0], armL: [.1, .12, .1], armR: [.1, .12, .1], bob: Math.sin(q * 1.4) * .012 });
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([.4, 7.4, 6.2], [.25, 7.8, 3.4], k), mv([.1, 9.0, -12.5], [.1, 8.8, -12.5], k), 30);
+      cam(w, mv([.4, 7.0, 7.4], [.25, 7.4, 5.0], k), mv([.1, 9.6, -12.5], [.1, 9.4, -12.5], k), 30);
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
-      L.scrim(L.C, 1380, 1920, .72);
-      L.rise('La utilidad neta no te dice cómo va el negocio.', 540, 1560, L.seg(p, .1, .5),
-        { s: 34, c: ARENA, a: .85, al: 'center' });
-      L.rise('Guion asistido por Claude, producto de Anthropic.', 540, 1716, L.seg(p, .5, .84),
-        { s: 23, c: ARENA, a: .6, al: 'center' });
-      L.rise('Contenido educativo. No es asesoría financiera.', 540, 1752, L.seg(p, .54, .88),
-        { s: 23, c: ARENA, a: .6, al: 'center' });
+      L.scrim(L.C, 300, 1060, .66);
+      ['¿Cuántas veces te has', 'quedado solo', 'con el titular?'].forEach((ln, i) =>
+        L.rise(ln, 540, 470 + i * 92, L.seg(p, .08 + i * .1, .5 + i * .1),
+          { f: L.F.s, w: 600, s: 70, c: ARENA, al: 'center', it: 1 }));
+      L.rise('Un titular cuenta un día. La empresa sigue ahí el lunes.', 540, 830, L.seg(p, .42, .78),
+        { s: 34, c: ARENA, a: .82, al: 'center' });
+      L.scrim(L.C, 1560, 1920, .62);
+      L.rise('Desde la costa, todo se ve con claridad.', 540, 1664, L.seg(p, .5, .84),
+        { s: 30, c: ARENA, a: .74, al: 'center' });
+      L.rise('Guion asistido por Claude, producto de Anthropic.', 540, 1716, L.seg(p, .56, .88),
+        { s: 23, c: ARENA, a: .58, al: 'center' });
+      L.rise('Contenido educativo. No es asesoría financiera.', 540, 1752, L.seg(p, .6, .92),
+        { s: 23, c: ARENA, a: .58, al: 'center' });
     } },
 ];
 

@@ -291,3 +291,49 @@ export function tide(X, A, Bc, k, t) {
   X.save(); X.strokeStyle = 'rgba(195,216,236,.9)'; X.lineWidth = 14; X.beginPath();
   for (let x = 0; x <= W; x += 20) { const y = edge + Math.sin(x / 150 + t * 6) * 38 + Math.sin(x / 61) * 10; x ? X.lineTo(x, y) : X.moveTo(x, y); } X.stroke(); X.restore();
 }
+
+// ───────────────────────────────────────────────────────────────────────────────
+// WATERFALL en la CAPA 2D, con el formato de los videos explicativos (JP, 20 nov 2026):
+// porcentaje grande arriba, monto chico debajo, conectores punteados, etiqueta al pie.
+// El 3D de atrás solo pone el mundo y el personaje; la gráfica se dibuja encima, nítida.
+// pasos: [{et, val, tipo:'sube'|'baja'|'total'}]  ·  k: 0..1 cuántos pasos ya entraron
+export function cascada2D(pasos, k, base, unidad, col) {
+  const C = C0(), MOSTAZA = (col && col.pos) || B.mostaza, TERRA = (col && col.neg) || B.terracota, X0 = 92, X1 = 988, TOP = 846, BOT = 1322, n = pasos.length;
+  const hueco = 18, bw = (X1 - X0 - hueco * (n - 1)) / n;
+  // NIVELES acumulados, como en una cascada de verdad: cada barra va del nivel anterior al nuevo.
+  let run = 0; const lim = pasos.map(s2 => { let a, b;
+    if (s2.tipo === 'total') { a = 0; b = s2.val; run = s2.val; } else { a = run; b = run + s2.val; run = b; }
+    return [a, b]; });
+  // el rango se mapea COMPLETO al alto útil: si no, las barras negativas cuelgan fuera del cuadro
+  const todos = lim.flat().concat([0]), lo = Math.min(...todos), hi = Math.max(...todos), r = (hi - lo) || 1;
+  const py = v => BOT - (v - lo) / r * (BOT - TOP);
+  C.save();
+  C.strokeStyle = 'rgba(42,20,9,.3)'; C.lineWidth = 3;                 // la línea del cero
+  C.beginPath(); C.moveTo(X0 - 12, py(0)); C.lineTo(X1 + 12, py(0)); C.stroke();
+  pasos.forEach((s2, i) => {
+    const kk = ex(seg(k, i / n, (i + .8) / n)); if (kk <= 0) return;
+    const [a, b] = lim[i], x = X0 + i * (bw + hueco);
+    const ya = py(a), yb = py(b), h = Math.abs(yb - ya) * kk;
+    const y = yb < ya ? ya - h : ya;                                   // crece desde el nivel anterior
+    const col = s2.tipo === 'total' ? '#6E7C48' : (s2.val >= 0 ? MOSTAZA : TERRA);
+    C.fillStyle = col; C.beginPath(); C.roundRect(x, y, bw, Math.max(4, h), 10); C.fill();
+    if (kk > .92 && i < n - 1) { C.save(); C.strokeStyle = 'rgba(42,20,9,.36)'; C.lineWidth = 2; C.setLineDash([9, 8]);
+      C.beginPath(); C.moveTo(x + bw, py(b)); C.lineTo(x + bw + hueco, py(b)); C.stroke(); C.restore(); }
+    // DATA LABELS encima: el % sobre los ingresos en grande y el monto debajo, chico
+    const arriba = Math.min(ya, yb) - 12, ka = seg(k, (i + .3) / n, (i + .95) / n);
+    const pct = base ? (Math.round(Math.abs(s2.val) / base * 1000) / 10) + '%' : null;
+    const mto = (s2.val < 0 ? '(' : '') + '$' + Math.abs(s2.val).toLocaleString('en-US') + (unidad || '') + (s2.val < 0 ? ')' : '');
+    if (pct) { txt(pct, x + bw / 2, arriba - 32, { f: F.d, w: 800, s: s2.tipo === 'total' ? 44 : 38, al: 'center', c: col, a: ka });
+      txt(mto, x + bw / 2, arriba, { w: 400, s: 25, al: 'center', c: 'rgba(42,20,9,.7)', a: ka }); }
+    else txt(mto, x + bw / 2, arriba, { f: F.d, w: 800, s: 38, al: 'center', c: col, a: ka });
+    // AL PIE, bajo la zona de la gráfica: la etiqueta, achicándose hasta que quepa entera
+    const kl = seg(k, i / n, (i + .55) / n);
+    s2.et.split('\n').forEach((ln, j) => { let sz = 26;
+      C.font = '500 ' + sz + 'px "Space Grotesk"';
+      while (C.measureText(ln).width > bw + hueco - 6 && sz > 16) { sz--; C.font = '500 ' + sz + 'px "Space Grotesk"'; }
+      txt(ln, x + bw / 2, BOT + 48 + j * Math.round(sz * 1.25), { w: 500, s: sz, al: 'center', c: '#2A1409', a: kl }); });
+  });
+  C.restore();
+}
+
+const C0 = () => C;
