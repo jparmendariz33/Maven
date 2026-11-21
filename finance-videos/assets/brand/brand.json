@@ -24,9 +24,10 @@
   },
   "voice": {
     "provider": "vidIQ (ElevenLabs)",
-    "voice_id": "onwK4e9ZLuTAKqWW03F9",
-    "voice_name": "Daniel - Steady Broadcaster",
-    "credits_per_1000_chars": 28
+    "voice_id": "EK54is7sa3aPFLD9BwCC",
+    "voice_name": "Francisco - Friendly, Clean, Natural",
+    "credits_per_1000_chars": 28,
+    "nota": "Única masculina LATINOAMERICANA del catálogo (es · latin american) y la más cercana a la voz de JP. Daniel (onwK4e9ZLuTAKqWW03F9) estaba puesto por error: es language \"en\", acento británico, leyendo español."
   },
   "byline": "by JP Armendáriz"
 }

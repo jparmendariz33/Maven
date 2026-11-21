@@ -47,7 +47,11 @@ def silences(x, thr_db=-38, min_len=.25):
 def main(vdir):
     a = os.path.join(vdir, 'audio'); b = os.path.join(vdir, 'build'); os.makedirs(b, exist_ok=True)
     sbp = os.path.join(vdir, 'storyboard.json')
-    LONG = os.path.exists(sbp) and json.load(open(sbp, encoding='utf-8')).get('format') == 'long'
+    SB = json.load(open(sbp, encoding='utf-8')) if os.path.exists(sbp) else {}
+    LONG = SB.get('format') == 'long'
+    # El tempo apunta a la duración que pide CADA formato, no siempre a 56 s: el short de contexto dura
+    # 45–60 s, pero "Análisis + Potencial" dura 75–85 y acelerarlo a 56 lo dejaba corto (JP, 21 nov 2026).
+    OBJETIVO = 75.0 if SB.get('mode') == 'empresa' else 56.0
     raw = os.path.join(a, 'voice_raw.mp3'); tmp = os.path.join(a, '_raw.wav')
     pieces = sorted(f for f in os.listdir(a) if f.startswith('voice_part') and f.endswith('.mp3'))
     if pieces and not os.path.exists(raw):   # une las piezas con 0.8 s de silencio entre ellas
@@ -74,7 +78,7 @@ def main(vdir):
     if pos is not None: parts.append(x[int(pos * SR):])
     y = np.concatenate(parts); tight = os.path.join(a, '_tight.wav'); write_wav(tight, y)
     dur = len(y) / SR
-    tempo = 1.0 if LONG else min(1.10, max(1.04, dur / 56.0))   # largos: sin acelerar la voz
+    tempo = 1.0 if LONG else min(1.10, max(1.00, dur / OBJETIVO))   # largos: sin acelerar la voz
     out = os.path.join(a, 'voice.wav')
     run(['ffmpeg', '-loglevel', 'error', '-y', '-i', tight, '-af',
          f'atempo={tempo:.3f},highpass=f=70,acompressor=threshold=-18dB:ratio=3:attack=5:release=80,loudnorm=I=-15:TP=-1.5:LRA=7',

@@ -53,11 +53,11 @@ El dato que casi nadie mira: el grupo quedó plano, pero su aeropuerto más impo
 ## Ficha técnica
 | | |
 |---|---|
-| Duración | 78.3 s (formato A+P: 75–85 s) |
+| Duración | 76.3 s (formato A+P: 75–85 s) |
 | Escenas | 12 |
-| Voz | Daniel · una sola toma · 1,255 caracteres · 56 créditos |
+| Voz | **Francisco** (es · latinoamericana) · una sola toma · 1,255 caracteres · 56 créditos |
 | Pico de audio | −1.5 dBFS, sin saturación |
-| Archivo | `ASR_short.mp4`, 23.9 MB |
+| Archivo | `ASR_short.mp4`, 23.5 MB |
 
 ## Tabla de verificación
 | Dato | Fuente consultada | Resultado |
