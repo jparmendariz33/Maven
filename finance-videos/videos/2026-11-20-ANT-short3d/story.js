@@ -294,7 +294,7 @@ const scenes = [
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
       const k = L.eio(L.seg(p, .08, 1));
-      cam(w, mv([-1.4, 3.6, 14.6], [.5, 3.2, 11.8], k), mv([0, 4.5, -5.4], [0, 4.2, -5.4], k), 30);
+      cam(w, mv([-1.4, 3.6, 14.6], [.45, 2.8, 2.2], k), mv([0, 4.5, -5.4], [.05, 2.5, -4.9], k), 30);
       const pulsa = L.eio(L.seg(p, .16, .3));
       w.boton.position.y = 1.16 - pulsa * .05 + (p > .36 ? .05 : 0);
       L.pose(w.orador, { talk, head: [0, .06, 0], armL: [.5, .3, .6], armR: [1.1 * L.seg(p, .3, .5), .4, .4], smile: .5, bob: Math.sin(q * 1.8) * .02 });
@@ -334,7 +334,7 @@ const scenes = [
 
   // 3 · EL RÉCORD — columnas VERTICALES con eje X y eje Y (JP). Otro mundo: entra con ola.
   { id: 'record', world: 'sala', d: 7, ink: TINTA, year: '2026', sfx: [[.52, 'thud', .55]],
-    cap: 'Levantó 81 mil millones de dólares. Nunca una empresa había levantado tanto.',
+    cap: 'Levantó 81 mil millones de dólares: la salida a bolsa más grande de la que hay registro.',
     update(w, lt, t, L) {
       const p = P(lt, this);
       const k = L.eio(L.seg(p, 0, 1));
@@ -347,7 +347,7 @@ const scenes = [
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .52, '196,122,74');
-      head(L, 'LA MÁS GRANDE DE LA HISTORIA', ['81,300 millones', 'de dólares'], 'Le ganó el récord a SpaceX, de junio', TINTA, p, MOSTAZA);
+      head(L, 'LA MAYOR DE LA QUE HAY REGISTRO', ['81,300 millones', 'de dólares'], 'Le ganó el récord a SpaceX, de junio', TINTA, p, MOSTAZA);
     } },
 
   // 4 · EL PRECIO — el personaje va SENTADO en el carrito, de perfil, por el recorrido REAL de
@@ -358,7 +358,7 @@ const scenes = [
       const p = P(lt, this), q = L.on2(t);
       w.col.visible = false; w.vg.visible = true; w.muroP.visible = false; w.mira.scale.setScalar(.001);
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-.6, 3.3, 10.4], [.5, 3.1, 9.2], k), mv([0, 3.5, -4.2], [0, 3.4, -4.2], k), 30);
+      cam(w, mv([-.9, 3.9, 14.4], [.4, 2.9, 6.6], k), mv([0, 3.6, -4.2], [0, 3.1, -4.2], k), 30);
       const f = L.eio(L.seg(p, .06, .94)), pt = w.v.userData.at(f);
       w.cart.position.set(pt.x, pt.y + .06, 0); w.cart.rotation.z = Math.max(-.5, Math.min(.5, pt.a * .5));
       L.pose(w.pilo, { sit: 1, armL: [1.0, .5, .9], armR: [1.0, .5, .9], head: [pt.a > 0 ? -.2 : .25, 0, 0],
@@ -366,12 +366,12 @@ const scenes = [
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .52, '196,122,74');
-      head(L, 'DOS DÍAS EN LA BOLSA', ['Abrió en $111.50.', 'Cerró en $88.91'], 'El viernes cayó 8.5%, con el Nasdaq −5%: cayó todo el mercado', TINTA, p, TERRA);
+      head(L, 'DOS DÍAS EN LA BOLSA', ['Abrió en $111.50.', 'Cerró en $88.91'], 'El viernes cayó 8.5%, con el Nasdaq −5%: cayó todo el mercado', TINTA, p, '#FBF0D6');
     } },
 
   // 5 · EL TITULAR — muro de pantallas repitiendo el mismo +17%. (La escena de las cartulinas la
   //     descartó JP entera; esto dice lo mismo sin caras cortadas y con fondo lleno.)
-  { id: 'titular', world: 'sala', d: 7, ink: TINTA, year: '2026', sfx: [[.26, 'pop', .5]],
+  { id: 'titular', world: 'sala', d: 7, ink: TINTA, year: '2026', sfx: [],
     cap: 'Casi todos los titulares se quedaron con ese 17%.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
@@ -384,7 +384,7 @@ const scenes = [
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .54, '196,122,74');
-      head(L, 'LO QUE SE CONTÓ', ['Casi todos se', 'quedaron con eso'], null, TINTA, p, TERRA);
+      head(L, 'LO QUE SE CONTÓ', ['Casi todos se', 'quedaron con eso'], null, TINTA, p, '#FBF0D6');
     } },
 
   // 6 · CIERRE — vuelve la plaza. La pregunta va ARRIBA, en la capa de texto: ponerla sobre la
@@ -401,15 +401,15 @@ const scenes = [
       w.solo.scale.setScalar(1);
       L.pose(w.solo, { head: [-.3, 0, 0], armL: [.1, .12, .1], armR: [.1, .12, .1], bob: Math.sin(q * 1.4) * .012 });
       const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([.4, 7.0, 7.4], [.25, 7.4, 5.0], k), mv([.1, 9.6, -12.5], [.1, 9.4, -12.5], k), 30);
+      cam(w, mv([.4, 8.2, 11.6], [.25, 8.6, 9.0], k), mv([.1, 9.6, -12.5], [.1, 9.4, -12.5], k), 30);
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
-      L.scrim(L.C, 300, 1060, .66);
+      L.scrim(L.C, 300, 1120, .78);
       ['¿Cuántas veces te has', 'quedado solo', 'con el titular?'].forEach((ln, i) =>
         L.rise(ln, 540, 470 + i * 92, L.seg(p, .08 + i * .1, .5 + i * .1),
           { f: L.F.s, w: 600, s: 70, c: ARENA, al: 'center', it: 1 }));
-      L.rise('Un titular cuenta un día. La empresa sigue ahí el lunes.', 540, 830, L.seg(p, .42, .78),
-        { s: 34, c: ARENA, a: .82, al: 'center' });
+      L.rise('Un titular cuenta un día. La empresa sigue ahí el lunes.', 540, 836, L.seg(p, .42, .78),
+        { s: 36, c: '#FFF6E2', a: .96, al: 'center' });
       L.scrim(L.C, 1560, 1920, .62);
       L.rise('Desde la costa, todo se ve con claridad.', 540, 1664, L.seg(p, .5, .84),
         { s: 30, c: ARENA, a: .74, al: 'center' });
