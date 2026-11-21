@@ -25,6 +25,11 @@ if (params.get('shadow') === 'pcf') L.renderer.shadowMap.type = L.THREE.PCFSoftS
 const SC = story.scenes; let t = 0;
 SC.forEach((s, i) => { s.t0 = timing ? timing.scenes[i][0] : t; s.t1 = timing ? timing.scenes[i][1] : t + s.d; t = s.t1; });
 if (!timing) SC[SC.length - 1].t1 += story.tail || 0;
+// Los tiempos que salen de la voz real pueden dejar un HUECO de milesimas entre dos escenas
+// (en el short de Anthropic: 6.963 -> 7.070). En ese hueco renderAt no encontraba escena, caia
+// en la ultima y la transicion dibujaba la escena ANTERIOR a esa: cuatro cuadros sueltos de otro
+// mundo en medio del video (JP, 21 nov 2026). Se cierra el hueco con la escena que ya venia.
+for (let i = 1; i < SC.length; i++) if (SC[i].t0 > SC[i - 1].t1) SC[i - 1].t1 = SC[i].t0;
 const DUR = SC[SC.length - 1].t1;
 const CAPS = timing ? timing.caps : L.autoCaptions(SC);
 EXTRA.CAPS = CAPS;
@@ -51,7 +56,9 @@ function draw(canvas, i, t) {
 }
 
 function renderAt(t) {
-  let i = SC.findIndex(s => t >= s.t0 && t < s.t1); if (i < 0) i = SC.length - 1;
+  // la ultima escena que ya empezo; nunca la ultima del guion (eso dibujaba un mundo que no toca)
+  let i = SC.findIndex(s => t >= s.t0 && t < s.t1);
+  if (i < 0) { for (let j = SC.length - 1; j >= 0; j--) if (t >= SC[j].t0) { i = j; break; } if (i < 0) i = 0; }
   const s = SC[i], TR = .7, k = i > 0 && s.trans !== 'cont' ? L.seg(t, s.t0, s.t0 + TR) : 1;
   draw(LA, i, t);
   X.setTransform(1, 0, 0, 1, 0, 0);

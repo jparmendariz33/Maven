@@ -193,27 +193,46 @@ const worlds = {
 // ───── helpers de gráfica: ejes, escalera y carrito (reglas permanentes del 20 nov) ─────
 const ejes = (L, anc, alt, marcas) => {           // eje X y eje Y visibles, con marcas rotuladas
   const { THREE, clay2, rbox } = L, g = new THREE.Group();
-  const ejeY = rbox(.045, alt, .045, .01, clay2('#6A3A1E', .6)); ejeY.position.set(0, alt / 2, 0); g.add(ejeY);
-  const ejeX = rbox(anc, .045, .045, .01, clay2('#6A3A1E', .6)); ejeX.position.set(anc / 2, 0, 0); g.add(ejeX);
-  marcas.forEach(([frac, txt]) => {
-    const m = rbox(.16, .03, .03, .01, clay2('#6A3A1E', .6)); m.position.set(-.07, alt * frac, 0); g.add(m);
-    const r = rbox(anc, .012, .012, .005, clay2('#8A5230', .7)); r.position.set(anc / 2, alt * frac, -.02); g.add(r);
-    const e = L.label3d(txt, .95, .2, { bg: null, ink: '#8A5230', font: '700 44px "Space Grotesk"', pw: 300 });
-    e.material.transparent = true; e.material.depthWrite = false; e.position.set(-.62, alt * frac, 0); g.add(e); });
+  const gy = new THREE.Group(), gx = new THREE.Group(); g.add(gy); g.add(gx);
+  const ejeY = rbox(.045, alt, .045, .01, clay2('#6A3A1E', .6)); ejeY.position.set(0, alt / 2, 0); gy.add(ejeY);
+  const ejeX = rbox(anc, .045, .045, .01, clay2('#6A3A1E', .6)); ejeX.position.set(anc / 2, 0, 0); gx.add(ejeX);
+  const ms = marcas.map(([frac, txt]) => {
+    const gm = new THREE.Group(); g.add(gm);
+    const m = rbox(.16, .03, .03, .01, clay2('#6A3A1E', .6)); m.position.set(-.07, alt * frac, 0); gm.add(m);
+    const r = rbox(anc, .012, .012, .005, clay2('#8A5230', .7)); r.position.set(anc / 2, alt * frac, -.02); gm.add(r);
+    const e = L.label3d(txt, .95, .2, { bg: null, ink: '#8A5230', font: '700 44px \"Space Grotesk\"', pw: 300 });
+    e.material.transparent = true; e.material.depthWrite = false; e.position.set(-.62, alt * frac, 0); gm.add(e);
+    return gm; });
+  // Los ejes se TRAZAN: el eje Y sube, el X corre a la derecha y las marcas entran detras.
+  // (JP, 21 nov 2026: "de la nada aparecen las graficas, eso se ve rarisimo".)
+  g.userData.traza = k => {
+    gy.scale.y = Math.max(.001, L.eio(L.seg(k, 0, .42)));
+    gx.scale.x = Math.max(.001, L.eio(L.seg(k, .22, .64)));
+    ms.forEach((gm, i) => gm.scale.x = Math.max(.001, L.eio(L.seg(k, .46 + i * .07, .70 + i * .07)))); };
+  g.userData.traza(1);
   return g;
 };
 // el precio como RECORRIDO: una vía de bloques por la que va un carrito (estilo SpaceX)
-const via = (L, pts, anc, alt) => {
-  const { THREE, clay2, rbox } = L, g = new THREE.Group(), mn = 78, mx = 118;
-  const X = i => (i / (pts.length - 1)) * anc, Y = v => ((v - mn) / (mx - mn)) * alt;
-  const P2 = pts.map((v, i) => [X(i), Y(v)]);
+// `xf(i)` = donde cae cada punto a lo ancho (0..1). Por defecto reparte parejo. El short de
+// Anthropic le da ancho propio al salto de la colocacion ($83) a la apertura ($111.50): en los
+// datos es un solo paso, pero es EL momento de la historia y a 1/24 del ancho no se veia.
+const via = (L, pts, anc, alt, xf, mn = 80, mx = 118) => {
+  const { THREE, clay2, rbox } = L, g = new THREE.Group();
+  const X = i => (xf ? xf(i) : i / (pts.length - 1)) * anc, Y = v => ((v - mn) / (mx - mn)) * alt;
+  const P2 = pts.map((v, i) => [X(i), Y(v)]), tramos = [];
   for (let i = 0; i < P2.length - 1; i++) {
     const [x0, y0] = P2[i], [x1, y1] = P2[i + 1], dx = x1 - x0, dy = y1 - y0, len = Math.hypot(dx, dy);
-    const t = rbox(len, .12, .34, .04, clay2(MOSTAZA, .5));
-    t.position.set((x0 + x1) / 2, (y0 + y1) / 2, 0); t.rotation.z = Math.atan2(dy, dx); g.add(t); }
+    const gt = new THREE.Group(); gt.position.set(x0, y0, 0); gt.rotation.z = Math.atan2(dy, dx);
+    const t = rbox(len, .12, .34, .04, clay2(MOSTAZA, .5)); t.position.set(len / 2, 0, 0); gt.add(t);
+    g.add(gt); tramos.push(gt); }
   g.userData.at = f => { const u = Math.max(0, Math.min(.999, f)) * (P2.length - 1), i = Math.floor(u), k = u - i;
     const [x0, y0] = P2[i], [x1, y1] = P2[Math.min(i + 1, P2.length - 1)];
     return { x: x0 + (x1 - x0) * k, y: y0 + (y1 - y0) * k, a: Math.atan2(y1 - y0, x1 - x0) }; };
+  // la via se TIENDE delante del carrito, no esta dibujada desde el cuadro 1
+  g.userData.hasta = f => { const u = f * (P2.length - 1);
+    tramos.forEach((gt, i) => { const k = Math.max(0, Math.min(1, u - i));
+      gt.visible = k > .002; gt.scale.x = Math.max(.002, k); }); };
+  g.userData.pt = i => P2[i];
   return g;
 };
 const carrito = (L) => {
@@ -233,22 +252,49 @@ Object.assign(worlds, {
       rim: 2.6, rimPos: [8, 9, -5], rimCol: '#FFAE72', fill: .58 });
     const muro = rbox(26, 18, .5, .1, clay2('#B06A3C', .94)); muro.position.set(0, 8, -8.6); w.scene.add(muro);
     // COLUMNAS VERTICALES con ejes (JP: "que sean columnas verticales y que se vea el eje X, eje Y")
+    // ALT 2.9 y no 4.3: con las columnas mas altas su rotulo caia encima del subtitulo del rotulo,
+    // y debajo del eje quedaba fuera de cuadro. Ahora el nombre va ARRIBA de cada columna (JP, 21 nov).
+    const ALTC = 2.9;
     const col = new THREE.Group(); col.position.set(-1.3, .5, -5.6); w.scene.add(col);
-    col.add(ejes(L, 2.5, 4.3, [[0, '0'], [.333, '30'], [.666, '60'], [1, '90']]));
-    const barra = (x, v, c) => { const h = 4.3 * v / 90, b = rbox(.64, h, .64, .05, clay2(c, .6));
+    const ejeCol = ejes(L, 2.5, ALTC, [[0, '0'], [.333, '30'], [.666, '60'], [1, '90']]); col.add(ejeCol);
+    const barra = (x, v, c) => { const h = ALTC * v / 90, b = rbox(.64, h, .64, .05, clay2(c, .6));
       const gr = new THREE.Group(); b.position.y = h / 2; gr.add(b); gr.position.set(x, 0, 0);
-      gr.scale.y = .001; col.add(gr); return gr; };
+      gr.scale.y = .001; col.add(gr); gr.userData.h = h; return gr; };
     const bSx = barra(.85, 75, CREMA), bAn = barra(1.85, 81.3, AZUL);
-    const rot = (txt, x, ink) => { const e = L.label3d(txt, 1.5, .78, { bg: null, ink, font: '800 46px Unbounded', pw: 430 });
-      e.material.transparent = true; e.material.depthWrite = false; e.position.set(x, -.56, .1); e.scale.setScalar(.001); col.add(e); return e; };
-    const eSx = rot('SpaceX\n$75 mil M', .85, '#4A2410'), eAn = rot('Anthropic\n$81.3 mil M', 1.85, '#16346E');
+    // Rotulo de cada columna: FICHA SOLIDA encima de la columna, del color de la columna.
+    // Sin fondo y en tinta oscura sobre el muro naranja no se leian (JP, 21 nov 2026).
+    const rot = (txt, x, y, bg, ink) => { const e = L.label3d(txt, .94, .52, { bg, ink, font: '800 40px Unbounded', pw: 360 });
+      e.position.set(x, y, .40); e.scale.setScalar(.001); col.add(e); return e; };
+    const eSx = rot('SpaceX\n$75 mil M', .85, bSx.userData.h + .36, CREMA, '#3A1C0B');
+    const eAn = rot('Anthropic\n$81.3 mil M', 1.85, bAn.userData.h + .36, AZUL, '#F4EFE2');
     const uni = L.label3d('miles de millones de dólares', 1.9, .18, { bg: null, ink: '#8A5230', font: '600 34px "Space Grotesk"', pw: 520 });
     uni.material.transparent = true; uni.material.depthWrite = false; uni.rotation.z = Math.PI / 2;
-    uni.position.set(-1.05, 2.2, 0); col.add(uni);
+    uni.position.set(-1.05, 1.45, 0); col.add(uni);
+    // Un personaje al pie de las columnas: da la escala y mira como suben (regla de la casa:
+    // "las graficas llevan personaje, siempre"). Sin el, las barras crecen sin que nadie las vea.
+    const testigo = L.actor(INV); testigo.position.set(1.70, 0, -6.3); testigo.rotation.y = Math.PI * .82;
+    testigo.scale.setScalar(.001); w.scene.add(testigo); testigo.userData.s = .78;
     // LA VÍA DEL PRECIO con su carrito
-    const vg = new THREE.Group(); vg.position.set(-1.5, .7, -4.2); w.scene.add(vg);
-    vg.add(ejes(L, 3.0, 3.7, [[0, '$83'], [.5, '$100'], [1, '$118']]));
-    const v = via(L, PRECIO, 3.0, 3.7); vg.add(v);
+    // Escala real: el eje va de $80 a $118 (el maximo del recorrido es $111.50). Antes decia
+    // "$83" en el suelo del eje y el suelo valia $78: el rotulo no correspondia con la altura.
+    const ALTV = 2.4, ANCV = 3.0, NPT = PRECIO.length;
+    const vg = new THREE.Group(); vg.position.set(-1.5, 1.5, -4.2); w.scene.add(vg);
+    const ejeVia = ejes(L, ANCV, ALTV, [[0, '$80'], [.263, '$90'], [.526, '$100'], [.789, '$110']]); vg.add(ejeVia);
+    // el salto colocacion -> apertura se lleva el 30% del ancho; la sesion, el 70% restante
+    const v = via(L, PRECIO, ANCV, ALTV, i => i === 0 ? 0 : .30 + ((i - 1) / (NPT - 2)) * .70); vg.add(v);
+    // Las tres cifras que dice la voz, pegadas al punto de la grafica donde pasan (JP, 21 nov 2026).
+    // De una sola pieza: el pie dentro de la ficha. Suelto y sin fondo no se leia sobre el muro.
+    const ficha = (txt, pie, x, y) => {
+      const g2 = pantalla(L, 1.08, .46, (g, W2, H2) => {
+        g.fillStyle = '#2A1409'; g.fillRect(0, 0, W2, H2); g.textAlign = 'center';
+        g.fillStyle = '#FBF0D6'; g.font = '800 58px Unbounded'; g.fillText(txt, W2 / 2, H2 * .46);
+        g.fillStyle = 'rgba(251,240,214,.66)'; g.font = '700 31px "Space Grotesk"'; g.fillText(pie, W2 / 2, H2 * .82); }, 420);
+      g2.material.emissiveIntensity = .55;
+      g2.position.set(x, y, .30); g2.scale.setScalar(.001); vg.add(g2); return g2; };
+    const p0 = v.userData.pt(0), p1 = v.userData.pt(1), pN = v.userData.pt(NPT - 1);
+    const f83  = ficha('$83', 'colocación', p0[0] + .70, p0[1] + .30);
+    const f111 = ficha('$111.50', 'abrió', p1[0] + .78, p1[1] - .16);
+    const f88  = ficha('$88.91', 'cerró el viernes', pN[0] - .70, pN[1] + .62);
     const cart = carrito(L); vg.add(cart);
     const pilo = L.actor(INV); pilo.scale.setScalar(.46); cart.add(pilo);
     pilo.position.set(-.04, .30, 0); pilo.rotation.y = Math.PI / 2;   // de perfil, mirando hacia adelante
@@ -266,7 +312,7 @@ Object.assign(worlds, {
         g.fillText('ANT · primer día', W2 / 2, H2 - 26); }, 300);
       pl.position.set(cx, cy, .1); pl.material.opacity = 0; muroP.add(pl); panes.push(pl); }
     const mira = L.actor(INV); mira.position.set(1.35, 0, -3.5); mira.rotation.y = Math.PI; mira.scale.setScalar(.001); w.scene.add(mira);
-    return { ...w, col, bSx, bAn, eSx, eAn, vg, v, cart, pilo, muroP, panes, mira };
+    return { ...w, col, ejeCol, bSx, bAn, eSx, eAn, testigo, vg, ejeVia, v, cart, pilo, f83, f111, f88, muroP, panes, mira };
   },
 });
 
@@ -333,17 +379,24 @@ const scenes = [
     } },
 
   // 3 · EL RÉCORD — columnas VERTICALES con eje X y eje Y (JP). Otro mundo: entra con ola.
-  { id: 'record', world: 'sala', d: 7, ink: TINTA, year: '2026', sfx: [[.52, 'thud', .55]],
+  { id: 'record', world: 'sala', d: 7, ink: TINTA, year: '2026', sfx: [[.68, 'thud', .55]],
     cap: 'Levantó 81 mil millones de dólares: la salida a bolsa más grande de la que hay registro.',
     update(w, lt, t, L) {
-      const p = P(lt, this);
+      const p = P(lt, this), q = L.on2(t);
       const k = L.eio(L.seg(p, 0, 1));
       cam(w, mv([-.9, 3.6, 9.4], [.4, 3.4, 8.2], k), mv([0, 3.9, -5.6], [0, 3.75, -5.6], k), 30);
       w.vg.visible = false; w.muroP.visible = false; w.mira.scale.setScalar(.001);
-      w.bSx.scale.y = Math.max(.001, L.eio(L.seg(p, .14, .46)));
-      w.bAn.scale.y = Math.max(.001, L.eio(L.seg(p, .4, .78)));
-      w.eSx.scale.setScalar(Math.max(.001, L.back(L.seg(p, .4, .56))));
-      w.eAn.scale.setScalar(Math.max(.001, L.back(L.seg(p, .68, .84))));
+      // primero se TRAZAN los ejes, luego entra el testigo, luego suben las columnas y al final
+      // su ficha. Antes la grafica entera estaba puesta desde el cuadro 1 y las barras brincaban.
+      w.ejeCol.userData.traza(L.seg(p, 0, .20));
+      w.testigo.scale.setScalar(Math.max(.001, .78 * L.back(L.seg(p, .04, .20))));
+      w.bSx.scale.y = Math.max(.001, L.eio(L.seg(p, .22, .46)));
+      w.bAn.scale.y = Math.max(.001, L.eio(L.seg(p, .44, .72)));
+      w.eSx.scale.setScalar(Math.max(.001, L.back(L.seg(p, .48, .64))));
+      w.eAn.scale.setScalar(Math.max(.001, L.back(L.seg(p, .74, .90))));
+      const sube = Math.max(L.seg(p, .22, .46), L.seg(p, .44, .72));
+      L.pose(w.testigo, { head: [-.08 - .36 * sube, .26, 0], armL: [.16, .16, .12], armR: [.16, .16, .12],
+        smile: .3 + .4 * sube, bob: Math.sin(q * 1.6) * .014, amp: .2 });
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .52, '196,122,74');
@@ -352,17 +405,35 @@ const scenes = [
 
   // 4 · EL PRECIO — el personaje va SENTADO en el carrito, de perfil, por el recorrido REAL de
   //     media hora en media hora de los dos días: de los 83 de colocación al cierre del viernes.
-  { id: 'precio', world: 'sala', d: 11, ink: TINTA, year: '2026', sfx: [[.66, 'fall', .6]],
+  { id: 'precio', world: 'sala', d: 11, ink: TINTA, year: '2026', sfx: [[.44, 'fall', .6]],
     cap: 'Vendió sus acciones en 83 dólares. Abrieron en 111… y el viernes cerraron en 88.91, con todo el mercado cayendo.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
-      w.col.visible = false; w.vg.visible = true; w.muroP.visible = false; w.mira.scale.setScalar(.001);
-      const k = L.eio(L.seg(p, 0, 1));
-      cam(w, mv([-.9, 3.9, 14.4], [.4, 2.9, 6.6], k), mv([0, 3.6, -4.2], [0, 3.1, -4.2], k), 30);
-      const f = L.eio(L.seg(p, .06, .94)), pt = w.v.userData.at(f);
+      w.col.visible = false; w.vg.visible = true; w.muroP.visible = false;
+      w.mira.scale.setScalar(.001); w.testigo.scale.setScalar(.001);
+      w.ejeVia.userData.traza(L.seg(p, 0, .14));
+      // El carrito va al paso de la VOZ, no a velocidad pareja: esta parado en cada precio cuando
+      // la voz lo dice, y la cifra aparece ahi mismo (JP, 21 nov 2026).
+      //   "83 dolares" p.18  ·  "abrieron en 111" p.40  ·  "cerraron en 88.91" p.66
+      const F1 = 1 / (PRECIO.length - 1);
+      const f = p < .22 ? 0
+        : p < .42 ? F1 * L.eio(L.seg(p, .22, .42))
+        : F1 + (1 - F1) * L.eio(L.seg(p, .42, .74));
+      const pt = w.v.userData.at(f); w.v.userData.hasta(f);
       w.cart.position.set(pt.x, pt.y + .06, 0); w.cart.rotation.z = Math.max(-.5, Math.min(.5, pt.a * .5));
       L.pose(w.pilo, { sit: 1, armL: [1.0, .5, .9], armR: [1.0, .5, .9], head: [pt.a > 0 ? -.2 : .25, 0, 0],
         smile: pt.a > 0 ? .6 : -.6, bob: Math.sin(q * 9) * .02, amp: .2 });
+      w.f83.scale.setScalar(Math.max(.001, L.back(L.seg(p, .17, .30))));
+      w.f111.scale.setScalar(Math.max(.001, L.back(L.seg(p, .40, .52))));
+      w.f88.scale.setScalar(Math.max(.001, L.back(L.seg(p, .655, .78))));
+      // La camara SIGUE al carrito: sube con el en la trepada y se abre al final para ver los dos
+      // dias enteros con las tres cifras puestas. Quieta, el pico se salia encima del titular.
+      const kSube = L.eio(L.seg(p, .20, .44)), kBaja = L.eio(L.seg(p, .46, .72)), kAbre = L.eio(L.seg(p, .76, 1));
+      let cp = mv([.15, 2.6, 13.0], [.15, 3.8, 13.0], kSube);
+      let ct = mv([-.35, 3.05, -4.2], [-.15, 4.55, -4.2], kSube);
+      cp = mv(cp, [.35, 3.2, 13.4], kBaja); ct = mv(ct, [.25, 3.85, -4.2], kBaja);
+      cp = mv(cp, [.15, 3.3, 16.2], kAbre); ct = mv(ct, [0, 3.75, -4.2], kAbre);
+      cam(w, cp, ct, 30);
     },
     overlay(lt, t, L, s) { const p = lt / (s.t1 - s.t0);
       L.scrim(L.C, 300, 1010, .52, '196,122,74');
@@ -376,7 +447,7 @@ const scenes = [
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       w.col.visible = false; w.vg.visible = false; w.muroP.visible = true;
-      w.mira.scale.setScalar(1);
+      w.mira.scale.setScalar(1); w.testigo.scale.setScalar(.001);
       const k = L.eio(L.seg(p, 0, 1));
       cam(w, mv([-.6, 3.3, 11.4], [.4, 3.2, 10.2], k), mv([0, 3.5, -5.2], [0, 3.4, -5.2], k), 30);
       w.panes.forEach((pl, i) => pl.material.opacity = L.seg(p, .08 + i * .06, .26 + i * .06));
