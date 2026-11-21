@@ -70,7 +70,7 @@ const worlds = {
       g.fillStyle = '#9FD08A'; g.font = '800 68px Unbounded'; g.fillText('ANT   +34%', W2 / 2, 250);
       g.fillStyle = '#FFD98A'; g.font = '700 22px "Space Grotesk"'; g.letterSpacing = '7px';
       g.fillText('PRIMER DÍA DE COTIZACIÓN', W2 / 2, 322); g.letterSpacing = '0px'; }, 760);
-    pant.position.set(0, 4.3, -9.1); w.scene.add(pant);
+    pant.position.set(0, 6.05, -9.1); w.scene.add(pant);
     [[-3.3, 3.5], [3.3, 3.5]].forEach(([x, y], i) => { const l = letrero(L, 1.5, 2.6, 5 + i);
       l.position.set(x, y, -9.1); w.scene.add(l); });
     // el podio y quien habla
@@ -294,7 +294,7 @@ const scenes = [
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t), talk = L.talkAt(L.CAPS, q);
       const k = L.eio(L.seg(p, .08, 1));
-      cam(w, mv([-1.4, 3.6, 14.6], [.45, 2.8, 2.2], k), mv([0, 4.5, -5.4], [.05, 2.5, -4.9], k), 30);
+      cam(w, mv([-1.4, 3.6, 14.6], [.45, 2.05, 2.4], k), mv([0, 5.6, -5.4], [.05, 1.85, -4.9], k), 30);
       const pulsa = L.eio(L.seg(p, .16, .3));
       w.boton.position.y = 1.16 - pulsa * .05 + (p > .36 ? .05 : 0);
       L.pose(w.orador, { talk, head: [0, .06, 0], armL: [.5, .3, .6], armR: [1.1 * L.seg(p, .3, .5), .4, .4], smile: .5, bob: Math.sin(q * 1.8) * .02 });
