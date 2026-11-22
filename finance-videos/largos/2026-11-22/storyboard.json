@@ -26,7 +26,6 @@
       "title": "Mismo mercado, mismas acciones:",
       "value": 6.5,
       "prefix": "−",
-      "suffix": " puntos",
       "decimals": 1,
       "tone": "down",
       "caption": "al año, nada más por operar de más",
@@ -36,11 +35,12 @@
       "host": {
         "act": "senala",
         "mood": "down",
-        "pos": "br"
+        "pos": "br",
+        "size": 300
       },
       "say": "Mismo mercado, mismas acciones, 6.5 puntos menos al año. Eso es lo que ganaron de menos los que más compraban y vendían, entre 1991 y 1996. Hoy vas a ver qué hace tu cerebro para que eso pase.",
       "bg_image": "images/wall_street.jpg",
-      "bg_full": true
+      "unit": " puntos"
     },
     {
       "type": "statement",
@@ -60,10 +60,10 @@
       "type": "chapter",
       "number": 1,
       "title": "Las 66,465 cuentas",
-      "sub": "No es una encuesta: son cuentas reales",
+      "sub": "66,465 cuentas de una casa de bolsa, 1991–1996",
       "chapter_name": "Las 66,465 cuentas",
       "say": "Empecemos por el experimento, porque el dato con el que abrí no salió de una encuesta ni de una estimación.",
-      "bg_image": "images/certificado.jpg"
+      "bg_image": "images/bolsa_interior.jpg"
     },
     {
       "type": "photo",
@@ -128,14 +128,27 @@
       "say": "Él es Daniel Kahneman. Con Amos Tversky publicó en 1979 el trabajo que empezó todo esto, y en 2002 le dieron el Nobel de Economía."
     },
     {
-      "type": "photo",
-      "image": "images/thaler.jpg",
-      "layout": "split",
-      "kicker": "Nobel de Economía 2017",
-      "title": "Richard Thaler",
-      "caption": "Premiado por estudiar cómo decidimos de verdad, no cómo deberíamos",
-      "cue_title": "Thaler",
-      "say": "Y él es Richard Thaler, que ganó el Nobel en 2017 por lo mismo: estudiar cómo decidimos de verdad, no cómo deberíamos decidir."
+      "type": "compare",
+      "kicker": "Dos premios Nobel por el mismo campo",
+      "title": "Esto no es una teoría de nicho",
+      "items": [
+        {
+          "label": "Daniel Kahneman",
+          "value": "2002",
+          "sub": "Nobel de Economía · con Amos Tversky, 1979",
+          "tone": "accent",
+          "cue": "Kahneman"
+        },
+        {
+          "label": "Richard Thaler",
+          "value": "2017",
+          "sub": "Nobel de Economía · cómo decidimos de verdad",
+          "tone": "up",
+          "highlight": true,
+          "cue": "Thaler"
+        }
+      ],
+      "say": "Y no es una teoría de nicho: le dieron el Nobel de Economía a Kahneman en 2002, y a Richard Thaler en 2017 por lo mismo, estudiar cómo decidimos de verdad."
     },
     {
       "type": "bignum",
@@ -221,7 +234,8 @@
       "title": "Lo medido y lo que se discute",
       "sub": "Aquí hay que ser honestos",
       "chapter_name": "Lo medido y lo que se discute",
-      "say": "Ahora, aquí tengo que ser honesto contigo, porque hay una parte de todo esto que se está discutiendo ahora mismo entre académicos."
+      "say": "Ahora, aquí tengo que ser honesto contigo, porque hay una parte de todo esto que se está discutiendo ahora mismo entre académicos.",
+      "bg_image": "images/pantallas.jpg"
     },
     {
       "type": "compare",
@@ -264,11 +278,11 @@
       "host": {
         "act": "cafe",
         "mood": "neutral",
-        "pos": "br"
+        "pos": "br",
+        "size": 300
       },
       "say": "Y te voy a contar algo. Este video casi lo abro con otra historia, una que se repite en todas partes: un fondo de Fidelity que ganaba casi 30% al año mientras sus inversionistas perdían dinero. La fui a buscar y no tiene fuente.",
-      "bg_image": "images/fidelity.jpg",
-      "bg_full": true
+      "bg_image": "images/pantallas.jpg"
     },
     {
       "type": "statement",
@@ -327,7 +341,7 @@
       "host": {
         "act": "senala",
         "mood": "up",
-        "pos": "bl",
+        "pos": "br",
         "size": 300
       },
       "say": "Cuatro reglas, y son aburridas a propósito. Decide por escrito antes de entrar. Revisa en una fecha fija. Mide el portafolio completo, no acción por acción. Y lo que puedas automatizar, automatízalo."
@@ -372,15 +386,15 @@
       "question_b": "te ha costado más dinero?",
       "cue_a": "sesgos",
       "cue_b": "costado",
-      "sources": "Barber y Odean, The Journal of Finance (2000) y QJE (2001) · Odean, The Journal of Finance (1998) · Tversky y Kahneman, JRU (1992) · Morningstar, Mind the Gap 2026 · Financial Analysts Journal, CFA Institute (2026)",
+      "sources": "Barber y Odean (2000, 2001) · Odean (1998) · Tversky y Kahneman (1992) · Morningstar, Mind the Gap 2026 · Financial Analysts Journal, CFA Institute (2026)",
       "host": {
         "act": "cierre",
         "mood": "up",
-        "pos": "bc"
+        "pos": "br",
+        "size": 300
       },
       "say": "Ahora dime tú: ¿cuál de los tres sesgos te ha costado más dinero? Déjalo en los comentarios. La próxima semana: cómo empezar a invertir desde cero en México, con poco dinero. Contenido educativo, no asesoría financiera.",
-      "bg_image": "images/nyse_piso.jpg",
-      "bg_full": true
+      "bg_image": "images/nyse_piso.jpg"
     }
   ]
 }

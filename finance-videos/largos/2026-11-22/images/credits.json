@@ -5,5 +5,34 @@
   "source_url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/NY_stock_exchange_traders_floor_LC-U9-10548-6.jpg",
   "kind": "photo"
  },
- "images/wall_street.jpg": "Foto: Acediscovery · CC BY 4.0 · Wikimedia Commons"
+ "images/wall_street.jpg": {
+  "title": "Wall Street Sign, New York",
+  "credit": "Foto: Acediscovery · CC BY 4.0 · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Wall-Street-Sign-New-York.jpg",
+  "kind": "photo"
+ },
+ "images/kahneman.jpg": {
+  "title": "8:36pm Watching the awesome Daniel Kahneman talk about the tyranny of the remembering self",
+  "creator": "Buster Benson",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+  "source_url": "https://www.flickr.com/photos/35034346886@N01/9585678357",
+  "provider": "Flickr"
+ },
+ "images/pantallas.jpg": {
+  "title": "Tokyo Stock Exchange",
+  "creator": "Dick Thomas Johnson",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/31029865@N06/6646814401",
+  "provider": "Flickr"
+ },
+ "images/bolsa_interior.jpg": {
+  "title": "Interior de la Bolsa de Tokio",
+  "creator": "ehnmark",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/48600108001@N01/3970640849",
+  "provider": "Flickr"
+ }
 }

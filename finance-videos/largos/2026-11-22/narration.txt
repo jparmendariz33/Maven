@@ -16,7 +16,7 @@ Entonces la pregunta es por qué nos movemos tanto. Y aquí entran tres sesgos. 
 
 Él es Daniel Kahneman. Con Amos Tversky publicó en 1979 el trabajo que empezó todo esto, y en 2002 le dieron el Nobel de Economía.
 
-Y él es Richard Thaler, que ganó el Nobel en 2017 por lo mismo: estudiar cómo decidimos de verdad, no cómo deberíamos decidir.
+Y no es una teoría de nicho: le dieron el Nobel de Economía a Kahneman en 2002, y a Richard Thaler en 2017 por lo mismo, estudiar cómo decidimos de verdad.
 
 El primero es la aversión a la pérdida: perder mil pesos duele unas 2.25 veces más de lo que gusta ganar esos mismos mil pesos.
 

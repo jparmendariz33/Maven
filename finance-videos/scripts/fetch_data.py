@@ -66,7 +66,12 @@ def main(ticker, out):
     # ---------- trimestres: ingresos, utilidad neta, EPS ----------
     p1 = int(time.time() - 3.2 * 365 * 86400)
     p2 = int(time.time() + 86400)
-    types = "quarterlyTotalRevenue,quarterlyNetIncome,quarterlyDilutedEPS,annualTotalRevenue,annualNetIncome,quarterlyStockholdersEquity"
+    # 22 nov 2026: se agregan utilidad de OPERACIÓN y costo de ventas. El torneo del domingo puntúa dos rondas con
+    # ellas (crecimiento de la utilidad de operación y margen de operación) y antes había que buscarlas a mano.
+    # OJO: siguen siendo cifras de Yahoo. Para el estado de resultados se verifican contra el reporte oficial
+    # (con GAP el campo de utilidad de Yahoo ya falló una vez: decía −9.1% y el 6-K decía +8.1%).
+    types = ("quarterlyTotalRevenue,quarterlyNetIncome,quarterlyDilutedEPS,quarterlyOperatingIncome,"
+             "annualTotalRevenue,annualNetIncome,annualOperatingIncome,quarterlyStockholdersEquity")
     tsj = json.loads(get(f"https://query2.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries/{T}?type={types}&period1={p1}&period2={p2}"))
     fs = {}
     for res in tsj["timeseries"]["result"]:
@@ -76,8 +81,10 @@ def main(ticker, out):
                 fs.setdefault(typ, {})[row["asOfDate"]] = row["reportedValue"]["raw"]
     def table(prefix):
         rv = fs.get(prefix + "TotalRevenue", {}); ni = fs.get(prefix + "NetIncome", {}); eps = fs.get(prefix + "DilutedEPS", {})
-        dates = sorted(set(rv) | set(ni))
-        return [{"period": d, "revenue": rv.get(d), "net_income": ni.get(d), "eps": eps.get(d)} for d in dates]
+        oi = fs.get(prefix + "OperatingIncome", {})
+        dates = sorted(set(rv) | set(ni) | set(oi))
+        return [{"period": d, "revenue": rv.get(d), "net_income": ni.get(d), "eps": eps.get(d),
+                 "operating_income": oi.get(d)} for d in dates]
     quarterly, annual = table("quarterly"), table("annual")
 
     # ---------- noticias recientes (semilla; verificar con búsqueda web) ----------

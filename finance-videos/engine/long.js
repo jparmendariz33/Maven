@@ -179,14 +179,20 @@ R.hook = (s, t) => {
   kicker(s.kicker, L, 250, s.t0 + .1, t, ink);
   const tl = wrap(s.title || '', F.d, 800, s.title_size || 88, s.value != null ? 980 : CW);
   riseLines(tl, L, 370, (s.title_size || 88) * 1.15, s.t0 + .2, t, { f: F.d, w: 800, s: s.title_size || 88, c: ink });
+  // 22 nov 2026: si el recorte de JP va abajo a la DERECHA, la columna de la cifra termina antes
+  // para no quedar detras de el (el motor lo sabe porque la escena trae "host" en la linea de tiempo).
+  const hp = s.host ? ((typeof s.host === 'object' ? s.host.pos : 'br') || 'br') : null;
+  const inset = hp && /r$/.test(hp) ? 210 : 0, rx = RX - inset;
   if (s.value != null) {
     const tv = cueT(s, 'cue_value', .9), k = eo(seg(t, tv, tv + 1.4)), dec = s.decimals ?? 0;
     const num = typeof s.value === 'number';
     const str = num ? (s.prefix || '') + (s.value < 0 ? '−' : s.signed ? '+' : '') + fmtNum(Math.abs(s.value * k), dec) + (s.unit ?? '') : String(s.value);
-    C.save(); C.globalAlpha *= seg(t, tv - .1, tv + .3); scaleAt(RX, 560, .94 + .06 * ex(seg(t, tv, tv + .6)));
-    txt(str, RX, 620, { f: F.d, w: 800, s: fit(str, F.d, 800, 250, 720, 120), al: 'right', c: s.tone === 'down' ? '#F3C3B4' : s.tone === 'up' ? '#DDE8B8' : ink });
+    C.save(); C.globalAlpha *= seg(t, tv - .1, tv + .3); scaleAt(rx, 560, .94 + .06 * ex(seg(t, tv, tv + .6)));
+    txt(str, rx, 620, { f: F.d, w: 800, s: fit(str, F.d, 800, 250, 720 - inset, 110), al: 'right', c: s.tone === 'down' ? '#F3C3B4' : s.tone === 'up' ? '#DDE8B8' : ink });
     C.restore();
-    if (s.caption) { const tc = tv + .8; rise(s.caption, RX, 700, seg(t, tc, tc + .6), { f: F.b, w: 500, s: 42, al: 'right', c: ink }); }
+    // el caption se salia del cuadro: ahora envuelve y se achica, y respeta el mismo margen
+    if (s.caption) { const tc = tv + .8, { lines: cl, size: cs } = fitLines(s.caption, F.b, 500, 42, 760 - inset, 2, 26);
+      riseLines(cl, rx, 712, cs * 1.3, tc, t, { f: F.b, w: 500, s: cs, al: 'right', c: ink }); }
   }
   if (s.question) { const tq = cueT(s, 'cue_question', 3); rise(s.question, L, 820, seg(t, tq - .1, tq + .5), { f: F.s, w: 400, s: 118, c: B.mostaza }); }
 };
@@ -205,7 +211,10 @@ R.statement = (s, t) => {
       txt(wd, x, y, { f, w, s: sz, c: isE ? em : ink }); x += tw(wd + ' ', f, w, sz); });
     C.restore();
   });
-  if (s.sub) rise(s.sub, L, y0 + lines.length * lh + 30, seg(t, s.t0 + .9, s.t0 + 1.5), { f: F.b, w: 500, s: 42, c: ink, a: .85 });
+  // 22 nov 2026: iba en rise() de una sola linea y un sub largo se salia por la derecha
+  // (regla de la maquetacion: el motor aguanta cualquier texto, no se acorta el guion).
+  if (s.sub) { const { lines: sl, size: ss } = fitLines(s.sub, F.b, 500, 42, CW, 3, 28);
+    riseLines(sl, L, y0 + lines.length * lh + 30, ss * 1.3, s.t0 + .9, t, { f: F.b, w: 500, s: ss, c: ink, a: .85 }); }
 };
 
 R.chapter = (s, t) => {
@@ -488,8 +497,15 @@ R.outro = (s, t) => {
   const kd = seg(t, tl + .8, tl + 1.3);
   txt(V.brand.handle, 960, 740, { f: F.d, w: 600, s: 38, al: 'center', c: ink, a: kd });
   txt((V.brand.name || '').toUpperCase() + (V.brand.byline ? '  ·  ' + V.brand.byline.toUpperCase() : ''), 960, 784, { f: F.d, w: 800, s: 20, ls: 4, al: 'center', c: B.mostaza, a: kd });
-  txt(s.sources ? 'Fuentes: ' + s.sources : '', 960, 832, { f: F.b, w: 400, s: 24, al: 'center', c: ink, a: kd * .85 });
-  txt(V.brand.disclaimer, 960, 866, { f: F.b, w: 400, s: 24, al: 'center', c: ink, a: kd * .85 });
+  // 22 nov 2026: a 24px fijos una lista larga de fuentes se salia por los dos lados; ahora se parte y se achica,
+  // y el aviso legal BAJA segun cuantas lineas ocupe (si no, la segunda linea se le encimaba).
+  let sy = 826;
+  const ohp = s.host ? ((typeof s.host === 'object' ? s.host.pos : 'br') || 'br') : null;
+  const sw = ohp && /^b[lr]$/.test(ohp) ? 1320 : 1560;   // deja libre la franja del recorte de JP
+  if (s.sources) { const { lines: fl, size: fs } = fitLines('Fuentes: ' + s.sources, F.b, 400, 24, sw, 2, 15);
+    fl.forEach((l, i) => txt(l, 960, sy + i * (fs + 5), { f: F.b, w: 400, s: fs, al: 'center', c: ink, a: kd * .85 }));
+    sy += (fl.length - 1) * (fs + 5); }
+  txt(V.brand.disclaimer, 960, sy + 40, { f: F.b, w: 400, s: 24, al: 'center', c: ink, a: kd * .85 });
 };
 
 R.personal = (s, t) => {   // pantalla en primera persona (presentación de JP o pregunta a la audiencia); se narra como las demás
