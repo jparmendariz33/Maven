@@ -266,8 +266,11 @@ Temas de temporada en su pilar: aguinaldo (6 dic), cierre de año (27 dic), plan
 
 ## 9. Tareas programadas (actualizado el 11 nov 2026)
 **Las instrucciones de cada tarea viven en [`tareas.md`](tareas.md)** (la tarea programada solo dice qué sección ejecutar). Rama del
-proyecto: **`costa-studio-finance`**. Por ahora las tareas corren dentro de la conversación de Claude "session_01FvjQ3qKsfHX4rzw8jtw3Rk"
-(la única con permiso de escritura); cuando JP agregue el repo al entorno "Juan Pa" se pasan a sesiones nuevas y dejan de depender de ella.
+proyecto: **`main`** (corregido el 22 nov 2026: la rama `costa-studio-finance` que decía aquí ya no existe en el remoto, y cada sesión
+en la nube escribe en su propia rama `claude/<algo>`; a `main` se junta con el OK de JP). Por ahora las tareas corren dentro de la
+conversación de Claude "session_01FvjQ3qKsfHX4rzw8jtw3Rk" (la única con permiso de escritura); cuando JP agregue el repo al entorno
+"Juan Pa" se pasan a sesiones nuevas y dejan de depender de ella.
+**Pendiente (22 nov 2026):** los cron todavía disparan con el calendario viejo; los días nuevos están en `tareas.md`.
 Las tareas originales siguen en pausa solo como respaldo.
 
 | Tarea activa | Cuándo | ID |

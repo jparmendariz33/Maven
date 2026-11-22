@@ -26,6 +26,7 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 | dom 15 nov 2026 · 10:00 | Largo | Cómo leer un estado de resultados (con Apple) | `largos/2026-11-15/` |
 | dom 15 nov 2026 · 19:00 | Short RANKING + publicación | TORNEO · RANKEANDO 5 acciones: 6 rondas, un ganador (gana Alphabet 25/30; AMZN, SPOT, GAP, GOOGL, MELI) · declara posición en GAP y MELI | `videos/2026-11-15-TOP5-ingresos/` |
 | sáb 21 nov 2026 · 12:00 | Historia 3D | Kahneman y Tversky: perder duele el doble, por eso aguantas la que pierde · **con voz de IA (Francisco, una toma)** · 51.7 s | `videos/2026-11-21-KAHNEMAN-historia/` |
+| vie 20 nov 2026 · 19:00 | Short 3D de contexto | Anthropic salió a bolsa: le quitó el récord a SpaceX y en dos días perdió la mitad de la ganancia del debut (ANT) · **con voz de IA**, 42.8 s · maqueta 3D, sin fotos · conflicto de interés declarado (lo escribió Claude, producto de Anthropic) | `videos/2026-11-20-ANT-short3d/` |
 
 **No programado:** `videos/2026-11-09-SPCX-historia/` (primera Historia 3D, SpaceX: animatic sin voz y versión con música; hecha con el motor 3D v1). `videos/extra-ACCION/` (short del largo "¿Qué es una acción?", que ya se publicó). Solo si JP lo pide.
 
@@ -36,3 +37,4 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 | mar 17 nov 2026 · 19:00 | Short de contexto · Nvidia vendió el doble y su acción sigue 35% abajo (primer video con voz de IA) | `videos/2026-11-17-NVDA/` |
 | mié 18 nov 2026 | Nvidia reportó récord y la acción cayó: el Nasdaq subió ese mismo día | `videos/2026-11-18-POST-NVDA/` |
 | mié 11 nov 2026 (entregada el 12) | CoreWeave subió 25% y levantó a los chips: Micron, Arm y Dell ≈ +12% (CRWV) | `videos/2026-11-11-POST-CRWV/` |
+| jue 19 nov 2026 | Anthropic salió a bolsa: $81,340 M levantados, abrió en $111.50 y cerró en $97.17 (ANT) · 5 imágenes · conflicto de interés declarado | `videos/2026-11-19-POST-ANTHROPIC/` |

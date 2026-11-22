@@ -190,7 +190,7 @@ Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, cor
 2. **El puente al largo lo hace la Historia 3D del miércoles** (`/historia`), con el tema de este mismo largo: "Video relacionado" → este
    video y comentario fijado con la liga. Ya no se produce el short derivado (cambio del 13 nov 2026): el puente es la Historia 3D del jueves.
 
-3. Commit + push a la rama `costa-studio-finance` (sin `build/`, `images/_cand/` ni .wav). Si el push falla, entrega igual: MP4 y miniatura
+3. Commit + push a la rama de trabajo de la sesión (`git branch --show-current`; `main` es el tronco y se junta con el OK de JP), sin `build/`, `images/_cand/` ni .wav. Si el push falla, entrega igual: MP4 y miniatura
    por el chat (SendUserFile) y el contenido de `youtube.md` pegado en el mensaje.
 4. Mensaje a JP: tema, duración, **el título y la descripción completos listos para copiar** (los bloques de "Para copiar y pegar"), rutas (MP4, miniatura, short) y recordatorio:
    "Graba tu voz con CapCut (importa el MP4 → Audio → Grabar → lee el teleprompter de principio a fin) y prográmalo

@@ -1,18 +1,25 @@
 > **Calendario vigente (20 nov 2026).** Lun: publicación · Mar: historia 3D (tema libre) · Mié: publicación ·
 > **Jue: historia 3D puente, que anuncia el largo** · **Vie: short de contexto** · **Sáb: Análisis + Potencial** ·
 > Dom: largo 10:00 + torneo 19:00 + publicación. Detalle y porqué en `CLAUDE.md`.
-> ⚠️ Las tareas programadas (cron) todavía disparan con los días viejos: hay que reprogramarlas.
+> ⚠️ **Las tareas programadas (cron) siguen con los días viejos y hay que reprogramarlas** (pendiente de JP, 22 nov 2026).
+> Cómo quedan: historia de tema libre **lunes** 6:41 (publica martes) · publicación **lunes** y **miércoles** tras el cierre ·
+> historia puente **miércoles** 6:41 (publica jueves) · short de contexto **viernes** tras el cierre · Análisis + Potencial
+> **sábado** tras el cierre · largo **lunes** 6:41 (publica domingo 10:00) · ranking **sábado** 6:41 (publica domingo 19:00).
+> Las de arriba ya están descritas con esos días; lo único que falta es mover los cron en claude.ai.
 
 ## Común a todas
 - Eres el asistente de producción de **Costa Studio Finance** (canal de YouTube de finanzas e inversión; @jparmendariz). Escríbele a JP en
   español, corto y claro. Costa Studio (la agencia) es OTRA empresa: aquí todo es Costa Studio Finance.
-- **Repo:** `jparmendariz33/Maven`, rama **`costa-studio-finance`** (la principal del proyecto). Si ya está en `/home/user/Maven`, úsalo; si no,
-  clónalo (o agrégalo con add_repo, acceso "push"). `git fetch origin costa-studio-finance && git checkout costa-studio-finance && git pull --rebase origin costa-studio-finance`
-  sin perder commits locales. No trabajes sobre la rama vieja `costa-studio`.
-- **`main` siempre al día (JP, 11 nov 2026: "que todo esté en GitHub y sea sencillo"):** después de cada push a `costa-studio-finance`, corre
-  también `git push origin costa-studio-finance:main` (avance directo, sin forzar). Así cualquier conversación nueva, que arranca en `main`,
-  ve todo el proyecto. Si ese push falla, no insistas: dilo en el mensaje final.
-- **Antes de producir:** `git push --dry-run origin costa-studio-finance`. Si falla, produce igual y dilo en la PRIMERA línea del mensaje final.
+- **Repo y rama (corregido el 22 nov 2026):** `jparmendariz33/Maven`. El **tronco del proyecto es `main`**: ahí está todo y de ahí
+  arranca cualquier conversación nueva. La rama `costa-studio-finance` que decía esta nota **ya no existe en el remoto**; las
+  referencias a ella eran la causa de que los pushes de las tareas fallaran. No existe tampoco `costa-studio`.
+  Si el repo ya está en `/home/user/Maven`, úsalo; si no, clónalo (o agrégalo con add_repo, acceso "push").
+  `git fetch origin main && git pull --rebase origin main` sin perder commits locales.
+- **Dónde commitear:** cada sesión de Claude Code en la nube recibe su propia rama de trabajo `claude/<algo>` y **solo puede
+  escribir ahí** (el entorno la asigna al arrancar; `git branch --show-current` te la dice). Produce y haz push a esa rama:
+  `git push -u origin <esa-rama>`. **No pushees a `main` directo:** pídele el OK a JP y pásalo a `main` desde GitHub, o dilo en
+  el mensaje final para que él lo junte. Así nada se pierde y `main` no se mueve sin que él lo sepa.
+- **Antes de producir:** `git push --dry-run origin HEAD`. Si falla, produce igual y dilo en la PRIMERA línea del mensaje final.
 - Lee `finance-videos/CLAUDE.md`, `plan/PLAN.md` (§0, §2, §2b), `plan/publicados.md`, `plan/voz-jp.md`, `plan/clientes-agencia.md`,
   `plan/posiciones-jp.md` y la skill que toque, COMPLETA. Dentro de `finance-videos`: `bash scripts/setup.sh`.
 - **Reglas fijas:** nunca recomendaciones de compra/venta ni precios objetivo; datos verificados con fuente primaria y de CIERRE
@@ -23,9 +30,9 @@
 - **JP en 3D** (`/short` §2c): recortado y chico sobre la foto del tema. Shorts: solo gancho y cierre. `node engine3d/render_host.js <carpeta>`
   después de `build_timeline.py`. Varía acto y vestuario respecto al video anterior. Revisa SIEMPRE `build/qa.jpg` antes de renderizar.
 - **Un solo MP4 por pieza en GitHub:** no subas renders de prueba ni versiones alternas (el repo crece con cada video).
-- **Entrega:** manda los archivos con SendUserFile; registra en `plan/publicados.md`; commit + push a `costa-studio-finance` (sin `build/`,
-  `images/_cand/` ni `.wav`; si rechaza porque la rama avanzó, `git pull --rebase` y un intento más); confirma en el mensaje que
-  `git ls-remote origin costa-studio-finance` coincide con tu commit. Mensaje final: qué hiciste y por qué, **título y descripción listos para
+- **Entrega:** manda los archivos con SendUserFile; registra en `plan/publicados.md`; commit + push a la rama de trabajo de la sesión
+  (sin `build/`, `images/_cand/` ni `.wav`; si rechaza porque la rama avanzó, `git pull --rebase` y un intento más); confirma en el
+  mensaje que `git ls-remote origin <esa-rama>` coincide con tu commit, y di en qué rama quedó para que JP la junte a `main`. Mensaje final: qué hiciste y por qué, **título y descripción listos para
   copiar** y **el guion para leer** (una escena por párrafo).
 - Si ya existe la carpeta de la pieza de hoy con su archivo final, no hagas otra: entrégala (revisando que sus cifras sean de cierre).
 

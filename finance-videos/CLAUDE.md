@@ -54,8 +54,9 @@ Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL
 `setup.sh` → `market_close.py` (¿ya cerró?) → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →
 `process_voice.py` → `build_timeline.py` → `engine3d/render_host.js` (JP en 3D) → `render.js --qa` (revisar) → `make_audio.py` → `render.js` → youtube.md → commit.
 
-**Rama y tareas:** todo el proyecto vive en la rama `costa-studio-finance` de `jparmendariz33/Maven` (Costa Studio, la agencia, es otra
-empresa: no mezclar nombres). Las instrucciones de las tareas programadas están en `plan/tareas.md`. Un solo MP4 por pieza en GitHub
+**Rama y tareas (corregido el 22 nov 2026):** todo el proyecto vive en **`main`** de `jparmendariz33/Maven` (Costa Studio, la agencia, es otra
+empresa: no mezclar nombres). La rama `costa-studio-finance` que se citaba aquí ya no existe en el remoto y era por lo que fallaban los
+pushes de las tareas. Cada sesión en la nube trabaja y pushea en su propia rama `claude/<algo>`; a `main` se pasa con el OK de JP. Las instrucciones de las tareas programadas están en `plan/tareas.md`. Un solo MP4 por pieza en GitHub
 (sin renders de prueba ni versiones alternas: el repo crece con cada video).
 
 ---

@@ -1,32 +1,57 @@
-# 🎬 Finance Videos — Costa Studio Finance
+# 🎬 finance-videos — Costa Studio Finance
 
-> **Este README describe la primera versión (nov 2026, shorts con voz de IA). Está desactualizado.** La fuente de verdad es
-> `CLAUDE.md` + `plan/PLAN.md` (§2b y §9) + las skills en `../.claude/skills/` (`/short`, `/largo`, `/historia`, `/publicacion`).
+Fábrica de video del canal de finanzas de **Costa Studio** (@jparmendariz). Todo se genera con código: no hay editor de video.
 
-## (Histórico) shorts de acciones (estilo Costa Studio)
+> **Fuente de verdad:** `CLAUDE.md` (las reglas, en 6 bloques) + `plan/PLAN.md` (la estrategia) + las skills en
+> `../.claude/skills/`. Este README solo dice qué hay y cómo se pide; las reglas están allá.
 
-Ruta del proyecto: **`Maven/finance-videos/`** (repo `jparmendariz33/Maven`).
+## Los cuatro formatos
 
-## Cómo pedir un video
-1. Abre una sesión de **Claude Code** (claude.ai/code o la app) sobre el repo **Maven**.
-2. Escribe:
-   ```
-   /short AAPL
-   ```
-   (o "/short Tesla", "/short NVDA enfócate en los resultados", etc.)
-3. Claude junta datos y noticias, escribe el guion y **te lo muestra para que lo apruebes** (antes de gastar créditos de voz).
-4. Con tu OK genera la voz, sincroniza, revisa y te entrega el **MP4 (45–60 s, 1080x1920)** + título, descripción y hashtags.
+| Skill | Qué es | Cuándo se publica | Motor |
+|---|---|---|---|
+| **`/largo`** | Video largo 16:9, 6–7 min, educativo | **domingo 10:00** | `engine/long.js` |
+| **`/historia`** | Historia 3D vertical, 75–90 s, maqueta de plastilina animada | **martes y jueves 12:00** (la del jueves anuncia el largo) | `engine3d/` (Three.js) |
+| **`/short`** | Short vertical: contexto (viernes 19:00), Análisis + Potencial (sábado 19:00) o ranking/torneo (domingo 19:00) | ver tabla | `engine/engine.js` |
+| **`/publicacion`** | 3–5 imágenes cuadradas con la noticia del día, pestaña Publicaciones | **lunes, miércoles y domingo** | `scripts/make_post.js` |
 
-Cada video queda guardado en `finance-videos/videos/<fecha>-<TICKER>/`.
+Calendario completo y el porqué de cada día: `CLAUDE.md` ("Ritmo"). Instrucciones de las tareas programadas: `plan/tareas.md`.
 
-## Qué incluye cada video
-Gancho · qué hace la empresa · precio 12 meses · el movimiento reciente y sus noticias · ingresos y utilidad neta por trimestre ·
-P/E · PEG · ROE · próximos resultados · pregunta de cierre. Voz en off (Daniel), subtítulos palabra por palabra, música y efectos.
+## Cómo se pide un video
 
-## Créditos de voz
-Se usan los de tu cuenta de **vidIQ** (conectada a Claude): 14 créditos por video (guion < 1,000 caracteres).
-Plan actual: 150 créditos/mes, se renuevan cada día 4. ≈10 videos al mes.
+Abre una sesión de Claude Code (claude.ai/code o la app) sobre el repo **Maven** y escribe la skill:
 
-## Estilo
-Paleta y tono de costastudio.mx. Tipografías libres (OFL) que sustituyen a PP Neue Machina y Seneca:
-Unbounded, Space Grotesk e Instrument Serif.
+```
+/short AAPL          /historia                /largo                /publicacion
+```
+
+Claude investiga, escribe el guion y **te manda capturas de las escenas para que apruebes antes de gastar voz o
+renderizar** (regla de la aprobación visual). Con tu OK genera la voz, sincroniza, revisa y entrega el MP4, la
+miniatura, el título, la descripción y el primer comentario listos para copiar.
+
+## Estructura
+
+```
+assets/brand/      marca: colores, tipografías, logo como máscara
+engine/            motor Canvas 1080x1920 y 1920x1080 (shorts, largos, publicaciones)
+engine3d/          motor Three.js: lib.js + cine.js (luz de cine, actores articulados), JP en 3D
+scripts/           el pipeline: datos → guion → voz → sincronía → render → QC
+plan/              estrategia, calendario de 55 semanas, bancos de ideas, métricas, revisiones
+videos/<fecha>-<ID>/   una carpeta por short, historia o publicación
+largos/<domingo>/      una carpeta por video largo
+canal/             banner, foto de perfil y configuración del canal
+```
+
+Un solo MP4 por pieza en el repo (sin renders de prueba). `build/`, `images/_cand/` y los `.wav` no se versionan.
+
+## Rama
+
+El tronco es **`main`**. Cada sesión de Claude en la nube trabaja en su propia rama `claude/<algo>` y pushea ahí; a
+`main` se junta con el OK de JP. *(La vieja `costa-studio-finance` ya no existe: corregido el 22 nov 2026.)*
+
+## Costos
+
+Costo cero por defecto: el modo sin voz (`scripts/no_voice.py`) arma el teleprompter y JP graba su voz encima. La voz
+de IA (vidIQ, plan Boost: 2,000 créditos al mes, se renuevan el 17) cuesta **28 créditos por cada 1,000 caracteres** y
+se genera **en una sola toma**, nunca por piezas.
+
+No es asesoría financiera. Nunca recomendaciones de compra/venta ni precios objetivo.
