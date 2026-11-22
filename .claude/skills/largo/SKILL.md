@@ -164,7 +164,7 @@ node scripts/render.js largos/$D --thumb        # miniatura.jpg 1280x720 (revís
 .venv/bin/python scripts/make_audio.py largos/$D
 node scripts/render.js largos/$D                # <slug>_largo.mp4 (≈15–20 min, en paralelo; córrelo en segundo plano)
 ```
-Verifica con `ffprobe` (1920x1080, h264 + aac, duración 9.5–12.5 min) y mira 3 cuadros del MP4.
+Verifica con `ffprobe` (1920x1080, h264 + aac, duración 6–7.5 min) y mira 3 cuadros del MP4.
 
 Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, corre `.venv/bin/python scripts/process_voice.py largos/$D`
 (nota: ajusta tempo solo si hace falta), `build_timeline.py`, `make_audio.py` y `render.js`: los visuales se sincronizan con su voz.
