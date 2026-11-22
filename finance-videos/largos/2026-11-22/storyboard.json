@@ -14,108 +14,173 @@
       "PERDER DINERO"
     ],
     "emphasis": "CEREBRO",
-    "big": "−6.5",
-    "big_sub": "puntos al año · 66,465 cuentas reales",
+    "big": "14.8",
+    "big_sub": "vendidas de cada 100 que iban ganando",
     "big_tone": "down",
     "bg_image": "images/nyse_piso.jpg"
   },
   "scenes": [
     {
       "type": "hook",
-      "kicker": "66,465 hogares con cuenta de bolsa · 1991–1996",
-      "title": "Mismo mercado, mismas acciones:",
-      "value": 6.5,
-      "prefix": "−",
-      "decimals": 1,
-      "tone": "down",
-      "caption": "al año, nada más por operar de más",
-      "question": "¿Por qué pasa eso?",
-      "cue_value": "puntos",
-      "cue_question": "cerebro",
+      "bg_image": "images/nyse_piso.jpg",
+      "bg_full": true,
+      "kicker": "Costa Studio Finance",
+      "title": "¿Vendiste lo que iba subiendo y te quedaste con lo que iba bajando?",
+      "title_size": 76,
+      "question": "Casi todos lo hacemos.",
+      "cue_question": "bajando",
       "host": {
-        "act": "senala",
-        "mood": "down",
+        "act": "piensa",
+        "mood": "neutral",
         "pos": "br",
         "size": 300
       },
-      "say": "Mismo mercado, mismas acciones, 6.5 puntos menos al año. Eso es lo que ganaron de menos los que más compraban y vendían, entre 1991 y 1996. Hoy vas a ver qué hace tu cerebro para que eso pase.",
-      "bg_image": "images/wall_street.jpg",
-      "unit": " puntos"
+      "say": "¿Alguna vez vendiste algo que ya había subido… y te quedaste con lo que iba bajando? Si te pasó, no eres raro. Casi todos lo hacemos, y alguien hizo una investigación para entender por qué."
+    },
+    {
+      "type": "compare",
+      "kicker": "Un profesor revisó 10,000 cuentas de gente común · 1987–1993",
+      "title": "De cada 100 acciones que tenían, ¿cuántas vendieron?",
+      "items": [
+        {
+          "label": "Las que iban GANANDO",
+          "value": "14.8",
+          "sub": "de cada 100, vendidas",
+          "tone": "up",
+          "highlight": true,
+          "cue": "ganando"
+        },
+        {
+          "label": "Las que iban PERDIENDO",
+          "value": "9.8",
+          "sub": "de cada 100, vendidas",
+          "tone": "down",
+          "cue": "perdiendo"
+        }
+      ],
+      "say": "Un profesor revisó 10,000 cuentas de gente normal. De cada 100 acciones que iban ganando, vendieron casi 15. De las que iban perdiendo, menos de 10."
     },
     {
       "type": "statement",
-      "text": "Finanzas conductuales: por qué decidimos mal con el dinero aunque sepamos la teoría.",
-      "emphasis": "mal",
-      "sub": "Y qué se puede hacer al respecto",
-      "say": "A eso se le llama finanzas conductuales. En los próximos minutos vas a ver el experimento que midió el daño, los tres sesgos que lo causan —cada uno con su estudio— y cuatro reglas para frenarlos."
+      "text": "Soltamos lo que va bien y nos aferramos a lo que va mal.",
+      "emphasis": "aferramos",
+      "sub": "Y eso cuesta dinero",
+      "say": "O sea: soltamos lo que va bien y nos aferramos a lo que va mal. Y aquí viene lo caro."
     },
     {
-      "type": "personal",
-      "kicker": "Costa Studio Finance",
-      "title": "Soy JP Armendáriz.",
-      "sub": "La división de finanzas de Costa Studio",
-      "say": "Soy JP Armendáriz y esto es Costa Studio Finance. Aquí comparto lo que voy aprendiendo sobre inversiones, siempre con los números y las fuentes a la vista."
+      "type": "bignum",
+      "kicker": "El año siguiente a la venta · Odean (1998)",
+      "label": "Lo que vendieron subió más que lo que se quedaron guardando",
+      "value": 3.4,
+      "prefix": "+",
+      "suffix": "%",
+      "decimals": 1,
+      "tone": "up",
+      "sub": "Soltaron justo lo que iba a seguir subiendo.",
+      "cue_value": "más",
+      "host": {
+        "act": "senala",
+        "mood": "down",
+        "pos": "bl",
+        "size": 300
+      },
+      "say": "Al año siguiente, lo que habían vendido subió 3.4% más que lo que se quedaron guardando. Soltaron justo lo que iba a seguir subiendo."
+    },
+    {
+      "type": "statement",
+      "text": "Y ese es solo uno de los errores. Hay más, y juntos salen caros.",
+      "emphasis": "caros",
+      "say": "Y ese es solo uno de los errores que cometemos. Hay más, y juntos salen caros. Te los voy a enseñar uno por uno, con los estudios que los midieron."
     },
     {
       "type": "chapter",
       "number": 1,
-      "title": "Las 66,465 cuentas",
-      "sub": "66,465 cuentas de una casa de bolsa, 1991–1996",
-      "chapter_name": "Las 66,465 cuentas",
-      "say": "Empecemos por el experimento, porque el dato con el que abrí no salió de una encuesta ni de una estimación.",
-      "bg_image": "images/bolsa_interior.jpg"
+      "title": "El experimento más grande",
+      "sub": "66,465 familias, seis años",
+      "chapter_name": "El experimento más grande",
+      "bg_image": "images/bolsa_interior.jpg",
+      "say": "Empecemos por el estudio más grande de todos, para que veas de qué tamaño es el problema."
     },
     {
       "type": "photo",
       "image": "images/nyse_piso.jpg",
       "layout": "full",
-      "kicker": "Bolsa de Nueva York · piso de remates",
-      "title": "66,465 hogares, seguidos seis años",
-      "caption": "Cuentas reales de una casa de bolsa de descuento, 1991–1996",
-      "cue_title": "hogares",
-      "say": "Brad Barber y Terrance Odean se metieron a las cuentas reales de una casa de bolsa y siguieron a 66,465 hogares durante seis años, de 1991 a 1996."
+      "kicker": "Bolsa de Nueva York",
+      "title": "66,465 familias, seguidas seis años",
+      "caption": "Todo lo que compraron y todo lo que vendieron, de 1991 a 1996",
+      "cue_title": "familias",
+      "say": "Dos profesores siguieron las cuentas de 66,465 familias durante seis años, de 1991 a 1996. Vieron todo lo que compraron y todo lo que vendieron."
     },
     {
       "type": "bars",
-      "kicker": "Barber y Odean (2000) · The Journal of Finance · 1991–1996",
-      "title": "Rendimiento anual promedio",
+      "kicker": "Barber y Odean (2000) · cuánto ganaron al año",
+      "title": "La bolsa contra la gente que estaba dentro",
       "suffix": "%",
       "decimals": 1,
-      "cue_bars": "mercado",
+      "cue_bars": "bolsa",
       "items": [
         {
-          "label": "El mercado",
+          "label": "La bolsa, en general",
           "value": 17.9,
           "tone": "blue"
         },
         {
-          "label": "El hogar promedio",
+          "label": "La familia promedio",
           "value": 16.4,
           "tone": "accent"
         },
         {
-          "label": "El 20% que más operaba",
+          "label": "Las que más compraban y vendían",
           "value": 11.4,
           "tone": "down"
         }
       ],
-      "say": "Esto fue lo que encontraron. El mercado dio 17.9% al año. El hogar promedio se quedó en 16.4%. Y el 20% que más compraba y vendía, en 11.4%."
+      "host": {
+        "act": "senala",
+        "mood": "neutral",
+        "pos": "bl",
+        "size": 300
+      },
+      "say": "Esto encontraron. La bolsa, en general, subió 17.9% al año. La familia promedio ganó 16.4%. Y las que más compraban y vendían, 11.4%."
+    },
+    {
+      "type": "compare",
+      "kicker": "Lo mismo, pero en dinero · a ese ritmo, en seis años",
+      "title": "Qué pasó con cada peso que metieron",
+      "items": [
+        {
+          "label": "Quien casi no movió su dinero",
+          "value": "×2.7",
+          "sub": "casi lo triplicó",
+          "tone": "up",
+          "highlight": true,
+          "cue": "triplica"
+        },
+        {
+          "label": "Quien más compraba y vendía",
+          "value": "×1.9",
+          "sub": "ni lo duplicó",
+          "tone": "down",
+          "cue": "duplicarlo"
+        }
+      ],
+      "say": "Ponlo en dinero. A ese ritmo, en seis años, quien casi no movió lo suyo lo triplica. Y quien más compraba y vendía no llega ni a duplicarlo."
     },
     {
       "type": "statement",
-      "text": "Todos tenían las mismas acciones disponibles. Lo que los separaba era cuánto se movían.",
+      "text": "Todos podían comprar las mismas acciones. Lo único distinto era cuánto se movían.",
       "emphasis": "cuánto",
-      "sub": "El hogar promedio rotaba 75% de su portafolio cada año",
-      "cue_sub": "rotaba",
-      "say": "Y ojo con esto, porque aquí está lo importante: todos tenían las mismas acciones disponibles, en el mismo mercado, en los mismos años. Lo único que los separaba era cuánto se movían. El hogar promedio rotaba 75% de su portafolio cada año."
+      "sub": "Entre más movían su dinero, menos ganaban",
+      "cue_sub": "distinto",
+      "say": "Y fíjate: todos podían comprar las mismas acciones, en los mismos años. Lo único distinto era cuánto se movían. Entre más movían su dinero, menos ganaban."
     },
     {
       "type": "chapter",
       "number": 2,
-      "title": "Tres sesgos, cada uno medido",
-      "sub": "Pérdida, disposición y exceso de confianza",
-      "chapter_name": "Los tres sesgos",
-      "say": "Entonces la pregunta es por qué nos movemos tanto. Y aquí entran tres sesgos. Los tres están medidos en estudios publicados, no son teoría de libro de superación personal."
+      "title": "Por qué lo hacemos",
+      "sub": "Dos trucos que nos juega el cerebro",
+      "chapter_name": "Por qué lo hacemos",
+      "say": "Entonces, ¿por qué lo hacemos? Porque el cerebro nos juega un par de trucos. Y los dos están medidos."
     },
     {
       "type": "photo",
@@ -123,189 +188,143 @@
       "layout": "split",
       "kicker": "Nobel de Economía 2002",
       "title": "Daniel Kahneman",
-      "caption": "Con Amos Tversky publicó en 1979 el trabajo que abrió este campo",
+      "caption": "En 1979, con su amigo Amos Tversky, empezó a estudiar cómo decidimos de verdad",
       "cue_title": "Kahneman",
-      "say": "Él es Daniel Kahneman. Con Amos Tversky publicó en 1979 el trabajo que empezó todo esto, y en 2002 le dieron el Nobel de Economía."
-    },
-    {
-      "type": "compare",
-      "kicker": "Dos premios Nobel por el mismo campo",
-      "title": "Esto no es una teoría de nicho",
-      "items": [
-        {
-          "label": "Daniel Kahneman",
-          "value": "2002",
-          "sub": "Nobel de Economía · con Amos Tversky, 1979",
-          "tone": "accent",
-          "cue": "Kahneman"
-        },
-        {
-          "label": "Richard Thaler",
-          "value": "2017",
-          "sub": "Nobel de Economía · cómo decidimos de verdad",
-          "tone": "up",
-          "highlight": true,
-          "cue": "Thaler"
-        }
-      ],
-      "say": "Y no es una teoría de nicho: le dieron el Nobel de Economía a Kahneman en 2002, y a Richard Thaler en 2017 por lo mismo, estudiar cómo decidimos de verdad."
+      "say": "Él es Daniel Kahneman. En 1979, con su amigo Amos Tversky, empezó a estudiar cómo decidimos de verdad, no cómo deberíamos decidir."
     },
     {
       "type": "bignum",
-      "kicker": "Tversky y Kahneman (1992) · Journal of Risk and Uncertainty",
-      "label": "Perder duele más de lo que gusta ganar lo mismo",
+      "kicker": "Tversky y Kahneman (1992)",
+      "label": "Truco 1: perder duele más de lo que gusta ganar",
       "value": 2.25,
       "suffix": " veces",
       "decimals": 2,
       "tone": "down",
-      "sub": "Se llama aversión a la pérdida, y es el sesgo más estudiado de todos.",
+      "sub": "Perder mil pesos se siente así de fuerte comparado con ganar esos mismos mil.",
       "cue_value": "veces",
-      "cue_sub": "aversión",
       "host": {
         "act": "piensa",
         "mood": "down",
         "pos": "bl",
         "size": 300
       },
-      "say": "El primero es la aversión a la pérdida: perder mil pesos duele unas 2.25 veces más de lo que gusta ganar esos mismos mil pesos."
+      "say": "Truco número uno. Perder mil pesos duele 2.25 veces más de lo que gusta ganar esos mismos mil pesos. Y eso está medido, no es una forma de hablar."
+    },
+    {
+      "type": "statement",
+      "text": "Por eso aguantas lo que va perdiendo: venderlo sería aceptar que perdiste.",
+      "emphasis": "aceptar",
+      "sub": "Mientras no vendes, se siente como que todavía no pasa nada",
+      "cue_sub": "duele",
+      "say": "Y por eso aguantas lo que va perdiendo. Venderlo sería aceptar que perdiste, y eso duele. Mientras no vendes, se siente como que todavía no pasa nada."
     },
     {
       "type": "compare",
-      "kicker": "Odean (1998) · 10,000 cuentas · 1987–1993",
-      "title": "De cada 100 acciones que tenían, ¿cuántas vendieron?",
-      "items": [
-        {
-          "label": "Las que iban ganando",
-          "value": "14.8",
-          "sub": "de cada 100 ganadoras, vendidas",
-          "tone": "up",
-          "highlight": true,
-          "cue": "ganando"
-        },
-        {
-          "label": "Las que iban perdiendo",
-          "value": "9.8",
-          "sub": "de cada 100 perdedoras, vendidas",
-          "tone": "down",
-          "cue": "perdiendo"
-        }
-      ],
-      "say": "El segundo es el efecto disposición, y sale del mismo Odean en 1998. De cada 100 acciones que iban ganando, la gente vendió 14.8. De las que iban perdiendo, nada más 9.8. Vendes la que va bien y te quedas con la que va mal."
-    },
-    {
-      "type": "bignum",
-      "kicker": "Odean (1998), Tabla VI · año siguiente a la venta",
-      "label": "Lo que rindieron de más las ganadoras que vendieron",
-      "value": 3.4,
-      "prefix": "+",
-      "suffix": " puntos",
-      "decimals": 1,
-      "tone": "up",
-      "sub": "frente a las perdedoras que se quedaron en el portafolio",
-      "cue_value": "puntos",
-      "say": "Y le costó dinero. En el año siguiente, las ganadoras que vendieron rindieron 3.4 puntos más que las perdedoras que se quedaron. O sea, vendieron justo lo que iba a subir."
-    },
-    {
-      "type": "compare",
-      "kicker": "Barber y Odean (2001) · 35,000 hogares · 1991–1997",
-      "title": "Cuánto le costó operar de más, por año",
+      "kicker": "Barber y Odean (2001) · 35,000 familias",
+      "title": "Truco 2: creemos que sabemos más de lo que sabemos",
       "items": [
         {
           "label": "Hombres",
-          "value": "−2.65",
-          "sub": "puntos al año · operaron 45% más",
+          "value": "−2.65%",
+          "sub": "al año · compraron y vendieron 45% más",
           "tone": "down",
           "highlight": true,
           "cue": "hombres"
         },
         {
           "label": "Mujeres",
-          "value": "−1.72",
-          "sub": "puntos al año",
+          "value": "−1.72%",
+          "sub": "al año",
           "tone": "accent",
           "cue": "mujeres"
         }
       ],
-      "say": "El tercero es el exceso de confianza, y lo midieron por género en 35,000 hogares. Los hombres operaron 45% más que las mujeres, y eso les recortó 2.65 puntos al año, contra 1.72 de ellas. Entre solteros la diferencia es todavía mayor."
+      "host": {
+        "act": "senala",
+        "mood": "down",
+        "pos": "bl",
+        "size": 300
+      },
+      "say": "Truco número dos: creemos que sabemos más de lo que sabemos. Lo midieron comparando hombres y mujeres. Ellos compraron y vendieron 45% más, y acabaron perdiendo más por moverse de más."
     },
     {
       "type": "chapter",
       "number": 3,
-      "title": "Lo medido y lo que se discute",
+      "title": "Lo que sí se sabe y lo que todavía se discute",
       "sub": "Aquí hay que ser honestos",
-      "chapter_name": "Lo medido y lo que se discute",
-      "say": "Ahora, aquí tengo que ser honesto contigo, porque hay una parte de todo esto que se está discutiendo ahora mismo entre académicos.",
-      "bg_image": "images/pantallas.jpg"
+      "chapter_name": "Lo que se discute",
+      "bg_image": "images/pantallas.jpg",
+      "say": "Ahora, aquí te tengo que ser honesto, porque hay una parte de todo esto que todavía se está discutiendo."
     },
     {
       "type": "compare",
-      "kicker": "Morningstar, \"Mind the Gap\" 2026 · 10 años al 31 dic 2025",
-      "title": "Lo que ganó el fondo contra lo que ganó quien estaba dentro",
+      "kicker": "Morningstar · diez años, hasta diciembre de 2025",
+      "title": "El mismo fondo, dos resultados distintos",
       "items": [
         {
-          "label": "Los fondos",
+          "label": "Lo que ganó el fondo",
           "value": "9.9%",
-          "sub": "rendimiento anual del fondo",
+          "sub": "al año",
           "tone": "blue",
-          "cue": "fondos"
+          "cue": "fondo"
         },
         {
-          "label": "Sus inversionistas",
+          "label": "Lo que ganó la gente dentro",
           "value": "8.7%",
-          "sub": "lo que ganó la gente dentro de ellos",
+          "sub": "al año · por cuándo entraron y salieron",
           "tone": "down",
           "highlight": true,
           "cue": "gente"
         }
       ],
-      "say": "Morningstar publica un estudio que se llama Mind the Gap. En su edición de 2026, los fondos dieron 9.9% al año y la gente que estaba dentro de esos mismos fondos, 8.7%. La diferencia la explican por cuándo entraban y salían."
+      "say": "Un fondo es una canasta donde mucha gente junta su dinero. Pues bien: en diez años esas canastas ganaron 9.9% al año, y la gente que estaba dentro, 8.7%. Menos, con el mismo fondo."
     },
     {
       "type": "statement",
       "theme": "sand",
-      "text": "Pero el CFA Institute dice que esa brecha no mide mal comportamiento.",
+      "text": "Pero otros investigadores revisaron esos mismos datos y no están de acuerdo.",
       "emphasis": "no",
-      "sub": "Financial Analysts Journal, 2026: con la misma muestra, el mal timing cuesta 0.10% al año",
-      "cue_sub": "0.10%",
-      "say": "Pero este año el Financial Analysts Journal, del CFA Institute, publicó un trabajo que dice que con la misma muestra el mal timing cuesta apenas 0.10% al año. O sea: que la brecha existe, está medido. Que la cause el comportamiento, no."
+      "sub": "Dicen que la diferencia existe, pero que la culpa no es del comportamiento de la gente",
+      "cue_sub": "acuerdo",
+      "say": "Pero otros investigadores revisaron esos mismos datos y no están de acuerdo. Dicen que la diferencia sí existe, pero que la culpa no es de cómo se porta la gente. Eso todavía no está cerrado."
     },
     {
       "type": "statement",
+      "bg_image": "images/pantallas.jpg",
       "text": "Este video casi lo abro con un dato que resultó ser falso.",
       "emphasis": "falso",
-      "sub": "«Un fondo de Fidelity ganó casi 30% al año y sus inversionistas perdieron dinero»",
-      "cue_sub": "Fidelity",
+      "sub": "«Un fondo ganaba casi 30% al año y sus clientes perdían dinero»",
+      "cue_sub": "fondo",
       "host": {
         "act": "cafe",
         "mood": "neutral",
         "pos": "br",
         "size": 300
       },
-      "say": "Y te voy a contar algo. Este video casi lo abro con otra historia, una que se repite en todas partes: un fondo de Fidelity que ganaba casi 30% al año mientras sus inversionistas perdían dinero. La fui a buscar y no tiene fuente.",
-      "bg_image": "images/pantallas.jpg"
+      "say": "Y te voy a contar algo. Este video casi lo abro con otra historia: un fondo que ganaba casi 30% al año mientras sus clientes perdían dinero. La fui a buscar y nadie dice de dónde salió."
     },
     {
       "type": "statement",
       "theme": "sand",
-      "text": "Si un número no tiene fuente, no lo uses. Aunque te convenga.",
-      "emphasis": "fuente",
+      "text": "Si un número no dice de dónde salió, no lo uses. Aunque te convenga.",
+      "emphasis": "dónde",
       "sub": "Por eso ese dato no está en este video",
-      "say": "Nadie la respalda: ni Fidelity ni ningún estudio publicado. Así que no la usé, aunque era el mejor gancho que tenía. Si un número no tiene fuente, no lo uses, aunque te convenga. Eso también es parte de esto."
+      "say": "Nadie la respalda. Así que no la usé, aunque era lo más llamativo que tenía. Si un número no dice de dónde salió, no lo uses, aunque te convenga."
     },
     {
       "type": "personal",
       "kicker": "Una pregunta honesta",
       "title": "¿Cuántas veces has vendido algo porque ya subió?",
-      "sub": "Si te suena, es el efecto disposición",
-      "say": "Y ahora una pregunta honesta: ¿cuántas veces has vendido algo nada más porque ya había subido bastante? Déjamelo en los comentarios."
+      "sub": "Si te suena, es justo el primer error del video",
+      "say": "Y ahora piénsalo tú: ¿cuántas veces has vendido algo nada más porque ya había subido bastante? Déjamelo en los comentarios."
     },
     {
       "type": "chapter",
       "number": 4,
-      "title": "Reglas antes que emociones",
-      "sub": "Tu primer escudo",
-      "chapter_name": "Reglas antes que emociones",
-      "say": "Y entonces, ¿qué se hace con esto? Porque saber que los sesgos existen no los apaga: ahí siguen cuando el precio se mueve."
+      "title": "Qué se puede hacer",
+      "sub": "Reglas antes que emociones",
+      "chapter_name": "Qué se puede hacer",
+      "say": "¿Y entonces qué se hace? Porque saber que el cerebro te juega estos trucos no los apaga: ahí siguen cuando el precio se mueve."
     },
     {
       "type": "list",
@@ -314,28 +333,28 @@
       "title": "Cuatro reglas",
       "items": [
         {
-          "text": "Decide por escrito antes de entrar",
-          "sub": "Por qué compras y qué te haría vender",
+          "text": "Escribe por qué compras, antes de comprar",
+          "sub": "Y qué tendría que pasar para que vendas",
           "tone": "blue",
-          "cue": "escrito"
+          "cue": "Escribe"
         },
         {
-          "text": "Revisa en una fecha fija",
+          "text": "Revisa en un día fijo",
           "sub": "No cada vez que se mueve el precio",
           "tone": "accent",
-          "cue": "fecha"
+          "cue": "fijo"
         },
         {
-          "text": "Mide el portafolio completo",
+          "text": "Mira todo tu dinero junto",
           "sub": "No acción por acción: así es como duele de más",
           "tone": "up",
-          "cue": "completo"
+          "cue": "junto"
         },
         {
-          "text": "Lo que puedas automatizar, automatízalo",
-          "sub": "Lo que no decides cada mes no lo decide tu ánimo",
+          "text": "Lo que puedas poner en automático, ponlo",
+          "sub": "Lo que no decides cada mes, no lo decide tu ánimo",
           "tone": "up",
-          "cue": "automatizar"
+          "cue": "automático"
         }
       ],
       "host": {
@@ -344,15 +363,15 @@
         "pos": "br",
         "size": 300
       },
-      "say": "Cuatro reglas, y son aburridas a propósito. Decide por escrito antes de entrar. Revisa en una fecha fija. Mide el portafolio completo, no acción por acción. Y lo que puedas automatizar, automatízalo."
+      "say": "Cuatro reglas, y son aburridas a propósito. Escribe por qué compras antes de comprar. Revisa en un día fijo. Mira todo tu dinero junto, no acción por acción. Y lo que puedas poner en automático, ponlo."
     },
     {
       "type": "statement",
-      "text": "Ninguna te pide ser más listo ni adivinar el mercado.",
+      "text": "Ninguna te pide ser más listo ni adivinar nada.",
       "emphasis": "ninguna",
-      "sub": "Todas te quitan la decisión de encima justo cuando estás nervioso",
-      "cue_sub": "nervioso",
-      "say": "Fíjate en qué tienen en común las cuatro: ninguna te pide ser más listo ni adivinar el mercado. Todas te quitan la decisión de encima justo cuando estás nervioso, que es cuando decides peor."
+      "sub": "Las cuatro te quitan la decisión de encima justo cuando estás nervioso",
+      "cue_sub": "común",
+      "say": "Fíjate qué tienen en común las cuatro: ninguna te pide ser más listo ni adivinar nada. Las cuatro te quitan la decisión de encima justo cuando estás nervioso, que es cuando peor decides."
     },
     {
       "type": "list",
@@ -360,31 +379,32 @@
       "title": "Llévate esto",
       "items": [
         {
-          "text": "Operar de más costó 6.5 puntos al año",
-          "sub": "Barber y Odean, 66,465 hogares, 1991–1996",
+          "text": "Soltamos lo que sube y aguantamos lo que baja",
+          "sub": "Vendieron 14.8 de cada 100 ganadoras y 9.8 de cada 100 perdedoras",
           "tone": "down",
-          "cue": "operar"
+          "cue": "Soltamos"
         },
         {
-          "text": "Perder duele 2.25 veces más que ganar",
-          "sub": "Y por eso aguantas la que va perdiendo",
+          "text": "Perder duele más del doble que ganar",
+          "sub": "2.25 veces, medido",
           "tone": "accent",
           "cue": "duele"
         },
         {
-          "text": "Las reglas le ganan a la fuerza de voluntad",
-          "sub": "Escritas antes, no decididas en el momento",
-          "tone": "up",
-          "cue": "reglas"
+          "text": "Moverse de más salió caro",
+          "sub": "Casi triplicar tu dinero contra no llegar ni a duplicarlo",
+          "tone": "down",
+          "cue": "caro"
         }
       ],
-      "say": "Resumiendo: operar de más les costó 6.5 puntos al año a los que más operaban. Perder duele como 2.25 veces más que ganar lo mismo, y por eso aguantas la que va perdiendo. Y las reglas escritas antes le ganan a la fuerza de voluntad."
+      "say": "Para llevar. Soltamos lo que sube y aguantamos lo que baja. Perder duele más del doble que ganar. Y moverse de más salió caro: casi triplicar tu dinero, contra no llegar ni a duplicarlo."
     },
     {
       "type": "outro",
-      "question_a": "¿Cuál de los tres sesgos",
+      "bg_image": "images/nyse_piso.jpg",
+      "question_a": "¿Cuál de los dos trucos",
       "question_b": "te ha costado más dinero?",
-      "cue_a": "sesgos",
+      "cue_a": "trucos",
       "cue_b": "costado",
       "sources": "Barber y Odean (2000, 2001) · Odean (1998) · Tversky y Kahneman (1992) · Morningstar, Mind the Gap 2026 · Financial Analysts Journal, CFA Institute (2026)",
       "host": {
@@ -393,8 +413,7 @@
         "pos": "br",
         "size": 300
       },
-      "say": "Ahora dime tú: ¿cuál de los tres sesgos te ha costado más dinero? Déjalo en los comentarios. La próxima semana: cómo empezar a invertir desde cero en México, con poco dinero. Contenido educativo, no asesoría financiera.",
-      "bg_image": "images/nyse_piso.jpg"
+      "say": "Ahora dime tú: ¿cuál de los dos trucos del cerebro te ha costado más dinero? Déjalo en los comentarios. El próximo domingo: cómo empezar a invertir desde cero en México, con poco dinero. Contenido educativo, no asesoría financiera."
     }
   ]
 }

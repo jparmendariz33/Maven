@@ -101,6 +101,43 @@ Un video que nadie ve no sirve por bien hecho que esté, así que el gancho se t
   cifra con escala ("perdió 104 mil millones y casi no perdió dinero"), un resultado prometido ("gana Alphabet, 25 de 30").
 - Sigue vigente que el gancho **identifica a la empresa** (logo o foto): enganchar y decir de quién hablas no compiten.
 
+## Los largos SIEMPRE abren con una PREGUNTA que le pasa a cualquiera (JP, 22 nov 2026)
+JP vio el largo de finanzas conductuales y tumbó el gancho: *"no me gustó absolutamente nada"*. El que eligió, de
+tres opciones, fue el que abre preguntando algo que el espectador ha vivido:
+> *"¿Alguna vez vendiste algo que ya había subido… y te quedaste con lo que iba bajando? Si te pasó, no eres raro.
+> Casi todos lo hacemos, y alguien hizo una investigación para entender por qué."*
+
+**La regla, de aquí en adelante y para TODO largo:** el video empieza con una **pregunta directa al espectador sobre
+algo que él ya hizo o ya sintió**, no con una cifra ni con una definición. JP lo dijo así: *"ese tipo de hooks con
+preguntas son las que más me gustan, me gustaría que los videos largos siempre empezaran así"*.
+- La pregunta tiene que entenderse **sin saber nada de finanzas** y sin importar la edad ni la profesión de quien ve.
+- Después de la pregunta va el reconocimiento (*"no eres raro, casi todos lo hacemos"*) y luego la promesa
+  (*"alguien hizo una investigación para entender por qué"*). Nunca "alguien lo contó cuenta por cuenta" ni frases
+  que suenen a dato técnico: JP corrigió justo esa.
+- **El dato que responde la pregunta va antes del segundo 30.** En la versión tumbada el primer dato caía en 1:13 y
+  la audiencia del canal se va al minuto: los primeros 73 segundos eran preámbulo.
+
+## Nunca "Soy JP Armendáriz" en un largo (JP, 22 nov 2026)
+*"Quita siempre de ahora en adelante lo de 'soy JP Armendáriz'. Eso está de más, quita tiempo y la gente se puede ir
+en ese momento."* La escena `personal` de presentación **se elimina de todos los largos**. La firma del canal ya está
+en el logo de la esquina, en el cierre y en la descripción; no hace falta gastarle 13 segundos del minuto que decide
+todo. **Sí se queda** la escena `personal` de a mitad del video con la pregunta a la audiencia: esa invita a comentar
+y JP la quiere.
+
+## Regla de oro: explicar como si quien ve no supiera NADA (JP, 22 nov 2026)
+*"Este tipo de videos son para gente que no tiene nada de conocimiento. Todos los conceptos explícalos como si fueran
+para un niño de 5 años, casi casi."* Ya existía "que se entienda sin saber nada" (19 nov) para las historias 3D; JP la
+subió a **regla de oro del canal y la extendió a la narración y al guion de los largos**.
+- **Ninguna palabra de gremio sin traducir.** "Efecto disposición" → "soltamos lo que va bien y nos aferramos a lo que
+  va mal". "Aversión a la pérdida" → "perder duele más de lo que gusta ganar". "Rotar el portafolio" → "mover tu
+  dinero". "Operar" → "comprar y vender". "Fondo de inversión" → "una canasta donde mucha gente junta su dinero".
+  "Mal timing" → "entrar y salir en mal momento". Si el término hace falta, se dice **después** de la explicación, no antes.
+- **Nada de siglas sueltas** (ROE, PEG, CRSP, PGR). Si no se puede explicar en media frase, no entra.
+- **Los números se traducen a algo que se sienta.** "6.5 puntos al año" no significa nada; "en seis años, casi
+  triplicar tu dinero contra no llegar ni a duplicarlo" sí. Un porcentaje suelto se convierte a dinero, a veces o a
+  "de cada 100".
+- **La prueba:** si una frase le pide al espectador que ya sepa algo, está mal. Se reescribe.
+
 ## El gancho se investiga antes de escribirlo (JP, 20 nov 2026)
 JP tumbó mi gancho del short de Anthropic —"perdió 104 mil millones y casi no perdió dinero"— por dos razones: repite
 "perdió" dos veces y, sobre todo, **no estaba construido sobre la noticia**. Yo lo saqué de los datos del prospecto
@@ -307,6 +344,19 @@ un cuadro 74% más grande del real, te creías con aire que no tenías y el obje
 varias de las cinco vueltas de encuadre de Kahneman. Comprobado contra `miniatura.jpg`: la fórmula predice que el
 personaje ocupa el 33% del alto y medido ocupa el 34%; con tan(25°) habría predicho 19%.)
 Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
+
+## El personaje 3D interactúa, no decora (JP, 22 nov 2026)
+*"Hay que intentar hacer un poquito más dinámico el video, con personajes 3D. No sé, como que el personaje esté
+viendo la pantalla, o que interactúe con las letras de la pantalla, cosas así."* Hasta ahora el recorte de JP estaba
+parado en la esquina mirando a cámara mientras el dato aparecía solo al lado.
+**La regla: en cada escena donde salga, JP tiene que estar haciendo algo CON lo que hay en pantalla.**
+- **Señala el dato** (`act: "senala"`), colocado del lado opuesto a la cifra para que el brazo apunte hacia ella.
+  El lado sale de `pos`: con `bl` mira a la derecha, con `br` mira a la izquierda.
+- **Reacciona al número**: `mood: "down"` cuando el dato es malo, `"up"` cuando es bueno, `"piensa"` cuando la escena
+  plantea una duda.
+- **Sale en más escenas que antes**: de 5 pasa a 6–8 en un largo, siempre que no sean dos seguidas.
+- Lo que NO se hace: ponerlo de adorno en una esquina sin relación con la escena, ni dejarlo con el mismo acto y el
+  mismo ánimo dos escenas distintas.
 
 ## Las gráficas llevan personaje, siempre (JP, 20 nov 2026 — regla permanente)
 JP, viendo la gráfica de precios del short de Anthropic: *"no me gusta. La gráfica que más me ha gustado que hemos

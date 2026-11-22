@@ -141,8 +141,23 @@ function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
   C.fillStyle = th === 'blue' ? B.azul : th === 'white' ? B.gris : B.arena; C.fillRect(0, 0, W, H);
   const bi = img(s.bg_image);
-  if (bi) { const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
+  // "bg_full": true (22 nov 2026) — la foto A SANGRE, a todo color, como la escena `photo` layout "full" que JP
+  // aprobó. El `bg_image` normal le encima un velo del color del tema al 80-88% y la foto casi no se ve: sirve de
+  // textura, no de imagen. Con bg_full solo se oscurece lo necesario para que el texto contraste.
+  if (bi && s.bg_full) {
+    const [fx, fy] = focus(s);
+    C.save(); C.filter = 'saturate(.9) contrast(1.06)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
+    C.fillStyle = 'rgba(12,16,28,.46)'; C.fillRect(0, 0, W, H);
+    let g = C.createLinearGradient(0, 0, 0, 260); g.addColorStop(0, 'rgba(8,10,18,.62)'); g.addColorStop(1, 'rgba(8,10,18,0)');
+    C.fillStyle = g; C.fillRect(0, 0, W, 260);
+    g = C.createLinearGradient(0, 430, 0, H); g.addColorStop(0, 'rgba(8,10,18,0)'); g.addColorStop(.55, 'rgba(8,10,18,.55)'); g.addColorStop(1, 'rgba(8,10,18,.82)');
+    C.fillStyle = g; C.fillRect(0, 430, W, H - 430);
+    // el crédito va arriba de la píldora del subtítulo y libra la franja del recorte de JP
+    const chp = s.host ? ((typeof s.host === 'object' ? s.host.pos : 'br') || 'br') : null;
+    if (s.bg_image) credit(s, s.bg_image, RX - (chp && /r$/.test(chp) ? 230 : 0), 898, B.arena, 'right', .5 * seg(t, s.t0 + .6, s.t0 + 1.2));
+  } else if (bi) { const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
     C.fillStyle = th === 'blue' ? 'rgba(65,115,209,.80)' : th === 'white' ? 'rgba(245,245,245,.88)' : 'rgba(235,230,186,.87)'; C.fillRect(0, 0, W, H); }
+  if (bi && s.bg_full) return;                      // sobre foto a sangre, ni las ondas ni el círculo de marca
   C.save(); C.strokeStyle = th === 'blue' ? 'rgba(235,230,186,.26)' : 'rgba(65,115,209,.2)'; C.lineWidth = 2;
   for (let k = 0; k < 2; k++) { C.beginPath();
     for (let x = 0; x <= W; x += 14) { const y = 884 + k * 18 + Math.sin(x / 170 + t * .9 + k) * 8; x ? C.lineTo(x, y) : C.moveTo(x, y); }

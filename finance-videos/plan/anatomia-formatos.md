@@ -106,6 +106,14 @@ El gancho **no es solo el texto**. Son tres cosas que tienen que llegar juntas d
 
 ## 🎥 LARGO (16:9 · 6–7 min · domingo 10:00)
 
+### El gancho es una PREGUNTA (JP, 22 nov 2026)
+- **Siempre se abre preguntando algo que el espectador ya vivió**, en palabras que entiende cualquiera.
+  Luego: "no eres raro, casi todos lo hacemos" + "alguien hizo una investigación para entender por qué".
+- **El dato que responde la pregunta va antes del segundo 30.**
+- **Nunca "Soy JP Armendáriz".** La presentación se eliminó: quita tiempo del minuto que decide todo.
+- **Regla de oro:** todo se explica como para alguien sin ningún contexto. Sin jerga, sin siglas, los porcentajes
+  traducidos a algo que se sienta.
+
 ### Los primeros 15 segundos, con la promesa en los primeros 5
 📊 *La búsqueda es el mejor tráfico del canal: 68.4% de retención y 61 s de duración promedio. Los largos son la
 apuesta por búsqueda.*

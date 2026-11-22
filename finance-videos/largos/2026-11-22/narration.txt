@@ -1,49 +1,51 @@
-Mismo mercado, mismas acciones, 6.5 puntos menos al año. Eso es lo que ganaron de menos los que más compraban y vendían, entre 1991 y 1996. Hoy vas a ver qué hace tu cerebro para que eso pase.
+¿Alguna vez vendiste algo que ya había subido… y te quedaste con lo que iba bajando? Si te pasó, no eres raro. Casi todos lo hacemos, y alguien hizo una investigación para entender por qué.
 
-A eso se le llama finanzas conductuales. En los próximos minutos vas a ver el experimento que midió el daño, los tres sesgos que lo causan —cada uno con su estudio— y cuatro reglas para frenarlos.
+Un profesor llamado Terrance Odean revisó 10,000 cuentas de gente normal. De cada 100 acciones que iban ganando, vendieron casi 15. De las que iban perdiendo, menos de 10.
 
-Soy JP Armendáriz y esto es Costa Studio Finance. Aquí comparto lo que voy aprendiendo sobre inversiones, siempre con los números y las fuentes a la vista.
+O sea: soltamos lo que va bien y nos aferramos a lo que va mal. Y aquí viene lo caro.
 
-Empecemos por el experimento, porque el dato con el que abrí no salió de una encuesta ni de una estimación.
+Al año siguiente, lo que habían vendido subió 3.4% más que lo que se quedaron guardando. Soltaron justo lo que iba a seguir subiendo.
 
-Brad Barber y Terrance Odean se metieron a las cuentas reales de una casa de bolsa y siguieron a 66,465 hogares durante seis años, de 1991 a 1996.
+Y ese es solo uno de los errores que cometemos. Hay más, y juntos salen caros. Te los voy a enseñar uno por uno, con los estudios que los midieron.
 
-Esto fue lo que encontraron. El mercado dio 17.9% al año. El hogar promedio se quedó en 16.4%. Y el 20% que más compraba y vendía, en 11.4%.
+Empecemos por el estudio más grande de todos, para que veas de qué tamaño es el problema.
 
-Y ojo con esto, porque aquí está lo importante: todos tenían las mismas acciones disponibles, en el mismo mercado, en los mismos años. Lo único que los separaba era cuánto se movían. El hogar promedio rotaba 75% de su portafolio cada año.
+Dos profesores siguieron las cuentas de 66,465 familias durante seis años, de 1991 a 1996. Vieron todo lo que compraron y todo lo que vendieron.
 
-Entonces la pregunta es por qué nos movemos tanto. Y aquí entran tres sesgos. Los tres están medidos en estudios publicados, no son teoría de libro de superación personal.
+Esto encontraron. La bolsa, en general, subió 17.9% al año. La familia promedio ganó 16.4%. Y las que más compraban y vendían, 11.4%.
 
-Él es Daniel Kahneman. Con Amos Tversky publicó en 1979 el trabajo que empezó todo esto, y en 2002 le dieron el Nobel de Economía.
+Ponlo en dinero. A ese ritmo, en seis años, quien casi no movió lo suyo lo triplica. Y quien más compraba y vendía no llega ni a duplicarlo.
 
-Y no es una teoría de nicho: le dieron el Nobel de Economía a Kahneman en 2002, y a Richard Thaler en 2017 por lo mismo, estudiar cómo decidimos de verdad.
+Y fíjate: todos podían comprar las mismas acciones, en los mismos años. Lo único distinto era cuánto se movían. Entre más movían su dinero, menos ganaban.
 
-El primero es la aversión a la pérdida: perder mil pesos duele unas 2.25 veces más de lo que gusta ganar esos mismos mil pesos.
+Entonces, ¿por qué lo hacemos? Porque el cerebro nos juega un par de trucos. Y los dos están medidos.
 
-El segundo es el efecto disposición, y sale del mismo Odean en 1998. De cada 100 acciones que iban ganando, la gente vendió 14.8. De las que iban perdiendo, nada más 9.8. Vendes la que va bien y te quedas con la que va mal.
+Él es Daniel Kahneman. En 1979, con su amigo Amos Tversky, empezó a estudiar cómo decidimos de verdad, no cómo deberíamos decidir.
 
-Y le costó dinero. En el año siguiente, las ganadoras que vendieron rindieron 3.4 puntos más que las perdedoras que se quedaron. O sea, vendieron justo lo que iba a subir.
+Truco número uno: perder duele más de lo que gusta ganar. Lo midieron. Perder mil pesos se siente 2.25 veces más fuerte que ganar esos mismos mil pesos.
 
-El tercero es el exceso de confianza, y lo midieron por género en 35,000 hogares. Los hombres operaron 45% más que las mujeres, y eso les recortó 2.65 puntos al año, contra 1.72 de ellas. Entre solteros la diferencia es todavía mayor.
+Y por eso aguantas lo que va perdiendo. Venderlo sería aceptar que perdiste, y eso duele. Mientras no vendes, se siente como que todavía no pasa nada.
 
-Ahora, aquí tengo que ser honesto contigo, porque hay una parte de todo esto que se está discutiendo ahora mismo entre académicos.
+Truco número dos: creemos que sabemos más de lo que sabemos. Lo midieron comparando hombres y mujeres. Ellos compraron y vendieron 45% más, y acabaron perdiendo más por moverse de más.
 
-Morningstar publica un estudio que se llama Mind the Gap. En su edición de 2026, los fondos dieron 9.9% al año y la gente que estaba dentro de esos mismos fondos, 8.7%. La diferencia la explican por cuándo entraban y salían.
+Ahora, aquí te tengo que ser honesto, porque hay una parte de todo esto que todavía se está discutiendo.
 
-Pero este año el Financial Analysts Journal, del CFA Institute, publicó un trabajo que dice que con la misma muestra el mal timing cuesta apenas 0.10% al año. O sea: que la brecha existe, está medido. Que la cause el comportamiento, no.
+Un fondo es una canasta donde mucha gente junta su dinero. Pues bien: en diez años esas canastas ganaron 9.9% al año, y la gente que estaba dentro, 8.7%. Menos, con el mismo fondo.
 
-Y te voy a contar algo. Este video casi lo abro con otra historia, una que se repite en todas partes: un fondo de Fidelity que ganaba casi 30% al año mientras sus inversionistas perdían dinero. La fui a buscar y no tiene fuente.
+Pero otros investigadores revisaron esos mismos datos y no están de acuerdo. Dicen que la diferencia sí existe, pero que la culpa no es de cómo se porta la gente. Eso todavía no está cerrado.
 
-Nadie la respalda: ni Fidelity ni ningún estudio publicado. Así que no la usé, aunque era el mejor gancho que tenía. Si un número no tiene fuente, no lo uses, aunque te convenga. Eso también es parte de esto.
+Y te voy a contar algo. Este video casi lo abro con otra historia: un fondo que ganaba casi 30% al año mientras sus clientes perdían dinero. La fui a buscar y nadie dice de dónde salió.
 
-Y ahora una pregunta honesta: ¿cuántas veces has vendido algo nada más porque ya había subido bastante? Déjamelo en los comentarios.
+Nadie la respalda. Así que no la usé, aunque era lo más llamativo que tenía. Si un número no dice de dónde salió, no lo uses, aunque te convenga.
 
-Y entonces, ¿qué se hace con esto? Porque saber que los sesgos existen no los apaga: ahí siguen cuando el precio se mueve.
+Y ahora piénsalo tú: ¿cuántas veces has vendido algo nada más porque ya había subido bastante? Déjamelo en los comentarios.
 
-Cuatro reglas, y son aburridas a propósito. Decide por escrito antes de entrar. Revisa en una fecha fija. Mide el portafolio completo, no acción por acción. Y lo que puedas automatizar, automatízalo.
+¿Y entonces qué se hace? Porque saber que el cerebro te juega estos trucos no los apaga: ahí siguen cuando el precio se mueve.
 
-Fíjate en qué tienen en común las cuatro: ninguna te pide ser más listo ni adivinar el mercado. Todas te quitan la decisión de encima justo cuando estás nervioso, que es cuando decides peor.
+Cuatro reglas, y son aburridas a propósito. Escribe por qué compras antes de comprar. Revisa en un día fijo. Mira todo tu dinero junto, no acción por acción. Y lo que puedas poner en automático, ponlo.
 
-Resumiendo: operar de más les costó 6.5 puntos al año a los que más operaban. Perder duele como 2.25 veces más que ganar lo mismo, y por eso aguantas la que va perdiendo. Y las reglas escritas antes le ganan a la fuerza de voluntad.
+Fíjate qué tienen en común las cuatro: ninguna te pide ser más listo ni adivinar nada. Las cuatro te quitan la decisión de encima justo cuando estás nervioso, que es cuando peor decides.
 
-Ahora dime tú: ¿cuál de los tres sesgos te ha costado más dinero? Déjalo en los comentarios. La próxima semana: cómo empezar a invertir desde cero en México, con poco dinero. Contenido educativo, no asesoría financiera.
+Para llevar. Soltamos lo que sube y aguantamos lo que baja. Perder duele más del doble que ganar. Y moverse de más salió caro: casi triplicar tu dinero, contra no llegar ni a duplicarlo.
+
+Ahora dime tú: ¿cuál de los dos trucos del cerebro te ha costado más dinero? Déjalo en los comentarios. El próximo domingo: cómo empezar a invertir desde cero en México, con poco dinero. Contenido educativo, no asesoría financiera.

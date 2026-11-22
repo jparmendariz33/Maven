@@ -7,6 +7,13 @@ Costa Studio Finance, by JP Armendáriz. Nicho: **inversiones y qué hacer con t
 Un tema solo se cambia por otro **del mismo pilar** (noticia enorme o lo que digan los check-ups).
 Las búsquedas objetivo se validaron con el autocompletado de YouTube (gratis, 5 nov 2026).
 
+> **⚠️ Los ganchos que trae este calendario están desactualizados (22 nov 2026).** Se escribieron como frase de dato
+> ("Un fondo de Fidelity ganó casi 30% al año…"). Desde el 22 de noviembre **todo largo abre con una PREGUNTA
+> directa sobre algo que el espectador ya vivió**, entendible sin saber nada de finanzas, y el dato que la responde
+> entra antes del segundo 30. El gancho de cada semana se reescribe con esa fórmula al hacer el borrador; la columna
+> "Gancho" de abajo sirve solo como pista del ángulo. Regla completa en `CLAUDE.md`.
+> Tampoco va ya la presentación "Soy JP Armendáriz", y todo se explica como para alguien sin ningún contexto.
+
 ## Resumen
 | # | Domingo | Pilar | Video |
 |---|---|---|---|

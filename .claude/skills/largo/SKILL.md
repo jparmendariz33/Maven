@@ -68,8 +68,13 @@ una cifra.
 ```
 Ejemplo completo y probado: `largos/2026-11-15/storyboard.json` (úsalo como plantilla de ritmo y estilo).
 
-**Estructura (PLAN §4):** gancho (≤15 s) → la promesa en una línea → **presentación de JP** (escena `personal`, una frase) → 3–4 capítulos (cada uno abre con
-escena `chapter`) → error común / mito → resumen en 3 puntos (`list`) → `outro` con pregunta y el tema de la próxima semana.
+**Estructura (actualizada por JP el 22 nov 2026):** **gancho con PREGUNTA** (≤15 s) → **el dato que la responde, antes del segundo 30** →
+3–4 capítulos (cada uno abre con escena `chapter`) → error común / mito → resumen en 3 puntos (`list`) → `outro` con pregunta y el tema de la próxima semana.
+- **El gancho es SIEMPRE una pregunta directa sobre algo que el espectador ya vivió**, entendible sin saber nada de
+  finanzas; luego el reconocimiento ("no eres raro, casi todos lo hacemos") y luego la promesa ("alguien hizo una
+  investigación para entender por qué"). Detalle en `CLAUDE.md`, "Los largos SIEMPRE abren con una PREGUNTA".
+- **NO va la presentación "Soy JP Armendáriz"** (JP, 22 nov 2026): quita tiempo del minuto que decide todo. Sí va la
+  escena `personal` de a mitad del video con la pregunta a la audiencia.
 
 ### El primer minuto decide todo (dato real del canal, 13 nov 2026)
 La audiencia se va **al minuto**, dure el video 3 o 9 minutos: la retención del largo de "¿Qué es una acción?" (8:38) fue de 11.6% y el
@@ -81,6 +86,11 @@ tiempo visto, 1:00. Por eso:
 - Nada de "antes de empezar", "suscríbete" ni contexto largo en la apertura: el CTA va al final.
 - Al revisar el guion, léete solo el primer minuto: si en ese minuto no hay ni un dato sorprendente ni un ejemplo, reescríbelo.
 
+**Regla de oro (JP, 22 nov 2026): se explica como si quien ve no supiera NADA**, "como para un niño de 5 años". Ninguna
+palabra de gremio sin traducir ("operar" → "comprar y vender"; "portafolio" → "tu dinero"; "fondo de inversión" → "una
+canasta donde mucha gente junta su dinero"), ninguna sigla suelta (ROE, PEG, CRSP), y cada porcentaje convertido a algo
+que se sienta. Si una frase le pide al espectador que ya sepa algo, se reescribe. Detalle en `CLAUDE.md`.
+
 **Reglas de escritura** (voz de JP): español de México, tuteo, frases cortas, tono sereno, números con dígitos ("26%", "10,000 dólares"),
 decimales solo en pantalla. Una idea por pantalla: cada `say` ≤ 45 palabras (≈ 6–18 s). Total **720–850 palabras** (6–7 min al ritmo de lectura de JP; cambio del 13 nov 2026, antes 9–11 min: la audiencia se va al minuto, así que el largo se concentra).
 Nunca recomendar comprar/vender; cerrar siempre con "contenido educativo, no asesoría financiera". Los `cue` son palabras del `say`
@@ -89,7 +99,7 @@ de esa misma escena (evita números como cue si puedes).
 **Todo se lee tal cual (regla de JP):** el video se sube como está, con la voz de JP encima. Por eso NO hay pantallas de
 "habla libre", indicaciones ni temporizadores: **cada escena lleva su texto completo en `say`** y lo que se ve en pantalla es parte del
 video para la audiencia. Incluye siempre:
-- Una escena `personal` de presentación al inicio, por ejemplo: "Soy JP Armendáriz y esto es Costa Studio Finance…" (varía la frase).
+- ~~Una escena `personal` de presentación al inicio~~ **ELIMINADA por JP el 22 nov 2026**: nada de "Soy JP Armendáriz" en un largo.
 - Una escena `personal` a mitad del video con una **pregunta a la audiencia** ("Ahora piénsalo tú: …") que invite a comentar.
 - **Nunca inventes datos personales de JP** (edad, experiencias, cuánto invierte, anécdotas). Usa solo lo que sabemos: su nombre, que
   hace Costa Studio Finance (división de finanzas de la agencia Costa Studio) y que comparte lo que aprende sobre inversiones.

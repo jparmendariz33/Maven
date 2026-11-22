@@ -6,23 +6,25 @@ Publica: **domingo 22 nov 2026, 10:00** · 16:9 · ~7 min · Pilar: Psicología 
 
 ## ✅ Para copiar y pegar
 
-**Título** (64 caracteres)
+**Título** (64 caracteres · la búsqueda objetivo es "finanzas conductuales")
 ```
 Finanzas conductuales: por qué tu cerebro te hace perder dinero
 ```
 
 **Descripción**
 ```
-Entre 1991 y 1996 el mercado subió 17.9% al año. Los inversionistas que más compraban y vendían ganaron 11.4%. Las mismas acciones, el mismo mercado, 6.5 puntos menos al año.
+¿Alguna vez vendiste algo que ya había subido… y te quedaste con lo que iba bajando? Casi todos lo hacemos, y hay investigaciones que explican por qué.
 
-En este video: el experimento con 66,465 cuentas reales que midió el daño, los tres sesgos que lo explican —cada uno con su estudio— y cuatro reglas para frenarlos. También te cuento el dato con el que casi abro el video y que resultó no tener fuente.
+Un profesor revisó 10,000 cuentas reales: de cada 100 acciones que iban ganando, la gente vendió casi 15; de las que iban perdiendo, menos de 10. Y soltaron justo lo que iba a seguir subiendo.
+
+En este video, explicado desde cero y sin palabras raras: el experimento con 66,465 familias, los dos trucos que nos juega el cerebro, lo que todavía se discute entre investigadores, y cuatro reglas para no caer. También te cuento el dato con el que casi abro el video y que resultó no tener de dónde salió.
 
 CAPÍTULOS
-0:00 Introducción
-0:47 Las 66,465 cuentas
-2:01 Los tres sesgos
-3:49 Lo medido y lo que se discute
-5:30 Reglas antes que emociones
+0:00 ¿Vendiste lo que subía y te quedaste con lo que bajaba?
+1:02 El experimento más grande
+2:10 Por qué lo hacemos
+3:15 Lo que sí se sabe y lo que todavía se discute
+4:39 Qué se puede hacer
 
 FUENTES
 • Barber, B. y Odean, T. (2000). "Trading Is Hazardous to Your Wealth". The Journal of Finance, 55(2), 773–806. DOI 10.1111/0022-1082.00226
@@ -52,9 +54,11 @@ Costa Studio Finance, by JP Armendáriz, es la división de finanzas de Costa St
 
 **Primer comentario (fíjalo)**
 ```
-De los tres sesgos, el que más caro me parece es el segundo: aguantar la que va perdiendo y vender la que va ganando. En el estudio de Odean las ganadoras que vendieron rindieron 3.4 puntos MÁS al año siguiente que las perdedoras que se quedaron.
+Lo que más me sorprendió al armar este video: de cada 100 acciones que iban GANANDO, la gente vendió casi 15. De las que iban PERDIENDO, menos de 10. Soltamos lo que va bien y nos aferramos a lo que va mal.
 
-¿Cuál de los tres te ha costado más dinero a ti? 👇
+Y lo caro es que al año siguiente lo que vendieron subió 3.4% MÁS que lo que se quedaron guardando.
+
+¿Cuántas veces has vendido algo nada más porque ya había subido? 👇
 
 El jueves sale la historia 3D de este mismo tema, y el próximo domingo: cómo empezar a invertir desde cero en México, con poco dinero.
 ```
@@ -62,8 +66,8 @@ El jueves sale la historia 3D de este mismo tema, y el próximo domingo: cómo e
 ---
 
 ## Títulos alternativos
-1. `Los 3 sesgos que te hacen perder dinero en la bolsa (con estudios)` (65)
-2. `Por qué pierdes dinero invirtiendo aunque el mercado suba` (56)
+1. `¿Vendes lo que sube y aguantas lo que baja? Esto dice la ciencia` (64)
+2. `Los 2 trucos de tu cerebro que te hacen perder dinero invirtiendo` (65)
 
 ## Lista de reproducción
 **Psicología del dinero** (pilar). Si no existe, créala con este video.
@@ -77,6 +81,17 @@ Video sugerido del mismo pilar: **Historia 3D de Kahneman y Tversky** (`videos/2
 ## Declaraciones
 - **Contenido alterado o sintético:** No. Voz de JP, sin voz de IA.
 - **Conflicto de interés:** ninguno. Fidelity, Morningstar y el CFA Institute se mencionan solo como sujetos de estudios públicos; no son clientes de Costa Studio.
+
+## Cambios de la versión 2 (JP, 22 nov 2026)
+JP tumbó el gancho de la primera versión (*"no me gustó absolutamente nada"*). Qué cambió:
+- **Gancho nuevo: una pregunta que le pasa a cualquiera**, sobre la foto del piso de la Bolsa **a sangre completa**
+  (antes iba con un velo al 80% y la foto casi no se veía). Es ahora regla permanente para todos los largos.
+- **Fuera "Soy JP Armendáriz"**: 13 segundos recuperados del minuto que decide todo. Regla permanente.
+- **El dato que responde la pregunta pasó de 1:13 a 0:16.**
+- **Todo el guion reescrito para alguien sin ningún contexto**: sin "efecto disposición", sin "aversión a la
+  pérdida", sin "portafolio", sin "operar", sin siglas. Regla de oro permanente.
+- **JP en 3D pasa de 5 a 8 escenas y en todas señala o reacciona** a lo que está en pantalla.
+- Se corrigieron 7 escenas donde el dato principal aparecía en el último tercio (en una, el número salía 2.7 s de 12.8).
 
 ## Nota editorial (no va en YouTube)
 El gancho que proponía `calendario-largos.md` —el fondo de Fidelity que ganaba casi 30% al año mientras sus
