@@ -61,6 +61,9 @@ def main(vdir):
     MAXD = 90.0                        # tope de los formatos del canal (contexto 60-75, análisis y ranking 75-85, historia 75-90)
                                        # (era 60 con voz, heredado de shorts más cortos: cortaba el final de los videos narrados — 17 nov 2026)
     if LONG: MAXD = 3600.0              # video largo: sin tope
+    # 22 nov 2026: el TORNEO dura 100-120 s (JP lo autorizó el 14 nov: "no pasa nada si dura casi 2 minutos"),
+    # pero el tope seguía en 90 y le cortaba la tabla final y el cierre. El storyboard puede declarar el suyo.
+    if sb.get('max_dur'): MAXD = float(sb['max_dur'])
     duration = round(max(45.0 if not LONG else 5.0, min(MAXD, voice_end + TAIL)), 2)
     if voice_end + TAIL > MAXD: print(f'⚠️  La voz termina en {voice_end:.1f}s: el video se recortará a {MAXD:.0f} s.')
     scenes = []

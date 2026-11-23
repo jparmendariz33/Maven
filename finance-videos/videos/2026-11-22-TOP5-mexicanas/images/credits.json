@@ -1,0 +1,32 @@
+{
+ "images/logo_bimbo.png": {
+  "title": "Logo de Grupo Bimbo",
+  "credit": "Logo: Grupo Bimbo (sitio oficial)",
+  "source_url": "https://www.grupobimbo.com/themes/custom/bimbo/logo.svg",
+  "kind": "logo"
+ },
+ "images/logo_asur.png": {
+  "title": "Logo de ASUR",
+  "credit": "Logo: Grupo Aeroportuario del Sureste (sitio oficial)",
+  "source_url": "https://www.asur.com.mx/TheAsurTheme/css/assets/logo/logo_asur.png",
+  "kind": "logo"
+ },
+ "images/logo_femsa.png": {
+  "title": "Logo de FEMSA",
+  "credit": "Logo: FEMSA · Dominio público · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:FEMSA_Logo.svg",
+  "kind": "logo"
+ },
+ "images/logo_cemex.png": {
+  "title": "Logo de CEMEX",
+  "credit": "Logo: CEMEX · Dominio público · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Cemex_Logo.svg",
+  "kind": "logo"
+ },
+ "images/logo_amx.png": {
+  "title": "Logo de América Móvil",
+  "credit": "Logo: América Móvil · Dominio público · Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Logo_de_Am%C3%A9rica_M%C3%B3vil.svg",
+  "kind": "logo"
+ }
+}

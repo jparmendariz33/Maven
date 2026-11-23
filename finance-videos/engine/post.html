@@ -82,12 +82,14 @@ window.drawSlide = async ({ s, i, n, brand, image, logo, logos, series, sources 
   } else if (s.type === 'pregunta') {
     y = para(s.question, 70, y + 40, { f: F.s, it: true, w: 400, s: s.size || 96, c: ink }, 940, (s.size || 96) * 1.08) + 30;
     (s.options || []).forEach(o => { const w = tw(o, { w: 700, s: 38 }) + 80; C.beginPath(); C.roundRect(70, y, w, 84, 42); C.fillStyle = dark ? B.arena : B.azul; C.fill(); T(o, 110, y + 55, { w: 700, s: 38, c: dark ? B.azul : B.arena }); y += 108; });
-    if (s.cta) T(s.cta, 70, y + 50, { s: 36, c: ink, a: .9 });
+    // 22 nov 2026: el CTA se dibujaba en una sola linea y se salia por la derecha; ahora envuelve.
+    if (s.cta) para(s.cta, 70, y + 50, { s: 36, c: ink, a: .9 }, 940, 46);
   }
   if (lg && s.show_logo) { const z = 150; C.fillStyle = '#F7F5EE'; C.beginPath(); C.roundRect(S - 70 - z, 150, z, z, 28); C.fill(); const k = Math.min(z * .76 / lg.naturalWidth, z * .76 / lg.naturalHeight); C.drawImage(lg, S - 70 - z / 2 - lg.naturalWidth * k / 2, 150 + z / 2 - lg.naturalHeight * k / 2, lg.naturalWidth * k, lg.naturalHeight * k); }
   if (host) { const z = s.host_size || 400, o = typeof s.host === 'object' ? s.host : {}, x = /l$/.test(o.pos || 'br') ? 10 : S - z - 10; C.save(); C.shadowColor = 'rgba(0,0,0,.45)'; C.shadowBlur = 30; C.shadowOffsetY = 8; C.drawImage(host, x, S - z - 70, z, z); C.restore(); }
   const foot = i === n - 1 ? [sources ? 'Datos: ' + sources : '', brand.disclaimer || 'Contenido educativo. No es asesoría financiera.'].filter(Boolean).join('  ·  ') : (s.credit || '');
-  if (foot) T(foot, 70, S - 38, { s: 21, c: ink, a: .7 });
+  // 22 nov 2026: el pie con las fuentes tambien se salia; se achica hasta que quepa.
+  if (foot) { let fs = 21; while (tw(foot, { s: fs }) > S - 140 && fs > 13) fs -= 1; T(foot, 70, S - 38, { s: fs, c: ink, a: .7 }); }
   return cv.toDataURL('image/png');
 };
 </script></body></html>

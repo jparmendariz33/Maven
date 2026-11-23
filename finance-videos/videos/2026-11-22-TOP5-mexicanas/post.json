@@ -1,0 +1,76 @@
+{
+  "title": "RANKEANDO 5 acciones mexicanas: 6 rondas y acabó en empate (domingo 22 nov 2026)",
+  "host": {"outfit": "negra", "accessory": "lentes", "prop": "ninguno"},
+  "sources": "Reportes oficiales del 3T 2026 de cada empresa · ROE, deuda y PEG: datos de mercado al 20 nov 2026",
+  "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+  "slides": [
+    {
+      "type": "portada",
+      "kicker": "Torneo · Costa Studio Finance",
+      "title": "Rankeando 5 acciones mexicanas",
+      "size": 72,
+      "sub": "6 rondas. Y acabó en empate.",
+      "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+      "host": {"act": "piensa", "mood": "neutral"},
+      "host_size": 250
+    },
+    {
+      "type": "rondas",
+      "kicker": "Ronda 1 de 6",
+      "title": "¿Quién vende más que hace un año?",
+      "sub": "Crecimiento de ventas · julio a septiembre de 2026",
+      "suffix": "%",
+      "show_names": true,
+      "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+      "rows": [
+        {"name": "ASUR", "logo_i": 3, "value": 12.6, "points": 5},
+        {"name": "FEMSA", "logo_i": 1, "value": 9.8, "points": 4},
+        {"name": "CEMEX", "logo_i": 2, "value": 8.0, "points": 3},
+        {"name": "A. Móvil", "logo_i": 0, "value": 7.6, "points": 2},
+        {"name": "Bimbo", "logo_i": 4, "value": -1.3, "points": 1}
+      ]
+    },
+    {
+      "type": "rondas",
+      "kicker": "Ronda 3 de 6",
+      "title": "De cada 100 pesos que entran, ¿cuánto le queda?",
+      "sub": "Margen de operación",
+      "suffix": "%",
+      "show_names": true,
+      "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+      "rows": [
+        {"name": "ASUR", "logo_i": 3, "value": 37.3, "points": 5},
+        {"name": "A. Móvil", "logo_i": 0, "value": 22.8, "points": 4},
+        {"name": "CEMEX", "logo_i": 2, "value": 14.2, "points": 3},
+        {"name": "Bimbo", "logo_i": 4, "value": 9.8, "points": 2},
+        {"name": "FEMSA", "logo_i": 1, "value": 8.5, "points": 1}
+      ]
+    },
+    {
+      "type": "rondas",
+      "kicker": "Tabla final · 6 rondas",
+      "title": "Empate: 22 puntos cada una",
+      "sub": "Y tres rondas ganadas cada una",
+      "suffix": " pts",
+      "show_names": true,
+      "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+      "rows": [
+        {"name": "ASUR", "logo_i": 3, "value": 22, "points": 5},
+        {"name": "CEMEX", "logo_i": 2, "value": 22, "points": 5},
+        {"name": "A. Móvil", "logo_i": 0, "value": 20, "points": 3},
+        {"name": "FEMSA", "logo_i": 1, "value": 16, "points": 2},
+        {"name": "Bimbo", "logo_i": 4, "value": 10, "points": 1}
+      ]
+    },
+    {
+      "type": "pregunta",
+      "question": "Ganaron por caminos opuestos.",
+      "size": 86,
+      "options": ["ASUR: vende más, le queda más, rinde más", "CEMEX: debe menos y está más barata"],
+      "cta": "¿A cuál le pondrías el punto que falta? Déjalo en los comentarios.",
+      "host": {"act": "cierre", "mood": "up"},
+      "host_size": 230
+    }
+  ],
+  "text": "Puse a competir a cinco de las empresas más conocidas de México en 6 rondas: crecimiento de ventas, crecimiento de la utilidad de operación, margen, ROE, deuda y PEG. Cinco puntos al primero de cada ronda, uno al último.\n\nY acabó en empate: ASUR y CEMEX, 22 puntos cada una, con tres rondas ganadas cada una. Pero ganaron por caminos opuestos: ASUR las de rentabilidad, CEMEX las de solidez y precio.\n\nTodas las cifras del estado de resultados salen de los reportes oficiales del tercer trimestre de 2026, no de un portal financiero. Y ojo: CEMEX reporta en dólares, así que el torneo compara porcentajes y razones, nunca montos entre empresas.\n\n¿A cuál le pondrías el punto que falta?\n\nContenido educativo. No es asesoría financiera."
+}
