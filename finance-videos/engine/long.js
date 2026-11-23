@@ -244,14 +244,21 @@ R.chapter = (s, t) => {
 
 R.bignum = (s, t) => {
   const ink = inkOf(s);
+  // 22 nov 2026: la cifra y el subtitulo arrancaban en L y terminaban en RX, asi que el recorte de JP tapaba el
+  // principio (se leia "der mil pesos..." en vez de "Perder mil pesos...") y el final se salia del cuadro.
+  // Ahora la columna se encoge del lado donde esta el anfitrion, y el subtitulo se ajusta en vez de desbordarse.
+  const bhp = s.host ? ((typeof s.host === 'object' ? s.host.pos : 'br') || 'br') : null;
+  const padL = bhp && /l$/.test(bhp) ? 250 : 0, padR = bhp && /r$/.test(bhp) ? 250 : 0;
+  const x0 = L + padL, cw = CW - padL - padR;
   kicker(s.kicker, L, 230, s.t0 + .1, t, ink);
   if (s.label) riseLines(wrap(s.label, F.b, 500, 50, CW), L, 330, 62, s.t0 + .2, t, { f: F.b, w: 500, s: 50, c: ink });
   const tv = cueT(s, 'cue_value', .7), k = eo(seg(t, tv, tv + 1.2));
   const str = typeof s.value === 'number' ? (s.prefix || '') + (s.signed && s.value > 0 ? '+' : '') + fmtNum(s.value * k, s.decimals ?? 0) + (s.suffix || '') : String(s.value);
   const col = s.tone ? (themeOf(s) === 'blue' && s.tone !== 'accent' ? ink : toneC(s.tone)) : (themeOf(s) === 'blue' ? B.mostaza : B.azul);
-  C.save(); C.globalAlpha *= seg(t, tv - .1, tv + .3); scaleAt(L, 600, .95 + .05 * ex(seg(t, tv, tv + .5)));
-  txt(str, L, 670, { f: F.d, w: 800, s: fit(str, F.d, 800, 270, CW, 100), c: col }); C.restore();
-  if (s.sub) { const ts = Math.max(cueT(s, 'cue_sub', 1.6), tv + .9); riseLines(wrap(s.sub, F.b, 500, 44, CW), L, 770, 56, ts, t, { f: F.b, w: 500, s: 44, c: sub2(s) }); }
+  C.save(); C.globalAlpha *= seg(t, tv - .1, tv + .3); scaleAt(x0, 600, .95 + .05 * ex(seg(t, tv, tv + .5)));
+  txt(str, x0, 670, { f: F.d, w: 800, s: fit(str, F.d, 800, 270, cw, 100), c: col }); C.restore();
+  if (s.sub) { const ts = Math.max(cueT(s, 'cue_sub', 1.6), tv + .9), { lines: bl, size: bs } = fitLines(s.sub, F.b, 500, 44, cw, 2, 28);
+    riseLines(bl, x0, 770, bs * 1.3, ts, t, { f: F.b, w: 500, s: bs, c: sub2(s) }); }
 };
 
 R.list = (s, t) => {

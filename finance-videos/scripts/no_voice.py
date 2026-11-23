@@ -45,7 +45,11 @@ def spoken(tok):
         m = re.fullmatch(r'(\$)?([\d][\d,]*)(?:\.(\d+))?(%)?(x)?', part)
         if m:
             cur, ent, dec, pct, ex = m.groups(); w = num_words(ent.replace(',', ''))
-            if dec: w += ' punto ' + ' '.join(num_words(int(c)) for c in dec)
+            # 22 nov 2026: con DOS decimales se leia digito por digito ("2.25" → "dos punto dos cinco").
+            # En español se dice "dos punto veinticinco". Con uno o dos decimales va como número;
+            # con tres o más (un código, una serie) se sigue diciendo dígito por dígito.
+            if dec:
+                w += ' punto ' + (num_words(int(dec)) if len(dec) <= 2 else ' '.join(num_words(int(c)) for c in dec))
             if pct: w += ' por ciento'
             if ex: w += ' veces'
             if cur: w += ' dólares'

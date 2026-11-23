@@ -184,8 +184,10 @@ Si JP sube su audio (`largos/$D/audio/voice_raw.*`): quita `audio/NO_VOICE`, cor
 - Los tiempos sin voz se calculan por sílabas habladas: `no_voice.py` convierte números, %, $ y montos a palabras ("45" =
   "cuarenta y cinco"). Si una pantalla tiene muchas cifras, divídela: se dicen más lento de lo que miden.
 - **Solo si JP pide voz de IA** (cuesta créditos de vidIQ; pide su OK con el costo exacto): `python3 scripts/tts_prep.py largos/$D <créditos>`
-  → envía cada pieza de `tts_chunks.json` con la voz Daniel (`onwK4e9ZLuTAKqWW03F9`), primero la pieza 1 como prueba; revisa la
-  pronunciación transcribiendo con whisper; guarda `audio/voice_part1.mp3`, `voice_part2.mp3`…; borra `audio/NO_VOICE`; corre
+  → manda el texto de `tts_chunks.json` **concatenado con `\n\n` en UNA sola llamada** (regla de la toma única) con la voz
+  **Francisco** (`EK54is7sa3aPFLD9BwCC`). *(Corregido el 22 nov 2026: aquí decía Daniel `onwK4e9ZLuTAKqWW03F9`, que es una voz
+  BRITÁNICA EN INGLÉS y leería mal un guion en español; Francisco es la única masculina latinoamericana del catálogo.)*
+  Revisa la pronunciación transcribiendo con whisper; guarda `audio/voice_raw.mp3`; borra `audio/NO_VOICE`; corre
   `process_voice.py` (une piezas, sin acelerar), `build_timeline.py`, QA, `make_audio.py`, `render.js`. La voz de IA nunca dice
   "soy JP": usa "Bienvenido a Costa Studio Finance, de Jota Pe Armendáriz". En `youtube.md`: contenido alterado o sintético = **Sí**.
 

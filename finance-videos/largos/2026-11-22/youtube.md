@@ -21,10 +21,10 @@ En este video, explicado desde cero y sin palabras raras: el experimento con 66,
 
 CAPÍTULOS
 0:00 ¿Vendiste lo que subía y te quedaste con lo que bajaba?
-1:02 El experimento más grande
-2:10 Por qué lo hacemos
-3:15 Lo que sí se sabe y lo que todavía se discute
-4:39 Qué se puede hacer
+0:43 El experimento más grande
+1:33 Por qué lo hacemos
+2:22 Lo que sí se sabe y lo que todavía se discute
+3:20 Qué se puede hacer
 
 FUENTES
 • Barber, B. y Odean, T. (2000). "Trading Is Hazardous to Your Wealth". The Journal of Finance, 55(2), 773–806. DOI 10.1111/0022-1082.00226
@@ -79,7 +79,8 @@ Video sugerido del mismo pilar: **Historia 3D de Kahneman y Tversky** (`videos/2
 → `videos/2026-11-21-KAHNEMAN-historia/` (Kahneman y Tversky: perder duele el doble)
 
 ## Declaraciones
-- **Contenido alterado o sintético:** No. Voz de JP, sin voz de IA.
+- **Contenido alterado o sintético: SÍ.** La narración es voz de IA (Francisco, vidIQ/ElevenLabs), generada en una
+  sola toma el 22 nov 2026 · 4,316 caracteres · 140 créditos. Hay que marcarlo al subir el video en YouTube.
 - **Conflicto de interés:** ninguno. Fidelity, Morningstar y el CFA Institute se mencionan solo como sujetos de estudios públicos; no son clientes de Costa Studio.
 
 ## Cambios de la versión 2 (JP, 22 nov 2026)
