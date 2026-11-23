@@ -1,0 +1,322 @@
+{
+ "format": "long",
+ "slug": "empezar-a-invertir-desde-cero-mexico",
+ "title": "Cómo empezar a invertir desde cero en México (con poco dinero)",
+ "intro_title": "Introducción",
+ "thumbnail": {
+  "lines": [
+   "EMPEZAR A",
+   "INVERTIR",
+   "DESDE CERO"
+  ],
+  "emphasis": "cero",
+  "big": "$100",
+  "big_sub": "el mínimo en cetesdirecto",
+  "big_tone": "up"
+ },
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "México · noviembre de 2026",
+   "title": "Para empezar a invertir necesitas…",
+   "value": 100,
+   "prefix": "$",
+   "decimals": 0,
+   "unit": "",
+   "tone": "up",
+   "caption": "el mínimo oficial de cetesdirecto",
+   "question": "¿Y luego qué?",
+   "cue_value": "cien",
+   "cue_question": "difícil",
+   "say": "Cien pesos. Eso es lo que necesitas hoy para empezar a invertir en México. Y no es una promoción: es el mínimo oficial de cetesdirecto, el programa del Gobierno Federal. Lo difícil nunca fue el dinero.",
+   "host": {
+    "act": "escritorio",
+    "mood": "up",
+    "pos": "bl",
+    "size": 290
+   }
+  },
+  {
+   "type": "statement",
+   "text": "Lo difícil es saber por dónde.",
+   "emphasis": "por dónde.",
+   "sub": "Cuatro pasos, en orden.",
+   "say": "Lo difícil es saber por dónde. Así que en los próximos minutos te voy a dar el orden exacto: qué hacer antes de invertir un peso, dónde abrir tu cuenta, qué comprar primero y cuánto meterle cada mes."
+  },
+  {
+   "type": "personal",
+   "kicker": "Quién te habla",
+   "title": "Soy JP Armendáriz.",
+   "sub": "Costa Studio Finance",
+   "say": "Soy JP Armendáriz y esto es Costa Studio Finance. Aquí comparto lo que voy aprendiendo sobre inversiones, en español y sin palabras raras.",
+   "host": {
+    "act": "cafe",
+    "mood": "up",
+    "pos": "br"
+   }
+  },
+  {
+   "type": "list",
+   "theme": "sand",
+   "kicker": "El orden importa",
+   "title": "Cuatro pasos",
+   "items": [
+    {
+     "text": "Antes de invertir",
+     "sub": "Deudas caras y fondo de emergencia",
+     "cue": "primero",
+     "tone": "down"
+    },
+    {
+     "text": "Dónde",
+     "sub": "cetesdirecto o una casa de bolsa autorizada",
+     "cue": "dónde",
+     "tone": "blue"
+    },
+    {
+     "text": "Qué comprar primero",
+     "sub": "Amplio, no adivinando",
+     "cue": "comprar",
+     "tone": "accent"
+    },
+    {
+     "text": "Cuánto y cada cuándo",
+     "sub": "Poco, pero cada mes",
+     "cue": "cuánto",
+     "tone": "up"
+    }
+   ],
+   "say": "Son cuatro pasos y van en este orden: antes de invertir, dónde, qué comprar primero, y cuánto y cada cuándo. Si te saltas el primero, los otros tres no te van a servir de mucho."
+  },
+  {
+   "type": "chapter",
+   "number": 1,
+   "title": "Antes de invertir",
+   "sub": "Lo que va primero",
+   "chapter_name": "Antes de invertir",
+   "say": "Paso uno: lo que tienes que hacer antes de invertir tu primer peso. Y sí, este paso aburre, pero es el que decide si los otros tres funcionan."
+  },
+  {
+   "type": "list",
+   "kicker": "Dos cosas, en este orden",
+   "title": "Primero tapa los hoyos",
+   "items": [
+    {
+     "text": "Paga la deuda cara",
+     "sub": "Ninguna inversión normal rinde lo que cobra una tarjeta de crédito",
+     "cue": "tarjeta",
+     "tone": "down"
+    },
+    {
+     "text": "Arma tu fondo de emergencia",
+     "sub": "Tres meses de tus gastos, en algo de donde puedas sacarlo rápido",
+     "cue": "fondo",
+     "tone": "blue"
+    }
+   ],
+   "say": "Dos cosas. Si traes una deuda de tarjeta de crédito, págala primero: ninguna inversión normal te va a rendir lo que te cobra esa tarjeta. Y antes de invertir, junta un fondo de emergencia de tres meses de tus gastos."
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "text": "Invertir con deuda cara es llenar una cubeta agujerada.",
+   "emphasis": "agujerada.",
+   "sub": "Puedes hacerlo. Pero el agua se va más rápido de lo que entra.",
+   "say": "Piénsalo así: invertir mientras debes en la tarjeta es llenar una cubeta agujerada. Puedes hacerlo, pero el agua se va más rápido de lo que entra. Primero tapa el agujero y luego llena la cubeta."
+  },
+  {
+   "type": "chapter",
+   "number": 2,
+   "title": "Dónde",
+   "sub": "Dos puertas de entrada",
+   "chapter_name": "Dónde invertir",
+   "say": "Paso dos: dónde. En México tienes dos puertas de entrada, las dos legales y las dos vigiladas por una autoridad. No necesitas buscar nada raro ni fuera del país.",
+   "host": {
+    "act": "senala",
+    "mood": "neutral",
+    "pos": "br"
+   }
+  },
+  {
+   "type": "list",
+   "theme": "sand",
+   "kicker": "Las dos puertas",
+   "title": "Por dónde se entra",
+   "items": [
+    {
+     "text": "cetesdirecto",
+     "sub": "Programa del Gobierno Federal desde 2010 · desde $100 · sin comisión por abrir, invertir ni retirar",
+     "cue": "gobierno",
+     "tone": "blue"
+    },
+    {
+     "text": "Una casa de bolsa",
+     "sub": "Para comprar acciones y ETFs · tiene que estar en el registro de la CNBV",
+     "cue": "bolsa",
+     "tone": "accent"
+    }
+   ],
+   "say": "La primera es cetesdirecto: le prestas dinero al gobierno mexicano, inviertes desde cien pesos y no te cobran comisión por abrir la cuenta, por invertir ni por retirar. La segunda es una casa de bolsa, y ahí ya puedes comprar acciones y ETFs."
+  },
+  {
+   "type": "bignum",
+   "label": "CETE a 28 días",
+   "value": 6.16,
+   "suffix": "%",
+   "decimals": 2,
+   "tone": "up",
+   "sub": "Tasa de venta en cetesdirecto el 19 de noviembre de 2026 · Banco de México. Cambia cada semana en subasta.",
+   "cue_value": "6.16%",
+   "cue_sub": "semana",
+   "say": "El 19 de noviembre de 2026, el cete a 28 días se vendió al 6.16% anual. Esa tasa cambia cada semana en una subasta, así que revísala el día que vayas a invertir, no el día que ves este video."
+  },
+  {
+   "type": "statement",
+   "text": "Una sola regla para elegir casa de bolsa.",
+   "emphasis": "una sola regla.",
+   "sub": "Que aparezca en el registro de la CNBV. Si no está, no está autorizada para operar en México.",
+   "say": "Si te vas por una casa de bolsa, una sola regla: que esté en el registro de la Comisión Nacional Bancaria y de Valores. Búscala por nombre antes de darle un peso. Si no aparece ahí, no está autorizada para operar en México."
+  },
+  {
+   "type": "chapter",
+   "number": 3,
+   "title": "Qué comprar primero",
+   "sub": "Amplio antes que listo",
+   "chapter_name": "Qué comprar primero",
+   "say": "Paso tres: qué comprar primero. Y aquí es donde casi todo el mundo se tropieza, porque el instinto te lleva exactamente al lado contrario.",
+   "host": {
+    "act": "piensa",
+    "mood": "neutral",
+    "pos": "br"
+   }
+  },
+  {
+   "type": "statement",
+   "theme": "sand",
+   "text": "Casi todos empezamos queriendo adivinar.",
+   "emphasis": "adivinar.",
+   "sub": "Elegir la acción que va a subir es apostar, no invertir.",
+   "say": "Aquí casi todos cometemos el mismo error: queremos adivinar cuál acción va a subir. Elegir una sola empresa cuando apenas empiezas es apostar, no invertir. Lo aburrido, y lo que suele funcionar, es comprar un pedacito de muchas empresas a la vez."
+  },
+  {
+   "type": "list",
+   "kicker": "Qué es y dónde está",
+   "title": "Un ETF amplio",
+   "items": [
+    {
+     "text": "Es una canasta",
+     "sub": "Compras una sola cosa y adentro vienen cientos de empresas",
+     "cue": "canasta",
+     "tone": "blue"
+    },
+    {
+     "text": "Desde México, en el SIC",
+     "sub": "El mercado donde la Bolsa Mexicana lista acciones y ETFs de otros países",
+     "cue": "SIC",
+     "tone": "accent"
+    }
+   ],
+   "say": "Un ETF amplio es una canasta: compras una sola cosa y adentro vienen cientos de empresas. Desde México los compras en el SIC, el mercado donde la Bolsa Mexicana lista acciones y ETFs de otros países."
+  },
+  {
+   "type": "chapter",
+   "number": 4,
+   "title": "Cuánto y cada cuándo",
+   "sub": "Poco, pero siempre",
+   "chapter_name": "Cuánto y cada cuándo",
+   "say": "Y paso cuatro: cuánto y cada cuándo. Esta es la parte que la gente menos pregunta y la que más decide el resultado."
+  },
+  {
+   "type": "statement",
+   "text": "Poco, pero cada mes, el mismo día.",
+   "emphasis": "cada mes,",
+   "sub": "Nadie sabe cuándo está barato. Automatizarlo te quita la decisión de encima.",
+   "say": "La respuesta corta: poco, pero cada mes, el mismo día, pase lo que pase. Nadie sabe cuándo está barato el mercado. Invertir en automático cada mes te quita esa decisión de encima."
+  },
+  {
+   "type": "bignum",
+   "theme": "sand",
+   "label": "$1,000 al mes durante 10 años",
+   "value": 183000,
+   "prefix": "$",
+   "decimals": 0,
+   "tone": "up",
+   "sub": "Aportas $120,000 · supone 8% anual · ilustrativo. No es una proyección de ningún instrumento.",
+   "cue_value": "183,000",
+   "cue_sub": "ejemplo",
+   "say": "Mira lo que hace el tiempo. Mil pesos al mes durante diez años son 120,000 pesos aportados. Suponiendo 8% anual, terminarías con unos 183,000. Es un ejemplo para que veas el efecto, no una promesa."
+  },
+  {
+   "type": "personal",
+   "kicker": "Ahora tú",
+   "title": "¿Cuánto podrías apartar cada mes?",
+   "sub": "No la cifra ideal. La real.",
+   "say": "Ahora piénsalo tú: ¿cuánto podrías apartar cada mes sin que te duela? No la cifra ideal, la cifra real. Déjamela en los comentarios, me sirve mucho para los siguientes videos.",
+   "host": {
+    "act": "senala",
+    "mood": "up",
+    "pos": "br"
+   }
+  },
+  {
+   "type": "list",
+   "theme": "sand",
+   "kicker": "El error más común",
+   "title": "Esperar el momento perfecto",
+   "items": [
+    {
+     "text": "El momento perfecto no se ve venir",
+     "sub": "Solo se reconoce años después",
+     "cue": "perfecto",
+     "tone": "down"
+    },
+    {
+     "text": "Lo que sí controlas",
+     "sub": "Empezar temprano y no dejar de aportar",
+     "cue": "controlar",
+     "tone": "up"
+    }
+   ],
+   "say": "Y el mito más común: que hay que esperar al momento perfecto para entrar. El momento perfecto no se ve venir, solo se reconoce años después. Lo que sí puedes controlar es empezar temprano y no dejar de aportar."
+  },
+  {
+   "type": "list",
+   "kicker": "Resumen",
+   "title": "Llévate esto",
+   "items": [
+    {
+     "text": "Primero deudas caras y fondo",
+     "sub": "Antes de invertir un peso",
+     "cue": "deudas",
+     "tone": "down"
+    },
+    {
+     "text": "Entra por cetesdirecto o una casa de bolsa en la CNBV",
+     "sub": "Las dos puertas legales",
+     "cue": "cetesdirecto",
+     "tone": "blue"
+    },
+    {
+     "text": "Empieza amplio y cada mes",
+     "sub": "Aburrido, y por eso funciona",
+     "cue": "amplio",
+     "tone": "up"
+    }
+   ],
+   "say": "Llévate tres cosas. Primero paga deudas caras y arma tu fondo. Segundo, entra por cetesdirecto o por una casa de bolsa que esté en la CNBV. Y tercero, empieza amplio y cada mes."
+  },
+  {
+   "type": "outro",
+   "question_a": "¿Cuál de los cuatro pasos",
+   "question_b": "te está costando más?",
+   "cue_a": "pasos",
+   "cue_b": "costando",
+   "sources": "cetesdirecto (guía oficial, gob.mx) · Banco de México · CNBV",
+   "say": "Ahora te toca a ti: ¿cuál de los cuatro pasos te está costando más? Déjamelo en los comentarios. El próximo domingo: qué hacer con tu aguinaldo, cinco opciones ordenadas por riesgo. Contenido educativo, no es asesoría financiera.",
+   "host": {
+    "act": "cierre",
+    "pos": "br"
+   }
+  }
+ ]
+}

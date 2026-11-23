@@ -21,9 +21,11 @@ def main(vdir):
         est = words / 120 * 60 + len(sb['scenes']) * .5
         print(txt); print('\n' + '-' * 60)
         print(f'VIDEO LARGO · Escenas: {len(sb["scenes"])} | Palabras: {words} | Duración estimada: {est / 60:.1f} min (a ~120 palabras/min)')
-        ok = 1100 <= words <= 1450
-        if words < 1100: print('⚠️  Menos de 1,100 palabras: quedaría de menos de 9.5 min.')
-        if words > 1450: print('⚠️  Más de 1,450 palabras: quedaría de más de 12.5 min.')
+        # 720–850 palabras = 6–7 min. Cambio del 13 nov 2026: antes eran 9–11 min, pero la audiencia
+        # se va al minuto, así que el largo se concentró. El umbral viejo (1,100–1,450) seguía aquí.
+        ok = 720 <= words <= 850
+        if words < 720: print('⚠️  Menos de 720 palabras: quedaría de menos de 6 min.')
+        if words > 850: print('⚠️  Más de 850 palabras: quedaría de más de 7 min.')
         if sum(1 for s in sb['scenes'] if s['type'] == 'chapter') < 3: print('⚠️  Usa al menos 3 escenas `chapter`.'); ok = False
         for i, s in enumerate(sb['scenes']):
             if s.get('adlib'): print(f'⚠️  Escena {i}: "adlib" ya no se usa; escribe el texto en "say".'); ok = False

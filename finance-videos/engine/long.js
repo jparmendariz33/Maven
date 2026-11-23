@@ -205,7 +205,9 @@ R.statement = (s, t) => {
       txt(wd, x, y, { f, w, s: sz, c: isE ? em : ink }); x += tw(wd + ' ', f, w, sz); });
     C.restore();
   });
-  if (s.sub) rise(s.sub, L, y0 + lines.length * lh + 30, seg(t, s.t0 + .9, s.t0 + 1.5), { f: F.b, w: 500, s: 42, c: ink, a: .85 });
+  // El sub de statement se dibujaba en UNA línea con rise() y se salía por la derecha; los subs de
+  // bignum, formula y catalyst ya usaban wrap(). Mismo arreglo (regla de la maquetación, 23 nov 2026).
+  if (s.sub) riseLines(wrap(s.sub, F.b, 500, 42, CW), L, y0 + lines.length * lh + 30, 54, s.t0 + .9, t, { f: F.b, w: 500, s: 42, c: ink, a: .85 });
 };
 
 R.chapter = (s, t) => {
