@@ -161,7 +161,11 @@ frente a la gráfica o el dato más importante) y en el cierre.** No lo pongas e
   un `size` menor (300) o súbelo/bájalo con `"y"`. Revisa cada hoja de QA: JP nunca encima de una cifra.
 - Flujo: `build_timeline.py` → `node engine3d/render_host.js largos/$D` → `render.js --qa`. Si cambian los tiempos, repite `render_host.js`.
 
-## 3. Tiempos, revisión y render (sin voz; JP graba encima)
+## 3. Tiempos, revisión y render
+> **Desde el 22 nov 2026 la voz de IA (Francisco, una toma) es la narración por defecto del largo** (JP: "es el video
+> que más me ha gustado cómo se está narrando"). El modo sin voz de abajo se usa para **maquetar y revisar** antes de
+> gastar créditos, y para cuando JP decida grabar él. **No se alarga el guion para llegar a 6–7 min:** con voz de IA
+> un largo cae en 4–5 min y así está bien. Detalle en `CLAUDE.md`.
 ```bash
 python3 scripts/no_voice.py largos/$D           # ritmo de lectura ~120 palabras/min, cuenta sílabas reales (números incluidos)
 python3 scripts/build_timeline.py largos/$D     # sin cues "no encontrados"; revisa escenas <3.5 s o >16 s

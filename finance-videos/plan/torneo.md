@@ -122,6 +122,38 @@ JP quitó "gigantes" porque alargaba sin aportar. Es la plantilla de los siguien
 (renuevan el 4 de dic) y, si no, gana el que diga el resultado con menos palabras. El título se decide **antes**
 de escribir el guion, porque el gancho de los primeros 3 segundos tiene que prometer lo mismo que el título.
 
+## 5b. La serie por país (JP, 22 nov 2026)
+JP vio el torneo de las mexicanas y pidió seguir con otros países: *"Me gustaría que en el siguiente video
+rankeáramos empresas colombianas y luego en otro empresas argentinas y luego en otro empresas brasileñas."*
+
+**El torneo se vuelve una serie recurrente por país.** Orden acordado, un país por torneo:
+
+| # | Domingo | País | Candidatas (verificar que tengan las 6 métricas antes de cerrar la lista) |
+|---|---|---|---|
+| 1 | ✅ 22 nov 2026 | 🇲🇽 México | América Móvil, FEMSA, CEMEX, ASUR, Bimbo · **empate ASUR–CEMEX 22-22** |
+| 2 | | 🇨🇴 Colombia | Ecopetrol, Bancolombia, Grupo Argos, Cementos Argos, Grupo Nutresa, ISA, Grupo Sura |
+| 3 | | 🇦🇷 Argentina | YPF, Grupo Galicia, Banco Macro, Pampa Energía, Ternium Argentina, Loma Negra, Telecom Argentina |
+| 4 | | 🇧🇷 Brasil | Petrobras, Vale, Itaú, Ambev, Embraer, WEG, Localiza, Magazine Luiza |
+
+**Lo que hay que cuidar en cada uno, aprendido con el de México:**
+- **Verificar SIEMPRE contra el reporte oficial.** En el de México, Yahoo se equivocó en 3 de 5 y uno de los errores
+  cambiaba los puntos de una ronda. Con empresas de la región el riesgo es mayor, no menor.
+- **Moneda:** CEMEX reporta en dólares y las demás en pesos. En Argentina hay además ajuste por inflación (NIIF 29) y
+  en Brasil se reporta en reales. Por eso el torneo compara **porcentajes y razones**, nunca montos entre empresas,
+  y se dice en pantalla cuando una reporta en otra moneda.
+- **Bancos y mineras rompen el formato.** A un banco no se le puede medir margen de operación ni deuda sobre capital
+  como a una industrial; una minera que reporta en dólares descuadra la comparación. Antes de cerrar la lista,
+  comprueba que las cinco tengan las 6 métricas y sean comparables. (Por eso se cayeron Banorte y Grupo México.)
+- **Asientos contables que inflan:** ASUR reporta ingresos que incluyen "servicios de construcción" (IFRIC 12), que
+  entran como ingreso y salen como costo. Se usó la cifra que los excluye. Revisa si la concesionaria del país
+  siguiente hace lo mismo.
+- **Logos:** los de empresas latinoamericanas no están en simple-icons y Wikimedia limita las descargas. Bájalos con
+  tiempo y **comprueba que el archivo no sea una página de error**: en el de México, Wikimedia devolvió un 429 con
+  código 200 y el "logo" de FEMSA acabó siendo la pantalla de error. El de FEMSA en Commons además está incompleto
+  (solo la mancha roja, sin el texto) y se tuvo que retirar.
+- **Un empate es un resultado válido** y se cuenta tal cual: no se inventa una ronda de desempate después de ver el
+  resultado. El de México empató y quedó mejor video.
+
 ## 6. Calendario
 - **Dom 15 nov:** sale el ranking que ya está, con el título nuevo ("5 gigantes: ¿en cuáles crece el negocio?").
   No se cambia a torneo con prisas.

@@ -2,6 +2,7 @@
   "slug": "2026-11-22-TOP5-mexicanas",
   "format": "short",
   "max_dur": 130,
+  "ritmo": "natural",
   "scenes": [
     {
       "type": "statement",
@@ -10,7 +11,6 @@
       "sub": "6 rondas. Y acabó en empate.",
       "logos": [
         "images/logo_amx.png",
-        "images/logo_femsa.png",
         "images/logo_cemex.png",
         "images/logo_asur.png",
         "images/logo_bimbo.png"
@@ -70,7 +70,6 @@
         },
         {
           "name": "FEMSA",
-          "logo": "images/logo_femsa.png",
           "value": 9.8,
           "points": 4
         },
@@ -99,7 +98,7 @@
       "type": "ronda",
       "round": 2,
       "rounds": 6,
-      "unit_label": "crecimiento de la utilidad de operación",
+      "unit_label": "crecimiento de la utilidad",
       "suffix": "%",
       "title": "¿Y quién gana más con lo que vende?",
       "why": "Vender mucho y ganar poco no sirve.",
@@ -124,7 +123,6 @@
         },
         {
           "name": "FEMSA",
-          "logo": "images/logo_femsa.png",
           "value": 9.9,
           "points": 2
         },
@@ -172,7 +170,6 @@
         },
         {
           "name": "FEMSA",
-          "logo": "images/logo_femsa.png",
           "value": 8.5,
           "points": 1
         }
@@ -183,7 +180,7 @@
       "type": "ronda",
       "round": 4,
       "rounds": 6,
-      "unit_label": "ROE · qué tanto rinde el dinero de los dueños",
+      "unit_label": "ROE · rinde el dinero de los dueños",
       "suffix": "%",
       "title": "¿Quién usa mejor el dinero de sus dueños?",
       "why": "Dato de mercado, no del reporte trimestral.",
@@ -202,7 +199,6 @@
         },
         {
           "name": "FEMSA",
-          "logo": "images/logo_femsa.png",
           "value": 15.0,
           "points": 3
         },
@@ -226,7 +222,7 @@
       "round": 5,
       "rounds": 6,
       "invert": true,
-      "unit_label": "deuda sobre capital · aquí gana el número más bajo",
+      "unit_label": "deuda sobre capital · gana el más bajo",
       "title": "¿Quién aguantaría mejor un mal año?",
       "why": "Mientras más debe, menos aguanta.",
       "rows": [
@@ -238,7 +234,6 @@
         },
         {
           "name": "FEMSA",
-          "logo": "images/logo_femsa.png",
           "value": 81.7,
           "points": 4
         },
@@ -268,7 +263,7 @@
       "round": 6,
       "rounds": 6,
       "invert": true,
-      "unit_label": "PEG · precio contra lo que se espera que crezca",
+      "unit_label": "PEG · precio contra crecimiento",
       "decimals": 2,
       "title": "¿Cuál está más barata para lo que crece?",
       "why": "Abajo de 1 se considera barata. Dato de mercado.",
@@ -293,7 +288,6 @@
         },
         {
           "name": "FEMSA",
-          "logo": "images/logo_femsa.png",
           "value": 2.28,
           "points": 2
         },
@@ -328,7 +322,6 @@
         },
         {
           "name": "FEMSA",
-          "logo": "images/logo_femsa.png",
           "points": 16
         },
         {

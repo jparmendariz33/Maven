@@ -47,7 +47,11 @@ def silences(x, thr_db=-38, min_len=.25):
 def main(vdir):
     a = os.path.join(vdir, 'audio'); b = os.path.join(vdir, 'build'); os.makedirs(b, exist_ok=True)
     sbp = os.path.join(vdir, 'storyboard.json')
-    LONG = os.path.exists(sbp) and json.load(open(sbp, encoding='utf-8')).get('format') == 'long'
+    _sb = json.load(open(sbp, encoding='utf-8')) if os.path.exists(sbp) else {}
+    # 22 nov 2026: acelerar a 1.04-1.10x es regla de los shorts de 60-85 s. El TORNEO dura 100-130 s y no necesita
+    # compresión; y JP pidió mantener el ritmo natural de la narración del largo ("es el video que más me ha gustado
+    # cómo se está narrando"). Con "ritmo": "natural" en el storyboard se usa el mismo trato que un largo.
+    LONG = _sb.get('format') == 'long' or _sb.get('ritmo') == 'natural'
     raw = os.path.join(a, 'voice_raw.mp3'); tmp = os.path.join(a, '_raw.wav')
     pieces = sorted(f for f in os.listdir(a) if f.startswith('voice_part') and f.endswith('.mp3'))
     if pieces and not os.path.exists(raw):   # une las piezas con 0.8 s de silencio entre ellas

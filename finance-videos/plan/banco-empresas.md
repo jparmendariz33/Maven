@@ -1,3 +1,9 @@
+
+## 🏆 Serie de torneos por país (JP, 22 nov 2026)
+El ranking del domingo se vuelve una serie: México (ya salió, 22 nov) → **Colombia** → **Argentina** → **Brasil**.
+Las candidatas de cada país y las trampas a cuidar (moneda, bancos, IFRIC 12, logos) están en `plan/torneo.md` §5b.
+Las empresas que entran a un torneo NO cuentan como "ya analizadas" para los shorts de Análisis + Potencial.
+
 # Banco de empresas · shorts de análisis de empresa (viernes, sábado y domingo)
 
 Lo revisa la tarea "Análisis de empresa" antes de elegir. **Primero manda la noticia de la semana** (resultados que sorprendieron,

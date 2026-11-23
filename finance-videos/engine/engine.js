@@ -111,10 +111,15 @@ function fitLines(s, f, w, size, maxW, maxLines = 2, min = 16) {
 }
 function rr(x, y, w, h, r) { C.beginPath(); C.roundRect(x, y, w, h, r); }
 function scaleAt(x, y, s) { C.translate(x, y); C.scale(s, s); C.translate(-x, -y); }
-function kicker(s, x, y, t0, t, col) {
+function kicker(s, x, y, t0, t, col, maxW) {
   const k = seg(t, t0, t0 + .5); if (k <= 0) return;
+  // 22 nov 2026 (JP: "se están cortando algunos subtítulos"): iba a 28 px fijos y un rótulo largo
+  // ("RONDA 2 DE 6 · CRECIMIENTO DE LA UTILIDAD DE OPERACIÓN") se salía por la derecha. Ahora se achica.
+  const up = String(s).toUpperCase(), avail = maxW || (W - x - 64 - 70);
+  let sz = 28, ls = 4;
+  while (tw(up, F.b, 500, sz) + ls * up.length > avail && sz > 17) { sz -= 1; if (ls > 1.6) ls -= .2; }
   C.save(); C.globalAlpha *= k; C.fillStyle = col; C.fillRect(x, y - 11, 46 * ex(k), 3);
-  txt(s.toUpperCase(), x + 64, y, { f: F.b, w: 500, s: 28, ls: 4, c: col }); C.restore();
+  txt(up, x + 64, y, { f: F.b, w: 500, s: sz, ls, c: col }); C.restore();
 }
 function cueT(s, name, def) { const v = s[name]; return typeof v === 'number' ? v : s.t0 + def; }
 
@@ -747,11 +752,30 @@ function captions(t) {
   const c = CAPS[ci], nextT = CAPS[ci + 1] ? CAPS[ci + 1][0][0] - .08 : Infinity, endT = Math.min(nextT, c[c.length - 1][1] + 1.0);
   if (t > endT) return;
   const a = seg(t, c[0][0] - .08, c[0][0] + .05) * (1 - seg(t, endT - .1, endT));
-  const S_ = 52, gap = 20, ws = c.map(w => tw(w[2], F.b, 700, S_)), total = ws.reduce((p, q) => p + q, 0) + gap * (c.length - 1);
-  let x = W / 2 - total / 2; const y = 1650;
-  C.save(); C.globalAlpha *= a; rr(W / 2 - total / 2 - 32, y - 60, total + 64, 86, 43); C.fillStyle = 'rgba(10,10,10,.86)'; C.fill();
-  c.forEach((w, i) => { const on = t >= w[0] - .05, cur = on && (t < w[1] + .05 || (i === c.length - 1 && t < w[1] + .4));
-    txt(w[2], x, y, { f: F.b, w: 700, s: S_, c: cur ? B.mostaza : on ? B.arena : 'rgba(235,230,186,.4)' }); x += ws[i] + gap; });
+  // 22 nov 2026 (JP: "se están cortando algunos subtítulos"): antes TODO el grupo iba en UNA línea a 52 px fijos,
+  // así que un grupo de 4 palabras largas ("crecimiento de la utilidad") se salía por los dos lados.
+  // Ahora se parte en hasta DOS renglones y, si aun así no cabe, se achica hasta 34 px.
+  const MAXW = 940, gap = 20;
+  let S_ = 52, lines = [], ws = [];
+  for (;;) {
+    ws = c.map(w => tw(w[2], F.b, 700, S_));
+    lines = []; let cur = [], curW = 0;
+    c.forEach((w, i) => { const wd = ws[i], add = cur.length ? gap + wd : wd;
+      if (cur.length && curW + add > MAXW) { lines.push(cur); cur = [{ w, i, wd }]; curW = wd; }
+      else { cur.push({ w, i, wd }); curW += add; } });
+    if (cur.length) lines.push(cur);
+    if (lines.length <= 2 || S_ <= 34) break;
+    S_ -= 2;
+  }
+  const lh = Math.round(S_ * 1.22);
+  const widths = lines.map(L => L.reduce((p, q) => p + q.wd, 0) + gap * (L.length - 1));
+  const boxW = Math.max(...widths), yTop = 1650 - (lines.length - 1) * lh;
+  C.save(); C.globalAlpha *= a;
+  rr(W / 2 - boxW / 2 - 32, yTop - 60, boxW + 64, 86 + (lines.length - 1) * lh, 43);
+  C.fillStyle = 'rgba(10,10,10,.86)'; C.fill();
+  lines.forEach((L, li) => { let x = W / 2 - widths[li] / 2; const y = yTop + li * lh;
+    L.forEach(({ w, i, wd }) => { const on = t >= w[0] - .05, cur = on && (t < w[1] + .05 || (i === c.length - 1 && t < w[1] + .4));
+      txt(w[2], x, y, { f: F.b, w: 700, s: S_, c: cur ? B.mostaza : on ? B.arena : 'rgba(235,230,186,.4)' }); x += wd + gap; }); });
   C.restore();
 }
 

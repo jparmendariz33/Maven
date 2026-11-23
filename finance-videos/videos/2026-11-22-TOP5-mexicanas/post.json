@@ -1,8 +1,17 @@
 {
   "title": "RANKEANDO 5 acciones mexicanas: 6 rondas y acabó en empate (domingo 22 nov 2026)",
-  "host": {"outfit": "negra", "accessory": "lentes", "prop": "ninguno"},
+  "host": {
+    "outfit": "negra",
+    "accessory": "lentes",
+    "prop": "ninguno"
+  },
   "sources": "Reportes oficiales del 3T 2026 de cada empresa · ROE, deuda y PEG: datos de mercado al 20 nov 2026",
-  "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+  "logos": [
+    "images/logo_amx.png",
+    "images/logo_cemex.png",
+    "images/logo_asur.png",
+    "images/logo_bimbo.png"
+  ],
   "slides": [
     {
       "type": "portada",
@@ -10,8 +19,16 @@
       "title": "Rankeando 5 acciones mexicanas",
       "size": 72,
       "sub": "6 rondas. Y acabó en empate.",
-      "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
-      "host": {"act": "piensa", "mood": "neutral"},
+      "logos": [
+        "images/logo_amx.png",
+        "images/logo_cemex.png",
+        "images/logo_asur.png",
+        "images/logo_bimbo.png"
+      ],
+      "host": {
+        "act": "piensa",
+        "mood": "neutral"
+      },
       "host_size": 250
     },
     {
@@ -21,13 +38,42 @@
       "sub": "Crecimiento de ventas · julio a septiembre de 2026",
       "suffix": "%",
       "show_names": true,
-      "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+      "logos": [
+        "images/logo_amx.png",
+        "images/logo_cemex.png",
+        "images/logo_asur.png",
+        "images/logo_bimbo.png"
+      ],
       "rows": [
-        {"name": "ASUR", "logo_i": 3, "value": 12.6, "points": 5},
-        {"name": "FEMSA", "logo_i": 1, "value": 9.8, "points": 4},
-        {"name": "CEMEX", "logo_i": 2, "value": 8.0, "points": 3},
-        {"name": "A. Móvil", "logo_i": 0, "value": 7.6, "points": 2},
-        {"name": "Bimbo", "logo_i": 4, "value": -1.3, "points": 1}
+        {
+          "name": "ASUR",
+          "logo_i": 2,
+          "value": 12.6,
+          "points": 5
+        },
+        {
+          "name": "FEMSA",
+          "value": 9.8,
+          "points": 4
+        },
+        {
+          "name": "CEMEX",
+          "logo_i": 1,
+          "value": 8.0,
+          "points": 3
+        },
+        {
+          "name": "A. Móvil",
+          "logo_i": 0,
+          "value": 7.6,
+          "points": 2
+        },
+        {
+          "name": "Bimbo",
+          "logo_i": 3,
+          "value": -1.3,
+          "points": 1
+        }
       ]
     },
     {
@@ -37,13 +83,42 @@
       "sub": "Margen de operación",
       "suffix": "%",
       "show_names": true,
-      "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+      "logos": [
+        "images/logo_amx.png",
+        "images/logo_cemex.png",
+        "images/logo_asur.png",
+        "images/logo_bimbo.png"
+      ],
       "rows": [
-        {"name": "ASUR", "logo_i": 3, "value": 37.3, "points": 5},
-        {"name": "A. Móvil", "logo_i": 0, "value": 22.8, "points": 4},
-        {"name": "CEMEX", "logo_i": 2, "value": 14.2, "points": 3},
-        {"name": "Bimbo", "logo_i": 4, "value": 9.8, "points": 2},
-        {"name": "FEMSA", "logo_i": 1, "value": 8.5, "points": 1}
+        {
+          "name": "ASUR",
+          "logo_i": 2,
+          "value": 37.3,
+          "points": 5
+        },
+        {
+          "name": "A. Móvil",
+          "logo_i": 0,
+          "value": 22.8,
+          "points": 4
+        },
+        {
+          "name": "CEMEX",
+          "logo_i": 1,
+          "value": 14.2,
+          "points": 3
+        },
+        {
+          "name": "Bimbo",
+          "logo_i": 3,
+          "value": 9.8,
+          "points": 2
+        },
+        {
+          "name": "FEMSA",
+          "value": 8.5,
+          "points": 1
+        }
       ]
     },
     {
@@ -53,22 +128,57 @@
       "sub": "Y tres rondas ganadas cada una",
       "suffix": " pts",
       "show_names": true,
-      "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+      "logos": [
+        "images/logo_amx.png",
+        "images/logo_cemex.png",
+        "images/logo_asur.png",
+        "images/logo_bimbo.png"
+      ],
       "rows": [
-        {"name": "ASUR", "logo_i": 3, "value": 22, "points": 5},
-        {"name": "CEMEX", "logo_i": 2, "value": 22, "points": 5},
-        {"name": "A. Móvil", "logo_i": 0, "value": 20, "points": 3},
-        {"name": "FEMSA", "logo_i": 1, "value": 16, "points": 2},
-        {"name": "Bimbo", "logo_i": 4, "value": 10, "points": 1}
+        {
+          "name": "ASUR",
+          "logo_i": 2,
+          "value": 22,
+          "points": 5
+        },
+        {
+          "name": "CEMEX",
+          "logo_i": 1,
+          "value": 22,
+          "points": 5
+        },
+        {
+          "name": "A. Móvil",
+          "logo_i": 0,
+          "value": 20,
+          "points": 3
+        },
+        {
+          "name": "FEMSA",
+          "value": 16,
+          "points": 2
+        },
+        {
+          "name": "Bimbo",
+          "logo_i": 3,
+          "value": 10,
+          "points": 1
+        }
       ]
     },
     {
       "type": "pregunta",
       "question": "Ganaron por caminos opuestos.",
       "size": 86,
-      "options": ["ASUR: vende más, le queda más, rinde más", "CEMEX: debe menos y está más barata"],
+      "options": [
+        "ASUR: vende más, le queda más, rinde más",
+        "CEMEX: debe menos y está más barata"
+      ],
       "cta": "¿A cuál le pondrías el punto que falta? Déjalo en los comentarios.",
-      "host": {"act": "cierre", "mood": "up"},
+      "host": {
+        "act": "cierre",
+        "mood": "up"
+      },
       "host_size": 230
     }
   ],

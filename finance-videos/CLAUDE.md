@@ -5,7 +5,9 @@ marca. Firma en pantalla: logo + "FINANCE". Reglas de separación y sinergias: `
 sea cliente de la agencia sin declararlo.
 
 **Videos largos (16:9, 6–7 min):** skill **`/largo`** (`../.claude/skills/largo/SKILL.md`), motor `engine/long.js`, carpetas
-`largos/<domingo AAAA-MM-DD>/`. Plan, calendario y metas en `plan/`. Costo cero: sin vidIQ; JP pone su voz (modo sin voz por defecto).
+`largos/<domingo AAAA-MM-DD>/`. Plan, calendario y metas en `plan/`. **Narración: voz de IA (Francisco) en una sola toma,
+por defecto desde el 22 nov 2026** — ver "La narración con voz de IA es LA del canal". El modo sin voz sirve para maquetar
+antes de gastar créditos y para cuando JP quiera grabar él.
 
 **Historias 3D (verticales, 75–90 s, miércoles y sábados 12:00):** skill **`/historia`** (`../.claude/skills/historia/SKILL.md`), motor `engine3d/`
 (Three.js: `lib.js` + `cine.js` con luz de cine y actores articulados), carpetas `videos/<sábado>-<SLUG>-historia/` con `story.js`.
@@ -230,6 +232,23 @@ Qué sí mueve la entonación de la voz, y dónde ponerlo:
 
 Qué NO se usa con voz de IA: "a ver", "o sea", "pues", "¿sabes?", "¿no?", "¡súper!", exclamaciones de entusiasmo.
 Esas se quedan para cuando grabe JP.
+
+## La narración con voz de IA es LA del canal (JP, 22 nov 2026)
+Yo le advertí a JP que la voz de IA deja el largo en 4:22 en vez de los 6–7 minutos del formato, y le propuse
+alargar el guion. Su respuesta: *"tú te quejaste del audio, pero es el video que más me ha gustado cómo se está
+narrando. Valdría la pena mantenerlo con ese estilo. De verdad me fascinó."*
+
+**La regla: la voz de Francisco en una sola toma es la narración por defecto de los largos y de los rankings**, y la
+duración que resulte es la buena. Se acabó el "modo sin voz por defecto" para los largos.
+- **No se alarga un guion para llegar a una duración.** Un largo de 4 a 5 minutos bien narrado vale más que uno de 7
+  con relleno. Eso también es lo que JP pidió el 22 nov para el gancho: menos grasa, más al grano.
+- Sigue valiendo la **regla de la toma única** (una sola llamada, nunca por piezas) y la de **eficiencia en créditos**
+  (medir el texto antes de mandarlo y decir en cuántos bloques cae).
+- La **voz es Francisco** (`EK54is7sa3aPFLD9BwCC`), la única masculina latinoamericana del catálogo. *(La skill
+  `/largo` decía Daniel, que es una voz británica en inglés: corregido el 22 nov 2026.)*
+- Al subir el video hay que marcar **"contenido alterado o sintético: Sí"**.
+- Lo que NO cambia: el guion se sigue escribiendo con el registro limpio de la "Regla de la voz humana con IA"
+  (sin muletillas, lo humano se consigue con prosodia), y JP puede grabar él cuando quiera.
 
 ## Regla del reloj con voz de IA (16 nov 2026)
 La voz de IA lee a ~150 palabras/min; `no_voice.py` presupuesta 120 para la voz de JP. **El mismo guion sale ~25% más
