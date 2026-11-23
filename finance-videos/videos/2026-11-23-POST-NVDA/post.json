@@ -1,0 +1,53 @@
+{
+ "title": "Nvidia subió 31% en un día: cuánto vale una sola persona",
+ "host": true,
+ "sources": "NVIDIA (sala de prensa, 17 y 23 nov 2026) · Yahoo Finance, cierres del 20 y 23 nov 2026",
+ "slides": [
+  {
+   "type": "portada",
+   "kicker": "Lunes 23 de noviembre",
+   "title": "Nvidia subió 31% en un día.",
+   "size": 64,
+   "sub": "El viernes había caído 14%. En el medio no cambió el negocio: cambió quién lo dirige.",
+   "host": {
+    "act": "piensa",
+    "mood": "up"
+   },
+   "host_size": 215
+  },
+  {
+   "type": "dato",
+   "kicker": "Lo que pasó hoy",
+   "title": "El consejo reinstaló a su director ejecutivo",
+   "bullets": [
+    "Nvidia anunció hoy que Jensen Huang vuelve como presidente y director ejecutivo, con efecto inmediato",
+    "La acción cerró en $165.05: +31.5% en una sola sesión",
+    "El viernes 20 había cerrado en $125.53, un 14% abajo",
+    "Quien compró el viernes al cierre y vendió hoy, ganó 31% en un día hábil"
+   ]
+  },
+  {
+   "type": "dato",
+   "kicker": "Por qué importa",
+   "title": "El negocio no cambió en un fin de semana",
+   "bullets": [
+    "El 17 de noviembre Nvidia reportó ingresos por $115,800 millones de dólares, 103% más que un año antes",
+    "Esos números son los mismos el viernes y hoy: lo único que se movió fue quién está al frente",
+    "Y arrastró al mercado: el Nasdaq subió 6.51% hoy tras caer 5.28% el viernes, y el S&P 500 subió 4.73%"
+   ]
+  },
+  {
+   "type": "pregunta",
+   "kicker": "Te leo",
+   "question": "¿Cuánto de lo que vale una empresa es la empresa, y cuánto es su fundador?",
+   "size": 58,
+   "cta": "Sígueme para el análisis del próximo domingo",
+   "host": {
+    "act": "senala",
+    "mood": "neutral"
+   },
+   "host_size": 215
+  }
+ ],
+ "text": "Nvidia cerró hoy en $165.05: subió 31.5% en una sola sesión. El viernes 20 había cerrado en $125.53, un 14% abajo.\n\nLo que cambió entre un día y otro no fue el negocio. El 17 de noviembre la empresa reportó ingresos por 115,800 millones de dólares, 103% más que un año antes. Esos números son los mismos el viernes y hoy.\n\nLo que cambió fue quién la dirige: Nvidia anunció hoy que Jensen Huang vuelve como presidente y director ejecutivo, con efecto inmediato.\n\nY no se movió sola. El Nasdaq subió 6.51% hoy, después de caer 5.28% el viernes. El S&P 500 subió 4.73% y el IPC de la Bolsa Mexicana, 0.99%.\n\n¿Cuánto de lo que vale una empresa es la empresa, y cuánto es su fundador?\n\nFuentes: NVIDIA, sala de prensa (17 y 23 de noviembre de 2026) · Yahoo Finance, cierres del 20 y 23 de noviembre de 2026.\n\nContenido educativo. No es asesoría financiera ni una recomendación de compra o venta.\nCosta Studio Finance, by JP Armendáriz.\n\n#Nvidia #Bolsa #Inversiones #Nasdaq"
+}
