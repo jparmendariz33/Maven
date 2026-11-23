@@ -340,6 +340,16 @@ línea: si no, el subtítulo cae sobre la escena y, con un fondo oscuro detrás,
   bloque va a la altura del personaje (y≈1128), nunca pegado al subtítulo ni encima de los subtítulos de la voz.
   Lo controla `"logo_layout": "bloque" | "fila" | "esparcido"` en la escena.
 
+## Un archivo bajado puede ser una página de error (22 nov 2026)
+Armando el torneo, Wikimedia devolvió su pantalla de **"Too many requests"** con **código HTTP 200**, no 429. El
+archivo se guardó como si fuera el logo, `svg2png.js` lo convirtió tan contento y el "logo de FEMSA" acabó siendo la
+pantalla de error de Wikimedia renderizada en PNG. Estuvo a punto de irse al video.
+**La regla: después de bajar un logo o una foto, se MIRA el archivo antes de usarlo.** Un 200 no garantiza nada.
+Señales de que algo salió mal: pesa menos de ~6 KB, o el SVG contiene "Too many requests" / "Error" / "Wikimedia
+Status". Y aunque el archivo sea legítimo puede estar incompleto: la "FEMSA Logo.svg" de Commons es solo la mancha
+roja, sin el texto, y tampoco servía. **La fuente preferida sigue siendo la sala de prensa o el sitio de la empresa**
+(y si JP manda el logo, ese gana).
+
 ## Regla de las cascadas (JP, 14 nov 2026)
 **Siempre con los montos reales; nunca normalizados a $100.** Con base 100 el porcentaje y el monto dicen lo mismo y la fila de
 montos sobra. La escala va en el subtítulo y en `"unit"` de la escena. Detalle en `/short` §1e.
