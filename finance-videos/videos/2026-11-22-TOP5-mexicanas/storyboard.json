@@ -1,0 +1,160 @@
+{
+  "slug": "2026-11-22-TOP5-mexicanas",
+  "format": "short",
+  "scenes": [
+    {
+      "type": "statement",
+      "text": "Rankeando 5 acciones mexicanas.",
+      "emphasis": "mexicanas.",
+      "sub": "6 rondas. Y acabó en empate.",
+      "logos": ["images/logo_amx.png", "images/logo_femsa.png", "images/logo_cemex.png", "images/logo_asur.png", "images/logo_bimbo.png"],
+      "logo_layout": "bloque",
+      "host": {"act": "piensa", "mood": "neutral", "size": 430},
+      "say": "Rankeando 5 acciones mexicanas: 6 rondas. Y pasó algo que no esperaba: acabó en empate."
+    },
+    {
+      "type": "news",
+      "theme": "sand",
+      "kicker": "LAS CINCO QUE COMPITEN",
+      "headline": "Quiénes entran",
+      "source": "Reportes oficiales del 3T 2026",
+      "bullets": [
+        {"text": "América Móvil · la dueña de Telcel", "cue": "América"},
+        {"text": "FEMSA · la dueña de OXXO", "cue": "FEMSA"},
+        {"text": "CEMEX · cemento, reporta en dólares", "cue": "CEMEX"},
+        {"text": "ASUR · los aeropuertos de Cancún", "cue": "ASUR"},
+        {"text": "Bimbo · el pan de tu casa", "cue": "Bimbo"}
+      ],
+      "say": "Compiten América Móvil, dueña de Telcel; FEMSA, dueña de OXXO; CEMEX; ASUR, los aeropuertos de Cancún; y Bimbo."
+    },
+    {
+      "type": "ronda",
+      "round": 1, "rounds": 6,
+      "unit_label": "crecimiento de ventas",
+      "suffix": "%",
+      "title": "¿Quién vende más que hace un año?",
+      "why": "Si no vende más, lo demás da igual.",
+      "rows": [
+        {"name": "ASUR", "logo": "images/logo_asur.png", "value": 12.6, "points": 5},
+        {"name": "FEMSA", "logo": "images/logo_femsa.png", "value": 9.8, "points": 4},
+        {"name": "CEMEX", "logo": "images/logo_cemex.png", "value": 8.0, "points": 3},
+        {"name": "América Móvil", "logo": "images/logo_amx.png", "value": 7.6, "points": 2},
+        {"name": "Bimbo", "logo": "images/logo_bimbo.png", "value": -1.3, "points": 1}
+      ],
+      "say": "Ronda uno, ventas. Gana ASUR con 12.6%. Bimbo es la única que vendió menos, y fue por el peso fuerte, no porque vendiera menos pan."
+    },
+    {
+      "type": "ronda",
+      "round": 2, "rounds": 6,
+      "unit_label": "crecimiento de la utilidad de operación",
+      "suffix": "%",
+      "title": "¿Y quién gana más con lo que vende?",
+      "why": "Vender mucho y ganar poco no sirve.",
+      "rows": [
+        {"name": "CEMEX", "logo": "images/logo_cemex.png", "value": 19.0, "points": 5},
+        {"name": "América Móvil", "logo": "images/logo_amx.png", "value": 13.9, "points": 4},
+        {"name": "Bimbo", "logo": "images/logo_bimbo.png", "value": 10.5, "points": 3},
+        {"name": "FEMSA", "logo": "images/logo_femsa.png", "value": 9.9, "points": 2},
+        {"name": "ASUR", "logo": "images/logo_asur.png", "value": 5.3, "points": 1}
+      ],
+      "say": "Ronda dos: cuánto creció lo que ganan operando. Aquí se voltea todo. CEMEX gana con 19%, y ASUR, que arrasó en la uno, queda última."
+    },
+    {
+      "type": "ronda",
+      "round": 3, "rounds": 6,
+      "unit_label": "margen de operación",
+      "suffix": "%",
+      "title": "De cada 100 pesos que entran, ¿cuánto le queda?",
+      "why": "Es lo que sobra después de operar el negocio.",
+      "rows": [
+        {"name": "ASUR", "logo": "images/logo_asur.png", "value": 37.3, "points": 5},
+        {"name": "América Móvil", "logo": "images/logo_amx.png", "value": 22.8, "points": 4},
+        {"name": "CEMEX", "logo": "images/logo_cemex.png", "value": 14.2, "points": 3},
+        {"name": "Bimbo", "logo": "images/logo_bimbo.png", "value": 9.8, "points": 2},
+        {"name": "FEMSA", "logo": "images/logo_femsa.png", "value": 8.5, "points": 1}
+      ],
+      "say": "Ronda tres. De cada 100 pesos que entran, a ASUR le quedan 37. A FEMSA, ocho y medio: vender en OXXO deja poco por peso vendido."
+    },
+    {
+      "type": "ronda",
+      "round": 4, "rounds": 6,
+      "unit_label": "ROE · qué tanto rinde el dinero de los dueños",
+      "suffix": "%",
+      "title": "¿Quién usa mejor el dinero de sus dueños?",
+      "why": "Dato de mercado, no del reporte trimestral.",
+      "rows": [
+        {"name": "ASUR", "logo": "images/logo_asur.png", "value": 21.7, "points": 5},
+        {"name": "América Móvil", "logo": "images/logo_amx.png", "value": 21.0, "points": 4},
+        {"name": "FEMSA", "logo": "images/logo_femsa.png", "value": 15.0, "points": 3},
+        {"name": "Bimbo", "logo": "images/logo_bimbo.png", "value": 11.9, "points": 2},
+        {"name": "CEMEX", "logo": "images/logo_cemex.png", "value": 5.2, "points": 1}
+      ],
+      "say": "Ronda cuatro: por cada 100 pesos que pusieron los dueños, cuánto les regresa al año. ASUR otra vez arriba. CEMEX, hasta abajo."
+    },
+    {
+      "type": "ronda",
+      "round": 5, "rounds": 6,
+      "invert": true,
+      "unit_label": "deuda sobre capital · aquí gana el número más bajo",
+      "title": "¿Quién aguantaría mejor un mal año?",
+      "why": "Mientras más debe, menos aguanta.",
+      "rows": [
+        {"name": "CEMEX", "logo": "images/logo_cemex.png", "value": 58.2, "points": 5},
+        {"name": "FEMSA", "logo": "images/logo_femsa.png", "value": 81.7, "points": 4},
+        {"name": "ASUR", "logo": "images/logo_asur.png", "value": 150.3, "points": 3},
+        {"name": "América Móvil", "logo": "images/logo_amx.png", "value": 150.4, "points": 2},
+        {"name": "Bimbo", "logo": "images/logo_bimbo.png", "value": 152.9, "points": 1}
+      ],
+      "say": "Ronda cinco: deuda. Aquí gana el número más chico. CEMEX, que venía de último, es la que menos debe por cada peso de sus dueños."
+    },
+    {
+      "type": "ronda",
+      "round": 6, "rounds": 6,
+      "invert": true,
+      "unit_label": "PEG · precio contra lo que se espera que crezca",
+      "decimals": 2,
+      "title": "¿Cuál está más barata para lo que crece?",
+      "why": "Abajo de 1 se considera barata. Dato de mercado.",
+      "rows": [
+        {"name": "CEMEX", "logo": "images/logo_cemex.png", "value": 0.39, "points": 5},
+        {"name": "América Móvil", "logo": "images/logo_amx.png", "value": 0.64, "points": 4},
+        {"name": "ASUR", "logo": "images/logo_asur.png", "value": 0.92, "points": 3},
+        {"name": "FEMSA", "logo": "images/logo_femsa.png", "value": 2.28, "points": 2},
+        {"name": "Bimbo", "logo": "images/logo_bimbo.png", "value": 2.51, "points": 1}
+      ],
+      "say": "Ronda seis: qué tan cara está cada acción comparada con lo que se espera que crezca. Abajo de uno se considera barata. CEMEX, 0.39."
+    },
+    {
+      "type": "tabla",
+      "title": "Empate",
+      "kicker": "TABLA FINAL · 6 RONDAS",
+      "rows": [
+        {"name": "ASUR", "logo": "images/logo_asur.png", "points": 22},
+        {"name": "CEMEX", "logo": "images/logo_cemex.png", "points": 22},
+        {"name": "América Móvil", "logo": "images/logo_amx.png", "points": 20},
+        {"name": "FEMSA", "logo": "images/logo_femsa.png", "points": 16},
+        {"name": "Bimbo", "logo": "images/logo_bimbo.png", "points": 10}
+      ],
+      "host": {"act": "senala", "mood": "neutral", "size": 380},
+      "say": "Y así quedó: ASUR y CEMEX, 22 puntos cada una. Tres rondas ganadas cada una. Empate de verdad."
+    },
+    {
+      "type": "statement",
+      "theme": "sand",
+      "text": "Ganaron por caminos opuestos.",
+      "emphasis": "opuestos",
+      "sub": "ASUR por rentabilidad · CEMEX por solidez y precio",
+      "say": "Pero fíjate en algo: ASUR ganó las rondas de rentabilidad, y CEMEX las de deuda y precio. No hay una sola forma de ser un buen negocio."
+    },
+    {
+      "type": "outro",
+      "host": {"act": "cierre", "mood": "up"},
+      "question_a": "¿A cuál le pondrías",
+      "question_b": "el quinto punto?",
+      "cue_a": "cuál",
+      "cue_b": "punto",
+      "sources": "Reportes oficiales del 3T 2026 de cada empresa · ROE, deuda y PEG: datos de mercado al 20 nov 2026",
+      "say": "Si tuvieras que romper el empate, ¿a cuál le pondrías el punto que falta? Contenido educativo, no asesoría financiera."
+    }
+  ]
+}
