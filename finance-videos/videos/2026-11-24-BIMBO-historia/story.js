@@ -65,7 +65,9 @@ const worlds = {
     }
 
     // el letrero de la casa (sin logotipos reales: tipografía propia)
-    w.letrero = L.label3d('PANIFICACIÓN', 4.6, .7, { bg: '#F2EDE2', fg: '#4A3119', size: 96, ls: 6, pw: 1024 });
+    // label3d usa `ink` y `font` (cadena CSS), no `fg`/`size`: con los nombres mal el texto sale
+    // en negro por defecto. 12 caracteres a 96px con ls 6 piden 786 px, así que 1024 alcanza.
+    w.letrero = L.label3d('PANIFICACIÓN', 4.6, .7, { bg: '#F2EDE2', ink: '#4A3119', font: '800 96px Unbounded', ls: 6, pw: 1024 });
     w.letrero.position.set(0, 4.3, -7.1); w.letrero.scale.setScalar(.001); w.scene.add(w.letrero);
 
     // Lorenzo detrás del mostrador
