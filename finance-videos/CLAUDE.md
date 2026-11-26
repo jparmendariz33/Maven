@@ -307,6 +307,25 @@ varias de las cinco vueltas de encuadre de Kahneman. Comprobado contra `miniatur
 personaje ocupa el 33% del alto y medido ocupa el 34%; con tan(25°) habría predicho 19%.)
 Mide el objeto más ancho (incluye lo que se mueve: un plato de balanza que se inclina viaja hacia afuera) y despeja.
 
+## Los tres errores que se repiten en `label3d` (26 nov 2026)
+`label3d(texto, ancho, alto, opciones)` del motor 3D me ha mordido tres veces, dos de ellas el mismo día.
+Antes de escribir uno, revisa las tres:
+- **Las opciones se llaman `ink` y `font`, no `fg` ni `size`.** `font` es una cadena CSS completa
+  (`'800 92px Unbounded'`). Si pones `fg`/`size` las **ignora en silencio** y escribe en NEGRO por defecto:
+  sobre un pizarrón oscuro el texto desaparece y parece un fallo de luz. Pasó en el letrero de Bimbo y en
+  el pizarrón del interés compuesto.
+- **El texto que no cabe en el lienzo se recorta**, sin aviso: `caracteres × 0.62 × tamaño + ls × caracteres ≤ pw`.
+  "ESTE DOMINGO 10:00" a 92 px con `ls: 3` pide 1,081 px y el `pw` por defecto es 1,024. Sube el `pw` a 2048
+  (además queda más nítido) o baja la fuente; nunca angostes el plano.
+- **El plano es un objeto del mundo: se encuadra con la fórmula.** Un pizarrón de 6.4 de ancho necesita
+  `d ≈ 6.4 / 0.3015 ≈ 21` más aire. A 14 llenaba el cuadro entero.
+
+## Un grupo que se escala NO mide lo que crees (26 nov 2026)
+La columna de monedas del interés compuesto se arma con 36 discos de .5 = **18 unidades de alto**. Yo le
+puse `scale.y = ALTO(n)` creyendo que 1 unidad = $1,000, y al año 0 ya medía 18 unidades y tapaba la
+pantalla. El factor es `ALTO(n) / altura_construida`. **Antes de escalar un grupo, calcula cuánto mide
+armado**, que casi nunca es 1.
+
 ## Las gráficas llevan personaje, siempre (JP, 20 nov 2026 — regla permanente)
 JP, viendo la gráfica de precios del short de Anthropic: *"no me gusta. La gráfica que más me ha gustado que hemos
 hecho es la de SpaceX y Steve Jobs, en la que se ve a Jobs escalando las ventas y a Musk en un carrito. Te propongo
