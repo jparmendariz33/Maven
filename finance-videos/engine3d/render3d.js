@@ -79,8 +79,18 @@ const ROOT = path.resolve(__dirname, '..');
   const tmp = path.join(build, 'render.part.mp4'), args = ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', list];
   if (hasAudio) args.push('-i', mix, '-c:a', 'aac', '-b:a', '192k', '-shortest');
   args.push('-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-movflags', '+faststart', tmp);
-  execFileSync('ffmpeg', args, { stdio: 'inherit' }); fs.renameSync(tmp, out); parts.forEach(p => { fs.unlinkSync(p); try { fs.unlinkSync(p + '.progress'); } catch (e) {} });
-  console.log(`listo en ${Math.round((Date.now() - s0) / 1000)} s → ${out}`);
+  execFileSync('ffmpeg', args, { stdio: 'inherit' });
+  // ffmpeg puede SALIR EN 0 aunque el concat se rompa a la mitad: con un paquete corrupto escupe
+  // "Invalid NAL unit size", deja de leer y deja un MP4 truncado que parece bueno. Pasó el 27 nov 2026
+  // (la historia del interés compuesto perdió la escena de cierre y el render dijo "listo").
+  // Comprobar la duración es la única forma de cacharlo antes de dárselo a JP.
+  const esperado = N / FPS;
+  const real = +execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', tmp]).toString().trim();
+  if (!(real > esperado - 0.25)) throw new Error(
+    `el MP4 salió TRUNCADO: ${real.toFixed(2)} s de los ${esperado.toFixed(2)} s esperados. Casi siempre es ` +
+    `una parte corrupta. Las partes NO se borraron: revisa ${build}/part_*.mp4 y vuelve a renderizar.`);
+  fs.renameSync(tmp, out); parts.forEach(p => { fs.unlinkSync(p); try { fs.unlinkSync(p + '.progress'); } catch (e) {} });
+  console.log(`listo en ${Math.round((Date.now() - s0) / 1000)} s → ${out} · ${real.toFixed(1)} s verificados`);
   try { execFileSync(process.execPath, [__filename, vdir, '--mini', '--hq'], { stdio: 'inherit' }); }
   catch (e) { console.log('la miniatura no salio (el video si): ' + e.message); }
 })();
