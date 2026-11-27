@@ -126,7 +126,7 @@ que ya usamos y que sí existe.
 ## ESCENA 2 · `statement` · tema `negro` · [0:12 – 0:17] · ~5 s · PLANO MEDIO
 
 **NARRACIÓN**
-> «Diez por ciento **más** que ese mismo día de **2025**.»
+> «10% **más** que ese mismo día de **2025**.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
@@ -150,13 +150,13 @@ pasa de 85 s**: la cifra se queda en pantalla, en el gancho.
 ## ESCENA 3 · `photo` · [0:17 – 0:32] · ~15 s · PLANO DETALLE
 
 **NARRACIÓN**
-> «Y ya **venía** de antes: del 1 al 22 de noviembre llevaban 82,500 **millones** en compras por
-> internet, 9 por ciento más que en esas **fechas** de 2025.»
+> «Y el aumento en ventas ya **venía** de antes: del 1 al 22 de noviembre llevaban 82,500 **millones**
+> en compras por internet, un 9% por encima de esas mismas **fechas** de 2025.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
 | +0.0 | Corte a la foto de paquetes de reparto apilados, a pantalla completa | Otra foto, nunca la de la escena 1 |
-| +1.1 | **cue `venía`** → entra el kicker | `LA TENDENCIA YA SE VEÍA DESDE ANTES` |
+| +1.1 | **cue `venía`** → entra el kicker | `EL AUMENTO EN VENTAS YA VENÍA DE ANTES` |
 | +5.6 | **cue `millones`** → entra la cifra con su sujeto completo | `$82,500 M en compras por internet` |
 | +11.0 | **cue `fechas`** → entra el chip de comparación | `+9.1% vs. 1–22 de noviembre de 2025`, musgo |
 
@@ -164,7 +164,7 @@ pasa de 85 s**: la cifra se queda en pantalla, en el gancho.
 
 | Elemento | Texto literal | Banda | Color | Entra | Sale |
 |---|---|---|---|---|---|
-| Kicker | `LA TENDENCIA YA SE VEÍA DESDE ANTES` | Rótulo | Arena 70% | +1.1 | fin escena |
+| Kicker | `EL AUMENTO EN VENTAS YA VENÍA DE ANTES` | Rótulo | Arena 70% | +1.1 | fin escena |
 | Título | `Del 1 al 22 de noviembre de 2026` | Rótulo | Arena | +0.0 | fin escena |
 | Cifra | `$82,500 M en compras por internet` | Contenido y≈1120 | Mostaza | +5.6 | fin escena |
 | Chip | `+9.1% vs. 1–22 de noviembre de 2025` | Contenido y≈1280 | Musgo | +11.0 | fin escena |
@@ -211,7 +211,7 @@ corresponde a la respuesta**. Y lo que sale es jabón, limpiador y ropa básica:
 ## ESCENA 5 · `news` · [0:46 – 0:55] · ~9 s · PLANO GENERAL (con tarjeta)
 
 **NARRACIÓN**
-> «Eso también se vio en la **bolsa**, que ese viernes trabajó media jornada y cerró **arriba**.»
+> «Eso también se vio en la **bolsa**, que el viernes 27 trabajó media jornada y cerró **arriba**.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
@@ -272,13 +272,13 @@ en porcentaje y no en nivel, porque los niveles del S&P no coinciden entre fuent
 ## ESCENA 7 · `statement` · [1:08 – 1:16] · ~8 s · PLANO MEDIO
 
 **NARRACIÓN**
-> «Pero no **todos**: eBay cayó 2. En lo **personal** tengo posición en Mercado Libre.»
+> «Pero no **todos** subieron: eBay cayó 2% y **Target** cerró abajo.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
 | +0.0 | Corte a negro limpio | — |
 | +1.0 | **cue `todos`** → entran las dos que no subieron | `eBay −1.91%` y, debajo, `Target −0.15%`, en terracota |
-| +4.6 | **cue `personal`** → entra el chip de declaración | `JP tiene posición en Mercado Libre`, arena, con borde |
+| +4.4 | **cue `Target`** → se resalta la segunda fila | El dato de Target pasa de arena a terracota |
 
 **EN PANTALLA**
 
@@ -287,12 +287,10 @@ en porcentaje y no en nivel, porque los niveles del S&P no coinciden entre fuent
 | Kicker | `NO TODOS SUBIERON` | Rótulo | Arena 70% | +0.0 | fin escena |
 | Dato 1 | `eBay · −1.91%` | Contenido | **Terracota** | +1.0 | fin escena |
 | Dato 2 | `Target · −0.15%` | Contenido | **Terracota** | +1.3 | fin escena |
-| Chip | `JP tiene posición en Mercado Libre` | Contenido y≈1400 | Arena, con borde | +4.6 | fin escena |
 
 **CÁMARA.** Plano medio. **SFX.** Ninguno.
-**POR QUÉ EXISTE.** Dos cosas a la vez: el video no es una lista de ganadores —**hubo quien cayó el día
-del récord**— y aquí va **tu declaración de posición**, que es obligatoria porque Mercado Libre está en
-`posiciones-jp.md` y se nombró en la escena anterior.
+**POR QUÉ EXISTE.** El video no es una lista de ganadores: **hubo quien cayó el día del récord**. Sin
+esta escena el ranking se leería como una recomendación, y con ella se lee como lo que es, un reporte.
 
 ---
 
@@ -369,8 +367,6 @@ El Día de Acción de Gracias de 2026, Estados Unidos rompió su récord de comp
 
 Toda la bolsa subió ese día, con la tecnología al frente, así que estos movimientos no se explican solo por el Black Friday.
 
-JP tiene posición en Mercado Libre.
-
 ¿Tú gastaste más este Black Friday que el pasado?
 
 Fuentes: Adobe Analytics · cierres del 27 de noviembre de 2026 (Yahoo Finance).
@@ -391,3 +387,8 @@ Costa Studio Finance, by JP Armendáriz.
   a su respuesta, el puente a la bolsa, dos empresas más, el cierre dicho completo y **la pregunta
   final que faltaba**) y tu dirección visual (fondo negro, logos, ranking, fotos). Entra el contrapunto
   de eBay y Target, y la declaración de tu posición en Mercado Libre.
+- **v6 · 27 nov 2026.** Tus cuatro últimas correcciones: `10%` con dígitos, «el aumento en ventas ya
+  venía de antes» (y sin repetir "más" en la frase), «el viernes 27» en vez de «ese viernes», y **fuera
+  la declaración de posición**. Maqueta construida y revisada en la hoja de QA.
+  **Pendiente: las fotos.** Flickr solo da 1024 px (tu mínimo es 1600) y Wikimedia no responde desde el
+  contenedor. La maqueta está armada sin ellas; se pueden añadir sin tocar nada más.

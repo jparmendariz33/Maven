@@ -75,7 +75,7 @@ function applyBrand(s) {
   }
   if (th === 'blue') return;   // foto a pantalla completa u otra escena azul fija: Costa
   BR = BRAND; B.azul = B.marca = BRAND.data;
-  if (th === 'dark') Object.assign(B, { negro: B0.arena, g3: rgba(B0.arena, .88), g4: rgba(B0.arena, .72), grid: rgba(B0.arena, .2), gridt: rgba(B0.arena, .6),
+  if (th === 'dark' || th === 'negro') Object.assign(B, { negro: B0.arena, g3: rgba(B0.arena, .88), g4: rgba(B0.arena, .72), grid: rgba(B0.arena, .2), gridt: rgba(B0.arena, .6),
     musgo: '#DDE8B8', terracota: '#F3C3B4' });   // sube/baja en tonos claros para que se lean sobre el azul
 }
 
@@ -186,7 +186,7 @@ const photoInk = () => BRAND && BRAND.base === 'azul' ? B0.azul : B0.arena;
 const isFullPhoto = s => s.type === 'photo' && (!s.layout || s.layout === 'full');
 // con brand_colors: 'brand' (fondo de la empresa) en gancho/catalizador/cierre; el resto, el fondo base (arena = 'sand', azul = 'dark' o 'blue')
 function themeOf(s) {
-  if (s.bg_full && s.bg_image) return 'blue';                    // foto del tema a pantalla completa: texto claro
+  if (s.bg_full && s.bg_image) return s.theme || 'blue';          // foto a pantalla completa: texto claro (un theme explícito manda)
   const t = themeOf0(s);
   if (!BRAND || s.brand === false || s.theme) return t;
   if (s.brand_bg ?? BG_TYPES[s.type]) return 'brand';
@@ -194,10 +194,10 @@ function themeOf(s) {
   if (BRAND.base === 'azul') return t === 'sand' ? 'dark' : t;
   return t === 'blue' ? 'sand' : t;
 }
-const isDarkBg = th => th === 'blue' || th === 'brand' || th === 'dark';
+const isDarkBg = th => th === 'blue' || th === 'brand' || th === 'dark' || th === 'negro';
 function bg(s, t) {
   const th = themeOf(s), lt = t - s.t0;
-  C.fillStyle = th === 'brand' ? BGB : isDarkBg(th) ? B0.azul : th === 'white' ? B.gris : B0.arena; C.fillRect(0, 0, W, H);
+  C.fillStyle = th === 'brand' ? BGB : th === 'negro' ? B0.negro : isDarkBg(th) ? B0.azul : th === 'white' ? B.gris : B0.arena; C.fillRect(0, 0, W, H);
   const bf = s.bg_full && img(s.bg_image);
   if (bf) { const [fx, fy] = focus(s);                            // foto del tema a TODO el fondo, a color, con velo oscuro para leer el texto
     C.save(); C.filter = 'saturate(.92) contrast(1.05)'; cover(bf, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
@@ -206,7 +206,7 @@ function bg(s, t) {
   const bi = img(s.bg_image);
   if (bi) { // foto de fondo en duotono con el color del tema (la escena sigue siendo legible)
     const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
-    C.fillStyle = th === 'brand' ? rgba(BGB, .80) : isDarkBg(th) ? rgba(B0.azul, .85) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B0.arena, .87); C.fillRect(0, 0, W, H);
+    C.fillStyle = th === 'brand' ? rgba(BGB, .80) : th === 'negro' ? rgba(B0.negro, .86) : isDarkBg(th) ? rgba(B0.azul, .85) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B0.arena, .87); C.fillRect(0, 0, W, H);
   }
   // línea de marea: horizonte suave que respira
   C.save(); C.strokeStyle = isDarkBg(th) ? rgba(B.arena, .28) : rgba(B0.azul, .22); C.lineWidth = 2;
@@ -215,10 +215,10 @@ function bg(s, t) {
     C.stroke(); }
   C.restore();
   // sol / círculo de marca
-  if (th === 'blue' || th === 'brand') { C.save(); C.globalAlpha = .08; C.fillStyle = B.arena; C.beginPath(); C.arc(860, 300 - lt * 4, 260, 0, 7); C.fill(); C.restore(); }
+  if (isDarkBg(th) && th !== 'negro') { C.save(); C.globalAlpha = .08; C.fillStyle = B.arena; C.beginPath(); C.arc(860, 300 - lt * 4, 260, 0, 7); C.fill(); C.restore(); }
 }
 function chrome(s, t) {
-  const th = themeOf(s), col = isFullPhoto(s) ? photoInk() : th === 'blue' || th === 'brand' ? B.arena : B.negro;
+  const th = themeOf(s), col = isFullPhoto(s) ? photoInk() : isDarkBg(th) ? B.arena : B.negro;
   const lg = logoTint(col); C.save(); C.globalAlpha = .9;
   if (lg) C.drawImage(lg, 60, 150, 102, 90);
   if (V.brand.division) {   // sub-marca: "COSTA STUDIO" (logo) + "FINANCE"
@@ -298,7 +298,7 @@ function logoWall(s, t) {
 
 R.statement = (s, t) => {
   logoWall(s, t);
-  const th = themeOf(s), dk = th === 'blue' || th === 'brand', ink = dk ? B.arena : B.negro, em = dk ? B.mostaza : B.azul;
+  const th = themeOf(s), dk = isDarkBg(th), ink = dk ? B.arena : B.negro, em = dk ? B.mostaza : B.azul;
   if (s.kicker) kicker(s.kicker, 90, 520, s.t0 + .1, t, ink);
   const size = s.size || 84, lines = wrap(s.text, F.d, 600, size, 900), lh = size * 1.22;
   const y0 = 760 - (lines.length - 1) * lh / 2 + 80, emw = (s.emphasis || '').toLowerCase();
@@ -342,6 +342,40 @@ R.ronda = (s, t) => {
     C.restore();
   });
   if (inv) txt('Aquí gana el número más bajo', 984, y0 + rows.length * H2 + 30, { f: F.s, w: 400, s: 38, al: 'right', c: ink, a: .9 * seg(t, s.t0 + 1, s.t0 + 1.6) });
+};
+
+// Ranking simple (JP, 27 nov 2026): el MISMO dibujo de `ronda` —logo, nombre, barra que crece y el
+// valor a la derecha— pero sin nada de torneo: sin "RONDA 1 DE 6" y sin los círculos de puntos. Sirve
+// para cualquier lista ordenada (categorías que más subieron, acciones del día, etc.).
+// Una fila con `ref: true` es la línea de referencia (p. ej. el índice): barra apagada y sin destacar.
+R.ranking = (s, t) => {
+  const dk = isDarkBg(themeOf(s)), ink = dk ? B.arena : B.negro, soft = dk ? rgba(B.arena, .7) : B.g4;
+  if (s.kicker) kicker(s.kicker, 90, 360, s.t0 + .1, t, ink);
+  const ti = s.title || '', tl2 = fitLines(ti, F.d, 800, 70, 900, 2, 44), tlh2 = Math.round(tl2.size * 1.14);
+  riseLines(tl2.lines, 90, 470, tlh2, s.t0 + .2, t, { f: F.d, w: 800, s: tl2.size, c: ink });
+  let yW = 470 + (tl2.lines.length - 1) * tlh2 + tl2.size * .30;
+  if (s.sub) { const wl = fitLines(s.sub, F.b, 500, 40, 900, 2, 28), wlh = Math.round(wl.size * 1.3);
+    riseLines(wl.lines, 90, yW + 56, wlh, s.t0 + .4, t, { f: F.b, w: 500, s: wl.size, c: soft });
+    yW += 56 + (wl.lines.length - 1) * wlh; }
+  const rows = (s.rows || []).slice(0, 5);
+  const mx = Math.max(1e-9, ...rows.map(r => Math.abs(r.value)));
+  const y0 = Math.round(yW + 86), H2 = 152, x0 = 90, hasLogo = rows.some(r => r.logo);
+  const bx = hasLogo ? 530 : 470, bw = hasLogo ? 190 : 250;   // la barra arranca DESPUÉS del nombre, nunca encima
+  rows.forEach((r, i) => {
+    const tc = typeof r.cue === 'number' ? r.cue : s.t0 + .9 + i * .45, k = ex(seg(t, tc, tc + .5)); if (k <= 0) return;
+    const y = y0 + i * H2, neg = r.value < 0;
+    C.save(); C.globalAlpha *= Math.min(1, k * 1.2); if (r.ref) C.globalAlpha *= .72;
+    const lg = img(r.logo); if (lg) contain(lg, x0, y + 8, 104, 76);
+    const nx = x0 + (hasLogo ? 118 : 0);
+    txt(r.name, nx, y + 60, { f: F.d, w: 800, s: fit(r.name, F.d, 800, 36, bx - nx - 24, 20), c: ink });
+    const w = Math.max(6, bw * (Math.abs(r.value) / mx) * k);
+    rr(bx, y + 26, w, 44, 12);
+    C.fillStyle = r.ref ? rgba(ink, .28) : neg ? B.terracota : B.musgo; C.fill();
+    const vt = r.text || ((neg ? '−' : '+') + Math.abs(r.value) + (s.suffix || ''));
+    txt(vt, 984, y + 60, { f: F.d, w: 800, s: 40, al: 'right', c: r.ref ? soft : neg ? B.terracota : ink });
+    C.restore();
+  });
+  if (s.note) txt(s.note, 90, y0 + rows.length * H2 + 36, { f: F.s, w: 400, s: 32, c: soft, a: .9 * seg(t, s.t0 + 1.2, s.t0 + 1.8) });
 };
 
 // Tabla de posiciones: una fila por empresa con sus puntos acumulados; la ganadora, destacada.
@@ -512,16 +546,17 @@ R.zoom = (s, t) => {
 };
 
 R.news = (s, t) => {
-  kicker(s.kicker || 'La noticia', 90, 360, s.t0 + .1, t, B.negro);
+  const dkN = isDarkBg(themeOf(s)), inkN = dkN ? B.arena : B.negro;   // sobre negro, el texto iba en negro
+  kicker(s.kicker || 'La noticia', 90, 360, s.t0 + .1, t, inkN);
   const ni = img(s.image), off = ni ? 430 : 0;
   if (ni) { const k = seg(t, s.t0 + .1, s.t0 + .8), [fx, fy] = focus(s);
     C.save(); rr(90, 400, 900, 380 * ex(k), 26); C.clip(); cover(ni, 90, 400, 900, 380, kb(s, t), fx, fy); C.restore();
     credit(s, s.image, 90, 808, B.g4, 'left', .8 * k); }
   const hl = wrap(s.headline || '', F.d, 600, 60, 900);
-  riseLines(hl, 90, 480 + off, 76, s.t0 + .25, t, { f: F.d, w: 600, s: 60 });
+  riseLines(hl, 90, 480 + off, 76, s.t0 + .25, t, { f: F.d, w: 600, s: 60, c: inkN });
   let y = 480 + off + hl.length * 76 + 60;
   const kc = seg(t, s.t0 + .6, s.t0 + 1.1);
-  C.save(); C.globalAlpha *= kc; C.fillStyle = B.negro; C.fillRect(90, y - 30, 900 * ex(kc), 2); C.restore();
+  C.save(); C.globalAlpha *= kc; C.fillStyle = inkN; C.fillRect(90, y - 30, 900 * ex(kc), 2); C.restore();
   y += 50;
   (s.bullets || []).forEach((b, i) => {
     const tc = typeof b.cue === 'number' ? b.cue : s.t0 + 1.4 + i * 1.2, k = seg(t, tc, tc + .5); if (k <= 0) return;
@@ -530,15 +565,15 @@ R.news = (s, t) => {
     const bf = BR ? B.azul : b.tone ? toneC(b.tone) : B.azul;   // con brand_colors, todas las viñetas en el color de la empresa
     C.fillStyle = bf; C.beginPath(); C.arc(116, y - 15, 26, 0, 7); C.fill();
     txt(String(i + 1), 116, y - 3, { f: F.d, w: 800, s: 28, al: 'center', c: BR ? inkOn(bf) : B.arena });
-    lines.forEach((l, j) => txt(l, 170, y + j * 56, { f: F.b, w: 700, s: 46 }));
+    lines.forEach((l, j) => txt(l, 170, y + j * 56, { f: F.b, w: 700, s: 46, c: inkN }));
     // El sub se partía: se dibujaba en UNA línea con txt() mientras el texto de arriba sí usaba wrap(),
     // así que cualquier sub largo se salía por la derecha (JP, 21 nov 2026 — regla de la maquetación).
     const subl = b.sub ? wrap(b.sub, F.b, 400, 34, 820) : [];
-    subl.forEach((l, j) => txt(l, 170, y + lines.length * 56 - 4 + j * 42, { f: F.b, w: 400, s: 34, c: B.g4, a: seg(t, tc + .4, tc + .9) }));
+    subl.forEach((l, j) => txt(l, 170, y + lines.length * 56 - 4 + j * 42, { f: F.b, w: 400, s: 34, c: dkN ? rgba(B.arena, .72) : B.g4, a: seg(t, tc + .4, tc + .9) }));
     C.restore();
     y += lines.length * 56 + (b.sub ? 70 + (subl.length - 1) * 42 : 30) + 40;
   });
-  if (s.source) txt('Fuente: ' + s.source, 90, Math.min(1540, Math.max(y + 20, 1380)), { f: F.b, w: 500, s: 28, c: B.g4, a: seg(t, s.t0 + 1, s.t0 + 1.5) });
+  if (s.source) txt('Fuente: ' + s.source, 90, Math.min(1540, Math.max(y + 20, 1380)), { f: F.b, w: 500, s: 28, c: dkN ? rgba(B.arena, .72) : B.g4, a: seg(t, s.t0 + 1, s.t0 + 1.5) });
 };
 
 R.bars = (s, t) => {
@@ -742,26 +777,44 @@ R.catalyst = (s, t) => {
 R.outro = (s, t) => {
   const ink = B.arena;
   const ta = cueT(s, 'cue_a', .3), tb = cueT(s, 'cue_b', 1.2);
-  rise(s.question_a || '', 540, 640, seg(t, ta - .1, ta + .5), { f: F.s, w: 400, s: fit(s.question_a || '', F.s, 400, 150, 780, 70), al: 'center', c: ink });
-  rise(s.question_b || '', 540, 800, seg(t, tb - .1, tb + .5), { f: F.s, w: 400, s: fit(s.question_b || '', F.s, 400, 150, 780, 70), al: 'center', c: B.mostaza });
+  // Cada pregunta cuelga de donde TERMINÓ la anterior, nunca de una Y fija: con dos preguntas largas
+  // (o con uno de los dos textos en varias líneas) se encimaban. Regla de la maquetación, 27 nov 2026.
+  // Las dos preguntas comparten un PRESUPUESTO de alto: se busca el tamaño más grande con el que las dos
+  // juntas caben antes del pie. Sin esto, dos preguntas de tres líneas empujan el tagline, el botón y el
+  // handle hasta la banda del subtítulo y por debajo del personaje (27 nov 2026).
+  const budget = isHost(s) ? 520 : 680;
+  let qa, qb, lha, lhb, qs = 104;
+  for (;; qs -= 6) {
+    qa = fitLines(s.question_a || '', F.s, 400, qs, 780, 3, 46); lha = Math.round(qa.size * 1.16);
+    qb = fitLines(s.question_b || '', F.s, 400, qs, 780, 3, 46); lhb = Math.round(qb.size * 1.16);
+    if (qa.lines.length * lha + 46 + qb.lines.length * lhb <= budget || qs <= 46) break;
+  }
+  riseLines(qa.lines, 540, 640, lha, ta - .1, t, { f: F.s, w: 400, s: qa.size, al: 'center', c: ink });
+  const yB = 640 + qa.lines.length * lha + 46;
+  riseLines(qb.lines, 540, yB, lhb, tb - .1, t, { f: F.s, w: 400, s: qb.size, al: 'center', c: B.mostaza });
+  // Todo lo de abajo cuelga del final REAL de la segunda pregunta, no de una Y fija: con preguntas de
+  // dos o tres líneas el tagline, el botón y el handle se encimaban con ellas (27 nov 2026).
+  const yFin = yB + qb.lines.length * lhb + 30;
   const tl = tb + .9;
-  if (V.brand.tagline) rise(V.brand.tagline, 540, 960, seg(t, tl, tl + .6), { f: F.s, w: 400, s: 50, al: 'center', c: ink });
+  if (V.brand.tagline) rise(V.brand.tagline, 540, yFin + 60, seg(t, tl, tl + .6), { f: F.s, w: 400, s: 50, al: 'center', c: ink });
+  const yCta = yFin + 130;
   const kc = seg(t, tl + .4, tl + 1);
   if (kc > 0) { const label = s.cta || V.brand.cta, w = tw(label, F.b, 700, 40) + 90;
-    C.save(); C.globalAlpha *= kc; scaleAt(540, 1110, .9 + .1 * back(kc));
-    rr(540 - w / 2, 1060, w, 96, 48); C.fillStyle = ink; C.fill(); txt(label, 540, 1122, { f: F.b, w: 700, s: 40, al: 'center', c: B.azul }); C.restore(); }
+    C.save(); C.globalAlpha *= kc; scaleAt(540, yCta + 50, .9 + .1 * back(kc));
+    rr(540 - w / 2, yCta, w, 96, 48); C.fillStyle = ink; C.fill(); txt(label, 540, yCta + 62, { f: F.b, w: 700, s: 40, al: 'center', c: B.azul }); C.restore(); }
   // el pie del cierre (handle, fuentes, aviso y la declaración de conflicto) cuelga del FINAL de la escena, no de la
   // última palabra: con la cola corta se quedaba sin aparecer (14 nov 2026). Mínimo ~2.6 s a plena vista.
   const tEnd = s.t1 || (tl + 3), kd = seg(t, Math.max(s.t0 + .5, Math.min(tl + .8, tEnd - 2.6)), Math.max(s.t0 + 1, Math.min(tl + 1.3, tEnd - 2.1)));
-  if (V.brand.handle) txt(V.brand.handle, 540, 1230, { f: F.d, w: 600, s: 40, al: 'center', c: ink, a: kd });
-  if (V.brand.name) txt(V.brand.name.toUpperCase() + (V.brand.byline ? '  ·  ' + V.brand.byline.toUpperCase() : ''), 540, 1278, { f: F.d, w: 800, s: 19, ls: 3, al: 'center', c: B.mostaza, a: kd });
+  const yPie = Math.max(yCta + 170, 1230);
+  if (V.brand.handle) txt(V.brand.handle, 540, yPie, { f: F.d, w: 600, s: 40, al: 'center', c: ink, a: kd });
+  if (V.brand.name) txt(V.brand.name.toUpperCase() + (V.brand.byline ? '  ·  ' + V.brand.byline.toUpperCase() : ''), 540, yPie + 48, { f: F.d, w: 800, s: 19, ls: 3, al: 'center', c: B.mostaza, a: kd });
   const src = s.sources ? 'Datos: ' + s.sources : 'Datos: Yahoo Finance';
-  txt(src, 540, 1330, { f: F.b, w: 400, s: fit(src, F.b, 400, 28, 940, 20), al: 'center', c: ink, a: kd * .85 });
-  txt(V.brand.disclaimer, 540, 1372, { f: F.b, w: 400, s: fit(V.brand.disclaimer, F.b, 400, 28, 940, 20), al: 'center', c: ink, a: kd * .85 });
+  txt(src, 540, yPie + 100, { f: F.b, w: 400, s: fit(src, F.b, 400, 28, 740, 20), al: 'center', c: ink, a: kd * .85 });
+  txt(V.brand.disclaimer, 540, yPie + 142, { f: F.b, w: 400, s: fit(V.brand.disclaimer, F.b, 400, 28, 740, 20), al: 'center', c: ink, a: kd * .85 });
   // declaración de conflicto de interés: tiene que LEERSE. Se parte en dos líneas y va en pastilla (JP, 14 nov 2026).
   // una sola línea, debajo del aviso legal, con fit para que nunca se corte. La declaración FUERTE va como chip en la
   // escena de cada empresa, que es donde el espectador la necesita (14 nov 2026).
-  if (s.disclosure) txt(s.disclosure, 540, 1414, { f: F.b, w: 700, s: fit(s.disclosure, F.b, 700, 28, 900, 18), al: 'center', c: B.mostaza, a: kd });
+  if (s.disclosure) txt(s.disclosure, 540, yPie + 184, { f: F.b, w: 700, s: fit(s.disclosure, F.b, 700, 28, 900, 18), al: 'center', c: B.mostaza, a: kd });
 };
 
 // ---------------- subtítulos ----------------
@@ -786,7 +839,7 @@ function drawScene(ctx, s, t) {
   applyBrand(s);
   bg(s, t);
   C.save(); scaleAt(W / 2, H / 2, 1 + .018 * seg(t, s.t0, s.t1)); // deriva lenta de cámara
-  if (isHost(s) && s.type === 'outro') C.translate(0, -200);        // cierre con JP: el bloque sube para dejarle la esquina de abajo
+  if (isHost(s) && s.type === 'outro') C.translate(0, -275);        // cierre con JP: el bloque sube para dejarle la esquina de abajo
   (R[s.type] || (() => txt('escena desconocida: ' + s.type, 90, 900, { s: 50 })))(s, t);
   C.restore();
   if (isHost(s)) drawHost(s, t);
