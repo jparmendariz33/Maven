@@ -188,14 +188,14 @@ const worlds = {
     // Paso de 0.4 años, no 1.5: en la parte empinada (año 39.6 a 40) la curva sube 0.4 unidades y el
     // cubo mide 0.5, así que se TOCAN. Con 1.5 quedaban huecos justo donde más se nota.
     // Y toda la curva corrida 0.9 a la izquierda, para que la punta no caiga sobre el personaje.
-    const DESV = .9, PASO_MARCA = .32;
+    const DESV = 0, PASO_MARCA = .32, ALTO_CURVA = 1.8, Z_CURVA = -2.5;
     // Las marcas se reparten por DISTANCIA sobre la curva, no por años: con paso fijo de años la
     // curva sube 0.8 unidades por paso al final (el cubo mide 0.5) y el rastro se abría justo
     // arriba, donde más se nota. Caminando la curva de 0.05 en 0.05 quedan siempre traslapadas.
     w.marcas = [];
     let my = 2, mx = X(2), mh = ALT(2);
     const pon = (px, py) => { const mk = rbox(.5, .5, .5, .14, matC);
-      mk.position.set(px - DESV, py + 1.0, 2.2); w.curva.add(mk); w.marcas.push(mk); };
+      mk.position.set(px - DESV, py + ALTO_CURVA, Z_CURVA); w.curva.add(mk); w.marcas.push(mk); };
     pon(mx, mh);
     while (my < 40) {
       my = Math.min(40, my + .05);
@@ -203,13 +203,13 @@ const worlds = {
       if (Math.hypot(px - mx, py - mh) >= PASO_MARCA || my >= 40) { pon(px, py); mx = px; mh = py; }
     }
     w.flecha = new THREE.Mesh(new THREE.ConeGeometry(1.4, 3.4, 4), matC);
-    w.flecha.position.set(X(40) - DESV + .15, ALT(40) + 2.75, 2.2); w.flecha.rotation.z = -.18;
+    w.flecha.position.set(X(40) - DESV, ALT(40) + ALTO_CURVA + 1.55, Z_CURVA); w.flecha.rotation.z = -.18;
     w.curva.add(w.flecha);
-    w.rotuloExp = L.label3d('exponencial', 16, 2.7, { bg: null, ink: '#FFE39A', font: '800 280px Unbounded', ls: 2, pw: 2048 });
+    w.rotuloExp = L.label3d('exponencial', 16, 2.7, { bg: null, ink: '#FFE39A', font: '800 470px Unbounded', ls: 2, pw: 4096 });
     w.rotuloExp.material.emissive = new THREE.Color('#FFE39A');
     w.rotuloExp.material.emissiveMap = w.rotuloExp.material.map;
     w.rotuloExp.material.emissiveIntensity = 1.1;              // en el cielo oscuro no le llega luz
-    w.rotuloExp.position.set(X(40) - 12, ALT(40) + 2.1, 2.2); w.curva.add(w.rotuloExp);
+    w.rotuloExp.position.set(X(40) - 12, ALT(40) + 2.6, Z_CURVA); w.curva.add(w.rotuloExp);
     w.traza = (k) => {                       // k 0..1: la flecha se dibuja de izquierda a derecha
       w.curva.visible = k > .01;
       w.marcas.forEach((m, i) => m.scale.setScalar(Math.max(.001, L.seg(k, i / w.marcas.length * .8, i / w.marcas.length * .8 + .18))));
@@ -455,7 +455,7 @@ const scenes = [
       const a = 1 + 2 * L.eio(L.seg(P(lt, this), .45, 1));
       fichas(L, a, VAL(a));
       // sin estas dos etiquetas el espectador no sabe qué es cada color
-      apunta(L, 'VERDE · el dinero que tú pones', 320, 1430, 540, 1560, VRD, L.seg(lt, 1.6, 2.2));
+      apunta(L, 'VERDE · el dinero que tú pones', 320, 1430, 470, 1715, VRD, L.seg(lt, 1.6, 2.2));
       apunta(L, 'DORADO · los intereses que te pagan', 700, 1130, 540, 1310, ORO, L.seg(lt, 3.2, 3.8));
     } },
 
@@ -622,7 +622,7 @@ const scenes = [
       w.per.scale.setScalar(1); w.per.position.set(CX(40), ALT(40), 1.3); w.per.rotation.y = 0;
       L.pose(w.per, { armR: [.3, .2, .3], armL: [.3, -.2, .3], head: [.3, MIRA_CAMARA, 0],
         lid: Math.max(.15, L.blink(q, 4)), brow: .25, smile: .2 });
-      encuadra(w, { cx: MEDIO, yBot: 0, yTop: ALT(40) + 7.2,          // la flecha y su punta suben por encima de todo
+      encuadra(w, { cx: MEDIO, yBot: 0, yTop: ALT(40) + 7.0,          // la flecha y su punta suben por encima de todo
         ancho: mix(DER + 2.4, DER + 1.2, L.eio(p)), tilt: 2.4 });
       w.focusOn(w.barras[39].g, 3.4); w.aperture = .00004;
     },
