@@ -85,6 +85,10 @@ def main(vdir):
          '-ar', str(SR), '-ac', '1', out])
     for f in (tmp, tight): os.remove(f)
     final = len(read_wav(out)) / SR
+    # Si antes se corrió pace3d/no_voice, quedó audio/NO_VOICE y make_audio.py mezclaría SOLO música,
+    # sin narración. Llegar aquí significa que SÍ hay voz, así que la bandera se retira.
+    _nv = os.path.join(vdir, 'audio', 'NO_VOICE')
+    if os.path.exists(_nv): os.remove(_nv); print('quitada la marca NO_VOICE (ya hay voz)')
     print(f'voz original {len(x) / SR:.1f}s → sin pausas largas {dur:.1f}s → tempo {tempo:.3f}x → final {final:.1f}s')
     # tiempos por palabra (faster-whisper; se le pasa un arreglo para evitar problemas con PyAV)
     raw16 = os.path.join(a, '_16k.f32')

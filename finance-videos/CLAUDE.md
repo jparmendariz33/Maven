@@ -477,6 +477,35 @@ tamaño a la maqueta. **El personaje mantiene su escala SIEMPRE.** Si tiene que 
 lo tape el objeto (pasa por detrás); si solo hay que decir "esto ya es tuyo", basta con que camine hasta él y
 **apoye la mano**. Es más barato de animar y se entiende mejor.
 
+## El mundo es UNO y persiste: lo que enciendes, apágalo (27 nov 2026)
+
+En una historia 3D todas las escenas comparten el mismo objeto `w`. Lo que una escena enciende **sigue
+encendido en la siguiente si nadie lo apaga**, porque el motor no reconstruye el mundo entre escenas.
+Puse la flecha exponencial para la escena del golpe y apareció atravesada encima del coche en la
+escena del año 5, que ni la menciona.
+
+**Cada escena declara el estado completo de lo que le importa, no solo lo que cambia.** Si hay cinco
+piezas opcionales, las cinco se fijan en todas las escenas (`w.traza(0)`, `w.dato(k, 0)`), aunque sea
+para apagarlas. Es más código y es el único que no se rompe al reordenar escenas.
+
+## Un rótulo 3D no se agranda con el plano, sino con la FUENTE (27 nov 2026)
+
+Hice la palabra "exponencial" de 8.6 unidades de ancho y seguía ilegible. El plano era grande; el
+texto, no. `label3d` dibuja sobre un lienzo de `pw` píxeles de ancho y **`ph = pw × alto / ancho`**:
+con `pw 2048` en un plano de 8.6 × 1.5, el lienzo mide 2048 × 357, y una fuente de 150 px ocupa el
+42% de esa altura. Para que el texto llene el plano, **la fuente tiene que acercarse a `ph`**
+(250 px sobre 357 = 70%), sin pasarse del ancho: `caracteres × 0.62 × tamaño + ls × caracteres ≤ pw`.
+Y si el rótulo cae en una zona oscura, dale `emissive` + `emissiveMap` con su propio `map`, o la luz
+de escena no lo alcanza y se lee gris.
+
+## La etiqueta de un objeto va a SU misma profundidad (27 nov 2026)
+
+JP pidió la cifra encima del coche y de la casa. La puse a `z = .45` con el coche en `z = −.5` y
+quedó encima del techo: **más cerca de la cámara = más abajo en el cuadro**, así que la etiqueta
+bajó lo suficiente para encimarse. Una etiqueta que nombra un objeto va **a la z de ese objeto**, y
+se separa solo en altura. El texto se calcula del mismo dato que el contador (`VAL(y)`), nunca a
+mano, o un día dirán cosas distintas.
+
 ## La cámara también narra: gramática de plano (JP, 20 nov 2026)
 JP trajo un short de @SoySR.J y dijo: "todas las tomas son a la misma altura de la persona, la toma no cambia,
 mantiene el mismo tamaño la persona". **Medido en la historia de Kahneman, tenía razón exacta:** las 10 escenas van
@@ -678,6 +707,20 @@ Y lo segundo que oyó JP: `make_audio.py` metía una **"ola" automática en CADA
 las marcadas `trans: 'cont'`, donde la cámara no corta. Nueve "whooshes" sin nada que los justifique. Corregido:
 el `TIMELINE` ahora lleva `trans` y la ola **solo suena en cortes de verdad**, como ya mandaba la regla de la casa
 ("la ola solo va entre lugares distintos").
+
+## `pace3d.py` deja una bandera que MATA la narración (27 nov 2026)
+
+JP: *"tampoco hay audio, la narración ya no está."* Y era cierto: el MP4 llevaba música y nada más.
+
+`pace3d.py` y `no_voice.py` escriben **`audio/NO_VOICE`** (es el flujo en el que JP graba encima), y
+`make_audio.py` lo lee y **mezcla solo la cama musical**. Yo corrí `pace3d.py` nada más para regenerar
+`narration.txt` con una frase cambiada, y de paso volvió a armar la bandera. Nadie la quitó, y el
+render salió mudo de voz.
+
+Corregido donde toca: **`process_voice.py` borra `NO_VOICE` al producir `voice.wav`**, porque llegar
+ahí significa que sí hay voz. Y la comprobación de diez segundos antes de renderizar: `make_audio.py`
+imprime `balance hablando: voz −X dB · música −Y dB` **solo cuando hay voz en la mezcla**. Si esa
+línea no sale, el video va a salir sin narración.
 
 ## Regla de la toma única (JP, 17 nov 2026)
 **La voz de IA se genera en UNA sola llamada, nunca por piezas.** Cada envío tiene su propia entonación y energía, así

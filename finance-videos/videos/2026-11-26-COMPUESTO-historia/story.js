@@ -39,9 +39,9 @@ const ES_HITO = y => Object.values(HITOS).includes(y);
 
 // Un descanso ancho corre el centro del grupo: ANCHO(y) y CX(y) son la única verdad sobre dónde está
 // cada barra. (La lección de CLAUDE.md: un grupo que se escala o se corre NO mide lo que crees.)
-const ANCHO_BARRA = .38, ANCHO_DESCANSO = 2.6, ANCHO_CIMA = 4.2;
+const ANCHO_BARRA = .38, ANCHO_DESCANSO = 4.0, ANCHO_CIMA = 4.2;
 const ANCHO = y => y === 40 ? ANCHO_CIMA : ES_HITO(y) ? ANCHO_DESCANSO : ANCHO_BARRA;
-const FONDO = y => y === 40 ? 4.6 : ES_HITO(y) ? 3.0 : 1.5;   // hondas a propósito: el personaje
+const FONDO = y => y === 40 ? 4.6 : ES_HITO(y) ? 4.0 : 1.5;   // hondas a propósito: el personaje
 const Z_CAMINA = .55;                                          // camina DELANTE, los hitos van al fondo
 const CX = y => X(y) + (ANCHO(y) - ANCHO_BARRA) / 2;          // centro real del descanso
 const DER = CX(40) + ANCHO_CIMA / 2;                          // borde derecho de la gráfica
@@ -62,7 +62,10 @@ function encuadra(w, { cx, yBot, yTop, ancho, aire = 1.15, texto = TEXTO, tilt =
 
 // ---------------------------------------------------------------- miradas (corrección 4 de JP)
 // yaw 0 = de frente a cámara; yaw negativo = mira hacia donde camina (+x).
-const MIRA_CAMARA = -.12, MIRA_SUBIENDO = -.40;   // -1.05 (60 grados) le rompía la cara: se ve el perfil y los ojos se deforman
+const MIRA_CAMARA = -.12;
+// rotation.y POSITIVO mira hacia +x (la dirección en la que sube). Lo tenía en negativo y caminaba
+// de espaldas. La cabeza se gira al REVÉS que el cuerpo, para que se le siga viendo la cara.
+const CUERPO_SUBE = .55, MIRA_SUBIENDO = -.30;
 // Cuánto mide de verdad: cuello 1.62 + radio de la cabeza .62 + pelo. NO es 1.95.
 const ALTO_PERSONA = 2.35;
 
@@ -126,7 +129,10 @@ const worlds = {
 
     // ---- los hitos. CORRECCIÓN 7: una vez puesto, un hito NO se esconde. w.pon(n) deja a la vista
     // todo lo que ya se ganó, así que la casa nunca puede aparecer antes que el coche.
-    const premio = (o, y, z = 0) => { o.scale.setScalar(.001); o.position.set(CX(y), ALT(y), z); w.scene.add(o); return o; };
+    // premio() guarda el tamaño FINAL de cada pieza en userData.k: las escenas animan la aparición
+    // con w.sale(obj, k) en vez de setScalar(1), que borraría la escala propia del objeto.
+    const premio = (o, y, z = 0) => { o.userData.k = o.scale.x || 1; o.scale.setScalar(.001); o.position.set(CX(y), ALT(y), z); w.scene.add(o); return o; };
+    w.sale = (o, k) => o.scale.setScalar(Math.max(.001, (o.userData.k || 1) * k));
 
     w.coche = new THREE.Group();
     const carr = rbox(2.0, .55, .95, .18, clay2('#C94F3C', .5)); carr.position.y = .45; w.coche.add(carr);
@@ -134,7 +140,7 @@ const worlds = {
     [[-.65, .5], [.65, .5], [-.65, -.5], [.65, -.5]].forEach(([a, b]) => {
       const r = new THREE.Mesh(new THREE.CylinderGeometry(.26, .26, .18, 18), clay2('#22262C', .6));
       r.rotation.z = Math.PI / 2; r.position.set(a, .26, b); w.coche.add(r); });
-    premio(w.coche, 5, -.9);
+    w.coche.scale.setScalar(1.9); premio(w.coche, 5, -.5);    // a la altura del personaje
 
     w.casa = new THREE.Group();
     const cuerpo = rbox(2.0, 1.5, 1.6, .06, clay2('#E8E0CE', .78)); cuerpo.position.y = .75; w.casa.add(cuerpo);
@@ -144,13 +150,53 @@ const worlds = {
     vent.material = vent.material.clone();
     vent.material.emissive = new THREE.Color('#FFC46A'); vent.material.emissiveIntensity = .9;
     vent.position.set(.5, .85, .82); w.casa.add(vent);
-    premio(w.casa, 18, -.65);
+    w.casa.scale.setScalar(1.5); premio(w.casa, 18, -.72);
 
     w.barco = new THREE.Group();
     const casco = rbox(2.3, .6, 1.0, .3, clay2('#F2EDE2', .7)); casco.position.y = .3; w.barco.add(casco);
     const cabina = rbox(1.0, .55, .8, .2, clay2('#D8D2C4', .6)); cabina.position.set(-.2, .88, 0); w.barco.add(cabina);
     const mastil = rbox(.1, 1.6, .1, .03, clay2('#C9C3B5', .5)); mastil.position.set(.45, 1.4, 0); w.barco.add(mastil);
-    premio(w.barco, 31, -.9);
+    w.barco.scale.setScalar(1.6); premio(w.barco, 31, -.6);  // antes casi no se veía
+
+    // ---- la cifra encima de cada hito (sale de VAL(y), así nunca discrepa del contador)
+    // alto REAL de cada hito ya escalado, y su z: la etiqueta va a la MISMA profundidad que el objeto
+    // (si va más cerca de la cámara, baja en el cuadro y se encima con el techo).
+    const ALTO_HITO = { coche: 1.17 * 1.9, casa: 1.97 * 1.5, barco: 2.2 * 1.6 };
+    const Z_HITO = { coche: -.5, casa: -.72, barco: -.6 };
+    w.datos = {};
+    [['coche', 5], ['casa', 18], ['barco', 31]].forEach(([k, y]) => {
+      const m = L.label3d('$' + Math.round(VAL(y)).toLocaleString('en-US'), 2.6, .7,
+        { bg: '#0E1A24', ink: '#F2C84B', font: '800 116px Unbounded', ls: 1, pw: 1024 });
+      m.position.set(CX(y), ALT(y) + ALTO_HITO[k] + .95, Z_HITO[k]);
+      m.visible = false; w.scene.add(m); w.datos[k] = m;
+    });
+    w.dato = (k, v) => { w.datos[k].visible = v > .02; w.datos[k].scale.setScalar(Math.max(.001, v)); };
+
+    // ---- 5. LA FLECHA EXPONENCIAL (JP: "un indicador de cómo es exponencial"). Un rastro de marcas
+    // que sigue la punta real de la gráfica —no una curva dibujada a ojo— y remata en punta de flecha.
+    w.curva = new THREE.Group(); w.curva.visible = false; w.scene.add(w.curva);
+    const matC = new THREE.MeshStandardMaterial({ color: '#FFF3D0', emissive: new THREE.Color('#FFD36A'), emissiveIntensity: 1.5, roughness: .45 });
+    w.marcas = [];
+    for (let y = 2; y <= 40; y += 1.5) {
+      const mk = rbox(.5, .5, .5, .14, matC);
+      mk.position.set(X(y), ALT(y) + 1.0, 2.2);
+      w.curva.add(mk); w.marcas.push(mk);
+    }
+    w.flecha = new THREE.Mesh(new THREE.ConeGeometry(2.0, 4.2, 4), matC);
+    w.flecha.position.set(X(40) + 1.0, ALT(40) + 4.7, 2.2); w.flecha.rotation.z = -.30;
+    w.curva.add(w.flecha);
+    w.rotuloExp = L.label3d('exponencial', 13, 2.2, { bg: null, ink: '#FFE39A', font: '800 250px Unbounded', ls: 2, pw: 2048 });
+    w.rotuloExp.material.emissive = new THREE.Color('#FFE39A');
+    w.rotuloExp.material.emissiveMap = w.rotuloExp.material.map;
+    w.rotuloExp.material.emissiveIntensity = 1.1;              // en el cielo oscuro no le llega luz
+    w.rotuloExp.position.set(X(40) - 11, ALT(40) + 3.2, 2.2); w.curva.add(w.rotuloExp);
+    w.traza = (k) => {                       // k 0..1: la flecha se dibuja de izquierda a derecha
+      w.curva.visible = k > .01;
+      w.marcas.forEach((m, i) => m.scale.setScalar(Math.max(.001, L.seg(k, i / w.marcas.length * .8, i / w.marcas.length * .8 + .18))));
+      const fin = L.back(L.seg(k, .82, 1));
+      w.flecha.scale.setScalar(Math.max(.001, fin));
+      w.rotuloExp.scale.setScalar(Math.max(.001, fin));
+    };
 
     // ---- CORRECCIÓN 5: la multitud ya no flota. La cima del año 40 es un descanso de 4.2 x 4.6 y
     // encima va una terraza con cara visible, así que se ve el suelo bajo los pies.
@@ -320,8 +366,9 @@ const scenes = [
       const futuro = L.seg(p, .25, .42), vuelve = L.seg(p, .70, .86);
       const f = Math.max(0, futuro - vuelve);                      // 0 presente · 1 futuro
       w.dibuja(f > .02 ? 40 : 1); w.mec.scale.setScalar(.001);
+      ['coche','casa','barco'].forEach(k => w.dato(k, 0)); w.traza(0);
       w.fondo(f, f);
-      [w.coche, w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(Math.max(.001, f)));
+      [w.coche, w.casa, w.barco].forEach(o => w.sale(o, f)); w.gente.scale.setScalar(Math.max(.001, f));
       w.per.position.set(f > .5 ? CX(40) : 0, f > .5 ? ALT(40) : 0, 1.2);
       w.per.rotation.y = 0;
       L.pose(w.per, { armR: [.32 + f * .9, .2 + f * .3, .3], armL: [.32 + f * .9, -.2 - f * .3, .3],
@@ -348,6 +395,7 @@ const scenes = [
       const anio = 1 + 2 * L.eio(L.seg(p, .45, 1));
       w.dibuja(Math.ceil(anio)); w.fondo(.05, 0);
       [w.coche, w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
+      ['coche','casa','barco'].forEach(k => w.dato(k, 0)); w.traza(0);
       w.mec.scale.setScalar(1);
       // los verdes ya están; los intereses BROTAN encima, cada vez más seguido
       const brota = L.seg(p, .22, .96);
@@ -377,15 +425,16 @@ const scenes = [
       const anio = 3 + 2 * L.eio(L.seg(p, 0, .5));
       w.dibuja(Math.ceil(anio)); w.fondo(.18, .05); w.mec.scale.setScalar(.001);
       const sale = L.back(L.seg(p, .3, .6)), sube = L.eio(L.seg(p, .62, .9));
-      w.coche.scale.setScalar(Math.max(.001, sale));
+      w.traza(0);
+      w.sale(w.coche, sale); w.dato('coche', L.back(L.seg(p, .5, .78)));
       [w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       // NO se encoge (JP: "se hace muy pequeño el personaje"). Camina hasta el coche y apoya la mano.
       w.per.position.set(CX(5) - 1.5 + sube * .62, ALT(5), Z_CAMINA);
       w.per.scale.setScalar(1);
-      w.per.rotation.y = -.18 * sube;
+      w.per.rotation.y = .18 * sube;
       L.pose(w.per, { armR: [.32 + sube * .85, .2 + sube * .22, .3], armL: [.32, -.2, .3],
         head: [0, MIRA_CAMARA, 0], lid: Math.max(.15, L.blink(q, 4)), brow: .25, smile: .25 + sube * .3 });
-      encuadra(w, { cx: CX(5), yBot: 0, yTop: ALT(5) + ALTO_PERSONA + .2, ancho: mix(5.8, 5.0, L.eio(p)), tilt: .5 });
+      encuadra(w, { cx: CX(5), yBot: 0, yTop: ALT(5) + 3.35, ancho: mix(6.6, 5.8, L.eio(p)), tilt: .5 });   // coche 2.2 + su cifra encima
       w.focusOn(w.coche, 1.4); w.aperture = .00016;
     },
     overlay(lt, t, L) {
@@ -402,11 +451,12 @@ const scenes = [
       const p = P(lt, this), q = L.on2(t);
       const anio = 5 + 13 * L.eio(p);
       w.dibuja(Math.ceil(anio)); w.fondo(.3 + L.eio(p) * .15, .1); w.mec.scale.setScalar(.001);
-      w.coche.scale.setScalar(1);                                   // ya se ganó: se queda
+      w.traza(0);
+      w.sale(w.coche, 1); w.dato('coche', 1);               // ya se ganó: se queda
       [w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       w.per.scale.setScalar(1);
       w.per.position.set(X(anio), ALT(anio), Z_CAMINA);
-      w.per.rotation.y = -.55;
+      w.per.rotation.y = CUERPO_SUBE;
       L.pose(w.per, { armR: [.22, .18, .26], armL: [.22, -.18, .26], head: [.3, MIRA_SUBIENDO, 0],
         lean: .1, bob: Math.sin(t * 3.4) * .035 - .05, walk: t * 2.2,
         lid: Math.max(.34, L.blink(q, 5)), brow: -.3, smile: -.3 });
@@ -429,20 +479,21 @@ const scenes = [
       const p = P(lt, this), q = L.on2(t);
       w.dibuja(18); w.fondo(.5, .25); w.mec.scale.setScalar(.001);
       const sale = L.back(L.seg(p, .35, .65)), abre = L.eio(L.seg(p, .7, .92));
-      w.coche.scale.setScalar(1);
-      w.casa.scale.setScalar(Math.max(.001, sale));
+      w.sale(w.coche, 1);
+      w.traza(0);
+      w.sale(w.casa, sale); w.dato('coche', 1); w.dato('casa', L.back(L.seg(p, .55, .82)));
       w.puerta.rotation.y = abre * 1.1; w.puerta.position.x = -.45 - abre * .2;
       [w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       w.per.scale.setScalar(1);
       w.per.position.set(CX(18) - 1.6 + abre * .5, ALT(18), Z_CAMINA + .35);
-      w.per.rotation.y = -.3 + abre * .3;
+      w.per.rotation.y = .3 - abre * .3;
       // llega arrastrando los pies mirando el suelo y se endereza hacia cámara al abrir
       L.pose(w.per, { armR: [.26 + abre * .5, .18, .28], armL: [.26, -.18, .28],
         head: [L.lerp(.28, -.08, abre), L.lerp(MIRA_SUBIENDO * .6, MIRA_CAMARA, abre), 0], lean: .08 - abre * .08,
         lid: Math.max(.2, L.blink(q, 4)), brow: L.lerp(-.2, .4, abre), smile: L.lerp(-.2, .5, abre) });
       // de 9.6 de ancho (entra el coche del año 5) a 5.8 (la casa manda)
       encuadra(w, { cx: mix((CX(5) + CX(18)) / 2 - .2, CX(18), L.eio(p)), yBot: 0,
-        yTop: ALT(18) + ALTO_PERSONA + .3, ancho: mix(9.6, 5.8, L.eio(p)), tilt: .6 });
+        yTop: ALT(18) + 4.15, ancho: mix(10.4, 6.6, L.eio(p)), tilt: .6 });   // casa 3.0 + su cifra
       w.focusOn(w.casa, 1.5); w.aperture = .00015;
     },
     overlay(lt, t, L) {
@@ -458,17 +509,19 @@ const scenes = [
       const p = P(lt, this), q = L.on2(t);
       const anio = 18 + 13 * L.eio(p);
       w.dibuja(Math.ceil(anio)); w.fondo(.72, .45); w.mec.scale.setScalar(.001);
-      w.coche.scale.setScalar(1); w.casa.scale.setScalar(1);
-      w.barco.scale.setScalar(Math.max(.001, L.back(L.seg(p, .66, .92))));
+      w.sale(w.coche, 1); w.sale(w.casa, 1);
+      w.sale(w.barco, L.back(L.seg(p, .42, .72)));   // antes brotaba al final y no daba tiempo de verlo
+      w.traza(0);
+      w.dato('coche', 1); w.dato('casa', 1); w.dato('barco', L.back(L.seg(p, .55, .84)));
       w.gente.scale.setScalar(.001);
       w.per.scale.setScalar(1);
       w.per.position.set(X(anio), ALT(anio), Z_CAMINA);
-      w.per.rotation.y = -.7;
+      w.per.rotation.y = CUERPO_SUBE + .15;
       L.pose(w.per, { armR: [1.25 + Math.sin(t * 4) * .22, .34, .5], armL: [1.25 - Math.sin(t * 4) * .22, -.34, .5],
         head: [-.26, MIRA_SUBIENDO, 0], lean: -.12, bob: Math.sin(t * 4) * .06,
         lid: Math.max(.18, L.blink(q, 4)), brow: .35, smile: .1 });
       encuadra(w, { cx: mix(CX(18) - .6, CX(31) - 2.2, L.eio(p)), yBot: 0,
-        yTop: ALT(anio) + ALTO_PERSONA + .3, ancho: mix(7.4, 12.0, L.eio(p)), tilt: 1.4 });
+        yTop: ALT(anio) + 4.6, ancho: mix(8.0, 12.6, L.eio(p)), tilt: 1.4 });   // barco 3.5 + su cifra
       w.focusOn(w.per, 2.4); w.aperture = .00006;
     },
     overlay(lt, t, L) {
@@ -487,7 +540,8 @@ const scenes = [
       const anio = 31 + 9 * L.eio(L.seg(p, 0, .45));
       const k = L.eio(L.seg(p, .62, 1)), ab = L.eio(L.seg(p, 0, .45));   // k: el cierre al primer plano
       w.dibuja(Math.ceil(anio)); w.fondo(1, 1); w.mec.scale.setScalar(.001);
-      [w.coche, w.casa, w.barco].forEach(o => o.scale.setScalar(1));
+      [w.coche, w.casa, w.barco].forEach(o => w.sale(o, 1));
+      ['coche','casa','barco'].forEach(k => w.dato(k, 1)); w.traza(0);
       const fama = L.back(L.seg(p, .45, .72));
       w.gente.scale.setScalar(Math.max(.001, fama));
       w.gente.children.forEach((a, i) => { if (!a.userData.arms) return;
@@ -522,12 +576,14 @@ const scenes = [
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       w.dibuja(40); w.fondo(1, 1); w.mec.scale.setScalar(.001);
-      [w.coche, w.casa, w.barco].forEach(o => o.scale.setScalar(1));
+      [w.coche, w.casa, w.barco].forEach(o => w.sale(o, 1));
       w.gente.scale.setScalar(.001);
+      ['coche','casa','barco'].forEach(k => w.dato(k, 1));
+      w.traza(L.eio(L.seg(p, .18, .92)));                   // la flecha se traza mientras habla del 92%
       w.per.scale.setScalar(1); w.per.position.set(CX(40), ALT(40), 1.3); w.per.rotation.y = 0;
       L.pose(w.per, { armR: [.3, .2, .3], armL: [.3, -.2, .3], head: [.3, MIRA_CAMARA, 0],
         lid: Math.max(.15, L.blink(q, 4)), brow: .25, smile: .2 });
-      encuadra(w, { cx: MEDIO, yBot: 0, yTop: ALT(40) + ALTO_PERSONA + .2,
+      encuadra(w, { cx: MEDIO, yBot: 0, yTop: ALT(40) + 7.2,          // la flecha y su punta suben por encima de todo
         ancho: mix(DER + 2.4, DER + 1.2, L.eio(p)), tilt: 2.4 });
       w.focusOn(w.barras[39].g, 3.4); w.aperture = .00004;
     },
