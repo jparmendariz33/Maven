@@ -153,20 +153,29 @@ const worlds = {
     w.casa.scale.setScalar(1.5); premio(w.casa, 18, -.72);
 
     w.barco = new THREE.Group();
-    const casco = rbox(2.3, .6, 1.0, .3, clay2('#F2EDE2', .7)); casco.position.y = .3; w.barco.add(casco);
-    const cabina = rbox(1.0, .55, .8, .2, clay2('#D8D2C4', .6)); cabina.position.set(-.2, .88, 0); w.barco.add(cabina);
-    const mastil = rbox(.1, 1.6, .1, .03, clay2('#C9C3B5', .5)); mastil.position.set(.45, 1.4, 0); w.barco.add(mastil);
+    const casco = rbox(2.6, .5, 1.0, .24, clay2('#E8E2D4', .7)); casco.position.y = .25; w.barco.add(casco);
+    const borda = rbox(2.1, .22, .8, .1, clay2('#C94F3C', .55)); borda.position.y = .58; w.barco.add(borda);
+    const mastil = rbox(.09, 2.6, .09, .03, clay2('#8A7B66', .5)); mastil.position.set(-.15, 1.85, 0); w.barco.add(mastil);
+    // velas: TRIÁNGULOS de verdad (un cono de 3 lados no da la silueta de una vela)
+    const vela = (an, al, mat) => {
+      const sh = new THREE.Shape(); sh.moveTo(0, 0); sh.lineTo(an, 0); sh.lineTo(0, al); sh.closePath();
+      return new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: .07, bevelEnabled: false }), mat);
+    };
+    const matVela = clay2('#FBF8EE', .72);
+    const mayor = vela(1.25, 2.1, matVela); mayor.position.set(-.1, .62, -.035); w.barco.add(mayor);   // la grande, atrás del mástil
+    const foque = vela(-.85, 1.5, matVela); foque.position.set(-.2, .62, -.035); w.barco.add(foque);   // el foque, al frente
     w.barco.scale.setScalar(1.6); premio(w.barco, 31, -.6);  // antes casi no se veía
 
     // ---- la cifra encima de cada hito (sale de VAL(y), así nunca discrepa del contador)
     // alto REAL de cada hito ya escalado, y su z: la etiqueta va a la MISMA profundidad que el objeto
     // (si va más cerca de la cámara, baja en el cuadro y se encima con el techo).
-    const ALTO_HITO = { coche: 1.17 * 1.9, casa: 1.97 * 1.5, barco: 2.2 * 1.6 };
+    const ALTO_HITO = { coche: 1.17 * 1.9, casa: 1.97 * 1.5, barco: 2.72 * 1.6 };   // el velero es más alto
     const Z_HITO = { coche: -.5, casa: -.72, barco: -.6 };
     w.datos = {};
+    const QUE_COMPRA = { coche: 'coche', casa: 'casa', barco: 'velero' };
     [['coche', 5], ['casa', 18], ['barco', 31]].forEach(([k, y]) => {
-      const m = L.label3d('$' + Math.round(VAL(y)).toLocaleString('en-US'), 2.6, .7,
-        { bg: '#0E1A24', ink: '#F2C84B', font: '800 116px Unbounded', ls: 1, pw: 1024 });
+      const m = L.label3d('$' + Math.round(VAL(y)).toLocaleString('en-US') + ' · ' + QUE_COMPRA[k], 4.3, .72,
+        { bg: '#0E1A24', ink: '#F2C84B', font: '800 112px Unbounded', ls: 1, pw: 2048 });
       m.position.set(CX(y), ALT(y) + ALTO_HITO[k] + .95, Z_HITO[k]);
       m.visible = false; w.scene.add(m); w.datos[k] = m;
     });
@@ -176,20 +185,31 @@ const worlds = {
     // que sigue la punta real de la gráfica —no una curva dibujada a ojo— y remata en punta de flecha.
     w.curva = new THREE.Group(); w.curva.visible = false; w.scene.add(w.curva);
     const matC = new THREE.MeshStandardMaterial({ color: '#FFF3D0', emissive: new THREE.Color('#FFD36A'), emissiveIntensity: 1.5, roughness: .45 });
+    // Paso de 0.4 años, no 1.5: en la parte empinada (año 39.6 a 40) la curva sube 0.4 unidades y el
+    // cubo mide 0.5, así que se TOCAN. Con 1.5 quedaban huecos justo donde más se nota.
+    // Y toda la curva corrida 0.9 a la izquierda, para que la punta no caiga sobre el personaje.
+    const DESV = .9, PASO_MARCA = .32;
+    // Las marcas se reparten por DISTANCIA sobre la curva, no por años: con paso fijo de años la
+    // curva sube 0.8 unidades por paso al final (el cubo mide 0.5) y el rastro se abría justo
+    // arriba, donde más se nota. Caminando la curva de 0.05 en 0.05 quedan siempre traslapadas.
     w.marcas = [];
-    for (let y = 2; y <= 40; y += 1.5) {
-      const mk = rbox(.5, .5, .5, .14, matC);
-      mk.position.set(X(y), ALT(y) + 1.0, 2.2);
-      w.curva.add(mk); w.marcas.push(mk);
+    let my = 2, mx = X(2), mh = ALT(2);
+    const pon = (px, py) => { const mk = rbox(.5, .5, .5, .14, matC);
+      mk.position.set(px - DESV, py + 1.0, 2.2); w.curva.add(mk); w.marcas.push(mk); };
+    pon(mx, mh);
+    while (my < 40) {
+      my = Math.min(40, my + .05);
+      const px = X(my), py = ALT(my);
+      if (Math.hypot(px - mx, py - mh) >= PASO_MARCA || my >= 40) { pon(px, py); mx = px; mh = py; }
     }
-    w.flecha = new THREE.Mesh(new THREE.ConeGeometry(2.0, 4.2, 4), matC);
-    w.flecha.position.set(X(40) + 1.0, ALT(40) + 4.7, 2.2); w.flecha.rotation.z = -.30;
+    w.flecha = new THREE.Mesh(new THREE.ConeGeometry(1.4, 3.4, 4), matC);
+    w.flecha.position.set(X(40) - DESV + .15, ALT(40) + 2.75, 2.2); w.flecha.rotation.z = -.18;
     w.curva.add(w.flecha);
-    w.rotuloExp = L.label3d('exponencial', 13, 2.2, { bg: null, ink: '#FFE39A', font: '800 250px Unbounded', ls: 2, pw: 2048 });
+    w.rotuloExp = L.label3d('exponencial', 16, 2.7, { bg: null, ink: '#FFE39A', font: '800 280px Unbounded', ls: 2, pw: 2048 });
     w.rotuloExp.material.emissive = new THREE.Color('#FFE39A');
     w.rotuloExp.material.emissiveMap = w.rotuloExp.material.map;
     w.rotuloExp.material.emissiveIntensity = 1.1;              // en el cielo oscuro no le llega luz
-    w.rotuloExp.position.set(X(40) - 11, ALT(40) + 3.2, 2.2); w.curva.add(w.rotuloExp);
+    w.rotuloExp.position.set(X(40) - 12, ALT(40) + 2.1, 2.2); w.curva.add(w.rotuloExp);
     w.traza = (k) => {                       // k 0..1: la flecha se dibuja de izquierda a derecha
       w.curva.visible = k > .01;
       w.marcas.forEach((m, i) => m.scale.setScalar(Math.max(.001, L.seg(k, i / w.marcas.length * .8, i / w.marcas.length * .8 + .18))));
@@ -203,13 +223,34 @@ const worlds = {
     w.gente = new THREE.Group(); w.gente.scale.setScalar(.001); w.scene.add(w.gente);
     const terraza = rbox(ANCHO_CIMA - .18, .26, 4.42, .08, clay2('#C79A3E', .5));
     terraza.position.y = -.13; w.gente.add(terraza);
+    // El PODIO es un escalón dorado más de la columna (no una tarima aparte): el protagonista queda
+    // un escalón ARRIBA y los que festejan un escalón ABAJO, rodeándolo, sin taparle la cara.
+    w.ALTO_PODIO = .9;
+    const podio = rbox(1.7, w.ALTO_PODIO, 1.7, .07, clay2('#E0B24B', .42));
+    podio.position.set(0, w.ALTO_PODIO / 2, .05); w.gente.add(podio);
+    w.festejan = [];
     for (let i = 0; i < 5; i++) {
-      const a = L.actor(MIRON(i)), ang = -.95 + (i / 4) * 1.9;
+      const a = L.actor(MIRON(i)), ang = -1.12 + (i / 4) * 2.24;
       a.scale.setScalar(.72);
-      a.position.set(Math.sin(ang) * 1.62, 0, .55 + Math.cos(ang) * .85);
-      a.rotation.y = -ang * .4 + Math.PI;                     // de espaldas al fondo, mirándolo a él
-      w.gente.add(a);
+      a.position.set(Math.sin(ang) * 1.75, 0, 1.2 + Math.cos(ang) * .7);   // en arco, DELANTE de él
+      a.rotation.y = -ang * .45 + Math.PI;                                  // mirándolo a él
+      a.userData.fase = i * 1.26;                                           // cada quien brinca a su ritmo
+      w.gente.add(a); w.festejan.push(a);
     }
+    // confeti: tres estallidos desfasados sobre la cima (burst ya existía en lib.js y no lo usábamos)
+    w.confeti = [0, 1, 2, 3, 4].map(i => { const b = L.burst(11 + i * 7, .42);
+      b.position.set((i - 2) * 1.5, 2.2 + (i % 3) * .7, .4 + (i % 2) * .5); w.gente.add(b); return b; });
+    // BRINCAN de verdad: se mueven en y, no solo de pose. k 0..1 enciende la fiesta.
+    w.fiesta = (k, t, conf = k) => {       // conf aparte: en el primer plano el confeti estorba
+      w.festejan.forEach((a, i) => {
+        const salto = k <= 0 ? 0 : Math.max(0, Math.sin(t * 6.2 + a.userData.fase)) * .42 * k;
+        a.position.y = salto;
+        L.pose(a, { armR: [1.45 + salto * .6, .45, .45], armL: [1.45 + salto * .6, -.45, .45],
+          head: [-.22, 0, 0], brow: .55, smile: .75, bob: salto * .12,
+          lid: Math.max(.15, L.blink(L.on2(t), 3 + i)) });
+      });
+      w.confeti.forEach((b, i) => b.userData.update(conf <= .02 ? 0 : ((t * .55 + i * .34) % 1)));
+    };
     w.gente.position.set(CX(40), ALT(40), 0);
 
     // ---- CORRECCIÓN 8: los edificios parecían linternas (una sola ventana gigante). Ahora llevan
@@ -369,7 +410,8 @@ const scenes = [
       ['coche','casa','barco'].forEach(k => w.dato(k, 0)); w.traza(0);
       w.fondo(f, f);
       [w.coche, w.casa, w.barco].forEach(o => w.sale(o, f)); w.gente.scale.setScalar(Math.max(.001, f));
-      w.per.position.set(f > .5 ? CX(40) : 0, f > .5 ? ALT(40) : 0, 1.2);
+      w.fiesta(f, t);
+      w.per.position.set(f > .5 ? CX(40) : 0, f > .5 ? ALT(40) + w.ALTO_PODIO : 0, f > .5 ? .2 : 1.2);
       w.per.rotation.y = 0;
       L.pose(w.per, { armR: [.32 + f * .9, .2 + f * .3, .3], armL: [.32 + f * .9, -.2 - f * .3, .3],
         head: [-.05, MIRA_CAMARA, 0], lid: Math.max(.15, L.blink(q, 4)), brow: .2 + f * .3, smile: .2 + f * .4 });
@@ -395,7 +437,7 @@ const scenes = [
       const anio = 1 + 2 * L.eio(L.seg(p, .45, 1));
       w.dibuja(Math.ceil(anio)); w.fondo(.05, 0);
       [w.coche, w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
-      ['coche','casa','barco'].forEach(k => w.dato(k, 0)); w.traza(0);
+      ['coche','casa','barco'].forEach(k => w.dato(k, 0)); w.traza(0); w.fiesta(0, t);
       w.mec.scale.setScalar(1);
       // los verdes ya están; los intereses BROTAN encima, cada vez más seguido
       const brota = L.seg(p, .22, .96);
@@ -413,7 +455,7 @@ const scenes = [
       const a = 1 + 2 * L.eio(L.seg(P(lt, this), .45, 1));
       fichas(L, a, VAL(a));
       // sin estas dos etiquetas el espectador no sabe qué es cada color
-      apunta(L, 'VERDE · el dinero que tú pones', 320, 1660, 540, 1790, VRD, L.seg(lt, 1.6, 2.2));
+      apunta(L, 'VERDE · el dinero que tú pones', 320, 1430, 540, 1560, VRD, L.seg(lt, 1.6, 2.2));
       apunta(L, 'DORADO · los intereses que te pagan', 700, 1130, 540, 1310, ORO, L.seg(lt, 3.2, 3.8));
     } },
 
@@ -544,12 +586,9 @@ const scenes = [
       ['coche','casa','barco'].forEach(k => w.dato(k, 1)); w.traza(0);
       const fama = L.back(L.seg(p, .45, .72));
       w.gente.scale.setScalar(Math.max(.001, fama));
-      w.gente.children.forEach((a, i) => { if (!a.userData.arms) return;
-        L.pose(a, { armR: [1.3 + Math.sin(t * 5 + i) * .3, .4, .5],
-          armL: [1.3 - Math.sin(t * 5 + i) * .3, -.4, .5], head: [-.2, 0, 0], brow: .5, smile: .6,
-          lid: Math.max(.15, L.blink(q, 3 + i)) }); });
+      w.fiesta(fama, t, fama * Math.max(0, 1 - k * 2.5));   // el confeti se va antes del primer plano
       w.per.scale.setScalar(1);
-      w.per.position.set(CX(40), ALT(40), 1.3); w.per.rotation.y = 0;
+      w.per.position.set(CX(40), ALT(40) + w.ALTO_PODIO * fama, .2); w.per.rotation.y = 0;
       // en el primer plano los brazos BAJAN: levantados le tapaban la boca a esa distancia
       const alza = (1.5 * fama + .3) * (1 - k * .8);
       L.pose(w.per, { armR: [alza, .45 - k * .25, .5], armL: [alza, -.45 + k * .25, .5],
@@ -557,10 +596,10 @@ const scenes = [
       // el plano general se ABRE con la gráfica (arranca donde lo dejó la escena 6, d≈44) y luego
       // cierra a su cara. Si se encuadrara de una para el año 40, media pantalla estaría vacía.
       encuadra(w, { cx: mix(mix(CX(31) - 2.2, MEDIO, ab), CX(40), k),
-        yBot: mix(0, ALT(40) + .5, k),
-        yTop: mix(ALT(anio) + 2.6, ALT(40) + 2.5, k),     // 2.5 = cuello 1.62 + radio .62 + pelo
+        yBot: mix(0, ALT(40) + w.ALTO_PODIO + .5, k),
+        yTop: mix(ALT(anio) + 2.6, ALT(40) + w.ALTO_PODIO + 2.5, k),     // 2.5 = cuello 1.62 + radio .62 + pelo
         ancho: mix(mix(12, DER + 1.8, ab), 2.1, k),
-        cz: mix(0, 1.3, k), tilt: mix(2.2, .1, k) });
+        cz: mix(0, .25, k), tilt: mix(2.2, .1, k) });
       w.focusOn(w.per, k > .5 ? 1.0 : 3.2); w.aperture = k > .5 ? .00030 : .00005;
     },
     overlay(lt, t, L) {
@@ -577,7 +616,7 @@ const scenes = [
       const p = P(lt, this), q = L.on2(t);
       w.dibuja(40); w.fondo(1, 1); w.mec.scale.setScalar(.001);
       [w.coche, w.casa, w.barco].forEach(o => w.sale(o, 1));
-      w.gente.scale.setScalar(.001);
+      w.gente.scale.setScalar(.001); w.fiesta(0, t);
       ['coche','casa','barco'].forEach(k => w.dato(k, 1));
       w.traza(L.eio(L.seg(p, .18, .92)));                   // la flecha se traza mientras habla del 92%
       w.per.scale.setScalar(1); w.per.position.set(CX(40), ALT(40), 1.3); w.per.rotation.y = 0;

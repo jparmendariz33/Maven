@@ -506,6 +506,27 @@ bajó lo suficiente para encimarse. Una etiqueta que nombra un objeto va **a la 
 se separa solo en altura. El texto se calcula del mismo dato que el contador (`VAL(y)`), nunca a
 mano, o un día dirán cosas distintas.
 
+## Un rastro de marcas se reparte por DISTANCIA, no por el eje (27 nov 2026)
+
+Dibujé la flecha exponencial poniendo un cubo cada 0.4 años y JP vio el rastro roto justo arriba,
+que es donde más se nota. La causa: en una curva exponencial **el paso en el eje no es el paso en la
+pantalla**. Al principio 0.4 años suben 0.02 unidades y los cubos se amontonan; al final suben 0.8 y
+el cubo mide 0.5, así que se abren.
+
+Se camina la curva en pasos finos y se pone una marca cada vez que la **distancia real** desde la
+última pasa el umbral (`Math.hypot(dx, dy) >= .32` con cubos de .5). Vale para cualquier rastro,
+trayectoria o línea punteada sobre una curva que no sea recta.
+
+## `burst` ata el tamaño de la partícula al del estallido (27 nov 2026)
+
+Puse confeti sobre la celebración con `L.burst(seed, .6)` y en el plano general se veía bien, pero el
+video cierra con un **primer plano a 5 unidades de cámara** y ahí cada papelito es una pelota que tapa
+la pantalla entera. `burst(seed, size)` escala con `size` **tanto el radio de cada partícula como su
+dispersión**, así que no hay un tamaño que sirva para los dos planos.
+**Un efecto de partículas se calibra para el plano MÁS CERRADO en el que va a salir, y se apaga en
+los demás.** Aquí: partículas chicas, cinco estallidos repartidos en vez de tres juntos, y un
+parámetro aparte (`conf`) que lo extingue antes de que la cámara cierre.
+
 ## La cámara también narra: gramática de plano (JP, 20 nov 2026)
 JP trajo un short de @SoySR.J y dijo: "todas las tomas son a la misma altura de la persona, la toma no cambia,
 mantiene el mismo tamaño la persona". **Medido en la historia de Kahneman, tenía razón exacta:** las 10 escenas van
