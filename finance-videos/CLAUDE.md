@@ -901,3 +901,11 @@ vigilando" no dice nada. Plan de acción completo en `plan/torneo.md`; reglas en
 - Datos siempre verificados; nunca recomendaciones de compra/venta.
 - Para cambiar el estilo, editar `brand.json` / `engine.js` y probar con `videos/ejemplo-SE` (re-render sin gastar créditos:
   `build_timeline.py` → `make_audio.py` → `render.js`).
+
+- **Un hijo se posiciona en coordenadas LOCALES, no de mundo.** Si el objeto se añade a un grupo
+  (`grupo.add(x)`), su `position` es relativa al grupo. Poner ahí las coordenadas del mundo lo manda
+  al doble de la distancia y desaparece de cuadro sin dar error. Antes de escribir un `position.set`,
+  mirar de quién cuelga el objeto.
+- **`label3d` recorta el texto que no cabe en `pw`.** El ancho que ocupa es, a ojo,
+  `caracteres x 0.62 x tamaño_de_fuente + ls x caracteres`. Si eso pasa de `pw`, las letras de los
+  extremos se cortan en silencio. Bajar la fuente o subir `pw`, nunca ensanchar el plano.

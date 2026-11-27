@@ -336,8 +336,10 @@ const worlds = {
     }
     w.mecAlto = MH * 8;
     // "cada mes pones ciento sesenta dólares": que se VEA cuánto es ese fajo verde
-    w.mecDato = L.label3d('$160 al mes', 2.3, .62, { bg: '#0E1A24', ink: '#6FD093', font: '800 150px Unbounded', ls: 1, pw: 1024 });
-    w.mecDato.position.set(-7, MH * 1.5, 4 + MD / 2 + .08);   // pegado al frente del fajo verde
+    // 11 caracteres: 11 x .62 x 110 + 11 = 762 px, caben de sobra en pw 1024 (con 150 px se recortaba).
+    w.mecDato = L.label3d('$160 al mes', 1.9, .5, { bg: '#0E1A24', ink: '#6FD093', font: '800 110px Unbounded', ls: 1, pw: 1024 });
+    // OJO: es HIJO de w.mec, así que la posición va en coordenadas LOCALES del grupo, no del mundo.
+    w.mecDato.position.set(0, MH * 2.3, MD / 2 + .08);   // alto en el fajo verde, fuera de la banda de subtítulos
     w.mecDato.visible = false; w.mec.add(w.mecDato);
 
     // ---- el ahorrador
@@ -489,7 +491,7 @@ const scenes = [
       const a = 1 + 2 * L.eio(L.seg(P(lt, this), .45, 1));
       fichas(L, a, VAL(a));
       // sin estas dos etiquetas el espectador no sabe qué es cada color
-      apunta(L, 'VERDE · el dinero que tú pones', 320, 1430, 470, 1715, VRD, L.seg(lt, 1.6, 2.2));
+      apunta(L, 'VERDE · el dinero que tú pones', 320, 1352, 470, 1715, VRD, L.seg(lt, 1.6, 2.2));
       apunta(L, 'DORADO · los intereses que te pagan', 700, 1130, 540, 1310, ORO, L.seg(lt, 3.2, 3.8));
     } },
 
