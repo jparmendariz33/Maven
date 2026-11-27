@@ -26,8 +26,9 @@ la voz y un mundo que cambia de escala para que quepa (`/historia` §4). Nacen d
 | `AÑOS` / `TUYO` vs `DE LA COMISIÓN` | El 1% anual de comisión, con DOS contadores compitiendo en pantalla | dos columnas que se separan | aritmética; sin nombrar ninguna administradora real |
 | `SEGUNDOS` / `CONTADO` | Cuánto tarda una persona en contar un billón de dólares, a un dólar por segundo | el reloj → el calendario → siglos | aritmética; aclarar billón español (10^12), no el inglés |
 
-El del **interés compuesto** es el primero que se debe hacer: es el mecanismo exacto del papel doblado y además es lo
-más buscado por quien empieza a invertir.
+~~El del **interés compuesto** es el primero que se debe hacer~~ → **HECHO: jueves 26 nov 2026**,
+`videos/2026-11-26-COMPUESTO-historia/`. Salió como gráfica exponencial de billetes que el personaje sube,
+con coche (año 5), casa (18), barco (31) y el millón (40), y la ciudad creciendo de fondo. 66.3 s.
 
 ## Formato "construido desde cero" (20 nov 2026)
 No explica el mecanismo: **lo construye, y cada problema obliga a inventar la siguiente pieza** (`/historia` §4).

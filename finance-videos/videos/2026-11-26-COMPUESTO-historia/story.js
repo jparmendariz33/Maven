@@ -6,7 +6,7 @@
 // escala para que la gráfica quepa. La gráfica es una ESCALERA que el personaje sube (convención de la
 // casa: lo que crece año con año se cuenta subiendo escaleras).
 //
-// ARITMÉTICA: $160/mes, 10% anual compuesto, 40 años → $1,011,853. Aportado $76,640 (7.6%).
+// ARITMÉTICA: $160/mes, 10% anual compuesto, 40 años → $1,011,853. Aportado $76,800 (7.6%).
 // El 10% es un SUPUESTO nuestro: va rotulado "supone 10% anual · ilustrativo" en las 10 escenas.
 // ESCALA DEL MUNDO: 1 unidad = $50,000. Año 40 = 20.24 unidades de alto.
 //
@@ -341,7 +341,7 @@ const scenes = [
   // 2 · EL MECANISMO · la columna de billetes, de cerca. CORRECCIÓN 3: ya no hay "dorados", hay
   // intereses, y se dicen con su nombre.
   { id: 'mecanismo', world: 'camino', trans: 'cont', d: 13, sfx: [[1.1, 'pop']], year: null,
-    cap: 'Cada mes pones ciento sesenta dólares: ese es tu dinero, el verde. Encima se apila lo que te pagan de intereses, el dorado. Y el truco es este: los intereses también generan intereses.',
+    cap: 'Cada mes pones ciento sesenta dólares: ese es tu dinero, el verde. Encima se apila lo que te pagan de intereses, el dorado. Y esos intereses generan más intereses.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       const anio = 1 + 2 * L.eio(L.seg(p, .45, 1));
@@ -370,7 +370,7 @@ const scenes = [
 
   // 3 · AÑO 5, EL COCHE · plano medio. Llega a un hito: AQUÍ sí mira a cámara.
   { id: 'coche', world: 'camino', d: 8, sfx: [[2.0, 'thud', .5]], year: 'AÑO 5',
-    cap: 'A los cinco años llevas doce mil dólares: ya es un coche. Casi todo lo pusiste tú.',
+    cap: 'A los cinco años, doce mil dólares: ya es un coche. Casi todo lo pusiste tú.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       const anio = 3 + 2 * L.eio(L.seg(p, 0, .5));
@@ -388,7 +388,7 @@ const scenes = [
     },
     overlay(lt, t, L) {
       L.scrim(L.C, 0, 820, .7, '8,14,20');
-      head(L, 'Año 5', ['Ya es un coche'], '≈ 237,000 pesos · 77% lo pusiste tú', TINTA, lt, ORO);
+      head(L, 'Año 5', ['Ya es un coche'], '≈ 244,000 pesos · 77% lo pusiste tú', TINTA, lt, ORO);
       fichas(L, 5, VAL(5));
     } },
 
@@ -445,13 +445,13 @@ const scenes = [
     },
     overlay(lt, t, L) {
       L.scrim(L.C, 0, 840, .74, '8,14,20');
-      head(L, 'Los primeros $100,000', ['son los más', 'difíciles'], 'Charlie Munger · ≈ 1.9 millones de pesos', TINTA, lt, ORO);
+      head(L, 'Los primeros $100,000', ['son los más', 'difíciles'], 'Charlie Munger · $100,000 ≈ 2 millones de pesos', TINTA, lt, ORO);
       fichas(L, 18, VAL(18));
     } },
 
   // 6 · SE ACELERA, EL BARCO · plano general alto. Trepa: mirada de perfil otra vez.
   { id: 'barco', world: 'camino', trans: 'cont', d: 10, sfx: [[1.8, 'shine', .6]], year: 'AÑO 31',
-    cap: 'De ahí empuja el interés: a los treinta y uno llevas cuatrocientos mil, y el ochenta y cinco por ciento es dorado.',
+    cap: 'A los treinta y uno, cuatrocientos mil: el ochenta y cinco por ciento ya son intereses, no tu dinero.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       const anio = 18 + 13 * L.eio(p);
@@ -472,7 +472,7 @@ const scenes = [
     overlay(lt, t, L) {
       const anio = 18 + 13 * L.eio(P(lt, this));
       L.scrim(L.C, 0, 830, .72, '8,14,20');
-      head(L, 'Año 31', ['Ahora empuja', 'el interés'], '$400,000 · 85% ya es interés', TINTA, lt, ORO);
+      head(L, 'Año 31', ['Ahora empuja', 'el interés'], '$400,000 · 85% ya no lo pusiste tú', TINTA, lt, ORO);
       fichas(L, anio, VAL(anio));
     } },
 
@@ -531,7 +531,7 @@ const scenes = [
     },
     overlay(lt, t, L) {
       L.scrim(L.C, 0, 880, .66, '8,14,20');
-      head(L, 'De quién es ese millón', ['Tú pusiste $76,640'], null, TINTA, lt);
+      head(L, 'De quién es ese millón', ['Tú pusiste $76,800'], null, TINTA, lt);
       linea2(L, 'El interés puso $935,053', 700, L.seg(lt, 1.0, 1.6), ORO);
       L.rise('92 de cada 100 dólares', 90, 790, L.seg(lt, 1.5, 2.1), { s: 38, c: TINTA, a: .85 });
       fichas(L, 40, VAL(40));

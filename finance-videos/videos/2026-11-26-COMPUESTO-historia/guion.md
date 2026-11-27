@@ -14,10 +14,10 @@ El 10% es un **supuesto nuestro**: rotulado `supone 10% anual · ilustrativo` pe
 | 5 | $12,390 | $9,600 | $2,790 | 23% |
 | 18.4 | **$100,000** | $35,360 | $65,615 | 65% |
 | 31 | **$400,000** | $59,520 | $340,480 | 85% |
-| 40 | **$1,011,853** | **$76,640** | **$935,053** | **92%** |
+| 40 | **$1,011,853** | **$76,800** | **$935,053** | **92%** |
 
-**La escalera de premios, toda dentro del millón:** coche **$12,000** (≈230,000 pesos) año 4.9 ·
-casa **$100,000** (≈1.9 M pesos) año 18.4 · barco **$400,000** año 31 · **el millón** año 39.9
+**La escalera de premios, toda dentro del millón:** coche **$12,390** (≈244,000 pesos) año 5 ·
+casa **$100,000** (≈2 M pesos) año 18.4 · barco **$400,000** año 31 · **el millón** año 39.9
 
 > **Por qué NO hay yate ni jet:** no caben en un millón (yate 2–10 M, jet usado 3–15 M). Enseñarlos
 > afirmaría algo falso sobre lo que compra el dinero. **La fama sí se queda:** montar una celebración es
@@ -27,6 +27,10 @@ casa **$100,000** (≈1.9 M pesos) año 18.4 · barco **$400,000** año 31 · **
 año. Por eso **no va entrecomillada**: va como idea atribuida a él, sin groserías.
 
 ---
+
+**Tipo de cambio:** todas las conversiones a pesos usan el **FIX de Banxico, 19.7203, del 26 nov 2026**
+(«Tipo de cambio para solventar obligaciones denominadas en dólares de los EE.UU.A.»). El 19.13 que usé
+en la v4 no tenía fuente.
 
 ## Revisión de factibilidad (contra el motor y las skills)
 
@@ -75,7 +79,7 @@ aritmética. Pero el camino sorprende.»
 
 ## ESCENA 2 · EL MECANISMO (0:10–0:23)
 **NARRA:** «Cada mes pones ciento sesenta dólares: ese es tu dinero, el verde. Encima se apila lo que te
-pagan de intereses, el dorado. Y el truco es este: los intereses también generan intereses.»
+pagan de intereses, el dorado. Y esos intereses generan más intereses.»
 
 **SE VE:** La **columna de billetes de cerca**, aparte del eje y a escala legible (la barra real del año 1
 mide 0.04 unidades: no se ve). Tres **billetes verdes** apilados, cada uno con su **"$"**, y encima van
@@ -87,12 +91,12 @@ color: `VERDE · el dinero que tú pones` · `DORADO · los intereses que te pag
 ---
 
 ## ESCENA 3 · AÑO 5, EL COCHE (0:23–0:31)
-**NARRA:** «A los cinco años llevas doce mil dólares: ya es un coche. Casi todo lo pusiste tú.»
+**NARRA:** «A los cinco años, doce mil dólares: ya es un coche. Casi todo lo pusiste tú.»
 
 **SE VE:** Sobre el escalón del año 5 **aparece un coche** de plastilina, sin marca. El personaje **se sube
 y cierra la puerta**. La barra es verde con una franja dorada delgada. Fondo: pueblito de casas bajas.
 
-**RÓTULO:** "Año 5 · $12,390" · pie: "≈ 237,000 pesos · 77% lo pusiste tú"
+**RÓTULO:** "Año 5 · $12,390" · pie: "≈ 244,000 pesos · 77% lo pusiste tú"
 
 ---
 
@@ -115,13 +119,12 @@ una casa.»
 **SE VE:** En el escalón del año 18 **aparece una casa**. El personaje llega arrastrando los pies, se
 endereza y **abre la puerta**. La barra ya es 65% dorada. Fondo: **ciudad chica**, primeras luces.
 
-**RÓTULO:** "Los primeros $100,000" / "son los más difíciles" · pie: "Charlie Munger · ≈ 1.9 M de pesos"
+**RÓTULO:** "Los primeros $100,000" / "son los más difíciles" · pie: "Charlie Munger · $100,000 ≈ 2 M de pesos"
 
 ---
 
 ## ESCENA 6 · SE ACELERA, EL BARCO (0:51–1:01)
-**NARRA:** «De ahí empuja el interés: a los treinta y uno llevas cuatrocientos mil, y el ochenta y cinco
-por ciento es dorado.»
+**NARRA:** «A los treinta y uno, cuatrocientos mil: el ochenta y cinco por ciento ya son intereses, no tu dinero.»
 
 **SE VE:** Los escalones se vuelven **altos de golpe** y el personaje **trepa con esfuerzo**, impulsándose
 con las manos. En el escalón del año 31 **aparece un barco**. Barras casi todas doradas.
@@ -151,7 +154,7 @@ cada cien dólares.»
 demás es **oro**. Una línea horizontal marca dónde acaba lo verde, y está casi en el piso. El personaje,
 chiquito, hasta arriba.
 
-**RÓTULO:** "Tú pusiste $76,640" → "El interés puso $935,053"
+**RÓTULO:** "Tú pusiste $76,800" → "El interés puso $935,053"
 
 ---
 
