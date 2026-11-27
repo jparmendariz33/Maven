@@ -1,381 +1,377 @@
 # Short de contexto · BLACK FRIDAY · viernes 27 de noviembre de 2026
 
-**Formato:** short vertical de contexto (`/short` §1c) · 7 escenas · **128 palabras / 672 caracteres**
-**Duración estimada:** **64 s** (a 120 palabras/min contando sílabas, como mide `no_voice.py`).
-Si se pasa de 85 s, el recorte sale de la escena 2.
+**Formato:** short vertical de contexto (`/short` §1c) · 8 escenas · **163 palabras / ~890 caracteres**
+**Duración estimada:** **82 s** (a 120 palabras/min por sílabas, como mide `no_voice.py`). La banda del
+formato es 60–85 s, así que entra, pero arriba. **Si al medir se pasa de 85 s, la escena 2 se calla y su
+cifra se queda solo en pantalla, en el gancho** (−10 palabras, −5 s).
 **Se publica:** hoy 19:00 CDMX · **JP graba su voz**
 **Estado:** 🚦 PRIMERA PUERTA — esperando OK. No se ha construido nada.
 
-> **v4 — reescrito entero con tu crítica.** Qué cambió y por qué, al final del documento.
+> **v5 — con tus seis correcciones de guion y tu dirección visual.** Detalle al final.
 
 ---
 
-# 1 · Lo que me pediste y no se puede hacer (va primero, porque cambia el guion)
+# 1 · Lo que cambió con tu crítica
 
-Me pediste aterrizar el récord: **en qué tienda, en qué categoría, si Amazon o Walmart o Target**.
-Lo busqué y **ese desglose todavía no existe**. Los resultados por tienda y por categoría del Black
-Friday se publican **días después**; a esta hora solo hay promociones y pronósticos. Si lo inventara o
-lo sacara de un "se espera que", estaría publicando un pronóstico como si fuera un hecho.
+| Tu corrección | Qué hice |
+|---|---|
+| "No fue un día suelto" está mal planteado | Ahora es **«Y ya venía de antes»**: el fenómeno ya se veía los días anteriores, no es que un día fuera aislado |
+| La pregunta "¿y qué compraron?" no corresponde a la respuesta | Ahora es **«¿Y qué categorías subieron más?»**, que es literalmente lo que contesta |
+| Falta conectar las categorías con la bolsa | Entra el puente: **«Eso también se vio en la bolsa»** |
+| Mencionar una o dos empresas más | Entran **Shopify (+6.28%)** y **Mercado Libre (+4.47%)** junto a Amazon, y el contrapunto **eBay (−1.91%)** |
+| La escena 7 no es intuitiva | Ahora dice **«cuando reporten sus resultados trimestrales en febrero»**, con la palabra completa |
+| **No hay pregunta de cierre** | Entra: **«¿Tú gastaste más este Black Friday que el pasado?»** |
 
-**Lo que SÍ está publicado y medido, y es con lo que construí el guion:**
-- El récord del Día de Acción de Gracias, con su comparación contra el mismo día de 2025.
-- El acumulado del 1 al 22 de noviembre, con su comparación contra las mismas fechas de 2025.
-- **Qué categorías subieron más** en ese periodo (es lo más cerca que hay de "qué compró la gente").
-- El cierre del viernes y **cuánto subió Amazon ese día contra el S&P 500**, que es tu idea de conectar
-  el consumo con el mercado, y sí se puede verificar.
+**Y lo que encontré al buscar las otras empresas:** no todas subieron. **eBay cayó 1.91%** y Target
+cerró ligeramente abajo. Ese contraste hace el video más honesto y más interesante que si solo
+pusiera ganadores, así que le di su propia escena.
 
-**Y fuera va todo lo de Mastercard.** Tenías razón: me contradecía solo. Abría diciendo "récord" y a
-los diez segundos ponía en duda la palabra. También fuera "un récord en dólares no es un récord en
-cosas" y "lo que de verdad se llevó la gente": las releí y no significan nada.
-
----
-
-# 2 · El ángulo
-
-**Una sola idea, dicha de corrido:** este Acción de Gracias los estadounidenses compraron por internet
-más que nunca, el ritmo viene de todo noviembre, esto es lo que más compraron, y así se vio en la bolsa.
-
-Sin trampa, sin giro, sin paradoja. **La prueba de que es entendible:** cualquiera, de cualquier edad,
-puede repetir el video en una frase — *"rompieron el récord de compras por internet"*.
-
-**Qué no caduca:** todas las fechas van completas ("el Día de Acción de Gracias de 2026", "del 1 al 22
-de noviembre"), así que el video no se siente viejo dentro de seis meses. La palabra "hoy" no aparece.
+**Ojo, obligatorio:** Mercado Libre está en `plan/posiciones-jp.md`, así que **tu posición se declara
+en la voz y en la descripción**. Ya está puesta en la escena 7.
 
 ---
 
-# 3 · Tabla de verdad de los datos
+# 2 · Tabla de verdad de los datos
 
 | Cifra | Estado | Fuente | ¿Entra? |
 |---|---|---|---|
-| Acción de Gracias 2026: **$7,100 M** en compras por internet en EE.UU. | **Hecho ocurrido** | Adobe Analytics | Sí — gancho |
-| **+10.4%** contra el Día de Acción de Gracias de 2025 | **Hecho ocurrido** | Adobe Analytics | Sí — escena 2 |
-| 1–22 nov 2026: **$82,500 M** en compras por internet, **+9.1%** contra las mismas fechas de 2025 | **Hecho ocurrido** | Adobe Analytics | Sí — escena 3 |
-| Contra el **promedio de octubre de 2026**: higiene personal **+40%**, limpieza del hogar **+33%**, ropa básica **+27%** | **Hecho ocurrido** | Adobe Analytics | Sí — escena 4 |
-| Cierre 27 nov, media jornada: **Nasdaq +2.31% · S&P 500 +1.60% · Dow +1.18%** | **Hecho** | Cierres del día | Sí — escena 5 |
-| **Amazon +3.96%**, a 254.12 USD, el 27 de noviembre de 2026 | **Hecho** | Yahoo Finance (cierre) | Sí — escena 6 |
-| Amazon reporta el **4 de febrero de 2027** | Fecha **esperada** | Yahoo Finance | Sí, rotulada como esperada |
-| Black Friday: $12,900 M, "récord" | ⚠️ **PRONÓSTICO. El dato real no existe todavía.** | Adobe | **NO** |
-| Resultados por tienda (Amazon, Walmart, Target) | ⚠️ **No publicados todavía** | — | **NO** |
-| Temporada +5.5%, 2.8 puntos de precio | Pronóstico | Mastercard | **NO** — JP lo descartó |
+| Acción de Gracias 2026: **$7,100 M** en compras por internet en EE.UU. | **Hecho** | Adobe Analytics | Sí — gancho |
+| **+10.4%** vs. el Día de Acción de Gracias de 2025 | **Hecho** | Adobe Analytics | Sí — escena 2 |
+| 1–22 nov 2026: **$82,500 M**, **+9.1%** vs. las mismas fechas de 2025 | **Hecho** | Adobe Analytics | Sí — escena 3 |
+| Vs. **promedio de octubre de 2026**: higiene personal **+40%**, limpieza del hogar **+33%**, ropa básica **+27%** | **Hecho** | Adobe Analytics | Sí — escena 4 |
+| Cierre 27 nov (media jornada): **Nasdaq +2.31% · S&P 500 +1.60% · Dow +1.18%** | **Hecho** | Cierres del día | Sí — escena 5 |
+| **Shopify +6.28%** ($141.78) | **Hecho** | Yahoo Finance, cierre | Sí — escena 6 |
+| **MercadoLibre +4.47%** ($1,532.92) | **Hecho** | Yahoo Finance, cierre | Sí — escena 6 |
+| **Amazon +3.96%** ($254.12) | **Hecho** | Yahoo Finance, cierre | Sí — escena 6 |
+| **eBay −1.91%** ($113.33) · Target −0.15% | **Hecho** | Yahoo Finance, cierre | eBay sí (escena 7); Target solo en pantalla |
+| Walmart +0.90% · Best Buy +1.56% · Costco +1.01% | **Hecho** | Yahoo Finance, cierre | Solo en pantalla, escena 6 |
+| Resultados por tienda del Black Friday | ⚠️ **No publicados todavía** | — | **NO** |
+| Black Friday: $12,900 M "récord" | ⚠️ **Pronóstico** | Adobe | **NO** |
 
-**Dos precisiones de rótulo que me marcaste y que ahora están resueltas:**
-1. Los $82,500 M son **compras por internet en Estados Unidos**, no "millones" a secas.
-2. El +9% es **contra el 1–22 de noviembre de 2025**, y el +40% de higiene es **contra el promedio de
-   octubre de 2026** — que es una comparación distinta, y por eso va dicha en la voz y escrita en pantalla.
+**Todas las cifras de bolsa son del CIERRE del 27 de noviembre de 2026**, bajadas con
+`scripts/fetch_data.py`. Las que circulan en notas de prensa son intradía y se contradicen entre sí
+(eBay aparece como −1.81% y como +0.49% según la hora); por eso no uso ninguna de esas.
 
-**Nada lleva `ilustrativo`:** no hay números simulados.
+**Lo que NO afirmo:** que estas acciones subieran *por* el Black Friday. Ese día subió toda la bolsa.
+En pantalla va la nota que lo aclara, y el cierre dice dónde estará la prueba de verdad.
 
-**Lo que NO afirmo:** que Amazon subiera *por* el Black Friday. Ese día subió toda la bolsa, con la
-tecnología al frente. En pantalla va la nota que lo aclara, y el cierre dice que la prueba de verdad
-llega cuando las empresas reporten.
+---
+
+# 3 · Dirección visual (tu idea + lo que el motor puede hacer hoy)
+
+**Lo que pediste:** mantener el estilo de los videos de contexto y del ranking · logos desde el
+principio · gráficas que suban y bajen · columnas · ranking para los más beneficiados · fotos ·
+**fondo negro por el Black Friday**, conciliado con los colores de Costa.
+
+**Lo que ya existe en el motor y uso tal cual:** las escenas de ranking del torneo (`ronda`), que son
+exactamente ese estilo — logo, nombre, barra que crece y el valor a la derecha. Las uso **dos veces**:
+una para las categorías y otra para las empresas. Las fotos a pantalla completa y el `photo` ya existen.
+
+**Dos cosas chicas que hay que agregarle al motor, y las hago yo:**
+1. **Tema `negro`** (≈3 renglones). Hoy los fondos oscuros son azul Costa; agrego el negro `#0A0A0A` de
+   la paleta. Todo el texto ya se pinta en arena cuando el fondo es oscuro, así que no hay que tocar
+   nada más. **Y así queda conciliado con la marca: fondo negro + arena + mostaza, que ya son nuestros.**
+2. **Escena `ranking`** (≈20 renglones). Es la `ronda` del torneo sin lo de torneo: sin "RONDA 1 DE 6"
+   y sin los círculos de puntos, con el valor en porcentaje. Mismo dibujo, misma tipografía.
+
+**Lo que NO alcanzo a hacer hoy y te propongo dejar para la próxima:** la escena de **columnas
+verticales con eje X y eje Y** que pediste el 20 de noviembre. El motor no la tiene y es trabajo de
+verdad, no de veinte renglones. Hoy la comparación se ve con las barras del ranking, que es el estilo
+que ya usamos y que sí existe.
 
 ---
 
 # 4 · Desglose escena por escena
 
-> Tiempos relativos al inicio de cada escena. Las palabras en **negrita** son los `cue`: el elemento
-> entra exactamente cuando se dice esa palabra.
+> Tiempos relativos al inicio de cada escena. Las palabras en **negrita** son los `cue`.
+> **Paleta de todo el video:** fondo negro `#0A0A0A`, texto arena `#EBE6BA`, acento mostaza `#C7A317`,
+> musgo `#7E8C54` para lo que sube, terracota `#BB6F58` para lo que baja. Una sola familia, las 8 escenas.
 
 ---
 
-## ESCENA 1 · `hook` · [0:00 – 0:12] · ~12 s · PLANO GENERAL
+## ESCENA 1 · `hook` · tema `negro` · [0:00 – 0:12] · ~12 s · PLANO GENERAL
 
 **NARRACIÓN**
 > «El Día de Acción de Gracias de 2026, Estados Unidos **rompió** su récord de compras por internet:
-> 7,100 millones de **dólares** en un solo día.»
+> 7,100 millones de **dólares** en un día.»
 
 **GUION DE TIEMPOS**
 
 | t | Qué pasa | Cómo |
 |---|---|---|
-| +0.0 | La voz ya está hablando y la música ya tiene cuerpo | Sin rampa ni respiración previa |
-| +0.0 | Foto a toda pantalla: tienda llena / carritos | Fija, velo oscuro al 55%, solo la deriva del motor |
-| +0.0 | Kicker y primera línea del rótulo | `ACCIÓN DE GRACIAS · 27 DE NOVIEMBRE DE 2026` y `Estados Unidos rompió su récord` |
-| +0.0 | JP en 3D, ya en cuadro | Abajo a la izquierda, 500 px, acto `senala`, `mood: up` |
-| +2.4 | **cue `rompió`** → se subraya `récord` en el título | El subrayado se dibuja de izquierda a derecha en 0.35 s, mostaza |
-| +6.8 | **cue `dólares`** → cae la cifra grande | `rise` desde 40 px abajo, 0.35 s, mostaza |
-| +7.2 | JP reacciona | Gira la cabeza al centro y levanta la mano hacia la cifra |
-| +9.0 | Entra la ficha de fuente, chica | `Compras por internet en EE.UU. · Adobe Analytics` |
+| +0.0 | Voz y música ya con cuerpo | Sin rampa |
+| +0.0 | Foto a toda pantalla: tienda llena de gente con carritos | Velo oscuro al 55%, solo la deriva del motor |
+| +0.0 | Kicker y título | `ACCIÓN DE GRACIAS · 27 DE NOVIEMBRE DE 2026` · `Estados Unidos rompió su récord` |
+| +0.0 | JP en 3D | Abajo a la izquierda, 500 px, acto `senala`, `mood: up` |
+| +2.4 | **cue `rompió`** → se subraya `récord` | El subrayado se dibuja de izquierda a derecha, 0.35 s, mostaza |
+| +6.6 | **cue `dólares`** → cae la cifra | `rise` desde 40 px abajo, mostaza |
+| +7.0 | JP voltea al centro y señala la cifra | — |
+| +9.0 | Entra la ficha de fuente | `Compras por internet en EE.UU. · Adobe Analytics` |
 
 **EN PANTALLA**
 
 | Elemento | Texto literal | Banda | Color | Entra | Sale |
 |---|---|---|---|---|---|
-| Kicker | `ACCIÓN DE GRACIAS · 27 DE NOVIEMBRE DE 2026` | Rótulo y≈300 | Arena 70% | +0.0 | con la escena |
-| Título | `Estados Unidos rompió su récord` | Rótulo y≈430 | Arena, `récord` subrayado en mostaza | +0.0 | con la escena |
-| Cifra | `$7,100 millones en un solo día` | Rótulo y≈600 | Mostaza | +6.8 | con la escena |
-| Ficha | `Compras por internet en EE.UU. · Adobe Analytics` | Contenido y≈980 | Arena 60% | +9.0 | con la escena |
-| Subtítulo | el `say` | Subtítulo y≈1650 | Blanco sobre píldora | sigue a la voz | — |
-
-**ELEMENTOS Y ACCIONES**
-
-| Elemento | Entra | Qué hace | Sale | Capa |
-|---|---|---|---|---|
-| Foto `bg_full` | +0.0 | Fija | con la escena | Fondo |
-| JP en 3D | +0.0 | A los +7.2 voltea al centro y señala la cifra. Mira al centro, nunca a cámara | con la escena | `pos: bl`, 500 px |
+| Kicker | `ACCIÓN DE GRACIAS · 27 DE NOVIEMBRE DE 2026` | Rótulo y≈300 | Arena 70% | +0.0 | fin escena |
+| Título | `Estados Unidos rompió su récord` | Rótulo y≈430 | Arena, `récord` subrayado mostaza | +0.0 | fin escena |
+| Cifra | `$7,100 millones en un día` | Rótulo y≈600 | Mostaza | +6.6 | fin escena |
+| Ficha | `Compras por internet en EE.UU. · Adobe Analytics` | Contenido y≈980 | Arena 60% | +9.0 | fin escena |
 
 **CÁMARA.** Plano general, sin zoom de entrada.
-
-**SFX.** `[0.00, 'thud', 0.5]` en el cuadro 1. Uno solo.
-
-**DATOS.** $7,100 M: Adobe Analytics, hecho ocurrido.
-
-**POR QUÉ EXISTE.** Es el gancho, y dice **récord** en las primeras ocho palabras, como pediste. No hay
-pregunta ni suspenso: se afirma el récord de entrada.
+**SFX.** `[0.00, 'thud', 0.5]`. Uno solo.
+**POR QUÉ EXISTE.** El gancho dice **récord** en las primeras ocho palabras, sin suspenso.
 
 ---
 
-## ESCENA 2 · `statement` · [0:12 – 0:18] · ~6 s · PLANO MEDIO
+## ESCENA 2 · `statement` · tema `negro` · [0:12 – 0:17] · ~5 s · PLANO MEDIO
 
 **NARRACIÓN**
-> «Es 10 por ciento **más** que ese mismo día de **2025**.»
-
-**GUION DE TIEMPOS**
+> «Diez por ciento **más** que ese mismo día de **2025**.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
-| +0.0 | Corte a fondo arena | El cambio de fondo separa la escena sin necesidad de ola |
-| +1.5 | **cue `más`** → entra la cifra grande | `+10.4%`, mostaza, centrada |
-| +3.6 | **cue `2025`** → entra debajo contra qué se compara | `vs. el Día de Acción de Gracias de 2025` |
+| +0.0 | Corte a negro limpio, sin foto | El cambio de fondo separa la escena sin ola |
+| +1.3 | **cue `más`** → entra la cifra grande | `+10.4%`, mostaza, centrada |
+| +3.2 | **cue `2025`** → entra debajo contra qué se compara | `vs. el Día de Acción de Gracias de 2025` |
 
 **EN PANTALLA**
 
 | Elemento | Texto literal | Banda | Color | Entra | Sale |
 |---|---|---|---|---|---|
-| Cifra | `+10.4%` | Contenido y≈1100 | Mostaza, grande | +1.5 | con la escena |
-| Comparación | `vs. el Día de Acción de Gracias de 2025` | Contenido y≈1260 | Arena | +3.6 | con la escena |
+| Cifra | `+10.4%` | Contenido y≈1100 | Mostaza, grande | +1.3 | fin escena |
+| Comparación | `vs. el Día de Acción de Gracias de 2025` | Contenido y≈1270 | Arena | +3.2 | fin escena |
 
-**ELEMENTOS Y ACCIONES.** Ninguno: solo texto. Sin personaje (JP solo va en gancho y cierre).
-
-**CÁMARA.** Plano medio. Distinto del general de la escena 1.
-
-**SFX.** Ninguno.
-
-**DATOS.** +10.4%: Adobe Analytics, hecho ocurrido.
-
-**POR QUÉ EXISTE.** Un récord sin comparación no es nada. **Aquí se dice contra qué**, que es
-exactamente lo que faltaba en la versión anterior.
+**CÁMARA.** Plano medio. **SFX.** Ninguno. **Sin personaje** (JP solo en gancho y cierre).
+**POR QUÉ EXISTE.** Un récord sin comparación no dice nada. **Es la escena que se calla si el reloj se
+pasa de 85 s**: la cifra se queda en pantalla, en el gancho.
 
 ---
 
-## ESCENA 3 · `photo` · [0:18 – 0:32] · ~14 s · PLANO DETALLE
+## ESCENA 3 · `photo` · [0:17 – 0:32] · ~15 s · PLANO DETALLE
 
 **NARRACIÓN**
-> «Y no fue un día **suelto**: del 1 al 22 de noviembre ya llevaban 82,500 **millones** en tiendas en
-> línea, 9 por ciento más que en esas mismas **fechas** de 2025.»
-
-**GUION DE TIEMPOS**
+> «Y ya **venía** de antes: del 1 al 22 de noviembre llevaban 82,500 **millones** en compras por
+> internet, 9 por ciento más que en esas **fechas** de 2025.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
-| +0.0 | Corte a la foto de paquetes de reparto, a pantalla completa | Otra foto, nunca la de la escena 1 |
-| +1.0 | **cue `suelto`** → entra el kicker | `NO FUE UN DÍA AISLADO` |
-| +5.2 | **cue `millones`** → entra la cifra con su sujeto completo | `$82,500 M en compras por internet` |
-| +10.4 | **cue `fechas`** → entra el chip de comparación | `+9.1% vs. 1–22 de noviembre de 2025`, en musgo |
+| +0.0 | Corte a la foto de paquetes de reparto apilados, a pantalla completa | Otra foto, nunca la de la escena 1 |
+| +1.1 | **cue `venía`** → entra el kicker | `LA TENDENCIA YA SE VEÍA DESDE ANTES` |
+| +5.6 | **cue `millones`** → entra la cifra con su sujeto completo | `$82,500 M en compras por internet` |
+| +11.0 | **cue `fechas`** → entra el chip de comparación | `+9.1% vs. 1–22 de noviembre de 2025`, musgo |
 
 **EN PANTALLA**
 
 | Elemento | Texto literal | Banda | Color | Entra | Sale |
 |---|---|---|---|---|---|
-| Kicker | `NO FUE UN DÍA AISLADO` | Rótulo | Arena 70% | +1.0 | con la escena |
-| Título | `Del 1 al 22 de noviembre de 2026` | Rótulo | Arena | +0.0 | con la escena |
-| Cifra | `$82,500 M en compras por internet` | Contenido y≈1120 | Mostaza | +5.2 | con la escena |
-| Chip | `+9.1% vs. 1–22 de noviembre de 2025` | Contenido y≈1280 | Musgo | +10.4 | con la escena |
-| Pie de foto | autor · licencia | Firma | Arena 50% | +0.0 | con la escena |
+| Kicker | `LA TENDENCIA YA SE VEÍA DESDE ANTES` | Rótulo | Arena 70% | +1.1 | fin escena |
+| Título | `Del 1 al 22 de noviembre de 2026` | Rótulo | Arena | +0.0 | fin escena |
+| Cifra | `$82,500 M en compras por internet` | Contenido y≈1120 | Mostaza | +5.6 | fin escena |
+| Chip | `+9.1% vs. 1–22 de noviembre de 2025` | Contenido y≈1280 | Musgo | +11.0 | fin escena |
 
-**CÁMARA.** Plano detalle: los paquetes llenan el cuadro.
-
-**SFX.** Ninguno.
-
-**DATOS.** $82,500 M y +9.1%: Adobe Analytics, hecho ocurrido.
-
-**POR QUÉ EXISTE.** Enseña que el récord no fue un pico de un día. **Y arregla tus dos observaciones:
-la cifra dice de qué es, y el porcentaje dice contra qué se compara**, las dos cosas en la voz y en
-pantalla.
+**CÁMARA.** Plano detalle. **SFX.** Ninguno.
+**POR QUÉ EXISTE.** Tu corrección: no es que un día fuera aislado, es que **el fenómeno ya venía**.
 
 ---
 
-## ESCENA 4 · `news` · [0:32 – 0:45] · ~13 s · ESQUEMA (tarjeta)
+## ESCENA 4 · `ranking` (escena nueva) · [0:32 – 0:46] · ~14 s · ESQUEMA
 
 **NARRACIÓN**
-> «¿Y qué **compraron**? Contra el promedio de **octubre**, lo que más subió fue higiene personal, 40
-> por ciento; **limpieza**, 33; y ropa **básica**, 27.»
-
-**GUION DE TIEMPOS**
+> «¿Y qué **categorías** subieron más? Contra el promedio de **octubre**: higiene personal 40 por
+> ciento, **limpieza** del hogar 33 y ropa **básica** 27.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
-| +0.0 | Corte a fondo arena, sin foto | Es la escena donde hay que leer |
-| +0.9 | **cue `compraron`** → entra el titular | `Lo que más subió` |
-| +2.8 | **cue `octubre`** → entra la línea de comparación, bajo el titular | `Contra el promedio de octubre de 2026` |
-| +5.4 | Entra la viñeta 1 | Se desliza 20 px desde la izquierda, musgo |
-| +8.3 | **cue `limpieza`** → viñeta 2 | Igual |
-| +10.9 | **cue `básica`** → viñeta 3 | Igual |
+| +0.0 | Corte a negro limpio | Es la escena donde hay que leer |
+| +0.8 | **cue `categorías`** → entra el titular | `Las categorías que más subieron` |
+| +3.0 | **cue `octubre`** → entra la línea de comparación bajo el titular | `Contra el promedio de octubre de 2026` |
+| +5.6 | Fila 1: la barra crece de izquierda a derecha en 0.5 s | `Higiene personal` · barra al 100% · `+40%` |
+| +8.9 | **cue `limpieza`** → fila 2 | `Limpieza del hogar` · barra al 83% · `+33%` |
+| +11.8 | **cue `básica`** → fila 3 | `Ropa básica` · barra al 68% · `+27%` |
 
 **EN PANTALLA**
 
 | Elemento | Texto literal | Banda | Color | Entra | Sale |
 |---|---|---|---|---|---|
-| Kicker | `QUÉ COMPRÓ LA GENTE` | Rótulo | Arena 70% | +0.0 | con la escena |
-| Titular | `Lo que más subió` | Rótulo | Arena | +0.9 | con la escena |
-| Comparación | `Contra el promedio de octubre de 2026` | Rótulo | Arena 60% | +2.8 | con la escena |
-| Viñeta 1 | `Higiene personal · +40%` | Contenido | Musgo | +5.4 | con la escena |
-| Viñeta 2 | `Limpieza del hogar · +33%` | Contenido | Musgo | +8.3 | con la escena |
-| Viñeta 3 | `Ropa básica · +27%` | Contenido | Musgo | +10.9 | con la escena |
-| Fuente | `Adobe Analytics · 1–22 de noviembre de 2026` | Firma | Arena 50% | +11.5 | con la escena |
+| Kicker | `QUÉ SUBIÓ MÁS` | Rótulo | Arena 70% | +0.0 | fin escena |
+| Titular | `Las categorías que más subieron` | Rótulo | Arena | +0.8 | fin escena |
+| Comparación | `Contra el promedio de octubre de 2026` | Rótulo | Arena 60% | +3.0 | fin escena |
+| Fila 1 | `Higiene personal` · `+40%` | Contenido | Barra musgo, texto arena | +5.6 | fin escena |
+| Fila 2 | `Limpieza del hogar` · `+33%` | Contenido | Barra musgo, texto arena | +8.9 | fin escena |
+| Fila 3 | `Ropa básica` · `+27%` | Contenido | Barra musgo, texto arena | +11.8 | fin escena |
+| Fuente | `Adobe Analytics · 1–22 de noviembre de 2026` | Firma | Arena 50% | +12.4 | fin escena |
 
 **CÁMARA.** Esquema a pantalla. Cuarto tamaño distinto seguido.
-
-**SFX.** `[0.07, 'tick', 0.45]` con el titular. Segundo y distinto del primero.
-
-**DATOS.** Los tres porcentajes son **contra el promedio de octubre de 2026**, no contra el año pasado.
-Por eso la comparación va escrita arriba de las viñetas, no escondida en el pie.
-
-**POR QUÉ EXISTE.** Es tu "qué categorías": lo más concreto y cotidiano del video. No es electrónica ni
-pantallas — es jabón, limpiador y ropa básica, y eso es justo lo que lo hace entendible para cualquiera.
+**SFX.** `[0.06, 'tick', 0.45]` con el titular.
+**POR QUÉ EXISTE.** Es tu "gráfica para las categorías", y la pregunta que la abre ahora **sí
+corresponde a la respuesta**. Y lo que sale es jabón, limpiador y ropa básica: nada más cotidiano.
 
 ---
 
-## ESCENA 5 · `news` · [0:45 – 0:52] · ~7 s · PLANO GENERAL (con tarjeta)
+## ESCENA 5 · `news` · [0:46 – 0:55] · ~9 s · PLANO GENERAL (con tarjeta)
 
 **NARRACIÓN**
-> «Ese viernes la bolsa trabajó media **jornada** y cerró **arriba**.»
-
-**GUION DE TIEMPOS**
+> «Eso también se vio en la **bolsa**, que ese viernes trabajó media jornada y cerró **arriba**.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
-| +0.0 | Corte a la foto del piso de remates, en tarjeta | Vuelve la imagen tras dos escenas de dato |
-| +1.6 | **cue `jornada`** → entra el kicker con la fecha | `VIERNES 27 DE NOVIEMBRE DE 2026 · MEDIA JORNADA` |
-| +3.4 | **cue `arriba`** → entran los tres cierres en cascada | Uno cada 0.25 s, de arriba abajo |
+| +0.0 | Corte a la foto del piso de remates, en tarjeta | Vuelve la imagen tras la escena de puro dato |
+| +1.8 | **cue `bolsa`** → entra el kicker con la fecha | `VIERNES 27 DE NOVIEMBRE DE 2026 · MEDIA JORNADA` |
+| +5.1 | **cue `arriba`** → entran los tres cierres en cascada | Uno cada 0.25 s |
 
 **EN PANTALLA**
 
 | Elemento | Texto literal | Banda | Color | Entra | Sale |
 |---|---|---|---|---|---|
-| Kicker | `VIERNES 27 DE NOVIEMBRE DE 2026 · MEDIA JORNADA` | Rótulo | Arena 70% | +1.6 | con la escena |
-| Viñeta 1 | `Nasdaq Composite +2.31%` | Contenido | Musgo | +3.4 | con la escena |
-| Viñeta 2 | `S&P 500 +1.60%` | Contenido | Musgo | +3.65 | con la escena |
-| Viñeta 3 | `Dow Jones +1.18%` | Contenido | Musgo | +3.9 | con la escena |
+| Kicker | `VIERNES 27 DE NOVIEMBRE DE 2026 · MEDIA JORNADA` | Rótulo | Arena 70% | +1.8 | fin escena |
+| Viñeta 1 | `Nasdaq Composite +2.31%` | Contenido | Musgo | +5.1 | fin escena |
+| Viñeta 2 | `S&P 500 +1.60%` | Contenido | Musgo | +5.35 | fin escena |
+| Viñeta 3 | `Dow Jones +1.18%` | Contenido | Musgo | +5.6 | fin escena |
 
-**CÁMARA.** Plano general con tarjeta.
-
-**SFX.** Ninguno.
-
-**DATOS.** Los tres cierres del 27 de noviembre de 2026. **Van en porcentaje, no en nivel**, porque los
-niveles del S&P no coinciden entre fuentes.
-
-**POR QUÉ EXISTE.** Conecta el día de compras con el mercado, que es lo que pediste.
+**CÁMARA.** Plano general con tarjeta. **SFX.** Ninguno.
+**POR QUÉ EXISTE.** **Es el puente que pediste** entre las categorías y las empresas. Los cierres van
+en porcentaje y no en nivel, porque los niveles del S&P no coinciden entre fuentes.
 
 ---
 
-## ESCENA 6 · `company` · [0:52 – 0:59] · ~7 s · PLANO MEDIO
+## ESCENA 6 · `ranking` con logos · [0:55 – 1:08] · ~13 s · ESQUEMA CON LOGOS
 
 **NARRACIÓN**
-> «**Amazon** subió casi 4 por ciento, más del **doble** que el S&P 500.»
-
-**GUION DE TIEMPOS**
+> «Los más **beneficiados**: Shopify subió 6 por ciento, **Mercado Libre** 4 y medio, y **Amazon** casi
+> 4. El S&P 500 subió 1.6.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
-| +0.0 | Corte a fondo arena con el logo de Amazon | PNG transparente, sin tarjeta blanca, a la derecha del nombre |
-| +1.2 | **cue `Amazon`** → entra la ficha de la acción | `+3.96% · 254.12 USD`, en musgo |
-| +3.8 | **cue `doble`** → entra debajo la del índice, más chica | `S&P 500 ese día · +1.60%` |
-| +5.6 | Entra la nota aclaratoria, chiquita | Es la que impide leer una causa que no está probada |
+| +0.0 | Corte a negro limpio | — |
+| +0.9 | **cue `beneficiados`** → entra el titular | `Los más beneficiados ese día` |
+| +3.1 | Fila 1 con su logo | Logo Shopify · `Shopify` · barra al 100% · `+6.28%` |
+| +6.0 | **cue `Mercado Libre`** → fila 2 | Logo MercadoLibre · barra al 71% · `+4.47%` |
+| +8.4 | **cue `Amazon`** → fila 3 | Logo Amazon · barra al 63% · `+3.96%` |
+| +10.8 | Entra la fila de referencia, separada por una línea | `S&P 500` · barra al 25% · `+1.60%`, en arena y no en musgo |
+| +12.0 | Entra la nota aclaratoria, chiquita | `Toda la bolsa subió ese día, con la tecnología al frente` |
 
 **EN PANTALLA**
 
 | Elemento | Texto literal | Banda | Color | Entra | Sale |
 |---|---|---|---|---|---|
-| Nombre + logo | `Amazon` + `images/logo.png` | Rótulo | Arena | +0.0 | con la escena |
-| Ficha 1 | `Amazon el 27 de noviembre · +3.96% (254.12 USD)` | Contenido | Musgo | +1.2 | con la escena |
-| Ficha 2 | `S&P 500 ese día · +1.60%` | Contenido | Arena | +3.8 | con la escena |
-| Nota | `Toda la bolsa subió ese día, con la tecnología al frente` | Firma | Arena 50% | +5.6 | con la escena |
+| Kicker | `CIERRE DEL 27 DE NOVIEMBRE DE 2026` | Rótulo | Arena 70% | +0.0 | fin escena |
+| Titular | `Los más beneficiados ese día` | Rótulo | Arena | +0.9 | fin escena |
+| Fila 1 | logo + `Shopify` + `+6.28%` | Contenido | Barra musgo | +3.1 | fin escena |
+| Fila 2 | logo + `MercadoLibre` + `+4.47%` | Contenido | Barra musgo | +6.0 | fin escena |
+| Fila 3 | logo + `Amazon` + `+3.96%` | Contenido | Barra musgo | +8.4 | fin escena |
+| Referencia | `S&P 500` + `+1.60%` | Contenido | Barra arena 40% | +10.8 | fin escena |
+| Nota | `Toda la bolsa subió ese día, con la tecnología al frente` | Firma | Arena 50% | +12.0 | fin escena |
 
-**CÁMARA.** Plano medio.
-
-**SFX.** `[0.17, 'shine', 0.4]` con la ficha de Amazon. Tercero y último.
-
-**DATOS.** Amazon +3.96% a 254.12 USD y S&P 500 +1.60%, cierres del 27 de noviembre de 2026.
-
-**POR QUÉ EXISTE.** Es tu idea: si la gente compró más, ver si se nota en la acción. **La nota de abajo
-es deliberada:** no afirmo que subiera por el Black Friday, porque ese día subió todo el mercado.
+**ELEMENTOS.** Tres logos en PNG transparente, de la sala de prensa de cada empresa. Sin tarjeta blanca.
+**CÁMARA.** Esquema con logos. **SFX.** `[0.07, 'shine', 0.4]` con la primera fila. Tercero y último.
+**POR QUÉ EXISTE.** Es tu ranking de los más beneficiados, con logos, en el estilo del torneo.
+**La fila del S&P 500 es deliberada:** sin una referencia, "subió 6%" no se sabe si es mucho o poco.
 
 ---
 
-## ESCENA 7 · `outro` · [0:59 – 1:06] · ~7 s · PRIMER PLANO
+## ESCENA 7 · `statement` · [1:08 – 1:16] · ~8 s · PLANO MEDIO
 
 **NARRACIÓN**
-> «Si el récord llegó también a las **empresas**, lo veremos cuando **reporten** sus ventas en febrero.»
-
-**GUION DE TIEMPOS**
+> «Pero no **todos**: eBay cayó 2. En lo **personal** tengo posición en Mercado Libre.»
 
 | t | Qué pasa | Cómo |
 |---|---|---|
-| +0.0 | Corte a la foto de bolsas de compras, a pantalla completa | Con velo oscuro |
+| +0.0 | Corte a negro limpio | — |
+| +1.0 | **cue `todos`** → entran las dos que no subieron | `eBay −1.91%` y, debajo, `Target −0.15%`, en terracota |
+| +4.6 | **cue `personal`** → entra el chip de declaración | `JP tiene posición en Mercado Libre`, arena, con borde |
+
+**EN PANTALLA**
+
+| Elemento | Texto literal | Banda | Color | Entra | Sale |
+|---|---|---|---|---|---|
+| Kicker | `NO TODOS SUBIERON` | Rótulo | Arena 70% | +0.0 | fin escena |
+| Dato 1 | `eBay · −1.91%` | Contenido | **Terracota** | +1.0 | fin escena |
+| Dato 2 | `Target · −0.15%` | Contenido | **Terracota** | +1.3 | fin escena |
+| Chip | `JP tiene posición en Mercado Libre` | Contenido y≈1400 | Arena, con borde | +4.6 | fin escena |
+
+**CÁMARA.** Plano medio. **SFX.** Ninguno.
+**POR QUÉ EXISTE.** Dos cosas a la vez: el video no es una lista de ganadores —**hubo quien cayó el día
+del récord**— y aquí va **tu declaración de posición**, que es obligatoria porque Mercado Libre está en
+`posiciones-jp.md` y se nombró en la escena anterior.
+
+---
+
+## ESCENA 8 · `outro` · [1:16 – 1:26] · ~10 s · PRIMER PLANO
+
+**NARRACIÓN**
+> «Si ese récord también llegó a las **empresas**, lo veremos cuando **reporten** sus resultados
+> trimestrales en febrero. ¿Tú **gastaste** más este Black Friday que el pasado?»
+
+| t | Qué pasa | Cómo |
+|---|---|---|
+| +0.0 | Corte a la foto de bolsas de compras, a pantalla completa | Velo oscuro |
 | +0.0 | Entra JP en 3D, acto `cierre`, 420 px | Abajo a la derecha; el bloque de texto sube 200 px solo |
-| +1.8 | **cue `empresas`** → entra la primera línea | `¿El récord llegó a las empresas?` |
-| +4.2 | **cue `reporten`** → entra la fecha | `Amazon reporta el 4 de febrero de 2027 (fecha esperada)` |
-| +5.4 | JP se encoge de hombros y señala a cámara | Lo hace el acto `cierre` |
-| +5.8 | Entran firma, CTA y aviso legal | Automáticos, de `brand.json` |
+| +1.6 | **cue `empresas`** → entra la primera línea | `¿El récord llegó también a las empresas?` |
+| +4.0 | **cue `reporten`** → entra la fecha | `Lo dirán sus resultados trimestrales · Amazon reporta el 4 de febrero de 2027 (fecha esperada)` |
+| +7.0 | **cue `gastaste`** → entra **la pregunta de cierre**, grande | `¿Tú gastaste más este Black Friday que el pasado?`, en mostaza |
+| +8.4 | JP se encoge de hombros y señala a cámara | Lo hace el acto `cierre` |
+| +8.6 | Entran firma, CTA y aviso legal | Automáticos, de `brand.json` |
 
 **EN PANTALLA**
 
 | Elemento | Texto literal | Banda | Color | Entra | Sale |
 |---|---|---|---|---|---|
-| Frase | `¿El récord llegó a las empresas?` | Rótulo | Arena | +1.8 | con el video |
-| Fecha | `Amazon reporta el 4 de febrero de 2027 · fecha esperada` | Contenido | Mostaza | +4.2 | con el video |
-| Firma | `COSTA STUDIO FINANCE · BY JP ARMENDÁRIZ` | Firma | Arena | +5.8 | con el video |
-| Aviso | `Contenido educativo. No es asesoría financiera.` | Firma | Arena 50% | +5.8 | con el video |
+| Línea 1 | `¿El récord llegó también a las empresas?` | Rótulo | Arena | +1.6 | fin video |
+| Fecha | `Amazon reporta el 4 de febrero de 2027 · fecha esperada` | Contenido | Arena 70% | +4.0 | fin video |
+| **Pregunta** | `¿Tú gastaste más este Black Friday que el pasado?` | Contenido y≈1300 | **Mostaza** | +7.0 | fin video |
+| Firma | `COSTA STUDIO FINANCE · BY JP ARMENDÁRIZ` | Firma | Arena | +8.6 | fin video |
+| Aviso | `Contenido educativo. No es asesoría financiera.` | Firma | Arena 50% | +8.6 | fin video |
 
-**ELEMENTOS Y ACCIONES.** JP en 3D, acto `cierre`, vestuario **polo** (distinto del `piensa` + blazer
-del short de Nvidia del 17 de noviembre).
-
-**CÁMARA.** Primer plano: JP más grande que en el gancho y la foto más cerrada.
-
+**CÁMARA.** Primer plano: JP más grande que en el gancho, foto más cerrada.
 **SFX.** Ninguno.
-
-**POR QUÉ EXISTE.** Cierra con **algo concreto que vigilar y con fecha**, en vez de una frase abstracta.
-Y deja claro, sin decirlo con palabras raras, que el gasto de la gente y el resultado de las empresas
-son cosas distintas: la prueba llega cuando reporten.
+**POR QUÉ EXISTE.** Cierra con **la idea dicha completa** —resultados trimestrales, con mes y con la
+fecha en pantalla— y con **la pregunta al espectador**, que es lo que faltaba.
 
 ---
 
 # 5 · Decisiones de estilo
 
-- **Paleta:** arena Costa de principio a fin, mostaza como acento, musgo para lo que sube.
-  Una sola familia de color en las 7 escenas.
-- **Tamaños de plano, en orden:** general → medio → detalle → esquema → general con tarjeta → medio →
-  primer plano. Ningún par consecutivo repite.
-- **JP en 3D:** solo escenas 1 y 7. Actos `senala` + `cierre`, vestuario polo.
-- **Fotos (4 + logo):** ① tienda llena o carritos ② paquetes de reparto ③ piso de remates ④ bolsas de
-  compras. Reales, licencia libre, ≥1600 px, sujeto limpio, ninguna repetida en escenas seguidas,
-  **ninguna generada con IA**. Más el logo de Amazon en PNG transparente, de su sala de prensa.
-- **SFX: 3 en todo el video** (`thud`, `tick`, `shine`), ninguno repetido, escritos como **fracción de
-  la escena** y comprobados en `build/sfx.json` antes de mezclar.
-- **Sin recomendación:** se menciona a Amazon con su dato del día, nunca con un juicio ni un objetivo.
+- **Paleta:** **fondo negro `#0A0A0A`** (tu idea, por el Black Friday) con arena, mostaza, musgo para lo
+  que sube y terracota para lo que baja. Son los colores de Costa: el negro ya está en la paleta de la
+  marca, solo no se usaba de fondo. Una sola familia en las 8 escenas.
+- **Tamaños de plano, en orden:** general → medio → detalle → esquema → general con tarjeta → esquema
+  con logos → medio → primer plano. Ningún par consecutivo repite.
+- **Logos:** Shopify, MercadoLibre y Amazon, PNG transparente, de la sala de prensa de cada una.
+  Sin tarjeta blanca (sobre negro contrastan solos).
+- **JP en 3D:** solo escenas 1 y 8. Actos `senala` + `cierre`, vestuario **polo**.
+- **Fotos (4):** ① tienda llena con carritos ② paquetes de reparto ③ piso de remates ④ bolsas de compras.
+  Reales, licencia libre, ≥1600 px, sujeto limpio, ninguna repetida en escenas seguidas, **ninguna de IA**.
+  **Se eligen oscuras o se les baja la exposición**, para que peguen con el fondo negro.
+- **SFX: 3 en todo el video** (`thud`, `tick`, `shine`), ninguno repetido, escritos como fracción de la
+  escena y comprobados en `build/sfx.json` antes de mezclar.
+- **Sin recomendación:** se nombran cinco empresas con su dato del día y ningún juicio sobre ninguna.
 
 ---
 
 # 6 · Título y descripción, listos para copiar
 
-**Título** (74 caracteres):
+**Título** (78 caracteres):
 ```
-Récord de compras por internet en Acción de Gracias #BlackFriday #inversiones
+Récord de compras por internet: quién ganó el Black Friday #BlackFriday #bolsa
 ```
 
 **Descripción:**
 ```
-El Día de Acción de Gracias de 2026, Estados Unidos rompió su récord de compras por internet: 7,100 millones de dólares en un solo día, 10.4% más que ese mismo día de 2025.
+El Día de Acción de Gracias de 2026, Estados Unidos rompió su récord de compras por internet: 7,100 millones de dólares en un día, 10.4% más que ese mismo día de 2025.
 
 📌 Datos clave
 • Acción de Gracias de 2026: $7,100 M en compras por internet en EE.UU. (+10.4% vs. 2025)
 • Del 1 al 22 de noviembre de 2026: $82,500 M (+9.1% vs. las mismas fechas de 2025)
 • Lo que más subió contra el promedio de octubre: higiene personal +40%, limpieza del hogar +33%, ropa básica +27%
 • Cierre del viernes 27 de noviembre (media jornada): Nasdaq +2.31%, S&P 500 +1.60%, Dow +1.18%
-• Amazon cerró en 254.12 dólares, +3.96% ese día. Toda la bolsa subió, con la tecnología al frente.
+• Los más beneficiados ese día: Shopify +6.28%, MercadoLibre +4.47%, Amazon +3.96%
+• No todos subieron: eBay −1.91% y Target −0.15%
 
-¿Tú compraste más este año que el pasado?
+Toda la bolsa subió ese día, con la tecnología al frente, así que estos movimientos no se explican solo por el Black Friday.
+
+JP tiene posición en Mercado Libre.
+
+¿Tú gastaste más este Black Friday que el pasado?
 
 Fuentes: Adobe Analytics · cierres del 27 de noviembre de 2026 (Yahoo Finance).
 
@@ -389,18 +385,9 @@ Costa Studio Finance, by JP Armendáriz.
 
 # 7 · Registro de cambios
 
-- **v1** · guion de Amazon. Descartado por JP: *"de Amazon no hubo ninguna noticia en particular"*.
-- **v2** · Black Friday, versión corta.
-- **v3** · formato cinematográfico de `plan/guion-de-rodaje.md`.
-- **v4 · ésta.** Reescrita con la crítica de JP:
-  1. **El gancho afirma el récord de entrada**, sin rodeos ni suspenso.
-  2. **Fuera todo Mastercard.** Se contradecía con el gancho y no le decía nada a nadie.
-  3. **Fuera "un récord en dólares no es un récord en cosas"** y **"lo que de verdad se llevó la gente"**:
-     ninguna de las dos se entiende.
-  4. **Fuera la escena de las ventas de diciembre.**
-  5. **Los $82,500 M ahora dicen de qué son** (compras por internet) y **contra qué se comparan**
-     (las mismas fechas de 2025). Igual el +40% de higiene, que es contra el promedio de octubre.
-  6. **Entra qué compró la gente** (higiene, limpieza, ropa básica), que es lo más aterrizado del video.
-  7. **Entra Amazon con su dato del día** (+3.96% contra +1.60% del S&P 500), con la nota de que ese día
-     subió toda la bolsa.
-  8. **El cierre es concreto y con fecha** en vez de una frase abstracta.
+- **v1** guion de Amazon · **v2** Black Friday corto · **v3** formato cinematográfico ·
+  **v4** fuera Mastercard y las frases que no se entendían.
+- **v5 · ésta.** Tus seis correcciones de guion (la tendencia que ya venía, la pregunta que corresponde
+  a su respuesta, el puente a la bolsa, dos empresas más, el cierre dicho completo y **la pregunta
+  final que faltaba**) y tu dirección visual (fondo negro, logos, ranking, fotos). Entra el contrapunto
+  de eBay y Target, y la declaración de tu posición en Mercado Libre.
