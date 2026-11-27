@@ -1,148 +1,160 @@
 # Guion de rodaje · Historia 3D "El interés compuesto"
 **Puente al largo del domingo 29:** *Cómo empezar a invertir desde cero en México*
-**10 escenas · ~185 palabras · ~80 s con voz de IA**
+**10 escenas · ~205 palabras · ~85 s con voz de IA**
 **Estado: PENDIENTE DE APROBACIÓN DE JP. Sin maqueta, sin voz, sin render.**
 
 ---
 
 ## El dato detrás de todo (aritmética verificada, no es dato de nadie)
-**$160 dólares al mes** (≈ $5.26 al día) · **10% anual compuesto** · **40 años**.
-El 10% es un **supuesto nuestro**: va rotulado `supone 10% anual · ilustrativo` pegado a la cifra en las 10 escenas.
+**$160 dólares al mes** (≈ **$5.26 al día**) · **10% anual compuesto** · **40 años** → **$1,011,853**
+El 10% es un **supuesto nuestro**: rotulado `supone 10% anual · ilustrativo` pegado a la cifra, las 10 escenas.
 
-| Año | Total | **Verde** (tuyo) | **Dorado** (interés) | % dorado | Altura vs. final |
-|---|---|---|---|---|---|
-| 5 | $12,390 | $9,600 | $2,790 | 23% | 1.2% |
-| 10 | $32,775 | $19,200 | $13,575 | 41% | 3.2% |
-| 18.4 | **$100,000** | $35,360 | $65,615 | 65% | 9.9% |
-| 30 | $361,678 | $57,600 | $304,078 | 84% | 35.7% |
-| 40 | **$1,011,853** | **$76,640** | **$935,053** | **92%** | 100% |
+| Año | Total | **Verde** (lo que pones) | **Dorado** (lo que paga el interés) | % dorado |
+|---|---|---|---|---|
+| 5 | $12,390 | $9,600 | $2,790 | 23% |
+| 18.4 | **$100,000** | $35,360 | $65,615 | 65% |
+| 31 | **$400,000** | $59,520 | $340,480 | 85% |
+| 40 | **$1,011,853** | **$76,640** | **$935,053** | **92%** |
 
-**Por qué dólares:** para que lo entienda cualquiera en México o en Latinoamérica. En pantalla,
-una línea chica con la equivalencia en pesos al tipo de cambio del 23 nov 2026 (19.17 por dólar).
+**La escalera de premios, toda dentro del millón:**
+| Hito | Monto | Año |
+|---|---|---|
+| Un coche | $12,000 (≈ 230,000 pesos) | 4.9 |
+| Una casa | $100,000 (≈ 1.9 M pesos) | 18.4 |
+| Un barco | $400,000 | 31.0 |
+| **El millón** | $1,011,853 | 39.9 |
 
-**Los dos hitos caen solos, no hay que forzarlos:**
-- **Coche** — $12,000 USD (≈ 230,000 pesos; JP: coches desde 250,000) → **año 4.9**
-- **Casa** — $100,000 USD (≈ 1.9 millones de pesos; JP: casas desde 2 millones) → **año 18.4**,
-  que es **exactamente** el hito de los primeros cien mil del que hablaba Munger. Mismo escalón.
+> ### ⚠️ Por qué NO hay yate ni jet privado
+> JP los propuso, pero **no caben en un millón**: un yate de verdad cuesta de 2 a 10 millones y un jet
+> privado usado de 3 a 15. Enseñarlo afirmaría algo falso sobre lo que compra un millón de dólares.
+> **Sí se queda la fama del final** (gente, flashes, confeti): eso es puesta en escena y emoción, no una
+> afirmación sobre el dinero. La línea es esa — **montar una celebración se vale; decir qué compra el
+> dinero tiene que ser cierto**.
 
-**La cita:** es de **Charlie Munger**, no de Buffett. Las fuentes no coinciden en la redacción exacta ni en
-el año, así que **no va entrecomillada**: va como idea atribuida a él, sin groserías y sin fingir transcripción.
+**La cita es de Charlie Munger, no de Buffett.** Las fuentes no coinciden en la redacción exacta ni en el
+año, así que **no va entrecomillada**: va como idea atribuida a él, sin groserías.
 
 ## Decisiones de estilo
-- **Verde = lo que tú pones · Dorado = lo que generó el interés.** El mecanismo se ve, no se explica.
-- **Gráfica exponencial, no columna:** barras por periodo de izquierda a derecha. El personaje las sube como
-  escalera (convención de la casa).
-- **El fondo cuenta el tiempo:** baldío → pueblo → ciudad chica → ciudad iluminada.
-- **Una paleta:** noche azul + verde + oro. El fondo cambia de luz, nunca de familia de color.
+- **Verde = lo que tú pones · Dorado = lo que paga el interés.** Y la narración lo dice **con todas sus
+  letras cada vez**, nunca "los verdes" a secas. En pantalla, una **etiqueta que apunta** a cada color.
+- **Gráfica exponencial:** barras por periodo, el personaje las sube como escalera (convención de la casa).
+- **El fondo cuenta el tiempo:** baldío → pueblo → ciudad → ciudad iluminada de noche.
+- **Una paleta:** noche azul + verde + oro.
 - **Fichas fijas arriba** (AÑOS / VALOR) que suben con la voz.
 
 ---
 
-## ESCENA 1 · GANCHO (0:00–0:10)
-**NARRA:** «Cinco dólares al día. Eso es todo. Guárdalos cuarenta años y terminas con más de un millón. Y lo
-fuerte: de ese millón, tú solo pusiste setenta y seis mil.»
+## ESCENA 1 · GANCHO CON SALTO AL FUTURO (0:00–0:12)
+**NARRA:** «Invierte cinco dólares al día y, cuarenta años después, esto eres tú. No es un truco, es
+aritmética. Pero el camino no se parece a lo que crees.»
 
-**SE VE:** Amanecer en un **terreno baldío** polvoriento. El personaje de pie junto a un montoncito de
-billetes **verdes** que apenas le llega al tobillo — él y el dinero en cuadro desde el primer fotograma.
-Fichas: `AÑOS 1` · `VALOR $2,009`.
+**SE VE:** Tres tiempos en una sola toma continua:
+1. **Plano medio del personaje**, solo, en un terreno baldío al amanecer. Nada más. (0–3 s)
+2. En «esto eres tú», la cámara **se dispara hacia atrás** y aparece de golpe el final: la gráfica dorada
+   gigante, la casa, el coche, el barco, y él arriba con gente alrededor y flashes. Ciudad iluminada. (3–8 s)
+3. En «el camino hasta aquí», **todo se desvanece de un golpe** y volvemos al baldío vacío, al personaje
+   y a su montoncito de billetes verdes. (8–12 s)
 
-**RÓTULO (dos tiempos):** "Cinco dólares al día" → cae debajo, en dorado: "un millón de dólares"
+**Factibilidad:** sí se puede, y sale casi gratis. El escenario final hay que construirlo de todos modos
+para la escena 7; enseñarlo 5 segundos al principio solo cuesta mover la cámara.
 
----
-
-## ESCENA 2 · CÓMO FUNCIONA (0:10–0:22)
-**NARRA:** «Cada mes metes ciento sesenta dólares: son los verdes. Ese dinero te paga intereses, y los
-intereses son los dorados. Aquí está el truco: los dorados no se sacan. Se quedan. Y el año siguiente los
-dorados también paran dorados.»
-
-**SE VE:** Primer escalón. Entra la capa **verde** gruesa; encima aparece **un** billete dorado. Al año
-siguiente, de ese dorado **brotan dos más**: la cámara se acerca a ver cómo el dorado genera dorado.
-Es la única escena con plano detalle. Fondo: el baldío.
-
-**RÓTULO:** "Verde: lo que pones" → "Dorado: lo que el dinero paga solo"
+**RÓTULO (dos tiempos):** "Cinco dólares al día" → en dorado: "cuarenta años después"
 
 ---
 
-## ESCENA 3 · AÑO 5, EL COCHE (0:22–0:32)
-**NARRA:** «A los cinco años llevas doce mil dólares. Eso ya es un coche. Pero mira la pila: casi todo
-sigue siendo verde. Todavía es tu dinero, no el del interés.»
+## ESCENA 2 · EL MECANISMO, EXPLÍCITO (0:12–0:26)
+**NARRA:** «Cada mes pones ciento sesenta dólares: ese dinero tuyo son los billetes verdes. Lo que el interés
+paga encima son los dorados. Y los dorados no se gastan: pagan sus propios dorados.»
 
-**SE VE:** Sobre el escalón del año 5 **aparece un coche** (caricatura de plastilina, sin marca). El
-personaje **se sube y cierra la puerta**. La barra es verde con una franja dorada delgada.
-Fondo: un **pueblito chafa**, casas bajas.
+**SE VE:** Plano detalle, la única toma cerrada del video. Se forma el primer escalón: entra la capa
+**verde** y encima **un** billete dorado. Pasa un año y de ese dorado **brotan dos dorados más**; de esos,
+cuatro. La cámara se queda ahí para que se vea el mecanismo.
+**Dos etiquetas que apuntan**, con línea punteada a su color: `VERDE · el dinero que tú pones` ·
+`DORADO · lo que te paga el interés`.
 
-**RÓTULO:** "Año 5 · $12,390" · pie: "≈ 237,000 pesos · 77% todavía es tuyo"
+**RÓTULO:** "Los dorados no se gastan" → "pagan sus propios dorados"
 
 ---
 
-## ESCENA 4 · LA CUESTA LARGA (0:32–0:44)
-**NARRA:** «Y aquí viene el tramo que nadie te cuenta. Tardas dieciocho años en juntar tus primeros cien
-mil. Dieciocho. Casi la mitad del camino… para el diez por ciento del dinero.»
+## ESCENA 3 · AÑO 5, EL COCHE (0:26–0:35)
+**NARRA:** «A los cinco años llevas doce mil dólares: ya es un coche. Y casi todo sigue siendo verde: lo
+pusiste tú.»
+
+**SE VE:** Sobre el escalón del año 5 **aparece un coche** de plastilina, sin marca. El personaje **se sube
+y cierra la puerta**. La barra es verde con una franja dorada delgada. Fondo: pueblito de casas bajas.
+
+**RÓTULO:** "Año 5 · $12,390" · pie: "≈ 237,000 pesos · 77% lo pusiste tú"
+
+---
+
+## ESCENA 4 · LA CUESTA LARGA (0:35–0:46)
+**NARRA:** «Y ahora lo que nadie te cuenta: tardas dieciocho años en juntar los primeros cien mil. Casi la
+mitad del camino, para el diez por ciento del dinero.»
 
 **SE VE:** La cámara **se aleja** y se ve lo plano que ha sido: dieciocho escalones bajos, casi una rampa.
-El personaje los camina con los **hombros caídos**, mirando al suelo, desmotivado.
-Fondo: el pueblo, algo más grande. Fichas suben despacio, casi sin moverse.
+El personaje camina con los **hombros caídos**, mirando el suelo. Las fichas suben con una lentitud
+desesperante. Fondo: el pueblo, algo más grande.
 
 **RÓTULO:** "18 años" / "para el 10% del dinero" · pie: "Aquí es donde casi todos se rinden"
 
 ---
 
-## ESCENA 5 · MUNGER Y LA CASA (0:44–0:56)
-**NARRA:** «Charlie Munger decía que los primeros cien mil dólares son los más difíciles de todos. Por esto.
-Y cuando por fin llegas, esos cien mil ya son una casa.»
+## ESCENA 5 · MUNGER Y LA CASA (0:46–0:57)
+**NARRA:** «Charlie Munger decía que los primeros cien mil son los más difíciles. Y cuando por fin llegas,
+esos cien mil ya son una casa.»
 
 **SE VE:** En el escalón del año 18 **aparece una casa**. El personaje llega arrastrando los pies, se
 endereza y **abre la puerta**. La barra ya es 65% dorada. Fondo: **ciudad chica**, primeras luces.
 
-**RÓTULO:** "Los primeros $100,000" / "son los más difíciles" · pie: "Charlie Munger · ≈ 1.9 millones de pesos"
+**RÓTULO:** "Los primeros $100,000" / "son los más difíciles" · pie: "Charlie Munger · ≈ 1.9 M de pesos"
 
 ---
 
-## ESCENA 6 · LA CURVA SE EMPINA (0:56–1:06)
-**NARRA:** «Pero fíjate qué pasa después. A los treinta años son trescientos sesenta mil. El dinero empezó a
-correr sin ti, y al personaje ya le cuesta subir.»
+## ESCENA 6 · SE ACELERA, EL BARCO (0:57–1:07)
+**NARRA:** «De ahí ya no caminas solo: empuja el interés. A los treinta y uno llevas cuatrocientos mil, y el
+ochenta y cinco por ciento es dorado.»
 
-**SE VE:** Los escalones se vuelven **altos de golpe**: el personaje **trepa con esfuerzo**, se impulsa con
-las manos. Las barras son mayoritariamente doradas. Fondo: **ciudad**, edificios, luces encendidas.
+**SE VE:** Los escalones se vuelven **altos de golpe** y el personaje **trepa con esfuerzo**, impulsándose
+con las manos. En el escalón del año 31 **aparece un barco**. Las barras son casi todas doradas.
+Fondo: **ciudad grande**, edificios iluminados.
 
-**RÓTULO:** "Año 30 · $361,678" · pie: "84% ya es interés"
-
----
-
-## ESCENA 7 · AÑO 40, EL MILLÓN (1:06–1:16)
-**NARRA:** «Y a los cuarenta años: un millón de dólares. Los últimos diez años te dieron más que los
-primeros treinta juntos.»
-
-**SE VE:** La barra final **se dispara fuera de cuadro** y la cámara tiene que alejarse de golpe para que
-quepa. El personaje, chiquito, hasta arriba. Fondo: **ciudad grande de noche, iluminada**, torres al fondo.
-
-**RÓTULO (dos tiempos):** "Año 40" → "$1,011,853"
+**RÓTULO:** "Año 31 · $400,000" · pie: "85% ya es interés"
 
 ---
 
-## ESCENA 8 · EL GOLPE (1:16–1:28)
-**NARRA:** «Y esto es lo único que tienes que recordar: tú pusiste setenta y seis mil dólares. Los otros
-novecientos treinta y cinco mil los puso el tiempo. Noventa y dos de cada cien dólares no son tuyos: son
-del interés.»
+## ESCENA 7 · AÑO 40, EL MILLÓN Y LA FAMA (1:07–1:18)
+**NARRA:** «Y a los cuarenta años: un millón de dólares.»
 
-**SE VE:** La gráfica **entera** de año 1 a año 40: una curva exponencial donde el **verde es una tirita
-delgada en la base** y todo lo demás es **oro**. Se marca con una línea dónde acaba lo verde — y está
-casi pegada al suelo. El personaje, arriba, mirando hacia abajo.
+**SE VE:** La barra final **se dispara fuera de cuadro** y la cámara se aleja de golpe para que quepa:
+la gráfica dorada gigantesca, la casa, el coche y el barco abajo. **Gente alrededor del personaje,
+flashes de cámara, confeti.** Él con lentes oscuros. La cámara **se acerca hasta su cara** y ahí se queda.
+Fondo: ciudad de noche, iluminada. Es el reverso exacto de la escena 1.
 
-**RÓTULO:** "Tú pusiste $76,640" → "El tiempo puso $935,053"
+**RÓTULO (dos tiempos):** "Año 40" → en dorado: "$1,011,853"
 
 ---
 
-## ESCENA 9 · AVISO DEL LARGO (1:28–1:35)
-**NARRA:** «Y este domingo subimos el video completo: cómo empezar a invertir desde cero en México, con
-poco dinero.»
+## ESCENA 8 · EL GOLPE (1:18–1:30)
+**NARRA:** «Pero mira de quién es ese millón. Tú pusiste setenta y seis mil; el interés, novecientos treinta y
+cinco mil. Noventa y dos de cada cien dólares.»
+
+**SE VE:** La gráfica **entera**, de año 1 a año 40: el **verde es una tirita delgada pegada al suelo** y
+todo lo demás es **oro**. Una línea horizontal marca dónde acaba lo verde, y está casi en el piso.
+El personaje, chiquito, hasta arriba.
+
+**RÓTULO:** "Tú pusiste $76,640" → "El interés puso $935,053"
+
+---
+
+## ESCENA 9 · AVISO DEL LARGO (1:30–1:37)
+**NARRA:** «Este domingo sube el video completo: cómo empezar a invertir desde cero en México.»
 
 **SE VE:** El personaje frente al **pizarrón**: "ESTE DOMINGO 10:00 / Empezar a invertir / desde cero en
 México". Lo señala. Fondo: la ciudad iluminada.
 
 ---
 
-## ESCENA 10 · PREGUNTA DE CIERRE (1:35–1:42)
+## ESCENA 10 · PREGUNTA DE CIERRE (1:37–1:44)
 **NARRA:** «¿Cuántos años llevas pensando en empezar?»
 
 **SE VE:** El personaje abre las manos preguntando. Pregunta centrada en serif itálica, "Desde la costa,
@@ -152,13 +164,15 @@ No es asesoría financiera".
 ---
 
 ## Lo que NO lleva (a propósito)
+- **Ni yate ni jet privado:** no caben en un millón (ver el recuadro de arriba).
 - Ninguna recomendación de dónde invertir ni de qué instrumento da 10%. El 10% es un supuesto rotulado.
-- La frase de Munger **no va entrecomillada ni atribuida a Buffett**, y va sin groserías.
-- Ningún logo ni marca real: el coche y la casa son caricatura propia.
-- Ninguna promesa: el guion dice "supone", nunca "vas a tener".
+- La frase de Munger **no entrecomillada, ni atribuida a Buffett**, y sin groserías.
+- Ningún logo ni marca real: el coche, la casa y el barco son caricatura propia.
+- El guion dice "supone", nunca "vas a tener".
 
 ## Lo que quiero que decidas
-1. **¿$160 al mes / 40 años, o prefieres otro par?** Con 30 años el millón exige $442 al mes y se pierde el
-   "solo". Con 45 años bastan $95, pero 45 años ya no se siente alcanzable.
-2. **¿El coche en el año 5 te parece muy pronto?** Cae ahí solo. Si lo quieres más tarde, habría que subirlo
-   a un coche más caro (unos $30,000) y se iría al año 9.
+1. **¿Te late el salto al futuro de la escena 1?** Es tu idea y creo que es el mejor gancho que hemos
+   tenido: enseña el destino en 5 segundos y luego te obliga a quedarte para ver el camino.
+2. **¿El barco en el año 31 sustituye bien al yate?** Es lo más grande que cabe honestamente.
+3. **¿Quieres que al final diga lo que un millón produce** (al 4% son $40,000 al año sin tocarlo)?
+   Cabe en la escena 8 pero suma ~15 palabras y ya vamos justos de tiempo.
