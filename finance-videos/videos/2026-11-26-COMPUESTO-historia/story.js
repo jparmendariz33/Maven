@@ -471,7 +471,8 @@ const scenes = [
       [w.coche, w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       ['coche','casa','barco'].forEach(k => w.dato(k, 0)); w.traza(0); w.fiesta(0, t);
       w.mec.scale.setScalar(1);
-      w.mecDato.visible = L.seg(p, .1, .18) > .5;
+      // solo mientras se habla del verde: despues la camara sube y el subtitulo se le echa encima
+      w.mecDato.visible = L.seg(p, .1, .18) > .5 && L.seg(p, .34, .38) < .5;
       // los verdes ya están; los intereses BROTAN encima, cada vez más seguido
       const brota = L.seg(p, .22, .96);
       w.mecOro.forEach((b, i) => b.scale.setScalar(Math.max(.001, L.back(L.seg(brota, i * .15, i * .15 + .26)))));
