@@ -608,6 +608,26 @@ Así el día de publicar es solo ejecución, no diseño.
 Cuando una pieza atemporal se produce el mismo día, se pierde la vuelta de correcciones de JP, que es justo donde
 estos videos mejoran. La de Kahneman necesitó cinco vueltas de encuadre y tres de guion.
 
+## Regla del guion de rodaje: PRIMERA puerta, antes de construir nada (JP, 27 nov 2026)
+Esta semana ejecuté tres veces sin luz verde y la tercera costó un render de 45 min y una historia que JP
+describió como "el peor video que has hecho". La causa no fue el render: fue que **JP nunca vio qué se iba a
+ver antes de que yo lo construyera**, así que el retrabajo era inevitable.
+**Antes de escribir una línea de `story.js`, de storyboard o de maqueta, se le manda a JP un GUION DE RODAJE
+completo, como si fuera de película**, y no se avanza hasta que lo apruebe. Lleva:
+- **Cuántas escenas son** y cuánto dura cada una.
+- **Por escena, las dos columnas: lo que se NARRA** (el texto exacto, palabra por palabra) **y lo que se VE**
+  (encuadre, qué hace el personaje, qué objetos entran, qué hay en el fondo, qué dice el rótulo).
+- La aritmética o los datos detrás, con su fuente, y lo que va rotulado `ilustrativo`.
+- Las decisiones de estilo (paleta, motor narrativo, comparables) dichas en una línea cada una.
+Se guarda como `guion.md` en la carpeta de la pieza, para que JP corrija sobre texto —que es barato— en vez de
+sobre un MP4 —que cuesta créditos y media hora de máquina.
+**Las dos puertas, en orden, y ninguna se salta:**
+1. **`guion.md` → OK de JP.** Recién entonces se construye la maqueta.
+2. **Hoja de QA (+ cuadros `--at`) → OK de JP.** Recién entonces se genera voz y se renderiza.
+**"Haz el contenido de hoy" NO es la luz verde de ninguna de las dos.** Pedir la pieza y aprobar cómo se ve son
+cosas distintas; si JP pide el contenido, lo que se entrega es el `guion.md`, no el video. La luz verde es
+explícita y sobre lo que ya vio.
+
 ## Regla de la aprobación visual antes de producir (JP, 19 nov 2026 — aplica a TODO formato)
 **Antes de renderizar cualquier pieza —y SIEMPRE antes de generar voz— JP tiene que ver capturas de las escenas.**
 No es un trámite: los créditos de voz son el recurso escaso del canal y un render son ~30 min de máquina. Una

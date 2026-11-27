@@ -133,6 +133,20 @@ una cifra.
 - Una idea por escena; lo que se ve en la maqueta es lo que se está diciendo en ese momento.
 - El cierre es una pregunta abierta, nunca una conclusión de inversión.
 
+## 3b. PUERTA 1 — el guion de rodaje a JP, antes de tocar la maqueta (JP, 27 nov 2026)
+**No escribas una sola línea de `story.js` sin que JP haya aprobado un `guion.md`.** Esta puerta nació porque
+tres veces en una semana se construyó y renderizó sin que él hubiera visto qué se iba a ver, y la tercera acabó
+en un render tirado a la basura.
+Guárdalo en `videos/$ID/guion.md`, escrito **como guion de película**:
+- Cuántas escenas y cuánto dura cada una.
+- Por escena: **NARRA** (el texto exacto) y **SE VE** (encuadre, qué hace el personaje, objetos que entran,
+  fondo, rótulo).
+- La aritmética con su fuente y lo que lleva la marca `ilustrativo`.
+- Motor narrativo, paleta y comparables, una línea cada uno.
+Mándaselo y **párate ahí**. Corregir texto es gratis; corregir un MP4 cuesta créditos y media hora.
+**Ojo:** que JP pida "el contenido de hoy" NO es la aprobación de esta puerta ni de la segunda (§5). Lo que se
+entrega cuando lo pide es el `guion.md`.
+
 ## 4. La maqueta: `videos/$ID/story.js`
 Motor: `engine3d/` (Three.js) = `lib.js` (base + capa editorial 2D) + `cine.js` (luz de cine, actores, plastilina) + `player.js`.
 Todo es función del tiempo (determinista). Vista previa: abre `engine3d/index.html?v=../videos/$ID/story.js`.
