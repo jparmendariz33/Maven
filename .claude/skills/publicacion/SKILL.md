@@ -5,6 +5,23 @@ description: Crea una publicación de YouTube (pestaña Publicaciones) de 3–4 
 > # ⚠️ LEE ESTO PRIMERO: `finance-videos/plan/anatomia-formatos.md`
 > Ahí está **qué debe llevar** cada pieza. Este skill es **cómo** se hace.
 >
+> # 🚦 LAS DOS PUERTAS Y EL CHECKLIST (JP, 27 nov 2026 — manda sobre todo lo demás)
+> La historia del interés compuesto se llevó el **32% de los créditos de la semana de JP** en **seis
+> renders**, porque las correcciones llegaron después de renderizar en vez de antes.
+> **1) `guion.md` con el formato de `finance-videos/plan/guion-de-rodaje.md` → OK de JP → recién
+> entonces se construye. 2) Hoja de QA + cuadros sueltos → OK de JP → recién entonces voz y render.**
+> "Haz el contenido de hoy" **no** es la luz verde de ninguna de las dos.
+> **Antes de gastar máquina, corre el CHECKLIST ANTES DE RENDERIZAR** de
+> `finance-videos/plan/anatomia-formatos.md` (sección "Limpieza visual y eficiencia"), que es donde
+> viven las reglas de capas, bandas, data labels, estado, audio y verificación, comunes a los 4 formatos.
+> **Y nunca renderices para comprobar algo que un cuadro suelto prueba:** un cuadro cuesta ~40 s y cero
+> créditos; un render completo, 36–68 minutos. Junta las correcciones, verifícalas en cuadros, y
+> renderiza UNA vez.
+>
+> **Traducción a láminas:** cada lámina declara su estado completo, no hereda elementos de la anterior.
+> Las bandas valen igual (título arriba, dato en medio, firma abajo) y ningún número va sin su unidad y
+> su sujeto. Un rótulo que se repite lámina tras lámina es el equivalente de la etiqueta que no se apaga.
+>
 > **La lámina 1 es el gancho** y pasa el mismo filtro de 3 segundos que un short: algo conocido + una contradicción o
 > una cifra con escala. Lleva el logo.
 > **Nunca "hoy" ni "ayer":** las fechas van explícitas ("el martes", "el miércoles 18"), porque JP puede subirla al día

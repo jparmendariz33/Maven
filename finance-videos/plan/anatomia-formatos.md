@@ -144,3 +144,139 @@ apuesta por búsqueda.*
 6. ¿Miniatura propia?
 7. ¿Barrido del MP4 completo sin defectos?
 8. ¿Registrado en `publicados.md` y en el banco que corresponda?
+
+---
+
+# 🧱 Limpieza visual y eficiencia · COMÚN A LOS CUATRO FORMATOS
+**Pedido por JP el 27 nov 2026, al cerrar la historia del interés compuesto.** Esa pieza se llevó el
+**32% de sus créditos de Claude de la semana** en **seis renders completos** de 36 a 68 minutos, y casi
+todos los defectos que la obligaron a repetirse eran cosas que **un cuadro suelto habría enseñado
+gratis**. JP: *"a pesar de que no vamos a hacer todos los videos en 3D, es importante mantener esa
+misma estructura para que quede lo más limpio cada video y que ya no estemos rebotando tanto."*
+
+Esta sección manda sobre los cuatro skills. Lo de 3D vale igual en 2D: cambia el mecanismo, no la regla.
+
+## L1 · Nada se encima con nada
+
+Fue la corrección que JP repitió **cuatro veces** en una sola pieza. En 3D era la escalera tapando la
+casa; en 2D es un data label sobre el subtítulo, el título sobre la cifra, JP en 3D tapando el dato.
+
+- **Antes de pelearte con los valores, escribe las desigualdades.** Si se contradicen entre sí, **no hay
+  combinación de números que funcione** y hay que cambiar la estructura, no los valores. En la historia
+  del compuesto se pedían tres cosas a la vez —que la barra no tape al objeto, que el personaje vaya
+  delante del objeto y que el personaje pise la barra— y juntas dan `frente_barra < frente_barra`.
+  Imposible. Se perdieron tres intentos antes de escribirlo.
+- **La solución casi siempre es una pieza nueva, no un ajuste.** Ahí fueron dos niveles: fondo (gráfica
+  y objetos enrasados, lado a lado) y frente (una pasarela por la que camina el personaje).
+- **Enrasar al frente solo protege lo que de verdad llega al frente.** El casco del velero llegaba a la
+  cara frontal, pero el mástil y las velas son delgados y viven en el centro del grupo: los escalones
+  altos les pasaban por encima. **La medida que cuenta es la de la pieza más atrasada que tiene que
+  verse**, no la del bulto.
+- **En 2D la traducción son BANDAS fijas, y nadie invade la del otro:**
+
+  | Banda | Píxeles (de 1920) | De quién es |
+  |---|---|---|
+  | Rótulo | 0 – 940 | Kicker, título, subtítulo. Nada de la escena entra aquí. |
+  | Contenido | 940 – 1560 | Gráficas, fotos, cifras, cascadas |
+  | Subtítulo | 1560 – 1720 | Solo el subtítulo-teleprompter |
+  | Firma | 1720 – 1920 | Marca y aviso legal |
+  | Columna de botones | x > 930 | Vacía siempre (son los botones de Shorts) |
+
+- **Nunca se arregla un encimado acortando el texto.** El motor tiene que aguantar cualquier largo:
+  `fitLines()` achica hasta que quepa; `wrap(...).slice(n)` tira palabras en silencio y está prohibido.
+- **Nada se coloca en una Y fija si arriba hay texto de largo variable:** cada bloque cuelga de donde de
+  verdad terminó el anterior.
+
+## L2 · La franja de arriba es del texto, y se despeja sola
+
+- **El 49% de arriba es del rótulo.** En 3D lo resuelve `encuadra()`, que recibe los límites de la acción
+  (dónde empieza, dónde acaba, qué tan ancha es) y calcula la cámara sola. **No se despeja moviendo la
+  cámara a ojo escena por escena**: eso es lo que costó cinco vueltas de QA en Kahneman.
+- **Con la cámara a nivel el horizonte cae SIEMPRE en el 50% del cuadro**, así que alejar un objeto alto
+  nunca lo baja: solo lo acerca al horizonte. La cura es que el fondo **crezca con la historia**.
+- **Dale la medida REAL, no la que crees.** Al personaje le puse 1.95 y mide 2.35 (cuello + radio de la
+  cabeza + pelo): el rótulo le rozaba la coronilla en todas las escenas. Mide o deriva; no estimes.
+  Guarda la medida en una constante y úsala en todas las escenas, porque el error se repite en cada una.
+
+## L3 · Los data labels — siete reglas (JP las nombró explícitamente el 27 nov 2026)
+
+1. **La etiqueta va a la MISMA profundidad (o posición) que el objeto que nombra**, y se separa solo en
+   altura. Más cerca de la cámara = más abajo en el cuadro = encimada con el objeto.
+2. **Su texto sale de la misma variable que el dato**, nunca escrito a mano, o un día dirán cosas distintas.
+3. **Un hijo se posiciona en coordenadas LOCALES, no de mundo.** Si el objeto cuelga de un grupo, poner
+   ahí coordenadas de mundo lo manda al doble de la distancia y **desaparece de cuadro sin dar error**.
+4. **El texto que no cabe en el lienzo se recorta en silencio:** `caracteres × 0.62 × tamaño + ls × caracteres ≤ pw`.
+   Baja la fuente o sube el `pw`; nunca angostes el plano.
+5. **Un rótulo se agranda con la FUENTE, no con el plano.** `ph = pw × alto / ancho`: para que el texto
+   llene el plano, la fuente tiene que acercarse a `ph`.
+6. **La etiqueta vive SOLO mientras la voz habla de eso, y luego se apaga.** Si se queda, tarde o
+   temprano la cámara se mueve o entra otro texto y choca. **Es la regla que más se generaliza**: vale
+   igual en shorts, rankings y publicaciones.
+7. **Nombrar un color no explica nada.** "Los dorados pagan más dorados" no dice nada: el color va en una
+   etiqueta que apunta (`VERDE · el dinero que tú pones`) y el concepto va en palabras.
+
+Y la de siempre: **ningún número sin su unidad y su sujeto**, y **"utilidad de operación" o "utilidad
+neta"**, nunca "utilidad" a secas.
+
+## L4 · El estado se declara completo, no incremental
+
+En 3D todas las escenas comparten el mismo mundo: **lo que una escena enciende sigue encendido en la
+siguiente si nadie lo apaga.** La flecha exponencial apareció atravesada encima del coche porque ninguna
+escena la apagó. **Cada escena declara el estado completo de lo que le importa, aunque sea para apagarlo.**
+Es más código y es el único que no se rompe al reordenar escenas. En 2D y en publicaciones es lo mismo:
+una lámina que hereda un elemento de la anterior sin declararlo es un defecto esperando a pasar.
+
+## L5 · Audio
+
+- **El tiempo de un efecto es una FRACCIÓN de la escena (0..1), nunca segundos.** Escribirlos en segundos
+  mandó 9 de 11 efectos a la escena equivocada, uno **después de que acababa el video**.
+- **Se comprueba en diez segundos** leyendo `build/sfx.json`, que ya trae el tiempo convertido:
+  si algún efecto cae fuera de su `[t0, t1]`, están en segundos.
+- **Máximo 6–8 efectos en toda la pieza**, ninguno repetido seguido, y la "ola" solo cuando se cambia de
+  LUGAR, no entre escenas encadenadas.
+- **`pace3d.py` y `no_voice.py` dejan `audio/NO_VOICE`, que hace que la mezcla salga sin narración.**
+  `process_voice.py` ya la borra al producir voz; la señal de que hay voz es que `make_audio.py` imprima
+  `balance hablando:`. **Si esa línea no sale, el video va mudo.**
+
+## L6 · Se verifica el ENTREGABLE, no el proceso
+
+- **Un MP4 truncado se reportó como éxito:** ffmpeg falló al concatenar y salió con código 0, el video
+  perdió su última escena y casi se entrega. `render3d.js` ya compara la duración real contra la esperada
+  y truena. **`scripts/render.js` (shorts y largos) tiene el mismo riesgo y hay que ponérselo igual.**
+- **Barrido del MP4 completo, un cuadro cada 3 s**, no solo la hoja de QA: la hoja toma 20 instantes y se
+  le escapan cosas. Si algo se ve raro, **recórtalo al 100% antes de opinar**: a 300 px de ancho un
+  defecto chico no se distingue (a mí se me escapó así el velero tapado).
+- **Comprueba que la narración esté de verdad en la mezcla** (correlación de la envolvente contra
+  `voice.wav`), no solo que el archivo exista.
+
+## L7 · Eficiencia — las cuatro reglas que ahorran créditos
+
+1. **Nunca renderices para comprobar algo que un cuadro suelto prueba.** `render3d.js --at <seg>` tarda
+   ~40 s y cuesta cero; un render completo son 36–68 min. En la historia del compuesto hice **seis**
+   renders: con esta regla habrían sido **dos**.
+2. **Las correcciones se juntan y se verifican en lote:** una ronda entera de cambios → un cuadro por
+   cada cambio → **un** render. Nunca "corrijo, renderizo, corrijo, renderizo".
+3. **Un cambio de audio NO se re-renderiza.** Se rehace la mezcla y se sustituye la pista copiando el
+   video: `ffmpeg -i video.mp4 -i audio/mix.wav -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest salida.mp4`.
+   Segundos en vez de media hora.
+4. **Las dos puertas se respetan siempre** (ver `plan/guion-de-rodaje.md`): guion de rodaje → OK de JP →
+   se construye; hoja de QA + cuadros sueltos → OK de JP → voz y render. **"Haz el contenido de hoy" no
+   es luz verde de ninguna de las dos.**
+
+## ✅ CHECKLIST ANTES DE RENDERIZAR (obligatorio en los cuatro formatos)
+
+Se corre **siempre** antes de gastar máquina. Si algo falla, se corrige y se vuelve a empezar la lista.
+
+```
+□ BANDAS      ningún elemento invade la franja del rótulo ni la del subtítulo; nada en x > 930
+□ CAPAS       escritas las desigualdades de profundidad; ningún objeto cruzado por otro
+□ ENRASADO    la pieza más atrasada que debe verse, ¿está delante del plano que la amenaza?
+□ ETIQUETAS   ¿a la posición de su objeto? ¿su texto sale de la variable? ¿se apagan cuando toca?
+□ RÓTULOS     cada cifra con su unidad y su sujeto; "utilidad de operación", nunca "utilidad"
+□ ESTADO      cada escena declara el estado completo (lo encendido en otra escena, apagado aquí)
+□ SFX         build/sfx.json: todos dentro de su [t0, t1] · ≤ 6–8 en la pieza · ninguno repetido seguido
+□ VOZ         make_audio.py imprimió "balance hablando:"   (si no, el video va mudo)
+□ PALETA      una sola familia de color; mira la hoja entrecerrando los ojos
+□ CUADROS     un --at por cada momento con acción, revisado uno por uno (y recortado al 100% si dudas)
+□ PUERTA 2    las capturas ya se le mandaron a JP y dijo que sí
+```

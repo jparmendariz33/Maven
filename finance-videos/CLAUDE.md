@@ -56,6 +56,14 @@ Por eso el borrador del largo empieza el lunes anterior (ver "Regla del borrador
 Los videos con datos del día se hacen DESPUÉS del cierre de la bolsa (ver "Regla del cierre"). Música: partitura de órgano y piano en las
 historias; cama cálida en shorts y largos.
 
+**Antes de construir cualquier pieza (JP, 27 nov 2026):** el `guion.md` con el formato de
+[`plan/guion-de-rodaje.md`](plan/guion-de-rodaje.md) va **primero** y necesita el OK de JP; y antes de
+renderizar se corre el **CHECKLIST ANTES DE RENDERIZAR** de
+[`plan/anatomia-formatos.md`](plan/anatomia-formatos.md) § "Limpieza visual y eficiencia", que reúne las
+reglas de capas, bandas, data labels, estado, audio, verificación y eficiencia para los cuatro formatos.
+La historia del interés compuesto costó el **32% de los créditos de una semana** en **seis renders** por
+saltarse justo eso.
+
 Para crear un short, sigue la skill **`/short`** (`../.claude/skills/short/SKILL.md`). Resumen del flujo:
 `setup.sh` → `market_close.py` (¿ya cerró?) → `fetch_data.py` → storyboard.json → `script_check.py` → **OK del usuario** → voz (vidIQ) →
 `process_voice.py` → `build_timeline.py` → `engine3d/render_host.js` (JP en 3D) → `render.js --qa` (revisar) → `make_audio.py` → `render.js` → youtube.md → commit.
@@ -325,6 +333,14 @@ Antes de escribir uno, revisa las tres:
   (además queda más nítido) o baja la fuente; nunca angostes el plano.
 - **El plano es un objeto del mundo: se encuadra con la fórmula.** Un pizarrón de 6.4 de ancho necesita
   `d ≈ 6.4 / 0.3015 ≈ 21` más aire. A 14 llenaba el cuadro entero.
+
+## Un hijo se posiciona en coordenadas LOCALES, no de mundo (27 nov 2026)
+
+Si el objeto se añade a un grupo (`grupo.add(x)`), su `position` es relativa al grupo. Poner ahí las
+coordenadas del mundo lo manda al doble de la distancia y **desaparece de cuadro sin dar ningún
+error**: así perdí el rótulo `$160 al mes` durante seis renders. Antes de escribir un `position.set`,
+mira de quién cuelga el objeto. (El recorte de texto de `label3d` está en "Los tres errores que se
+repiten en `label3d`".)
 
 ## Un grupo que se escala NO mide lo que crees (26 nov 2026)
 La columna de monedas del interés compuesto se arma con 36 discos de .5 = **18 unidades de alto**. Yo le
@@ -901,14 +917,6 @@ vigilando" no dice nada. Plan de acción completo en `plan/torneo.md`; reglas en
 - Datos siempre verificados; nunca recomendaciones de compra/venta.
 - Para cambiar el estilo, editar `brand.json` / `engine.js` y probar con `videos/ejemplo-SE` (re-render sin gastar créditos:
   `build_timeline.py` → `make_audio.py` → `render.js`).
-
-- **Un hijo se posiciona en coordenadas LOCALES, no de mundo.** Si el objeto se añade a un grupo
-  (`grupo.add(x)`), su `position` es relativa al grupo. Poner ahí las coordenadas del mundo lo manda
-  al doble de la distancia y desaparece de cuadro sin dar error. Antes de escribir un `position.set`,
-  mirar de quién cuelga el objeto.
-- **`label3d` recorta el texto que no cabe en `pw`.** El ancho que ocupa es, a ojo,
-  `caracteres x 0.62 x tamaño_de_fuente + ls x caracteres`. Si eso pasa de `pw`, las letras de los
-  extremos se cortan en silencio. Bajar la fuente o subir `pw`, nunca ensanchar el plano.
 
 ## Enrasar al frente solo protege lo que de verdad llega al frente (27 nov 2026)
 

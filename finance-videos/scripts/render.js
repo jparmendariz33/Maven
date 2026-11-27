@@ -9,6 +9,19 @@
  */
 const { chromium } = require('playwright');
 const { spawn, execFileSync } = require('child_process');
+
+// Un concat de ffmpeg puede fallar a media lista ("Invalid NAL unit size") y AUN ASÍ salir con código 0:
+// el MP4 queda corto, sin las últimas escenas, y el render se reporta como exitoso. Ya pasó una vez y
+// el video se iba a entregar sin su escena de cierre. Se comprueba la duración real contra la esperada.
+function verificaDuracion(archivo, esperado) {
+  const real = +execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration',
+    '-of', 'csv=p=0', archivo]).toString().trim();
+  if (!(real > esperado - 0.25)) {
+    throw new Error(`el MP4 salió TRUNCADO: ${real.toFixed(2)} s de los ${esperado.toFixed(2)} s ` +
+      `esperados. Casi siempre es una parte corrupta en el concat: vuelve a renderizar.`);
+  }
+  return real;
+}
 const fs = require('fs'), path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 
@@ -104,6 +117,7 @@ async function renderRange(b, vjs, long, f0, f1, out, audio, label, opts) {
   const list = path.join(build, 'parts.txt'); fs.writeFileSync(list, parts.map(p => `file '${p}'`).join('\n'));
   const out = path.join(vdir, `${tl.slug || 'video'}_largo.mp4`);
   execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', list, '-i', mix, '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', out]);
+  verificaDuracion(out, N / 30);   // ffmpeg concat puede fallar y salir con código 0 (ver abajo)
   parts.forEach(p => fs.unlinkSync(p));
   if (fs.statSync(out).size > 95e6) {   // GitHub no acepta archivos > 100 MB: recomprime una vez más
     const tmp = out.replace('.mp4', '_tmp.mp4');

@@ -6,6 +6,25 @@ argument-hint: "<empresa o personaje> [enfoque opcional]"
 > # ⚠️ LEE ESTO PRIMERO: `finance-videos/plan/anatomia-formatos.md`
 > Ahí está **qué debe llevar** cada pieza. Este skill es **cómo** se hace. No empieces sin leerlo.
 >
+> # 🚦 LAS DOS PUERTAS Y EL CHECKLIST (JP, 27 nov 2026 — manda sobre todo lo demás)
+> La historia del interés compuesto se llevó el **32% de los créditos de la semana de JP** en **seis
+> renders**, porque las correcciones llegaron después de renderizar en vez de antes.
+> **1) `guion.md` con el formato de `finance-videos/plan/guion-de-rodaje.md` → OK de JP → recién
+> entonces se construye. 2) Hoja de QA + cuadros sueltos → OK de JP → recién entonces voz y render.**
+> "Haz el contenido de hoy" **no** es la luz verde de ninguna de las dos.
+> **Antes de gastar máquina, corre el CHECKLIST ANTES DE RENDERIZAR** de
+> `finance-videos/plan/anatomia-formatos.md` (sección "Limpieza visual y eficiencia"), que es donde
+> viven las reglas de capas, bandas, data labels, estado, audio y verificación, comunes a los 4 formatos.
+> **Y nunca renderices para comprobar algo que un cuadro suelto prueba:** un cuadro cuesta ~40 s y cero
+> créditos; un render completo, 36–68 minutos. Junta las correcciones, verifícalas en cuadros, y
+> renderiza UNA vez.
+>
+> **Traducción a 3D:** las capas se declaran con desigualdades de z ANTES de tocar números (si se
+> contradicen, falta una pieza: en el compuesto fueron dos niveles, escalera al fondo y pasarela al
+> frente). Enrasar al frente solo protege lo que llega al frente: una vela o una antena delgada en el
+> centro del grupo sigue atrás. El 49% de arriba lo despeja `encuadra()`, no la cámara a ojo. Los
+> efectos van en FRACCIÓN de escena (0..1), nunca en segundos, y se comprueban en `build/sfx.json`.
+>
 > **El gancho decide todo, y está medido (20 nov 2026).** SpaceX retuvo al **86.5%** y Nubank al **5.9%** con la misma
 > cantidad de impresiones del feed (1,164 vs 1,158): el gancho fue la única diferencia. La de Kahneman sacó 20.8%
 > abriendo con "En 1979, dos psicólogos publicaron un artículo": eso es contexto, no gancho.

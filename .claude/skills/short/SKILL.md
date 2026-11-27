@@ -6,6 +6,24 @@ argument-hint: "<TICKER o nombre de la empresa> [enfoque opcional]"
 > # ⚠️ LEE ESTO PRIMERO: `finance-videos/plan/anatomia-formatos.md`
 > Ahí está **qué debe llevar** cada pieza. Este skill es **cómo** se hace.
 >
+> # 🚦 LAS DOS PUERTAS Y EL CHECKLIST (JP, 27 nov 2026 — manda sobre todo lo demás)
+> La historia del interés compuesto se llevó el **32% de los créditos de la semana de JP** en **seis
+> renders**, porque las correcciones llegaron después de renderizar en vez de antes.
+> **1) `guion.md` con el formato de `finance-videos/plan/guion-de-rodaje.md` → OK de JP → recién
+> entonces se construye. 2) Hoja de QA + cuadros sueltos → OK de JP → recién entonces voz y render.**
+> "Haz el contenido de hoy" **no** es la luz verde de ninguna de las dos.
+> **Antes de gastar máquina, corre el CHECKLIST ANTES DE RENDERIZAR** de
+> `finance-videos/plan/anatomia-formatos.md` (sección "Limpieza visual y eficiencia"), que es donde
+> viven las reglas de capas, bandas, data labels, estado, audio y verificación, comunes a los 4 formatos.
+> **Y nunca renderices para comprobar algo que un cuadro suelto prueba:** un cuadro cuesta ~40 s y cero
+> créditos; un render completo, 36–68 minutos. Junta las correcciones, verifícalas en cuadros, y
+> renderiza UNA vez.
+>
+> **Traducción a 2D:** las capas son BANDAS en píxeles y nadie invade la del otro — rótulo 0–940,
+> contenido 940–1560, subtítulo 1560–1720, firma 1720–1920, y la columna x > 930 siempre vacía. Un
+> encimado NUNCA se arregla acortando el texto (`fitLines`, jamás `wrap().slice()`). Cada data label
+> dice cuándo entra **y cuándo sale**: el que no se apaga acaba chocando con el subtítulo.
+>
 > **El gancho decide todo, y está medido (20 nov 2026).** SpaceX retuvo al **86.5%** y Nubank al **5.9%** con la misma
 > cantidad de impresiones del feed. El torneo sacó **19.8%** abriendo con "RANKEANDO 5 acciones: 6 rondas": el formato
 > no es un gancho, el resultado sí ("gana Alphabet, 25 de 30").
