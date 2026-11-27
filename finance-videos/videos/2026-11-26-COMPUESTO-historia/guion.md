@@ -60,12 +60,12 @@ cuando la barra se dispara · flashes · `shine` en el pizarrón · `pop` en la 
 ---
 
 ## ESCENA 1 · GANCHO CON SALTO AL FUTURO (0:00–0:10)
-**NARRA:** «Invierte cinco dólares al día y cuarenta años después esto eres tú. No es un truco: es
+**NARRA:** «Invierte cinco dólares al día y cuarenta años después serás millonario. No es un truco: es
 aritmética. Pero el camino sorprende.»
 
 **SE VE:** Tres tiempos en una toma continua:
 1. **Plano medio** del personaje solo en un **terreno baldío** al amanecer. Nada más. (0–2.5 s)
-2. En «esto eres tú», la cámara **se dispara hacia atrás** y aparece el final completo: la gráfica dorada
+2. En «serás millonario», la cámara **se dispara hacia atrás** y aparece el final completo: la gráfica dorada
    gigante, la casa, el coche, el barco, él arriba con gente y flashes. Ciudad iluminada. (2.5–7 s)
 3. En «el camino», **todo se desvanece de golpe** y volvemos al baldío con su montoncito verde. (7–10 s)
 
