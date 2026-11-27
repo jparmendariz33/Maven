@@ -556,7 +556,7 @@ R.news = (s, t) => {
   const ni = img(s.image), off = ni ? 430 : 0;
   if (ni) { const k = seg(t, s.t0 + .1, s.t0 + .8), [fx, fy] = focus(s);
     C.save(); rr(90, 400, 900, 380 * ex(k), 26); C.clip(); cover(ni, 90, 400, 900, 380, kb(s, t), fx, fy); C.restore();
-    credit(s, s.image, 90, 808, B.g4, 'left', .8 * k); }
+    credit(s, s.image, 90, 808, dkN ? rgba(B.arena, .7) : B.g4, 'left', .8 * k); }
   const hl = wrap(s.headline || '', F.d, 600, 60, 900);
   riseLines(hl, 90, 480 + off, 76, s.t0 + .25, t, { f: F.d, w: 600, s: 60, c: inkN });
   let y = 480 + off + hl.length * 76 + 60;

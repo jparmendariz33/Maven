@@ -96,7 +96,11 @@
         }
       ],
       "source": "Cierres del 27 de noviembre de 2026",
-      "say": "Eso también se vio en la bolsa, que el viernes 27 trabajó media jornada y cerró arriba."
+      "say": "Eso también se vio en la bolsa, que el viernes 27 trabajó media jornada y cerró arriba.",
+      "focus": [
+        0.5,
+        0.45
+      ]
     },
     {
       "type": "ranking",
