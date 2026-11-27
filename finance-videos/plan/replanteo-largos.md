@@ -1,132 +1,159 @@
-# Replanteo del calendario de largos · con lo que dice vidIQ
+# Replanteo de los largos · v2, con la corrección de JP
 
-**Pedido por JP el 27 de noviembre de 2026**, a partir de un video de Dan Martell: *"These rules made
-me so rich, I questioned the meaning of money"*. La idea: buscar con vidIQ qué formatos funcionan en
-inglés, tropicalizarlos al español y rehacer con eso el calendario de largos y los shorts que los
-anuncian, manteniendo nuestro formato y nuestra identidad.
+**Pedido por JP el 27 de noviembre de 2026.** La v1 planteaba *reemplazar* el empaque del calendario.
+JP corrigió: **es complementario.** Lo que ya tenemos se queda; lo nuevo entra en rotación.
 
-**Costo de la investigación:** 10 créditos de vidIQ (2 consultas de 5). Quedan **885 de 2,000**, que
-renuevan el 17 de diciembre.
+> *"Lo que yo te digo es complementario a lo que ya tenemos… hay que irlo rotando, y este calendario
+> hay que hacerlo a largo plazo. Videos que no solamente veas ahorita y ya, sino que a través del
+> tiempo la gente pueda entrar a ver el contenido, que no se aburra y que sea realmente valioso."*
+
+**Costo de la investigación:** 20 créditos de vidIQ (4 consultas; una devolvió vacío y no cobró).
+Quedan **865 de 2,000**, renuevan el 17 de diciembre.
 
 ---
 
-## 1 · Lo que dicen los datos
+## 0 · Dos reglas nuevas, que JP puso y van a los skills
 
-### En inglés: gana el formato de REGLAS / HÁBITOS / SEÑALES, no el de explicación
+1. **Nada de religión ni de política.** En la v1 cité "10 hábitos según la Biblia" (744 mil vistas) como
+   dato de mercado y se leyó como propuesta. No lo es. **Ese territorio queda fuera del canal**, por muy
+   bien que funcione: en los resultados en inglés hay dos videos bíblicos con más de 880 mil vistas y
+   tampoco se tocan.
+2. **No irse por la tangente.** El formato se adapta; el nicho no se mueve. Seguimos siendo inversiones
+   y qué hacer con tu dinero.
 
-Los mayores sobredesempeños de los últimos 6 meses en finanzas personales:
+### Y una frontera que marco yo, porque choca con una regla tuya
 
-| Video | Canal | Vistas | Sobredesempeño |
-|---|---|---|---|
-| 4 Habits That Make You Rich at Any Age \| John D. Rockefeller | 10.9K subs | 113K | **266x** |
-| Why Rich People Keep Their Finances Private | 1.4K subs | 36.9K | **160x** |
-| These 10 Money Habits That Quietly Make People Rich | 3K subs | 7.5K | 79x |
-| 9 Signs You'll Be Rich in 5 Years (Even If You're Broke Right Now) | 111 subs | 4.5K | 48x |
-| THIS book has helped me save thousands! | 23.5K subs | 61.6K | 30x |
-| It Took Me 10 Years To Realize What I'll Tell You in 20 Minutes | 1.5M subs | 270K | — |
+Del canal que mencionaste, **Let's Talk Money with Joseph Hogue**: su video *"7 monthly dividend stocks
+that will pay your rent"* **no lo podemos hacer tal cual.** Es una lista de acciones para comprar con
+una promesa de resultado, y la regla del canal —tuya, desde el principio— es *nunca recomendaciones de
+compra/venta ni precios objetivo*.
 
-### ⚠️ La trampa, y es importante
+**Lo que sí podemos, y es casi todo el jugo:** *"Cómo funcionan las acciones que pagan dividendos cada
+mes (y la trampa del rendimiento alto)"*. Mismo tema, misma curiosidad, sin recomendar nada.
+Lo mismo con *"10 best side hustle ideas"*: eso es generar ingresos, no invertirlos. Está fuera del nicho.
 
-**Varios de esos "éxitos" son granjas de contenido.** La mitad están marcados como hechos con IA, son
-audiolibros de 1–2 horas y tienen **2–3% de interacción**. La propia herramienta avisa que una granja
-anda en 0.2–1% y un creador real en 3–12%. O sea: **el número de sobredesempeño impresiona y el video
-es malo.** Copiar eso nos convertiría en lo mismo y además chocaría con todo lo que hemos construido.
+Su canal no devolvió videos de sobredesempeño en la consulta (costó 0 créditos), así que de ese caso
+tomo el **tema**, no la evidencia.
 
-**Lo que sí hay que copiar es el EMPAQUE de los que además tienen buena interacción**, que en inglés
-son los de 3.9–5.9%: "THIS book has helped me save thousands", "How to ACTUALLY get ahead financially
-(no bs)", "I'm 25. Here Are 25 Rules You Must Follow in Your 20s".
+---
 
-### En español: el formato funciona igual, pero nadie lo usa con empresas de verdad
+## 1 · Qué llega a millones, y qué de eso nos sirve
+
+De los videos de finanzas con **800 mil a 2.9 millones de vistas** del último año:
+
+| Video | Canal | Vistas | Sobredesempeño | Interacción |
+|---|---|---|---|---|
+| If You Only Watch One Money Video, Make It This | 244K subs | **2.9M** | 4.6x | 3.0% |
+| If I Started Investing in 2026, This Is What I'd Do | Nischa · 2.3M | **2.0M** | 3.6x | 2.5% |
+| MILLIONAIRE EXPLAINS: If I Started 2026 With $0, Here's My Exact Plan | Rose Han · 1.1M | **1.8M** | 9.4x | 3.9% |
+| If I Wanted to Make My First $100K in 2026, I'd Do This | Hormozi · 4.7M | **1.7M** | 3.5x | 3.3% |
+| 8 TINY Habits to Become Financially Literate In 2026 | Nischa | **1.6M** | 2.9x | 3.0% |
+| 4 Assets That Doubled During Every Depression (And Why Nobody Owns Them) | **29.8K subs** | **1.4M** | **122x** | 2.6% |
+| How to Save $10,000 Without a High-Paying Job | 78K subs | **1.4M** | **663x** | 3.4% |
+| Most People Retire On THIS Much | 428K subs | **1.3M** | 38x | 3.0% |
+| How to Turn Saving Into Investing (Step by Step Path) | 82K subs | 885K | **98x** | 2.6% |
+
+**El patrón que domina, y no es sutil:** tres de los cuatro más vistos son **la misma frase**.
+*"Si yo empezara hoy / desde cero, esto es exactamente lo que haría."* Primera persona, un plan con
+pasos, nada de teoría. Y **es atemporal**: sirve igual dentro de dos años, que es justo lo que pediste.
+
+Los otros tres patrones que se repiten:
+- **El dato histórico contraintuitivo** — "4 activos que se duplicaron en cada depresión". 122x con 30 mil
+  suscriptores. Es exactamente nuestro pilar 🎯 *Historia y criterio*, con otro título.
+- **El espejo** — "Most People Retire On THIS Much". Un número **sobre el espectador**, no sobre una empresa.
+- **El paso que falta** — "How to Turn Saving Into Investing". El puente entre dos cosas que la gente ya
+  hace y ya quiere. 98x con 82 mil suscriptores, en 8 minutos.
+
+---
+
+## 2 · El hueco en español, que es la buena noticia
+
+Busqué ese mismo formato en español. **Existe y funciona, pero casi todo es podcast.**
 
 | Video | Canal | Vistas | Interacción |
 |---|---|---|---|
-| Millonario Cristiano revela: 10 Hábitos que Mejorarán tus Finanzas según la Biblia | 104K subs | **744K** | 4.1% |
-| HÁBITOS DE RIQUEZA que pueden CAMBIAR tu VIDA y tus FINANZAS | 473K subs | 46.5K | 2.8% |
-| 10 Hábitos Fáciles para Fortalecer tus Finanzas en 2027 | 106K subs | 32.2K | 4.7% |
-| Cómo elegir un BRÓKER para invertir: 4 claves para principiantes | 153K subs | 8K | **8.8%** |
-| Los Mejores 7 ETFs para Invertir y Mantener TODA LA VIDA | Wayo Castellanos (MX) | 5.1K | **6.3%** |
+| Cómo Iniciar TU PRIMER NEGOCIO Desde Cero Aunque Tengas Poco Dinero | Escuela de Negocios (MX) | **3.2M** | 2.2% |
+| Si Hoy Tuviera que Empezar Desde 0, Haría ESTO \| Pablo Gil | El Economista Youtuber | 482K | **0.8%** |
+| Cómo invertir en la bolsa siendo principiante \| Sinergéticos | Jorge Serratos (MX) · 2M | 428K | 1.2% |
+| Si hoy tuviera que empezar desde 0, haría ESTO | Romuald Fons · 1.5M | 158K | **4.2%** |
+| Mini Curso de Inversión: Aprende a Invertir DESDE 0 (en 15 minutos) | Tengo un Plan · 2.5M | 288K | 1.2% |
+| **Cómo Ganan Dinero las Tiendas de Todo a un Dólar** | **2.5K subs** | **324K** | 0.8% |
 
-**Y aquí está el hueco, que es lo que de verdad vale de esta investigación:**
+**Tres cosas que leo aquí:**
 
-En español, el formato de "hábitos y reglas" está **monopolizado por el contenido de superación
-personal y ahorro genérico** — hábitos japoneses, hábitos bíblicos, hábitos de riqueza. **Nadie lo
-está usando con empresas reales, cifras verificadas y lente mexicano.** Lo que hacemos nosotros
-—número con fuente, cascada, empresa concreta— vive en el otro lado del nicho, en videos titulados
-como manual ("Qué es un ETF explicado fácil").
-
-**La oportunidad no es cambiar lo que enseñamos. Es cambiar cómo se titula y cómo abre.**
-
-> Nota: la consulta de búsquedas en crecimiento para México volvió vacía con el filtro de competencia
-> que puse. No la repetí automáticamente para no gastar créditos; si quieres, la corro sin filtro (5 créditos).
-
----
-
-## 2 · Los cinco empaques que viajan al español
-
-Cada uno conserva el contenido del pilar; solo cambia la promesa de la portada.
-
-| # | Empaque | Cómo se ve | Para qué pilar sirve |
-|---|---|---|---|
-| 1 | **Las N reglas** | "Las 7 reglas que sigue Buffett para comprar una empresa" | ⚔️ Leer empresas · 🎯 Historia |
-| 2 | **Las N señales** | "5 señales de que una empresa está cara" | ⚔️ Leer empresas |
-| 3 | **El error caro** | "Los 4 errores que te cuestan más dinero al invertir desde México" | 🛡️ Patrimonio · 🧠 Psicología |
-| 4 | **Lo que nadie te dice** | "Lo que nadie te dice de los CETES" | 🛡️ Patrimonio |
-| 5 | **Lo que aprendí / lo que pasó** | "Lo que 34 años de bolsa japonesa le enseñan a quien invierte hoy" | 🎯 Historia |
-
-**Las tres reglas de la casa que NO se tocan al adoptarlos:**
-1. **Cada regla o señal se sostiene en un dato con fuente.** Si una de las siete reglas no tiene cifra
-   verificable detrás, se cae esa regla, no se rellena.
-2. **Nunca "hazte rico" ni promesa de resultado.** "Las reglas que sigue Buffett" sí; "las reglas que
-   te harán rico" no — es justo lo que nos separa de las granjas.
-3. **El número del título es el número real del video.** Siete reglas son siete capítulos.
+1. **El formato "desde cero" en español está dominado por clips de entrevista de una hora**, cabeza
+   parlante, con interacción de 0.8 a 1.6%. El único que pasa de 4% es Romuald Fons, que ni siquiera es
+   de finanzas. **Nadie lo está haciendo producido, animado, de 6–7 minutos y con datos verificados.**
+   Eso es literalmente nuestro formato.
+2. **"Tengo un Plan" (2.5M suscriptores) es el competidor más cercano** y hace educación corta
+   ("Aprende a invertir desde 0 en 15 minutos", 288 mil vistas). Es la vara.
+3. **"Cómo Ganan Dinero las Tiendas de Todo a un Dólar": 324 mil vistas desde un canal de 2,500
+   suscriptores.** El formato *"cómo gana dinero X"* explota y **ya es nuestro**: es la cascada que
+   hacemos cada semana. Solo no lo estábamos titulando así.
 
 ---
 
-## 3 · Las próximas 10 semanas, reescritas
+## 3 · La propuesta: un sexto pilar, en rotación
 
-El contenido es el mismo del calendario actual. Cambia el empaque.
+Los cinco pilares se quedan intactos. Entra uno nuevo, que es donde vive el gancho de superación:
 
-| Domingo | Pilar | Título de hoy | Propuesta |
-|---|---|---|---|
-| 29 nov 26 | 🛡️ Empezar | Cómo empezar a invertir desde cero en México (con poco dinero) | **ya está comprometido en pantalla por la historia del jueves: no se toca** |
-| 6 dic 26 | 🛡️ Patrimonio | Qué hacer con tu aguinaldo: 5 opciones ordenadas por riesgo | `Tu aguinaldo en 5 destinos, del más seguro al más arriesgado` |
-| 13 dic 26 | 🎯 Historia | La burbuja puntocom: ¿se parece a la IA de hoy? | `5 señales que avisaron de la burbuja puntocom (y cuáles se ven hoy)` |
-| 20 dic 26 | 🛡️ Empezar | Interés compuesto: la regla del 72 y empezar a los 25 vs. a los 35 | `Lo que te cuesta cada año que no empiezas a invertir` |
-| 27 dic 26 | ⚔️ Leer empresas | Las acciones que más subieron y bajaron en 2026 | `Lo que nos enseñaron las 5 acciones que más subieron y las 5 que más cayeron en 2026` |
-| 3 ene 27 | 🧠 Psicología | Cómo hacer un plan financiero personal 2027 | `Por qué abandonas tus propósitos de dinero (y las 4 reglas que sí aguantan)` |
-| 10 ene 27 | 🛡️ Patrimonio | CETES vs. bolsa vs. inflación | `Lo que nadie te dice de los CETES` |
-| 17 ene 27 | 🎯 Historia | El Efecto Tequila de 1994 | `Las 3 decisiones que llevaron al Efecto Tequila (y qué quedó de ellas)` |
-| 24 ene 27 | 🛡️ Empezar | Qué es un ETF explicado fácil | `7 ETFs explicados: qué tiene cada uno adentro` |
-| 31 ene 27 | ⚔️ Leer empresas | Las 7 magníficas: ¿están caras? El PER | `5 señales de que una acción está cara (aplicadas a las 7 magníficas)` |
+### 🚀 **El plan** — primera persona, pasos, atemporal
 
-**Lo que cambia y lo que no:** el guion, las fuentes y los capítulos son los mismos. Cambian el título,
-la miniatura y los primeros 15 segundos, que es donde se decide si el video se ve.
+| Formato | Ejemplo para nosotros | De dónde sale |
+|---|---|---|
+| **Si empezara hoy** | `Si hoy empezara a invertir en México con 5,000 pesos, haría esto` | Nischa 2M · Rose Han 1.8M |
+| **El paso que falta** | `De ahorrar a invertir: el paso que casi nadie da` | 98x con 82K subs |
+| **El espejo** | `Con cuánto se jubila de verdad un mexicano` | Most People Retire On THIS Much, 1.3M |
+| **N hábitos chicos** | `7 hábitos chicos de quien sí termina invirtiendo` | Nischa 1.6M |
+| **Cómo gana dinero X** | `Cómo gana dinero OXXO` · `Cómo gana dinero Netflix` | 324K desde 2.5K subs |
+| **El dato histórico** | `Los 4 activos que aguantaron cada crisis desde 1929` | 122x con 30K subs |
+
+**La rotación pasa de 5 semanas a 6**, y queda así:
+
+> 🛡️ Empezar desde cero → ⚔️ Leer empresas → 🧠 Psicología del dinero → **🚀 El plan** →
+> 🛡️ Patrimonio en México → 🎯 Historia y criterio
+
+Con 6 pilares, **el nuevo sale una vez cada mes y medio**: suficiente para notarse, no tanto como para
+volver el canal un canal de superación personal.
+
+### Las cuatro reglas que limitan el pilar nuevo
+
+Son las que nos impiden acabar siendo una granja, que es el riesgo real de este formato:
+
+1. **Cada paso del plan lleva un dato con fuente.** Si un paso no tiene cifra verificable, se cae el paso.
+2. **Nunca promesa de resultado ni acción recomendada.** "Si empezara hoy, haría esto" sí;
+   "esto te hará rico" o "estas 7 acciones" no.
+3. **El plan es de Costa Studio Finance, no la autobiografía de JP.** No inventamos un pasado de
+   millonario: el formato es *"cómo lo haría hoy alguien que ya entiende los números"*.
+4. **Nada de religión ni política.**
 
 ---
 
-## 4 · El short que anuncia el largo
+## 4 · Los títulos de la v1 que tú dijiste que no te encantaron
 
-Hoy el short del jueves cuenta un pedacito del largo. Con el empaque nuevo tiene una forma más clara:
+Tienes razón en que varios no funcionan. Los peores y por qué:
 
-**El short entrega UNA de las reglas o señales, la más contraintuitiva, completa y con su dato.** Y
-cierra diciendo que las otras seis están en el largo del domingo, con el pizarrón que ya usamos.
-
-Es mejor que un resumen por dos razones: el short se sostiene solo (quien no vea el largo igual
-aprendió algo) y la promesa del largo se vuelve concreta — "faltan seis" es más fuerte que "te cuento
-más el domingo".
+| v1 | Problema | v2 |
+|---|---|---|
+| `Lo que te cuesta cada año que no empiezas a invertir` | Suena a regaño y no promete nada concreto | `Si hoy empezara a invertir, con cuánto acabaría a los 60` |
+| `Lo que nadie te dice de los CETES` | "Lo que nadie te dice" ya está quemado | `CETES, bolsa o inflación: dónde acabó tu dinero en 2026` |
+| `Las 3 decisiones que llevaron al Efecto Tequila (y qué quedó de ellas)` | Demasiado largo, el paréntesis sobra | `El Efecto Tequila: 3 decisiones y 30 años de consecuencias` |
+| `7 ETFs explicados: qué tiene cada uno adentro` | Suena a lista de compras, roza la recomendación | `Qué hay de verdad adentro de un ETF` |
 
 ---
 
-## 5 · Qué falta y qué te pido
+## 5 · Qué te pido, y en qué orden lo haría
 
-Esto es **la propuesta del método y 10 semanas de ejemplo**. Reescribir las 55 semanas del calendario
-es el siguiente paso y no lo hago sin tu visto bueno, porque cambia la columna vertebral del canal.
+Esto sigue siendo **propuesta**: no he tocado `calendario-largos.md`.
 
-**Lo que haría con tu luz verde:**
-1. Reescribir `plan/calendario-largos.md` completo con el empaque nuevo, pilar por pilar.
-2. Añadir a `/largo` y a `/historia` la tabla de los cinco empaques y las tres reglas que los limitan.
-3. Una consulta más de vidIQ (5 créditos) para las búsquedas en crecimiento en México sin filtro de
-   competencia, y ajustar con eso los temas de enero y febrero.
+1. **Decides si entra el sexto pilar** y si la rotación pasa a 6 semanas.
+2. Con tu sí, **reescribo las 55 semanas** repartiendo el pilar nuevo y retitulando el resto, y marco
+   cuáles son atemporales (la mayoría) y cuáles dependen de fecha (aguinaldo, declaración, cierre de año).
+3. **Meto a `/largo` y `/historia`** la tabla de formatos, las cuatro reglas del pilar nuevo y la
+   prohibición de religión y política.
+4. Una consulta más de vidIQ (5 créditos) para búsquedas en crecimiento en México, que la vez pasada
+   volvió vacía por un filtro mío.
 
-**Lo que NO propongo:** copiar el formato de audiolibro con IA de 1–2 horas, por muy alto que sea su
-número. Son granjas, se nota, y el canal se juega la credibilidad que es justo su ventaja.
+**Lo que no propongo, aunque funcione:** audiolibros con IA de una a dos horas, contenido religioso o
+político, listas de acciones para comprar, y "formas de ganar dinero rápido". Los primeros dos por regla
+tuya; los otros dos porque chocan con lo único que no podemos perder, que es que nos crean.
