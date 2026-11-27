@@ -1,170 +1,218 @@
 # Short de contexto · AMZN · viernes 27 de noviembre de 2026
 
-**Formato:** short vertical de contexto (`/short` §1c) · 8 escenas · objetivo 60–75 s
+**Formato:** short vertical de contexto (`/short` §1c) · 7 escenas · objetivo 60–75 s
 **Se publica:** hoy 19:00 CDMX · **JP graba su voz** (Voz en off en la app de YouTube)
-**Estado:** 🚦 PRIMERA PUERTA — esperando tu OK sobre este guion. No he construido nada todavía.
+**Estado:** 🚦 PRIMERA PUERTA — esperando tu OK. No he construido nada.
+
+> **v2.** La v1 la escribí antes de leer la skill completa y tenía tres errores de formato:
+> 148 palabras cuando sin voz el rango es **100–125**, una cascada por segmentos en vez de la
+> cascada real del estado de resultados, y una escena de columnas que **el motor no tiene**.
+> Corregido abajo, y la decisión del motor te la dejo a ti (punto 5).
 
 ---
 
-## ⚠️ Conflicto de interés que tengo que declarar
+## 1. Conflicto de interés que tengo que declarar
 
 **Amazon es uno de los principales inversionistas de Anthropic, y yo (Claude) soy un producto de
-Anthropic.** No es teórico: el propio reporte que estoy citando lo menciona — la caída de la utilidad
-neta contra el año pasado se explica porque en el tercer trimestre de 2025 Amazon registró
-**9,500 millones de dólares de ganancia antes de impuestos por su inversión en Anthropic**.
+Anthropic.** No es teórico: el propio reporte que cito lo menciona — la utilidad neta bajó contra el
+año pasado porque en el tercer trimestre de 2025 Amazon registró **9,500 millones de dólares de
+ganancia antes de impuestos por su inversión en Anthropic**.
 
-Por la regla del canal ("cualquier relación entre quien escribe y la empresa analizada se dice, y la
-decisión de publicarla o no es de JP"), te lo pongo por delante. **Tres opciones, tú decides:**
+Regla del canal: "cualquier relación entre quien escribe y la empresa analizada se dice, y la decisión
+de publicarla o no es de JP". **Tres caminos:**
 
-1. Seguir con Amazon y **declararlo en la descripción** del video (mi recomendación: el guion no toca
-   la inversión en Anthropic por ningún lado, y los números son de la SEC).
-2. Seguir con Amazon y **declararlo también en la voz**.
-3. Cambiar de empresa. La alternativa natural del día es **Tesla** (+5.2% el viernes), también gigante
-   y sin ninguna relación conmigo.
-
----
-
-## Por qué esta empresa y este ángulo
-
-El viernes 27 fue sesión corta de Black Friday y cerró en verde: S&P 500 +1.60%, Nasdaq +2.31%.
-Amazon subió **3.96%, a 254.12 dólares**. Ésa es la percha, nada más.
-
-**El ángulo** (motor: *desmontaje*) es que casi todo el mundo cree que Amazon gana dinero vendiendo
-cosas, y el reporte dice otra cosa: **la tienda pone el 77% de las ventas y solo el 37% de la
-ganancia**. Y encima el giro que casi nadie contó: con el trimestre más rentable de su historia,
-**el flujo de efectivo libre de los últimos doce meses está en −42,357 millones de dólares**, porque
-se está gastando el dinero en centros de datos.
-
-Es un ángulo que dura meses, no un día. Por eso no aparece la palabra "hoy" en ninguna parte.
-
-**Qué ya oyó el espectador:** Black Friday, Amazon, "la IA cuesta carísimo".
-**Qué casi nadie contó:** que el flujo libre de Amazon se dio la vuelta — venía de +14,788 millones y
-ahora está en −42,357.
+1. Seguir y **declararlo en la descripción** (lo que yo haría: el guion no toca esa inversión y los
+   números son de la SEC).
+2. Seguir y **declararlo también en la voz**.
+3. Cambiar de empresa: **Tesla** (+5.2% el viernes), igual de gigante y sin relación conmigo.
 
 ---
 
-## Los números, con su fuente
+## 2. Por qué esta empresa y este ángulo
 
-**Fuente primaria:** Amazon, resultados del 3T 2026 (trimestre cerrado el 30 de septiembre de 2026),
+Sesión corta de Black Friday, cerró en verde: S&P 500 +1.60%, Nasdaq +2.31%. Amazon **+3.96%, a
+254.12 dólares**. Eso es la percha, nada más: en el short no aparece la palabra "hoy".
+
+**Los titulares, antes de escribir el gancho** (regla del 20 nov):
+- **Lo que dijeron TODOS:** Black Friday, sesión corta, rebote de la tecnología. Nada de Amazon en sí.
+- **Lo que dijo CASI NADIE:** que Amazon tuvo el margen de operación más alto de su historia **y** que
+  su flujo de efectivo libre de doce meses se dio la vuelta: venía de **+14,788** millones y está en
+  **−42,357**.
+- **Cifras donde los medios no coinciden:** el cierre del S&P (7,297.49 vs 7,302.10 según la fuente) y
+  el capex de 2026 (200 mil vs 220 mil millones). **Las dos las resolví con fuente primaria**: el capex
+  sale textual del reporte y el cierre del S&P no entra al video.
+
+**El ángulo** (motor: *desmontaje*): casi todos creemos que Amazon gana vendiendo cosas. La tienda pone
+el **77% de las ventas y solo el 37% de la ganancia de operación**; AWS pone **23% y 63%**. Y el remate:
+con el mejor margen de su historia, está quemando efectivo porque se lo está gastando en centros de
+datos. Eso sigue siendo cierto dentro de seis meses.
+
+---
+
+## 3. Los números, con su fuente
+
+**Fuente primaria:** Amazon, resultados del 3T 2026 (trimestre cerrado el **30 de septiembre de 2026**),
 Exhibit 99.1 del 8-K ante la SEC —
 `sec.gov/Archives/edgar/data/0001018724/000101872426000038/amzn-20260930xex991.htm`
-**Mercado:** Yahoo Finance, cierre del viernes 27 de noviembre de 2026.
+**Mercado:** Yahoo Finance, cierre del **viernes 27 de noviembre de 2026**.
 
-| Concepto | Cifra (millones de USD) | % |
+### Estado de resultados del trimestre (la cascada)
+
+| Barra | Monto (millones USD) | % de ventas |
 |---|---|---|
-| Ventas del trimestre | 201,944 | 100% |
-| Utilidad de operación | 28,076 | margen 13.9% |
-| — AWS · ventas | 45,984 | 22.8% de las ventas |
-| — AWS · utilidad de operación | 17,773 | **63.3% de la ganancia** |
-| — Norteamérica · ventas | 112,852 | 55.9% |
-| — Norteamérica · utilidad de operación | 8,723 | 31.1% |
-| — Internacional · ventas | 43,108 | 21.3% |
-| — Internacional · utilidad de operación | 1,580 | 5.6% |
-| **Tienda (Norteamérica + Internacional)** | 155,960 ventas / 10,303 utilidad | **77.2% / 36.7%** |
-| Publicidad · ventas | 19,637 | +11% a/a |
-| Compras de propiedad y equipo · 12 meses | 215,192 | contra 120,131 el año anterior |
-| **Flujo de efectivo libre · 12 meses** | **−42,357** | contra **+14,788** el año anterior |
-| Guía de la empresa | "approximately $220 billion" de capex en efectivo para 2026 | textual |
+| Ventas | 201,944 | 100% |
+| Comprar la mercancía (cost of sales) | (94,573) | 47% |
+| Guardar y enviar (fulfillment) | (29,997) | 15% |
+| Tecnología e infraestructura | (34,814) | 17% |
+| Vender y anunciar (sales & marketing) | (11,649) | 6% |
+| Administración y otros | (2,835) | 1% |
+| **Utilidad de operación** | **28,076** | **14%** |
 
-**Comprobaciones:** 112,852 + 43,108 + 45,984 = 201,944 ✓ · 8,723 + 1,580 + 17,773 = 28,076 ✓ ·
-17,773 / 28,076 = 63.3% ✓ · 155,960 / 201,944 = 77.2% ✓
+Cuadra: 94,573 + 29,997 + 34,814 + 11,649 + 2,835 = 173,868 · 201,944 − 173,868 = **28,076** ✓
+Y 47 + 15 + 17 + 6 + 1 + 14 = **100** ✓
 
-**Mercado al cierre del viernes 27:** 254.12 USD (+3.96% en la sesión), valor de mercado 2.75 billones,
-−10.5% desde su máximo de cierre de 12 meses (284.02, del 3 de agosto de 2026), +8.96% en un año.
+### Los segmentos (el desmontaje)
 
-**Nada va rotulado `ilustrativo`:** todas las cifras son reales y tienen fuente.
+| Segmento | Ventas | % ventas | Utilidad de operación | % de la ganancia |
+|---|---|---|---|---|
+| **Tienda** (Norteamérica + Internacional) | 155,960 | **77%** | 10,303 | **37%** |
+| **AWS** | 45,984 | **23%** | 17,773 | **63%** |
+| Total | 201,944 | 100% | 28,076 | 100% |
 
-**Un número que dejé fuera a propósito:** no digo cuánto gana AWS "por cada dólar" ni ninguna
-proyección. Y la guía de los 220 mil millones va citada como lo que *dice la empresa*, no como un hecho.
+Desglose: Norteamérica 112,852 / 8,723 · Internacional 43,108 / 1,580 · AWS 45,984 / 17,773.
+Cuadra: 112,852 + 43,108 + 45,984 = 201,944 ✓ · 8,723 + 1,580 + 17,773 = 28,076 ✓
 
----
+### El giro (doce meses a septiembre de 2026)
 
-## El guion de rodaje · 8 escenas
+| Concepto | 12m a sep. 2026 | 12m a sep. 2025 |
+|---|---|---|
+| Compras de propiedad y equipo | 215,192 | 120,131 |
+| **Flujo de efectivo libre** | **(42,357)** | **14,788** |
 
-> Las duraciones son estimadas a 120 palabras por minuto (que es como mide `no_voice.py` para tu voz).
-> Los números tardan mucho más de lo que parece al leerlos, así que la duración real la mido con la
-> herramienta en cuanto apruebes el texto; si se pasa de 75 s, el recorte sale de las escenas 6 y 7.
+Guía de la empresa, textual: *"We continue to expect 2026 cash capital expenditures to be approximately
+$220 billion."*
 
-### 1 · GANCHO · ~7 s
-| Se NARRA | Se VE |
-|---|---|
-| «Amazon acaba de tener el trimestre más rentable de su historia… y su flujo de efectivo libre está 42 mil millones de dólares en negativo.» | Foto a pantalla completa de paquetes de Amazon en una banda del centro logístico. Logo de Amazon arriba a la derecha. Tú en 3D, chiquito abajo a la derecha, con cara de "a ver, espérate". **Rótulo (dos tiempos):** `Margen récord:` en arena y, 0.3 s después, `−$42,357 M de flujo libre` en naranja Amazon. |
+**Mercado al cierre del viernes 27:** 254.12 USD (+3.96% en la sesión) · valor de mercado 2.75 billones ·
+−10.5% desde su máximo de cierre de 12 meses (284.02, del 3 de agosto de 2026) · +8.96% en un año.
 
-### 2 · LA PREGUNTA · ~5 s
-| Se NARRA | Se VE |
-|---|---|
-| «Lo interesante es de dónde sale esa ganancia.» | Foto de un centro logístico por dentro. Rótulo: `¿De dónde sale la ganancia?` |
-
-### 3 · LA CASCADA · ~11 s
-| Se NARRA | Se VE |
-|---|---|
-| «En el trimestre que cerró en septiembre vendió 201 mil millones y le quedaron 28 mil de utilidad de operación.» | Cascada con **montos reales** (regla de las cascadas): `Ventas 201,944` → costos → `Utilidad de operación 28,076`. Subtítulo con la unidad: `millones de dólares · trimestre cerrado el 30 de septiembre de 2026`. |
-
-### 4 · EL DESMONTAJE · ~10 s
-| Se NARRA | Se VE |
-|---|---|
-| «La tienda puso el 77 por ciento de las ventas… y solo el 37 por ciento de la ganancia.» | **Columnas con eje X y eje Y** (regla de comparar dos cantidades), dos pares: Ventas y Ganancia. La columna de la tienda altísima en ventas y chaparra en ganancia. Etiquetas: `Tienda · 77% de las ventas` / `Tienda · 37% de la ganancia`. |
-
-### 5 · DE DÓNDE SÍ SALE · ~12 s
-| Se NARRA | Se VE |
-|---|---|
-| «AWS, que le renta servidores a otras empresas, puso el 23 por ciento de las ventas y el 63 por ciento de la ganancia.» | Las mismas columnas, ahora con AWS encima en naranja: chaparra en ventas, altísima en ganancia. Foto de un centro de datos al fondo. Etiquetas: `AWS · 23% de las ventas` / `AWS · 63% de la ganancia`. |
-
-### 6 · EL GIRO · ~12 s
-| Se NARRA | Se VE |
-|---|---|
-| «¿Y el flujo negativo? En doce meses se gastó 215 mil millones en instalaciones y equipo, contra 120 mil el año anterior.» | Foto de servidores / obra de un centro de datos. Dos cifras enfrentadas, con sus etiquetas completas: `12 meses a sep. 2025 · $120,131 M` y `12 meses a sep. 2026 · $215,192 M`. |
-
-### 7 · QUÉ VIENE · ~9 s
-| Se NARRA | Se VE |
-|---|---|
-| «Y dice que en 2026 van a ser 220 mil, casi todo en centros de datos.» | Rótulo grande: `La empresa espera ~$220,000 M de inversión en 2026`, y debajo chiquito `según su propia guía`. Sin foto: fondo Costa. |
-
-### 8 · CIERRE · ~9 s
-| Se NARRA | Se VE |
-|---|---|
-| «Lo que yo estaría viendo es si la ganancia de AWS crece más rápido que esa inversión.» | Tú en 3D, un poco más grande, de frente. Rótulo: `Qué vigilar: ganancia de AWS vs. inversión`. Aviso legal abajo. |
-
-**Total estimado: ~75 s · 148 palabras.**
+**Nada va rotulado `ilustrativo`:** todas las cifras son reales y tienen fuente. No hay ninguna
+proyección mía: los 220 mil millones van citados como lo que *dice la empresa*.
 
 ---
 
-## Decisiones de estilo, una línea cada una
+## 4. El guion de rodaje · 7 escenas · 132 palabras
 
-- **Paleta:** un solo arco — naranja Amazon (#FF9900) en el gancho, las columnas de AWS y el cierre;
-  arena Costa en el resto. Nada de saltar de familia de color a media pieza.
-- **Motor narrativo:** *desmontaje* (un titular que casi todos creen y la cuenta dice otra cosa).
-- **Gramática de plano:** foto a pantalla completa → interior → gráfica → columnas → columnas con foto
-  al fondo → foto → rótulo limpio → tú de frente. Dos escenas seguidas nunca repiten tamaño.
-- **Tú en 3D:** solo en el gancho y en el cierre, como manda la regla. Vestuario y acto distintos a los
-  de la historia del interés compuesto.
-- **Fotos (4 + logo):** paquetes en la banda, interior del centro logístico, centro de datos,
-  servidores. Todas reales, libres y de 1600 px o más. Ninguna generada con IA.
-- **Efectos de sonido:** máximo 4, y ninguno repetido.
-- **Sin recomendación:** no hay precio objetivo, ni "cómprala", ni proyección del precio. El cierre es
-  algo que vigilar, no un veredicto.
+> **Reloj:** sin voz, `no_voice.py` mide a ~120 palabras/min **contando sílabas**, y este guion está
+> cargado de números (que tardan mucho más de lo que parecen). Estimo **70–78 s**, dentro de la banda
+> de 60–85 s del formato. La medición real la corro en cuanto apruebes el texto. **Si se pasa de 85 s,
+> el recorte sale de la escena 3** (quito "y 17 en tecnología").
+
+### 1 · `hook` · ~9 s
+| Se NARRA | Se VE |
+|---|---|
+| «Amazon tuvo el trimestre más rentable de su historia… y su flujo libre está en menos 42 mil millones.» | Foto de paquetes en la banda de un centro logístico, **a toda la pantalla** (`bg_full`), con velo oscuro. Logo de Amazon arriba a la derecha. Tú en 3D abajo a la izquierda, chiquito, acto `senala`, `mood: down`. **Rótulo en dos tiempos:** `Margen récord` en arena y, 0.3 s después, `Flujo libre: −$42,357 M` en naranja. |
+
+### 2 · `company` · ~5 s
+| Se NARRA | Se VE |
+|---|---|
+| «Casi todos creemos que gana vendiendo cosas.» | Nombre + logo. Fichas: `Valor de mercado · 2.75 billones de USD`, `Ventas del trimestre · $201,944 M`. Fondo arena. |
+
+### 3 · `waterfall` · ~17 s
+| Se NARRA | Se VE |
+|---|---|
+| «De cada 100 dólares que vendió en el trimestre que cerró en septiembre, 47 se van en la mercancía y 17 en tecnología. Le quedan 14 de ganancia de operación.» | La cascada de la tabla de arriba, **con los montos reales** y el % encima de cada barra. Colores funcionales: azul las ventas, rojo lo que resta, verde lo que queda. `callout` **dentro de la barra de ventas**: la porción de AWS en azul más claro, `AWS · 23%`. Subtítulo: `Trimestre cerrado el 30 de septiembre de 2026 · millones de dólares`. |
+
+### 4 · `columnas` (escena nueva — ver punto 5) · ~12 s
+| Se NARRA | Se VE |
+|---|---|
+| «Y la tienda pone 77 de cada 100 dólares de venta… pero solo 37 de cada 100 de esa ganancia.» | **Columnas verticales con eje X y eje Y** (regla de JP del 20 nov). Dos grupos: `Ventas` y `Ganancia de operación`. La columna de la tienda altísima en ventas, chaparra en ganancia. Etiquetas completas: `Tienda · 77% de las ventas` / `Tienda · 37% de la ganancia de operación`. |
+
+### 5 · `photo` · ~11 s
+| Se NARRA | Se VE |
+|---|---|
+| «El resto lo pone AWS, que renta servidores: 23 por ciento de las ventas, 63 de la ganancia.» | Foto de un centro de datos a toda la pantalla. Las mismas dos columnas se quedan chiquitas en una esquina con AWS ya en naranja. Rótulo: `AWS · 23% de las ventas · 63% de la ganancia de operación`. |
+
+### 6 · `catalyst` · ~14 s
+| Se NARRA | Se VE |
+|---|---|
+| «Ese flujo negativo es porque en doce meses se gastó 215 mil millones en instalaciones y equipo, y dice que en 2026 serán 220 mil.» | Foto de servidores / obra de un centro de datos. Dos cifras enfrentadas con su etiqueta completa: `12 meses a sep. 2025 · $120,131 M` y `12 meses a sep. 2026 · $215,192 M`. Abajo, chiquito: `La empresa espera ~$220,000 M en 2026 · según su propia guía`. |
+
+### 7 · `outro` · ~10 s
+| Se NARRA | Se VE |
+|---|---|
+| «Vale la pena vigilar si la ganancia de AWS crece más rápido que esa inversión.» | Foto de una furgoneta de reparto a toda la pantalla. Tú en 3D, acto `cierre`. Rótulo: `Qué vigilar: ganancia de AWS vs. inversión en centros de datos`. Aviso legal y CTA automáticos. |
+
+**Comprobación de la regla del rótulo:** cada cifra que dice la voz tiene su rótulo en la escena que le
+toca, con su unidad y su sujeto, y en ningún lado digo "utilidad" a secas — siempre **utilidad de
+operación**, que es la que estoy comparando.
 
 ---
 
-## Título y descripción (borrador, para que los veas con el guion)
+## 5. La única decisión técnica: la escena de columnas
 
-**Título:** `Amazon vende 201 mil millones y la tienda no es donde gana`
+Tu regla del 20 de noviembre dice que **comparar dos cantidades va en columnas verticales con eje X y
+eje Y visibles**, no en barras horizontales. Revisé el motor (`engine/engine.js`) y **esa escena no
+existe**: hay `bars` (ingresos y utilidad por trimestre), `ronda` y `tabla` del torneo, y nada más.
+
+- **Opción A (la que yo haría):** le agrego al motor una escena `columnas` — dos grupos de columnas con
+  sus ejes, unos 60 renglones. Es media hora, no gasta créditos, y queda para todos los shorts que
+  comparen dos cosas, que es constante.
+- **Opción B:** lo resuelvo con dos escenas `metric` (una para 77/37 y otra para 23/63). Sale hoy sin
+  tocar el motor, pero rompe tu regla de las columnas.
+
+---
+
+## 6. Decisiones de estilo, una línea cada una
+
+- **Color de marca:** naranja Amazon `#FF9900`, verificado en su logo. Es un color fuerte → el resto del
+  video va con **fondo arena** (regla §1b). Gancho, catalizador y cierre llevan foto a toda pantalla.
+- **Motor narrativo:** *desmontaje* — un titular que casi todos creen y la cuenta dice otra cosa.
+- **Tú en 3D:** solo gancho y cierre. Actos `senala` + `cierre`, vestuario **polo**, para no repetir el
+  `piensa` + `blazer` del short de Nvidia del 17 de noviembre.
+- **Fotos (4 + logo):** paquetes en la banda, centro de datos, servidores u obra, furgoneta de reparto.
+  Reales, libres, ≥1600 px, ninguna repetida en escenas seguidas, ninguna generada con IA.
+- **Cascada:** montos reales en pantalla, narración en porcentajes (es lo que manda §1e cuando los
+  montos son de miles de millones), colores funcionales y no los de la marca.
+- **Sin recomendación:** no hay precio objetivo ni "cómprala". El cierre es qué vigilar, no un veredicto.
+
+---
+
+## 7. Título y descripción (borrador)
+
+**Título** (71 caracteres):
+```
+Amazon vende $201 mil millones y la tienda no es donde gana #Amazon #acciones
+```
 
 **Descripción:**
-> En el trimestre que cerró en septiembre de 2026, Amazon vendió 201,944 millones de dólares y tuvo el
-> margen de operación más alto de su historia. Pero la tienda puso el 77% de las ventas y solo el 37%
-> de la ganancia: el 63% lo puso AWS. Y en los últimos doce meses su flujo de efectivo libre quedó en
-> −42,357 millones, porque se gastó 215,192 millones en instalaciones y equipo.
->
-> Fuente: Amazon, resultados del tercer trimestre de 2026 (Exhibit 99.1 del 8-K ante la SEC, trimestre
-> cerrado el 30 de septiembre de 2026). Precios al cierre del viernes 27 de noviembre de 2026 (Yahoo Finance).
->
-> Esto no es una recomendación de compra ni de venta. Es información, no asesoría financiera.
->
-> Costa Studio Finance · @jparmendariz
+```
+Amazon tuvo el margen de operación más alto de su historia y aun así su flujo de efectivo libre quedó en menos 42,357 millones de dólares.
+
+📌 Datos clave
+• Ventas del trimestre cerrado el 30 de septiembre de 2026: $201,944 M
+• Utilidad de operación: $28,076 M (14% de las ventas)
+• La tienda: 77% de las ventas y 37% de la ganancia de operación
+• AWS: 23% de las ventas y 63% de la ganancia de operación
+• Compras de propiedad y equipo, doce meses: $215,192 M (eran $120,131 M)
+• La empresa espera ~$220,000 M de inversión en 2026, según su propia guía
+
+¿Crecerá la ganancia de AWS más rápido que esa inversión?
+
+Fuentes: Amazon, resultados del 3T 2026 (Exhibit 99.1 del 8-K ante la SEC) · Yahoo Finance (cierre del 27 de noviembre de 2026).
+
+Nota: Amazon es inversionista de Anthropic, la empresa de la herramienta de IA con la que se preparó este video.
+
+Contenido educativo. No es asesoría financiera.
+Costa Studio Finance, by JP Armendáriz.
+
+#Amazon #AMZN #AWS #acciones #Shorts
+```
 
 ---
 
 ## Registro de cambios
 
-- v1 · 27 nov 2026 · primera versión, a la espera del OK de JP.
+- v1 · 27 nov 2026 · primera versión (escrita sin leer la skill completa; 148 palabras, cascada mal planteada).
+- v2 · 27 nov 2026 · leídas `/short` completa, `anatomia-formatos.md`, `voz-jp.md` y `CLAUDE.md`:
+  132 palabras en 7 escenas, cascada real del estado de resultados con `callout` de AWS, narración en
+  porcentajes, tipos de escena del motor, y la escena de columnas marcada como decisión pendiente.
