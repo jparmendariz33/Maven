@@ -1,7 +1,7 @@
-# Guion de rodaje · Historia 3D "El interés compuesto" — **VERSIÓN FINAL (v4)**
+# Guion de rodaje · Historia 3D "El interés compuesto" — **VERSIÓN FINAL (v5)**
 **Puente al largo del domingo 29:** *Cómo empezar a invertir desde cero en México*
 **10 escenas · 176 palabras · ~73 s con voz de IA · UN bloque de voz = 28 créditos**
-**Estado: PENDIENTE DE APROBACIÓN DE JP. Sin maqueta, sin voz, sin render.**
+**Estado: guion aprobado por JP (27 nov). Maqueta construida y corregida en 2 pasadas. Sin voz, sin render.**
 
 ---
 
@@ -74,15 +74,15 @@ aritmética. Pero el camino sorprende.»
 ---
 
 ## ESCENA 2 · EL MECANISMO (0:10–0:23)
-**NARRA:** «Cada mes pones ciento sesenta dólares: ese dinero tuyo son los billetes verdes. Lo que el
-interés paga encima son los dorados. Y esos dorados pagan más dorados.»
+**NARRA:** «Cada mes pones ciento sesenta dólares: ese es tu dinero, el verde. Encima se apila lo que te
+pagan de intereses, el dorado. Y el truco es este: los intereses también generan intereses.»
 
-**SE VE:** **Plano detalle**, la única toma cerrada del video. Se forma el primer escalón: entra la capa
-**verde** y encima **un** billete dorado. Pasa un año y de ese dorado **brotan dos**; de esos, cuatro.
-**Dos etiquetas que apuntan**, con línea punteada a su color:
-`VERDE · el dinero que tú pones` · `DORADO · lo que te paga el interés`.
+**SE VE:** La **columna de billetes de cerca**, aparte del eje y a escala legible (la barra real del año 1
+mide 0.04 unidades: no se ve). Tres **billetes verdes** apilados, cada uno con su **"$"**, y encima van
+**brotando cinco dorados**, cada vez más seguido. **Dos etiquetas que apuntan**, con línea punteada a su
+color: `VERDE · el dinero que tú pones` · `DORADO · los intereses que te pagan`.
 
-**RÓTULO:** "Los dorados no se gastan" → "pagan más dorados"
+**RÓTULO:** "Los intereses" → en dorado: "generan intereses"
 
 ---
 
@@ -176,8 +176,22 @@ No es asesoría financiera".
 - **Ni yate ni jet privado:** no caben en un millón.
 - Ninguna recomendación de dónde invertir ni de qué instrumento da 10%.
 - La frase de Munger sin comillas, sin atribuir a Buffett y sin groserías.
+- **Nada de "los dorados pagan más dorados":** nombrar un color no explica nada. Se dice "intereses".
 - Ningún logo ni marca real: coche, casa y barco son caricatura propia.
 - El guion dice "supone", nunca "vas a tener".
+
+## Correcciones de JP sobre la maqueta (2a pasada, 27 nov) y dónde vive cada una
+
+| # | Lo que dijo JP | Qué se hizo |
+|---|---|---|
+| 1 | El título y el subtítulo se encimaban con el personaje, el coche o la gráfica | **`encuadra()`**: la franja de arriba (49% del cuadro) es del rótulo y la cámara mete la acción en la mitad de abajo. **Ninguna escena vuelve a poner la cámara a ojo**: se le dan los límites de la acción y ella calcula distancia y altura |
+| 2 | Las columnas parecían montañitas de color, no dinero | **`texBillete`**: billetes con su **"$"** y sus cantos repetidos a lo alto de cada columna, verde y dorada. Miden siempre lo mismo (0.42 unidades) porque la textura se repite tantas veces como quepa |
+| 3 | "los dorados pagan más dorados" no dice nada | Guion v5: «**los intereses también generan intereses**». El rótulo y las etiquetas también |
+| 4 | El personaje mira a cámara incluso cuando sube | **`MIRA_SUBIENDO`** (de perfil, hacia donde camina) en la cuesta y en la trepada; **`MIRA_CAMARA`** solo al llegar a un hito |
+| 5 | La multitud de arriba flotaba | La cima del año 40 es un descanso de **4.2 × 4.6** con **terraza** de cara visible. La multitud bajó de 8 a **5** para que todos pisen |
+| 6 | En el cierre los textos se encimaban y no se entendían | La escena 9 **ya no lleva rótulo 2D** (el pizarrón ES el texto, solo el kicker). En la 10 el pizarrón se va en **medio segundo** y la pregunta entra después; el aviso legal tiene su propia banda abajo |
+| 7 | En una toma la casa salía antes que el coche | **Un hito, una vez puesto, no se vuelve a esconder.** Y la escena de la casa **arranca ancha (9.6)** para que se vea el coche del año 5 a la izquierda antes de cerrar sobre la casa |
+| 8 | Los edificios parecían linternas | **`texVentana`**: rejilla de 4 × 6 ventanas, ~70% encendidas. Va de `map` **y** de `emissiveMap`, así las divisiones se ven aunque la ciudad esté apagada |
 
 ## Checklist de entrega (después del render)
 - [ ] `youtube.md`: título, descripción, **comentario fijado**, **"Video relacionado" → el largo del

@@ -372,6 +372,80 @@ las **escaleras rojas translúcidas del TKTS**. No es una plaza con una pantalla
 **La regla: antes de maquetar un lugar reconocible, busca cómo es y quédate con los tres o cuatro rasgos que lo hacen
 identificable.** Si la maqueta no se reconoce sin rótulo, no es ese lugar, es una plaza genérica.
 
+## La franja de arriba es del texto, y la cámara la despeja SOLA (JP, 27 nov 2026)
+
+JP, viendo la maqueta del interés compuesto: *"muchas veces el título y el subtítulo como que se
+contraponen contra algo y no deja ver lo que dice… se vale que lo pongas como en el cielo, donde todo
+es negro y ahí se ve increíble, pero no sobre la persona."*
+
+**El rótulo vive en el 49% de arriba del cuadro. Nada de la maqueta entra ahí.** Y no se consigue
+moviendo la cámara a ojo escena por escena: se consigue con una función que recibe **los límites de la
+acción** (dónde empieza, dónde acaba, qué tan ancha es) y despeja la franja ella sola.
+
+```js
+const TEXTO = .49;                                   // la franja de arriba, del rótulo
+function encuadra(w, { cx, yBot, yTop, ancho, aire = 1.15, texto = TEXTO, tilt = 0, cz = 0 }) {
+  const d  = Math.max(((yTop - yBot) * aire) / (.536 * (1 - texto)), ancho / .3015);
+  const yc = (yBot + yTop) / 2 + .536 * d * texto / 2;   // centra la acción en lo que queda libre
+  cam(w, [cx, yc + tilt, cz + d], [cx, yc, cz]);
+}
+```
+
+**Dos trampas que me costaron dos pasadas de QA:**
+
+1. **Con la cámara a nivel el horizonte cae SIEMPRE en el 50% del cuadro.** O sea que *cualquier objeto
+   más alto que la cámara se mete por fuerza en la franja del texto*, por lejos que lo pongas: alejarlo
+   solo lo acerca al horizonte, nunca lo baja. En la historia del interés compuesto los edificios del
+   fondo tapaban los títulos y no había distancia que lo arreglara. La cura no es bajar el texto ni
+   oscurecer más: es que **el fondo crezca con la historia** (`b.scale.y = q * (.2 + .8 * k)`), porque
+   para cuando la ciudad es alta la cámara ya está alta también.
+2. **Hay que darle a `encuadra` la medida REAL, no la que crees.** Le puse 1.95 al personaje y mide
+   **2.35** (cuello 1.62 + radio de la cabeza .62 + pelo), así que el rótulo le rozaba la coronilla en
+   el gancho y, en el primer plano del final, la cabeza se le metía encima del número. Mide o deriva la
+   altura; no la estimes a ojo. Guarda la medida en una constante (`ALTO_PERSONA`) y úsala en todas las
+   escenas, porque el error se repite en cada una.
+
+## Nombrar un color no es explicar nada (JP, 27 nov 2026)
+
+JP, sobre el rótulo *"los dorados pagan más dorados"*: *"eso no me dice nada. ¿Qué es un dorado? Al
+final es dinero. Más bien es el dinero de los intereses genera más intereses. Hay que usar lenguaje
+entendible, pero que al mismo tiempo deje explícito lo que significa."*
+
+**Un color de la maqueta es una etiqueta, no un concepto.** En cuanto el guion dice "los verdes" o "los
+dorados" como si fueran cosas, el espectador que no vio los 10 segundos anteriores se queda fuera.
+- Mal: «esos dorados pagan más dorados».
+- Bien: «los intereses también generan intereses» — y el color va en una **etiqueta que apunta**
+  (`VERDE · el dinero que tú pones`), que es donde el color sí sirve.
+
+## Lo que se ve tiene que ser dinero, no una barra de color (JP, 27 nov 2026)
+
+*"Se ve nada más como si fueran montañitas verdes, pero al final simboliza el dinero. Valdría la pena
+poner el símbolo."* Una columna de color plano no se lee como dinero. Se le pone **textura de billete
+con su "$"**, repetida a lo alto, del mismo tamaño en toda la gráfica.
+
+`rbox` sale de `ExtrudeGeometry`, y sus **UV están en unidades del mundo** (la `x` y la `y` del
+vértice), no en 0..1. Eso lo vuelve fácil: `repeat = 1 / medida` da exactamente un billete por ese
+tramo, mida lo que mida la barra. Y como la barra se escala en `y`, el repeat se recalcula cada cuadro
+(`repeat.y = alto / ALTO_BILLETE`) para que el billete nunca se estire.
+
+El mismo truco sirve para que los edificios dejen de parecer linternas: una rejilla de ventanas (con
+unas apagadas) puesta de `map` **y** de `emissiveMap`, así las divisiones se ven aunque la ciudad esté
+apagada y al encender solo brillen los vidrios.
+
+## Nadie flota, y lo que se ganó no se desaparece (JP, 27 nov 2026)
+
+Dos cosas que rompen la ilusión del diorama y que JP cazó de inmediato:
+
+- **Pies en el aire.** Si pones personajes encima de algo, el "algo" tiene que ser **más ancho que el
+  grupo** y tener **cara visible** (una terraza, un descanso), o se ven flotando. Si no caben, no
+  ensanches el suelo hasta que se despegue de la columna: **baja el número de personajes**.
+- **Un hito, una vez puesto, no se vuelve a esconder.** Escondí el coche del año 5 para que la casa del
+  18 luciera sola, y JP vio un cuadro donde *"la casa está antes que el coche"*. Si la historia es
+  acumulativa, la maqueta también: lo ganado se queda en cuadro aunque le reste protagonismo a lo nuevo.
+- **La mirada dice en qué momento está.** Mirando a cámara solo cuando **llega** a algo; mientras
+  **sube**, de perfil, hacia donde camina (`yaw ≈ -1.05`). Mirar a cámara mientras trepa lo vuelve un
+  muñeco posando.
+
 ## La cámara también narra: gramática de plano (JP, 20 nov 2026)
 JP trajo un short de @SoySR.J y dijo: "todas las tomas son a la misma altura de la persona, la toma no cambia,
 mantiene el mismo tamaño la persona". **Medido en la historia de Kahneman, tenía razón exacta:** las 10 escenas van
