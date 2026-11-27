@@ -46,6 +46,7 @@ const Z_ESC = 1.3;          // la escalera va de -0.9 a 3.5
 const FRENTE_ESC = 3.5;     // su cara frontal: los hitos se ENRASAN aquí
 const Z_PASO = 4.5, D_PASO = 2.0;   // la pasarela sobresale: de 3.5 a 5.5
 const FRENTE_TODO = 5.5;            // la cara más adelantada de la escalera: ahí se enrasan los hitos
+const Z_VELERO = 6.3;               // el velero va MÁS adelante: su vela es delgada y va al centro del grupo
 const Z_CAMINA = Z_PASO;    // el personaje camina por la pasarela, delante de TODO
 const CX = y => X(y) + (ANCHO(y) - ANCHO_BARRA) / 2;          // centro real del descanso
 const DER = CX(40) + ANCHO_CIMA / 2;                          // borde derecho de la gráfica
@@ -190,13 +191,17 @@ const worlds = {
     const matVela = clay2('#FBF8EE', .72);
     const mayor = vela(1.25, 2.1, matVela); mayor.position.set(-.1, .62, -.035); w.barco.add(mayor);   // la grande, atrás del mástil
     const foque = vela(-.85, 1.5, matVela); foque.position.set(-.2, .62, -.035); w.barco.add(foque);   // el foque, al frente
-    w.barco.scale.setScalar(1.6); premio(w.barco, 31, FRENTE_TODO - .5 * 1.6);
+    // El casco enrasado al frente NO basta: el mastil y las velas son delgados y viven en el CENTRO
+    // del grupo, asi que quedaban 0.8 detras de la huella (5.5) y los escalones altos de los anios
+    // siguientes cruzaban por encima de la vela. El velero entero se adelanta hasta que la VELA
+    // queda delante de la huella.
+    w.barco.scale.setScalar(1.6); premio(w.barco, 31, Z_VELERO);
 
     // ---- la cifra encima de cada hito (sale de VAL(y), así nunca discrepa del contador)
     // alto REAL de cada hito ya escalado, y su z: la etiqueta va a la MISMA profundidad que el objeto
     // (si va más cerca de la cámara, baja en el cuadro y se encima con el techo).
     const ALTO_HITO = { coche: 1.17 * 1.9, casa: 1.97 * 1.5, barco: 2.72 * 1.6 };   // el velero es más alto
-    const Z_HITO = { coche: FRENTE_TODO - .95 * 1.9, casa: FRENTE_TODO - .8 * 1.5, barco: FRENTE_TODO - .5 * 1.6 };
+    const Z_HITO = { coche: FRENTE_TODO - .95 * 1.9, casa: FRENTE_TODO - .8 * 1.5, barco: Z_VELERO };
     w.datos = {};
     const QUE_COMPRA = { coche: 'coche', casa: 'casa', barco: 'velero' };
     [['coche', 5], ['casa', 18], ['barco', 31]].forEach(([k, y]) => {

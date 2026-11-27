@@ -909,3 +909,16 @@ vigilando" no dice nada. Plan de acción completo en `plan/torneo.md`; reglas en
 - **`label3d` recorta el texto que no cabe en `pw`.** El ancho que ocupa es, a ojo,
   `caracteres x 0.62 x tamaño_de_fuente + ls x caracteres`. Si eso pasa de `pw`, las letras de los
   extremos se cortan en silencio. Bajar la fuente o subir `pw`, nunca ensanchar el plano.
+
+## Enrasar al frente solo protege lo que de verdad llega al frente (27 nov 2026)
+
+Enrasé los tres hitos con la cara más adelantada de la escalera y la casa y el coche quedaron
+limpios, pero el velero seguía cruzado por los escalones. No era un valor mal puesto: **el casco
+llega a la cara frontal, pero el mástil y las velas son delgados y viven en el CENTRO del grupo**,
+0.8 unidades más atrás. Las huellas de los escalones altos de los años siguientes llegan a esa misma
+cara frontal, así que pasaban por encima de la vela.
+
+**La regla: al enrasar un objeto, la medida que cuenta es la de la pieza MÁS ATRASADA que tiene que
+verse, no la del bulto.** Un objeto macizo (una casa, un coche) se enrasa por su cara; uno con partes
+delgadas en el centro (un velero, una antena, un letrero sobre un poste) se adelanta hasta que esa
+parte delgada quede delante del plano que la amenaza. Y la etiqueta se va con él, a su nueva z.
