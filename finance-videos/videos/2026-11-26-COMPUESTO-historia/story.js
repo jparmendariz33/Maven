@@ -45,6 +45,7 @@ const FONDO = y => y === 40 ? 5.6 : 4.4;
 const Z_ESC = 1.3;          // la escalera va de -0.9 a 3.5
 const FRENTE_ESC = 3.5;     // su cara frontal: los hitos se ENRASAN aquí
 const Z_PASO = 4.5, D_PASO = 2.0;   // la pasarela sobresale: de 3.5 a 5.5
+const FRENTE_TODO = 5.5;            // la cara más adelantada de la escalera: ahí se enrasan los hitos
 const Z_CAMINA = Z_PASO;    // el personaje camina por la pasarela, delante de TODO
 const CX = y => X(y) + (ANCHO(y) - ANCHO_BARRA) / 2;          // centro real del descanso
 const DER = CX(40) + ANCHO_CIMA / 2;                          // borde derecho de la gráfica
@@ -165,7 +166,7 @@ const worlds = {
       h.position.set(-1.05 - k * .7, .3 + k * .55, .28);
       h.scale.setScalar(Math.max(.001, (.5 + k * 1.3) * (1 - k)));
     });
-    w.coche.scale.setScalar(1.9); premio(w.coche, 5, FRENTE_ESC - .95 * 1.9);   // enrasado al frente
+    w.coche.scale.setScalar(1.9); premio(w.coche, 5, FRENTE_TODO - .95 * 1.9);   // delante de la huella: nada lo tapa
 
     w.casa = new THREE.Group();
     const cuerpo = rbox(2.0, 1.5, 1.6, .06, clay2('#E8E0CE', .78)); cuerpo.position.y = .75; w.casa.add(cuerpo);
@@ -175,7 +176,7 @@ const worlds = {
     vent.material = vent.material.clone();
     vent.material.emissive = new THREE.Color('#FFC46A'); vent.material.emissiveIntensity = .9;
     vent.position.set(.5, .85, .82); w.casa.add(vent);
-    w.casa.scale.setScalar(1.5); premio(w.casa, 18, FRENTE_ESC - .8 * 1.5);
+    w.casa.scale.setScalar(1.5); premio(w.casa, 18, FRENTE_TODO - .8 * 1.5);
 
     w.barco = new THREE.Group();
     const casco = rbox(2.6, .5, 1.0, .24, clay2('#E8E2D4', .7)); casco.position.y = .25; w.barco.add(casco);
@@ -189,13 +190,13 @@ const worlds = {
     const matVela = clay2('#FBF8EE', .72);
     const mayor = vela(1.25, 2.1, matVela); mayor.position.set(-.1, .62, -.035); w.barco.add(mayor);   // la grande, atrás del mástil
     const foque = vela(-.85, 1.5, matVela); foque.position.set(-.2, .62, -.035); w.barco.add(foque);   // el foque, al frente
-    w.barco.scale.setScalar(1.6); premio(w.barco, 31, FRENTE_ESC - .5 * 1.6);
+    w.barco.scale.setScalar(1.6); premio(w.barco, 31, FRENTE_TODO - .5 * 1.6);
 
     // ---- la cifra encima de cada hito (sale de VAL(y), así nunca discrepa del contador)
     // alto REAL de cada hito ya escalado, y su z: la etiqueta va a la MISMA profundidad que el objeto
     // (si va más cerca de la cámara, baja en el cuadro y se encima con el techo).
     const ALTO_HITO = { coche: 1.17 * 1.9, casa: 1.97 * 1.5, barco: 2.72 * 1.6 };   // el velero es más alto
-    const Z_HITO = { coche: FRENTE_ESC - .95 * 1.9, casa: FRENTE_ESC - .8 * 1.5, barco: FRENTE_ESC - .5 * 1.6 };
+    const Z_HITO = { coche: FRENTE_TODO - .95 * 1.9, casa: FRENTE_TODO - .8 * 1.5, barco: FRENTE_TODO - .5 * 1.6 };
     w.datos = {};
     const QUE_COMPRA = { coche: 'coche', casa: 'casa', barco: 'velero' };
     [['coche', 5], ['casa', 18], ['barco', 31]].forEach(([k, y]) => {
@@ -504,7 +505,7 @@ const scenes = [
       w.sale(w.coche, sale); w.dato('coche', L.back(L.seg(p, .5, .78)));
       [w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       // NO se encoge (JP: "se hace muy pequeño el personaje"). Camina hasta el coche y apoya la mano.
-      w.per.position.set(CX(5) - 1.5 + sube * .62, ALT(5), Z_CAMINA);
+      w.per.position.set(CX(5) - 2.55 + sube * .45, ALT(5), Z_CAMINA);   // a la izquierda del coche, sin encimarse
       w.per.scale.setScalar(1);
       w.per.rotation.y = .18 * sube;
       L.pose(w.per, { armR: [.32 + sube * .85, .2 + sube * .22, .3], armL: [.32, -.2, .3],
@@ -560,7 +561,7 @@ const scenes = [
       w.puerta.rotation.y = abre * 1.1; w.puerta.position.x = -.45 - abre * .2;
       [w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       w.per.scale.setScalar(1);
-      w.per.position.set(CX(18) - 1.6 + abre * .5, ALT(18), Z_CAMINA);
+      w.per.position.set(CX(18) - 2.85 + abre * .35, ALT(18), Z_CAMINA);
       w.per.rotation.y = .3 - abre * .3;
       // llega arrastrando los pies mirando el suelo y se endereza hacia cámara al abrir
       L.pose(w.per, { armR: [.26 + abre * .5, .18, .28], armL: [.26, -.18, .28],
@@ -597,7 +598,8 @@ const scenes = [
       w.dato('coche', 1); w.dato('casa', 1); w.dato('barco', L.back(L.seg(p, .55, .84)));
       w.gente.scale.setScalar(.001);
       w.per.scale.setScalar(1);
-      w.per.position.set(X(anio), ALT(anio), Z_CAMINA);
+      const xp = X(anio) - 1.3;                       // a la izquierda del velero
+      w.per.position.set(xp, ALT(anio - 1.3 / PASO), Z_CAMINA);   // la altura del escalón que PISA
       w.per.rotation.y = CUERPO_SUBE + .15;
       L.pose(w.per, { armR: [1.25 + Math.sin(t * 4) * .22, .34, .5], armL: [1.25 - Math.sin(t * 4) * .22, -.34, .5],
         head: [-.26, MIRA_SUBIENDO, 0], lean: -.12, bob: Math.sin(t * 4) * .06,
