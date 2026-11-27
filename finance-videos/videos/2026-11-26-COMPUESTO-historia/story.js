@@ -41,8 +41,9 @@ const ES_HITO = y => Object.values(HITOS).includes(y);
 // cada barra. (La lección de CLAUDE.md: un grupo que se escala o se corre NO mide lo que crees.)
 const ANCHO_BARRA = .38, ANCHO_DESCANSO = 4.0, ANCHO_CIMA = 4.2;
 const ANCHO = y => y === 40 ? ANCHO_CIMA : ES_HITO(y) ? ANCHO_DESCANSO : ANCHO_BARRA;
-const FONDO = y => y === 40 ? 4.6 : ES_HITO(y) ? 4.0 : 1.5;   // hondas a propósito: el personaje
-const Z_CAMINA = .55;                                          // camina DELANTE, los hitos van al fondo
+const FONDO = y => y === 40 ? 5.6 : ES_HITO(y) ? 5.0 : 3.0;   // hondas: caben tres planos
+const Z_CAMINA = 1.1;      // sobre la barra (fondo 3.0 => -1.5..1.5) y MUY por delante de los hitos
+const Z_HITO_ATRAS = -2.5; // los hitos pegados al fondo del descanso (5.0 => -2.5..2.5)
 const CX = y => X(y) + (ANCHO(y) - ANCHO_BARRA) / 2;          // centro real del descanso
 const DER = CX(40) + ANCHO_CIMA / 2;                          // borde derecho de la gráfica
 const MEDIO = (-ANCHO_BARRA / 2 + DER) / 2;                   // centro de la gráfica entera
@@ -137,10 +138,27 @@ const worlds = {
     w.coche = new THREE.Group();
     const carr = rbox(2.0, .55, .95, .18, clay2('#C94F3C', .5)); carr.position.y = .45; w.coche.add(carr);
     const cab = rbox(1.1, .45, .85, .18, clay2('#D9694F', .45)); cab.position.set(-.1, .92, 0); w.coche.add(cab);
+    // Las llantas se veían como rectángulos: el cilindro tenía el eje en X, así que a la cámara
+    // (que mira desde +z) le daba el costado. El eje de una rueda va en Z para que se vea el círculo.
     [[-.65, .5], [.65, .5], [-.65, -.5], [.65, -.5]].forEach(([a, b]) => {
-      const r = new THREE.Mesh(new THREE.CylinderGeometry(.26, .26, .18, 18), clay2('#22262C', .6));
-      r.rotation.z = Math.PI / 2; r.position.set(a, .26, b); w.coche.add(r); });
-    w.coche.scale.setScalar(1.9); premio(w.coche, 5, -.5);    // a la altura del personaje
+      const r = new THREE.Mesh(new THREE.CylinderGeometry(.26, .26, .18, 20), clay2('#22262C', .6));
+      r.rotation.x = Math.PI / 2; r.position.set(a, .26, b); w.coche.add(r);
+      const rin = new THREE.Mesh(new THREE.CylinderGeometry(.11, .11, .2, 16), clay2('#C9C3B5', .5));
+      rin.rotation.x = Math.PI / 2; rin.position.set(a, .26, b); w.coche.add(rin); });
+    const vidrio = clay2('#1A2E3E', .25);
+    const parab = rbox(.92, .34, .88, .06, vidrio); parab.position.set(-.1, .95, 0); w.coche.add(parab);
+    [-1, 1].forEach(sg => { const faro = rbox(.2, .17, .14, .06, clay2('#FFF3D0', .3));
+      faro.material = faro.material.clone();
+      faro.material.emissive = new THREE.Color('#FFE39A'); faro.material.emissiveIntensity = 1.3;
+      faro.position.set(1.04, .52, sg * .32); w.coche.add(faro); });
+    w.humo = [0, 1, 2].map(i => { const h = new THREE.Mesh(new THREE.SphereGeometry(.13, 12, 10), clay2('#8C93A0', .9));
+      h.userData.f = i / 3; h.position.set(-1.05, .3, .28); w.coche.add(h); return h; });
+    w.echaHumo = (t) => w.humo.forEach(h => {       // humo del escape: sube, se abre y se deshace
+      const k = ((t * .55 + h.userData.f) % 1);
+      h.position.set(-1.05 - k * .7, .3 + k * .55, .28);
+      h.scale.setScalar(Math.max(.001, (.5 + k * 1.3) * (1 - k)));
+    });
+    w.coche.scale.setScalar(1.9); premio(w.coche, 5, Z_HITO_ATRAS + .95 * 1.9);   // al fondo del descanso
 
     w.casa = new THREE.Group();
     const cuerpo = rbox(2.0, 1.5, 1.6, .06, clay2('#E8E0CE', .78)); cuerpo.position.y = .75; w.casa.add(cuerpo);
@@ -150,7 +168,7 @@ const worlds = {
     vent.material = vent.material.clone();
     vent.material.emissive = new THREE.Color('#FFC46A'); vent.material.emissiveIntensity = .9;
     vent.position.set(.5, .85, .82); w.casa.add(vent);
-    w.casa.scale.setScalar(1.5); premio(w.casa, 18, -.72);
+    w.casa.scale.setScalar(1.5); premio(w.casa, 18, Z_HITO_ATRAS + .8 * 1.5);
 
     w.barco = new THREE.Group();
     const casco = rbox(2.6, .5, 1.0, .24, clay2('#E8E2D4', .7)); casco.position.y = .25; w.barco.add(casco);
@@ -164,19 +182,19 @@ const worlds = {
     const matVela = clay2('#FBF8EE', .72);
     const mayor = vela(1.25, 2.1, matVela); mayor.position.set(-.1, .62, -.035); w.barco.add(mayor);   // la grande, atrás del mástil
     const foque = vela(-.85, 1.5, matVela); foque.position.set(-.2, .62, -.035); w.barco.add(foque);   // el foque, al frente
-    w.barco.scale.setScalar(1.6); premio(w.barco, 31, -.6);  // antes casi no se veía
+    w.barco.scale.setScalar(1.6); premio(w.barco, 31, Z_HITO_ATRAS + .5 * 1.6);
 
     // ---- la cifra encima de cada hito (sale de VAL(y), así nunca discrepa del contador)
     // alto REAL de cada hito ya escalado, y su z: la etiqueta va a la MISMA profundidad que el objeto
     // (si va más cerca de la cámara, baja en el cuadro y se encima con el techo).
     const ALTO_HITO = { coche: 1.17 * 1.9, casa: 1.97 * 1.5, barco: 2.72 * 1.6 };   // el velero es más alto
-    const Z_HITO = { coche: -.5, casa: -.72, barco: -.6 };
+    const Z_HITO = { coche: Z_HITO_ATRAS + .95 * 1.9, casa: Z_HITO_ATRAS + .8 * 1.5, barco: Z_HITO_ATRAS + .5 * 1.6 };
     w.datos = {};
     const QUE_COMPRA = { coche: 'coche', casa: 'casa', barco: 'velero' };
     [['coche', 5], ['casa', 18], ['barco', 31]].forEach(([k, y]) => {
       const m = L.label3d('$' + Math.round(VAL(y)).toLocaleString('en-US') + ' · ' + QUE_COMPRA[k], 4.3, .72,
         { bg: '#0E1A24', ink: '#F2C84B', font: '800 112px Unbounded', ls: 1, pw: 2048 });
-      m.position.set(CX(y), ALT(y) + ALTO_HITO[k] + .95, Z_HITO[k]);
+      m.position.set(CX(y), ALT(y) + ALTO_HITO[k] + .4, Z_HITO[k]);   // pegada al objeto, no flotando
       m.visible = false; w.scene.add(m); w.datos[k] = m;
     });
     w.dato = (k, v) => { w.datos[k].visible = v > .02; w.datos[k].scale.setScalar(Math.max(.001, v)); };
@@ -309,6 +327,10 @@ const worlds = {
       b.scale.setScalar(.001); w.mec.add(b); w.mecOro.push(b);
     }
     w.mecAlto = MH * 8;
+    // "cada mes pones ciento sesenta dólares": que se VEA cuánto es ese fajo verde
+    w.mecDato = L.label3d('$160 al mes', 2.3, .62, { bg: '#0E1A24', ink: '#6FD093', font: '800 150px Unbounded', ls: 1, pw: 1024 });
+    w.mecDato.position.set(-7, MH * 1.5, 4 + MD / 2 + .08);   // pegado al frente del fajo verde
+    w.mecDato.visible = false; w.mec.add(w.mecDato);
 
     // ---- el ahorrador
     w.per = L.actor(AHORRADOR); w.per.position.set(0, 0, 1.3); w.scene.add(w.per);
@@ -409,7 +431,7 @@ const scenes = [
       w.dibuja(f > .02 ? 40 : 1); w.mec.scale.setScalar(.001);
       ['coche','casa','barco'].forEach(k => w.dato(k, 0)); w.traza(0);
       w.fondo(f, f);
-      [w.coche, w.casa, w.barco].forEach(o => w.sale(o, f)); w.gente.scale.setScalar(Math.max(.001, f));
+      [w.coche, w.casa, w.barco].forEach(o => w.sale(o, f)); w.gente.scale.setScalar(Math.max(.001, f)); w.echaHumo(t);
       w.fiesta(f, t);
       w.per.position.set(f > .5 ? CX(40) : 0, f > .5 ? ALT(40) + w.ALTO_PODIO : 0, f > .5 ? .2 : 1.2);
       w.per.rotation.y = 0;
@@ -439,12 +461,16 @@ const scenes = [
       [w.coche, w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       ['coche','casa','barco'].forEach(k => w.dato(k, 0)); w.traza(0); w.fiesta(0, t);
       w.mec.scale.setScalar(1);
+      w.mecDato.visible = L.seg(p, .1, .18) > .5;
       // los verdes ya están; los intereses BROTAN encima, cada vez más seguido
       const brota = L.seg(p, .22, .96);
       w.mecOro.forEach((b, i) => b.scale.setScalar(Math.max(.001, L.back(L.seg(brota, i * .15, i * .15 + .26)))));
       w.per.position.set(-4.3, 0, 5.0); w.per.rotation.y = -.5;
-      L.pose(w.per, { armL: [1.15, -.62, .55], armR: [.3, .2, .3], head: [.06, .62, 0],
-        lid: Math.max(.15, L.blink(q, 3)), brow: .3, smile: .35 });
+      // la mirada sigue a lo que se está explicando: abajo al verde, arriba al dorado
+      const mira = L.eio(L.seg(p, .42, .62));            // 0 = al fajo verde · 1 = a los intereses
+      L.pose(w.per, { armL: [.95 + mira * .55, -.62, .5 + mira * .2], armR: [.3, .2, .3],
+        head: [L.lerp(.34, -.34, mira), .62, 0], brow: .2 + mira * .4, smile: .3 + mira * .2,
+        lid: Math.max(.15, L.blink(q, 3)) });
       encuadra(w, { cx: -6.2, yBot: 0, yTop: mix(w.mecAlto * .72, w.mecAlto + .5, L.eio(p)),
         ancho: 4.4, cz: 4, tilt: 1.1 });
       w.focusOn(w.mec, 1.6); w.aperture = .00014;
@@ -467,11 +493,11 @@ const scenes = [
       const anio = 3 + 2 * L.eio(L.seg(p, 0, .5));
       w.dibuja(Math.ceil(anio)); w.fondo(.18, .05); w.mec.scale.setScalar(.001);
       const sale = L.back(L.seg(p, .3, .6)), sube = L.eio(L.seg(p, .62, .9));
-      w.traza(0);
+      w.traza(0); w.echaHumo(t);
       w.sale(w.coche, sale); w.dato('coche', L.back(L.seg(p, .5, .78)));
       [w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       // NO se encoge (JP: "se hace muy pequeño el personaje"). Camina hasta el coche y apoya la mano.
-      w.per.position.set(CX(5) - 1.5 + sube * .62, ALT(5), Z_CAMINA);
+      w.per.position.set(CX(5) - 1.5 + sube * .62, ALT(5), Z_CAMINA + .7);
       w.per.scale.setScalar(1);
       w.per.rotation.y = .18 * sube;
       L.pose(w.per, { armR: [.32 + sube * .85, .2 + sube * .22, .3], armL: [.32, -.2, .3],
@@ -493,7 +519,7 @@ const scenes = [
       const p = P(lt, this), q = L.on2(t);
       const anio = 5 + 13 * L.eio(p);
       w.dibuja(Math.ceil(anio)); w.fondo(.3 + L.eio(p) * .15, .1); w.mec.scale.setScalar(.001);
-      w.traza(0);
+      w.traza(0); w.echaHumo(t);
       w.sale(w.coche, 1); w.dato('coche', 1);               // ya se ganó: se queda
       [w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       w.per.scale.setScalar(1);
@@ -522,12 +548,12 @@ const scenes = [
       w.dibuja(18); w.fondo(.5, .25); w.mec.scale.setScalar(.001);
       const sale = L.back(L.seg(p, .35, .65)), abre = L.eio(L.seg(p, .7, .92));
       w.sale(w.coche, 1);
-      w.traza(0);
+      w.traza(0); w.echaHumo(t);
       w.sale(w.casa, sale); w.dato('coche', 1); w.dato('casa', L.back(L.seg(p, .55, .82)));
       w.puerta.rotation.y = abre * 1.1; w.puerta.position.x = -.45 - abre * .2;
       [w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       w.per.scale.setScalar(1);
-      w.per.position.set(CX(18) - 1.6 + abre * .5, ALT(18), Z_CAMINA + .35);
+      w.per.position.set(CX(18) - 1.6 + abre * .5, ALT(18), Z_CAMINA + .9);
       w.per.rotation.y = .3 - abre * .3;
       // llega arrastrando los pies mirando el suelo y se endereza hacia cámara al abrir
       L.pose(w.per, { armR: [.26 + abre * .5, .18, .28], armL: [.26, -.18, .28],
@@ -539,8 +565,15 @@ const scenes = [
       w.focusOn(w.casa, 1.5); w.aperture = .00015;
     },
     overlay(lt, t, L) {
-      L.scrim(L.C, 0, 840, .74, '8,14,20');
-      head(L, 'Los primeros $100,000', ['son los más', 'difíciles'], 'Charlie Munger · $100,000 ≈ 2 millones de pesos', TINTA, lt, ORO);
+      // JP la pidió textual y en inglés, en itálicas, con la grosería censurada. La salvedad
+      // (no hay fuente primaria de la redacción exacta) va en la descripción, no en pantalla.
+      L.scrim(L.C, 0, 900, .76, '8,14,20');
+      L.kicker('Charlie Munger', 476, L.seg(lt, .1, .5), TINTA);
+      let qs = 82; while (qs > 54 && L.tw('"The first $100,000', { f: L.F.s, it: 1, w: 400, s: qs }) > 900) qs -= 2;
+      L.rise('"The first $100,000', 90, 586, L.seg(lt, .25, .8), { f: L.F.s, it: 1, w: 400, s: qs, c: TINTA });
+      L.rise('is a b*tch"', 90, 586 + qs + 14, L.seg(lt, .45, 1.0), { f: L.F.s, it: 1, w: 400, s: qs, c: ORO });
+      L.rise('Los primeros cien mil son los más difíciles', 90, 586 + qs * 2 + 54, L.seg(lt, .8, 1.3), { s: 36, c: TINTA, a: .88 });
+      L.rise('$100,000 ≈ 2 millones de pesos', 90, 586 + qs * 2 + 102, L.seg(lt, 1.0, 1.5), { s: 32, c: TINTA, a: .7 });
       fichas(L, 18, VAL(18));
     } },
 
@@ -553,7 +586,7 @@ const scenes = [
       w.dibuja(Math.ceil(anio)); w.fondo(.72, .45); w.mec.scale.setScalar(.001);
       w.sale(w.coche, 1); w.sale(w.casa, 1);
       w.sale(w.barco, L.back(L.seg(p, .42, .72)));   // antes brotaba al final y no daba tiempo de verlo
-      w.traza(0);
+      w.traza(0); w.echaHumo(t);
       w.dato('coche', 1); w.dato('casa', 1); w.dato('barco', L.back(L.seg(p, .55, .84)));
       w.gente.scale.setScalar(.001);
       w.per.scale.setScalar(1);
@@ -583,7 +616,7 @@ const scenes = [
       const k = L.eio(L.seg(p, .62, 1)), ab = L.eio(L.seg(p, 0, .45));   // k: el cierre al primer plano
       w.dibuja(Math.ceil(anio)); w.fondo(1, 1); w.mec.scale.setScalar(.001);
       [w.coche, w.casa, w.barco].forEach(o => w.sale(o, 1));
-      ['coche','casa','barco'].forEach(k => w.dato(k, 1)); w.traza(0);
+      ['coche','casa','barco'].forEach(k => w.dato(k, 1)); w.traza(0); w.echaHumo(t);
       const fama = L.back(L.seg(p, .45, .72));
       w.gente.scale.setScalar(Math.max(.001, fama));
       w.fiesta(fama, t, fama * Math.max(0, 1 - k * 2.5));   // el confeti se va antes del primer plano
@@ -618,7 +651,7 @@ const scenes = [
       [w.coche, w.casa, w.barco].forEach(o => w.sale(o, 1));
       w.gente.scale.setScalar(.001); w.fiesta(0, t);
       ['coche','casa','barco'].forEach(k => w.dato(k, 1));
-      w.traza(L.eio(L.seg(p, .18, .92)));                   // la flecha se traza mientras habla del 92%
+      w.traza(L.eio(L.seg(p, .18, .92))); w.echaHumo(t);     // la flecha se traza mientras habla del 92%
       w.per.scale.setScalar(1); w.per.position.set(CX(40), ALT(40), 1.3); w.per.rotation.y = 0;
       L.pose(w.per, { armR: [.3, .2, .3], armL: [.3, -.2, .3], head: [.3, MIRA_CAMARA, 0],
         lid: Math.max(.15, L.blink(q, 4)), brow: .25, smile: .2 });

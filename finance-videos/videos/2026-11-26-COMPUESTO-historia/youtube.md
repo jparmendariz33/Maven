@@ -37,7 +37,7 @@ Ciento sesenta dólares al mes, cuarenta años, y la cuenta llega al millón. No
 ¿Cuántos años llevas pensando en empezar? Te leo 👇
 
 Nota sobre el 10%: es un supuesto para ilustrar la mecánica, no un rendimiento prometido ni disponible en ningún instrumento en particular. Ningún año real se parece al promedio.
-La idea de que "los primeros cien mil son los más difíciles" se le atribuye a Charlie Munger; las fuentes no coinciden en la redacción exacta ni en el año, así que en el video va como idea suya, no entrecomillada.
+Sobre la cita de Charlie Munger: en pantalla aparece en inglés, "The first $100,000 is a b*tch", que es como circula. Conviene decirlo con claridad: no hay fuente primaria de esa redacción. Wikiquote se la atribuye a la junta de accionistas de Berkshire Hathaway de 1998, pero su única referencia es un blog, no una transcripción ni una grabación. Existe otra frase suya con la misma idea y otra redacción ("The hard part of the process for most people is the first $100,000"), atribuida a la junta de 1999 y enlazada a video de CNBC. La idea está bien documentada; las palabras exactas, no.
 Fuentes: fórmula de valor futuro de una anualidad ordinaria, recalculada en el propio código de la animación · Tipo de cambio FIX de Banco de México, 19.7203 del 26 nov 2026 (banxico.org.mx, "Tipo de cambio para solventar obligaciones denominadas en dólares de los EE.UU.A.")
 Animación original en 3D. El coche, la casa y el barco son caricatura propia; no son marcas ni modelos reales.
 
@@ -84,7 +84,7 @@ Este domingo a las 10:00 sale el video completo: cómo empezar a invertir desde 
 | **92%** del total es interés | 935,053 / 1,011,853 = 92.4% | ✅ |
 | Los primeros $100,000 llegan en el **año 18.4** | Despeje de la misma fórmula | ✅ |
 | **FIX 19.7203**, 26 nov 2026 | Banco de México, `banxico.org.mx/tipcamb/tipCamMIAction.do`, columna "FIX 2/" | ✅ consultado el 27 nov |
-| "Los primeros cien mil son los más difíciles" — Charlie Munger | Atribución muy difundida; las fuentes no coinciden en redacción ni año | ⚠️ por eso va **sin comillas**, como idea atribuida, y no se le adjudica a Buffett |
+| "The first $100,000 is a b*tch" — Charlie Munger | Wikiquote la atribuye a la junta de Berkshire de 1998, **citando solo un blog**: ni transcripción ni grabación | ⚠️ **sin fuente primaria.** Va en pantalla por decisión de JP, consciente de esto. La IDEA está documentada; la redacción exacta, no. No se le adjudica a Buffett |
 
 ### Pendiente de criterio de JP
 JP mencionó que en México **hay coches desde ~250,000 pesos y casas desde ~2 millones**. Al FIX verificado:
