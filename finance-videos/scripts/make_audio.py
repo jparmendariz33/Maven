@@ -47,7 +47,9 @@ def thud(g=.8):               # golpe grave y redondo
     x = tt(.9); f = 45 + 60 * np.exp(-x * 9); return np.sin(2 * np.pi * np.cumsum(f) / SR) * env(.9, .002, 5) * g
 
 
-# ---------- efectos por acción (historias 3D): cada escena de story.js declara sfx: [[fracción, nombre, volumen?, duración?], ...]
+# ---------- efectos por acción (historias 3D): cada escena de story.js declara
+# sfx: [[FRACCIÓN de la escena (0..1, NUNCA segundos), nombre, volumen?, duración?], ...]
+# engine3d/player.js lo convierte con t = t0 + fracción*(t1-t0): poner segundos manda el efecto a otra escena.
 def sfx_pop(g=1, d=0):        # algo aparece: "blip" que sube
     x = tt(.16); f = 420 + 900 * x / .16; return np.sin(2 * np.pi * np.cumsum(f) / SR) * env(.16, .002, 6) * .5 * g
 
@@ -130,8 +132,17 @@ def main(vdir, MUS=None):
         elif isinstance(o, list):
             for v in o: collect(v)
     scale = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5]
+    # La ola va SOLO en cortes de verdad. Antes sonaba en cada frontera de escena, incluso entre
+    # escenas marcadas `trans: 'cont'`, donde la cámara no corta: nueve "whooshes" de fondo sin nada
+    # que los justifique. (JP, 27 nov 2026: "hay sonidos de más que no hacen sentido porque no hay
+    # ningún cambio de escena".) Concuerda con la regla de la casa: la ola solo entre lugares distintos.
+    CONT = set()
+    _sp = os.path.join(vdir, 'build', 'sfx.json')
+    if os.path.exists(_sp):
+        for _i, _sc in enumerate(json.load(open(_sp)).get('scenes', [])):
+            if _sc.get('trans') == 'cont': CONT.add(_i)
     for i, s in enumerate(tl['scenes']):
-        if i > 0: add(fx, wave_sfx(.9), s['t0'] - .2, .55)
+        if i > 0 and i not in CONT: add(fx, wave_sfx(.9), s['t0'] - .2, .55)
         cues.clear(); collect(s)
         for j, c in enumerate(sorted(cues)): add(fx, pluck(scale[(i + j) % len(scale)], .45, .32), c)
         if s['type'] == 'hook' and 'cue_value' in s: add(fx, thud(.7), s['cue_value'] + 1.35)

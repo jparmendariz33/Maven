@@ -42,18 +42,31 @@ Tú pones la voz (más genuino que IA); Claude hace la investigación, el guion,
 el volumen no es lo que funciona: **SpaceX solo generó más vistas que las diez piezas más pequeñas juntas.** Una pieza
 con 86% de gancho vale más que cinco con 20%.
 
-| Día (CDMX) | Qué se publica | Duración | Origen |
-|---|---|---|---|
-| **Lunes ≈17:00** | 📌 Publicación del día | — | Lo que pasó + pregunta (`/publicacion`). Ese día se produce el largo |
-| **Martes 12:00** | 🎬 **Historia 3D** (tema libre) | 60–90 s | [`banco-historias.md`](banco-historias.md) · se produce el lunes |
-| **Miércoles ≈17:00** | 📌 Publicación del día | — | Lo que pasó + pregunta |
-| **Jueves 12:00** | 🎬 **Historia 3D PUENTE** | 60–90 s | Del tema del largo de ESE domingo; lo **anuncia en pantalla** con el pizarrón |
-| **Viernes 19:00** | Short **de contexto** | 60–75 s | La semana ya cerró: el contexto está completo (§2b) |
-| **Sábado 19:00** | Short **Análisis + Potencial** | 75–85 s | Empresa de la semana o [`banco-tesis.md`](banco-tesis.md) |
-| **Domingo 10:00** | **Video largo** (16:9) | **6–7 min** | [`calendario-largos.md`](calendario-largos.md) · se produce desde el lunes |
-| **Domingo 19:00** | Short **torneo** + su 📌 publicación | 75–85 s | Se produce el sábado (`/short` §1d) |
+**UNA PIEZA AL DÍA (JP, 27 nov 2026 — sustituye las 9 por semana).** *"Mis créditos de Claude no alcanzan para
+tanto. Entonces hay que priorizar. Con que sea uno de cada cosa cada día, es más que suficiente."* El cuello de
+botella ya no son los créditos de vidIQ: es el tiempo de sesión de Claude. Así que **siete piezas, una por día**, y
+**solo dos caras por semana**.
 
-= **9 piezas por semana.** Si hay que recortar, **lo último que se cae es el largo del domingo**: la historia del
+| Día (CDMX) | Qué se publica | Duración | Costo | Origen |
+|---|---|---|---|---|
+| **Lunes 19:00** | 🏆 **Ranking · cómo arranca la semana** | 75–85 s | medio | `/short` §1d · borrador el domingo |
+| **Martes ≈17:00** | 📌 Publicación del día | — | ligero | Lo que pasó + pregunta (`/publicacion`) |
+| **Miércoles 19:00** | Short **Análisis + Potencial** | 75–85 s | medio | Empresa de la semana o [`banco-tesis.md`](banco-tesis.md) |
+| **Jueves 12:00** | 🎬 **Historia 3D PUENTE** | 60–90 s | **caro** | Del largo de ESE domingo; lo **anuncia con el pizarrón** |
+| **Viernes 19:00** | 🏆 **Ranking · cómo cierra la semana** | 75–85 s | medio | La semana ya cerró: el contexto está completo |
+| **Sábado ≈17:00** | 📌 Publicación · el dato de la semana | — | ligero | La pieza más prescindible: **es la primera que se cae** |
+| **Domingo 10:00** | **Video largo** (16:9) | **6–7 min** | **el más caro** | [`calendario-largos.md`](calendario-largos.md) · borrador desde el lunes |
+
+= **7 piezas por semana** (eran 9). Las tres razones del orden:
+- **La historia 3D se queda en jueves.** Su trabajo es anunciar el largo del domingo: a tres días funciona, a cinco
+  se enfría. Por eso NO se movió a martes.
+- **Solo dos piezas caras** (jueves y domingo). Antes eran dos historias 3D más shorts casi diarios.
+- **Si aun así no alcanza, se cae el sábado**, y quedan seis días sin tocar nada más.
+
+Qué se pierde respecto al ritmo viejo, dicho claro: **una historia 3D por semana** (la del martes, de tema libre) y
+**los shorts reactivos** de los días de noticia fuerte. El banco de historias se consume a la mitad de velocidad.
+
+Si hay que recortar más, **lo último que se cae es el largo del domingo**: la historia del
 jueves ya lo prometió en pantalla, y la búsqueda (68.4% de retención, 61 s de duración) es el mejor tráfico del canal.
 
 **Regla del borrador anticipado (JP, 19 nov 2026 — sustituye a la regla de "mismo día"):** todo lo atemporal —largos,

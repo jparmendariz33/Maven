@@ -28,17 +28,23 @@ shorts = contexto que dura meses (sin "hoy"; `/short` §1c); historia 3D = alcan
 `videos|largos/<id>/images/` + `images/credits.json`. En el storyboard: escena `photo`, `bg_image`, `company.logo`, `news.image`.
 `build_timeline.py` las incrusta; el motor pone el pie de foto. Detalle en `/short` §2b. **Calidad (JP, 11 nov 2026):** solo fotos nítidas (≥ 1600 px), limpias, con el sujeto solo y sin ruido de fondo; nada de fotos de calle cargadas.
 
-**Ritmo (vigente desde el 20 nov 2026 — JP lo reordenó para que la semana EMPUJE hacia el largo del domingo):**
+**Ritmo: UNA PIEZA AL DÍA (JP, 27 nov 2026 — sustituye las 9 por semana del 20 nov):**
+*"Mis créditos de Claude no alcanzan para tanto, hay que priorizar. Con que sea uno de cada cosa cada día, es más
+que suficiente."* El recurso escaso ya no son los créditos de vidIQ: es el **tiempo de sesión de Claude**. Siete
+piezas, una por día, y **solo dos caras por semana**.
 
-| Día | 12:00 | 19:00 | Otro |
-|---|---|---|---|
-| Lunes | — | — | Publicación |
-| Martes | **Historia 3D** (tema libre, del banco) | — | — |
-| Miércoles | — | — | Publicación |
-| **Jueves** | **Historia 3D puente** — anuncia el largo del domingo | — | — |
-| **Viernes** | — | **Short de contexto** | — |
-| **Sábado** | — | **Análisis + Potencial** | — |
-| Domingo | **Largo 10:00** | **Ranking / torneo** | Publicación |
+| Día | Qué | Costo |
+|---|---|---|
+| Lunes 19:00 | 🏆 **Ranking** — cómo arranca la semana | medio |
+| Martes ≈17:00 | 📌 Publicación del día | ligero |
+| Miércoles 19:00 | **Análisis + Potencial** | medio |
+| **Jueves 12:00** | 🎬 **Historia 3D puente** — anuncia el largo del domingo | **caro** |
+| Viernes 19:00 | 🏆 **Ranking** — cómo cierra la semana | medio |
+| Sábado ≈17:00 | 📌 Publicación — el dato de la semana (**la primera que se cae** si no alcanza) | ligero |
+| **Domingo 10:00** | **Largo** (16:9, 6–7 min) | **el más caro** |
+
+La historia 3D **se queda en jueves** a propósito: su trabajo es anunciar el largo del domingo y a cinco días se
+enfría. Lo que se perdió del ritmo viejo: la segunda historia 3D (la del martes, tema libre) y los shorts reactivos.
 
 Qué cambió y por qué (JP, 19 nov 2026): las historias pasan a **martes y jueves** porque son el formato con más alcance y
 sirven de calentamiento; **la del jueves es la puente** y lleva una escena con un pizarrón que anuncia el largo del domingo
@@ -443,8 +449,33 @@ Dos cosas que rompen la ilusión del diorama y que JP cazó de inmediato:
   18 luciera sola, y JP vio un cuadro donde *"la casa está antes que el coche"*. Si la historia es
   acumulativa, la maqueta también: lo ganado se queda en cuadro aunque le reste protagonismo a lo nuevo.
 - **La mirada dice en qué momento está.** Mirando a cámara solo cuando **llega** a algo; mientras
-  **sube**, de perfil, hacia donde camina (`yaw ≈ -1.05`). Mirar a cámara mientras trepa lo vuelve un
-  muñeco posando.
+  **sube**, de perfil, hacia donde camina. **Pero con medida: `yaw ≈ -0.40`, no -1.05.** A 60 grados se ve el
+  perfil puro y la cara se rompe —los ojos y la nariz están puestos sobre una esfera y desde ahí se deforman—;
+  JP lo cazó en dos capturas. Mirar a cámara mientras trepa lo vuelve un muñeco posando; girarle 60 grados la
+  cabeza lo vuelve un muñeco roto.
+
+## Nadie atraviesa nada: el fondo de las piezas manda (27 nov 2026)
+
+JP mandó capturas del personaje metido DENTRO de la casa y DENTRO del coche mientras subía la escalera.
+La causa no era la x: era el **fondo** (la dimensión z) y había dos errores encadenados.
+
+- **El que camina tiene que ir SOBRE la pieza que pisa.** Lo puse a `z = 1.4` cuando las barras medían `0.9`
+  de fondo (o sea, de −0.45 a 0.45): iba flotando un metro por delante de la escalera, y eso solo se nota
+  cuando pasa al lado de algo.
+- **Un objeto "al fondo del descanso" no basta: hay que restar su propio fondo.** Mandé la casa a `z = −0.6`
+  creyendo que la dejaba atrás, pero la casa mide `1.6` de fondo, así que su cara frontal quedó en `+0.2` y el
+  personaje a `z = 0` seguía dentro. **La cuenta es `z_objeto + fondo_objeto/2 < z_personaje`**, no "ponlo en
+  negativo".
+- La solución fue **darle fondo a las barras** (1.5 las normales, 3.0 los descansos) para que quepan los dos
+  planos: los hitos atrás, el personaje a `z = 0.55`, pisando y por delante.
+
+## No encojas al personaje para contar una acción (JP, 27 nov 2026)
+
+Para que "se subiera al coche" lo escalaba al 4%. JP: *"se hace muy pequeño el personaje."* Tenía razón: no se
+lee como que entra, se lee como que se rompió la escala del muñeco, y además mata lo único que da sentido del
+tamaño a la maqueta. **El personaje mantiene su escala SIEMPRE.** Si tiene que desaparecer dentro de algo, que
+lo tape el objeto (pasa por detrás); si solo hay que decir "esto ya es tuyo", basta con que camine hasta él y
+**apoye la mano**. Es más barato de animar y se entiende mejor.
 
 ## La cámara también narra: gramática de plano (JP, 20 nov 2026)
 JP trajo un short de @SoySR.J y dijo: "todas las tomas son a la misma altura de la persona, la toma no cambia,
@@ -623,6 +654,30 @@ exactamente lo mismo que antes). **Al cambiar el número de escenas, revisa el b
 partitura más densa al final, el mismo `--musica` subió del 61% al 71%.
 Cómo se verifica sin oír: mide los ataques de piano por segundo en los últimos 20 s (`music3d.score(...)`, picos por
 encima de 2.5× la media del segundo). Si los últimos segundos marcan "solo órgano", el cierre está colgado.
+
+## El tiempo de un efecto es una FRACCIÓN, nunca segundos (27 nov 2026)
+
+JP, oyendo la historia del interés compuesto: *"hay sonidos de más, de fondo, que no hacen sentido porque no hay
+ningún cambio de escena ni nada."* No sobraban: **sonaban en la escena equivocada**.
+
+En `story.js` cada escena declara `sfx: [[t, nombre, volumen?, duración?]]` y **`t` es una fracción de la escena
+(0..1)**, porque `engine3d/player.js` la convierte con `t_absoluto = t0 + t × (t1 − t0)`. Yo los escribí en
+segundos, así que `[[2.4, 'wave']]` se leyó como "240% de la escena" y cayó dos escenas más adelante. Nueve de
+once efectos sonaban fuera de su sitio, incluido uno **después de que acababa el video**.
+
+Cómo se comprueba en diez segundos, y hay que hacerlo siempre antes de mezclar: `build/sfx.json` trae el tiempo
+ya convertido. Si algún efecto cae fuera de su `[t0, t1]`, están en segundos.
+
+```python
+for sc in json.load(open('build/sfx.json'))['scenes']:
+    for e in sc['sfx']:
+        assert sc['t0'] <= e[0] <= sc['t1'], f"{sc['id']}: {e[1]} se sale"
+```
+
+Y lo segundo que oyó JP: `make_audio.py` metía una **"ola" automática en CADA frontera de escena**, incluso entre
+las marcadas `trans: 'cont'`, donde la cámara no corta. Nueve "whooshes" sin nada que los justifique. Corregido:
+el `TIMELINE` ahora lleva `trans` y la ola **solo suena en cortes de verdad**, como ya mandaba la regla de la casa
+("la ola solo va entre lugares distintos").
 
 ## Regla de la toma única (JP, 17 nov 2026)
 **La voz de IA se genera en UNA sola llamada, nunca por piezas.** Cada envío tiene su propia entonación y energía, así

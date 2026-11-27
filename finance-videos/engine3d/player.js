@@ -61,6 +61,6 @@ function renderAt(t) {
 }
 window.renderAt = renderAt; window.DUR = DUR; window.WORLDS = worlds; window.L = L;
 // sfx de cada escena: [[fracción 0..1 de la escena, nombre, volumen?, duración como fracción?], ...] → tiempos absolutos para make_audio.py
-window.TIMELINE = SC.map(s => ({ id: s.id, t0: s.t0, t1: s.t1, sfx: (s.sfx || []).map(([f, name, g, dur]) => [+(s.t0 + f * (s.t1 - s.t0)).toFixed(3), name, g == null ? 1 : g, dur ? +(dur * (s.t1 - s.t0)).toFixed(3) : 0]) }));
+window.TIMELINE = SC.map(s => ({ id: s.id, t0: s.t0, t1: s.t1, trans: s.trans || null, sfx: (s.sfx || []).map(([f, name, g, dur]) => [+(s.t0 + f * (s.t1 - s.t0)).toFixed(3), name, g == null ? 1 : g, dur ? +(dur * (s.t1 - s.t0)).toFixed(3) : 0]) }));
 window.ENGINE_READY = true;
 if (!params.has('render')) { const s0 = performance.now(); (function loop() { renderAt(((performance.now() - s0) / 1000) % DUR); requestAnimationFrame(loop); })(); }

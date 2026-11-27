@@ -41,7 +41,8 @@ const ES_HITO = y => Object.values(HITOS).includes(y);
 // cada barra. (La lección de CLAUDE.md: un grupo que se escala o se corre NO mide lo que crees.)
 const ANCHO_BARRA = .38, ANCHO_DESCANSO = 2.6, ANCHO_CIMA = 4.2;
 const ANCHO = y => y === 40 ? ANCHO_CIMA : ES_HITO(y) ? ANCHO_DESCANSO : ANCHO_BARRA;
-const FONDO = y => y === 40 ? 4.6 : ES_HITO(y) ? 2.2 : .9;
+const FONDO = y => y === 40 ? 4.6 : ES_HITO(y) ? 3.0 : 1.5;   // hondas a propósito: el personaje
+const Z_CAMINA = .55;                                          // camina DELANTE, los hitos van al fondo
 const CX = y => X(y) + (ANCHO(y) - ANCHO_BARRA) / 2;          // centro real del descanso
 const DER = CX(40) + ANCHO_CIMA / 2;                          // borde derecho de la gráfica
 const MEDIO = (-ANCHO_BARRA / 2 + DER) / 2;                   // centro de la gráfica entera
@@ -61,7 +62,7 @@ function encuadra(w, { cx, yBot, yTop, ancho, aire = 1.15, texto = TEXTO, tilt =
 
 // ---------------------------------------------------------------- miradas (corrección 4 de JP)
 // yaw 0 = de frente a cámara; yaw negativo = mira hacia donde camina (+x).
-const MIRA_CAMARA = -.12, MIRA_SUBIENDO = -1.05;
+const MIRA_CAMARA = -.12, MIRA_SUBIENDO = -.40;   // -1.05 (60 grados) le rompía la cara: se ve el perfil y los ojos se deforman
 // Cuánto mide de verdad: cuello 1.62 + radio de la cabeza .62 + pelo. NO es 1.95.
 const ALTO_PERSONA = 2.35;
 
@@ -133,7 +134,7 @@ const worlds = {
     [[-.65, .5], [.65, .5], [-.65, -.5], [.65, -.5]].forEach(([a, b]) => {
       const r = new THREE.Mesh(new THREE.CylinderGeometry(.26, .26, .18, 18), clay2('#22262C', .6));
       r.rotation.z = Math.PI / 2; r.position.set(a, .26, b); w.coche.add(r); });
-    premio(w.coche, 5, .1);
+    premio(w.coche, 5, -.9);
 
     w.casa = new THREE.Group();
     const cuerpo = rbox(2.0, 1.5, 1.6, .06, clay2('#E8E0CE', .78)); cuerpo.position.y = .75; w.casa.add(cuerpo);
@@ -143,13 +144,13 @@ const worlds = {
     vent.material = vent.material.clone();
     vent.material.emissive = new THREE.Color('#FFC46A'); vent.material.emissiveIntensity = .9;
     vent.position.set(.5, .85, .82); w.casa.add(vent);
-    premio(w.casa, 18, 0);
+    premio(w.casa, 18, -.65);
 
     w.barco = new THREE.Group();
     const casco = rbox(2.3, .6, 1.0, .3, clay2('#F2EDE2', .7)); casco.position.y = .3; w.barco.add(casco);
     const cabina = rbox(1.0, .55, .8, .2, clay2('#D8D2C4', .6)); cabina.position.set(-.2, .88, 0); w.barco.add(cabina);
     const mastil = rbox(.1, 1.6, .1, .03, clay2('#C9C3B5', .5)); mastil.position.set(.45, 1.4, 0); w.barco.add(mastil);
-    premio(w.barco, 31, 0);
+    premio(w.barco, 31, -.9);
 
     // ---- CORRECCIÓN 5: la multitud ya no flota. La cima del año 40 es un descanso de 4.2 x 4.6 y
     // encima va una terraza con cara visible, así que se ve el suelo bajo los pies.
@@ -312,7 +313,7 @@ function linea2(L, txt, y, k, col) {
 
 const scenes = [
   // 1 · GANCHO CON SALTO AL FUTURO: medio → gran general → medio
-  { id: 'gancho', world: 'camino', d: 10, sfx: [[2.4, 'wave', .75]], year: null,
+  { id: 'gancho', world: 'camino', d: 10, sfx: [[.27, 'wave', .75]], year: null,
     cap: 'Invierte cinco dólares al día y cuarenta años después serás millonario. No es un truco: es aritmética. Pero el camino sorprende.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
@@ -340,7 +341,7 @@ const scenes = [
 
   // 2 · EL MECANISMO · la columna de billetes, de cerca. CORRECCIÓN 3: ya no hay "dorados", hay
   // intereses, y se dicen con su nombre.
-  { id: 'mecanismo', world: 'camino', trans: 'cont', d: 13, sfx: [[1.1, 'pop']], year: null,
+  { id: 'mecanismo', world: 'camino', trans: 'cont', d: 13, sfx: [], year: null,
     cap: 'Cada mes pones ciento sesenta dólares: ese es tu dinero, el verde. Encima se apila lo que te pagan de intereses, el dorado. Y esos intereses generan más intereses.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
@@ -369,7 +370,7 @@ const scenes = [
     } },
 
   // 3 · AÑO 5, EL COCHE · plano medio. Llega a un hito: AQUÍ sí mira a cámara.
-  { id: 'coche', world: 'camino', d: 8, sfx: [[2.0, 'thud', .5]], year: 'AÑO 5',
+  { id: 'coche', world: 'camino', d: 8, sfx: [[.45, 'pop', .7]], year: 'AÑO 5',
     cap: 'A los cinco años, doce mil dólares: ya es un coche. Casi todo lo pusiste tú.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
@@ -378,11 +379,12 @@ const scenes = [
       const sale = L.back(L.seg(p, .3, .6)), sube = L.eio(L.seg(p, .62, .9));
       w.coche.scale.setScalar(Math.max(.001, sale));
       [w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
-      w.per.position.set(CX(5) - 1.5 + sube * 1.1, ALT(5), 1.5 - sube * .5);
-      w.per.scale.setScalar(Math.max(.001, 1 - sube * .96));        // se mete al coche
-      w.per.rotation.y = 0;
-      L.pose(w.per, { armR: [.32, .2, .3], armL: [.32, -.2, .3], head: [0, MIRA_CAMARA, 0],
-        lid: Math.max(.15, L.blink(q, 4)), brow: .25, smile: .4 });
+      // NO se encoge (JP: "se hace muy pequeño el personaje"). Camina hasta el coche y apoya la mano.
+      w.per.position.set(CX(5) - 1.5 + sube * .62, ALT(5), Z_CAMINA);
+      w.per.scale.setScalar(1);
+      w.per.rotation.y = -.18 * sube;
+      L.pose(w.per, { armR: [.32 + sube * .85, .2 + sube * .22, .3], armL: [.32, -.2, .3],
+        head: [0, MIRA_CAMARA, 0], lid: Math.max(.15, L.blink(q, 4)), brow: .25, smile: .25 + sube * .3 });
       encuadra(w, { cx: CX(5), yBot: 0, yTop: ALT(5) + ALTO_PERSONA + .2, ancho: mix(5.8, 5.0, L.eio(p)), tilt: .5 });
       w.focusOn(w.coche, 1.4); w.aperture = .00016;
     },
@@ -403,8 +405,8 @@ const scenes = [
       w.coche.scale.setScalar(1);                                   // ya se ganó: se queda
       [w.casa, w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       w.per.scale.setScalar(1);
-      w.per.position.set(X(anio), ALT(anio), 1.4);
-      w.per.rotation.y = -.45;
+      w.per.position.set(X(anio), ALT(anio), Z_CAMINA);
+      w.per.rotation.y = -.55;
       L.pose(w.per, { armR: [.22, .18, .26], armL: [.22, -.18, .26], head: [.3, MIRA_SUBIENDO, 0],
         lean: .1, bob: Math.sin(t * 3.4) * .035 - .05, walk: t * 2.2,
         lid: Math.max(.34, L.blink(q, 5)), brow: -.3, smile: -.3 });
@@ -421,7 +423,7 @@ const scenes = [
 
   // 5 · MUNGER Y LA CASA · plano entero. Arranca ancho para que SE VEA EL COCHE a la izquierda
   // (corrección 7 de JP: el coche va antes que la casa, y tiene que verse que va antes).
-  { id: 'casa', world: 'camino', d: 9, sfx: [[2.2, 'pop', .6]], year: 'AÑO 18',
+  { id: 'casa', world: 'camino', d: 9, sfx: [[.78, 'door', .6]], year: 'AÑO 18',
     cap: 'Charlie Munger decía que los primeros cien mil son los más difíciles. Y cuando llegas, ya son una casa.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
@@ -432,7 +434,7 @@ const scenes = [
       w.puerta.rotation.y = abre * 1.1; w.puerta.position.x = -.45 - abre * .2;
       [w.barco, w.gente].forEach(o => o.scale.setScalar(.001));
       w.per.scale.setScalar(1);
-      w.per.position.set(CX(18) - 1.6 + abre * .5, ALT(18), 1.5);
+      w.per.position.set(CX(18) - 1.6 + abre * .5, ALT(18), Z_CAMINA + .35);
       w.per.rotation.y = -.3 + abre * .3;
       // llega arrastrando los pies mirando el suelo y se endereza hacia cámara al abrir
       L.pose(w.per, { armR: [.26 + abre * .5, .18, .28], armL: [.26, -.18, .28],
@@ -450,7 +452,7 @@ const scenes = [
     } },
 
   // 6 · SE ACELERA, EL BARCO · plano general alto. Trepa: mirada de perfil otra vez.
-  { id: 'barco', world: 'camino', trans: 'cont', d: 10, sfx: [[1.8, 'shine', .6]], year: 'AÑO 31',
+  { id: 'barco', world: 'camino', trans: 'cont', d: 10, sfx: [], year: 'AÑO 31',
     cap: 'A los treinta y uno, cuatrocientos mil: el ochenta y cinco por ciento ya son intereses, no tu dinero.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
@@ -460,8 +462,8 @@ const scenes = [
       w.barco.scale.setScalar(Math.max(.001, L.back(L.seg(p, .66, .92))));
       w.gente.scale.setScalar(.001);
       w.per.scale.setScalar(1);
-      w.per.position.set(X(anio), ALT(anio), 1.4);
-      w.per.rotation.y = -.6;
+      w.per.position.set(X(anio), ALT(anio), Z_CAMINA);
+      w.per.rotation.y = -.7;
       L.pose(w.per, { armR: [1.25 + Math.sin(t * 4) * .22, .34, .5], armL: [1.25 - Math.sin(t * 4) * .22, -.34, .5],
         head: [-.26, MIRA_SUBIENDO, 0], lean: -.12, bob: Math.sin(t * 4) * .06,
         lid: Math.max(.18, L.blink(q, 4)), brow: .35, smile: .1 });
@@ -478,7 +480,7 @@ const scenes = [
 
   // 7 · EL MILLÓN Y LA FAMA · gran general que cierra a PRIMER PLANO (el reverso de la escena 1)
   { id: 'millon', world: 'camino', trans: 'cont', d: 9,
-    sfx: [[.6, 'thud', .7], [2.6, 'shine', .65]], year: 'AÑO 40',
+    sfx: [[.14, 'thud', .7], [.56, 'shine', .65]], year: 'AÑO 40',
     cap: 'Y a los cuarenta: un millón de dólares.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
@@ -515,7 +517,7 @@ const scenes = [
     } },
 
   // 8 · EL GOLPE · la gráfica entera: el verde es una tirita pegada al suelo
-  { id: 'golpe', world: 'camino', d: 10, sfx: [[.4, 'pop'], [2.4, 'thud', .5]], year: null,
+  { id: 'golpe', world: 'camino', d: 10, sfx: [], year: null,
     cap: 'Tú pusiste setenta y seis mil; el interés, novecientos treinta y cinco mil. Noventa y dos de cada cien dólares.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
@@ -539,8 +541,8 @@ const scenes = [
 
   // 9 · EL AVISO DEL LARGO. CORRECCIÓN 6: el pizarrón ES el texto, así que NO lleva rótulo 2D encima.
   // Solo el kicker arriba, y por eso aquí la franja reservada es chica (texto: .20).
-  { id: 'aviso', world: 'cierre', d: 7, sfx: [[.25, 'pop'], [.6, 'shine', .55]], year: 'EL DOMINGO',
-    cap: 'Este domingo sube el video completo: cómo empezar a invertir desde cero.',
+  { id: 'aviso', world: 'cierre', d: 7, sfx: [], year: 'EL DOMINGO',
+    cap: 'Este domingo voy a subir el video completo: cómo empezar a invertir desde cero.',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
       const sale = L.back(L.seg(p, .1, .45));
@@ -558,7 +560,7 @@ const scenes = [
 
   // 10 · LA PREGUNTA DE CIERRE. El pizarrón se va en medio segundo y la pregunta entra DESPUÉS:
   // cada texto con su espacio, nunca dos encima (corrección 6 de JP).
-  { id: 'cierre-pregunta', world: 'cierre', trans: 'cont', d: 7.5, sfx: [[.15, 'pop', .5]], year: null,
+  { id: 'cierre-pregunta', world: 'cierre', trans: 'cont', d: 7.5, sfx: [], year: null,
     cap: '¿Cuántos años llevas pensando en empezar?',
     update(w, lt, t, L) {
       const p = P(lt, this), q = L.on2(t);
