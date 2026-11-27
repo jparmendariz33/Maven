@@ -365,7 +365,12 @@ R.ranking = (s, t) => {
     const tc = typeof r.cue === 'number' ? r.cue : s.t0 + .9 + i * .45, k = ex(seg(t, tc, tc + .5)); if (k <= 0) return;
     const y = y0 + i * H2, neg = r.value < 0;
     C.save(); C.globalAlpha *= Math.min(1, k * 1.2); if (r.ref) C.globalAlpha *= .72;
-    const lg = img(r.logo); if (lg) contain(lg, x0, y + 8, 104, 76);
+    const lg = img(r.logo);
+    if (lg) contain(lg, x0, y + 8, 104, 76);
+    else if (hasLogo) {                       // sin logo propio: placa con la inicial, para no dejar el hueco
+      C.save(); rr(x0 + 10, y + 10, 72, 72, 18); C.fillStyle = rgba(ink, .14); C.fill();
+      txt((r.badge || r.name).slice(0, 2).toUpperCase(), x0 + 46, y + 61, { f: F.d, w: 800, s: 30, al: 'center', c: rgba(ink, .85) });
+      C.restore(); }
     const nx = x0 + (hasLogo ? 118 : 0);
     txt(r.name, nx, y + 60, { f: F.d, w: 800, s: fit(r.name, F.d, 800, 36, bx - nx - 24, 20), c: ink });
     const w = Math.max(6, bw * (Math.abs(r.value) / mx) * k);
@@ -606,13 +611,14 @@ R.bars = (s, t) => {
 };
 
 R.metric = (s, t) => {
-  kicker(s.kicker || 'Valuación', 90, 360, s.t0 + .1, t, B.negro);
-  rise(s.label, 90, 520, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(s.label, F.d, 800, 120, 900) });
-  if (s.fullname) rise(s.fullname, 90, 590, seg(t, s.t0 + .35, s.t0 + .9), { f: F.b, w: 500, s: 38, c: B.g3 });
+  const dkM = isDarkBg(themeOf(s)), inkM = dkM ? B.arena : B.negro, numM = dkM ? B.mostaza : B.azul;
+  kicker(s.kicker || 'Valuación', 90, 360, s.t0 + .1, t, inkM);
+  rise(s.label, 90, 520, seg(t, s.t0 + .2, s.t0 + .8), { f: F.d, w: 800, s: fit(s.label, F.d, 800, 120, 900), c: inkM });
+  if (s.fullname) rise(s.fullname, 90, 590, seg(t, s.t0 + .35, s.t0 + .9), { f: F.b, w: 500, s: 38, c: dkM ? rgba(B.arena, .8) : B.g3 });
   const tv = cueT(s, 'cue_value', .7), k = eo(seg(t, tv, tv + 1.1));
   const str = (s.prefix || '') + fmtNum((s.value || 0) * k, s.decimals ?? 1) + (s.suffix || '');
-  txt(str, 90, 850, { f: F.d, w: 800, s: 210, c: B.azul, a: seg(t, tv - .1, tv + .25) });
-  if (s.explain) { const te = cueT(s, 'cue_explain', 1.6); riseLines(wrap(s.explain, F.b, 500, 46, 900), 90, 960, 60, te, t, { f: F.b, w: 500, s: 46 }); }
+  txt(str, 90, 850, { f: F.d, w: 800, s: 210, c: numM, a: seg(t, tv - .1, tv + .25) });
+  if (s.explain) { const te = cueT(s, 'cue_explain', 1.6); riseLines(wrap(s.explain, F.b, 500, 46, 900), 90, 960, 60, te, t, { f: F.b, w: 500, s: 46, c: inkM }); }
   // regla tipo "horizonte" con bandas
   const sc = s.scale; if (!sc) return;
   const gx0 = 110, gx1 = 900, gy = 1280, X_ = v => gx0 + (gx1 - gx0) * cl((v - sc.min) / (sc.max - sc.min));
@@ -783,18 +789,20 @@ R.outro = (s, t) => {
   // juntas caben antes del pie. Sin esto, dos preguntas de tres líneas empujan el tagline, el botón y el
   // handle hasta la banda del subtítulo y por debajo del personaje (27 nov 2026).
   const budget = isHost(s) ? 520 : 680;
-  let qa, qb, lha, lhb, qs = 104;
+  const hayB = !!(s.question_b || '').trim();      // con UNA sola pregunta no se reserva hueco para la segunda
+  let qa, qb = { lines: [], size: 0 }, lha, lhb = 0, qs = 104;
   for (;; qs -= 6) {
     qa = fitLines(s.question_a || '', F.s, 400, qs, 780, 3, 46); lha = Math.round(qa.size * 1.16);
-    qb = fitLines(s.question_b || '', F.s, 400, qs, 780, 3, 46); lhb = Math.round(qb.size * 1.16);
-    if (qa.lines.length * lha + 46 + qb.lines.length * lhb <= budget || qs <= 46) break;
+    if (hayB) { qb = fitLines(s.question_b, F.s, 400, qs, 780, 3, 46); lhb = Math.round(qb.size * 1.16); }
+    if (qa.lines.length * lha + (hayB ? 46 + qb.lines.length * lhb : 0) <= budget || qs <= 46) break;
   }
-  riseLines(qa.lines, 540, 640, lha, ta - .1, t, { f: F.s, w: 400, s: qa.size, al: 'center', c: ink });
-  const yB = 640 + qa.lines.length * lha + 46;
-  riseLines(qb.lines, 540, yB, lhb, tb - .1, t, { f: F.s, w: 400, s: qb.size, al: 'center', c: B.mostaza });
+  // con una sola pregunta, ésa lleva el color de acento: es el remate del video
+  riseLines(qa.lines, 540, 640, lha, ta - .1, t, { f: F.s, w: 400, s: qa.size, al: 'center', c: hayB ? ink : B.mostaza });
+  const yB = 640 + qa.lines.length * lha + (hayB ? 46 : 0);
+  if (hayB) riseLines(qb.lines, 540, yB, lhb, tb - .1, t, { f: F.s, w: 400, s: qb.size, al: 'center', c: B.mostaza });
   // Todo lo de abajo cuelga del final REAL de la segunda pregunta, no de una Y fija: con preguntas de
   // dos o tres líneas el tagline, el botón y el handle se encimaban con ellas (27 nov 2026).
-  const yFin = yB + qb.lines.length * lhb + 30;
+  const yFin = yB + (hayB ? qb.lines.length * lhb : 0) + 30;
   const tl = tb + .9;
   if (V.brand.tagline) rise(V.brand.tagline, 540, yFin + 60, seg(t, tl, tl + .6), { f: F.s, w: 400, s: 50, al: 'center', c: ink });
   const yCta = yFin + 130;

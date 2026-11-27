@@ -18,34 +18,37 @@
         "outfit": "polo",
         "accessory": "ninguno"
       },
-      "kicker": "ACCIÓN DE GRACIAS · 27 DE NOVIEMBRE DE 2026",
-      "title": "Estados Unidos rompió su récord",
+      "kicker": "BLACK FRIDAY · 27 DE NOVIEMBRE DE 2026",
+      "title": "Estados Unidos rompió su récord de ventas por internet",
       "prefix": "$",
       "value": 7100,
       "unit": " M",
-      "caption": "millones de dólares en compras por internet, en un solo día · Adobe Analytics",
-      "cue_value": "internet",
-      "say": "El Día de Acción de Gracias de 2026, Estados Unidos rompió su récord de compras por internet: 7,100 millones de dólares en un día.",
+      "caption": "millones de DÓLARES gastados en compras por internet el Día de Acción de Gracias · Adobe Analytics",
+      "cue_value": "dólares",
+      "say": "Este Black Friday de 2026, Estados Unidos rompió su récord de ventas por internet: el Día de Acción de Gracias se gastaron 7,100 millones de dólares en un solo día.",
       "decimals": 0
     },
     {
-      "type": "statement",
+      "type": "metric",
       "theme": "negro",
       "kicker": "CONTRA EL AÑO PASADO",
-      "text": "10.4% más",
-      "emphasis": "más",
-      "sub": "vs. el Día de Acción de Gracias de 2025",
-      "say": "10% más que ese mismo día de 2025."
+      "label": "Más que en 2025",
+      "value": 10.4,
+      "decimals": 1,
+      "suffix": "%",
+      "cue_value": "más",
+      "explain": "vs. el Día de Acción de Gracias de 2025 · en dólares",
+      "say": "Es 10.4% más que ese mismo día de 2025."
     },
     {
       "type": "statement",
       "theme": "negro",
       "kicker": "EL AUMENTO EN VENTAS YA VENÍA DE ANTES",
-      "text": "$82,500 M en compras por internet",
+      "text": "$82,500 M de dólares por internet",
       "emphasis": "$82,500",
       "size": 72,
       "sub": "Del 1 al 22 de noviembre de 2026 · un 9.1% por encima de esas mismas fechas de 2025",
-      "say": "Y el aumento en ventas ya venía de antes: del 1 al 22 de noviembre llevaban 82,500 millones en compras por internet, un 9% por encima de esas mismas fechas de 2025."
+      "say": "Y el aumento en ventas ya venía de antes: del 1 al 22 de noviembre llevaban 82,500 millones de dólares en compras por internet, un 9% por encima de esas mismas fechas de 2025."
     },
     {
       "type": "ranking",
@@ -109,7 +112,9 @@
         },
         {
           "name": "MercadoLibre",
-          "value": 4.47
+          "value": 4.47,
+          "logo": "images/logo_meli.png",
+          "badge": "ML"
         },
         {
           "name": "Amazon",
@@ -119,7 +124,8 @@
         {
           "name": "S&P 500",
           "value": 1.6,
-          "ref": true
+          "ref": true,
+          "badge": "SP"
         }
       ],
       "note": "Toda la bolsa subió ese día, con la tecnología al frente",
@@ -159,12 +165,11 @@
         "accessory": "ninguno",
         "size": 380
       },
-      "question_a": "¿El récord llegó también a las empresas?",
-      "question_b": "¿Tú gastaste más este Black Friday que el pasado?",
-      "cue_a": "empresas",
-      "cue_b": "gastaste",
+      "question_a": "¿Tú gastaste más este Black Friday que el pasado?",
+      "question_b": "",
+      "cue_a": "gastaste",
       "sources": "Adobe Analytics · Yahoo Finance",
-      "say": "Si ese récord también llegó a las empresas, lo veremos cuando reporten sus resultados trimestrales en febrero. ¿Tú gastaste más este Black Friday que el pasado?"
+      "say": "Si ese récord llegó también a las empresas, lo veremos cuando reporten sus resultados trimestrales en febrero. ¿Tú gastaste más este Black Friday que el pasado?"
     }
   ]
 }
