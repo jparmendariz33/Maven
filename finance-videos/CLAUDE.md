@@ -469,6 +469,35 @@ La causa no era la x: era el **fondo** (la dimensión z) y había dos errores en
 - La solución fue **darle fondo a las barras** (1.5 las normales, 3.0 los descansos) para que quepan los dos
   planos: los hitos atrás, el personaje a `z = 0.55`, pisando y por delante.
 
+## Un objeto SOBRE una barra no puede quedar delante de las barras vecinas (27 nov 2026)
+
+JP, tres veces seguidas: *"la gráfica se está poniendo enfrente de la casa… va a tapar el barco…
+hasta atrás tiene que ir la gráfica, luego el objeto y luego el personaje."* Yo lo intenté moviendo
+los hitos al fondo del descanso, luego al frente, luego dando más fondo a las barras. Las tres veces
+volvió el mismo defecto, porque **no era un valor mal puesto: era un imposible geométrico.**
+
+Si el objeto se apoya ENCIMA de una barra, su cara frontal está a la misma z que la de las barras
+vecinas. Escrito como desigualdades, lo que se pedía era:
+
+```
+frente_barra < fondo_objeto      (que ninguna barra tape al objeto)
+frente_objeto < z_personaje      (que el personaje vaya delante)
+z_personaje ≤ frente_barra       (que el personaje pise la barra)
+```
+
+Las tres juntas dan `frente_barra < frente_objeto ≤ frente_barra`. No hay solución. Antes de pelearte
+con los números, **escribe las desigualdades**: si se contradicen, ninguna combinación va a funcionar
+y hay que cambiar la estructura, no los valores.
+
+**La estructura que sí funciona son DOS NIVELES:**
+- **Nivel de atrás:** la escalera y los objetos, **enrasados** en la misma cara frontal. Al estar en
+  el mismo plano, una barra nunca tapa a un objeto: quedan lado a lado.
+- **Nivel de adelante:** una **huella que sobresale** en cada escalón (una pasarela). Por ahí camina
+  el personaje, siempre por delante de todo.
+
+De paso la escalera dejó de ser una fila de columnas y parece una escalera. Cuando la física de la
+maqueta no cuadra, casi siempre falta una pieza, no sobra un ajuste.
+
 ## No encojas al personaje para contar una acción (JP, 27 nov 2026)
 
 Para que "se subiera al coche" lo escalaba al 4%. JP: *"se hace muy pequeño el personaje."* Tenía razón: no se
