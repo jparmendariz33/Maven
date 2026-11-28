@@ -206,7 +206,7 @@ function bg(s, t) {
   const bi = img(s.bg_image);
   if (bi) { // foto de fondo en duotono con el color del tema (la escena sigue siendo legible)
     const [fx, fy] = focus(s); C.save(); C.filter = 'grayscale(1) contrast(1.15)'; cover(bi, 0, 0, W, H, kb(s, t), fx, fy); C.restore();
-    C.fillStyle = th === 'brand' ? rgba(BGB, .80) : th === 'negro' ? rgba(B0.negro, .86) : isDarkBg(th) ? rgba(B0.azul, .85) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B0.arena, .87); C.fillRect(0, 0, W, H);
+    C.fillStyle = th === 'brand' ? rgba(BGB, .80) : th === 'negro' ? rgba(B0.negro, .74) : isDarkBg(th) ? rgba(B0.azul, .85) : th === 'white' ? 'rgba(245,245,245,.88)' : rgba(B0.arena, .87); C.fillRect(0, 0, W, H);
   }
   // línea de marea: horizonte suave que respira
   C.save(); C.strokeStyle = isDarkBg(th) ? rgba(B.arena, .28) : rgba(B0.azul, .22); C.lineWidth = 2;
@@ -578,7 +578,7 @@ R.news = (s, t) => {
     C.restore();
     y += lines.length * 56 + (b.sub ? 70 + (subl.length - 1) * 42 : 30) + 40;
   });
-  if (s.source) txt('Fuente: ' + s.source, 90, Math.min(1540, Math.max(y + 20, 1380)), { f: F.b, w: 500, s: 28, c: dkN ? rgba(B.arena, .72) : B.g4, a: seg(t, s.t0 + 1, s.t0 + 1.5) });
+  // la fuente la dibuja el pie de página global (ver drawScene)
 };
 
 R.bars = (s, t) => {
@@ -851,6 +851,17 @@ function drawScene(ctx, s, t) {
   (R[s.type] || (() => txt('escena desconocida: ' + s.type, 90, 900, { s: 50 })))(s, t);
   C.restore();
   if (isHost(s)) drawHost(s, t);
+  // Pie de página de fuentes (JP, 28 nov 2026): TODA fuente va abajo, en la misma banda y con el mismo
+  // tamaño, en vez de colgada del final de cada escena. Encima de la banda del subtítulo (1560).
+  if (s.source) { const dkF = isDarkBg(themeOf(s)) || isFullPhoto(s) || (s.bg_full && img(s.bg_image));
+    C.save(); C.setTransform(1, 0, 0, 1, 0, 0);
+    // si hay personaje 3D abajo, el pie se va al lado contrario para no cruzarle encima
+    const hp = isHost(s) ? ((s.host && s.host.pos) || 'br') : null;
+    const fx = hp === 'bl' ? 990 : 90, fal = hp === 'bl' ? 'right' : 'left';
+    const fw = hp ? 620 : 900, ft = 'Fuente: ' + s.source;
+    txt(ft, fx, 1508, { f: F.b, w: 500, s: fit(ft, F.b, 500, 28, fw, 18), al: fal,
+      c: dkF ? rgba(B0.arena, .62) : rgba(B0.negro, .55), a: seg(t, s.t0 + .8, s.t0 + 1.4) });
+    C.restore(); }
   chrome(s, t);
   Object.assign(B, B0); BR = null; BGB = null;
 }

@@ -22,5 +22,41 @@
   "credit": "Foto: Carol M. Highsmith · Library of Congress · dominio público",
   "source_url": "https://commons.wikimedia.org/wiki/File:No_Known_Restrictions_Trading_Floor,_New_York_Stock_Exchange_(Highsmith_LOC)_(6718386525).jpg",
   "provider": "Wikimedia Commons"
+ },
+ "images/logo_ebay.png": {
+  "title": "ebay",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=ebay",
+  "kind": "logo"
+ },
+ "images/logo_target.png": {
+  "title": "target",
+  "credit": "Logo: marca registrada de su titular · ícono de Simple Icons (CC0)",
+  "source_url": "https://simpleicons.org/?q=target",
+  "kind": "logo"
+ },
+ "images/compras.jpg": {
+  "title": "Macy's Shopping Bag Black Friday 2021",
+  "creator": "Anthony Quintano",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/22882274@N04/51707550378",
+  "provider": "Flickr"
+ },
+ "images/calle.jpg": {
+  "title": "Macy's Shopping Bag Black Friday 2021",
+  "creator": "Anthony Quintano",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/22882274@N04/51708163105",
+  "provider": "Flickr"
+ },
+ "images/mercado.jpg": {
+  "title": "20110715-RD-LSC-0153",
+  "creator": "USDAgov",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source_url": "https://www.flickr.com/photos/41284017@N08/6832288047",
+  "provider": "Flickr"
  }
 }

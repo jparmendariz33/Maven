@@ -5,11 +5,10 @@
     {
       "type": "hook",
       "theme": "negro",
-      "bg_image": "images/tienda.jpg",
-      "bg_full": true,
+      "bg_image": "images/compras.jpg",
       "focus": [
         0.5,
-        0.45
+        0.5
       ],
       "host": {
         "act": "senala",
@@ -23,10 +22,11 @@
       "prefix": "$",
       "value": 7100,
       "unit": " M",
-      "caption": "millones de DÓLARES gastados en compras por internet el Día de Acción de Gracias · Adobe Analytics",
+      "caption": "millones de DÓLARES gastados en compras por internet el Día de Acción de Gracias",
       "cue_value": "dólares",
       "say": "Este Black Friday de 2026, Estados Unidos rompió su récord de ventas por internet: el Día de Acción de Gracias se gastaron 7,100 millones de dólares en un solo día.",
-      "decimals": 0
+      "decimals": 0,
+      "source": "Adobe Analytics · Día de Acción de Gracias de 2026"
     },
     {
       "type": "metric",
@@ -38,7 +38,13 @@
       "suffix": "%",
       "cue_value": "más",
       "explain": "vs. el Día de Acción de Gracias de 2025 · en dólares",
-      "say": "Es 10.4% más que ese mismo día de 2025."
+      "say": "Es 10.4% más que ese mismo día de 2025.",
+      "bg_image": "images/calle.jpg",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "source": "Adobe Analytics"
     },
     {
       "type": "statement",
@@ -48,7 +54,13 @@
       "emphasis": "$82,500",
       "size": 72,
       "sub": "Del 1 al 22 de noviembre de 2026 · un 9.1% por encima de esas mismas fechas de 2025",
-      "say": "Y el aumento en ventas ya venía de antes: del 1 al 22 de noviembre llevaban 82,500 millones de dólares en compras por internet, un 9% por encima de esas mismas fechas de 2025."
+      "say": "Y el aumento en ventas ya venía de antes: del 1 al 22 de noviembre llevaban 82,500 millones de dólares en compras por internet, un 9% por encima de esas mismas fechas de 2025.",
+      "bg_image": "images/mercado.jpg",
+      "focus": [
+        0.5,
+        0.4
+      ],
+      "source": "Adobe Analytics · 1 al 22 de noviembre de 2026"
     },
     {
       "type": "ranking",
@@ -71,13 +83,17 @@
           "value": 27
         }
       ],
-      "note": "Adobe Analytics · 1 al 22 de noviembre de 2026",
-      "say": "¿Y qué categorías subieron más? Contra el promedio de octubre: higiene personal 40%, limpieza del hogar 33% y ropa básica 27%."
+      "say": "¿Y qué categorías subieron más? Contra el promedio de octubre: higiene personal 40%, limpieza del hogar 33% y ropa básica 27%.",
+      "bg_image": "images/compras.jpg",
+      "focus": [
+        0.4,
+        0.6
+      ],
+      "source": "Adobe Analytics · contra el promedio de octubre de 2026"
     },
     {
       "type": "news",
       "theme": "negro",
-      "image": "images/bolsa.jpg",
       "kicker": "VIERNES 27 DE NOVIEMBRE DE 2026 · MEDIA JORNADA",
       "headline": "La bolsa cerró arriba",
       "bullets": [
@@ -100,7 +116,8 @@
       "focus": [
         0.5,
         0.45
-      ]
+      ],
+      "bg_image": "images/bolsa.jpg"
     },
     {
       "type": "ranking",
@@ -132,8 +149,13 @@
           "badge": "SP"
         }
       ],
-      "note": "Toda la bolsa subió ese día, con la tecnología al frente",
-      "say": "Los más beneficiados: Shopify subió 6%, Mercado Libre 4 y medio, y Amazon casi 4. El S&P 500 subió 1.6."
+      "say": "Los más beneficiados: Shopify subió 6%, Mercado Libre 4 y medio, y Amazon casi 4. El S&P 500 subió 1.6.",
+      "bg_image": "images/calle.jpg",
+      "focus": [
+        0.6,
+        0.5
+      ],
+      "source": "Yahoo Finance · cierres del 27 de noviembre de 2026"
     },
     {
       "type": "ranking",
@@ -144,24 +166,31 @@
       "rows": [
         {
           "name": "eBay",
+          "logo": "images/logo_ebay.png",
           "value": -1.91
         },
         {
           "name": "Target",
+          "logo": "images/logo_target.png",
           "value": -0.15
         }
       ],
-      "note": "Cierres del 27 de noviembre de 2026",
-      "say": "Pero no todos subieron: eBay cayó 2% y Target cerró abajo."
+      "say": "Pero no todos subieron: eBay cayó 2% y Target cerró abajo.",
+      "bg_image": "images/mercado.jpg",
+      "focus": [
+        0.5,
+        0.5
+      ],
+      "source": "Yahoo Finance · cierres del 27 de noviembre de 2026"
     },
     {
       "type": "outro",
       "theme": "negro",
-      "bg_image": "images/bolsas.jpg",
+      "bg_image": "images/compras.jpg",
       "bg_full": true,
       "focus": [
         0.5,
-        0.4
+        0.5
       ],
       "host": {
         "act": "cierre",
