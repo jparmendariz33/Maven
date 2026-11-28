@@ -250,7 +250,8 @@ R.hook = (s, t) => {
   const yT = 500 + (tt.lines.length - 1) * tlh + tt.size * .26;     // debajo de la última línea
   const tv = cueT(s, 'cue_value', .9), k = eo(seg(t, tv, tv + 1.4));
   const v = (s.value || 0) * k, dec = s.decimals ?? 1;
-  const str = (s.prefix || '') + (s.value < 0 ? '−' : s.signed ? '+' : '') + Math.abs(v).toFixed(dec) + (s.unit ?? '%');
+  // fmtNum, no toFixed: sin separador de miles '7100' se lee mal (JP, 28 nov 2026)
+  const str = (s.prefix || '') + (s.value < 0 ? '−' : s.signed ? '+' : '') + fmtNum(Math.abs(v), dec) + (s.unit ?? '%');
   const LW = 250, COLV = conLogo ? COL - LW - 40 : COL;   // ancho útil: el logo ocupa la derecha de la cifra Y del pie
   const cp = s.caption ? fitLines(s.caption, F.b, 500, 54, COLV, 2, 38) : null;   // el pie también se parte en vez de salirse
   const capH = cp ? cp.lines.length * Math.round(cp.size * 1.22) + 46 : 0;

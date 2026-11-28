@@ -62,9 +62,7 @@ Costa Studio Finance, by JP Armendáriz.
 
 ## El guion (referencia; la voz ya está puesta)
 
-Este Black Friday de 2026, Estados Unidos rompió su récord de ventas por internet: el Día de Acción de Gracias se gastaron 7,100 millones de dólares en un solo día.
-
-Es 10.4% más que ese mismo día de 2025.
+Este Black Friday de 2026, Estados Unidos rompió su récord de ventas por internet: el Día de Acción de Gracias se gastaron 7,100 millones de dólares en un solo día. Es 10.4% más que ese mismo día de 2025.
 
 Y el aumento en ventas ya venía de antes: del 1 al 22 de noviembre llevaban 82,500 millones de dólares en compras por internet, un 9% por encima de esas mismas fechas de 2025.
 
@@ -80,6 +78,6 @@ Si ese récord llegó también a las empresas, lo veremos cuando reporten sus re
 
 ## Ficha técnica
 
-- 1080×1920 · **60.33 s** · 1,809 cuadros · h264 + aac
+- 1080×1920 · **69.0 s** · h264 + aac · voz a tempo natural (sin acelerar)
 - Voz: Francisco (vidIQ), una sola toma, **28 créditos**
-- 8 escenas, tema `negro`, 4 fotos de fondo en duotono, 5 logos
+- 7 escenas (el 10.4% va dentro del gancho), tema `negro`, 3 fotos de fondo en duotono, 5 logos

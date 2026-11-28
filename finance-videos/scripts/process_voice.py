@@ -48,7 +48,9 @@ def main(vdir):
     a = os.path.join(vdir, 'audio'); b = os.path.join(vdir, 'build'); os.makedirs(b, exist_ok=True)
     sbp = os.path.join(vdir, 'storyboard.json')
     SB = json.load(open(sbp, encoding='utf-8')) if os.path.exists(sbp) else {}
-    LONG = SB.get('format') == 'long'
+    # `format: long` también cambia el aspecto del video en render.js, así que para pedir SOLO la voz
+    # sin acelerar (pausas amplias, tempo 1.0) en un vertical hay una llave aparte (JP, 28 nov 2026).
+    LONG = SB.get('format') == 'long' or SB.get('voz') == 'natural'
     # El tempo apunta a la duración que pide CADA formato, no siempre a 56 s: el short de contexto dura
     # 45–60 s, pero "Análisis + Potencial" dura 75–85 y acelerarlo a 56 lo dejaba corto (JP, 21 nov 2026).
     OBJETIVO = 75.0 if SB.get('mode') == 'empresa' else 56.0
