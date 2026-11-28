@@ -35,6 +35,7 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 ## Publicaciones (pestaña Publicaciones de YouTube; skill `/publicacion`)
 | Fecha | Tema | Carpeta |
 |---|---|---|
+| sáb 28 nov 2026 ≈17:00 | El dato de la semana: el dólar cerró en 19.70 pesos, su nivel más alto en un año (+3.2% en la semana, +9.6% en 2026) | `videos/2026-11-28-POST-PESO/` |
 | lun 16 nov 2026 | La IA cayó un día antes de que Nvidia reporte (Nasdaq −2.49%, chips −5.28%) | `videos/2026-11-16-POST-IA/` |
 | mar 17 nov 2026 · 19:00 | Short de contexto · Nvidia vendió el doble y su acción sigue 35% abajo (primer video con voz de IA) | `videos/2026-11-17-NVDA/` |
 | mié 18 nov 2026 | Nvidia reportó récord y la acción cayó: el Nasdaq subió ese mismo día | `videos/2026-11-18-POST-NVDA/` |

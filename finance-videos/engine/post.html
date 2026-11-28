@@ -70,7 +70,7 @@ window.drawSlide = async ({ s, i, n, brand, image, logo, logos, series, sources 
 
   } else if (s.type === 'grafica') {
     if (s.title) y = para(s.title, 70, y, { f: F.d, w: 800, s: 62, c: ink }, 940, 72);
-    if (s.sub) { T(s.sub, 70, y + 16, { s: 38, c: ink, a: .8 }); y += 50; }
+    if (s.sub) { y = para(s.sub, 70, y + 16, { s: 38, c: ink, a: .8 }, 940, 48) + 6; }   // para(), no T(): se cortaba
     const pts = (series || []).slice(-(s.days || 250)), x0 = 90, x1 = 990, y0 = y + 60, y1 = 860;
     if (pts.length > 2) { const v = pts.map(p => p[1]), lo = Math.min(...v), hi = Math.max(...v), px = k => x0 + (x1 - x0) * k / (pts.length - 1), py = q => y1 - (y1 - y0) * (q - lo) / (hi - lo || 1);
       C.strokeStyle = dark ? 'rgba(235,230,186,.2)' : 'rgba(10,10,10,.12)'; C.lineWidth = 2; for (let k = 0; k <= 3; k++) { const yy = y0 + (y1 - y0) * k / 3; C.beginPath(); C.moveTo(x0, yy); C.lineTo(x1, yy); C.stroke(); T('$' + (hi - (hi - lo) * k / 3).toFixed(0), x0 - 8, yy - 8, { s: 22, c: ink, a: .6 }); }
@@ -86,8 +86,10 @@ window.drawSlide = async ({ s, i, n, brand, image, logo, logos, series, sources 
   }
   if (lg && s.show_logo) { const z = 150; C.fillStyle = '#F7F5EE'; C.beginPath(); C.roundRect(S - 70 - z, 150, z, z, 28); C.fill(); const k = Math.min(z * .76 / lg.naturalWidth, z * .76 / lg.naturalHeight); C.drawImage(lg, S - 70 - z / 2 - lg.naturalWidth * k / 2, 150 + z / 2 - lg.naturalHeight * k / 2, lg.naturalWidth * k, lg.naturalHeight * k); }
   if (host) { const z = s.host_size || 400, o = typeof s.host === 'object' ? s.host : {}, x = /l$/.test(o.pos || 'br') ? 10 : S - z - 10; C.save(); C.shadowColor = 'rgba(0,0,0,.45)'; C.shadowBlur = 30; C.shadowOffsetY = 8; C.drawImage(host, x, S - z - 70, z, z); C.restore(); }
-  const foot = i === n - 1 ? [sources ? 'Datos: ' + sources : '', brand.disclaimer || 'Contenido educativo. No es asesoría financiera.'].filter(Boolean).join('  ·  ') : (s.credit || '');
-  if (foot) T(foot, 70, S - 38, { s: 21, c: ink, a: .7 });
+  // El pie se partía por la derecha cuando las fuentes eran largas: ahora va en dos renglones (28 nov 2026).
+  const pies = i === n - 1 ? [sources ? 'Datos: ' + sources : '', brand.disclaimer || 'Contenido educativo. No es asesoría financiera.'].filter(Boolean) : [s.credit || ''].filter(Boolean);
+  const lineas = pies.flatMap(t => wrap(t, { s: 21 }, 940));
+  lineas.slice(-3).forEach((l, k, arr) => T(l, 70, S - 38 - (arr.length - 1 - k) * 26, { s: 21, c: ink, a: .7 }));
   return cv.toDataURL('image/png');
 };
 </script></body></html>
