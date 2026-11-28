@@ -375,7 +375,10 @@ R.ranking = (s, t) => {
     txt(r.name, nx, y + 60, { f: F.d, w: 800, s: fit(r.name, F.d, 800, 36, bx - nx - 24, 20), c: ink });
     const w = Math.max(6, bw * (Math.abs(r.value) / mx) * k);
     rr(bx, y + 26, w, 44, 12);
-    C.fillStyle = r.ref ? rgba(ink, .28) : neg ? B.terracota : B.musgo; C.fill();
+    // `bar` fija el color de las barras de ese ranking: verde | azul | rojo (JP, 28 nov 2026).
+    // Sin `bar`, lo positivo va verde y lo negativo rojo, como antes.
+    const PAL = { verde: B.musgo, azul: dk ? B0.azulClaro : B0.azul, rojo: B.terracota };
+    C.fillStyle = r.ref ? rgba(ink, .28) : neg ? B.terracota : (PAL[s.bar] || B.musgo); C.fill();
     const vt = r.text || ((neg ? '−' : '+') + Math.abs(r.value) + (s.suffix || ''));
     txt(vt, 984, y + 60, { f: F.d, w: 800, s: 40, al: 'right', c: r.ref ? soft : neg ? B.terracota : ink });
     C.restore();

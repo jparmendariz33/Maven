@@ -55,7 +55,7 @@
       "size": 72,
       "sub": "Del 1 al 22 de noviembre de 2026 · un 9.1% por encima de esas mismas fechas de 2025",
       "say": "Y el aumento en ventas ya venía de antes: del 1 al 22 de noviembre llevaban 82,500 millones de dólares en compras por internet, un 9% por encima de esas mismas fechas de 2025.",
-      "bg_image": "images/mercado.jpg",
+      "bg_image": "images/bolsa.jpg",
       "focus": [
         0.5,
         0.4
@@ -89,7 +89,8 @@
         0.4,
         0.6
       ],
-      "source": "Adobe Analytics · contra el promedio de octubre de 2026"
+      "source": "Adobe Analytics · contra el promedio de octubre de 2026",
+      "bar": "verde"
     },
     {
       "type": "news",
@@ -155,7 +156,8 @@
         0.6,
         0.5
       ],
-      "source": "Yahoo Finance · cierres del 27 de noviembre de 2026"
+      "source": "Yahoo Finance · cierres del 27 de noviembre de 2026",
+      "bar": "azul"
     },
     {
       "type": "ranking",
@@ -176,12 +178,13 @@
         }
       ],
       "say": "Pero no todos subieron: eBay cayó 2% y Target cerró abajo.",
-      "bg_image": "images/mercado.jpg",
+      "bg_image": "images/bolsa.jpg",
       "focus": [
-        0.5,
-        0.5
+        0.45,
+        0.55
       ],
-      "source": "Yahoo Finance · cierres del 27 de noviembre de 2026"
+      "source": "Yahoo Finance · cierres del 27 de noviembre de 2026",
+      "bar": "rojo"
     },
     {
       "type": "outro",
