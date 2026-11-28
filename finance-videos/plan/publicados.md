@@ -28,6 +28,8 @@ Fuente: lo que se ve en youtube.com/@jparmendariz (revisado el 7 nov 2026) + lo 
 | sáb 21 nov 2026 · 12:00 | Historia 3D | Kahneman y Tversky: perder duele el doble, por eso aguantas la que pierde · **con voz de IA (Francisco, una toma)** · 51.7 s | `videos/2026-11-21-KAHNEMAN-historia/` |
 | jue 26 nov 2026 · 12:00 | Historia 3D | El interés compuesto: cinco dólares al día durante cuarenta años ($160/mes al 10% → $1,011,853; el 92% lo pone el interés) · **con voz de IA (Francisco, una toma, 28 créditos)** · 66.3 s · **puente al largo del domingo 29** | `videos/2026-11-26-COMPUESTO-historia/` |
 
+| vie 27 nov 2026 · 19:00 | Short de contexto | Black Friday: récord de compras por internet ($7,100 M el Día de Acción de Gracias, +10.4%); ranking de beneficiados (SHOP, MELI, AMZN) y de caídas (EBAY, TGT) · **voz de IA (Francisco, una toma, 28 créditos)** · fondo negro · 60.3 s | `videos/2026-11-27-BLACKFRIDAY/` |
+
 **No programado:** `videos/2026-11-09-SPCX-historia/` (primera Historia 3D, SpaceX: animatic sin voz y versión con música; hecha con el motor 3D v1). `videos/extra-ACCION/` (short del largo "¿Qué es una acción?", que ya se publicó). Solo si JP lo pide.
 
 ## Publicaciones (pestaña Publicaciones de YouTube; skill `/publicacion`)
