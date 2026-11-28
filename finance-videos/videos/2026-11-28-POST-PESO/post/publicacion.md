@@ -4,7 +4,7 @@
 ```
 El viernes 27 de noviembre de 2026 el dólar cerró en 19.70 pesos, su nivel más alto en un año. En la semana subió 3.2%, en noviembre 5.7% y en lo que va de 2026, 9.6%. El mínimo del año había sido 16.89 pesos, el 6 de septiembre.
 
-¿Lo notas en lo que compras, o ni te enteras?
+¿Lo notas en lo que compras?
 
 Fuentes: Yahoo Finance (cierres al 27 de noviembre de 2026) y Banxico.
 Contenido educativo. No es asesoría financiera.

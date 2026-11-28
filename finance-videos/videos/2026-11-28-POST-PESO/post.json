@@ -1,6 +1,10 @@
 {
   "title": "Semana del 23 al 27 nov 2026 · El dólar cerró en su nivel más alto en un año",
-  "host": { "outfit": "sueter", "accessory": "ninguno", "prop": "ninguno" },
+  "host": {
+    "outfit": "sueter",
+    "accessory": "ninguno",
+    "prop": "ninguno"
+  },
   "sources": "Yahoo Finance, cierres al 27 de noviembre de 2026 · Banxico (tipo de cambio FIX)",
   "slides": [
     {
@@ -9,7 +13,10 @@
       "title": "El dólar cerró en su nivel más alto en un año",
       "size": 64,
       "sub": "19.70 pesos el viernes 27. No se veía así desde noviembre de 2025.",
-      "host": { "act": "senala", "mood": "down" },
+      "host": {
+        "act": "senala",
+        "mood": "down"
+      },
       "host_size": 250
     },
     {
@@ -32,11 +39,13 @@
     {
       "type": "pregunta",
       "kicker": "Tu turno",
-      "question": "¿Lo notas en lo que compras, o ni te enteras?",
+      "question": "¿Lo notas en lo que compras?",
       "cta": "Te leo en los comentarios 👇",
-      "host": { "act": "cierre" },
+      "host": {
+        "act": "cierre"
+      },
       "host_size": 250
     }
   ],
-  "text": "El viernes 27 de noviembre de 2026 el dólar cerró en 19.70 pesos, su nivel más alto en un año. En la semana subió 3.2%, en noviembre 5.7% y en lo que va de 2026, 9.6%. El mínimo del año había sido 16.89 pesos, el 6 de septiembre.\n\n¿Lo notas en lo que compras, o ni te enteras?\n\nFuentes: Yahoo Finance (cierres al 27 de noviembre de 2026) y Banxico.\nContenido educativo. No es asesoría financiera.\nCosta Studio Finance, by JP Armendáriz.\n\n#dólar #peso #México"
+  "text": "El viernes 27 de noviembre de 2026 el dólar cerró en 19.70 pesos, su nivel más alto en un año. En la semana subió 3.2%, en noviembre 5.7% y en lo que va de 2026, 9.6%. El mínimo del año había sido 16.89 pesos, el 6 de septiembre.\n\n¿Lo notas en lo que compras?\n\nFuentes: Yahoo Finance (cierres al 27 de noviembre de 2026) y Banxico.\nContenido educativo. No es asesoría financiera.\nCosta Studio Finance, by JP Armendáriz.\n\n#dólar #peso #México"
 }
